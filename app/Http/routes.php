@@ -29,3 +29,18 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+Route::get('hello', 'HelloController@index');
+
+Route::resource('articles', 'ArticlesController');
+/*
+Route::get('/articles/create', 'ArticlesController@create');
+Route::post('/articles', 'ArticlesController@store');
+Route::get('/articles/{id}', 'ArticlesController@show');
+
+Route::get('/articles/{id}/edit', 'ArticlesController@edit');
+Route::put('/articles/{id}', 'ArticlesController@update');
+
+Route::delete('/articles/{id}', 'ArticlesController@distroy');
+//Route::resource('auth', 'Auth\AuthController');
+*/

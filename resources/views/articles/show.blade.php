@@ -3,7 +3,7 @@
 @section('content')
 <div>
   {{ $article->title }}
-  <a class="btn btn-primary" href="{{ url("articles/{$article->id}")}}">Edit</a>
+  <a class="btn btn-primary" href="{{ url("articles/{$article->id}/edit")}}">Edit</a>
 </div>
 
 <div class"panel panel-default">

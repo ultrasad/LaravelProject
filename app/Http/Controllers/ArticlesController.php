@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Article;
 // use Illuminate\Http\Request;
-use Request; //use request in app.php
+use Request; //use Request replace Illuminate\Http\Request
 use App\Http\Requests\ArticleRequest;
 
 class ArticlesController extends Controller
@@ -13,7 +13,7 @@ class ArticlesController extends Controller
     public function __construct()
     {
       //$this->middleware('auth', ['only' => ['create', 'store']]);
-      $this->middleware('auth', ['except' => ['index', 'show']]);
+      //$this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -63,7 +63,7 @@ class ArticlesController extends Controller
     public function store(ArticleRequest $request)
     {
 
-       $input = $request::all();
+       $input = $request->all();
        Article::create($input);
        return redirect('articles');
     }
@@ -87,7 +87,6 @@ class ArticlesController extends Controller
 
       //dd($article);
       return view('articles.show', compact('article'));
-
     }
 
     /**
@@ -110,7 +109,7 @@ class ArticlesController extends Controller
     *@param int $id
     *@return Response
     */
-    public function update($id, ArticleRequest $resuest)
+    public function update($id, ArticleRequest $request)
     {
       $article = Article::findOrFail($id);
       $article->update($request->all());

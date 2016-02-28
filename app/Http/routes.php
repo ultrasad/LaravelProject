@@ -27,7 +27,7 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-  Route::get('hello', 'HelloController@index');
+  //Route::get('hello', 'HelloController@index');
   Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
 });
 

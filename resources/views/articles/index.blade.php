@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('page_title', 'Hello Page')
 @section('content')
-  @foreach($articles as $article)
+  @forelse($articles as $article)
     <div class="panel panel-default">
       <div class="panel-heading">
         <a href="{{ url('articles', $article->id) }}">{{ $article->title }}</a>
@@ -14,5 +14,7 @@
         {{ $article->published_at->diffForHumans() }}
       </div>
     </div>
-  @endforeach
+  @empty
+  <p>No Article</p>
+  @endforelse
 @stop

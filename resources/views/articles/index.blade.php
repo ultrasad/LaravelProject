@@ -10,7 +10,7 @@
           {{ $article->body }}
       </div>
       <div class="panel-footer">
-        By: <strong>xx {{-- $article->user->name --}}</strong>,
+        By: <strong> {{ $article->user->name }}</strong>,
         {{ $article->published_at->diffForHumans() }}
       </div>
     </div>

@@ -3,8 +3,10 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-//use App\Models\Article as Articles;
+// use App\Models\Article as Articles;
+use Auth;
 use App\Article;
+// use App\User;
 // use Illuminate\Http\Request;
 use Request; //use Request replace Illuminate\Http\Request
 use App\Http\Requests\ArticleRequest;
@@ -63,9 +65,17 @@ class ArticlesController extends Controller
 
     public function store(ArticleRequest $request)
     {
-
+       /*
        $input = $request->all();
        Article::create($input);
+       return redirect('articles');
+       */
+
+       //$input = $request->all();
+       $article = new Article($request->all());
+       //$article->user_id = Auth::user()->id;
+       //$article->save();
+       Auth::user()->articles()->save($article);
        return redirect('articles');
     }
 

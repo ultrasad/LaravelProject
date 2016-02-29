@@ -11,9 +11,11 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +28,12 @@ Route::get('/', function () {
 |
 */
 
+/*
 Route::group(['middleware' => ['web']], function () {
   //Route::get('hello', 'HelloController@index');
   Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
 });
+*/
 
 //Route::get('hello', 'HelloController@index');
 //Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
@@ -45,3 +49,12 @@ Route::put('/articles/{id}', 'ArticlesController@update');
 Route::delete('/articles/{id}', 'ArticlesController@distroy');
 //Route::resource('auth', 'Auth\AuthController');
 */
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::get('/home', 'HomeController@index');
+    Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
+});

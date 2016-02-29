@@ -3,7 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Models\Article;
+//use App\Models\Article as Articles;
+use App\Article;
 // use Illuminate\Http\Request;
 use Request; //use Request replace Illuminate\Http\Request
 use App\Http\Requests\ArticleRequest;
@@ -12,7 +13,7 @@ class ArticlesController extends Controller
 {
     public function __construct()
     {
-      //$this->middleware('auth', ['only' => ['create', 'store']]);
+      $this->middleware('auth', ['only' => ['create', 'store']]);
       //$this->middleware('auth', ['except' => ['index', 'show']]);
     }
 

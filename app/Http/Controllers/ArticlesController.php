@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 // use App\Models\Article as Articles;
 use Auth;
 use App\Article;
+use App\Tag;
 // use App\User;
 // use Illuminate\Http\Request;
 use Request; //use Request replace Illuminate\Http\Request
@@ -47,7 +48,8 @@ class ArticlesController extends Controller
     */
     public function create()
     {
-        return view('articles.create');
+        $tag_list = Tag::lists('name', 'id');
+        return view('articles.create', compact('tag_list'));
     }
 
     /**
@@ -75,7 +77,22 @@ class ArticlesController extends Controller
        $article = new Article($request->all());
        //$article->user_id = Auth::user()->id;
        //$article->save();
+
+       if($request->hasFile('image')){
+         $image_filename = $request->file('image')
+                          ->getClientOriginalName();
+         $image_name = date('Ymd-His-').$image_filename;
+         $public_path = 'images/articles/';
+         $destination = base_path() . '/public/' . $public_path;
+         $request->file('image')->move($destination, $image_name); //move file to destination
+         $article->image = $public_path . $image_name; //set article image name
+       }
        Auth::user()->articles()->save($article);
+
+       //tags
+       $tagsId = $request->input('tag_list');
+       if(!empty($tagsId))
+          $article->tags()->sync($tagsId);
        return redirect('articles');
     }
 
@@ -109,9 +126,11 @@ class ArticlesController extends Controller
     public function edit($id)
     {
       $article = Article::find($id);
+      $tag_list = Tag::lists('name', 'id');
+
       if(empty($article))
         abort(404);
-      return  view('articles.edit', compact('article'));
+      return  view('articles.edit', compact('article', 'tag_list'));
     }
 
     /**
@@ -124,6 +143,23 @@ class ArticlesController extends Controller
     {
       $article = Article::findOrFail($id);
       $article->update($request->all());
+
+      if($request->hasFile('image')){
+        $image_filename = $request->file('image')
+                         ->getClientOriginalName();
+        $image_name = date('Ymd-His-').$image_filename;
+        $public_path = 'images/articles/';
+        $destination = base_path() . '/public/' . $public_path;
+        $request->file('image')->move($destination, $image_name); //move file to destination
+        $article->image = $public_path . $image_name; //set article image name
+        $article->save(); //update
+      }
+
+      $tagsId = $request->input('tag_list');
+      if(!empty($tagsId))
+        $article->tags()->sync($tagsId);
+      else
+        $article->tags()->detach();
       return redirect('articles');
     }
 

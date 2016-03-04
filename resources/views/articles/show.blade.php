@@ -8,10 +8,26 @@
 
 <div class"panel panel-default">
   <div class="panel-body">
+
+    @if($article->image)
+      <img src="{{ url($article->image) }}" class="img-responsive" style="max-width: 200px" />
+    @else
+      <img src="{{ url('images/laravel-logo.png') }}" class="img-responsive" style="max-width: 200px" />
+    @endif
     {{ $article->body }}
   </div>
   <div class="panel-footer">
-    {{ $article->published_at }}
+    {{ $article->published_at->diffForHumans() }}
+
+    @unless($article->tags->isEmpty())
+      <div>Tags
+        <ul>
+          @foreach($article->tags as $tag)
+            <li class="label label-primary">{{ $tag->name }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endunless
   </div>
 </div>
 <div>

@@ -5,8 +5,18 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('body', 'Article Body: ')!!}
-  {!! Form::textarea('body', null, ['class' => 'form-control'])!!}
+  {!! Form::label('title', 'Article Image') !!}
+  {!! Form::file('image', null) !!}
+</div>
+
+<div class="form-group">
+  {!! Form::label('body', 'Article Body: ') !!}
+  {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+  {!! Form::label('tag_list', 'Tags: ') !!}
+  {!! Form::select('tag_list[]', $tag_list, $articleTagList, ['multiple', 'class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

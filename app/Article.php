@@ -8,7 +8,7 @@ use Carbon\Carbon;
 class Article extends Model
 {
     //Mass Assignment
-    protected $fillable = ['title', 'body', 'published_at']; //Whitelist
+    protected $fillable = ['title', 'body', 'published_at', 'image']; //Whitelist
     //protected $guarded = ['id'];// //Backlist
 
     protected $dates = ['published_at']; //register datetime to carbon object
@@ -17,6 +17,15 @@ class Article extends Model
     public function setPublishedAtAtribute($ddate)
     {
       $this->attributes['published_at'] = Carbon::parse($date)->subDay();
+    }
+
+    //tags, edit list
+    public function getTagListAttribute()
+    {
+        //return $this->tags->lists('id');
+        return $this->tags->lists('id')->all(); //relationship tags articles
+        //or ican do this
+        //return $this->tags->lists('id')->toArray();
     }
 
     //relationship, User Model
@@ -39,5 +48,11 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function tags()
+    {
+      return $this->belongsToMany('App\Tag')
+                  ->withTimestamps(); //update created app, updated app relationship table
     }
 }

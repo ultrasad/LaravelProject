@@ -17,4 +17,5 @@
   @empty
   <p>No Article</p>
   @endforelse
+  {!! $articles->links() !!}
 @stop

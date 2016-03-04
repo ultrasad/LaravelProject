@@ -37,7 +37,8 @@ class ArticlesController extends Controller
       //return $articles; //return json object
       */
 
-      $articles = Article::published()->get(); //pass scopePublished scope
+      //$articles = Article::published()->get(); //pass scopePublished scope
+      $articles = Article::published()->paginate(5);
       return view('articles.index', compact('articles'));
     }
 

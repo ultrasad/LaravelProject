@@ -50,6 +50,8 @@ Route::delete('/articles/{id}', 'ArticlesController@distroy');
 //Route::resource('auth', 'Auth\AuthController');
 */
 
+//Route::resource('/articles', 'ArticlesController'); //RESTful Resource Controllers
+
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/', function () {

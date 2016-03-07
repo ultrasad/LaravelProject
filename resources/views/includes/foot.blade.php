@@ -50,6 +50,7 @@
   'use strict';
   $(document).ready(function() {
       $(".widget-3 .metro").liveTile();
+      $(".widget-7 .metro").liveTile();
   });
 })(window.jQuery);
 </script>

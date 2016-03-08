@@ -54,3 +54,41 @@
   });
 })(window.jQuery);
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#article').submit(function(){
+            {{--
+            var formData = $(this).serialize(); // form data as string
+            var formAction = $(this).attr('action'); // form handler url
+            var formMethod = $(this).attr('method'); // GET, POST
+            --}}
+
+            var article, token, url, data;
+            token = $('input[name=_token]').val();
+            {{-- article = $('#article').serialize(); --}} // form data as string
+            article = new FormData(this);
+            {{--article.append('image', input.images[0]); --}}
+            {{-- var fd = new FormData(); --}}
+            {{-- fd.append( 'file', input.files[0] ); --}}
+            {{-- url = '{{route('articles')}}'; --}}
+            {{-- data = {article: article}; --}}
+            $('#subramos').empty();
+            $.ajax({
+                url: '/articles',
+                headers: {'X-CSRF-TOKEN': token},
+                data: article,
+                type: 'POST',
+                datatype: 'JSON',
+                success: function (resp) {
+                  console.log('resp => ' + resp);
+                    /*$.each(resp.subramos, function (key, value) {
+                        $('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
+                    });*/
+                }
+            });
+
+            return false;
+        });
+    });
+</script>

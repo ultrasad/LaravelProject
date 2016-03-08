@@ -6,7 +6,7 @@
 
 <div class="form-group">
   {!! Form::label('title', 'Article Image') !!}
-  {!! Form::file('image', null) !!}
+  {!! Form::file('image', ['class' => 'images']) !!}
 </div>
 
 <div class="form-group">

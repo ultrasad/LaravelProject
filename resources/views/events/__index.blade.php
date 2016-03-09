@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row">
-  <div class="col-md-6 col-xlg-4">
+  <div class="col-md-6 col-xlg-5">
     <div class="row">
       <div class="col-md-12 m-b-10">
         <div class="ar-3-2 widget-1-wrapper">
@@ -311,209 +311,166 @@
       </div>
     </div>
   </div>
-  <div class="col-md-6 col-xlg-4">
-      <div class="row">
-        <div class="col-sm-6 m-b-10">
-          <!-- START WIDGET widget_socialPostTile-->
-          <div class="panel no-border  no-margin">
-            <div class="padding-15">
-              <div class="item-header clearfix">
-                <div class="thumbnail-wrapper d32 circular">
-                  <img width="40" height="40" src="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" data-src-retina="assets/img/profiles/3x.jpg" alt="">
-                </div>
-                <div class="inline m-l-10">
-                  <p class="no-margin">
-                    <strong>Anne Simons</strong>
-                  </p>
-                  <p class="no-margin hint-text">Shared a link
-                    <span class="location semi-bold"><i class="fa fa-map-marker"></i> NY center</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <hr class="no-margin">
-            <div class="padding-15">
-              <p>Inspired by : good design is obvious, great design is transparent</p>
-              <div class="hint-text">via themeforest</div>
-            </div>
-            <div class="relative">
-              <ul class="buttons pull-top top-right list-inline p-r-10 p-t-10">
-                <li>
-                  <a class="text-white" href="#"><i class="fa fa-expand"></i></a>
-                </li>
-                <li>
-                  <a class="text-white" href="#"><i class="fa fa-heart-o"></i></a>
-                </li>
-              </ul>
-              <div class="widget-19-post no-overflow">
-                <img src="assets/img/social-post-image.png" class="block center-margin relative" alt="Post">
-              </div>
-            </div>
-            <div class="padding-15">
-              <div class="hint-text pull-left">few seconds ago</div>
-              <ul class="list-inline pull-right no-margin">
-                <li><a class="text-master hint-text" href="#">5,345 <i class="fa fa-comment-o"></i></a>
-                </li>
-                <li><a class="text-master hint-text" href="#">23K <i class="fa fa-heart-o"></i></a>
-                </li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <!-- END WIDGET -->
-        </div>
-        <div class="col-sm-6 m-b-10">
-          <!-- START WIDGET widget_socialPostTile-->
-          <div class="panel no-border  no-margin">
-            <div class="padding-15">
-              <div class="item-header clearfix">
-                <div class="thumbnail-wrapper d32 circular">
-                  <img width="40" height="40" src="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" data-src-retina="assets/img/profiles/3x.jpg" alt="">
-                </div>
-                <div class="inline m-l-10">
-                  <p class="no-margin">
-                    <strong>Anne Simons</strong>
-                  </p>
-                  <p class="no-margin hint-text">Shared a link
-                    <span class="location semi-bold"><i class="fa fa-map-marker"></i> NY center</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <hr class="no-margin">
-            <div class="padding-15">
-              <p>Inspired by : good design is obvious, great design is transparent</p>
-              <div class="hint-text">via themeforest</div>
-            </div>
-            <div class="relative">
-              <ul class="buttons pull-top top-right list-inline p-r-10 p-t-10">
-                <li>
-                  <a class="text-white" href="#"><i class="fa fa-expand"></i></a>
-                </li>
-                <li>
-                  <a class="text-white" href="#"><i class="fa fa-heart-o"></i></a>
-                </li>
-              </ul>
-              <div class="widget-19-post no-overflow">
-                <img src="assets/img/social-post-image.png" class="block center-margin relative" alt="Post">
-              </div>
-            </div>
-            <div class="padding-15">
-              <div class="hint-text pull-left">few seconds ago</div>
-              <ul class="list-inline pull-right no-margin">
-                <li><a class="text-master hint-text" href="#">5,345 <i class="fa fa-comment-o"></i></a>
-                </li>
-                <li><a class="text-master hint-text" href="#">23K <i class="fa fa-heart-o"></i></a>
-                </li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <!-- END WIDGET -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 m-b-10">
-          <!-- START WIDGET widget_socialPostTile-->
-          <div class="panel no-border  no-margin">
-            <div class="padding-15">
-              <div class="item-header clearfix">
-                <div class="thumbnail-wrapper d32 circular">
-                  <img width="40" height="40" src="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" data-src-retina="assets/img/profiles/3x.jpg" alt="">
-                </div>
-                <div class="inline m-l-10">
-                  <p class="no-margin">
-                    <strong>Anne Simons</strong>
-                  </p>
-                  <p class="no-margin hint-text">Shared a link
-                    <span class="location semi-bold"><i class="fa fa-map-marker"></i> NY center</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <hr class="no-margin">
-            <div class="padding-15">
-              <p>Inspired by : good design is obvious, great design is transparent</p>
-              <div class="hint-text">via themeforest</div>
-            </div>
-            <div class="relative">
-              <ul class="buttons pull-top top-right list-inline p-r-10 p-t-10">
-                <li>
-                  <a class="text-white" href="#"><i class="fa fa-expand"></i></a>
-                </li>
-                <li>
-                  <a class="text-white" href="#"><i class="fa fa-heart-o"></i></a>
-                </li>
-              </ul>
-              <div class="widget-19-post no-overflow">
-                <img src="assets/img/social-post-image.png" class="block center-margin relative" alt="Post">
-              </div>
-            </div>
-            <div class="padding-15">
-              <div class="hint-text pull-left">few seconds ago</div>
-              <ul class="list-inline pull-right no-margin">
-                <li><a class="text-master hint-text" href="#">5,345 <i class="fa fa-comment-o"></i></a>
-                </li>
-                <li><a class="text-master hint-text" href="#">23K <i class="fa fa-heart-o"></i></a>
-                </li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <!-- END WIDGET -->
-        </div>
-        <div class="col-sm-6 m-b-10">
-          <!-- START WIDGET widget_socialPostTile-->
-          <div class="panel no-border  no-margin">
-            <div class="padding-15">
-              <div class="item-header clearfix">
-                <div class="thumbnail-wrapper d32 circular">
-                  <img width="40" height="40" src="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" data-src-retina="assets/img/profiles/3x.jpg" alt="">
-                </div>
-                <div class="inline m-l-10">
-                  <p class="no-margin">
-                    <strong>Anne Simons</strong>
-                  </p>
-                  <p class="no-margin hint-text">Shared a link
-                    <span class="location semi-bold"><i class="fa fa-map-marker"></i> NY center</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <hr class="no-margin">
-            <div class="padding-15">
-              <p>Inspired by : good design is obvious, great design is transparent</p>
-              <div class="hint-text">via themeforest</div>
-            </div>
-            <div class="relative">
-              <ul class="buttons pull-top top-right list-inline p-r-10 p-t-10">
-                <li>
-                  <a class="text-white" href="#"><i class="fa fa-expand"></i></a>
-                </li>
-                <li>
-                  <a class="text-white" href="#"><i class="fa fa-heart-o"></i></a>
-                </li>
-              </ul>
-              <div class="widget-19-post no-overflow">
-                <img src="assets/img/social-post-image.png" class="block center-margin relative" alt="Post">
-              </div>
-            </div>
-            <div class="padding-15">
-              <div class="hint-text pull-left">few seconds ago</div>
-              <ul class="list-inline pull-right no-margin">
-                <li><a class="text-master hint-text" href="#">5,345 <i class="fa fa-comment-o"></i></a>
-                </li>
-                <li><a class="text-master hint-text" href="#">23K <i class="fa fa-heart-o"></i></a>
-                </li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <!-- END WIDGET -->
-        </div>
-      </div>
-  </div>
   <!-- Filler -->
+  <div class="visible-xlg col-xlg-3">
+    <div class="ar-2-3">
+      <!-- START WIDGET widget_tableWidget-->
+      <div class="widget-11 panel no-border  no-margin widget-loader-bar">
+        <div class="panel-heading ">
+          <div class="panel-title">Today's Table
+          </div>
+          <div class="panel-controls">
+            <ul>
+              <li><a data-toggle="refresh" class="portlet-refresh text-black" href="#"><i class="portlet-icon portlet-icon-refresh"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-l-25 p-r-25 p-b-20">
+          <div class="pull-left">
+            <h2 class="text-success no-margin">webarch</h2>
+          </div>
+          <h3 class="pull-right semi-bold"><sup>
+          <small class="semi-bold">$</small>
+          </sup> 102,967
+          </h3>
+          <div class="clearfix"></div>
+        </div>
+        <div class="widget-11-table auto-overflow">
+          <table class="table table-condensed table-hover">
+            <tbody>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">dewdrops</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18">$27</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">johnsmith</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18 text-primary">$1000</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">janedrooler</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18">$27</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">johnsmith</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18 text-primary">$1000</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">dewdrops</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18">$27</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">johnsmith</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18 text-primary">$1000</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">dewdrops</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18">$27</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">johnsmith</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18 text-primary">$1000</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">dewdrops</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18">$27</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-montserrat all-caps fs-12">Purchase CODE #2345</td>
+                <td class="text-right">
+                  <span class="hint-text small">johnsmith</span>
+                </td>
+                <td class="text-right b-r b-dashed b-grey">
+                  <span class="hint-text small">Qty 1</span>
+                </td>
+                <td>
+                  <span class="font-montserrat fs-18 text-primary">$1000</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="padding-25">
+          <p class="small no-margin">
+            <a href="#"><i class="fa fs-16 fa-arrow-circle-o-down text-success m-r-10"></i></a>
+            <span class="hint-text ">Show more details of APPLE . INC</span>
+          </p>
+        </div>
+      </div>
+      <!-- END WIDGET -->
+    </div>
+  </div>
 </div>
 
 {{--

@@ -74,8 +74,8 @@ class ArticlesController extends Controller
        return redirect('articles');
        */
 
-       dd($request);
-       exit;
+       //dd($request);
+       //exit;
 
        //$input = $request->all();
        $article = new Article($request->all());
@@ -97,7 +97,7 @@ class ArticlesController extends Controller
        $tagsId = $request->input('tag_list');
        if(!empty($tagsId))
           $article->tags()->sync($tagsId);
-
+      echo '-- exit --';
       exit;
        //return redirect('articles');
     }

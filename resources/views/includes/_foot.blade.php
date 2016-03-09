@@ -94,9 +94,8 @@
                 error: function(jqXHR, textStatus, errorThrown)
                 {
                     // Handle errors here
-                    console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
-                    //var resJson = JSON.stringify(jqXHR);
-                    console.log(JSON.stringify(jqXHR.responseJSON));
+                    console.log('ERRORS: ' + jqXHR + ' => ' + textStatus + ' => ' + errorThrown);
+                    alert(JSON.stringify(jqXHR).);
                     // STOP LOADING SPINNER
                 }
             });

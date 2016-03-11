@@ -3,7 +3,8 @@
   <head>
     @include('includes.head')
   </head>
-  <body class="fixed-header dashboard">
+  <!-- <body class="fixed-header dashboard"> -->
+  <body class="fixed-header">
     @include('includes.sidebar')
     <!-- START PAGE-CONTAINER -->
     <div class="page-container">
@@ -11,7 +12,8 @@
       <!-- START PAGE CONTENT WRAPPER -->
       <div class="page-content-wrapper">
         <!-- START PAGE CONTENT -->
-        <div class="content sm-gutter">
+        <!-- <div class="content sm-gutter"> -->
+        <div class="content">
           <!-- START CONTAINER FLUID -->
           <div class="container-fluid padding-25 sm-padding-10">
             <!-- START ROW -->
@@ -55,7 +57,7 @@
                       <div class="padding-15">
                         <div class="item-header clearfix">
                           <div class="thumbnail-wrapper d32 circular">
-                            <img width="40" height="40" src="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" data-src-retina="assets/img/profiles/3x.jpg" alt="">
+                            <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="">
                           </div>
                           <div class="inline m-l-10">
                             <p class="no-margin">
@@ -114,7 +116,7 @@
               </div>
             </div>
             --}}
-            
+
           </div>
           <!-- END CONTAINER FLUID -->
         </div>
@@ -479,7 +481,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/1x.jpg" data-src="assets/img/profiles/1.jpg" src="assets/img/profiles/1x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/1x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/1.jpg') }}" src="{{ URL::asset('assets/img/profiles/1x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -499,7 +501,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/2x.jpg" data-src="assets/img/profiles/2.jpg" src="assets/img/profiles/2x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/2.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/2.jpg') }}" src="{{ URL::asset('assets/img/profiles/2x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -514,7 +516,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" src="assets/img/profiles/3x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -534,7 +536,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/4x.jpg" data-src="assets/img/profiles/4.jpg" src="assets/img/profiles/4x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/4x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/4.jpg') }}" src="{{ URL::asset('assets/img/profiles/4x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -549,7 +551,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/5x.jpg" data-src="assets/img/profiles/5.jpg" src="assets/img/profiles/5x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/5x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/5.jpg') }}" src="{{ URL::asset('assets/img/profiles/5x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -569,7 +571,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/6x.jpg" data-src="assets/img/profiles/6.jpg" src="assets/img/profiles/6x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/6x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/6.jpg') }}" src="{{ URL::asset('assets/img/profiles/6x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -584,7 +586,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/7x.jpg" data-src="assets/img/profiles/7.jpg" src="assets/img/profiles/7x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/7x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/7.jpg') }}" src="{{ URL::asset('assets/img/profiles/7x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -604,7 +606,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/8x.jpg" data-src="assets/img/profiles/8.jpg" src="assets/img/profiles/8x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/8x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/8.jpg') }}" src="{{ URL::asset('assets/img/profiles/8x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -619,7 +621,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/9x.jpg" data-src="assets/img/profiles/9.jpg" src="assets/img/profiles/9x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/9x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/9.jpg') }}" src="{{ URL::asset('assets/img/profiles/9x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -634,7 +636,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/1x.jpg" data-src="assets/img/profiles/1.jpg" src="assets/img/profiles/1x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/1x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/1.jpg') }}" src="{{ URL::asset('assets/img/profiles/1x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -649,7 +651,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/2x.jpg" data-src="assets/img/profiles/2.jpg" src="assets/img/profiles/2x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/2x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/2.jpg') }}" src="{{ URL::asset('assets/img/profiles/2x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -664,7 +666,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" src="assets/img/profiles/3x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -684,7 +686,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/4x.jpg" data-src="assets/img/profiles/4.jpg" src="assets/img/profiles/4x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/4x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/4.jpg') }}" src="{{ URL::asset('assets/img/profiles/4x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -704,7 +706,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/5x.jpg" data-src="assets/img/profiles/5.jpg" src="assets/img/profiles/5x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/5x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/5.jpg') }}" src="{{ URL::asset('assets/img/profiles/5x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -719,7 +721,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/6x.jpg" data-src="assets/img/profiles/6.jpg" src="assets/img/profiles/6x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/6x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/6.jpg') }}" src="{{ URL::asset('assets/img/profiles/6x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -739,7 +741,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/7x.jpg" data-src="assets/img/profiles/7.jpg" src="assets/img/profiles/7x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/7x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/7.jpg') }}" src="{{ URL::asset('assets/img/profiles/7x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -759,7 +761,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/8x.jpg" data-src="assets/img/profiles/8.jpg" src="assets/img/profiles/8x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/8x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/8.jpg') }}" src="{{ URL::asset('assets/img/profiles/8x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -779,7 +781,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/9x.jpg" data-src="assets/img/profiles/9.jpg" src="assets/img/profiles/9x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/9x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/9.jpg') }}" src="{{ URL::asset('assets/img/profiles/9x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -794,7 +796,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/1x.jpg" data-src="assets/img/profiles/1.jpg" src="assets/img/profiles/1x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/1x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/1.jpg') }}" src="{{ URL::asset('assets/img/profiles/1x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -809,7 +811,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/2x.jpg" data-src="assets/img/profiles/2.jpg" src="assets/img/profiles/2x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/2x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/2.jpg') }}" src="{{ URL::asset('assets/img/profiles/2x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -824,7 +826,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" src="assets/img/profiles/3x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -844,7 +846,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/4x.jpg" data-src="assets/img/profiles/4.jpg" src="assets/img/profiles/4x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/4x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/4.jpg') }}" src="{{ URL::asset('assets/img/profiles/4x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -859,7 +861,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/5x.jpg" data-src="assets/img/profiles/5.jpg" src="assets/img/profiles/5x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/5x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/5.jpg') }}" src="{{ URL::asset('assets/img/profiles/5x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -874,7 +876,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/6x.jpg" data-src="assets/img/profiles/6.jpg" src="assets/img/profiles/6x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/6x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/6.jpg') }}" src="{{ URL::asset('assets/img/profiles/6x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -889,7 +891,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/7x.jpg" data-src="assets/img/profiles/7.jpg" src="assets/img/profiles/7x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/7x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/7.jpg') }}" src="{{ URL::asset('assets/img/profiles/7x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -904,7 +906,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/8x.jpg" data-src="assets/img/profiles/8.jpg" src="assets/img/profiles/8x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/8x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/8.jpg') }}" src="{{ URL::asset('assets/img/profiles/8x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -919,7 +921,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/9x.jpg" data-src="assets/img/profiles/9.jpg" src="assets/img/profiles/9x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/9x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/9.jpg') }}" src="{{ URL::asset('assets/img/profiles/9x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -940,7 +942,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/1x.jpg" data-src="assets/img/profiles/1.jpg" src="assets/img/profiles/1x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/1x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/1.jpg') }}" src="{{ URL::asset('assets/img/profiles/1x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -960,7 +962,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/2x.jpg" data-src="assets/img/profiles/2.jpg" src="assets/img/profiles/2x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/2x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/2.jpg') }}" src="{{ URL::asset('assets/img/profiles/2x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -980,7 +982,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" src="assets/img/profiles/3x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -995,7 +997,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/4x.jpg" data-src="assets/img/profiles/4.jpg" src="assets/img/profiles/4x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/4x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/4.jpg') }}" src="{{ URL::asset('assets/img/profiles/4x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1010,7 +1012,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/5x.jpg" data-src="assets/img/profiles/5.jpg" src="assets/img/profiles/5x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/5x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/5.jpg') }}" src="{{ URL::asset('assets/img/profiles/5x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1030,7 +1032,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/6x.jpg" data-src="assets/img/profiles/6.jpg" src="assets/img/profiles/6x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/6x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/6.jpg') }}" src="{{ URL::asset('assets/img/profiles/6x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1045,7 +1047,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/7x.jpg" data-src="assets/img/profiles/7.jpg" src="assets/img/profiles/7x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/7x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/7.jpg') }}" src="{{ URL::asset('assets/img/profiles/7x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1060,7 +1062,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/8x.jpg" data-src="assets/img/profiles/8.jpg" src="assets/img/profiles/8x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/8x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/8.jpg') }}" src="{{ URL::asset('assets/img/profiles/8x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1080,7 +1082,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/9x.jpg" data-src="assets/img/profiles/9.jpg" src="assets/img/profiles/9x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/9x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/9.jpg') }}" src="{{ URL::asset('assets/img/profiles/9x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1095,7 +1097,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/1x.jpg" data-src="assets/img/profiles/1.jpg" src="assets/img/profiles/1x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/1x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/1.jpg') }}" src="{{ URL::asset('assets/img/profiles/1x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1110,7 +1112,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/2x.jpg" data-src="assets/img/profiles/2.jpg" src="assets/img/profiles/2x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/2x.jpg') }}" data-src="assets/img/profiles/2.jpg" src="{{ URL::asset('assets/img/profiles/2x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1125,7 +1127,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" src="assets/img/profiles/3x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1145,7 +1147,7 @@
                       <a data-view-animation="push-parrallax" data-view-port="#chat" data-navigate="view" class="" href="#">
                         <span class="col-xs-height col-middle">
                         <span class="thumbnail-wrapper d32 circular bg-success">
-                            <img width="34" height="34" alt="" data-src-retina="assets/img/profiles/4x.jpg" data-src="assets/img/profiles/4.jpg" src="assets/img/profiles/4x.jpg" class="col-top">
+                            <img width="34" height="34" alt="" data-src-retina="{{ URL::asset('assets/img/profiles/4x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/4.jpg') }}" src="{{ URL::asset('assets/img/profiles/4x.jpg') }}" class="col-top">
                         </span>
                         </span>
                         <p class="p-l-10 col-xs-height col-middle col-xs-12">
@@ -1189,7 +1191,7 @@
                 <!-- BEGIN From Them Message  !-->
                 <div class="message clearfix">
                   <div class="profile-img-wrapper m-t-5 inline">
-                    <img class="col-top" width="30" height="30" src="assets/img/profiles/avatar_small.jpg" alt="" data-src="assets/img/profiles/avatar_small.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg">
+                    <img class="col-top" width="30" height="30" src="{{ URL::asset('assets/img/profiles/avatar_small.jpg') }}" alt="" data-src="{{ URL::asset('assets/img/profiles/avatar_small.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar_small2x.jpg') }}">
                   </div>
                   <div class="chat-bubble from-them">
                     Hey
@@ -1213,7 +1215,7 @@
                 <!-- BEGIN From Them Message  !-->
                 <div class="message clearfix">
                   <div class="profile-img-wrapper m-t-5 inline">
-                    <img class="col-top" width="30" height="30" src="assets/img/profiles/avatar_small.jpg" alt="" data-src="assets/img/profiles/avatar_small.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg">
+                    <img class="col-top" width="30" height="30" src="{{ URL::asset('assets/img/profiles/avatar_small.jpg') }}" alt="" data-src="{{ URL::asset('assets/img/profiles/avatar_small.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar_small2x.jpg') }}">
                   </div>
                   <div class="chat-bubble from-them">
                     Yea
@@ -1251,7 +1253,7 @@
         <!-- BEGIN Overlay Header !-->
         <div class="container-fluid">
           <!-- BEGIN Overlay Logo !-->
-          <img class="overlay-brand" src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
+          <img class="overlay-brand" src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">
           <!-- END Overlay Logo !-->
           <!-- BEGIN Overlay Close !-->
           <a href="#" class="close-icon-light overlay-close text-black fs-16">
@@ -1291,7 +1293,7 @@
                   <!-- BEGIN Search Result Item Thumbnail !-->
                   <div class="thumbnail-wrapper d48 circular bg-success text-white inline m-t-10">
                     <div>
-                      <img width="50" height="50" src="assets/img/profiles/avatar.jpg" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" alt="">
+                      <img width="50" height="50" src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar2x.jpg') }}" alt="">
                     </div>
                   </div>
                   <!-- END Search Result Item Thumbnail !-->

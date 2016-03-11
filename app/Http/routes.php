@@ -51,7 +51,7 @@ Route::delete('/articles/{id}', 'ArticlesController@distroy');
 */
 
 //Route::resource('/articles', 'ArticlesController'); //RESTful Resource Controllers
-
+Route::post('/events/post_upload', 'EventsController@post_upload');
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/', function () {

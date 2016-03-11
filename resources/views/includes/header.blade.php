@@ -15,7 +15,7 @@
     <div class="pull-center hidden-md hidden-lg">
       <div class="header-inner">
         <div class="brand inline">
-          <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
+          <img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
   <div class=" pull-left sm-table hidden-xs hidden-sm">
     <div class="header-inner">
       <div class="brand inline">
-        <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
+        <img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">
       </div>
       <!-- START NOTIFICATION LIST -->
       <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
@@ -123,7 +123,7 @@
                   <div class="notification-item unread clearfix">
                     <div class="heading">
                       <div class="thumbnail-wrapper d24 circular b-white m-r-5 b-a b-white m-t-10 m-r-10">
-                        <img width="30" height="30" data-src-retina="assets/img/profiles/1x.jpg" data-src="assets/img/profiles/1.jpg" alt="" src="assets/img/profiles/1.jpg">
+                        <img width="30" height="30" data-src-retina="{{ URL::asset('assets/img/profiles/1x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/1.jpg') }}" alt="" src="{{ URL::asset('assets/img/profiles/1x.jpg') }}">
                       </div>
                       <a href="#" class="text-complete pull-left">
                         <span class="bold">Revox Design Labs</span>
@@ -178,7 +178,7 @@
       <div class="dropdown pull-right">
         <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="thumbnail-wrapper d32 circular inline m-t-5">
-          <img src="assets/img/profiles/avatar.jpg" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
+          <img src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" alt="" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar_small2x.jpg') }}" width="32" height="32">
       </span>
         </button>
         <ul class="dropdown-menu profile-dropdown" role="menu">

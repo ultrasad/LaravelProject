@@ -8,7 +8,7 @@
         <h1 class='page-title'>Write a New event / Multiple Language</h1>
         @include('errors.list')
       </div>
-      <div class="col-md-6">
+      <div class="col-md-8">
         <!-- START PANEL -->
         <div class="panel panel-default">
           <!--<div class="panel-heading">
@@ -72,6 +72,28 @@
                 </div>
               </div>
               <!-- END PANEL -->
+              <div class="form-group form-group-default required">
+                <label>Tags</label>
+                <input class="tagsinput custom-tag-input" type="text" value="hello World, quotes, inspiration" />
+              </div>
+              <div class="form-group required">
+                <label>รายละเอียดแบบย่อ</label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label>รายละเอียด</label>
+                <div class="tools">
+                  <a class="collapse" href="javascript:;"></a>
+                  <a class="config" data-toggle="modal" href="#grid-config"></a>
+                  <a class="reload" href="javascript:;"></a>
+                  <a class="remove" href="javascript:;"></a>
+                </div>
+                <div class="no-scroll">
+                  <div class="summernote-wrapper">
+                    <div id="summernote">Hello Summernote</div>
+                  </div>
+                </div>
+              </div>
 
               <!--<div class="form-group form-group-default required ">
                 <label>Project</label>
@@ -109,7 +131,7 @@
         </div>
         <!-- END PANEL -->
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <!-- START PANEL -->
         <div class="panel panel-default">
           <div class="panel-heading">

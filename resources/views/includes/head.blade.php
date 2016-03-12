@@ -13,16 +13,19 @@
 <meta content="" name="description" />
 <meta content="" name="author" />
 
-<link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/pace/pace-theme-flash.css') }}" />
-<link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}" />
-<link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/font-awesome/css/font-awesome.css') }}" />
-<link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/jquery-scrollbar/jquery.scrollbar.css') }}" />
-<link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/jquery-metrojs/MetroJs.css') }}" />
-<link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/dropzone/css/dropzone.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/pace/pace-theme-flash.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/font-awesome/css/font-awesome.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/jquery-scrollbar/jquery.scrollbar.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/jquery-metrojs/MetroJs.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/dropzone/css/dropzone.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/bootstrap-datepicker/css/datepicker3.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/bootstrap-tag/bootstrap-tagsinput.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/summernote/css/summernote.css') }}" />
 
-<link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('pages/css/pages-icons.css') }}" />
-<link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('pages/css/pages.css') }}" />
-<link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('pages/css/style.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages-icons.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/style.css') }}" />
 
 <!--[if lte IE 9]>
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/codrops-dialogFx/dialog.ie.css') }}" />

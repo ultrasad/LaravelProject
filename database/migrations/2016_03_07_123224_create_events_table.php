@@ -23,7 +23,7 @@ class CreateEventsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-          $table->rememberToken();
+          //$table->rememberToken();
         });
 
         Schema::create('categories', function (Blueprint $table) {

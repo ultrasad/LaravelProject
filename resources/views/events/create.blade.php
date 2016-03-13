@@ -2,10 +2,12 @@
 @section('page_title', 'Events Create')
 @section('content')
   <!-- START CONTAINER FLUID -->
+  <form class="events-form" id="events-form" role="form" action="/events" enctype="multipart/form-data" method="POST">
+  {{ Form::token() }}
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-12">
-        <h1 class='page-title'>Write a New event / Multiple Language</h1>
+        <h3 class='page-title'>เพิ่มข่าวโปรโมชั่น / Multiple Language</h3>
         @include('errors.list')
       </div>
       <div class="col-md-8">
@@ -17,8 +19,7 @@
             </div>
           </div>-->
           <div class="panel-body">
-            <h5>Pages default style</h5>
-            <form class="" role="form">
+            <!-- <h5>Pages default style</h5>-->
               <div class="form-group form-group-default required">
                 <label>หัวข้อข่าว</label>
                 <input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" required />
@@ -31,7 +32,7 @@
                 <div class="col-md-6">
                   <div class="form-group form-group-default input-group col-sm-12">
                     <label>วันที่เริ่ม</label>
-                    <input type="text" name="start_date" class="form-control" placeholder="Pick a date" id="datepicker-component2">
+                    <input type="text" name="start_date" class="form-control" placeholder="Pick a date" id="datepicker-component">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                   </div>
                 </div>
@@ -65,7 +66,7 @@
                   <!-- <form action="/file-upload" class="dropzone no-margin"> -->
                     <div class="dropzone" id="dropzone-image">
                       <div class="fallback">
-                        <input name="file" type="file" multiple />
+                        <input name="file" type="file" name="image_files" multiple />
                       </div>
                     </div>
                   <!-- </form> -->
@@ -74,11 +75,11 @@
               <!-- END PANEL -->
               <div class="form-group form-group-default required">
                 <label>Tags</label>
-                <input class="tagsinput custom-tag-input" type="text" value="hello World, quotes, inspiration" />
+                <input class="tagsinput custom-tag-input" name="tags" type="text" value="hello World, quotes, inspiration" />
               </div>
               <div class="form-group required">
                 <label>รายละเอียดแบบย่อ</label>
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" name="brief" rows="3"></textarea>
               </div>
               <div class="form-group">
                 <label>รายละเอียด</label>
@@ -90,43 +91,49 @@
                 </div>
                 <div class="no-scroll">
                   <div class="summernote-wrapper">
-                    <div id="summernote">Hello Summernote</div>
+                    <!-- <div id="summernote" name="detail">Hello Summernote</div> -->
+                    <textarea class="input-block-level" id="summernote" name="detail" rows="10"></textarea>
                   </div>
                 </div>
               </div>
 
-              <!--<div class="form-group form-group-default required ">
-                <label>Project</label>
-                <input type="email" class="form-control" required>
+              <div class="form-group social-post-title">
+                <h5><i class="fa fa-share-square-o fa-lg"></i> Post ไปยัง Social Network <input type="checkbox" data-init-plugin="switchery" data-size="small" data-color="primary" checked="checked" /></h5>
               </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group form-group-default required">
-                    <label>First name</label>
-                    <input type="text" class="form-control" required>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group form-group-default">
-                    <label>Last name</label>
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group form-group-default required">
-                <label>Password</label>
-                <input type="password" class="form-control" required>
-              </div>
-              <div class="form-group  form-group-default required">
-                <label>Placeholder</label>
-                <input type="email" class="form-control" placeholder="ex: some@example.com" required>
-              </div>
-              <div class="form-group form-group-default disabled">
-                <label>Disabled</label>
-                <input type="email" class="form-control" value="You can put anything here" disabled>
-              </div>-->
 
-            </form>
+              <div class="form-group">
+                <label class="social-facebook-title">Facebook</label>
+                <span class="checkbox-inline">
+                  <div class="checkbox check-success">
+                    <input type="checkbox" checked="checked" value="1" name="fb1" id="checkbox2" />
+                    <label for="checkbox2">Channel 2</label>
+                  </div>
+                </span>
+                <span class="checkbox-inline">
+                  <div class="checkbox check-primary">
+                    <input type="checkbox" value="1" name="fb2" id="checkbox3">
+                    <label for="checkbox3">One</label>
+                  </div>
+                </span>
+                <textarea class="form-control" name="fb_post" rows="3"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="social-twitter-title">Twitter</label>
+                <span class="checkbox-inline">
+                  <div class="checkbox check-warning">
+                    <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox5">
+                    <label for="checkbox5">Ch8</label>
+                  </div>
+                </span>
+                <span class="checkbox-inline">
+                  <div class="checkbox check-danger">
+                    <input type="checkbox" checked="checked" value="1" name="tw2" id="checkbox6">
+                    <label for="checkbox6">Sabaidee</label>
+                  </div>
+                </span>
+                <textarea class="form-control" name="tw_post" rows="3"></textarea>
+              </div>
           </div>
         </div>
         <!-- END PANEL -->
@@ -136,44 +143,63 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <div class="panel-title">
-              Option #two
+              สาขาที่ร่วมรายการ
             </div>
           </div>
           <div class="panel-body">
-            <h5>Traditional Standard Style</h5>
-            <form role="form">
-              <div class="form-group">
-                <label>Your name</label>
-                <span class="help">e.g. "Mona Lisa Portrait"</span>
-                <input type="email" class="form-control" required>
+            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all">
+              <div class="checkbox check-success">
+                <input type="checkbox" checked="checked" value="1" namne="branch_all" id="checkbox7">
+                <label class="label-master" for="checkbox7">ทุกสาขา</label>
               </div>
-              <div class="form-group">
-                <label>Password</label>
-                <span class="help">e.g. "Mona Lisa Portrait"</span>
-                <input type="password" class="form-control" required>
+              <div class="clearfix"></div>
+            </div>
+            <div class="wizard-footer padding-5">
+              <div class="checkbox check-warning">
+                <input type="checkbox" checked="checked" name="branch[]" value="ladprao,12" id="checkbox8">
+                <label for="checkbox8">เซ็นทรัลลาดพร้าว</label>
               </div>
-              <div class="form-group">
-                <label>Email</label>
-                <span class="help">e.g. "some@example.com"</span>
-                <input type="email" class="form-control" placeholder="ex: some@example.com" required>
+              <div class="checkbox check-warning">
+                <input type="checkbox" checked="checked" name="branch[]" value="bangkapi,13" id="checkbox9">
+                <label for="checkbox9">เดอะมอลล์บางกะปิ</label>
               </div>
-              <div class="form-group">
-                <label>Placeholder</label>
-                <span class="help">e.g. "some@example.com"</span>
-                <input type="email" class="form-control" placeholder="ex: some@example.com" required>
+              <div class="checkbox check-warning">
+                <input type="checkbox" checked="checked" name="branch[]" value="centralworld,21" id="checkbox10">
+                <label for="checkbox10">เซ็นทรัลเวิลด์</label>
               </div>
-              <div class="form-group">
-                <label>Disabled</label>
-                <span class="help">e.g. "some@example.com"</span>
-                <input type="email" class="form-control" value="You can put anything here" disabled>
-              </div>
-            </form>
+              <div class="clearfix"></div>
+            </div>
           </div>
         </div>
         <!-- END PANEL -->
+        <!-- START PANEL -->
+        <div class="panel panel-default master-checkbox-all">
+          <div class="panel-heading">
+            <div class="panel-title">
+              <div class="checkbox check-danger">
+                <input type="checkbox" checked="checked" name="show_now" value="1" id="checkbox11">
+                <label class="label-master" for="checkbox11">ขึ้นแสดงผลทันที</label>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="form-group form-group-default input-group col-sm-12">
+              <label>ตั้งเวลาขึ้นแสดง</label>
+              <input type="text" name="show_date" class="form-control" placeholder="Pick a date" id="datepicker-component3">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+          </div>
+        </div>
+        <!-- END PANEL -->
+
+        <div class="row">
+          <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
+          <button class="btn btn-default"><i class="pg-close"></i> Clear</button>
+        </div>
       </div>
     </div>
   </div>
+  </form>
   <!-- END CONTAINER FLUID -->
 
   {{--

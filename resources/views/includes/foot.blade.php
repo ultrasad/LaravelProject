@@ -9,6 +9,7 @@
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-tag/bootstrap-tagsinput.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/summernote/js/summernote.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/switchery/js/switchery.min.js') }}"></script>
 <!-- END VENDOR JS -->
 <!-- BEGIN CORE TEMPLATE JS -->
 <script type="text/javascript" src="{{ URL::asset('pages/js/pages.min.js') }}"></script>

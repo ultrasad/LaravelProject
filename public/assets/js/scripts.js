@@ -9,7 +9,7 @@
         console.log('check..');
 
         //Date Pickers
-        $('#datepicker-component, #datepicker-component2').datepicker();
+        $('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker();
 
         $('#article').submit(function(e){
 
@@ -47,7 +47,8 @@
         // jQuery dropzone
         // Setting auto discover to false immediately after including the script.
         Dropzone.autoDiscover = false;
-        $("div#dropzone-image").dropzone({ url: "/events/post_upload" });
+        //$("div#dropzone-image").dropzone({ url: "/events/post_upload", autoProcessQueue:false, parallelUploads: 10 });
+        var myDropzone = new Dropzone("div#dropzone-image", { url: "/events/post_upload", autoDiscover: false, autoProcessQueue:false, parallelUploads: 100, uploadMultiple: true, maxFiles: 100, acceptedFiles: "image/*", addRemoveLinks: true });
 
         //Single instance of tag inputs - can be initiated with simply using data-role="tagsinput" attribute in any input field
         $('.custom-tag-input').tagsinput({ maxTags: 20, tagClass: function(item) {return 'label label-custom-tag';} });
@@ -104,6 +105,14 @@
             onblur: function(e) {
                 $('body').removeClass('overlay-disabled');
             }
+        });
+
+        $("#submit_event").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            myDropzone.processQueue();
+            console.log('xx');
+            //return false;
         });
 
     });

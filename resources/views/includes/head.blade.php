@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/bootstrap-datepicker/css/datepicker3.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/bootstrap-tag/bootstrap-tagsinput.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/summernote/css/summernote.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/switchery/css/switchery.min.css') }}" />
 
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages-icons.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages.css') }}" />

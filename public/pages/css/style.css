@@ -3,6 +3,11 @@
     padding-right: 0px;
 }
 
+.windows h3.page-title {
+    font-size: 25px;
+    line-height: 30px;
+}
+
 .form-control, .form-group-default {
     border: 1px solid rgba(0, 0, 0, 0.10);
 }
@@ -19,4 +24,25 @@
 
 .label-custom-tag {
   background-color: #AEB4C1;
+}
+
+.social-post-title h5 {
+  font-weight: normal;
+}
+
+.social-facebook-title {
+  color: #3b5998;
+}
+
+.social-twitter-title {
+  color: #55acee;
+}
+
+.master-checkbox-all .checkbox {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.checkbox .label-master {
+  font-weight: 700;
 }

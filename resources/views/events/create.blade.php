@@ -46,6 +46,9 @@
               </div>
               <div class="form-group form-group-default input-group">
                 <label>รูปภาพหลัก</label>
+                <div class="fallback_xx">
+                    <input name="file" type="file" />
+                </div>
                 <input type="file" name="image" class="form-control" placeholder="รูปภาพ" />
                 <span class="input-group-addon"><i class="fa fa-picture-o icon-picture"></i></span>
               </div>

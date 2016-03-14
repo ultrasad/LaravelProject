@@ -95,7 +95,7 @@
           }
         };*/
 
-        var previewNode = document.querySelector("#template");
+        //var previewNode = document.querySelector("#template");
         //previewNode.id = "";
         //var previewTemplate = previewNode.parentNode.innerHTML;
         //previewNode.parentNode.removeChild(previewNode);
@@ -115,6 +115,11 @@
           autoQueue: false, // Make sure the files aren't queued until manually added
           previewsContainer: "#previews", // Define the container to display the previews
           clickable: ".dropzone-file-previews",
+          //createImageThumbnails: false,
+          /*accept: function(file, done) {
+              var files = window.myDropzone.files;
+              done();
+          },*/
           //clickable: false,
           //clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
 
@@ -124,24 +129,73 @@
             //$('.dropzone-file-previews .dz-message').css('background-image','none');
 
             // First change the button to actually tell Dropzone to process the queue.
-            /*this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+            this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
               // Make sure that the form isn't actually being sent.
               e.preventDefault();
               e.stopPropagation();
               //$('#my-awesome-dropzone-form')[0].submit();
               myDropzone.processQueue();
-            });*/
+            });
 
+            /*
+            $('#my-awesome-dropzone-form').submit(function(e){
+              console.log('submit >>');
+              //return false;
+
+              $("#previews .dz-image-preview").each(function(e) {
+                console.log($(this).find('.dz-details .dz-filename').text());
+                var file = $(this).find('.dz-details .dz-filename').text();
+                $("#my-awesome-dropzone-form").append($('<input type="hidden" ' + 'name="files[]" ' + 'value="' + file + '">'));
+                //alert($(this).text());    //Prints out the text contained in this DIV
+            });
+
+              return false;
+            });
+            */
+
+            /*
             $('#my-awesome-dropzone-form').submit(function(e){
                 e.preventDefault();
                 e.stopPropagation();
-                myDropzone.processQueue();
+                //myDropzone.processQueue();
+                //saveForm();
+
+                var events, token, url, data;
+                token = $('input[name=_token]').val();
+                var form = document.getElementById('my-awesome-dropzone-form');
+                events = new FormData(form);
+
+                $.ajax({
+                    url: '/events',
+                    headers: {'X-CSRF-TOKEN': token},
+                    data: events,
+                    type: 'POST',
+                    datatype: 'JSON',
+                    processData: false,
+                    contentType: false,
+                    success: function (resp) {
+                      console.log('resp => ' + resp);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        // Handle errors here
+                        console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+                        //var resJson = JSON.stringify(jqXHR);
+                        console.log(JSON.stringify(jqXHR.responseJSON));
+                        // STOP LOADING SPINNER
+                    }
+                });
+
             });
+            */
 
             this.on("addedfile", function(file) {
               if($('.dropzone-previews').find('.dz-preview').length > 0){
                 $('.dropzone-file-previews .dz-message').hide();
               }
+
+              //console.log(file.toSource());
+              //$("#my-awesome-dropzone-form").append($('<input type="hidden" ' + 'name="files[]" ' + 'value="' + file + '">'));
             });
 
             this.on("removedfile", function(file) {
@@ -167,6 +221,33 @@
           }
 
         }
+
+        /*
+        function saveForm()
+        {
+            var form = document.getElementById('my-awesome-dropzone-form');
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/events', true);
+            xhr.onreadystatechange = function ()
+            {
+                if (xhr.readyState === 4)
+                {
+                    if (xhr.status === 200)
+                    {
+                        console.info('Success');
+                    }
+                    else
+                    {
+                        $('#error-msg').html('A connection error has occured. Please try again.');
+                        $('#page-error').fadeIn(300).delay(3000).fadeOut(500);
+                    }
+                }
+            };
+            xhr.send(formData);
+            return false;
+        }
+        */
 
         //Single instance of tag inputs - can be initiated with simply using data-role="tagsinput" attribute in any input field
         $('.custom-tag-input').tagsinput({ maxTags: 20, tagClass: function(item) {return 'label label-custom-tag';} });

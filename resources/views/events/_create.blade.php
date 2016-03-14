@@ -50,23 +50,72 @@
                 <span class="input-group-addon"><i class="fa fa-picture-o icon-picture"></i></span>
               </div>
               <!-- START PANEL -->
-              <div class="form-group form-group-default panel-gallery"><label>รูปภาพ Gallery (ต้องเชื่อมต่อกับ Facebook Fanpage)</label></div>
-              <div class="panel-body no-scroll no-padding dropzone-file-previews">
-                <div class="table table-striped files dropzone-previews dropzoner" id="previews">
-                     <div id="template" class="file-row">
-                       <div class="dz-default dz-message" data-dz-message><span>Drop files here to upload</span></div>
-                     </div>
-                 </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <div class="panel-title">
+                    Drag n' drop uploader
+                  </div>
+                </div>
+                <!-- <div class="panel-body no-scroll no-padding"> -->
+                <div class="panel-body no-scroll">
+
+                  <div class="table table-striped files dropzone-previews dropzoner" id="previews">
+                       <div id="template" class="file-row">
+                         <div class="dz-default dz-message"><span>Drop files here to upload</span><button class="fileinput-button">Click Here</button></div>
+                         <!-- <div class="form-group"><div class="dz-message" data-dz-message><span>Your Custom Message</span></div></div> -->
+
+                           <!-- This is used as the file preview template -->
+                           <!--
+                           <div class=" dropzone-previews" id="dropzoner2">
+                               <div class="dz-preview dz-file-preview" id="template">
+                                   <div class="dz-details dztemplate">
+                                       <div class="dz-filename" style="display:none;"><span data-dz-name id="filenamer"></span></div>
+                                       <input type="hidden" name="filename" id="hiddeninput"/>
+
+                                       <div class="dz-size"  style="display:none;" data-dz-size></div>
+                                       <img data-dz-thumbnail /><br/><input type="text" class="dzinput" placeholder="Type Caption" name="caption" style="font-style:italic;" />
+                                       <div class="closebutton" data-dz-remove><i class="fa fa-times-circle"></i></div>
+                                   </div>
+                                   <div class="dz-progress" style="display:none;"><span class="dz-upload" data-dz-uploadprogress></span></div>
+                                   <div class="dz-success-mark" style="display:none;"><span>fff</span></div>
+                                   <div class="dz-error-mark" style="display:none;"><span>ggg</span></div>
+                                   <div class="dz-error-message" style="display:none;"><span data-dz-errormessage></span></div>
+                               </div>
+                           </div>
+                           -->
+                           <!-- Drop Zone Area -->
+
+                       </div>
+                   </div>
+
+                  <!--<div class="dropzone" id="dropzone-image">
+                    <div id="my-dropzone" class="my-dropzone"></div>
+                  </div>-->
+                  <!--<div class="dropzone-previews" id="dropzone-previews">dropzone previews</div> --> <!-- this is were the previews should be shown. -->
+                </div>
+            </div>
+              <!--
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <div class="panel-title">
+                    Drag n' drop uploader
+                  </div>
+                  <div class="tools">
+                    <a class="collapse" href="javascript:;"></a>
+                    <a class="config" data-toggle="modal" href="#grid-config"></a>
+                    <a class="reload" href="javascript:;"></a>
+                    <a class="remove" href="javascript:;"></a>
+                  </div>
+                </div>
+                <div class="panel-body no-scroll no-padding">
+                    <div class="dropzone" id="dropzone-image">
+                      <div class="fallback">
+                        <input name="file" type="file" name="image_files" multiple />
+                      </div>
+                    </div>
+                </div>
               </div>
-
-              <!-- <div id="dropzone1" class="dropzone_mix">dd1</div> -->
-
-              <!--<div class="dropzone" id="dropzone-image">
-                <div id="my-dropzone" class="my-dropzone"></div>
-              </div>-->
-
-              <!-- <div id="dropzone3" class="dropzone_mix">dropzone mix</div> -->
-
+              -->
               <!-- END PANEL -->
               <div class="form-group form-group-default required">
                 <label>Tags</label>

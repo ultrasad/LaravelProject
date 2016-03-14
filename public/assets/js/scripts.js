@@ -13,6 +13,8 @@
 
         $('#article').submit(function(e){
 
+            //Dropzone.processQueue();
+
             var article, token, url, data;
             token = $('input[name=_token]').val();
             article = new FormData(this);
@@ -46,9 +48,119 @@
 
         // jQuery dropzone
         // Setting auto discover to false immediately after including the script.
-        Dropzone.autoDiscover = false;
-        //$("div#dropzone-image").dropzone({ url: "/events/post_upload", autoProcessQueue:false, parallelUploads: 10 });
-        var myDropzone = new Dropzone("div#dropzone-image", { url: "/events/post_upload", autoDiscover: false, autoProcessQueue:false, parallelUploads: 100, uploadMultiple: true, maxFiles: 100, acceptedFiles: "image/*", addRemoveLinks: true });
+        //Dropzone.autoDiscover = false;
+        //Dropzone.autoProcessQueue = false;
+        /*$("div.dropzonex").dropzone({
+          url: "/events/post_upload",
+          autoProcessQueue:false,
+          parallelUploads: 10,
+        });
+        */
+
+        /*var md = new Dropzone(".dropzone_mix", {
+            init: function() {
+              var myDropzone2 = this;
+              //$('.dropzone-file-previews .dz-message').css('background-image','none');
+
+              // First change the button to actually tell Dropzone to process the queue.
+              this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+                // Make sure that the form isn't actually being sent.
+                e.preventDefault();
+                e.stopPropagation();
+                //$('#my-awesome-dropzone-form')[0].submit();
+                myDropzone2.processQueue();
+              });
+              myDropzone2.processQueue();
+            },
+            url: "/events2", //# your post url
+            maxFilesize: "5", //#max file size for upload, 5MB
+            addRemoveLinks: true, //# Add file remove button.
+            autoProcessQueue:false,
+            uploadMultiple: true,
+        });*/
+
+        //var myDropzone = new Dropzone("div#dropzone-image", { url: "/events/post_upload", autoDiscover: false, autoProcessQueue:false, parallelUploads: 100, uploadMultiple: true, maxFiles: 100, acceptedFiles: "image/*", addRemoveLinks: true });
+
+        //new Dropzone($(".my-dropzone").get(0));
+
+        //new Dropzone(document.body, { // Make the whole body a dropzone
+          //url: "/upload/url", // Set the url
+          //previewsContainer: "#dropzone-previews", // Define the container to display the previews
+          //clickable: "#clickable" // Define the element that should be used as click trigger to select files.
+        //});
+
+        /*Dropzone.options.myDropzone = {
+          init: function() {
+            this.on("error", function(file, message) { alert(message); });
+          }
+        };*/
+
+        var previewNode = document.querySelector("#template");
+        //previewNode.id = "";
+        //var previewTemplate = previewNode.parentNode.innerHTML;
+        //previewNode.parentNode.removeChild(previewNode);
+
+        Dropzone.options.myAwesomeDropzoneForm = { // The camelized version of the ID of the form element
+
+          // The configuration we've talked about above
+          paramName: "attachments",
+          autoDiscover: false,
+          autoProcessQueue: false,
+          uploadMultiple: true,
+          parallelUploads: 100,
+          maxFiles: 100,
+          acceptedFiles: "image/*",
+          addRemoveLinks: true,
+          //previewTemplate: previewTemplate,
+          autoQueue: false, // Make sure the files aren't queued until manually added
+          previewsContainer: "#previews", // Define the container to display the previews
+          clickable: ".dropzone-file-previews",
+          //clickable: false,
+          //clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
+
+          // The setting up of the dropzone
+          init: function() {
+            var myDropzone = this;
+            //$('.dropzone-file-previews .dz-message').css('background-image','none');
+
+            // First change the button to actually tell Dropzone to process the queue.
+            this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+              // Make sure that the form isn't actually being sent.
+              e.preventDefault();
+              e.stopPropagation();
+              //$('#my-awesome-dropzone-form')[0].submit();
+              myDropzone.processQueue();
+            });
+
+            this.on("addedfile", function(file) {
+              if($('.dropzone-previews').find('.dz-preview').length > 0){
+                $('.dropzone-file-previews .dz-message').hide();
+              }
+            });
+
+            this.on("removedfile", function(file) {
+              if($('.dropzone-previews').find('.dz-preview').length < 1){
+                $('.dropzone-file-previews .dz-message').show();
+              }
+            });
+
+            // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+            // of the sending event because uploadMultiple is set to true.
+            this.on("sendingmultiple", function() {
+              // Gets triggered when the form is actually being sent.
+              // Hide the success button or the complete form.
+            });
+            this.on("successmultiple", function(files, response) {
+              // Gets triggered when the files have successfully been sent.
+              // Redirect user or notify of success.
+            });
+            this.on("errormultiple", function(files, response) {
+              // Gets triggered when there was an error sending the files.
+              // Maybe show form again, and notify user of error
+            });
+          }
+
+        }
 
         //Single instance of tag inputs - can be initiated with simply using data-role="tagsinput" attribute in any input field
         $('.custom-tag-input').tagsinput({ maxTags: 20, tagClass: function(item) {return 'label label-custom-tag';} });
@@ -107,6 +219,7 @@
             }
         });
 
+        /*
         $("#submit_event").click(function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -114,6 +227,7 @@
             console.log('xx');
             //return false;
         });
+        */
 
     });
 

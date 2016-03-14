@@ -124,12 +124,18 @@
             //$('.dropzone-file-previews .dz-message').css('background-image','none');
 
             // First change the button to actually tell Dropzone to process the queue.
-            this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+            /*this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
               // Make sure that the form isn't actually being sent.
               e.preventDefault();
               e.stopPropagation();
               //$('#my-awesome-dropzone-form')[0].submit();
               myDropzone.processQueue();
+            });*/
+
+            $('#my-awesome-dropzone-form').submit(function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                myDropzone.processQueue();
             });
 
             this.on("addedfile", function(file) {

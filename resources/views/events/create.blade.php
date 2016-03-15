@@ -70,13 +70,17 @@
 
               <!-- END PANEL -->
               <div class="form-group form-group-default required">
-                <label>Tags</label>
+                <label>Keyword (สูงสุด 20 คำ)</label>
                 <input class="tagsinput custom-tag-input" name="tags" type="text" value="hello World, quotes, inspiration" />
               </div>
-              <div class="form-group required">
+              <div class="form-group form-group-default form-group-area required">
                 <label>รายละเอียดแบบย่อ</label>
-                <textarea class="form-control" name="brief" rows="3"></textarea>
+                <textarea class="form-control" name="brief" rows="3" required></textarea>
               </div>
+              <!--<div class="form-group form-group-area required">
+                <label>รายละเอียดแบบย่อ</label>
+                <textarea class="form-control" name="brief" rows="3" required></textarea>
+              </div>-->
               <div class="form-group">
                 <label>รายละเอียด</label>
                 <div class="tools">
@@ -91,6 +95,17 @@
                     <textarea class="input-block-level" id="summernote" name="description" class="summernote" rows="10"></textarea>
                   </div>
                 </div>
+              </div>
+
+              <div class="form-group">
+                <label>แผนที่</label>
+                <input name="namePlace" type="text" id="namePlace" size="40" /><input type="button" name="SearchPlace" id="SearchPlace" value="Search" /> 
+                <div id="map_canvas" style="height: 400px; width: 100%;"></div>
+                <div class="row">
+                Latitude: <input name="lat_value" type="text" id="lat_value" value="0" size="17" />
+                Longitude: <input name="lon_value" type="text" id="lon_value" value="0" size="17" />
+                Zoom: <input name="zoom_value" type="text" id="zoom_value" value="0" size="5" />
+              </div>
               </div>
 
               <div class="form-group social-post-title">

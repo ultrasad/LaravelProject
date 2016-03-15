@@ -8,26 +8,6 @@
 
         console.log('check..');
 
-        $('#summernote').summernote({
-            height: 200,
-            toolbar: [
-              // [groupName, [list of button]]
-              ['style', ['bold', 'italic', 'underline', 'clear']],
-              //['font', ['strikethrough', 'superscript', 'subscript']],
-              ['fontsize', ['fontsize']],
-              ['color', ['color']],
-              ['para', ['ul', 'ol', 'paragraph']],
-              ['height', ['height']],
-              ['picture', ['picture']]
-            ],
-            onfocus: function(e) {
-                $('body').addClass('overlay-disabled');
-            },
-            onblur: function(e) {
-                $('body').removeClass('overlay-disabled');
-            }
-        });
-
         //Date Pickers
         $('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker();
 
@@ -139,8 +119,11 @@
 
         /* cache by bootstrap js */
         $('#my-awesome-dropzone-form').validate({
-             ignore: ".note-image-input, .note-image-url", // validate hidden fields, required for cs-select
-             //ignore:[],
+             //ignore: ".ignore :hidden" //is telling it to ignore hidden fields with the class ignore.
+             //ignore: ".ignore", //will tell it to only ignore fields will class .ignore.
+             //ignore: ".ignore, :hidden", //will tell it to ignore fields will class .ignore AND fields that are hidden.
+             //ignore:[], // tells the plugin to ignore nothing and validate everything.
+             ignore: ".ignore, :hidden",
              focusInvalid: false,
              ignoreTitle: true,
              errorClass:'error',
@@ -179,6 +162,11 @@
                  //$('#my-awesome-dropzone-form')[0].submit();
              }
         });
+
+        /*$(document).on('click', '.note-picture', function(){
+          console.log('note pic >>');
+          $('.note-modal-form').each( function() { $(this).validate({}) });
+        });*/
 
         Dropzone.options.myAwesomeDropzoneForm = { // The camelized version of the ID of the form element
 
@@ -461,6 +449,29 @@
             });
         }, 500);
         */
+
+        $('#summernote').summernote({
+            height: 200,
+            toolbar: [
+              // [groupName, [list of button]]
+              ['style', ['bold', 'italic', 'underline', 'clear']],
+              //['font', ['strikethrough', 'superscript', 'subscript']],
+              ['fontsize', ['fontsize']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['height', ['height']],
+              ['picture', ['picture']]
+            ],
+            onfocus: function(e) {
+                $('body').addClass('overlay-disabled');
+            },
+            onblur: function(e) {
+                $('body').removeClass('overlay-disabled');
+            }
+        });
+
+        //ignore valid popup model
+        $('.note-modal-form').each( function() { $(this).validate({}) });
 
         /*
         $("#submit_event").click(function (e) {

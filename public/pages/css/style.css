@@ -63,3 +63,25 @@
 .checkbox .label-master {
   font-weight: 700;
 }
+
+.form-group-area .form-control {
+  height: auto;
+}
+
+/*
+.form-group-area {
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.2s ease 0s;
+}
+
+.form-group-area.required::after {
+    color: #f55753;
+    content: "*";
+    font-family: arial;
+    font-size: 20px;
+    position: absolute;
+    right: 12px;
+    top: 6px;
+}
+*/

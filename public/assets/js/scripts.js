@@ -8,6 +8,26 @@
 
         console.log('check..');
 
+        $('#summernote').summernote({
+            height: 200,
+            toolbar: [
+              // [groupName, [list of button]]
+              ['style', ['bold', 'italic', 'underline', 'clear']],
+              //['font', ['strikethrough', 'superscript', 'subscript']],
+              ['fontsize', ['fontsize']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['height', ['height']],
+              ['picture', ['picture']]
+            ],
+            onfocus: function(e) {
+                $('body').addClass('overlay-disabled');
+            },
+            onblur: function(e) {
+                $('body').removeClass('overlay-disabled');
+            }
+        });
+
         //Date Pickers
         $('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker();
 
@@ -119,7 +139,11 @@
 
         /* cache by bootstrap js */
         $('#my-awesome-dropzone-form').validate({
-             /*errorClass:'error',
+             ignore: ".note-image-input, .note-image-url", // validate hidden fields, required for cs-select
+             //ignore:[],
+             focusInvalid: false,
+             ignoreTitle: true,
+             errorClass:'error',
              validClass:'success',
              errorElement:'span',
              highlight: function (element, errorClass, validClass) {
@@ -127,7 +151,7 @@
              },
              unhighlight: function (element, errorClass, validClass) {
                  $(element).parents(".error").removeClass(errorClass).addClass(validClass);
-             },*/
+             },
              rules: {
                  title: {
                      required: true
@@ -192,10 +216,10 @@
               //$('#my-awesome-dropzone-form')[0].submit();
 
                if($('#my-awesome-dropzone-form').valid()){
-                  var description = $('textarea[name="description"]').val($('#summernote').code());
-                  var html = $('#summernote').summernote('code');
-                  //var description = $('textarea[name="description"]').html($('#summernote').code());
-                  console.log(html[0].toSource());
+                  //var description = $('textarea[name="description"]').val($('#summernote').code());
+                  //var html = $('#summernote').summernote('code')[0];
+                  var description = $('textarea[name="description"]').html($('#summernote').code());
+                  //console.log(description);
 
                 if (myDropzone.getQueuedFiles().length > 0) {
                      myDropzone.processQueue();
@@ -205,7 +229,7 @@
                      token = $('input[name=_token]').val();
                      var form = document.getElementById('my-awesome-dropzone-form');
                      events = new FormData(form);
-                     events.append("description", html[0]);
+                     //events.append("description_x", html);
                      //events.description = description;
 
                      $.ajax({
@@ -345,6 +369,12 @@
             });
             */
 
+            this.on("addedfile", function(file) {
+              if($('.dropzone-previews').find('.dz-preview').length > 0){
+                $('.dropzone-file-previews .dz-message').hide();
+              }
+            });
+
             this.on("removedfile", function(file) {
               if($('.dropzone-previews').find('.dz-preview').length < 1){
                 $('.dropzone-file-previews .dz-message').show();
@@ -431,27 +461,6 @@
             });
         }, 500);
         */
-
-
-        $('#summernote').summernote({
-            height: 200,
-            toolbar: [
-              // [groupName, [list of button]]
-              ['style', ['bold', 'italic', 'underline', 'clear']],
-              //['font', ['strikethrough', 'superscript', 'subscript']],
-              ['fontsize', ['fontsize']],
-              ['color', ['color']],
-              ['para', ['ul', 'ol', 'paragraph']],
-              ['height', ['height']],
-              ['picture', ['picture']]
-            ],
-            onfocus: function(e) {
-                $('body').addClass('overlay-disabled');
-            },
-            onblur: function(e) {
-                $('body').removeClass('overlay-disabled');
-            }
-        });
 
         /*
         $("#submit_event").click(function (e) {

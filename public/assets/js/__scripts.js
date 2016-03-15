@@ -117,9 +117,9 @@
                 "</div>"
         });*/
 
-        /* cache by bootstrap js */
+        /* cache by bootstrap js
         $('#my-awesome-dropzone-form').validate({
-             /*errorClass:'error',
+             errorClass:'error',
              validClass:'success',
              errorElement:'span',
              highlight: function (element, errorClass, validClass) {
@@ -127,7 +127,7 @@
              },
              unhighlight: function (element, errorClass, validClass) {
                  $(element).parents(".error").removeClass(errorClass).addClass(validClass);
-             },*/
+             },
              rules: {
                  title: {
                      required: true
@@ -136,14 +136,6 @@
                      required: true
                  }
              },
-             messages: {
-        					title:{
-        								required: "This field is required.",
-        					},
-        					url_slug:{
-        								required: "This field is required.",
-        					},
-        		 },
              submitHandler: function(form) {
                  // optional callback function
                  // only fires on a valid form submission
@@ -155,6 +147,7 @@
                  //$('#my-awesome-dropzone-form')[0].submit();
              }
         });
+        */
 
         Dropzone.options.myAwesomeDropzoneForm = { // The camelized version of the ID of the form element
 
@@ -192,20 +185,13 @@
               //$('#my-awesome-dropzone-form')[0].submit();
 
                if($('#my-awesome-dropzone-form').valid()){
-                  var description = $('textarea[name="description"]').val($('#summernote').code()[0]);
-                  //var description = $('textarea[name="description"]').html($('#summernote').code());
-                  //console.log(description.toSource());
-
                 if (myDropzone.getQueuedFiles().length > 0) {
                      myDropzone.processQueue();
-                     //$('#my-awesome-dropzone-form')[0].submit();
                 } else {
                      var events, token, url, data;
                      token = $('input[name=_token]').val();
                      var form = document.getElementById('my-awesome-dropzone-form');
                      events = new FormData(form);
-                     events.append("description", description);
-                     //events.description = description;
 
                      $.ajax({
                          url: '/events',
@@ -228,7 +214,7 @@
                          }
                      });
                 }
-               } //valid
+              } //valid
             });
 
             /*

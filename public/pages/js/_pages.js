@@ -478,7 +478,7 @@
         this.initSwitcheryPlugin();
         this.initSelectFxPlugin();
         this.initUnveilPlugin();
-        //this.initValidatorPlugin();
+        this.initValidatorPlugin();
         this.initListView();
         this.initInputFile();
         this.reponsiveTabs();

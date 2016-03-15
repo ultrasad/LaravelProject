@@ -13,7 +13,7 @@
 <meta content="" name="description" />
 <meta content="" name="author" />
 
-<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/pace/pace-theme-flash.css') }}" />
+<!-- <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/pace/pace-theme-flash.css') }}" /> -->
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/font-awesome/css/font-awesome.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/jquery-scrollbar/jquery.scrollbar.css') }}" />

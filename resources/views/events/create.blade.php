@@ -22,7 +22,7 @@
             <!-- <h5>Pages default style</h5>-->
               <div class="form-group form-group-default required">
                 <label>หัวข้อข่าว</label>
-                <input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" required />
+                <input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" oninvalid="this.setCustomValidity('Please Enter valid title')" required />
               </div>
               <div class="form-group form-group-default required">
                 <label>URL SLUG (ภาษาอังกฤษเท่านั้น / สูงสุด 60 ตัวอักษร)</label>
@@ -46,15 +46,13 @@
               </div>
               <div class="form-group form-group-default input-group">
                 <label>รูปภาพหลัก</label>
-                <div class="fallback_xx">
-                    <input name="file" type="file" />
-                </div>
-                <input type="file" name="image" class="form-control" placeholder="รูปภาพ" />
+                <input type="file" name="image" class="form-control image" id="image" placeholder="รูปภาพ" />
                 <span class="input-group-addon"><i class="fa fa-picture-o icon-picture"></i></span>
               </div>
               <!-- START PANEL -->
               <div class="form-group form-group-default panel-gallery"><label>รูปภาพ Gallery (ต้องเชื่อมต่อกับ Facebook Fanpage)</label></div>
               <div class="panel-body no-scroll no-padding dropzone-file-previews">
+                <input type='hidden' name='base64data' id="base64data" />
                 <div class="table table-striped files dropzone-previews dropzoner" id="previews">
                      <div id="template" class="file-row">
                        <div class="dz-default dz-message" data-dz-message><span>Drop files here to upload</span></div>
@@ -90,7 +88,7 @@
                 <div class="no-scroll">
                   <div class="summernote-wrapper">
                     <!-- <div id="summernote" name="detail">Hello Summernote</div> -->
-                    <textarea class="input-block-level" id="summernote" name="detail" rows="10"></textarea>
+                    <textarea class="input-block-level" id="summernote" name="description" class="summernote" rows="10"></textarea>
                   </div>
                 </div>
               </div>

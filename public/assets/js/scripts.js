@@ -192,9 +192,10 @@
               //$('#my-awesome-dropzone-form')[0].submit();
 
                if($('#my-awesome-dropzone-form').valid()){
-                  var description = $('textarea[name="description"]').val($('#summernote').code()[0]);
+                  var description = $('textarea[name="description"]').val($('#summernote').code());
+                  var html = $('#summernote').summernote('code');
                   //var description = $('textarea[name="description"]').html($('#summernote').code());
-                  //console.log(description.toSource());
+                  console.log(html[0].toSource());
 
                 if (myDropzone.getQueuedFiles().length > 0) {
                      myDropzone.processQueue();
@@ -204,7 +205,7 @@
                      token = $('input[name=_token]').val();
                      var form = document.getElementById('my-awesome-dropzone-form');
                      events = new FormData(form);
-                     events.append("description", description);
+                     events.append("description", html[0]);
                      //events.description = description;
 
                      $.ajax({

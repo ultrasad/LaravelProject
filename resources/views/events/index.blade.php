@@ -321,7 +321,7 @@
             <div class="padding-15">
               <div class="item-header clearfix">
                 <div class="thumbnail-wrapper d32 circular">
-                  <img width="40" height="40" src="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" data-src-retina="assets/img/profiles/3x.jpg" alt="">
+                  <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="">
                 </div>
                 <div class="inline m-l-10">
                   <p class="no-margin">
@@ -348,7 +348,7 @@
                 </li>
               </ul>
               <div class="widget-19-post no-overflow">
-                <img src="assets/img/social-post-image.png" class="block center-margin relative" alt="Post">
+                <img src="{{ URL::asset('assets/img/social-post-image.png') }}" class="block center-margin relative" alt="Post">
               </div>
             </div>
             <div class="padding-15">
@@ -370,7 +370,7 @@
             <div class="padding-15">
               <div class="item-header clearfix">
                 <div class="thumbnail-wrapper d32 circular">
-                  <img width="40" height="40" src="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" data-src-retina="assets/img/profiles/3x.jpg" alt="">
+                  <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="">
                 </div>
                 <div class="inline m-l-10">
                   <p class="no-margin">
@@ -397,7 +397,7 @@
                 </li>
               </ul>
               <div class="widget-19-post no-overflow">
-                <img src="assets/img/social-post-image.png" class="block center-margin relative" alt="Post">
+                <img src="{{ URL::asset('assets/img/social-post-image.png') }}" class="block center-margin relative" alt="Post">
               </div>
             </div>
             <div class="padding-15">
@@ -421,7 +421,7 @@
             <div class="padding-15">
               <div class="item-header clearfix">
                 <div class="thumbnail-wrapper d32 circular">
-                  <img width="40" height="40" src="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" data-src-retina="assets/img/profiles/3x.jpg" alt="">
+                  <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="">
                 </div>
                 <div class="inline m-l-10">
                   <p class="no-margin">
@@ -448,7 +448,7 @@
                 </li>
               </ul>
               <div class="widget-19-post no-overflow">
-                <img src="assets/img/social-post-image.png" class="block center-margin relative" alt="Post">
+                <img src="{{ URL::asset('assets/img/social-post-image.png') }}" class="block center-margin relative" alt="Post">
               </div>
             </div>
             <div class="padding-15">
@@ -470,7 +470,7 @@
             <div class="padding-15">
               <div class="item-header clearfix">
                 <div class="thumbnail-wrapper d32 circular">
-                  <img width="40" height="40" src="assets/img/profiles/3x.jpg" data-src="assets/img/profiles/3.jpg" data-src-retina="assets/img/profiles/3x.jpg" alt="">
+                  <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="">
                 </div>
                 <div class="inline m-l-10">
                   <p class="no-margin">
@@ -497,7 +497,7 @@
                 </li>
               </ul>
               <div class="widget-19-post no-overflow">
-                <img src="assets/img/social-post-image.png" class="block center-margin relative" alt="Post">
+                <img src="{{ URL::asset('assets/img/social-post-image.png') }}" class="block center-margin relative" alt="Post">
               </div>
             </div>
             <div class="padding-15">

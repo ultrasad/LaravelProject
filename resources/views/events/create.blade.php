@@ -92,14 +92,14 @@
                 <div class="no-scroll">
                   <div class="summernote-wrapper">
                     <!-- <div id="summernote" name="detail">Hello Summernote</div> -->
-                    <textarea class="input-block-level" id="summernote" name="description" class="summernote" rows="10"></textarea>
+                    <textarea class="input-block-level note-placeholder" id="summernote" name="description" class="summernote" rows="10"><div><br></div></textarea>
                   </div>
                 </div>
               </div>
 
               <div class="form-group">
                 <label>แผนที่</label>
-                <input name="namePlace" type="text" id="namePlace" size="40" /><input type="button" name="SearchPlace" id="SearchPlace" value="Search" /> 
+                <input name="namePlace" type="text" id="namePlace" size="40" /><input type="button" name="SearchPlace" id="SearchPlace" value="Search" />
                 <div id="map_canvas" style="height: 400px; width: 100%;"></div>
                 <div class="row">
                 Latitude: <input name="lat_value" type="text" id="lat_value" value="0" size="17" />

@@ -9,7 +9,8 @@
 <script type="text/javascript" src="{{ URL::asset('assets/dropzone/dropzone.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-tag/bootstrap-tagsinput.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/summernote/js/summernote.min.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ URL::asset('assets/summernote/js/summernote.0.5.1.min.js') }}"></script> -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.5.1/summernote.min.js"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/switchery/js/switchery.min.js') }}"></script>
 <!-- END VENDOR JS -->
 <!-- BEGIN CORE TEMPLATE JS -->

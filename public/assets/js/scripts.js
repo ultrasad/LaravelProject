@@ -450,8 +450,30 @@
         }, 500);
         */
 
-        $('#summernote').summernote({
+        var $summernote = $('#summernote').summernote({
             height: 200,
+            /*codemirror: {
+              mode: 'text/html',
+              htmlMode: true,
+              lineNumbers: true,
+              theme: 'monokai'
+            },*/
+            //placeholder: 'write here...',
+            //dialogsInBody: true,
+            /*callbacks: {
+               onInit: function() {
+                 enterHtml: '<div><br></div>', // '<br>', '<p>&nbsp;</p>', '<p><br></p>', '<div><br></div>'
+                 console.log('Summernote is launched');
+               },
+               onfocus: function(e) {
+                 console.log('focus >>');
+                   $('body').addClass('overlay-disabled');
+               },
+               onblur: function(e) {
+                   $('body').removeClass('overlay-disabled');
+               },
+            },*/
+            //enterHtml: '<span><br></span>', // '<br>', '<p>&nbsp;</p>', '<p><br></p>', '<div><br></div>'
             toolbar: [
               // [groupName, [list of button]]
               ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -462,13 +484,35 @@
               ['height', ['height']],
               ['picture', ['picture']]
             ],
-            onfocus: function(e) {
-                $('body').addClass('overlay-disabled');
-            },
-            onblur: function(e) {
-                $('body').removeClass('overlay-disabled');
-            }
         });
+
+        /*$.summernote.insertParagraph = function(){
+          console.log('saddd');
+          // custom enter key
+          var newLine = '<br />';
+          pasteHtmlAtCaret(newLine);
+          // to stop default event
+          event.preventDefault();
+        }*/
+
+        // myenter.js, enter key is binded to insertParagraph command.
+        /*$.summernote.addPlugin({
+           name: 'myenter',
+           events: {
+             // redefine insertParagraph
+             'insertParagraph' : function(event, editor, layoutInfo) {
+
+               //you can use summernote enter
+               //layoutInfo.holder().summernote('insertParagraph');
+
+               // also you can use your enter key
+               layoutInfo.holder().summernote('insertNode', document.createTextNode("\r\n"));
+
+              // to stop enter key
+              //e.preventDefault();
+             }
+           }
+        });*/
 
         //ignore valid popup model
         $('.note-modal-form').each( function() { $(this).validate({}) });

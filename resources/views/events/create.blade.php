@@ -99,6 +99,7 @@
 
               <div class="form-group">
                 <label>แผนที่</label>
+                <input id="searchTextField" type="text" size="50" />
                 <input name="namePlace" type="text" id="namePlace" size="40" /><input type="button" name="SearchPlace" id="SearchPlace" value="Search" />
                 <div id="map_canvas" style="height: 400px; width: 100%;"></div>
                 <div class="row">

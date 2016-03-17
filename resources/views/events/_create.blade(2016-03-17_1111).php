@@ -60,20 +60,13 @@
                  </div>
               </div>
 
-              <div class="form-group form-group-default">
-                <label>สถาณที่จัดโปรโมชั่น</label>
-                <input type="text" size="50" name="searchTextField" class="form-control" id="searchTextField" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
-                <!-- <input name="namePlace" type="text" id="namePlace" size="40" /><input type="button" name="SearchPlace" id="SearchPlace" value="Search" /> -->
-              </div>
+              <!-- <div id="dropzone1" class="dropzone_mix">dd1</div> -->
 
-              <div class="form-group">
-                <div id="map_canvas" style="height: 400px; width: 100%;"></div>
-                <div class="row">
-                  <input name="place_lat" type="hidden" id="place_lat" value="0" />
-                  <input name="place_lon" type="hidden" id="place_lon" value="0" />
-                  <input name="place_zoom" type="hidden" id="place_zoom" value="0" />
-                </div>
-              </div>
+              <!--<div class="dropzone" id="dropzone-image">
+                <div id="my-dropzone" class="my-dropzone"></div>
+              </div>-->
+
+              <!-- <div id="dropzone3" class="dropzone_mix">dropzone mix</div> -->
 
               <!-- END PANEL -->
               <div class="form-group form-group-default required">
@@ -84,6 +77,10 @@
                 <label>รายละเอียดแบบย่อ</label>
                 <textarea class="form-control" name="brief" rows="3" required></textarea>
               </div>
+              <!--<div class="form-group form-group-area required">
+                <label>รายละเอียดแบบย่อ</label>
+                <textarea class="form-control" name="brief" rows="3" required></textarea>
+              </div>-->
               <div class="form-group">
                 <label>รายละเอียด</label>
                 <div class="tools">
@@ -94,13 +91,26 @@
                 </div>
                 <div class="no-scroll">
                   <div class="summernote-wrapper">
+                    <!-- <div id="summernote" name="detail">Hello Summernote</div> -->
                     <textarea class="input-block-level note-placeholder" id="summernote" name="description" class="summernote" rows="10"><div><br></div></textarea>
                   </div>
                 </div>
               </div>
 
+              <div class="form-group">
+                <label>แผนที่</label>
+                <input id="searchTextField" type="text" size="50" />
+                <input name="namePlace" type="text" id="namePlace" size="40" /><input type="button" name="SearchPlace" id="SearchPlace" value="Search" />
+                <div id="map_canvas" style="height: 400px; width: 100%;"></div>
+                <div class="row">
+                Latitude: <input name="lat_value" type="text" id="lat_value" value="0" size="17" />
+                Longitude: <input name="lon_value" type="text" id="lon_value" value="0" size="17" />
+                Zoom: <input name="zoom_value" type="text" id="zoom_value" value="0" size="5" />
+              </div>
+              </div>
+
               <div class="form-group social-post-title">
-                <h5><i class="fa fa-share-square-o fa-lg"></i> Post ไปยัง Social Network <input type="checkbox" name="social_post" data-init-plugin="switchery" data-size="small" data-color="primary" checked="checked" /></h5>
+                <h5><i class="fa fa-share-square-o fa-lg"></i> Post ไปยัง Social Network <input type="checkbox" data-init-plugin="switchery" data-size="small" data-color="primary" checked="checked" /></h5>
               </div>
 
               <div class="form-group">
@@ -117,7 +127,7 @@
                     <label for="checkbox3">One</label>
                   </div>
                 </span>
-                <textarea class="form-control" name="fb_message" rows="3"></textarea>
+                <textarea class="form-control" name="fb_post" rows="3"></textarea>
               </div>
 
               <div class="form-group">
@@ -134,7 +144,7 @@
                     <label for="checkbox6">Sabaidee</label>
                   </div>
                 </span>
-                <textarea class="form-control" name="tw_message" rows="3"></textarea>
+                <textarea class="form-control" name="tw_post" rows="3"></textarea>
               </div>
           </div>
         </div>

@@ -47,10 +47,9 @@
               <div class="form-group form-group-default input-group">
                 <label>รูปภาพหลัก</label>
                 <input type="text" class="form-control" readonly>
-                <span class="input-group-btn">
-                  <span class="btn-file">
-                    <span class="input-group-addon"><input type="file" name="image" class="form-control image" id="image" placeholder="รูปภาพ" /><i class="fa fa-picture-o icon-picture"></i></span>
-                  </span>
+                <span class="input-group-addon btn-file">
+                    <input type="file" name="image" class="form-control form-control-image" id="image" placeholder="รูปภาพ" readonly />
+                    <i class="fa fa-picture-o icon-picture"></i>
                 </span>
               </div>
 
@@ -76,7 +75,7 @@
                  </div>
               </div>
 
-              <div class="form-group form-group-default">
+              <div class="form-group form-group-default form-group-map">
                 <label>สถาณที่จัดโปรโมชั่น</label>
                 <input type="text" size="50" name="searchTextField" class="form-control" id="searchTextField" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
                 <!-- <input name="namePlace" type="text" id="namePlace" size="40" /><input type="button" name="SearchPlace" id="SearchPlace" value="Search" /> -->

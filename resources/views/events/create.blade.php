@@ -46,7 +46,7 @@
               </div>
               <div class="form-group form-group-default input-group">
                 <label>รูปภาพหลัก</label>
-                <input type="text" class="form-control" readonly>
+                <input type="text" class="form-control" />
                 <span class="input-group-addon btn-file">
                     <input type="file" name="image" class="form-control form-control-image" id="image" placeholder="รูปภาพ" readonly />
                     <i class="fa fa-picture-o icon-picture"></i>
@@ -178,19 +178,22 @@
             <div class="wizard-footer padding-5 branch_child">
               <div class="checkbox check-warning">
                 <input type="checkbox" checked="checked" name="branch[]" class="branch" value="ladprao,12" id="checkbox7">
-                <label class="label-master" for="checkbox7">เซ็นทรัลลาดพร้าว</label>
+                <label for="checkbox7">เซ็นทรัลลาดพร้าว</label>
               </div>
               <div class="checkbox check-warning">
                 <input type="checkbox" checked="checked" name="branch[]" class="branch" value="bangkapi,13" id="checkbox8">
-                <label class="label-master" for="checkbox8">เดอะมอลล์บางกะปิ</label>
+                <label for="checkbox8">เดอะมอลล์บางกะปิ</label>
               </div>
               <div class="checkbox check-warning">
                 <input type="checkbox" checked="checked" name="branch[]" class="branch" value="centralworld,21" id="checkbox9">
-                <label class="label-master" for="checkbox9">เซ็นทรัลเวิลด์</label>
+                <label for="checkbox9">เซ็นทรัลเวิลด์</label>
               </div>
               <div class="checkbox check-warning">
                 <input type="checkbox" checked="checked" name="branch[]" class="branch" value="bangkapi,21" id="checkbox10">
-                <label class="label-master" for="checkbox10">บางกะปิ</label>
+                <label for="checkbox10">บางกะปิ</label>
+              </div>
+              <div class="form-group">
+                  <span class="new-branch"><i class="fs-14 pg-plus"></i>เพิ่มสาขาใหม่</span>
               </div>
               <div class="clearfix"></div>
             </div>

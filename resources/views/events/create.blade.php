@@ -46,9 +46,25 @@
               </div>
               <div class="form-group form-group-default input-group">
                 <label>รูปภาพหลัก</label>
-                <input type="file" name="image" class="form-control image" id="image" placeholder="รูปภาพ" />
-                <span class="input-group-addon"><i class="fa fa-picture-o icon-picture"></i></span>
+                <input type="text" class="form-control" readonly>
+                <span class="input-group-btn">
+                  <span class="btn-file">
+                    <span class="input-group-addon"><input type="file" name="image" class="form-control image" id="image" placeholder="รูปภาพ" /><i class="fa fa-picture-o icon-picture"></i></span>
+                  </span>
+                </span>
               </div>
+
+              <!--
+              <div class="input-group">
+                  <span class="input-group-btn">
+                      <span class="btn btn-primary btn-file">
+                          Browse&hellip; <input type="file" multiple>
+                      </span>
+                  </span>
+                  <input type="text" class="form-control" readonly>
+              </div>
+              -->
+
               <!-- START PANEL -->
               <div class="form-group form-group-default panel-gallery"><label>รูปภาพ Gallery (ต้องเชื่อมต่อกับ Facebook Fanpage)</label></div>
               <div class="panel-body no-scroll no-padding dropzone-file-previews">

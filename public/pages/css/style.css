@@ -68,6 +68,13 @@
   height: auto;
 }
 
+.panel-default > .panel-heading {
+  color: #626262;
+}
+
+.checkbox input[type="checkbox"]:focus + label {
+    color: #626262;
+}
 /*
 .form-group-area {
     overflow: hidden;

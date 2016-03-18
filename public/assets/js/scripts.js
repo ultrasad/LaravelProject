@@ -19,8 +19,6 @@
         $(".widget-3 .metro").liveTile();
         $(".widget-7 .metro").liveTile();
 
-        console.log('check..');
-
         //Date Pickers
         $('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker();
 
@@ -237,11 +235,134 @@
         //ignore valid popup model
         $('.note-modal-form').each( function() { $(this).validate({}) });
 
+        //Switchery
+        var changeCheckbox = document.querySelector('.js-check-change')
+          , changeField = document.querySelector('.js-check-change-field');
+
+        changeCheckbox.onchange = function() {
+          changeField.value = changeCheckbox.checked;
+          if(changeCheckbox.checked == true){
+            $('.social_group').show();
+          } else {
+            $('.social_group').hide();
+          }
+          //console.log('change => ' + changeCheckbox.checked);
+        };
+
+        $(document).on('change', '.branch_all', function(e){
+
+          var $child = $('.branch_child');
+          $child.find(':checkbox').prop('checked', this.checked);
+
+          //var check_all = $(this).is(':checked');
+          var check_all = $(this).prop('checked');
+          //console.log('check all => ' + check_all);
+          /*
+          if(check_all == true){
+            //$('.branch_child .branch').attr('checked', true);
+            $('.branch_child .branch').prop('checked', true);
+          }else{
+            $('.branch_child .branch').prop('checked', false);
+          }
+          */
+        });
+
+        $(document).on('change', '.branch', function(e){
+            var $parent = $('.branch_all');
+            var $child = $('.branch_child');
+            var $chk = $(this);
+            if ($chk.is(':checked')) {
+               //console.log('parent checked');
+               $parent.prop('checked', $child.has(':checkbox:not(:checked)').length == 0);
+            } else {
+               //console.log('parent unchecked');
+               $parent.prop('checked', false);
+            }
+        });
+
+        if($('#map_canvas').exists()){
+          $("<script/>", {
+            "type": "text/javascript",
+            src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&language=th&hl=th&callback=initialize&libraries=places"
+          }).appendTo("body");
+        }
+
     });
 
-    $("<script/>", {
-      "type": "text/javascript",
-      src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&language=th&hl=th&callback=initialize&libraries=places"
-    }).appendTo("body");
-
 })(window.jQuery);
+
+//google map application
+var map;
+var mapObj;
+function initialize() {
+    mapObj = new Object(google.maps);
+    var default_latlng  = new mapObj.LatLng(13.7563309, 100.50176510000006);
+    var default_type = mapObj.MapTypeId.ROADMAP;
+    var map_canvas = $("#map_canvas")[0];
+    var options = {
+        zoom: 13,
+        center: default_latlng,
+        mapTypeId:default_type
+    };
+    map = new mapObj.Map(map_canvas, options);
+    mapObj.event.addListener(map, 'zoom_changed', function() {
+        $("#place_zoom").val(map.getZoom());
+    });
+
+    var input = document.getElementById('searchTextField');
+    var autocomplete = new mapObj.places.Autocomplete(input);
+    autocomplete.bindTo('load', map);
+
+    var infowindow = new mapObj.InfoWindow();
+    var marker = new mapObj.Marker({
+      map: map,
+      //draggable:true,
+      //title:"คลิกลากเพื่อหาตำแหน่งจุดที่ต้องการ!",
+      anchorPoint: new mapObj.Point(0, -29)
+    });
+
+    var place = '';
+    var address = '';
+    var point = '';
+
+    mapObj.event.addListener(marker, 'dragend', function() {
+        point = marker.getPosition();
+        map.panTo(point);
+        $("#place_lat").val(point.lat());
+        $("#place_lon").val(point.lng());
+        $("#place_zoom").val(map.getZoom());
+    });
+
+    autocomplete.addListener('place_changed', function() {
+      infowindow.close();
+      marker.setVisible(false);
+      place = autocomplete.getPlace();
+      if (!place.geometry) {
+        window.alert("Autocomplete's returned place contains no geometry");
+        return;
+      }
+
+      // If the place has a geometry, then present it on a map.
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);  // Why 17? Because it looks good.
+      }
+
+      marker.setPosition(place.geometry.location);
+      marker.setVisible(true);
+
+      $("#place_lat").val(place.geometry.location.lat());
+      $("#place_lon").val(place.geometry.location.lng());
+
+      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+      infowindow.open(map, marker);
+    });
+
+    mapObj.event.addListener(marker, 'click', function() {
+      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+      infowindow.open(map, this);
+    });
+
+}

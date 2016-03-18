@@ -100,41 +100,44 @@
               </div>
 
               <div class="form-group social-post-title">
-                <h5><i class="fa fa-share-square-o fa-lg"></i> Post ไปยัง Social Network <input type="checkbox" name="social_post" data-init-plugin="switchery" data-size="small" data-color="primary" checked="checked" /></h5>
+                <h5><i class="fa fa-share-square-o fa-lg"></i> Post ไปยัง Social Network <input type="checkbox" name="social_post_switchery" class="js-check-change" data-init-plugin="switchery" data-size="small" data-color="primary" checked="checked" /></h5>
+                <input name="social_post_status" class="js-check-change-field" type="hidden" value="true" />
               </div>
 
-              <div class="form-group">
-                <label class="social-facebook-title">Facebook</label>
-                <span class="checkbox-inline">
-                  <div class="checkbox check-success">
-                    <input type="checkbox" checked="checked" value="1" name="fb1" id="checkbox2" />
-                    <label for="checkbox2">Channel 2</label>
-                  </div>
-                </span>
-                <span class="checkbox-inline">
-                  <div class="checkbox check-primary">
-                    <input type="checkbox" value="1" name="fb2" id="checkbox3">
-                    <label for="checkbox3">One</label>
-                  </div>
-                </span>
-                <textarea class="form-control" name="fb_message" rows="3"></textarea>
-              </div>
+              <div class="social_group">
+                <div class="form-group">
+                  <label class="social-facebook-title">Facebook</label>
+                  <span class="checkbox-inline">
+                    <div class="checkbox check-warning">
+                      <input type="checkbox" checked="checked" value="1" name="fb1" id="checkbox2" />
+                      <label class="label-master" for="checkbox2">Channel 2</label>
+                    </div>
+                  </span>
+                  <span class="checkbox-inline">
+                    <div class="checkbox check-warning">
+                      <input type="checkbox" checked="checked" value="1" name="fb2" id="checkbox3">
+                      <label class="label-master" for="checkbox3">One</label>
+                    </div>
+                  </span>
+                  <textarea class="form-control" name="fb_message" rows="3"></textarea>
+                </div>
 
-              <div class="form-group">
-                <label class="social-twitter-title">Twitter</label>
-                <span class="checkbox-inline">
-                  <div class="checkbox check-warning">
-                    <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox5">
-                    <label for="checkbox5">Ch8</label>
-                  </div>
-                </span>
-                <span class="checkbox-inline">
-                  <div class="checkbox check-danger">
-                    <input type="checkbox" checked="checked" value="1" name="tw2" id="checkbox6">
-                    <label for="checkbox6">Sabaidee</label>
-                  </div>
-                </span>
-                <textarea class="form-control" name="tw_message" rows="3"></textarea>
+                <div class="form-group">
+                  <label class="social-twitter-title">Twitter</label>
+                  <span class="checkbox-inline">
+                    <div class="checkbox check-warning">
+                      <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
+                      <label class="label-master" for="checkbox4">Ch8</label>
+                    </div>
+                  </span>
+                  <span class="checkbox-inline">
+                    <div class="checkbox check-warning">
+                      <input type="checkbox" checked="checked" value="1" name="tw2" id="checkbox5">
+                      <label class="label-master" for="checkbox5">Sabaidee</label>
+                    </div>
+                  </span>
+                  <textarea class="form-control" name="tw_message" rows="3"></textarea>
+                </div>
               </div>
           </div>
         </div>
@@ -151,23 +154,28 @@
           <div class="panel-body">
             <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all">
               <div class="checkbox check-success">
-                <input type="checkbox" checked="checked" value="1" namne="branch_all" id="checkbox7">
-                <label class="label-master" for="checkbox7">ทุกสาขา</label>
+                <input type="checkbox" checked="checked" name="branch_all" value="1" class="branch_all" id="checkbox6">
+                <label class="label-master" for="checkbox6">ทุกสาขา</label>
               </div>
               <div class="clearfix"></div>
             </div>
-            <div class="wizard-footer padding-5">
+
+            <div class="wizard-footer padding-5 branch_child">
               <div class="checkbox check-warning">
-                <input type="checkbox" checked="checked" name="branch[]" value="ladprao,12" id="checkbox8">
-                <label for="checkbox8">เซ็นทรัลลาดพร้าว</label>
+                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="ladprao,12" id="checkbox7">
+                <label class="label-master" for="checkbox7">เซ็นทรัลลาดพร้าว</label>
               </div>
               <div class="checkbox check-warning">
-                <input type="checkbox" checked="checked" name="branch[]" value="bangkapi,13" id="checkbox9">
-                <label for="checkbox9">เดอะมอลล์บางกะปิ</label>
+                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="bangkapi,13" id="checkbox8">
+                <label class="label-master" for="checkbox8">เดอะมอลล์บางกะปิ</label>
               </div>
               <div class="checkbox check-warning">
-                <input type="checkbox" checked="checked" name="branch[]" value="centralworld,21" id="checkbox10">
-                <label for="checkbox10">เซ็นทรัลเวิลด์</label>
+                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="centralworld,21" id="checkbox9">
+                <label class="label-master" for="checkbox9">เซ็นทรัลเวิลด์</label>
+              </div>
+              <div class="checkbox check-warning">
+                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="bangkapi,21" id="checkbox10">
+                <label class="label-master" for="checkbox10">บางกะปิ</label>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -179,7 +187,7 @@
           <div class="panel-heading">
             <div class="panel-title">
               <div class="checkbox check-danger">
-                <input type="checkbox" checked="checked" name="show_now" value="1" id="checkbox11">
+                <input type="checkbox" checked="checked" name="active_now" value="1" id="checkbox11">
                 <label class="label-master" for="checkbox11">ขึ้นแสดงผลทันที</label>
               </div>
             </div>

@@ -20,7 +20,8 @@
         $(".widget-7 .metro").liveTile();
 
         //Date Pickers
-        $('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker();
+        //$('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker({ format: 'mm/dd/yyyy'});
+        $('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker({ format: 'yyyy-mm-dd'});
 
         $('#article').submit(function(e){
 
@@ -37,7 +38,7 @@
                 processData: false,
                 contentType: false,
                 success: function (resp) {
-                  console.log('resp => ' + resp);
+                  console.log('response => ' + resp);
                     /*$.each(resp.subramos, function (key, value) {
                         $('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
                     });*/
@@ -239,15 +240,17 @@
         var changeCheckbox = document.querySelector('.js-check-change')
           , changeField = document.querySelector('.js-check-change-field');
 
-        changeCheckbox.onchange = function() {
-          changeField.value = changeCheckbox.checked;
-          if(changeCheckbox.checked == true){
-            $('.social_group').show();
-          } else {
-            $('.social_group').hide();
-          }
-          //console.log('change => ' + changeCheckbox.checked);
-        };
+        if($('.social_group').exists()){
+          changeCheckbox.onchange = function() {
+            changeField.value = changeCheckbox.checked;
+            if(changeCheckbox.checked == true){
+              $('.social_group').show();
+            } else {
+              $('.social_group').hide();
+            }
+            //console.log('change => ' + changeCheckbox.checked);
+          };
+        }
 
         $(document).on('change', '.branch_all', function(e){
 
@@ -358,10 +361,14 @@ function initialize() {
       if (!place.geometry) {
         window.alert("Autocomplete's returned place contains no geometry");
         return;
+      } else {
+        map.setZoom(17);
+        map.setCenter(place.geometry.location);
+        //console.log('set center');
       }
 
       // If the place has a geometry, then present it on a map.
-      if (place.geometry.viewport) {
+      if (place.geometry.viewport){
         map.fitBounds(place.geometry.viewport);
       } else {
         map.setCenter(place.geometry.location);

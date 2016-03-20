@@ -77,6 +77,10 @@ class ArticlesController extends Controller
        //dd($request);
        //exit;
 
+       echo '<pre>';
+       print_r($request->all());
+       exit;
+
        //$input = $request->all();
        $article = new Article($request->all());
        //$article->user_id = Auth::user()->id;

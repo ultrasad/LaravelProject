@@ -4,15 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Branch extends Model
 {
     //Mass Assignment
-    protected $fillable = ['name', 'tag']; //Whitelist
-
-    public function articles()
-    {
-      return $this->belongsToMany('App\Article');
-    }
+    protected $fillable = ['name']; //Whitelist
 
     public function events()
     {

@@ -93,7 +93,7 @@
               <!-- END PANEL -->
               <div class="form-group form-group-default required">
                 <label>Keyword (สูงสุด 20 คำ)</label>
-                <input class="tagsinput custom-tag-input" name="tags" type="text" value="hello World, quotes, inspiration" />
+                <input class="tagsinput custom-tag-input" name="tag_list" type="text" value="hello World, quotes, inspiration" />
               </div>
               <div class="form-group form-group-default form-group-area required">
                 <label>รายละเอียดแบบย่อ</label>
@@ -205,7 +205,7 @@
           <div class="panel-heading">
             <div class="panel-title">
               <div class="checkbox check-danger">
-                <input type="checkbox" checked="checked" name="active_now" value="1" id="checkbox11">
+                <input type="checkbox" checked="checked" name="active_now" value="Y" id="checkbox11">
                 <label class="label-master" for="checkbox11">ขึ้นแสดงผลทันที</label>
               </div>
             </div>
@@ -213,7 +213,7 @@
           <div class="panel-body">
             <div class="form-group form-group-default input-group col-sm-12">
               <label>ตั้งเวลาขึ้นแสดง</label>
-              <input type="text" name="show_date" class="form-control" placeholder="Pick a date" id="datepicker-component3">
+              <input type="text" name="published_at" class="form-control" placeholder="Pick a date" id="datepicker-component3">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
           </div>

@@ -10,13 +10,11 @@ use Auth;
 use App\Event;
 use App\Category;
 use App\Tag;
-use App\Branch;
-//use App\Gallery;
 // use App\User;
-//use Illuminate\Http\Request;
-//use Validator;
-//use Response;
-use Request; //use Request replace Illuminate\Http\Request
+use Illuminate\Http\Request;
+use Validator;
+use Response;
+//use Request; //use Request replace Illuminate\Http\Request
 use App\Http\Requests\EventRequest;
 
 class EventsController extends Controller
@@ -34,7 +32,7 @@ class EventsController extends Controller
   */
   public function index()
   {
-    $events = App\Event::published()->paginate(5);
+    $events = Event::published()->paginate(5);
     return view('events.index', compact('events'));
   }
 
@@ -55,58 +53,13 @@ class EventsController extends Controller
   *
   *@return Response
   */
-  public function store(EventRequest $request)
+  public function store(Request $request)
   {
     //echo '<pre>';
     //print_r($_FILES);
 
-    //echo '<pre>';
-    //print_r($request->all());
-    //exit;
-
-    $event = new Event($request->all());
-
-    if($request->hasFile('image')){
-      $image_filename = $request->file('image')
-                       ->getClientOriginalName();
-      $image_name = date('Ymd-His-').$image_filename;
-      $public_path = 'images/events/';
-      $destination = base_path() . '/public/' . $public_path;
-      $request->file('image')->move($destination, $image_name); //move file to destination
-      $event->image = $public_path . $image_name; //set article image name
-    }
-
-    $url_slug = str_slug($request->input('url_slug'));
-    $base_slug = $url_slug;
-
-    $i=1; $dup=1;
-    do {
-      $slug = Event::firstOrNew(array('url_slug' => $base_slug));
-      if($slug->exists){
-        $base_slug = $url_slug . '-' . $i++;
-      } else {
-        $dup=0;
-      }
-    } while($dup==1);
-    $event->url_slug = $base_slug;
-
-    Auth::user()->events()->save($event); //user id
-
-    $tagsId = $request->input('tag_list');
-    if(!empty($tagsId)){
-       $tag_list = explode(',', $tagsId);
-       //$tags = Event::InsertTag($tagsId);
-       $tags = array();
-       foreach($tag_list as $name)
-       {
-         //$tag = preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower(trim($name)));
-         $tag = str_slug($name); //helper url
-         $tags[] = Tag::firstOrCreate(array('name' => $name, 'tag' => $tag))->id;
-       }
-       $event->tags()->sync($tags);
-    }
-
-    echo '-- exit --';
+    echo '<pre>';
+    print_r($request->all());
     exit;
   }
 

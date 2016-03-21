@@ -11,13 +11,15 @@ use App\Event;
 use App\Category;
 use App\Tag;
 use App\Branch;
-//use App\Gallery;
+use App\Gallery;
+use App\Location;
 // use App\User;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 //use Validator;
 //use Response;
-use Request; //use Request replace Illuminate\Http\Request
+//use Request; //use Request replace Illuminate\Http\Request
 use App\Http\Requests\EventRequest;
+//use Input;
 
 class EventsController extends Controller
 {
@@ -34,7 +36,16 @@ class EventsController extends Controller
   */
   public function index()
   {
-    $events = App\Event::published()->paginate(5);
+
+    echo ini_get('upload_max_filesize').'<br/>';
+    echo ini_get('post_max_size').'<br/>';
+    //post_max_size
+    //ini_set("upload_max_filesize","1000M");
+    //ini_set("post_max_size","1000M");
+    //echo ini_get("upload_max_filesize").'<br />';
+    //echo ini_get("post_max_size").'<br />';
+
+    $events = Event::published()->paginate(5);
     return view('events.index', compact('events'));
   }
 
@@ -66,6 +77,7 @@ class EventsController extends Controller
 
     $event = new Event($request->all());
 
+    //image
     if($request->hasFile('image')){
       $image_filename = $request->file('image')
                        ->getClientOriginalName();
@@ -76,6 +88,7 @@ class EventsController extends Controller
       $event->image = $public_path . $image_name; //set article image name
     }
 
+    //url slug
     $url_slug = str_slug($request->input('url_slug'));
     $base_slug = $url_slug;
 
@@ -90,8 +103,9 @@ class EventsController extends Controller
     } while($dup==1);
     $event->url_slug = $base_slug;
 
-    Auth::user()->events()->save($event); //user id
+    $event_id = Auth::user()->events()->save($event)->id; //user id
 
+    //tags
     $tagsId = $request->input('tag_list');
     if(!empty($tagsId)){
        $tag_list = explode(',', $tagsId);
@@ -106,8 +120,76 @@ class EventsController extends Controller
        $event->tags()->sync($tags);
     }
 
+    //gallery
+    $gallery = $request->file('gallery');
+    $success = 0;
+    $error = 0;
+    $file_index = 0;
+    if($gallery){
+      $images = array();
+      foreach($gallery as $file){
+         $image_filename = $file->getClientOriginalName();
+         $image_name = date('Ymd-His-').$image_filename;
+         $public_path = 'images/events/gallery/'. $event_id . '/';
+         $destination = base_path() . '/public/' . $public_path;
+         $upload_success = $file->move($destination, $image_name); //move file to destination
+         if( $upload_success ) {
+            $success++;
+            $image = $destination;
+            //$images[] = Gallery::firstOrCreate(array('name' => $name, 'tag' => $tag))->id;
+            $images[] = Gallery::firstOrCreate(array('name' => $image_name, 'image' => $public_path . $image_name))->id;
+          } else {
+            $error++;
+          }
+          $file_index++;
+      }
+      $event->gallery()->sync($images);
+    }
+
+    //location
+    $location_name = $request->input('location_name');
+    $location_lat = $request->input('location_lat');
+    $location_lon = $request->input('location_lon');
+    $location_zoom = $request->input('location_zoom');
+
+    if($location_name != '' && $location_lat != '' && $location_lon != ''){
+      //echo 'location >> ' . $location_name . '<br />';
+      $location = array();
+      $location[] = Location::firstOrCreate(array('name' => $location_name, 'lat' => $location_lat, 'lon' => $location_lon, 'zoom' => $location_zoom))->id;
+      $event->location()->sync($location);
+    }
+
     echo '-- exit --';
     exit;
+  }
+
+  public function desc_upload(Request $request)
+  {
+      //if ($request->hasFile('file_upload')) {
+        //echo 'file upload <br />';
+      //}
+
+      if($request->hasFile('file_upload')){
+        $image_filename = $request->file('file_upload')
+                         ->getClientOriginalName();
+        $image_name = date('Ymd-His-').$image_filename;
+        $public_path = 'images/events/description/';
+        $destination = base_path() . '/public/' . $public_path;
+        $upload_success = $request->file('file_upload')->move($destination, $image_name); //move file to destination
+        if( $upload_success ) {
+        	//return Response::json('success', 200);
+          return '/'. $public_path . $image_name;
+        } else {
+          return false;
+        	//return Response::json('error', 400);
+        }
+      }
+
+      return Response::json('success', 200);
+
+      //echo '<pre>';
+      //print_r($request);
+      //exit;
   }
 
   public function post_upload(Request $request)

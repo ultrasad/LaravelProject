@@ -47,6 +47,18 @@ class Event extends Model
                   ->withTimestamps(); //update created app, updated app relationship table
     }
 
+    public function gallery()
+    {
+      return $this->belongsToMany('App\Gallery')
+                  ->withTimestamps(); //update created app, updated app relationship table
+    }
+
+    public function location()
+    {
+      return $this->belongsToMany('App\Location')
+                  ->withTimestamps(); //update created app, updated app relationship table
+    }
+
     public function branch()
     {
       return $this->belongsToMany('App\Branch')

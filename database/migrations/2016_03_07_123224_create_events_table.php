@@ -41,13 +41,6 @@ class CreateEventsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name'); //Image Name
-            $table->string('image'); //Image Path
-            $table->timestamps();
-        });
-
         Schema::create('event_category', function (Blueprint $table) {
             $table->integer('event_id')->unsigned()->index();
             $table->foreign('event_id')->references('id')
@@ -78,7 +71,14 @@ class CreateEventsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('event_image', function (Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name'); //Image Name
+            $table->string('image'); //Image Path
+            $table->timestamps();
+        });
+
+        Schema::create('event_gallery', function (Blueprint $table) {
             $table->integer('event_id')->unsigned()->index();
             $table->foreign('event_id')->references('id')
                   ->on('events')->onDelete('cascade');

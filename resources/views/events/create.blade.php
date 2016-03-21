@@ -3,7 +3,8 @@
 @section('content')
   <!-- START CONTAINER FLUID -->
   <form class="events-form dropzone" id="my-awesome-dropzone-form" role="form" action="/events" enctype="multipart/form-data" method="POST">
-  {{ Form::token() }}
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  {{-- Form::token() --}}
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-12">
@@ -77,16 +78,16 @@
 
               <div class="form-group form-group-default form-group-map">
                 <label>สถาณที่จัดโปรโมชั่น</label>
-                <input type="text" size="50" name="searchTextField" class="form-control" id="searchTextField" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
+                <input type="text" size="50" name="location_name" class="form-control" id="location_name" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
                 <!-- <input name="namePlace" type="text" id="namePlace" size="40" /><input type="button" name="SearchPlace" id="SearchPlace" value="Search" /> -->
               </div>
 
               <div class="form-group">
                 <div id="map_canvas" style="height: 400px; width: 100%;"></div>
                 <div class="row">
-                  <input name="place_lat" type="hidden" id="place_lat" value="0" />
-                  <input name="place_lon" type="hidden" id="place_lon" value="0" />
-                  <input name="place_zoom" type="hidden" id="place_zoom" value="0" />
+                  <input name="location_lat" type="hidden" id="location_lat" value="0" />
+                  <input name="location_lon" type="hidden" id="location_lon" value="0" />
+                  <input name="location_zoom" type="hidden" id="location_zoom" value="0" />
                 </div>
               </div>
 

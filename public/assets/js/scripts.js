@@ -109,11 +109,12 @@
           autoProcessQueue: false,
           uploadMultiple: true,
           parallelUploads: 100,
-          maxFiles: 100,
+          maxFiles: 20,
+          maxFilesize: 2, // MB
           acceptedFiles: "image/*",
           addRemoveLinks: true,
           //previewTemplate: previewTemplate,
-          autoQueue: false, // Make sure the files aren't queued until manually added
+          //autoQueue: false, // Make sure the files aren't queued until manually added
           previewsContainer: "#previews", // Define the container to display the previews
           clickable: ".dropzone-file-previews",
           //createImageThumbnails: false,
@@ -174,6 +175,9 @@
                 //data.append('file-1', file);
                 data.append("image", file);
                 //data.append("filetype", "avataruploadtype");
+
+                // Pass token. You can use the same method to pass any other values as well such as a id to associate the image with for example.
+                data.append("_token", $('[name=_token').val()); // Laravel expect the token post value to be named _token by default
             });
 
             // Execute when file uploads are complete
@@ -231,6 +235,10 @@
               ['height', ['height']],
               ['picture', ['picture']]
             ],
+            onImageUpload: function(files, editor, $editable) {
+              //console.log('file => ' + files[0]);
+              sendFile(files[0],editor,$editable);
+            }
         });
 
         //ignore valid popup model
@@ -312,6 +320,26 @@
 
 })(window.jQuery);
 
+function sendFile(file,editor,welEditable)
+{
+    data = new FormData();
+    data.append("file_upload", file);
+     $.ajax({
+       url: "/events/desc_upload",
+       data: data,
+       cache: false,
+       contentType: false,
+       processData: false,
+       type: 'POST',
+       success: function(data){
+        editor.insertImage(welEditable, data);
+       },
+       error: function(jqXHR, textStatus, errorThrown) {
+         console.log(textStatus+" "+errorThrown);
+       }
+    });
+}
+
 //google map application
 var map;
 var mapObj;
@@ -327,10 +355,10 @@ function initialize() {
     };
     map = new mapObj.Map(map_canvas, options);
     mapObj.event.addListener(map, 'zoom_changed', function() {
-        $("#place_zoom").val(map.getZoom());
+        $("#location_zoom").val(map.getZoom());
     });
 
-    var input = document.getElementById('searchTextField');
+    var input = document.getElementById('location_name');
     var autocomplete = new mapObj.places.Autocomplete(input);
     autocomplete.bindTo('load', map);
 
@@ -349,9 +377,9 @@ function initialize() {
     mapObj.event.addListener(marker, 'dragend', function() {
         point = marker.getPosition();
         map.panTo(point);
-        $("#place_lat").val(point.lat());
-        $("#place_lon").val(point.lng());
-        $("#place_zoom").val(map.getZoom());
+        $("#location_lat").val(point.lat());
+        $("#location_lon").val(point.lng());
+        $("#location_zoom").val(map.getZoom());
     });
 
     autocomplete.addListener('place_changed', function() {
@@ -378,8 +406,8 @@ function initialize() {
       marker.setPosition(place.geometry.location);
       marker.setVisible(true);
 
-      $("#place_lat").val(place.geometry.location.lat());
-      $("#place_lon").val(place.geometry.location.lng());
+      $("#location_lat").val(place.geometry.location.lat());
+      $("#location_lon").val(place.geometry.location.lng());
 
       infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
       infowindow.open(map, marker);

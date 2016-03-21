@@ -12,9 +12,10 @@ class CategoriesAddCategoryType extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
+        /*Schema::table('categories', function (Blueprint $table) {
             $table->string('category_type', 60);
         });
+        */
     }
 
     /**
@@ -24,8 +25,10 @@ class CategoriesAddCategoryType extends Migration
      */
     public function down()
     {
+        /*
         Schema::table('categories', function (Blueprint $table) {
             $table->dropColumn('category_type');
         });
+        */
     }
 }

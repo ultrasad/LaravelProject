@@ -15,21 +15,29 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
           $table->increments('id'); //unsigned integer auto-increment
           $table->text('title');
-          $table->text('body');
+          $table->string('url_slug', 100)->unique()->nullable();
+          $table->string('image')->nullable();
+          $table->string('brief')->nullable();
+          $table->text('description');
+          $table->date('start_date');
+          $table->date('end_date');
+          $table->enum('active_now', ['Y', 'N'])->default('N');
+          $table->date('published_at')->nullable();
           $table->timestamps(); //auto crete created_at, updated_at
-          $table->timestamp('published_at');
+          $table->timestamp('deleted_at')->nullable();
           $table->integer('user_id')->unsigned()->default(1);
           $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-          //$table->rememberToken();
+                //$table->rememberToken();
         });
 
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name'); //Cate Name Space
             $table->string('category'); //cate-name-space
+            $table->string('category_type', 60); //brand or event
             $table->timestamps();
         });
 
@@ -52,9 +60,11 @@ class CreateEventsTable extends Migration
             $table->timestamps();
         });
 
+        /*
         Schema::table('tags', function (Blueprint $table) {
             $table->string('tag');
         });
+        */
 
         Schema::create('event_tag', function (Blueprint $table) {
             $table->integer('event_id')->unsigned()->index();
@@ -88,12 +98,14 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
+        /*
         Schema::drop('events');
         Schema::drop('categories');
         Schema::drop('event_category');
         Schema::drop('event_tag');
         Schema::drop('images');
         Schema::drop('event_image');
+        */
 
         /*Schema::table('tags', function (Blueprint $table) {
             $table->dropColumn('tag');

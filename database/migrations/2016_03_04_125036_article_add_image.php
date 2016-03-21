@@ -12,9 +12,9 @@ class ArticleAddImage extends Migration
      */
     public function up()
     {
-        Schema::table('articles', function (Blueprint $table) {
+        /*Schema::table('articles', function (Blueprint $table) {
             $table->string('image')->nullable();
-        });
+        });*/
     }
 
     /**
@@ -24,8 +24,9 @@ class ArticleAddImage extends Migration
      */
     public function down()
     {
-        Schema::table('articles', function (Blueprint $table) {
+        /*Schema::table('articles', function (Blueprint $table) {
             $table->dropColumn('image');
         });
+        */
     }
 }

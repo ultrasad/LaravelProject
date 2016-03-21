@@ -12,13 +12,14 @@ class EventsBrandDeletedAt extends Migration
      */
     public function up()
     {
-        Schema::table('events', function (Blueprint $table) {
+        /*Schema::table('events', function (Blueprint $table) {
             $table->timestamp('deleted_at')->nullable();
         });
 
         Schema::table('brand', function (Blueprint $table) {
             $table->timestamp('deleted_at')->nullable();
         });
+        */
     }
 
     /**
@@ -28,6 +29,7 @@ class EventsBrandDeletedAt extends Migration
      */
     public function down()
     {
+      /*
         Schema::table('events', function (Blueprint $table) {
             $table->dropColumn('deleted_at');
         });
@@ -35,5 +37,6 @@ class EventsBrandDeletedAt extends Migration
         Schema::table('brand', function (Blueprint $table) {
             $table->dropColumn('deleted_at');
         });
+        */
     }
 }

@@ -26,6 +26,7 @@ class CreateBrandTable extends Migration
             $table->string('youtube')->nullable();
             $table->enum('approve_status', ['Y', 'N'])->default('N');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
@@ -36,6 +37,6 @@ class CreateBrandTable extends Migration
      */
     public function down()
     {
-        Schema::drop('brand');
+        //Schema::drop('brand');
     }
 }

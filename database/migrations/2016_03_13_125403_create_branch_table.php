@@ -42,7 +42,7 @@ class CreateBranchTable extends Migration
      */
     public function down()
     {
-        Schema::drop('branch');
-        Schema::drop('brand_branch');
+        //Schema::drop('branch');
+        //Schema::drop('brand_branch');
     }
 }

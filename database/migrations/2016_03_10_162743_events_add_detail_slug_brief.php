@@ -12,13 +12,14 @@ class EventsAddDetailSlugBrief extends Migration
      */
     public function up()
     {
-        Schema::table('events', function (Blueprint $table) {
+        /*Schema::table('events', function (Blueprint $table) {
             $table->string('url_slug', 100)->unique()->nullable();
             $table->string('brief')->nullable();
             $table->string('image')->nullable();
-            $table->timestamp('start_datetime');
-            $table->timestamp('end_datetime');
+            $table->date('start_date');
+            $table->date('end_date');
         });
+        */
     }
 
     /**
@@ -28,8 +29,10 @@ class EventsAddDetailSlugBrief extends Migration
      */
     public function down()
     {
+      /*
         Schema::table('events', function (Blueprint $table) {
             $table->dropColumn(['url_slug', 'brief', 'image', 'start_datetime', 'end_datetime']);
         });
+        */
     }
 }

@@ -42,7 +42,7 @@ class CreateLocationsTable extends Migration
      */
     public function down()
     {
-          Schema::drop('locations');
-          Schema::drop('event_location');
+          //Schema::drop('locations');
+          //Schema::drop('event_location');
     }
 }

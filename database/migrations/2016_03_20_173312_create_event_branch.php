@@ -32,6 +32,6 @@ class CreateEventBranch extends Migration
      */
     public function down()
     {
-        Schema::drop('event_branch');
+        //Schema::drop('event_branch');
     }
 }

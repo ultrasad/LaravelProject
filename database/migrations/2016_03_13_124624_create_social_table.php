@@ -40,7 +40,7 @@ class CreateSocialTable extends Migration
      */
     public function down()
     {
-        Schema::drop('social');
-        Schema::drop('brand_social');
+        //Schema::drop('social');
+        //Schema::drop('brand_social');
     }
 }

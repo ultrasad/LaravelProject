@@ -12,9 +12,11 @@ class EventsAddActiveNow extends Migration
      */
     public function up()
     {
+      /*
         Schema::table('events', function (Blueprint $table) {
             $table->enum('active_now', ['Y', 'N'])->default('N');
         });
+        */
     }
 
     /**
@@ -24,8 +26,10 @@ class EventsAddActiveNow extends Migration
      */
     public function down()
     {
+      /*
         Schema::table('events', function (Blueprint $table) {
             $table->dropColumn('active_now');
         });
+        */
     }
 }

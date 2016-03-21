@@ -83,9 +83,9 @@ class CreateEventsTable extends Migration
             $table->foreign('event_id')->references('id')
                   ->on('events')->onDelete('cascade');
 
-            $table->integer('image_id')->unsigned()->index();
-            $table->foreign('image_id')->references('id')
-                  ->on('images')->onDelete('cascade');
+            $table->integer('gallery_id')->unsigned()->index();
+            $table->foreign('gallery_id')->references('id')
+                  ->on('galleries')->onDelete('cascade');
 
             $table->timestamps();
         });

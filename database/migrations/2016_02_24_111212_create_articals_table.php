@@ -15,9 +15,15 @@ class CreateArticalsTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id'); //unsigned integer auto-increment
             $table->text('title');
-            $table->text('body');
-            $table->timestamps(); //auto crete created_at, updated_at
+            $table->text('description');
+            $table->string('image')->nullable();
             $table->timestamp('published_at');
+            $table->timestamps(); //auto crete created_at, updated_at
+            $table->integer('user_id')->unsigned()->default(1);
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
         });
     }
 

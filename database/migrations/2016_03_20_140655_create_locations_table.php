@@ -16,7 +16,7 @@ class CreateLocationsTable extends Migration
           $table->increments('id');
           $table->string('name');
           $table->string('lat', 60);
-          $table->string('long', 60);
+          $table->string('lon', 60);
           $table->integer('zoom');
           $table->timestamps();
         });

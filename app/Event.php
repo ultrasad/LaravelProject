@@ -14,7 +14,7 @@ class Event extends Model
      */
     //protected $table = 'events';
     //Mass Assignment
-    protected $fillable = ['title', 'url_slug', 'start_date', 'end_date', 'image', 'brief', 'description', 'active_now', 'published_at']; //Whitelist
+    protected $fillable = ['title', 'url_slug', 'start_date', 'end_date', 'image', 'brief', 'description', 'published_at']; //Whitelist
     //protected $guarded = ['id'];// //Backlist
 
     protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object
@@ -59,9 +59,8 @@ class Event extends Model
                   ->withTimestamps(); //update created app, updated app relationship table
     }
 
-    public function branch()
+    /*public function branch()
     {
-      return $this->belongsToMany('App\Branch')
-                  ->withTimestamps(); //update created app, updated app relationship table
-    }
+      return $this->belongsToMany('App\Branch', 'event_branch');
+    }*/
 }

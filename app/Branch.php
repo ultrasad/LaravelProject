@@ -6,11 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Branch extends Model
 {
-    //Mass Assignment
-    protected $fillable = ['name']; //Whitelist
+    protected $table = 'branch';
 
-    public function events()
+    //Mass Assignment
+    protected $fillable = ['name', 'image', 'lat', 'lon', 'detail']; //Whitelist
+
+    /*public function events()
     {
       return $this->belongsToMany('App\Event');
+    }*/
+
+    public function brands()
+    {
+      return $this->belongsToMany('App\Brand');
     }
 }

@@ -96,6 +96,36 @@
   font-size: 13px;
 }
 
+.published_set_time .error {
+  padding-left: 12px;
+}
+
+.cs-brand .cs-wrapper {
+    display: inline-block;
+    width: 100%;
+}
+
+.cs-brand .cs-skin-slide {
+  width: 100%;
+  max-width: 100%;
+}
+
+div.cs-select-brand {
+  max-width: 100%;
+}
+
+/*
+
+.cs-brand .cs-skin-slide {
+  width: 100%;
+  max-width: 100%;
+}
+
+div.cs-select {
+  max-width: 500px;
+}
+*/
+
 /*
 .form-group-area {
     overflow: hidden;

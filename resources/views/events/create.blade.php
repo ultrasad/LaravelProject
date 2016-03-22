@@ -162,6 +162,19 @@
       <div class="col-md-4">
         <!-- START PANEL -->
         <div class="panel panel-default">
+
+          <!--
+          <div class="row">
+              <div class="col-sm-12 cs-brand">
+                  <select name="brand" class="cs-select cs-skin-slide cs-select-brand" data-init-plugin="cs-select">
+                    <option value="1">Big Camera</option>
+                    <option value="2">World Camera</option>
+                    <option value="3">Zoom Camera</option>
+                  </select>
+              </div>
+          </div>
+          -->
+
           <div class="panel-heading">
             <div class="panel-title">
               สาขาที่ร่วมรายการ
@@ -177,6 +190,21 @@
             </div>
 
             <div class="wizard-footer padding-5 branch_child">
+
+              @unless($brand->branch->isEmpty())
+              @foreach($brand->branch as $branch)
+              <div class="checkbox check-warning">
+                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $branch->id }}" id="checkbox10">
+                <label for="checkbox10">{{ $branch->name }}</label>
+              </div>
+              @endforeach
+              <div class="clearfix"></div>
+              @endunless
+              <div class="form-group">
+                  <span class="new-branch"><i class="fs-14 pg-plus"></i>เพิ่มสาขาใหม่</span>
+              </div>
+
+              <!--
               <div class="checkbox check-warning">
                 <input type="checkbox" checked="checked" name="branch[]" class="branch" value="ladprao,12" id="checkbox7">
                 <label for="checkbox7">เซ็นทรัลลาดพร้าว</label>
@@ -191,12 +219,14 @@
               </div>
               <div class="checkbox check-warning">
                 <input type="checkbox" checked="checked" name="branch[]" class="branch" value="bangkapi,21" id="checkbox10">
-                <label for="checkbox10">บางกะปิ</label>
+                <label for="checkbox10">เซ็นทรัลปิ่นเกล้า</label>
               </div>
               <div class="form-group">
                   <span class="new-branch"><i class="fs-14 pg-plus"></i>เพิ่มสาขาใหม่</span>
               </div>
               <div class="clearfix"></div>
+              -->
+
             </div>
           </div>
         </div>
@@ -206,12 +236,12 @@
           <div class="panel-heading">
             <div class="panel-title">
               <div class="checkbox check-danger">
-                <input type="checkbox" checked="checked" name="active_now" value="Y" id="checkbox11">
+                <input type="checkbox" checked="checked" class="published_check" name="published_now" value="{{ date('Y-m-d') }}" id="checkbox11">
                 <label class="label-master" for="checkbox11">ขึ้นแสดงผลทันที</label>
               </div>
             </div>
           </div>
-          <div class="panel-body">
+          <div class="panel-body published_set_time" style="display: none">
             <div class="form-group form-group-default input-group col-sm-12">
               <label>ตั้งเวลาขึ้นแสดง</label>
               <input type="text" name="published_at" class="form-control" placeholder="Pick a date" id="datepicker-component3">

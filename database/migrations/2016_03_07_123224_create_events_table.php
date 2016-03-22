@@ -21,7 +21,7 @@ class CreateEventsTable extends Migration
           $table->text('description');
           $table->date('start_date');
           $table->date('end_date');
-          $table->enum('active_now', ['Y', 'N'])->default('N');
+          $table->enum('publich_now', ['Y', 'N'])->default('N');
           $table->date('published_at')->nullable();
           $table->timestamps(); //auto crete created_at, updated_at
           $table->timestamp('deleted_at')->nullable();
@@ -29,6 +29,11 @@ class CreateEventsTable extends Migration
           $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
+                ->onDelete('cascade');
+          $table->integer('brand_id')->unsigned()->default(1);
+          $table->foreign('brand_id')
+                ->references('id')
+                ->on('brand')
                 ->onDelete('cascade');
                 //$table->rememberToken();
         });

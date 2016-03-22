@@ -39,6 +39,11 @@ class ArticlesController extends Controller
 
       //$articles = Article::published()->get(); //pass scopePublished scope
       $articles = Article::published()->paginate(5);
+
+      //echo '<pre>';
+      //print_r($articles);
+      //exit;
+
       return view('articles.index', compact('articles'));
     }
 

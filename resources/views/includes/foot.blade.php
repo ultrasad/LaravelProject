@@ -5,6 +5,7 @@
 <script type="text/javascript" src="{{ URL::asset('assets/modernizr.custom.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/classie/classie.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-metrojs/MetroJs.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/dropzone/dropzone.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-tag/bootstrap-tagsinput.min.js') }}"></script>

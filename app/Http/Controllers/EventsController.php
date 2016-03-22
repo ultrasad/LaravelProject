@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Auth;
+use App\Brand;
 use App\Event;
 use App\Category;
 use App\Tag;
@@ -56,9 +57,27 @@ class EventsController extends Controller
   */
   public function create()
   {
-      $tag_list = Tag::lists('name', 'id');
-      $category_list = Category::lists('name', 'id');
-      return view('events.create', compact('tag_list', 'category_list'));
+      //$tag_list = Tag::lists('name', 'id');
+      //$category_list = Category::lists('name', 'id');
+      //return view('events.create', compact('tag_list', 'category_list'));
+
+      /*
+      $branch_list = Brand::select('name', 'id')
+      ->leftJoin('brand_branch', 'brand.id', '=', 'brand_branch.brand_id')
+      ->where('brand.id', '=', 1)->get();
+      */
+
+      $brand = Brand::find(2); //brand 1
+
+      //foreach($brand->branch as $branch){
+        //echo $branch->name . '<br />';
+      //}
+
+      //echo '<pre>';
+      //print_r($brand->branch);
+      //exit;
+
+      return view('events.create', compact('brand'));
   }
 
   /**
@@ -71,9 +90,9 @@ class EventsController extends Controller
     //echo '<pre>';
     //print_r($_FILES);
 
-    //echo '<pre>';
-    //print_r($request->all());
-    //exit;
+    echo '<pre>';
+    print_r($request->all());
+    exit;
 
     $event = new Event($request->all());
 
@@ -82,10 +101,15 @@ class EventsController extends Controller
       $image_filename = $request->file('image')
                        ->getClientOriginalName();
       $image_name = date('Ymd-His-').$image_filename;
-      $public_path = 'images/events/';
+      $public_path = 'images/events/' . date('Y-m-d') . '/';
       $destination = base_path() . '/public/' . $public_path;
       $request->file('image')->move($destination, $image_name); //move file to destination
       $event->image = $public_path . $image_name; //set article image name
+    }
+
+    //published
+    if($request->input('published_now')){
+      $event->published_at = $request->input('published_now');
     }
 
     //url slug
@@ -130,7 +154,7 @@ class EventsController extends Controller
       foreach($gallery as $file){
          $image_filename = $file->getClientOriginalName();
          $image_name = date('Ymd-His-').$image_filename;
-         $public_path = 'images/events/gallery/'. $event_id . '/';
+         $public_path = 'images/events/'. date('Y-m-d') .'/gallery/'. $event_id . '/';
          $destination = base_path() . '/public/' . $public_path;
          $upload_success = $file->move($destination, $image_name); //move file to destination
          if( $upload_success ) {
@@ -173,7 +197,7 @@ class EventsController extends Controller
         $image_filename = $request->file('file_upload')
                          ->getClientOriginalName();
         $image_name = date('Ymd-His-').$image_filename;
-        $public_path = 'images/events/description/';
+        $public_path = 'images/events/'. date('Y-m-d') .'/description/';
         $destination = base_path() . '/public/' . $public_path;
         $upload_success = $request->file('file_upload')->move($destination, $image_name); //move file to destination
         if( $upload_success ) {

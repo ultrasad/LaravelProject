@@ -75,20 +75,40 @@
                  $(element).parents(".error").removeClass(errorClass).addClass(validClass);
              },
              rules: {
-                 title: {
-                     required: true
-                 },
-                 url_slug: {
-                     required: true
-                 }
+                title: {
+                  required: true
+                },
+                url_slug: {
+                  required: true
+                },
+                brief: {
+                   required: true
+                },
+                published_at: {
+                  required: true
+                }
+                /*
+                fb_message: {
+                   required: true
+                }*/
              },
              messages: {
-        					title:{
-        								required: "This field is required.",
-        					},
-        					url_slug:{
-        								required: "This field is required.",
-        					},
+                title:{
+                	required: "This field is required.",
+                },
+                url_slug:{
+                	required: "This field is required.",
+                },
+                brief: {
+                  required: "This field is required.",
+                },
+                published_at: {
+                  required: "This field is required.",
+                }
+                /*
+                fb_message: {
+                  required: "This field is required.",
+                }*/
         		 },
              submitHandler: function(form) {
                  // optional callback function
@@ -260,6 +280,20 @@
           };
         }
 
+        //brand
+        /*
+        var el = $('.cs-select-brand').get(0);
+        $(el).wrap('<div class="cs-wrapper" />');
+        new SelectFx(el, {
+            onChange: function(e) {
+                //var event = document.createEvent('HTMLEvents');
+                //event.initEvent('change', true, false);
+                //el.dispatchEvent(event);
+                console.log('change >>' + $(e).val());
+            }
+        });
+        */
+
         $(document).on('change', '.branch_all', function(e){
 
           var $child = $('.branch_child');
@@ -289,6 +323,15 @@
                //console.log('parent unchecked');
                $parent.prop('checked', false);
             }
+        });
+
+        //publiched
+        $(document).on('change', '.published_check', function(e){
+          if(this.checked) {
+              $('.published_set_time').hide();
+          } else {
+              $('.published_set_time').show();
+          }
         });
 
         if($('#map_canvas').exists()){

@@ -476,7 +476,7 @@
         this.initSelect2Plugin();
         this.initScrollBarPlugin();
         this.initSwitcheryPlugin();
-        this.initSelectFxPlugin();
+        //this.initSelectFxPlugin();
         this.initUnveilPlugin();
         //this.initValidatorPlugin();
         this.initListView();

@@ -59,8 +59,9 @@ class Event extends Model
                   ->withTimestamps(); //update created app, updated app relationship table
     }
 
-    /*public function branch()
+    public function branch()
     {
-      return $this->belongsToMany('App\Branch', 'event_branch');
-    }*/
+      return $this->belongsToMany('App\Branch', 'event_branch')
+                  ->withTimestamps(); //update created app, updated app relationship table
+    }
 }

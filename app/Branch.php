@@ -11,10 +11,10 @@ class Branch extends Model
     //Mass Assignment
     protected $fillable = ['name', 'image', 'lat', 'lon', 'detail']; //Whitelist
 
-    /*public function events()
+    public function events()
     {
       return $this->belongsToMany('App\Event');
-    }*/
+    }
 
     public function brands()
     {

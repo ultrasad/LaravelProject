@@ -191,7 +191,7 @@
 
             <div class="wizard-footer padding-5 branch_child">
 
-              @unless($brand->branch->isEmpty())
+              @if($brand && $brand->branch)
               @foreach($brand->branch as $branch)
               <div class="checkbox check-warning">
                 <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $branch->id }}" id="checkbox10">
@@ -199,7 +199,8 @@
               </div>
               @endforeach
               <div class="clearfix"></div>
-              @endunless
+              @endif
+
               <div class="form-group">
                   <span class="new-branch"><i class="fs-14 pg-plus"></i>เพิ่มสาขาใหม่</span>
               </div>

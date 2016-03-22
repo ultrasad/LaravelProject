@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+
 use Auth;
 use App\Brand;
 use App\Event;
@@ -16,6 +17,7 @@ use App\Gallery;
 use App\Location;
 // use App\User;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Collection;
 //use Validator;
 //use Response;
 //use Request; //use Request replace Illuminate\Http\Request
@@ -67,14 +69,23 @@ class EventsController extends Controller
       ->where('brand.id', '=', 1)->get();
       */
 
-      $brand = Brand::find(2); //brand 1
+      //$brand = Brand::where('id', '=', 1)->get(); //brand 1
+      $brand = Brand::find(3); //brand 1
 
       //foreach($brand->branch as $branch){
         //echo $branch->name . '<br />';
       //}
+      //exit;
+
+      /*if($brand->isEmpty())
+      {
+        echo 'empty >>';
+      }
+      exit;
+      */
 
       //echo '<pre>';
-      //print_r($brand->branch);
+      //print_r($brand->branch[0]->name);
       //exit;
 
       return view('events.create', compact('brand'));
@@ -90,9 +101,9 @@ class EventsController extends Controller
     //echo '<pre>';
     //print_r($_FILES);
 
-    echo '<pre>';
-    print_r($request->all());
-    exit;
+    //echo '<pre>';
+    //print_r($request->all());
+    //exit;
 
     $event = new Event($request->all());
 
@@ -128,6 +139,12 @@ class EventsController extends Controller
     $event->url_slug = $base_slug;
 
     $event_id = Auth::user()->events()->save($event)->id; //user id
+
+    //branch
+    $branchId = $request->input('branch');
+    if(!empty($branchId)){
+       $event->branch()->sync($branchId);
+    }
 
     //tags
     $tagsId = $request->input('tag_list');

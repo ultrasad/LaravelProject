@@ -25,14 +25,14 @@
 
         $('#article').submit(function(e){
 
-            var article, token, url, data;
-            token = $('input[name=_token]').val();
-            article = new FormData(this);
+            var _token, data;
+            _token = $('input[name=_token]').val();
+            data = new FormData(this);
 
             $.ajax({
                 url: '/articles',
-                headers: {'X-CSRF-TOKEN': token},
-                data: article,
+                headers: {'X-CSRF-TOKEN': _token},
+                data: data,
                 type: 'POST',
                 datatype: 'JSON',
                 processData: false,
@@ -159,17 +159,17 @@
                      myDropzone.processQueue();
                      //$('#my-awesome-dropzone-form')[0].submit();
                 } else {
-                     var events, token, url, data;
-                     token = $('input[name=_token]').val();
+                     var _token, data;
+                     _token = $('input[name=_token]').val();
                      var form = document.getElementById('my-awesome-dropzone-form');
-                     events = new FormData(form);
+                     data = new FormData(form);
                      //events.append("description_x", html);
                      //events.description = description;
 
                      $.ajax({
                          url: '/events',
-                         headers: {'X-CSRF-TOKEN': token},
-                         data: events,
+                         headers: {'X-CSRF-TOKEN': _token},
+                         data: data,
                          type: 'POST',
                          datatype: 'JSON',
                          processData: false,
@@ -281,47 +281,56 @@
         }
 
         //brand
-        /*
         var el = $('.cs-select-brand').get(0);
         $(el).wrap('<div class="cs-wrapper" />');
         new SelectFx(el, {
             onChange: function(e) {
-                //var event = document.createEvent('HTMLEvents');
-                //event.initEvent('change', true, false);
-                //el.dispatchEvent(event);
-                console.log('change >>' + $(e).val());
+                 var brand_id = $(e).val();
+                 var data = new FormData();
+                 var _branch = $('.branch_child .list');
+                 data.append("id", brand_id);
+                 $.ajax({
+                   url: "/brand/branch",
+                   data: data,
+                   cache: false,
+                   contentType: false,
+                   processData: false,
+                   dataType: 'json',
+                   type: 'POST',
+                   success: function(data){
+                    if(Object.keys(data).length > 0){
+                      _branch.html('');
+                      $.each(data, function(id, value) {
+                          _branch.append(
+                            '<div class="checkbox check-warning">'
+                            + '<input type="checkbox" checked="checked" name="branch[]" class="branch" value="'+id+'" id="branch_'+id+'">'
+                            + '<label for="branch_'+id+'">'+value+'</label>'
+                            + '</div>'
+                          );
+                      });
+                      _branch.append('<div class="clearfix"></div>');
+                    }
+                   },
+                   error: function(jqXHR, textStatus, errorThrown) {
+                     console.log(textStatus+" "+errorThrown);
+                   }
+                });
             }
         });
-        */
 
         $(document).on('change', '.branch_all', function(e){
-
-          var $child = $('.branch_child');
-          $child.find(':checkbox').prop('checked', this.checked);
-
-          //var check_all = $(this).is(':checked');
-          var check_all = $(this).prop('checked');
-          //console.log('check all => ' + check_all);
-          /*
-          if(check_all == true){
-            //$('.branch_child .branch').attr('checked', true);
-            $('.branch_child .branch').prop('checked', true);
-          }else{
-            $('.branch_child .branch').prop('checked', false);
-          }
-          */
+          var _child = $('.branch_child');
+          _child.find(':checkbox').prop('checked', this.checked);
         });
 
         $(document).on('change', '.branch', function(e){
-            var $parent = $('.branch_all');
-            var $child = $('.branch_child');
-            var $chk = $(this);
-            if ($chk.is(':checked')) {
-               //console.log('parent checked');
-               $parent.prop('checked', $child.has(':checkbox:not(:checked)').length == 0);
+            var _parent = $('.branch_all');
+            var _child = $('.branch_child');
+            var _chk = $(this);
+            if (_chk.is(':checked')) {
+               _parent.prop('checked', _child.has(':checkbox:not(:checked)').length == 0);
             } else {
-               //console.log('parent unchecked');
-               $parent.prop('checked', false);
+               _parent.prop('checked', false);
             }
         });
 
@@ -365,7 +374,7 @@
 
 function sendFile(file,editor,welEditable)
 {
-    data = new FormData();
+    var data = new FormData();
     data.append("file_upload", file);
      $.ajax({
        url: "/events/desc_upload",

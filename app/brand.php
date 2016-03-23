@@ -17,6 +17,15 @@ class Brand extends Model
                 ->withTimestamps(); //update created app, updated app relationship table
   }
 
+  //branch list
+  public function getBranchListAttribute()
+  {
+      //return $this->tags->lists('id');
+      return $this->branch->lists('name','id')->all(); //relationship branch brand
+      //or ican do this
+      //return $this->tags->lists('id')->toArray();
+  }
+
   /*
   public function branch($id=1)
   {

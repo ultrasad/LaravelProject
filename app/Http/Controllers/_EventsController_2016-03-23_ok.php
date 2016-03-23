@@ -15,8 +15,14 @@ use App\Tag;
 use App\Branch;
 use App\Gallery;
 use App\Location;
-
+// use App\User;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Collection;
+//use Validator;
+//use Response;
+//use Request; //use Request replace Illuminate\Http\Request
+//use App\Http\Requests\EventRequest;
+//use Input;
 
 class EventsController extends Controller
 {
@@ -33,6 +39,15 @@ class EventsController extends Controller
   */
   public function index()
   {
+
+    echo ini_get('upload_max_filesize').'<br/>';
+    echo ini_get('post_max_size').'<br/>';
+    //post_max_size
+    //ini_set("upload_max_filesize","1000M");
+    //ini_set("post_max_size","1000M");
+    //echo ini_get("upload_max_filesize").'<br />';
+    //echo ini_get("post_max_size").'<br />';
+
     $events = Event::published()->paginate(5);
     return view('events.index', compact('events'));
   }
@@ -44,8 +59,46 @@ class EventsController extends Controller
   */
   public function create()
   {
+      //$tag_list = Tag::lists('name', 'id');
+      //$category_list = Category::lists('name', 'id');
+      //return view('events.create', compact('tag_list', 'category_list'));
+
+      /*
+      $branch_list = Brand::select('name', 'id')
+      ->leftJoin('brand_branch', 'brand.id', '=', 'brand_branch.brand_id')
+      ->where('brand.id', '=', 1)->get();
+      */
+
+      //$brand = Brand::where('id', '=', 1)->get(); //brand 1
+      //$brand = Brand::find(3); //brand 1
+      //$brand = Brand::find(1); //brand 1
+
+      //echo '<pre>';
+      //print_r($brand->branch_list);
+      //exit;
+
+      //foreach($brand->branch as $branch){
+        //echo $branch->name . '<br />';
+      //}
+      //exit;
+
+      /*if($brand->isEmpty())
+      {
+        echo 'empty >>';
+      }
+      exit;
+      */
+
+      //echo '<pre>';
+      //print_r($brand->branch[0]->name);
+      //exit;
+
       $brand = Brand::select('id', 'name')->get();
       $branch = $brand->first()->branch_list;
+
+      //echo '<pre>';
+      //print_r($brand_first[1]);
+      //exit;
 
       return view('events.create', compact('brand', 'branch'));
   }
@@ -57,6 +110,13 @@ class EventsController extends Controller
   */
   public function store(EventRequest $request)
   {
+    //echo '<pre>';
+    //print_r($_FILES);
+
+    //echo '<pre>';
+    //print_r($request->all());
+    //exit;
+
     $event = new Event($request->all());
 
     //image
@@ -89,9 +149,6 @@ class EventsController extends Controller
       }
     } while($dup==1);
     $event->url_slug = $base_slug;
-
-    //brand
-    $event->brand_id = $request->input('brand'); //event brand
 
     $event_id = Auth::user()->events()->save($event)->id; //user id
 
@@ -149,6 +206,7 @@ class EventsController extends Controller
     $location_zoom = $request->input('location_zoom');
 
     if($location_name != '' && $location_lat != '' && $location_lon != ''){
+      //echo 'location >> ' . $location_name . '<br />';
       $location = array();
       $location[] = Location::firstOrCreate(array('name' => $location_name, 'lat' => $location_lat, 'lon' => $location_lon, 'zoom' => $location_zoom))->id;
       $event->location()->sync($location);
@@ -160,6 +218,10 @@ class EventsController extends Controller
 
   public function desc_upload(Request $request)
   {
+      //if ($request->hasFile('file_upload')) {
+        //echo 'file upload <br />';
+      //}
+
       if($request->hasFile('file_upload')){
         $image_filename = $request->file('file_upload')
                          ->getClientOriginalName();
@@ -168,13 +230,114 @@ class EventsController extends Controller
         $destination = base_path() . '/public/' . $public_path;
         $upload_success = $request->file('file_upload')->move($destination, $image_name); //move file to destination
         if( $upload_success ) {
+        	//return Response::json('success', 200);
           return '/'. $public_path . $image_name;
         } else {
           return false;
+        	//return Response::json('error', 400);
         }
       }
 
       return Response::json('success', 200);
+
+      //echo '<pre>';
+      //print_r($request);
+      //exit;
   }
 
+  public function post_upload(Request $request)
+  {
+    //$input = $request->all();
+    //dd($input);
+
+    //print_r($request->all());
+    //exit;
+
+      $input_files = $request->file();
+      //print_r($input_files['file']);
+      //exit;
+
+      /*
+      $rules = array(
+         'file' => 'image|max:3000',
+      );
+
+      $validation = Validator::make($input_files, $rules);
+      //$validation = $this->validate($input, $rules);
+
+      //dd($validation);
+      if ($validation->fails())
+      {
+       return Response::make($validation->errors->first(), 400);
+     }
+     */
+
+      $file_index = 0;
+      $error = 0;
+      $success = 0;
+      foreach($input_files['file'] as $file):
+
+        //echo 'key => ' . $key . '<br />';
+        //print_r($file);
+        //exit;
+
+        //$file = $request->file('file');
+        //$file = $file[''.$file_index.''];
+
+        //if($request->hasFile('file')){
+         $image_filename = $file->getClientOriginalName();
+         $image_name = date('Ymd-His-').$image_filename;
+         $public_path = 'images/events/';
+         $destination = base_path() . '/public/' . $public_path;
+         $upload_success = $file->move($destination, $image_name); //move file to destination
+         if( $upload_success ) {
+          	//return Response::json('success', 200);
+            $success++;
+          } else {
+          	//return Response::json('error', 400);
+            $error++;
+          }
+        //}
+        $file_index++;
+      endforeach;
+
+      //return image list array name and path
+      if( $error > 0 ) {
+        return Response::json('error', 400);
+      } else {
+        return Response::json('success', 200);
+      }
+
+      /*
+      $input = $request->all();
+      print_r($input);
+      $rules = array(
+         'file' => 'image|max:3000',
+      );
+
+      $validation = Validator::make($input, $rules);
+      //$validation = $this->validate($input, $rules);
+
+      //dd($validation);
+      if ($validation->fails())
+      {
+       return Response::make($validation->errors->first(), 400);
+      }
+
+      //$file = $request->file('file');
+
+      if($request->hasFile('file')){
+       $image_filename = $request->file('file')->getClientOriginalName();
+       $image_name = date('Ymd-His-').$image_filename;
+       $public_path = 'images/events/';
+       $destination = base_path() . '/public/' . $public_path;
+       $upload_success = $request->file('file')->move($destination, $image_name); //move file to destination
+       if( $upload_success ) {
+        	return Response::json('success', 200);
+        } else {
+        	return Response::json('error', 400);
+        }
+      }
+      */
+  }
 }

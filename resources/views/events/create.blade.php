@@ -164,16 +164,23 @@
         <div class="panel panel-default">
 
           <!--
+          <div class="panel-heading">
+            <div class="panel-title">
+              แบรนด์สินค้า
+            </div>
+          </div>
+          -->
+
           <div class="row">
               <div class="col-sm-12 cs-brand">
                   <select name="brand" class="cs-select cs-skin-slide cs-select-brand" data-init-plugin="cs-select">
+                    <option value="">กรุณาเลือกแบรนด์สินค้า</option>
                     <option value="1">Big Camera</option>
                     <option value="2">World Camera</option>
                     <option value="3">Zoom Camera</option>
                   </select>
               </div>
           </div>
-          -->
 
           <div class="panel-heading">
             <div class="panel-title">
@@ -183,23 +190,24 @@
           <div class="panel-body">
             <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all">
               <div class="checkbox check-success">
-                <input type="checkbox" checked="checked" name="branch_all" value="1" class="branch_all" id="checkbox6">
-                <label class="label-master" for="checkbox6">ทุกสาขา</label>
+                <input type="checkbox" checked="checked" name="branch_all" value="1" class="branch_all" id="branch_all">
+                <label class="label-master" for="branch_all">ทุกสาขา</label>
               </div>
               <div class="clearfix"></div>
             </div>
 
             <div class="wizard-footer padding-5 branch_child">
-
-              @if($brand && $brand->branch)
-              @foreach($brand->branch as $branch)
-              <div class="checkbox check-warning">
-                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $branch->id }}" id="checkbox10">
-                <label for="checkbox10">{{ $branch->name }}</label>
+              <div class="list">
+                @if($branch)
+                @foreach($branch as $id => $name)
+                <div class="checkbox check-warning">
+                  <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $id }}" id="branch_{{ $id }}">
+                  <label for="branch_{{ $id }}">{{ $name }}</label>
+                </div>
+                @endforeach
+                <div class="clearfix"></div>
+                @endif
               </div>
-              @endforeach
-              <div class="clearfix"></div>
-              @endif
 
               <div class="form-group">
                   <span class="new-branch"><i class="fs-14 pg-plus"></i>เพิ่มสาขาใหม่</span>
@@ -237,8 +245,8 @@
           <div class="panel-heading">
             <div class="panel-title">
               <div class="checkbox check-danger">
-                <input type="checkbox" checked="checked" class="published_check" name="published_now" value="{{ date('Y-m-d') }}" id="checkbox11">
-                <label class="label-master" for="checkbox11">ขึ้นแสดงผลทันที</label>
+                <input type="checkbox" checked="checked" class="published_check" name="published_now" value="{{ date('Y-m-d') }}" id="published_check">
+                <label class="label-master" for="published_check">ขึ้นแสดงผลทันที</label>
               </div>
             </div>
           </div>

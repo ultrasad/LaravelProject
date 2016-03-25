@@ -9,7 +9,9 @@
     <div class="row">
       <div class="col-md-12">
         <h3 class='page-title'>เพิ่มข่าวโปรโมชั่น / Multiple Language</h3>
-        @include('errors.list')
+        <span class="error-reponse">
+          @include('errors.list')
+        </span>
       </div>
       <div class="col-md-8">
         <!-- START PANEL -->
@@ -94,7 +96,7 @@
               <!-- END PANEL -->
               <div class="form-group form-group-default required">
                 <label>Keyword (สูงสุด 20 คำ)</label>
-                <input class="tagsinput custom-tag-input" name="tag_list" type="text" value="hello World, quotes, inspiration" />
+                <input class="tagsinput custom-tag-input" name="tag_list" type="text" value="" />
               </div>
               <div class="form-group form-group-default form-group-area required">
                 <label>รายละเอียดแบบย่อ</label>
@@ -175,9 +177,11 @@
               <div class="col-sm-12 cs-brand">
                   <select name="brand" class="cs-select cs-skin-slide cs-select-brand" data-init-plugin="cs-select">
                     <option value="">กรุณาเลือกแบรนด์สินค้า</option>
-                    <option value="1">Big Camera</option>
-                    <option value="2">World Camera</option>
-                    <option value="3">Zoom Camera</option>
+                    @if($brand)
+                      @foreach($brand as $id => $brand)
+                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                      @endforeach
+                    @endif
                   </select>
               </div>
           </div>
@@ -199,13 +203,13 @@
             <div class="wizard-footer padding-5 branch_child">
               <div class="list">
                 @if($branch)
-                @foreach($branch as $id => $name)
-                <div class="checkbox check-warning">
-                  <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $id }}" id="branch_{{ $id }}">
-                  <label for="branch_{{ $id }}">{{ $name }}</label>
-                </div>
-                @endforeach
-                <div class="clearfix"></div>
+                  @foreach($branch as $id => $name)
+                  <div class="checkbox check-warning">
+                    <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $id }}" id="branch_{{ $id }}">
+                    <label for="branch_{{ $id }}">{{ $name }}</label>
+                  </div>
+                  @endforeach
+                  <div class="clearfix"></div>
                 @endif
               </div>
 

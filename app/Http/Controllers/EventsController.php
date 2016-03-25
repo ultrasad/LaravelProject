@@ -16,7 +16,8 @@ use App\Branch;
 use App\Gallery;
 use App\Location;
 
-use Illuminate\Http\Request;
+use Request;
+//use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
@@ -46,6 +47,10 @@ class EventsController extends Controller
   {
       $brand = Brand::select('id', 'name')->get();
       $branch = $brand->first()->branch_list;
+
+      //echo '<pre>';
+      //print_r($brand);
+      //exit;
 
       return view('events.create', compact('brand', 'branch'));
   }
@@ -158,15 +163,15 @@ class EventsController extends Controller
     exit;
   }
 
-  public function desc_upload(Request $request)
+  public function desc_upload()
   {
-      if($request->hasFile('file_upload')){
-        $image_filename = $request->file('file_upload')
+      if(Request::ajax() && Request::hasFile('file_upload')){
+        $image_filename = Request::file('file_upload')
                          ->getClientOriginalName();
         $image_name = date('Ymd-His-').$image_filename;
         $public_path = 'images/events/'. date('Y-m-d') .'/description/';
         $destination = base_path() . '/public/' . $public_path;
-        $upload_success = $request->file('file_upload')->move($destination, $image_name); //move file to destination
+        $upload_success = Request::file('file_upload')->move($destination, $image_name); //move file to destination
         if( $upload_success ) {
           return '/'. $public_path . $image_name;
         } else {

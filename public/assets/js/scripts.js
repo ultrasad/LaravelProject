@@ -163,8 +163,11 @@
                      _token = $('input[name=_token]').val();
                      var form = document.getElementById('my-awesome-dropzone-form');
                      data = new FormData(form);
+
                      //events.append("description_x", html);
                      //events.description = description;
+
+                     //$('#my-awesome-dropzone-form')[0].submit();
 
                      $.ajax({
                          url: '/events',
@@ -179,13 +182,19 @@
                          },
                          error: function(jqXHR, textStatus, errorThrown)
                          {
-                             // Handle errors here
-                             console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+                             $('.error-reponse').html(jqXHR.responseJSON);
+
+                             //console.log('=> ' + jqXHR);
+                             //console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+
+                             //Handle errors here
+                             //console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
                              //var resJson = JSON.stringify(jqXHR);
-                             console.log(JSON.stringify(jqXHR.responseJSON));
+                             //console.log(JSON.stringify(jqXHR.responseJSON));
                              // STOP LOADING SPINNER
                          }
                      });
+
                 }
                } //valid
             });

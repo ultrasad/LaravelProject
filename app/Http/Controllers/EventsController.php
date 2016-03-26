@@ -34,8 +34,13 @@ class EventsController extends Controller
   */
   public function index()
   {
-    $events = Event::published()->paginate(5);
-    return view('events.index', compact('events'));
+    $events = Event::published()->active()->brandEvent()->orderBy('events.created_at', 'desc')->paginate(10);
+
+    //echo '<pre>';
+    //print_r($events);
+    //exit;
+
+    return view('events.list', compact('events'));
   }
 
   /**

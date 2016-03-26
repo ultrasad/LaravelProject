@@ -11,6 +11,11 @@ class Brand extends Model
   //Mass Assignment
   protected $fillable = ['name', 'logo_image', 'logo_cover', 'slogan', 'detail', 'category', 'facebook', 'twitter', 'line_officail', 'youtube', 'approve_status']; //Whitelist
 
+  public function events()
+  {
+    return $this->hasMany('App\Event');
+  }
+
   public function branch()
   {
     return $this->belongsToMany('App\Branch', 'brand_branch')

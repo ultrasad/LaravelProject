@@ -30,8 +30,8 @@
         var _this = this;
 
         // TODO: transition disabled for mobile (animation starts after touch end)
-    
-        // Dependency: stepsForm 
+
+        // Dependency: stepsForm
         if (typeof stepsForm != 'undefined') {
             this.$status.length && new stepsForm(this.$status.get(0), {
                 onSubmit: function(form) {
@@ -49,7 +49,7 @@
             //var wh = $(window).height();
             this.$cover.length && this.$cover.css('height', 400);
         }
-       
+
         setTimeout(function() {
             this.$day.length && this.$day.isotope({
                 "itemSelector": this.options.item,
@@ -63,7 +63,7 @@
 
     }
 
-    // Set container width in order to align it horizontally. 
+    // Set container width in order to align it horizontally.
 
     Social.prototype.setContainerWidth = function() {
         var currentColumns = Math.floor(($('body').width() - 100) / this.colWidth);

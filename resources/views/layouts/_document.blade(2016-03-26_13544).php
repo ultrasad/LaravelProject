@@ -14,9 +14,111 @@
         <!-- START PAGE CONTENT -->
         <!-- <div class="content sm-gutter"> -->
         <div class="content">
-          <!-- START ROW -->
-          @yield('content')
-          <!-- END ROW -->
+          <!-- START CONTAINER FLUID -->
+          <div class="container-fluid padding-25 sm-padding-10">
+            <!-- START ROW -->
+            @yield('content')
+            <!-- END ROW -->
+            {{--
+            <div class="row">
+              <div class="col-md-4 col-lg-3 col-xlg-2">
+                xxx
+              </div>
+              <div class="col-md-8 col-lg-5 col-xlg-6 m-b-10">
+                yyy
+              </div>
+              <div class="col-md-6 col-lg-4 hidden-xlg m-b-10">
+                zzz hidden xlg
+              </div>
+              <div class="col-md-6 hidden-lg visible-md visible-xlg col-xlg-4 m-b-10">
+                aaa hidden lg
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8 m-b-10">
+                xxxx
+              </div>
+              <div class="col-md-4 m-b-10">
+                yyyy
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 visible-lg hidden-xlg">
+               3xxxx
+              </div>
+              <div class="col-md-4 col-lg-3 col-xlg-3 m-b-10">
+                3yyyy
+              </div>
+              <div class="col-xlg-2 visible-xlg ">
+                <div class="row">
+                  <div class="col-xlg-12">
+                    <!-- START WIDGET widget_socialPostTile-->
+                    <div class="panel no-border  no-margin">
+                      <div class="padding-15">
+                        <div class="item-header clearfix">
+                          <div class="thumbnail-wrapper d32 circular">
+                            <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="">
+                          </div>
+                          <div class="inline m-l-10">
+                            <p class="no-margin">
+                              <strong>Anne Simons</strong>
+                            </p>
+                            <p class="no-margin hint-text">Shared a link
+                              <span class="location semi-bold"><i class="fa fa-map-marker"></i> NY center</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr class="no-margin">
+                      <div class="padding-15">
+                        <p>Inspired by : good design is obvious, great design is transparent</p>
+                        <div class="hint-text">via themeforest</div>
+                      </div>
+                      <div class="relative">
+                        <ul class="buttons pull-top top-right list-inline p-r-10 p-t-10">
+                          <li>
+                            <a class="text-white" href="#"><i class="fa fa-expand"></i></a>
+                          </li>
+                          <li>
+                            <a class="text-white" href="#"><i class="fa fa-heart-o"></i></a>
+                          </li>
+                        </ul>
+                        <div class="widget-19-post no-overflow">
+                          <img src="assets/img/social-post-image.png" class="block center-margin relative" alt="Post">
+                        </div>
+                      </div>
+                      <div class="padding-15">
+                        <div class="hint-text pull-left">few seconds ago</div>
+                        <ul class="list-inline pull-right no-margin">
+                          <li><a class="text-master hint-text" href="#">5,345 <i class="fa fa-comment-o"></i></a>
+                          </li>
+                          <li><a class="text-master hint-text" href="#">23K <i class="fa fa-heart-o"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                    <!-- END WIDGET -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-xlg-2 visible-xlg ">
+                <div class="row">
+                  <div class="col-xlg-12">
+                    3zaaaa
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 col-lg-5 col-xlg-5">
+                <!-- START WIDGET widget_weatherWidget-->
+                3xbbbbb
+                <!-- END WIDGET -->
+              </div>
+            </div>
+            --}}
+
+          </div>
+          <!-- END CONTAINER FLUID -->
         </div>
         <!-- END PAGE CONTENT -->
         @include('includes.footer')

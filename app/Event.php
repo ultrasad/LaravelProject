@@ -30,9 +30,63 @@ class Event extends Model
       $query->where('published_at', '>', Carbon::now());
     }
 
+    public function getEndDateAttribute($timestamp)
+    {
+      // Quick month array
+      $m = array("01"=>"ม.ค.",
+             "02"=>"ก.พ.",
+             "03"=>"มี.ค.",
+             "04"=>"เม.ย.",
+             "05"=>"พ.ค.",
+             "06"=>"มิ.ย.",
+             "07"=>"ก.ค.",
+             "08"=>"ส.ค.",
+             "09"=>"ก.ย.",
+             "10"=>"ต.ค.",
+             "11"=>"พ.ย.",
+             "12"=>"ธ.ค."
+      );
+      // flexible:
+      //return ( ! starts_with($timestamp, '0000')) ? $this->createFromFormat('Y-m-d', $timestamp) : 'None';
+      //return (!starts_with($timestamp, '0000')) ? date('Y-m-d', strtotime($timestamp)) : 'ไม่ระบุ';
+      if(!starts_with($timestamp, '0000')) {
+        $date = date('Y-m-d', strtotime($timestamp));
+        return ((int) substr($date, 8)).' '.$m[substr($date, 5, -3)].' '.(substr($date, 2, -6)+43);
+      } else {
+        return 'ไม่ระบุ';
+      }
+      // or explicit:
+      // return ($timestamp !== '0000-00-00 00:00:00') ? $this->asDateTime($timestamp) : 'None';
+    }
+
+    public function scopeSetLocal($query)
+    {
+      Carbon::setLocale('th');
+    }
+
+    /**
+    * Scope a query to only include active events.
+    *
+    * @return \Illuminate\Database\Eloquent\Builder
+    */
+    public function scopeActive($query)
+    {
+       return $query->where('active', 'Y');
+    }
+
+    public function scopeBrandEvent($query)
+    {
+      return $query->leftJoin('brand','brand.id','=','events.brand_id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo('App\Brand');
     }
 
     public function tags()

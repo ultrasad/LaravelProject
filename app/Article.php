@@ -14,7 +14,7 @@ class Article extends Model
     protected $dates = ['published_at']; //register datetime to carbon object
 
     //Mutators, convert date to subday
-    public function setPublishedAtAtribute($ddate)
+    public function setPublishedAtAtribute($date)
     {
       $this->attributes['published_at'] = Carbon::parse($date)->subDay();
     }

@@ -3,6 +3,7 @@
     'use strict';
 
     $(document).ready(function() {
+
         $.fn.exists = function(){return this.length>0;}
 
     		//$(document).unbind(".mine");
@@ -178,7 +179,8 @@
                          processData: false,
                          contentType: false,
                          success: function (resp) {
-                           console.log('resp => ' + resp);
+                           console.log('ajax response => ' + resp);
+                           window.location.href = base_url + '/events';
                          },
                          error: function(jqXHR, textStatus, errorThrown)
                          {
@@ -215,7 +217,10 @@
               if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
                 var _this = this;
                 // Remove all files
-                _this.removeAllFiles();
+                //_this.removeAllFiles();
+
+                //console.log('drop response => ' + _this);
+                window.location.href = base_url + '/events';
               }
             });
 
@@ -400,6 +405,41 @@ function sendFile(file,editor,welEditable)
        }
     });
 }
+
+/*
+    Look for data-image attribute and apply those
+    images as CSS background-image
+*/
+$('.item-slideshow > div').each(function() {
+    var img = $(this).data('image');
+    $(this).css({
+        'background-image': 'url(' + img + ')',
+        'background-repeat': 'no-repeat',
+        'background-size': 'contain',
+        'background-position': 'center'
+    })
+});
+
+/*
+    Touch enabled slideshow for gallery item images using owlCarousel
+    www.owlcarousel.owlgraphic.com
+*/
+$(".item-slideshow").owlCarousel({
+    /*items: 1,
+    nav: true,
+    navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+    dots: true*/
+    items:1,
+    nav: false,
+    //navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+    //loop:true,
+    //center:true,
+    //margin:10,
+    dots: false,
+    URLhashListener:true,
+    //autoplayHoverPause:true,
+    //startPosition: 'URLHash'
+});
 
 //google map application
 var map;

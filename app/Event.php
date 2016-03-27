@@ -30,6 +30,11 @@ class Event extends Model
       $query->where('published_at', '>', Carbon::now());
     }
 
+    public function getGalleryListAttribute()
+    {
+        return $this->gallery->lists('image');
+    }
+
     public function getEndDateAttribute($timestamp)
     {
       // Quick month array

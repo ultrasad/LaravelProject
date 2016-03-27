@@ -15,6 +15,8 @@
 <script type="text/javascript" src="{{ URL::asset('assets/switchery/js/switchery.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-isotope/isotope.pkgd.min.js') }}" ></script>
 <script type="text/javascript" src="{{ URL::asset('assets/codrops-stepsform/js/stepsForm.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/owl-carousel/owl.carousel.min.js') }}"></script>
+<!--<script type="text/javascript" src="{{ URL::asset('assets/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>-->
 <!-- END VENDOR JS -->
 <!-- BEGIN CORE TEMPLATE JS -->
 <!-- <script type="text/javascript" src="{{ URL::asset('pages/js/pages.min.js') }}"></script> -->

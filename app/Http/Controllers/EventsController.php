@@ -34,7 +34,7 @@ class EventsController extends Controller
   */
   public function index()
   {
-    $events = Event::published()->active()->brandEvent()->orderBy('events.created_at', 'desc')->paginate(10);
+    $events = Event::published()->active()->brandEvent()->orderBy('events.created_at', 'desc')->paginate(15);
 
     //echo '<pre>';
     //print_r($events);
@@ -146,6 +146,7 @@ class EventsController extends Controller
             $images[] = Gallery::firstOrCreate(array('name' => $image_name, 'image' => $public_path . $image_name))->id;
           } else {
             $error++;
+            //echo $upload_success . '<br />';
           }
           $file_index++;
       }
@@ -167,6 +168,40 @@ class EventsController extends Controller
     echo '-- exit --';
     exit;
   }
+
+  /**
+  * Display the speified resource.
+  *
+  *@param int $id
+  *@return Response
+  */
+  public function show($slug)
+  {
+      if(is_numeric($slug)) {
+          $event = Event::findOrFail($slug);
+          return redirect()->action('EventsController@show', ['slug' => $event->url_slug]);
+      }
+
+      //$event = Event::with('user', 'category')->where('slug', $slug)->first();
+      $event = Event::where('url_slug', $slug)->first();
+
+      //echo '<pre>';
+      //print_r($event;
+      //exit;
+      return view('events.show', compact('event'));
+  }
+  /*
+  public function show($id)
+  {
+    //echo '=> ' . $id;
+
+    $event = Event::find($id);
+    if(empty($event))
+      abort(404);
+
+    return view('events.show', compact('event'));
+  }
+  */
 
   public function desc_upload()
   {

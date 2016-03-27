@@ -57,7 +57,7 @@
                   <a href="#"><i class="fa fa-heart-o"></i></a>
                 </li>
               </ul>
-              <img src="{{ URL::asset('assets/img/social-post-image.png') }}" class="block center-margin relative" alt="Social Post">
+              <img src="{{ URL::asset('assets/img/social-post-image.png') }}" class="block center-margin relative" alt="Social Post" />
             </div>
             <div class="card-description">
               <p>Inspired by : good design is obvious, great design is transparent</p>
@@ -82,7 +82,7 @@
               <div class="padding-15">
                 <div class="item-header clearfix">
                   <div class="thumbnail-wrapper d32 circular">
-                    <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="">
+                    <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="{{ $event->brand_name }}" />
                   </div>
                   <div class="inline m-l-10">
                     <p class="no-margin">
@@ -98,11 +98,11 @@
               <hr class="no-margin">
               <div class="relative">
                 <div class="no-overflow">
-                  <img src="{{ URL::asset($event->image) }}" class="block center-margin relative" alt="{{ $event->title }}">
+                  <img src="{{ URL::asset($event->image) }}" class="block center-margin relative" alt="{{ $event->title }}" />
                 </div>
               </div>
               <div class="padding-15">
-                <strong>{{ $event->title }} {{ $event->id }}</strong>
+                <strong><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}">{{ $event->title }}</a></strong>
                 <p>{{ $event->brief }}</p>
                 <div class="hint-text">via themeforest</div>
               </div>

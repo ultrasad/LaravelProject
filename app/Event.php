@@ -35,6 +35,11 @@ class Event extends Model
         return $this->gallery->lists('image');
     }
 
+    public function getCategoryFirstAttribute()
+    {
+        return $this->category->first();
+    }
+
     public function getEndDateAttribute($timestamp)
     {
       // Quick month array
@@ -102,7 +107,7 @@ class Event extends Model
 
     public function category()
     {
-      return $this->belongsToMany('App\Category')
+      return $this->belongsToMany('App\Category', 'event_category', 'event_id', 'cate_id')
                   ->withTimestamps(); //update created app, updated app relationship table
     }
 

@@ -159,6 +159,11 @@ div.cs-select-brand {
     position: relative;
     width: 80px;
 }
+
+.thumb .synced {
+  border-color: #00afea;
+}
+
 /*
 .button.secondary.url {
     background-color: #008cba;

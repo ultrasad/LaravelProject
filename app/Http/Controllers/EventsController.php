@@ -183,10 +183,13 @@ class EventsController extends Controller
       }
 
       //$event = Event::with('user', 'category')->where('slug', $slug)->first();
-      $event = Event::where('url_slug', $slug)->first();
+      $event = Event::where('url_slug', $slug)->brandEvent()->first();
+
+      //echo $event->category_first->name;
+      //exit;
 
       //echo '<pre>';
-      //print_r($event;
+      //print_r($event->category_first->name);
       //exit;
       return view('events.show', compact('event'));
   }

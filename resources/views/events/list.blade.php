@@ -88,7 +88,7 @@
                     <p class="no-margin">
                       <strong>{{ $event->brand_name }}</strong>
                     </p>
-                    <p class="no-margin hint-text">Shared a link</p>
+                    <p class="no-margin hint-text">หมวดหมู่แบรนด์</p>
                   </div>
                   <div class="pull-top pull-right list-inline">
                     <i class="pg-map"></i>

@@ -21,7 +21,7 @@ class CreateEventsTable extends Migration
           $table->text('description');
           $table->date('start_date');
           $table->date('end_date');
-          $table->enum('publich_now', ['Y', 'N'])->default('N');
+          $table->enum('active', ['Y', 'N'])->default('Y');
           $table->date('published_at')->nullable();
           $table->timestamps(); //auto crete created_at, updated_at
           $table->timestamp('deleted_at')->nullable();

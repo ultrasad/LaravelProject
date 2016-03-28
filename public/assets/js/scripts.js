@@ -410,21 +410,28 @@ function sendFile(file,editor,welEditable)
     Look for data-image attribute and apply those
     images as CSS background-image
 */
-$('.item-slideshow > div').each(function() {
+$('.item-slideshow > div').each(function(index) {
     var img = $(this).data('image');
+    //console.log(img);
+    var html = $("<a class='button secondary url' href='#"+index+"'>").append($("<div class='gallery-item-thumb owl-item m-r-10'>").css({
+        'background-image': 'url(' + img + ')',
+        'background-size': 'cover',
+        'background-position': 'center'
+    }));
+    $('.thumb > div').append(html);
     $(this).css({
         'background-image': 'url(' + img + ')',
         'background-repeat': 'no-repeat',
         'background-size': 'contain',
         'background-position': 'center'
-    })
+    });
 });
 
 /*
     Touch enabled slideshow for gallery item images using owlCarousel
     www.owlcarousel.owlgraphic.com
 */
-$(".item-slideshow").owlCarousel({
+var owl = $(".item-slideshow").owlCarousel({
     /*items: 1,
     nav: true,
     navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
@@ -437,8 +444,20 @@ $(".item-slideshow").owlCarousel({
     //margin:10,
     dots: false,
     URLhashListener:true,
+    onInitialized: loaded,
     //autoplayHoverPause:true,
     //startPosition: 'URLHash'
+});
+
+function loaded(e){
+  $('.thumb').find(".owl-item").eq(0).addClass('synced');
+}
+
+owl.on('changed.owl.carousel', function(e) {
+  var current = e.item.index;
+  var thumbnail = $('.thumb');
+  thumbnail.find('.owl-item').removeClass('synced');
+  thumbnail.find(".owl-item").eq(current).addClass('synced');
 });
 
 //google map application

@@ -495,6 +495,7 @@ function initialize() {
             $('.event').on('click', '.place', function(e){
               var index = $(this).data('index');
               mapObj.event.trigger(markers[index], 'click');
+              return false;
             });
           },
           error: function(jqXHR, textStatus, errorThrown)

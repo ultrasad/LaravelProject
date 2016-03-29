@@ -49,7 +49,7 @@
     </div>
     <div class="col-md-5">
       <div class="panel-body">
-        <div class="no-margin fs-15 hint-text">CATEGORY :: {{ isset($event->category_first->name) ? $event->category_first->name : 'ไม่ระบุ' }}</div>
+        <div class="no-margin fs-15 hint-text">Category :: {{ isset($event->category_first->name) ? $event->category_first->name : 'ไม่ระบุ' }}</div>
         <!-- START PANEL -->
         <h2 class="text-master">{{ $event->title }}</h2>
         <p>{{ $event->brief }}</p>
@@ -80,19 +80,20 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel-body p-t-0">
-        <u><b>{{ $event->brand_name }} สาขาที่ร่วมรายการ</b></u>
+        <u><b>{{ $event->brand_name }} สาขาที่ร่วมรายการ</b></u><span class="event">
         @if(!empty($branchs))
           {!! implode(', ', $branchs) !!}
         @else
           <span class="text-danger">ไม่ระบุสาขา</span>
         @endif
+      </span>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="panel-body">
-        <div id="map_canvas" class="map-canvas"></div>
+        <div id="map_canvas" class="map-canvas map-show"></div>
         <div class="row">
           <input name="location_lat" type="hidden" id="location_lat" value="0" />
           <input name="location_lon" type="hidden" id="location_lon" value="0" />
@@ -103,6 +104,7 @@
   </div>
   <!-- END PLACE PAGE CONTENT HERE -->
 </div>
+<input type="hidden" name="event_id" class="event_id" value="{{ $event->id }}" />
 <!--</form>-->
 <!-- END CONTAINER FLUID -->
 @stop

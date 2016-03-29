@@ -186,12 +186,12 @@ class EventsController extends Controller
       //$event = Event::where('url_slug', $slug)->eventBrand()->first();
       $event = Event::where('url_slug', $slug)->first();
       $branchs = array();
-      $locations = array();
-      foreach($event->branch->all() as $branch){
+      //$locations = array();
+      foreach($event->branch->all() as $index => $branch){
         //$branchs[]= link_to('brand/'.$event->brand_id . '/' . $branch, $branch, array('alt' => $branch));
         //$branchs[]= link_to('#' . $branch, $branch, array('alt' => $branch));
-        $branchs[]= link_to('#' . $branch->name, $branch->name, array('alt' => $branch->name));
-        $locations[] = array('name' => $branch->name, 'lat' => $branch->lat, 'lon' => $branch->lon);
+        $branchs[]= link_to('#' . $branch->name, $branch->name, array('alt' => $branch->name, 'data-index' => $index, 'class' => 'place'));
+        //$locations[] = array('name' => $branch->name, 'lat' => $branch->lat, 'lon' => $branch->lon);
       }
 
       //if(!empty($locations)){
@@ -219,11 +219,19 @@ class EventsController extends Controller
       //exit;
 
       //echo '<pre>';
-      //print_r($event->branch_list);
+      //print_r($event->brand->category);
       //exit;
 
       return view('events.show', compact('event', 'branchs', 'locations'));
   }
+
+  public function locations($event)
+  {
+    $event = Event::findOrFail($event);
+    echo json_encode($event->branch->all());
+  }
+
+
   /*
   public function show($id)
   {

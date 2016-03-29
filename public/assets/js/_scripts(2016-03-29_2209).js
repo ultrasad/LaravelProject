@@ -120,6 +120,9 @@
                  // do something only if/when form is valid
                  // like process the dropzone queue HERE instead
                  // then use .ajax() OR .submit()
+
+                 //$(form).submit();
+                 //$('#my-awesome-dropzone-form')[0].submit();
              }
         });
 
@@ -134,8 +137,13 @@
           maxFilesize: 2, // MB
           acceptedFiles: "image/*",
           addRemoveLinks: true,
+          //previewTemplate: previewTemplate,
+          //autoQueue: false, // Make sure the files aren't queued until manually added
           previewsContainer: "#previews", // Define the container to display the previews
           clickable: ".dropzone-file-previews",
+          //createImageThumbnails: false,
+          //clickable: false,
+          //clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
 
           // The setting up of the dropzone
           init: function() {
@@ -160,6 +168,11 @@
                      var form = document.getElementById('my-awesome-dropzone-form');
                      data = new FormData(form);
 
+                     //events.append("description_x", html);
+                     //events.description = description;
+
+                     //$('#my-awesome-dropzone-form')[0].submit();
+
                      $.ajax({
                          url: '/events',
                          headers: {'X-CSRF-TOKEN': _token},
@@ -175,6 +188,15 @@
                          error: function(jqXHR, textStatus, errorThrown)
                          {
                              $('.error-reponse').html(jqXHR.responseJSON);
+
+                             //console.log('=> ' + jqXHR);
+                             //console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+
+                             //Handle errors here
+                             //console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+                             //var resJson = JSON.stringify(jqXHR);
+                             //console.log(JSON.stringify(jqXHR.responseJSON));
+                             // STOP LOADING SPINNER
                          }
                      });
 
@@ -341,6 +363,7 @@
         });
 
         if($('#map_canvas').exists()){
+          console.log('map..');
           $("<script/>", {
             "type": "text/javascript",
             src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&zoom=false&language=th&hl=th&callback=initialize&libraries=places"
@@ -415,11 +438,21 @@ $('.item-slideshow > div').each(function(index) {
     www.owlcarousel.owlgraphic.com
 */
 var owl = $(".item-slideshow").owlCarousel({
+    /*items: 1,
+    nav: true,
+    navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+    dots: true*/
     items:1,
     nav: false,
+    //navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+    //loop:true,
+    //center:true,
+    //margin:10,
     dots: false,
     URLhashListener:true,
     onInitialized: loaded,
+    //autoplayHoverPause:true,
+    //startPosition: 'URLHash'
 });
 
 function loaded(e){
@@ -455,6 +488,8 @@ function initialize() {
     var infowindow = new mapObj.InfoWindow();
     var marker = new mapObj.Marker({
       map: map,
+      //draggable:true,
+      //title:"คลิกลากเพื่อหาตำแหน่งจุดที่ต้องการ!",
       anchorPoint: new mapObj.Point(0, -29)
     });
 
@@ -462,6 +497,7 @@ function initialize() {
     var address = '';
     var point = '';
 
+    //var locations = $.parseJSON("{{ json_encode($locations) }}");
     if($('.event_id').exists()){
       $.ajax({
           url: '/events/locations/'+$('.event_id').val(),
@@ -472,6 +508,8 @@ function initialize() {
           success: function (resp) {
             var locations = $.parseJSON(resp);
             var markers = [];
+            //var contents = [];
+            //var infowindows = [];
 
             $.each(locations, function(k, v){
                 var markerID = v.id;
@@ -486,26 +524,87 @@ function initialize() {
                 });
 
                 var contents = '<div class="popup_container"><strong>'+ markerName +'</strong></div>';
+                /*var infowindows = new mapObj.InfoWindow({
+                    content: contents,
+                    //maxWidth: 300
+                });*/
                 infowindow.setContent(contents);
 
                 mapObj.event.addListener(markers[k], 'click', function() {
+                    //console.log(this.index); // this will give correct index
+                    //console.log(k); //this will always give 10 for you
                     infowindow.open(map,markers[k]);
                     map.panTo(markers[k].getPosition());
                 });
+
+              /*
+               markers[k].index = k; //add index property
+               contents[k] = '<div class="popup_container"><strong>'+ markerName +'</strong></div>';
+
+               infowindows[k] = new mapObj.InfoWindow({
+                   content: contents[k],
+                   //maxWidth: 300
+               });
+
+               mapObj.event.addListener(markers[k], 'click', function() {
+                   console.log(this.index); // this will give correct index
+                   console.log(k); //this will always give 10 for you
+                   infowindows[this.index].open(map,markers[this.index]);
+                   map.panTo(markers[this.index].getPosition());
+               });
+               */
+
+                //console.log(markerName + ' => ' + markerLat + ' => '+ markerLng);
             });
+
+            /*$('.event_place a').each(function() {
+               $(document).on('click', function() {
+                   // find out which link in the array was clicked (1st, 2nd etc)
+                   var intLinkClicked = $('#locations h3 a').index($(this));
+                   google.maps.event.trigger(markers[intLinkClicked], 'click');
+               });
+            });*/
 
             $('.event').on('click', '.place', function(e){
               var index = $(this).data('index');
               mapObj.event.trigger(markers[index], 'click');
+              //console.log('index => ' + index);
             });
+
+              //console.log('response => ' + resp);
+              /*$.each(resp.subramos, function (key, value) {
+                  $('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
+              });*/
           },
           error: function(jqXHR, textStatus, errorThrown)
           {
+              // Handle errors here
               console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+              //var resJson = JSON.stringify(jqXHR);
               console.log(JSON.stringify(jqXHR.responseJSON));
+              // STOP LOADING SPINNER
           }
       });
     }
+
+    /*
+    for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+    }
+    */
+
+    /*mapObj.event.addListener(marker, 'dragend', function() {
+        point = marker.getPosition();
+        map.panTo(point);
+        $("#location_lat").val(point.lat());
+        $("#location_lon").val(point.lng());
+        $("#location_zoom").val(map.getZoom());
+    });*/
 
     if($('#location_name').exists()){ //search box
       var input = document.getElementById('location_name');

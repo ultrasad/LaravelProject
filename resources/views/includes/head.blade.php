@@ -12,6 +12,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta content="" name="description" />
 <meta content="" name="author" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/pace/pace-theme-flash.css') }}" /> -->
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}" />

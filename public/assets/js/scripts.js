@@ -485,10 +485,8 @@ function initialize() {
                     title:markerName
                 });
 
-                var contents = '<div class="popup_container"><strong>'+ markerName +'</strong></div>';
-                infowindow.setContent(contents);
-
                 mapObj.event.addListener(markers[k], 'click', function() {
+                    infowindow.setContent('<div class="popup_container"><strong>'+ markerName +'</strong></div>');
                     infowindow.open(map,markers[k]);
                     map.panTo(markers[k].getPosition());
                 });

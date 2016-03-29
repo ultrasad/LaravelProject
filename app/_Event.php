@@ -75,8 +75,28 @@ class Event extends Model
       $enddate = new Carbon($this->end_date->addHour(23)->addMinute(59)->addSeconds(59));
       $current = Carbon::now();
       $diff = $current->diffInDays($enddate, false);
+      //$difference = ($enddate->diff($current)->days < 1) ? 'today' : $enddate->diffForHumans($current);
+      //$difference = $current->diffForHumans($enddate);
       $difference = ($diff < 1) ? 'หมดโปรโมชั่นแล้ว!!' : 'เหลือเวลาอีก : ' . $diff . ' วัน';
+      //$difference = $current->diffInDays($enddate, false);
+
+
+      //$current = Carbon::now();
+      //$dt      = Carbon::now();
+
+      //$dt = $dt->subHours(6);
+      //echo $dt->diffInHours($current);         // -6
+      //echo $current->diffInHours($dt);         // 6
+
+      //$future = $current->addMonth();
+      //$past   = $current->subMonths(2);
+      //return $current->diffInDays($future, false);      // 31
+      //return $current->diffInDays($past);        // -62
       return $difference;
+
+      //$dt = Carbon::create(2012, 1, 31, 0);
+      //$dt->diffInDays($dt->copy()->addMonth());
+      //return $dt->diffInDays($dt->copy()->subMonth(), false);
     }
 
     public function getEndDateThaiAttribute()
@@ -89,6 +109,35 @@ class Event extends Model
     {
       //return $this->convertDate($this->getAttribute('start_date'));
       return $this->convertDate($this->start_date);
+    }
+
+    public function _getEndDateAttribute($timestamp)
+    {
+      // Quick month array
+      $m = array("01"=>"ม.ค.",
+             "02"=>"ก.พ.",
+             "03"=>"มี.ค.",
+             "04"=>"เม.ย.",
+             "05"=>"พ.ค.",
+             "06"=>"มิ.ย.",
+             "07"=>"ก.ค.",
+             "08"=>"ส.ค.",
+             "09"=>"ก.ย.",
+             "10"=>"ต.ค.",
+             "11"=>"พ.ย.",
+             "12"=>"ธ.ค."
+      );
+      // flexible:
+      //return ( ! starts_with($timestamp, '0000')) ? $this->createFromFormat('Y-m-d', $timestamp) : 'None';
+      //return (!starts_with($timestamp, '0000')) ? date('Y-m-d', strtotime($timestamp)) : 'ไม่ระบุ';
+      if(!starts_with($timestamp, '0000')) {
+        $date = date('Y-m-d', strtotime($timestamp));
+        return ((int) substr($date, 8)).' '.$m[substr($date, 5, -3)].' '.(substr($date, 2, -6)+43);
+      } else {
+        return 'ไม่ระบุ';
+      }
+      // or explicit:
+      // return ($timestamp !== '0000-00-00 00:00:00') ? $this->asDateTime($timestamp) : 'None';
     }
 
     public function scopeSetLocal($query)

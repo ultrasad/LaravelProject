@@ -482,6 +482,10 @@ function initialize() {
         $("#location_zoom").val(map.getZoom());
     });
 
+    var input = document.getElementById('location_name');
+    var autocomplete = new mapObj.places.Autocomplete(input);
+    autocomplete.bindTo('load', map);
+
     var infowindow = new mapObj.InfoWindow();
     var marker = new mapObj.Marker({
       map: map,
@@ -494,65 +498,44 @@ function initialize() {
     var address = '';
     var point = '';
 
-    //var locations = $.parseJSON("{{ json_encode($locations) }}");
-    var locations  = "<?php echo json_encode($locations) ?>";
-    console.log('=> ' + locations.toSource());
-
-    /*
-    for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1],coords[0]);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
-    }
-    */
-
-    /*mapObj.event.addListener(marker, 'dragend', function() {
+    mapObj.event.addListener(marker, 'dragend', function() {
         point = marker.getPosition();
         map.panTo(point);
         $("#location_lat").val(point.lat());
         $("#location_lon").val(point.lng());
         $("#location_zoom").val(map.getZoom());
-    });*/
+    });
 
-    if($('#location_name').exists()){ //search box
-      var input = document.getElementById('location_name');
-      var autocomplete = new mapObj.places.Autocomplete(input);
-      autocomplete.bindTo('load', map);
+    autocomplete.addListener('place_changed', function() {
+      infowindow.close();
+      marker.setVisible(false);
+      place = autocomplete.getPlace();
+      if (!place.geometry) {
+        window.alert("Autocomplete's returned place contains no geometry");
+        return;
+      } else {
+        map.setZoom(17);
+        map.setCenter(place.geometry.location);
+        //console.log('set center');
+      }
 
-      autocomplete.addListener('place_changed', function() {
-        infowindow.close();
-        marker.setVisible(false);
-        place = autocomplete.getPlace();
-        if (!place.geometry) {
-          window.alert("Autocomplete's returned place contains no geometry");
-          return;
-        } else {
-          map.setZoom(17);
-          map.setCenter(place.geometry.location);
-          //console.log('set center');
-        }
+      // If the place has a geometry, then present it on a map.
+      if (place.geometry.viewport){
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);  // Why 17? Because it looks good.
+      }
 
-        // If the place has a geometry, then present it on a map.
-        if (place.geometry.viewport){
-          map.fitBounds(place.geometry.viewport);
-        } else {
-          map.setCenter(place.geometry.location);
-          map.setZoom(17);  // Why 17? Because it looks good.
-        }
+      marker.setPosition(place.geometry.location);
+      marker.setVisible(true);
 
-        marker.setPosition(place.geometry.location);
-        marker.setVisible(true);
+      $("#location_lat").val(place.geometry.location.lat());
+      $("#location_lon").val(place.geometry.location.lng());
 
-        $("#location_lat").val(place.geometry.location.lat());
-        $("#location_lon").val(place.geometry.location.lng());
-
-        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-        infowindow.open(map, marker);
-      });
-    }
+      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+      infowindow.open(map, marker);
+    });
 
     mapObj.event.addListener(marker, 'click', function() {
       infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);

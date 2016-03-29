@@ -85,7 +85,7 @@
               </div>
 
               <div class="form-group">
-                <div id="map_canvas" style="height: 400px; width: 100%;"></div>
+                <div id="map_canvas" class="map-canvas"></div>
                 <div class="row">
                   <input name="location_lat" type="hidden" id="location_lat" value="0" />
                   <input name="location_lon" type="hidden" id="location_lon" value="0" />

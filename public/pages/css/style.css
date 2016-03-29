@@ -39,6 +39,10 @@
   margin-bottom: 0;
 }
 
+.map-canvas {
+  height: 400px; width: 100%;
+}
+
 /*
 .form-group-map {
   margin-bottom: 0px;
@@ -193,10 +197,10 @@ div.cs-select-brand {
     margin-left: 0;
   }
 
-  .event-gallery {
+  /*.event-gallery {
     margin-left: 15px;
     margin-right: 15px;
-  }
+  }*/
 }
 
 /*

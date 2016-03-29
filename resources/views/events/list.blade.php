@@ -107,7 +107,7 @@
                 <div class="hint-text">via themeforest</div>
               </div>
               <div class="padding-15">
-                <div class="hint-text pull-left">ถึงวันที่ : {{ $event->end_date }}</div>
+                <div class="hint-text pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>
                 <ul class="list-inline pull-right no-margin">
                   <li><a class="text-master hint-text" href="#">5,345 <i class="fa fa-comment-o"></i></a>
                   </li>

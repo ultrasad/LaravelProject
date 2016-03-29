@@ -34,7 +34,7 @@ class EventsController extends Controller
   */
   public function index()
   {
-    $events = Event::published()->active()->brandEvent()->orderBy('events.created_at', 'desc')->paginate(15);
+    $events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->paginate(15);
 
     //echo '<pre>';
     //print_r($events);
@@ -183,7 +183,33 @@ class EventsController extends Controller
       }
 
       //$event = Event::with('user', 'category')->where('slug', $slug)->first();
-      $event = Event::where('url_slug', $slug)->brandEvent()->first();
+      //$event = Event::where('url_slug', $slug)->eventBrand()->first();
+      $event = Event::where('url_slug', $slug)->first();
+      $branchs = array();
+      $locations = array();
+      foreach($event->branch->all() as $branch){
+        //$branchs[]= link_to('brand/'.$event->brand_id . '/' . $branch, $branch, array('alt' => $branch));
+        //$branchs[]= link_to('#' . $branch, $branch, array('alt' => $branch));
+        $branchs[]= link_to('#' . $branch->name, $branch->name, array('alt' => $branch->name));
+        $locations[] = array('name' => $branch->name, 'lat' => $branch->lat, 'lon' => $branch->lon);
+      }
+
+      //if(!empty($locations)){
+        //$locations = json_encode($locations);
+      //}
+
+      //echo '<pre>';
+      //print_r($branchs_location);
+      //foreach($event->brand->all() as $brand){
+        //echo ($brand->name) . '<br />';
+      //}
+      //echo $branchs_location;
+      //exit;
+
+      //echo '<pre>';
+      //print_r($branchs);
+      //echo implode(', ', $branchs);
+      //exit;
 
       //echo $event->category_first->name;
       //exit;
@@ -191,7 +217,12 @@ class EventsController extends Controller
       //echo '<pre>';
       //print_r($event->category_first->name);
       //exit;
-      return view('events.show', compact('event'));
+
+      //echo '<pre>';
+      //print_r($event->branch_list);
+      //exit;
+
+      return view('events.show', compact('event', 'branchs', 'locations'));
   }
   /*
   public function show($id)

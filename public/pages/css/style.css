@@ -181,6 +181,25 @@ div.cs-select-brand {
 }
 
 /*
+.social .container-fluid {
+  padding-left: 0;
+}
+*/
+
+.social-wrapper .social {
+
+}
+
+.feed .day-list {
+  padding-left: 30px;
+  height: auto;
+}
+
+.feed .card {
+  margin-right: 20px;
+}
+
+/*
 .button.secondary.url {
     background-color: #008cba;
     border-color: #007095;

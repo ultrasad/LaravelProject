@@ -3,15 +3,14 @@
 @section('content')
 
 <div class="social-wrapper">
-  <div class="social " data-pages="social">
+  <div class="social" data-pages="social">
     <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
       <div class="feed">
         <!-- START DAY -->
         <div class="day" data-social="day">
+          <div class="day-list">
           <!-- START ITEM -->
-          <div class="card no-border bg-transparent full-width" data-social="item">
-
-          </div>
+          <div class="card no-border bg-transparent full-width" data-social="item"></div>
           <!-- END ITEM -->
           <!-- START ITEM -->
           <div class="card col2" data-social="item">
@@ -121,6 +120,7 @@
           <!-- END ITEM -->
           @empty
           @endforelse
+        </div>
         </div>
         <!-- END DAY -->
       </div>

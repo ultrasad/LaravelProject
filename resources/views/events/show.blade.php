@@ -70,7 +70,7 @@
           <span class="text-complete"><i class="fa fa-circle m-r-10"></i>{{ $event->start_date_thai }} - {{ $event->end_date_thai }}</span>
         </p>
         <p class="col-middle m-b-5">
-          <span class="text-danger"><i class="fa fa-circle m-r-10"></i>{{ $event->check_expire }}</span>
+          <span class="text-danger"><i class="fa fa-circle m-r-10"></i>{{ $event->check_expire }} (**เหลืออีก 3 วันเริ่มโปรโมชั่น)</span>
         </p>
         <!--<small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>-->
         <!-- END PANEL -->

@@ -3,6 +3,14 @@
     padding-right: 0px;
 }*/
 
+.hint-text-9 {
+  opacity: 0.9;
+}
+
+.p-b-t-1 {
+  border-top: 1px solid #ddd;
+}
+
 .windows h3.page-title {
     font-size: 25px;
     line-height: 30px;

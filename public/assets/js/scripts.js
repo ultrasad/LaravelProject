@@ -240,14 +240,17 @@
 
         var $summernote = $('#summernote').summernote({
             height: 200,
+            styleTags: ['pre', 'h1', 'h2'],
             toolbar: [
               // [groupName, [list of button]]
-              ['style', ['bold', 'italic', 'underline', 'clear']],
+              ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
               //['font', ['strikethrough', 'superscript', 'subscript']],
               ['fontsize', ['fontsize']],
               ['color', ['color']],
               ['para', ['ul', 'ol', 'paragraph']],
               ['height', ['height']],
+              ['view', ['fullscreen', 'codeview']],
+              //['insert', ['link', 'picture', 'hr']],
               ['picture', ['picture']]
             ],
             onImageUpload: function(files, editor, $editable) {
@@ -489,6 +492,7 @@ function initialize() {
                     infowindow.setContent('<div class="popup_container"><strong>'+ markerName +'</strong></div>');
                     infowindow.open(map,markers[k]);
                     map.panTo(markers[k].getPosition());
+                    map.setZoom(14);
                 });
             });
 

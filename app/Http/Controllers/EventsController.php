@@ -27,6 +27,17 @@ class EventsController extends Controller
     $this->middleware('auth', ['except' => ['index', 'show', 'desc_upload']]);
   }
 
+  function string_friendly($string) {
+    $string = preg_replace("`\[.*\]`U","",$string);
+    $string = preg_replace('`&(amp;)?#?[a-z0-9]+;`i','-',$string);
+    $string = str_replace('%', '-percent', $string);
+    $string = htmlentities($string, ENT_COMPAT, 'utf-8');
+    $string = preg_replace( "`&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig|quot|rsquo);`i","\\1", $string );
+    $string = preg_replace( array("`[^a-z0-9ก-๙เ-า]`i","`[-]+`") , "-", $string);
+    return $string;
+    //echo strtolower(trim($string, '-')).'.html';
+}
+
   /**
   * Display a list of the event.
   *
@@ -38,6 +49,11 @@ class EventsController extends Controller
 
     //echo '<pre>';
     //print_r($events);
+    //exit;
+
+    //$tag = 'โปรโมชั่น watsons ภาษาไทย';
+    //$tag = $this->string_friendly($tag);
+    //echo $tag;
     //exit;
 
     return view('events.list', compact('events'));
@@ -120,7 +136,8 @@ class EventsController extends Controller
        foreach($tag_list as $name)
        {
          //$tag = preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower(trim($name)));
-         $tag = str_slug($name); //helper url
+         //$tag = str_slug($name); //helper url
+         $tag = $this->string_friendly($name);
          $tags[] = Tag::firstOrCreate(array('name' => $name, 'tag' => $tag))->id;
        }
        $event->tags()->sync($tags);
@@ -186,12 +203,17 @@ class EventsController extends Controller
       //$event = Event::where('url_slug', $slug)->eventBrand()->first();
       $event = Event::where('url_slug', $slug)->first();
       $branchs = array();
+      $tags = array();
       //$locations = array();
       foreach($event->branch->all() as $index => $branch){
         //$branchs[]= link_to('brand/'.$event->brand_id . '/' . $branch, $branch, array('alt' => $branch));
         //$branchs[]= link_to('#' . $branch, $branch, array('alt' => $branch));
-        $branchs[]= link_to('#' . $branch->name, $branch->name, array('alt' => $branch->name, 'data-index' => $index, 'class' => 'place'));
+        $branchs[] = link_to('#' . $branch->name, $branch->name, array('alt' => $branch->name, 'data-index' => $index, 'class' => 'place'));
         //$locations[] = array('name' => $branch->name, 'lat' => $branch->lat, 'lon' => $branch->lon);
+      }
+
+      foreach($event->tags->all() as $index => $tag){
+        $tags[] = '<i class="fa fa-check-circle text-primary fs-16 m-t-10"></i> ' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
       }
 
       //if(!empty($locations)){
@@ -219,10 +241,10 @@ class EventsController extends Controller
       //exit;
 
       //echo '<pre>';
-      //print_r($event->brand->category);
+      //print_r($event->tags->all());
       //exit;
 
-      return view('events.show', compact('event', 'branchs', 'locations'));
+      return view('events.show', compact('event', 'branchs', 'locations', 'tags'));
   }
 
   public function locations($event)

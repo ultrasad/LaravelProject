@@ -119,6 +119,16 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-body">
+        @if(!empty($tags))
+          {!! implode(', ', $tags) !!}
+        @endif
+      </div>
+    </div>
+  </div>
   <!-- END PLACE PAGE CONTENT HERE -->
 </div>
 <input type="hidden" name="event_id" class="event_id" value="{{ $event->id }}" />

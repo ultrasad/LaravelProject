@@ -24,19 +24,20 @@ class EventsController extends Controller
   public function __construct()
   {
     //$this->middleware('auth', ['only' => ['create', 'store']]);
-    $this->middleware('auth', ['except' => ['index', 'show', 'desc_upload']]);
+    $this->middleware('auth', ['except' => ['index', 'show', 'desc_upload', 'locations']]);
   }
 
-  function string_friendly($string) {
+  function string_friendly($string)
+  {
     $string = preg_replace("`\[.*\]`U","",$string);
     $string = preg_replace('`&(amp;)?#?[a-z0-9]+;`i','-',$string);
     $string = str_replace('%', '-percent', $string);
     $string = htmlentities($string, ENT_COMPAT, 'utf-8');
-    $string = preg_replace( "`&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig|quot|rsquo);`i","\\1", $string );
-    $string = preg_replace( array("`[^a-z0-9ก-๙เ-า]`i","`[-]+`") , "-", $string);
+    $string = preg_replace("`&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig|quot|rsquo);`i","\\1", $string);
+    $string = strtolower(preg_replace(array("`[^a-z0-9ก-๙เ-า]`i","`[-]+`"), "-", $string));
     return $string;
     //echo strtolower(trim($string, '-')).'.html';
-}
+  }
 
   /**
   * Display a list of the event.
@@ -213,7 +214,7 @@ class EventsController extends Controller
       }
 
       foreach($event->tags->all() as $index => $tag){
-        $tags[] = '<i class="fa fa-check-circle text-primary fs-16 m-t-10"></i> ' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
+        $tags[] = '<i class="fa fa-check-circle hint-text m-t-10"></i> ' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
       }
 
       //if(!empty($locations)){

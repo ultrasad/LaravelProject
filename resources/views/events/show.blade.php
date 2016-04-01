@@ -124,7 +124,7 @@
     <div class="col-md-12">
       <div class="panel-body">
         @if(!empty($tags))
-          {!! implode(', ', $tags) !!}
+          {!! implode(' ', $tags) !!}
         @endif
       </div>
     </div>

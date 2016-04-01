@@ -52,13 +52,13 @@ Route::delete('/articles/{id}', 'ArticlesController@distroy');
 
 //Route::resource('/articles', 'ArticlesController'); //RESTful Resource Controllers
 //Route::post('/events/post_upload', 'EventsController@post_upload');
-Route::post('/events/desc_upload', 'EventsController@desc_upload');
-Route::post('/brand/branch', 'BrandController@branch');
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::post('/events/desc_upload', 'EventsController@desc_upload');
+    Route::post('/brand/branch', 'BrandController@branch');
     Route::get('/events/locations/{id}', 'EventsController@locations');
     Route::get('/home', 'HomeController@index');
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers

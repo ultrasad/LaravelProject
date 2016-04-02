@@ -20,8 +20,13 @@
     			$('.btn').removeAttr('disabled');
     		});
 
-        $(".widget-3 .metro").liveTile();
-        $(".widget-7 .metro").liveTile();
+        //$(".widget-3 .metro").liveTile();
+        //$(".widget-7 .metro").liveTile();
+        /*
+            Show a sliding item using MetroJS
+            http://www.drewgreenwell.com/projects/metrojs
+        */
+        $(".live-tile,.flip-list").liveTile();
 
         //Date Pickers
         //$('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker({ format: 'mm/dd/yyyy'});

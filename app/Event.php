@@ -72,10 +72,27 @@ class Event extends Model
 
     public function getCheckExpireAttribute()
     {
+      $startdate = new Carbon($this->start_date);
       $enddate = new Carbon($this->end_date->addHour(23)->addMinute(59)->addSeconds(59));
       $current = Carbon::now();
-      $diff = $current->diffInDays($enddate, false);
-      $difference = ($diff < 1) ? 'หมดโปรโมชั่นแล้ว!!' : 'เหลือเวลาอีก : ' . $diff . ' วัน';
+      $diff_start = $current->diffInDays($startdate, false);
+      $diff_end = $current->diffInDays($enddate, false);
+      $difference = '';
+      switch(true){
+        case ($startdate > $current):
+          $difference = 'อีก ' . ($diff_start + 1) . ' วันเริ่มโปรโมชั่น';
+        break;
+        case($diff_end >= 1):
+          $difference = 'เหลือเวลาอีก : ' . $diff_end . ' วัน';
+        break;
+        case ($diff_end < 1):
+          $difference = 'หมดโปรโมชั่นแล้ว!!';
+        break;
+        default:
+          $difference = 'ไม่ระบุ';
+        break;
+      }
+      //$difference = ($diff < 1) ? 'หมดโปรโมชั่นแล้ว!!' : 'เหลือเวลาอีก : ' . $diff . ' วัน';
       return $difference;
     }
 

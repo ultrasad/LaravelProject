@@ -3,6 +3,11 @@
     padding-right: 0px;
 }*/
 
+.windows h2.text-master {
+  font-size: 27px;
+  font-weight: 400;
+}
+
 .hint-text-9 {
   opacity: 0.9;
 }
@@ -197,6 +202,34 @@ div.cs-select-brand {
 
 .feed .card {
   margin-right: 20px;
+}
+
+.card.col2 {
+    /*background: #000;*/
+}
+
+.gallery-item[data-width="2"] {
+    /*width: 100%;
+    padding-top: 25px;
+    */
+    margin: 0 auto;
+    width: 620px;
+    height: 485px;
+}
+
+@media (max-width: 667px) {
+  .social-wrapper .social .feed .day .card {
+    width: 100% !important;
+  }
+
+  .card.col2 {
+    width: 100%;
+  }
+
+  .gallery-item[data-width="2"] {
+    padding-top: 0;
+    width: 100%;
+  }
 }
 
 /*

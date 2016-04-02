@@ -90,7 +90,7 @@ class EventsController extends Controller
     if($request->hasFile('image')){
       $image_filename = $request->file('image')
                        ->getClientOriginalName();
-      $image_name = date('Ymd-His-').$image_filename;
+      $image_name = date('Ymd-His-').str_slug($image_filename);
       $public_path = 'images/events/' . date('Y-m-d') . '/';
       $destination = base_path() . '/public/' . $public_path;
       $request->file('image')->move($destination, $image_name); //move file to destination
@@ -273,7 +273,7 @@ class EventsController extends Controller
       if(Request::ajax() && Request::hasFile('file_upload')){
         $image_filename = Request::file('file_upload')
                          ->getClientOriginalName();
-        $image_name = date('Ymd-His-').$image_filename;
+        $image_name = date('Ymd-His-').str_slug($image_filename);
         $public_path = 'images/events/'. date('Y-m-d') .'/description/';
         $destination = base_path() . '/public/' . $public_path;
         $upload_success = Request::file('file_upload')->move($destination, $image_name); //move file to destination

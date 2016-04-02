@@ -13,62 +13,6 @@
           <div class="card no-border bg-transparent full-width" data-social="item"></div>
           <!-- END ITEM -->
           <!-- START ITEM -->
-
-          <div class="card col2" data-social="item">
-            <div class="gallery-item" data-width="2" data-height="2">
-              <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">
-                <div class="slide-front">
-                  <img src="/images/events/2016-03-29/gallery/23/20160329-203343-12022415_596810460475531_3646114147447548534_o.jpg" alt="" class="image-responsive-height">
-                </div>
-                <div class="slide-back">
-                  <img src="/images/events/2016-03-29/gallery/23/20160329-203343-10685358_905301056158769_2856217830528359547_n.jpg" alt="" class="image-responsive-height">
-                </div>
-                <div class="slide-back">
-                  <img src="/images/events/2016-03-29/gallery/23/20160329-203343-12715564_1296116563738753_7950416355389444727_n.jpg" alt="" class="image-responsive-height">
-                </div>
-                <div class="slide-back">
-                  <img src="/images/events/2016-03-29/gallery/23/20160329-203343-10400016_1548065595523282_8650181045517873917_n.jpg" alt="" class="image-responsive-height">
-                </div>
-              </div>
-              <div class="overlayer bottom-left full-width">
-                <div class="overlayer-wrapper item-info more-content">
-                  <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
-                    <div class="">
-                      <h3 class="pull-left bold text-white no-margin">Happy Ninja</h3>
-                      <h3 class="pull-right semi-bold text-white font-montserrat bold no-margin">$25.00</h3>
-                      <div class="clearfix"></div>
-                      <span class="hint-text pull-left text-white">Hand and mind crafted</span>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="">
-                      <h5 class="text-white light">Most Sold Item in the marketplace</h5>
-                    </div>
-                    <div class="m-t-10">
-                      <div class="thumbnail-wrapper d32 circular m-t-5">
-                        <img width="40" height="40" src="/assets/img/profiles/avatar.jpg" data-src="/assets/img/profiles/avatar.jpg" data-src-retina="/assets/img/profiles/avatar2x.jpg" alt="">
-                      </div>
-                      <div class="inline m-l-10">
-                        <p class="no-margin text-white fs-12">Designed by Alex Nester</p>
-                        <p class="rating">
-                          <i class="fa fa-star rated"></i>
-                          <i class="fa fa-star rated"></i>
-                          <i class="fa fa-star rated"></i>
-                          <i class="fa fa-star rated"></i>
-                          <i class="fa fa-star"></i>
-                        </p>
-                      </div>
-                      <div class="pull-right m-t-10">
-                        <button class="btn btn-white btn-xs btn-mini bold fs-14" type="button">+</button>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!--
           <div class="card col2" data-social="item">
               <div class="ar-3-2 widget-1-wrapper">
                 <div class="widget-1 panel no-border bg-complete no-margin widget-loader-circle-lg">
@@ -90,7 +34,6 @@
                 </div>
               </div>
           </div>
-          -->
           <!-- END ITEM -->
           <!-- START ITEM -->
           {{--

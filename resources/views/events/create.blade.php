@@ -5,7 +5,8 @@
   <form class="events-form dropzone" id="my-awesome-dropzone-form" role="form" action="/events" enctype="multipart/form-data" method="POST">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   {{-- Form::token() --}}
-  <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+  <!--<div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">-->
+  <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-12">
         <h3 class='page-title'>เพิ่มข่าวโปรโมชั่น / Multiple Language</h3>
@@ -21,7 +22,7 @@
               Option #one
             </div>
           </div>-->
-          <div class="panel-body">
+          <div class="panel-body sm-p-t-20">
             <!-- <h5>Pages default style</h5>-->
               <div class="form-group form-group-default required">
                 <label>หัวข้อข่าว</label>

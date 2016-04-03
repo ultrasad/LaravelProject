@@ -5,7 +5,7 @@
     $(document).ready(function() {
 
         //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-        $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+        //$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 
         $.fn.exists = function(){return this.length>0;}
 
@@ -27,6 +27,17 @@
             http://www.drewgreenwell.com/projects/metrojs
         */
         $(".live-tile,.flip-list").liveTile();
+
+        /* FILTERS OVERLAY
+       -------------------------------------------------------------*/
+
+       $('[data-toggle="filters"]').click(function() {
+           $('#filters').toggleClass('open');
+       });
+
+       $('.quickview-wrapper ul.map-items').scrollbar({
+           ignoreOverlay: false
+       });
 
         //Date Pickers
         //$('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker({ format: 'mm/dd/yyyy'});
@@ -401,6 +412,7 @@ function sendFile(file,editor,welEditable)
     Look for data-image attribute and apply those
     images as CSS background-image
 */
+var s_length = $('.item-slideshow > div').length;
 $('.item-slideshow > div').each(function(index) {
     var img = $(this).data('image');
     //console.log(img);
@@ -409,7 +421,12 @@ $('.item-slideshow > div').each(function(index) {
         'background-size': 'cover',
         'background-position': 'center'
     }));
-    $('.thumb > div').append(html);
+    //console.log('=> ' + $('.item-slideshow > div').length);
+    if(s_length > 1){
+      $('.thumb > div').append(html);
+    } else {
+      $('.item-details .thumb .col-md-12').hide();
+    }
     $(this).css({
         'background-image': 'url(' + img + ')',
         'background-repeat': 'no-repeat',

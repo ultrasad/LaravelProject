@@ -32,7 +32,7 @@
               <!-- START PANEL -->
               <div class="item-slideshow full-height">
                 @forelse($event->gallery_list as $id => $image)
-                <div class="slide"  data-hash="{{ $id }}" data-image="{{ URL::asset($image) }}"></div>
+                  <div class="slide"  data-hash="{{ $id }}" data-image="{{ URL::asset($image) }}"></div>
                 @empty
                 @endforelse
               </div>
@@ -83,29 +83,19 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel-body p-t-0 hint-text-9">
-            <hr class="p-b-t-1 m-t-10 m-b-10" />
-            <u><b>รายละเอียดโปรโมชั่น</b></u>
-            <p>{!! $event->description !!}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="row">
         <div class="col-md-12">
           <div class="panel-body p-t-0 p-b-5 hint-text-9">
             <hr class="p-b-t-1 m-t-10 m-b-10" />
-            <u><b>{{ $event->brand_name }} สาขาที่ร่วมรายการ</b></u><span class="event">
-            @if(!empty($branchs))
-              {!! implode(', ', $branchs) !!}
-            @else
-              <span class="text-danger">ไม่ระบุสาขา</span>
-            @endif
-          </span>
+            <u><b>{{ $event->brand_name }} สาขาที่ร่วมรายการ</b></u>
+            <span class="event">
+              @if(!empty($branchs))
+                {!! implode(', ', $branchs) !!}
+              @else
+                <span class="text-danger">ไม่ระบุสาขา</span>
+              @endif
+            </span>
           </div>
         </div>
       </div>
@@ -125,12 +115,151 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
-      <div class="panel-body">
-        @if(!empty($tags))
-          {!! implode(' ', $tags) !!}
-        @endif
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="panel-body p-t-0 hint-text-9">
+              <!--<hr class="p-b-t-1 m-t-10 m-b-10" />-->
+              <u><h4>รายละเอียดโปรโมชั่น</h4></u>
+              <p>{!! $event->description !!}</p>
+            </div>
+              @if(!empty($tags))
+              <div class="col-md-12">
+                Tags :: {!! implode(', ', $tags) !!}
+              </div>
+              @endif
+            <div class="col-sm-12 visible-xs">
+                <div class="ads bg-warning">
+                  <h1>ADS</h1>
+                </div>
+            </div>
+            <div class="col-md-12">
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <u><h4>โปรโมชั่นที่คุณอาจสนใจ</h4></u>
+              <div class="row relate">
+                <div class="col-lg-3 col-sm-6 col-xs-12 padding-right-active">
+                  <div class="card card-relate">
+                    <div class="panel no-border  no-margin">
+                      <hr class="no-margin">
+                      <div class="relative">
+                        <div class="no-overflow">
+                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="http://localhost:8000/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
+                        </div>
+                      </div>
+                      <div class="padding-15">
+                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="http://localhost:8000/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
+                        <p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
+                          ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>
+                      </div>
+                      <div class="padding-15 card-relate-footer">
+                        <div class="hint-text pull-left">ถึงวันที่ : 25 เม.ย. 59</div>
+                        <ul class="list-inline pull-right no-margin">
+                          <li><a href="#" class="text-master hint-text">5,345 <i class="fa fa-comment-o"></i></a>
+                          </li>
+                          <li><a href="#" class="text-master hint-text">23K <i class="fa fa-heart-o"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-xs-12 padding-right-active">
+                  <div class="card card-relate">
+                    <div class="panel no-border  no-margin">
+                      <hr class="no-margin">
+                      <div class="relative">
+                        <div class="no-overflow">
+                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="http://localhost:8000/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
+                        </div>
+                      </div>
+                      <div class="padding-15">
+                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="http://localhost:8000/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
+                        <p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
+                          ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>
+                      </div>
+                      <div class="padding-15 card-relate-footer">
+                        <div class="hint-text pull-left">ถึงวันที่ : 25 เม.ย. 59</div>
+                        <ul class="list-inline pull-right no-margin">
+                          <li><a href="#" class="text-master hint-text">5,345 <i class="fa fa-comment-o"></i></a>
+                          </li>
+                          <li><a href="#" class="text-master hint-text">23K <i class="fa fa-heart-o"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-xs-12 padding-right-active">
+                  <div class="card card-relate">
+                    <div class="panel no-border  no-margin">
+                      <hr class="no-margin">
+                      <div class="relative">
+                        <div class="no-overflow">
+                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="http://localhost:8000/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
+                        </div>
+                      </div>
+                      <div class="padding-15">
+                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="http://localhost:8000/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
+                        <p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
+                          ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>
+                      </div>
+                      <div class="padding-15 card-relate-footer">
+                        <div class="hint-text pull-left">ถึงวันที่ : 25 เม.ย. 59</div>
+                        <ul class="list-inline pull-right no-margin">
+                          <li><a href="#" class="text-master hint-text">5,345 <i class="fa fa-comment-o"></i></a>
+                          </li>
+                          <li><a href="#" class="text-master hint-text">23K <i class="fa fa-heart-o"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-xs-12 padding-right-active">
+                  <div class="card card-relate">
+                    <div class="panel no-border  no-margin">
+                      <hr class="no-margin">
+                      <div class="relative">
+                        <div class="no-overflow">
+                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="http://localhost:8000/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
+                        </div>
+                      </div>
+                      <div class="padding-15">
+                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="http://localhost:8000/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
+                        <p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
+                          ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>
+                      </div>
+                      <div class="padding-15 card-relate-footer">
+                        <div class="hint-text pull-left">ถึงวันที่ : 25 เม.ย. 59</div>
+                        <ul class="list-inline pull-right no-margin">
+                          <li><a href="#" class="text-master hint-text">5,345 <i class="fa fa-comment-o"></i></a>
+                          </li>
+                          <li><a href="#" class="text-master hint-text">23K <i class="fa fa-heart-o"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
       </div>
+    </div>
+    <div class="col-md-4 col-sm-12 hidden-xs">
+        <div class="panel-body">
+          <div class="ads bg-warning">
+            <h1>ADS</h1>
+          </div>
+          <div class="ads bg-success">
+            <h1>ADS</h1>
+          </div>
+        </div>
     </div>
   </div>
   <!-- END PLACE PAGE CONTENT HERE -->

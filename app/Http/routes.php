@@ -61,6 +61,7 @@ Route::group(['middleware' => 'web'], function () {
     });
     Route::get('home', 'HomeController@index');
     Route::get('events/locations/{id}', 'EventsController@locations');
+    Route::get('maps/locations', 'MapsController@locations');
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers
     Route::resource('maps', 'MapsController'); //RESTful Resource Controllers

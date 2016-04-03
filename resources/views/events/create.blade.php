@@ -32,6 +32,10 @@
                 <label>URL SLUG (ภาษาอังกฤษเท่านั้น / สูงสุด 60 ตัวอักษร)</label>
                 <input type="text" name="url_slug" class="form-control" placeholder="ex: promotion-my-brand-my-name-date-year" required />
               </div>
+              <div class="form-group form-group-default required">
+                <label>Category</label>
+                <input type="text" name="category" class="form-control" placeholder="" />
+              </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group form-group-default input-group col-sm-12">

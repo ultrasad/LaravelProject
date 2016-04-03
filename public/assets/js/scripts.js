@@ -1,3 +1,5 @@
+var events_locations;
+
 (function($) {
 
     'use strict';
@@ -467,7 +469,7 @@ function initialize() {
     var default_type = mapObj.MapTypeId.ROADMAP;
     var map_canvas = $("#map_canvas")[0];
     var options = {
-        zoom: 13,
+        zoom: 14,
         scrollwheel: false,
         center: default_latlng,
         mapTypeId:default_type
@@ -487,7 +489,105 @@ function initialize() {
     var address = '';
     var point = '';
 
-    if($('.event_id').exists()){
+    if($('.map-full').exists()){ //map full
+      $.ajax({
+          url: '/maps/locations/',
+          type: 'GET',
+          datatype: 'JSON',
+          processData: false,
+          contentType: false,
+          success: function (resp) {
+            var locations = $.parseJSON(resp);
+            var markers = [];
+
+            //var location_list = locations.split(",");
+            //console.log(location_list[0] +'=>'+ location_list[1] +'=>'+ location_list[2]);
+            window.events_locations = new Array();
+            //var loop = 0;
+            $.each(locations, function(k, v){
+                //window.events_locations = [];
+                var data = [];
+                $.each(v, function(x, y){
+                    //window.events_locations.push(y);
+                    data.push(y);
+                    //data.index = k;
+                    //data.value = y;
+                });
+                window.events_locations[k] = data;
+
+                //console.log('y => ' + window.events_locations[k]);
+
+                var location_list = k.split(",");
+                var name = location_list[2];
+                var lat = location_list[0];
+                var lon = location_list[1];
+                //console.log(location_list[0] +'=>'+ location_list[1] +'=>'+ location_list[2]);
+                //console.log('=> ' + k + ' => ' + name + ' => ' + lat + '=> ' + lon);
+                //var markerID = i;
+                var markerName = name;
+                var markerLat = lat;
+                var markerLng = lon;
+                var markerLatLng=new mapObj.LatLng(markerLat,markerLng);
+                markers[k] = new mapObj.Marker({
+                    position:markerLatLng,
+                    map: map,
+                    title:markerName
+                });
+
+                mapObj.event.addListener(markers[k], 'click', function() {
+                    infowindow.setContent('<div class="popup_container"><strong>'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">มี '+ data.length +' โปรโมชั่นที่นี่</a></p>');
+                    infowindow.open(map,markers[k]);
+                    map.panTo(markers[k].getPosition());
+                    //map.setZoom(14);
+                });
+
+                //loop++;
+            });
+
+            $(document).on('click', '.events_locations', function(e){
+              var index = $(this).data('index');
+              //mapObj.event.trigger(markers[index], 'click');
+              //return false;
+              //console.log('index => ' + index);
+              //console.log('value => ' + window.events_locations[index]);
+              $('#filters.maps').removeClass('open');
+              $('ul#map-items').html('');
+              $.each(window.events_locations[index], function(k,v){
+                //console.log(' => ' + v.title + ' => ' + v.slug + ' => ' + v.brand);
+                var clone = '<li class="map-event-list clearfix">';
+                    clone += '<span class="col-xs-height col-top p-t-5">';
+                    clone += '<span class="thumbnail-wrapper d32 circular bg-success">';
+                    clone += '<span class="thumbnail-wrapper d32 circular bg-success"><img width="34" height="34" class="col-top" src="assets/img/profiles/1.jpg" data-src="assets/img/profiles/1.jpg" data-src-retina="assets/img/profiles/1x.jpg" alt=""></span>';
+                    clone += '</span>';
+                    clone += '<div class="p-l-10 col-xs-height col-middle col-xs-12">';
+                    clone += '<span class="text-master"><strong>'+v.brand+'</strong></span>';
+                    clone += '<span class="block text-master hint-text fs-12">Category</span>';
+                    clone += '<p><strong><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></strong></p>';
+                    clone += '</div></li>';
+
+                    //console.log('clone => ' + clone);
+                    $('ul#map-items').append(clone);
+              });
+              $('#filters.maps').addClass('open');
+              return false;
+            });
+
+            /*$('.event').on('click', '.place', function(e){
+              var index = $(this).data('index');
+              mapObj.event.trigger(markers[index], 'click');
+              return false;
+            });*/
+
+          },
+          error: function(jqXHR, textStatus, errorThrown)
+          {
+              console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+              console.log(JSON.stringify(jqXHR.responseJSON));
+          }
+      });
+    }
+
+    if($('.event_id').exists()){ //event locations
       $.ajax({
           url: '/events/locations/'+$('.event_id').val(),
           type: 'GET',
@@ -499,7 +599,7 @@ function initialize() {
             var markers = [];
 
             $.each(locations, function(k, v){
-                var markerID = v.id;
+                //var markerID = v.id;
                 var markerName = v.name;
                 var markerLat = v.lat;
                 var markerLng = v.lon;
@@ -514,7 +614,7 @@ function initialize() {
                     infowindow.setContent('<div class="popup_container"><strong>'+ markerName +'</strong></div>');
                     infowindow.open(map,markers[k]);
                     map.panTo(markers[k].getPosition());
-                    map.setZoom(14);
+                    //map.setZoom(14);
                 });
             });
 

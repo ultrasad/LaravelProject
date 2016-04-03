@@ -207,11 +207,36 @@ div.cs-select-brand {
   top: 60px;
 }
 
+.quickview-wrapper.maps .quickview-toggle {
+    top: 8px;
+    right: 5px;
+}
+
+.quickview-wrapper.maps .nav-tabs {
+    background-color: #f0f0f0;
+    padding: 0 30px 0 10px;
+}
+
+.quickview-wrapper.maps .nav-tabs > li {
+    width: 100%;
+}
+
+.quickview-wrapper.maps .nav-tabs > li > a {
+  font-size: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 11px 0;
+}
+
+.quickview-wrapper.maps .nav-tabs > li > a > i {
+  padding: 2px 5px 0 0;
+}
+
 .quickview-list {
   height: calc(100% - 50px);
   position: relative;
   width: 100%;
-  margin-top: 30px;
+  /*margin-top: 30px;*/
 }
 
 .quickview-list .map-items {
@@ -222,6 +247,10 @@ div.cs-select-brand {
   padding: 0;
   position: relative;
   width: 100%;
+}
+
+.map-event-list {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 .social-wrapper .social {

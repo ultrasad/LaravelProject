@@ -30,6 +30,11 @@ class Event extends Model
       $query->where('published_at', '>', Carbon::now());
     }
 
+    public function scopeNoExpire($query)
+    {
+      $query->where('end_date', '>=', Carbon::today());
+    }
+
     public function getGalleryListAttribute()
     {
         return $this->gallery->lists('image');

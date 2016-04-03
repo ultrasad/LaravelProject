@@ -25,7 +25,7 @@
   <!-- BEGIN PlACE PAGE CONTENT HERE -->
   <div class="row">
     <div class="col-md-12">
-      <button class="btn btn-primary m-l-10" data-toggle="filters">More filters</button>
+      <!--<button class="btn btn-primary m-l-10" data-toggle="filters">More filters</button>-->
       <div class="panel-body">
         <div id="map_canvas" class="map-canvas map-full"></div>
         <div class="row">

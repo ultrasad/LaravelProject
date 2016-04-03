@@ -25,84 +25,30 @@
     </div>
     <!-- END PAGE CONTAINER -->
     <div class="quickview-wrapper maps" id="filters">
-        <a class="builder-close quickview-toggle pg-close" data-toggle="quickview" data-toggle-element="#filters" href="#"></a>
         <div class="quickview-list">
-          <ul class="map-items">
-            <li class="m-t-30 ">
-              <a href="index.html" class="detailed">
-                <span class="title">Dashboard</span>
-                <span class="details">12 New Updates</span>
-              </a>
-              <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
-            </li>
+          <ul class="nav nav-tabs">
             <li class="">
-              <a href="http://pages.revox.io/dashboard/latest/html/widget.html" class="detailed">
-                <span class="title">Widgets</span>
-                <span class="details">22 items</span>
-              </a>
-              <span class="icon-thumbnail">W</span>
+                <a href="#"><i class="pg-map pull-left"></i>เซ็นทรัลลาดพร้าว</a>
             </li>
-            <li class="">
-              <a href="email.html" class="detailed">
-                <span class="title">Email</span>
-                <span class="details">234 New Emails</span>
-              </a>
-              <span class="icon-thumbnail"><i class="pg-mail"></i></span>
+          </ul>
+          <a class="builder-close quickview-toggle pg-close" data-toggle="quickview" data-toggle-element="#filters" href="#"></a>
+          <ul class="map-items" id="map-items">
+            <!--
+            <li class="map-event-list clearfix" style="display: none">
+              <span class="col-xs-height col-top p-t-5">
+                <span class="thumbnail-wrapper d32 circular bg-success">
+                  <img width="34" height="34" class="col-top" src="assets/img/profiles/1.jpg" data-src="assets/img/profiles/1.jpg" data-src-retina="assets/img/profiles/1x.jpg" alt="">
+                </span>
+              </span>
+              <div class="p-l-10 col-xs-height col-middle col-xs-12">
+                <span class="text-master"><strong>ava flores</strong></span>
+                <span class="block text-master hint-text fs-12">Hello there</span>
+                <p>
+                  <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. – 25 เม.ย. 59)" href="/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. – 25 เม.ย. 59)</a></strong>
+                </p>
+              </div>
             </li>
-            <li class="">
-              <a href="social.html"><span class="title">Social</span></a>
-              <span class="icon-thumbnail"><i class="pg-social"></i></span>
-            </li>
-            <li class="m-t-30 ">
-              <a href="index.html" class="detailed">
-                <span class="title">Dashboard</span>
-                <span class="details">12 New Updates</span>
-              </a>
-              <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
-            </li>
-            <li class="">
-              <a href="http://pages.revox.io/dashboard/latest/html/widget.html" class="detailed">
-                <span class="title">Widgets</span>
-                <span class="details">22 items</span>
-              </a>
-              <span class="icon-thumbnail">W</span>
-            </li>
-            <li class="">
-              <a href="email.html" class="detailed">
-                <span class="title">Email</span>
-                <span class="details">234 New Emails</span>
-              </a>
-              <span class="icon-thumbnail"><i class="pg-mail"></i></span>
-            </li>
-            <li class="">
-              <a href="social.html"><span class="title">Social</span></a>
-              <span class="icon-thumbnail"><i class="pg-social"></i></span>
-            </li>
-            <li class="m-t-30 ">
-              <a href="index.html" class="detailed">
-                <span class="title">Dashboard</span>
-                <span class="details">12 New Updates</span>
-              </a>
-              <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
-            </li>
-            <li class="">
-              <a href="http://pages.revox.io/dashboard/latest/html/widget.html" class="detailed">
-                <span class="title">Widgets</span>
-                <span class="details">22 items</span>
-              </a>
-              <span class="icon-thumbnail">W</span>
-            </li>
-            <li class="">
-              <a href="email.html" class="detailed">
-                <span class="title">Email</span>
-                <span class="details">234 New Emails</span>
-              </a>
-              <span class="icon-thumbnail"><i class="pg-mail"></i></span>
-            </li>
-            <li class="">
-              <a href="social.html"><span class="title">Social</span></a>
-              <span class="icon-thumbnail"><i class="pg-social"></i></span>
-            </li>
+            -->
           </ul>
         </div>
     </div>

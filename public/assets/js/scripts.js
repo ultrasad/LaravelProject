@@ -84,23 +84,55 @@ var events_locations;
              //ignore: ".ignore", //will tell it to only ignore fields will class .ignore.
              //ignore: ".ignore, :hidden", //will tell it to ignore fields will class .ignore AND fields that are hidden.
              //ignore:[], // tells the plugin to ignore nothing and validate everything.
-             ignore: ".ignore, :hidden",
+             ignore: ".ignore, :hidden:not(.validate)",
              focusInvalid: false,
              ignoreTitle: true,
              errorClass:'error',
              validClass:'success',
              errorElement:'span',
              highlight: function (element, errorClass, validClass) {
+                 //console.log(element.name);
                  $(element).parents("div[class='clearfix']").addClass(errorClass).removeClass(validClass);
              },
              unhighlight: function (element, errorClass, validClass) {
                  $(element).parents(".error").removeClass(errorClass).addClass(validClass);
              },
+             /*
+            //When there is an error normally you just add the class to the element.
+            // But in the case of select2s you must add it to a UL to make it visible.
+            // The select element, which would otherwise get the class, is hidden from
+            // view.
+            highlight: function (element, errorClass, validClass) {
+              var elem = $(element);
+              console.log(element.name);
+              if (elem.hasClass("select2-offscreen")) {
+                  $("#s2id_" + elem.attr("id") + " a").addClass(errorClass);
+                  console.log('has class');
+              } else {
+                  elem.addClass(errorClass);
+                  console.log('no class');
+              }
+            },
+            //When removing make the same adjustments as when adding
+            unhighlight: function (element, errorClass, validClass) {
+              var elem = $(element);
+              if (elem.hasClass("select2-offscreen")) {
+                  $("#s2id_" + elem.attr("id") + " a").removeClass(errorClass);
+              } else {
+                  elem.removeClass(errorClass);
+              }
+            },*/
              rules: {
                 title: {
                   required: true
                 },
                 url_slug: {
+                  required: true
+                },
+                "category[]": {
+                  required: true
+                },
+                tag_list: {
                   required: true
                 },
                 brief: {
@@ -120,6 +152,12 @@ var events_locations;
                 },
                 url_slug:{
                 	required: "This field is required.",
+                },
+                "category[]": {
+                  required: "This field is required.",
+                },
+                tag_list: {
+                  required: "This field is required.",
                 },
                 brief: {
                   required: "This field is required.",
@@ -279,6 +317,16 @@ var events_locations;
 
         //ignore valid popup model
         $('.note-modal-form').each( function() { $(this).validate({}) });
+
+        //Multiselect - Select2 plug-in
+        $("#category").select2({
+          //maximumSelectionLength: 2,
+          maximumSelectionSize: 2,
+          formatSelectionTooBig: function (limit) {
+              // Callback
+              return 'Too many selected items';
+          }
+        });
 
         //Switchery
         var changeCheckbox = document.querySelector('.js-check-change')
@@ -466,6 +514,8 @@ var mapObj;
 function initialize() {
     mapObj = new Object(google.maps);
     var default_latlng  = new mapObj.LatLng(13.7563309, 100.50176510000006);
+    //Create LatLngBounds object.
+    var latlngbounds = new mapObj.LatLngBounds();
     var default_type = mapObj.MapTypeId.ROADMAP;
     var map_canvas = $("#map_canvas")[0];
     var options = {
@@ -504,6 +554,7 @@ function initialize() {
             //console.log(location_list[0] +'=>'+ location_list[1] +'=>'+ location_list[2]);
             window.events_locations = new Array();
             //var loop = 0;
+            //var bounds = new google.maps.LatLngBounds();
             $.each(locations, function(k, v){
                 //window.events_locations = [];
                 var data = [];
@@ -541,8 +592,18 @@ function initialize() {
                     //map.setZoom(14);
                 });
 
+                //Extend each marker's position in LatLngBounds object.
+                latlngbounds.extend(markers[k].position);
+
                 //loop++;
             });
+
+            //Get the boundaries of the Map.
+            //var bounds = new mapObj.LatLngBounds();
+
+            //Center map and adjust Zoom based on the position of all markers.
+            map.setCenter(latlngbounds.getCenter());
+            map.fitBounds(latlngbounds);
 
             $(document).on('click', '.events_locations', function(e){
               var index = $(this).data('index');
@@ -616,7 +677,16 @@ function initialize() {
                     map.panTo(markers[k].getPosition());
                     //map.setZoom(14);
                 });
+
+                latlngbounds.extend(markers[k].position);
             });
+
+            //Center map and adjust Zoom based on the position of all markers.
+            map.setCenter(latlngbounds.getCenter());
+            //console.log('length => ' + locations.length);
+            if(locations.length > 1){
+              map.fitBounds(latlngbounds);
+            }
 
             $('.event').on('click', '.place', function(e){
               var index = $(this).data('index');

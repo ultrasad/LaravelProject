@@ -67,14 +67,15 @@ class EventsController extends Controller
   */
   public function create()
   {
+      $category = Category::select('name', 'id')->get();
       $brand = Brand::select('id', 'name')->get();
       $branch = $brand->first()->branch_list;
 
       //echo '<pre>';
-      //print_r($brand);
+      //print_r($category);
       //exit;
 
-      return view('events.create', compact('brand', 'branch'));
+      return view('events.create', compact('brand', 'branch', 'category'));
   }
 
   /**
@@ -116,6 +117,12 @@ class EventsController extends Controller
       }
     } while($dup==1);
     $event->url_slug = $base_slug;
+
+    //category
+    $categoryId = $request->input('category');
+    if(!empty($categoryId)){
+       $event->category()->sync($categoryId);
+    }
 
     //brand
     $event->brand_id = $request->input('brand'); //event brand
@@ -212,7 +219,7 @@ class EventsController extends Controller
         $branchs[] = link_to('#' . $branch->name, $branch->name, array('alt' => $branch->name, 'data-index' => $index, 'class' => 'place'));
         //$locations[] = array('name' => $branch->name, 'lat' => $branch->lat, 'lon' => $branch->lon);
       }
-      
+
       foreach($event->tags->all() as $index => $tag){
         //$tags[] = '<i class="fa fa-check-circle hint-text m-t-10"></i> ' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
         $tags[] = link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));

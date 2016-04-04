@@ -144,11 +144,11 @@
                       <hr class="no-margin">
                       <div class="relative">
                         <div class="no-overflow">
-                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="http://localhost:8000/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
+                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
                         </div>
                       </div>
                       <div class="padding-15">
-                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="http://localhost:8000/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
+                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
                         <p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
                           ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>
                       </div>
@@ -171,11 +171,11 @@
                       <hr class="no-margin">
                       <div class="relative">
                         <div class="no-overflow">
-                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="http://localhost:8000/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
+                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
                         </div>
                       </div>
                       <div class="padding-15">
-                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="http://localhost:8000/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
+                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
                         <p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
                           ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>
                       </div>
@@ -198,11 +198,11 @@
                       <hr class="no-margin">
                       <div class="relative">
                         <div class="no-overflow">
-                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="http://localhost:8000/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
+                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
                         </div>
                       </div>
                       <div class="padding-15">
-                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="http://localhost:8000/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
+                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
                         <p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
                           ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>
                       </div>
@@ -225,11 +225,11 @@
                       <hr class="no-margin">
                       <div class="relative">
                         <div class="no-overflow">
-                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="http://localhost:8000/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
+                          <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
                         </div>
                       </div>
                       <div class="padding-15">
-                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="http://localhost:8000/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
+                        <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
                         <p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
                           ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>
                       </div>

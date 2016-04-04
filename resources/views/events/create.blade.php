@@ -34,7 +34,14 @@
               </div>
               <div class="form-group form-group-default required">
                 <label>Category</label>
-                <input type="text" name="category" class="form-control" placeholder="" />
+                <!--<input type="text" name="category" class="form-control" placeholder="" />-->
+                <select id="category" name="category[]" class="full-width category-select2" multiple>
+                  @if($category)
+                    @foreach($category as $id => $cate)
+                      <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                    @endforeach
+                  @endif
+                </select>
               </div>
               <div class="row">
                 <div class="col-md-6">
@@ -101,7 +108,7 @@
               <!-- END PANEL -->
               <div class="form-group form-group-default required">
                 <label>Keyword (สูงสุด 20 คำ)</label>
-                <input class="tagsinput custom-tag-input" name="tag_list" type="text" value="" />
+                <input class="tagsinput custom-tag-input validate" name="tag_list" type="text" value="" />
               </div>
               <div class="form-group form-group-default form-group-area required">
                 <label>รายละเอียดแบบย่อ</label>

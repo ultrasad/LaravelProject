@@ -14,7 +14,7 @@ class Event extends Model
      */
     //protected $table = 'events';
     //Mass Assignment
-    protected $fillable = ['title', 'url_slug', 'start_date', 'end_date', 'image', 'brief', 'description', 'published_at']; //Whitelist
+    protected $fillable = ['title', 'url_slug', 'category', 'start_date', 'end_date', 'image', 'brief', 'description', 'published_at']; //Whitelist
     //protected $guarded = ['id'];// //Backlist
 
     protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object

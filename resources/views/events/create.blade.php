@@ -108,7 +108,7 @@
               <!-- END PANEL -->
               <div class="form-group form-group-default required">
                 <label>Keyword (สูงสุด 20 คำ)</label>
-                <input class="tagsinput custom-tag-input validate" name="tag_list" type="text" value="" />
+                <input class="tagsinput custom-tag-input validate" id="tag_list" name="tag_list" type="text" value="" />
               </div>
               <div class="form-group form-group-default form-group-area required">
                 <label>รายละเอียดแบบย่อ</label>

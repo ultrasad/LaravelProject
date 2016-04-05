@@ -78,6 +78,12 @@ var events_locations;
             e.preventDefault();
         });
 
+        $.validator.addMethod("checkTags", function(value) { //add custom method
+            //Tags input plugin converts input into div having id #YOURINPUTID_tagsinput
+            //now you can count no of tags
+            return ($(".bootstrap-tagsinput").find(".label-custom-tag").length > 0);
+        });
+
         /* cache by bootstrap js */
         $('#my-awesome-dropzone-form').validate({
              //ignore: ".ignore :hidden" //is telling it to ignore hidden fields with the class ignore.
@@ -133,7 +139,8 @@ var events_locations;
                   required: true
                 },
                 tag_list: {
-                  required: true
+                  required: true,
+                  "checkTags": true
                 },
                 brief: {
                    required: true
@@ -158,6 +165,7 @@ var events_locations;
                 },
                 tag_list: {
                   required: "This field is required.",
+                  "checkTags": "This field is required.",
                 },
                 brief: {
                   required: "This field is required.",
@@ -293,6 +301,10 @@ var events_locations;
 
         //Single instance of tag inputs - can be initiated with simply using data-role="tagsinput" attribute in any input field
         $('.custom-tag-input').tagsinput({ maxTags: 20, tagClass: function(item) {return 'label label-custom-tag';} });
+
+        //$(".custom-tag-input").on('itemRemoved', function (event) {
+           //console.log('remove');
+        //});
 
         var $summernote = $('#summernote').summernote({
             height: 200,

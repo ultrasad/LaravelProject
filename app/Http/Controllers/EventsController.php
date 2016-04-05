@@ -87,6 +87,13 @@ class EventsController extends Controller
   {
     $event = new Event($request->all());
 
+    //echo '<pre>';
+    //print_r($request->input('branch'));
+
+    //echo '<pre>';
+    //print_r($event);
+    //exit;
+
     //image
     if($request->hasFile('image')){
       $image_filename = $request->file('image')
@@ -118,16 +125,16 @@ class EventsController extends Controller
     } while($dup==1);
     $event->url_slug = $base_slug;
 
+    //brand
+    $event->brand_id = $request->input('brand'); //event brand
+
+    $event_id = Auth::user()->events()->save($event)->id; //user id
+
     //category
     $categoryId = $request->input('category');
     if(!empty($categoryId)){
        $event->category()->sync($categoryId);
     }
-
-    //brand
-    $event->brand_id = $request->input('brand'); //event brand
-
-    $event_id = Auth::user()->events()->save($event)->id; //user id
 
     //branch
     $branchId = $request->input('branch');

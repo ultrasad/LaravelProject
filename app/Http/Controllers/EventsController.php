@@ -57,6 +57,8 @@ class EventsController extends Controller
     //echo $tag;
     //exit;
 
+    //change test
+
     return view('events.list', compact('events'));
   }
 

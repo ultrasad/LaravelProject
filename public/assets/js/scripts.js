@@ -367,7 +367,7 @@ var events_locations;
                    var _branch = $('.branch_child .list');
                    data.append("id", brand_id);
                    $.ajax({
-                     url: "/events/branch",
+                     url: "/brand/branch",
                      data: data,
                      cache: false,
                      contentType: false,

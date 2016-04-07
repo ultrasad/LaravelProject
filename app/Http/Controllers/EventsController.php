@@ -47,7 +47,6 @@ class EventsController extends Controller
   public function index()
   {
     $events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->paginate(15);
-    //$events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
 
     //echo '<pre>';
     //print_r($events);
@@ -301,19 +300,6 @@ class EventsController extends Controller
       }
 
       return Response::json('success', 200);
-  }
-
-  /**
-  * Display the speified resource.
-  *
-  *@param int $id
-  *@return Response
-  */
-  public function branch(Request $request)
-  {
-    $id = $request->input('id');
-    $brand = Brand::find($id);
-    echo json_encode($brand->branch_list);
   }
 
 }

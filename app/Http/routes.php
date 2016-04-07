@@ -52,8 +52,8 @@ Route::delete('/articles/{id}', 'ArticlesController@distroy');
 
 //Route::resource('/articles', 'ArticlesController'); //RESTful Resource Controllers
 //Route::post('/events/post_upload', 'EventsController@post_upload');
-//Route::post('events/desc_upload', 'EventsController@desc_upload');
-//Route::post('brand/branch', 'BrandController@branch');
+Route::post('events/desc_upload', 'EventsController@desc_upload');
+Route::post('brand/branch', 'BrandController@branch');
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/', function () {
@@ -61,12 +61,8 @@ Route::group(['middleware' => 'web'], function () {
     });
     Route::get('home', 'HomeController@index');
     Route::get('events/locations/{id}', 'EventsController@locations');
-    Route::post('events/desc_upload', 'EventsController@desc_upload');
-    Route::post('events/branch', 'EventsController@branch');
     Route::get('maps/locations', 'MapsController@locations');
-    Route::get('brand/{id}', 'BrandController@index');
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers
     Route::resource('maps', 'MapsController'); //RESTful Resource Controllers
-    Route::resource('brand', 'BrandController'); //RESTful Resource Controllers
 });

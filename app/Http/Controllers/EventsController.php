@@ -24,7 +24,7 @@ class EventsController extends Controller
   public function __construct()
   {
     //$this->middleware('auth', ['only' => ['create', 'store']]);
-    $this->middleware('auth', ['except' => ['index', 'show', 'desc_upload', 'locations']]);
+    $this->middleware('auth', ['except' => ['index', 'show', 'desc_upload', 'locations', 'branch']]);
   }
 
   function string_friendly($string)
@@ -309,10 +309,16 @@ class EventsController extends Controller
   *@param int $id
   *@return Response
   */
-  public function branch(Request $request)
+  public function _branch(Request $request)
   {
     $id = $request->input('id');
     $brand = Brand::find($id);
+    echo json_encode($brand->branch_list);
+  }
+
+  public function branch($id)
+  {
+    $brand = Brand::findOrFail($id);
     echo json_encode($brand->branch_list);
   }
 

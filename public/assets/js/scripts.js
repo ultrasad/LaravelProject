@@ -7,7 +7,7 @@ var events_locations;
     $(document).ready(function() {
 
         //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-        //$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+        $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 
         $.fn.exists = function(){return this.length>0;}
 
@@ -363,17 +363,17 @@ var events_locations;
           new SelectFx(el, {
               onChange: function(e) {
                    var brand_id = $(e).val();
-                   var data = new FormData();
                    var _branch = $('.branch_child .list');
-                   data.append("id", brand_id);
+                   //var data = new FormData();
+                   //data.append("id", brand_id);
                    $.ajax({
-                     url: "/events/branch",
-                     data: data,
-                     cache: false,
+                     url: "/events/branch/" + brand_id,
+                     //data: data,
+                     //cache: false,
                      contentType: false,
                      processData: false,
-                     dataType: 'json',
-                     type: 'POST',
+                     dataType: 'JSON',
+                     type: 'GET',
                      success: function(data){
                       if(Object.keys(data).length > 0){
                         _branch.html('');

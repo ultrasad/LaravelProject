@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
+use App\Event;
 use App\Brand;
 //use App\Branch;
 
@@ -17,7 +18,6 @@ class BrandController extends Controller
   }
 
   /**
-<<<<<<< HEAD
   * Display a list of the event.
   *
   *@return Response
@@ -30,8 +30,6 @@ class BrandController extends Controller
   }
 
   /**
-=======
->>>>>>> parent of 01df9a2... Update Brand
   * Display the speified resource.
   *
   *@param int $id

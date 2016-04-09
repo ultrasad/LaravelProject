@@ -64,7 +64,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('events/desc_upload', 'EventsController@desc_upload');
     Route::get('events/branch/{id}', 'EventsController@branch');
     Route::get('maps/locations', 'MapsController@locations');
-    Route::get('brand/{id}', 'BrandController@index');
+    Route::get('brand/register', 'BrandController@register');
+    Route::get('brand/{id}', function($id){
+    })->where('id', '[0-9]+');
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers
     Route::resource('maps', 'MapsController'); //RESTful Resource Controllers

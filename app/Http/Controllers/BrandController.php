@@ -7,6 +7,7 @@ use App\Http\Requests;
 
 use App\Event;
 use App\Brand;
+use App\Category;
 //use App\Branch;
 
 class BrandController extends Controller
@@ -27,6 +28,16 @@ class BrandController extends Controller
     //echo '=> ' . $brand;
     $events = Event::published()->active()->eventBrand()->BrandId($brand_id)->orderBy('events.created_at', 'desc')->paginate(15);
     return view('brand.index', compact('events'));
+  }
+
+  /**
+  * Register New Brand.
+  */
+  public function register()
+  {
+    //echo 'register';
+    $category = Category::select('name', 'id')->get();
+    return view('brand.register', compact('category'));
   }
 
   /**

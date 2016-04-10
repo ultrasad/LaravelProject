@@ -22,11 +22,13 @@
 
               <div class="form-group form-group-default required">
                 <label>หัวข้อข่าว</label>
-                <input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" oninvalid="this.setCustomValidity('Please Enter valid title')" required />
+                <!--<input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" oninvalid="this.setCustomValidity('Please Enter valid title')" required />-->
+                <input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" oninvalid="this.setCustomValidity('Please Enter valid title')" />
               </div>
               <div class="form-group form-group-default required">
                 <label>URL SLUG (ภาษาอังกฤษเท่านั้น / สูงสุด 60 ตัวอักษร)</label>
-                <input type="text" name="url_slug" class="form-control" placeholder="ex: promotion-my-brand-my-name-date-year" required />
+                <!--<input type="text" name="url_slug" class="form-control" placeholder="ex: promotion-my-brand-my-name-date-year" required />-->
+                <input type="text" name="url_slug" class="form-control" placeholder="ex: promotion-my-brand-my-name-date-year" />
               </div>
               <div class="form-group form-group-default required">
                 <label>Category</label>
@@ -69,7 +71,8 @@
               </div>
               <div class="form-group form-group-default form-group-area required">
                 <label>รายละเอียดแบบย่อ</label>
-                <textarea class="form-control" name="brief" rows="3" required></textarea>
+                <!--<textarea class="form-control" name="brief" rows="3" required></textarea>-->
+                <textarea class="form-control" name="brief" rows="3"></textarea>
               </div>
               <div class="form-group">
                 <label>รายละเอียด</label>

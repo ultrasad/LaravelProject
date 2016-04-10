@@ -13,7 +13,7 @@ class BrandRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,16 +24,17 @@ class BrandRequest extends Request
     public function rules()
     {
       return [
-          'name' => 'required|min:3|max:255',
+          'title' => 'required|min:3|max:255',
+          //'name' => 'required|min:3|max:255',
           //'url_slug'  => 'required',
           //'image' => 'mimes:png,jpeg,jpg,gif'
       ];
     }
 
-    public function message()
+    public function messages()
     {
         return [
-          'required' => 'You have to enter some data on :attribute field',
+          //'required' => 'You have to enter some data on :attribute field',
           //'title.required' => 'Please enter the title on this article'
         ];
     }

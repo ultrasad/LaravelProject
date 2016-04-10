@@ -513,7 +513,7 @@ function statusChangeCallback(response){
          FB.api('/me/accounts', function(response){
             //console.log('account => ' + response.toSource());
             $.each(response.data, function(k,v){
-              console.log('k => ' + k.toSource() + ' v => '+ v.name);
+              console.log('k => ' + k.toSource() + ' v => '+ v.id + ' => ' + v.name);
             });
             console.log('account => ' + response.data[0].name);
         });

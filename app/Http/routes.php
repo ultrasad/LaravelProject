@@ -65,6 +65,15 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('events/branch/{id}', 'EventsController@branch');
     Route::get('maps/locations', 'MapsController@locations');
     Route::get('brand/register', 'BrandController@register');
+    //Route::get('brand/(:number)', 'BrandController@index');
+    //Route::get('/brand/{id}', array('as' => 'brand', function(){
+        //return App::make('BrandController')->index(1);
+    //}));
+
+    //Route::get('{product}', array('as' => 'product', 'uses' => 'ProductsController@index'))
+    //->where('product', '(milk|cheese)');
+    Route::get('/brand/{id}', array('as' => 'id', 'uses' => 'BrandController@index'))
+    ->where('id', '[0-9]+');
     //Route::get('brand/{id}', function($id){
     //})->where('id', '[0-9]+');
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers

@@ -7,7 +7,7 @@ var events_locations;
     $(document).ready(function() {
 
         //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-        $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+        $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: true}});
 
         $.fn.exists = function(){return this.length>0;}
 
@@ -46,6 +46,7 @@ var events_locations;
         $('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker({ format: 'yyyy-mm-dd'});
 
         //facebook login
+		    /*
         if($('.brand-form').exists()){
           console.log('load fb');
 
@@ -68,6 +69,19 @@ var events_locations;
            }(document, 'script', 'facebook-jssdk'));
 
         } //exists brand register form
+		    */
+
+        if($('.brand-form').exists()){
+      		$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+      			FB.init({
+      			  appId: '1532458647022405',
+              cookie   : true,  // enable cookies to allow the server to access // the session
+      			  version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
+      			});
+      			$('#FBLogin,#feedbutton').removeAttr('disabled');
+      			FB.getLoginStatus(statusChangeCallback);
+      		});
+        }
 
         $('#article').submit(function(e){
 
@@ -479,10 +493,9 @@ function statusChangeCallback(response){
 
     if (response.authResponse){
 
+	   /*
      FB.api('/me/permissions/publish_actions', 'get', function(response){
-
        //console.log('status => ' + response.data[0].status);
-
        if(response.data[0].status != 'granted'){
          console.log('permissnion publish_actions status declined.');
        } else {
@@ -506,19 +519,26 @@ function statusChangeCallback(response){
             //console.log('reponse => ' + key + ', value => ' + element);
           });
 
-          $('#fbPostModal').modal({show:true});
-          $("#fbPostModal .modal-body #tokenId").val( access_token );
+          //$('#fbPostModal').modal({show:true});
+          //$("#fbPostModal .modal-body #tokenId").val( access_token );
          });
-
-         FB.api('/me/accounts', function(response){
-            //console.log('account => ' + response.toSource());
-            $.each(response.data, function(k,v){
-              console.log('k => ' + k.toSource() + ' v => '+ v.id + ' => ' + v.name);
-            });
-            console.log('account => ' + response.data[0].name);
-        });
        }
      });
+	   */
+
+      FB.api('/me/accounts', function(response){
+       //console.log('account => ' + response.toSource());
+       var i = 0;
+       $.each(response.data, function(k,v){
+         ++i;
+         if(v.id == '192272534234138'){
+         $("#fbPostModal .modal-body #tokenId").val( v.access_token );
+         }
+         console.log('k => ' + k.toSource() + ' v => '+ v.id + ' => ' + v.name + ' => ' + v.access_token);
+       });
+       console.log('account => ' + response.data[0].name);
+      });
+
 
      } else {
          console.log('User cancelled login or did not fully authorize.');
@@ -529,12 +549,12 @@ function statusChangeCallback(response){
   } else {
      console.log('Please log into Facebook.');
   }
-};
+}
 
 function facebookLogin() {
   FB.login(function(response) {
       statusChangeCallback(response);
-    },{scope: 'email,public_profile,user_friends,publish_actions,publish_pages,manage_pages'});
+    },{scope: 'email,public_profile,publish_pages,manage_pages'});
 
   return false;
 }

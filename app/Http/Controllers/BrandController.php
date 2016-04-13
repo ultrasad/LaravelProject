@@ -64,12 +64,13 @@ class BrandController extends Controller
     try {
       $accessToken = $helper->getAccessToken();
       //posts message on page statues
+      $pageToken = $request->input('access_token');
       $msg_body = array(
         'message' => 'Test User Message !!',
-        'access_token' => $accessToken
+        'access_token' => (string) $pageToken
       );
       try {
-           $postResult = $fb->post('373634482682319/feed', $msg_body );
+           $postResult = $fb->post('192272534234138/feed', $msg_body );
        } catch (FacebookApiException $e) {
            echo $e->getMessage();
        }

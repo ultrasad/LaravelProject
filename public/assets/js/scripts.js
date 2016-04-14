@@ -588,6 +588,7 @@ function sendFile(file,editor,welEditable)
     Look for data-image attribute and apply those
     images as CSS background-image
 */
+/*
 var s_length = $('.item-slideshow > div').length;
 $('.item-slideshow > div').each(function(index) {
     var img = $(this).data('image');
@@ -610,11 +611,13 @@ $('.item-slideshow > div').each(function(index) {
         'background-position': 'center'
     });
 });
+*/
 
 /*
     Touch enabled slideshow for gallery item images using owlCarousel
     www.owlcarousel.owlgraphic.com
 */
+/*
 var owl = $(".item-slideshow").owlCarousel({
     items:1,
     nav: false,
@@ -622,6 +625,7 @@ var owl = $(".item-slideshow").owlCarousel({
     URLhashListener:true,
     onInitialized: loaded,
 });
+
 
 function loaded(e){
   $('.thumb').find(".owl-item").eq(0).addClass('synced');
@@ -633,6 +637,7 @@ owl.on('changed.owl.carousel', function(e) {
   thumbnail.find('.owl-item').removeClass('synced');
   thumbnail.find(".owl-item").eq(current).addClass('synced');
 });
+*/
 
 //google map application
 var map;

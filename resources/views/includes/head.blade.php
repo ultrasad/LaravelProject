@@ -25,7 +25,8 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/bootstrap-tag/bootstrap-tagsinput.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/summernote/css/summernote.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/switchery/css/switchery.min.css') }}" />
-<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/owl-carousel/assets/owl.carousel.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/fotorama/fotorama.css') }}">
+<!--<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/owl-carousel/assets/owl.carousel.css') }}"/>-->
 
 <link rel="stylesheet" type="text/css" media="screen"  href="{{ URL::asset('assets/codrops-stepsform/css/component.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages-icons.css') }}" />

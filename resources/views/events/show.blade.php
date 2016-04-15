@@ -28,7 +28,7 @@
       <div class="panel-body p-b-0">
         <div class="dialog__content">
             <!-- START PANEL -->
-            <div class="fotorama" data-width="100%" data-ratio="5/3" data-arrows="false" data-nav="thumbs" data-loop="true">
+            <div class="fotorama" data-width="100%" data-ratio="4/3" data-arrows="false" data-nav="thumbs" data-loop="true">
               @forelse($event->gallery_list as $id => $image)
                 <img src="{{ URL::asset($image) }}" />
               @empty
@@ -77,8 +77,8 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-12">
-          <div class="panel-body p-t-0 p-b-5 hint-text-9">
-            <hr class="p-b-t-1 m-t-10 m-b-10" />
+          <div class="panel-body p-t-0 p-b-5 hint-text-9 event-branch-list">
+            <!-- <hr class="p-b-t-1 m-t-10 m-b-10" /> -->
             <u><b>{{ $event->brand_name }} สาขาที่ร่วมรายการ</b></u>
             <span class="event">
               @if(!empty($branchs))
@@ -128,18 +128,18 @@
               <p>&nbsp;</p>
               <u><h4>โปรโมชั่นที่คุณอาจสนใจ</h4></u>
               <div class="row relate event-relate">
-                @for($i=0; $i<4; $i++)
-                <div class="col-lg-3 col-md-6 col-sm-12 padding-right-active">
+                @for($i=0; $i<6; $i++)
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding-right-active">
                   <div class="card card-relate relative">
                     <div class="row card-relate-row">
-                      <div class="relative col-md-12 col-xs-3 thumb padding-5">
+                      <div class="relative col-md-4 col-xs-3 thumb padding-5">
                           <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
                       </div>
-                      <div class="col-xs-9 col-md-12 brief">
+                      <div class="col-md-8 col-xs-9 brief">
                           <div class="padding-5 card-relate-body">
                             <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
-                            <p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
-                              ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>
+                            <!--<p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
+                              ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>-->
                           </div>
                           <div class="col-md-12 card-relate-footer p-l-0 p-r-0">
                             <div class="col-md-12 p-r-0 p-l-5">

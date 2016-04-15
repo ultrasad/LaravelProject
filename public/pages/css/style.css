@@ -14,10 +14,15 @@
 }
 
 .windows h3, .windows h4 {
-  font-size: 1.4em;
+  font-size: 1.3em;
 }
+
 .hint-text-9 {
   opacity: 0.9;
+}
+
+.event-branch-list {
+  font-size: 0.9em;
 }
 
 .p-b-t-1 {
@@ -353,13 +358,18 @@ div.cs-select-brand {
 .relate .brief .card-relate-body {
     position: relative;
     width: 100%;
+    margin-bottom: 15px;
+    font-size: 0.9em;
 }
 
 .relate .brief .card-relate-footer {
-    display: table-row;
+    /*display: table-row;*/
+    width: 100%;
     font-size: 0.8em;
     height: 30px;
     line-height: 30px;
+    position: absolute;
+    bottom: 0;
 }
 
 .relate .thumb, .relate .brief {

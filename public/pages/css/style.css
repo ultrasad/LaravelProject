@@ -17,6 +17,29 @@
   font-size: 1.3em;
 }
 
+/* brand */
+.branch_list .branch_name_list {
+  padding-right:  80px;
+  position: relative;
+}
+
+.branch_list .btn_branch_action {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+form .row .branch_list .branch_row {
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 10px;
+}
+
+.branch_list .branch_row .btn-xs {
+    padding: 2px 6px;
+    line-height: 1.5;
+}
+
 .hint-text-9 {
   opacity: 0.9;
 }

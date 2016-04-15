@@ -26,14 +26,15 @@
             <!-- <h5>Pages default style</h5>-->
               <div class="form-group form-group-default required">
                 <label>หัวข้อข่าว</label>
-                <input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" oninvalid="this.setCustomValidity('Please Enter valid title')" required />
+                <!--<input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" oninvalid="this.setCustomValidity('Please Enter valid title')" required />-->
+                <input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" required />
               </div>
               <div class="form-group form-group-default required">
                 <label>URL SLUG (ภาษาอังกฤษเท่านั้น / สูงสุด 60 ตัวอักษร)</label>
                 <input type="text" name="url_slug" class="form-control" placeholder="ex: promotion-my-brand-my-name-date-year" required />
               </div>
               <div class="form-group form-group-default required">
-                <label>Category</label>
+                <label>หมวดหมู่</label>
                 <!--<input type="text" name="category" class="form-control" placeholder="" />-->
                 <select id="category" name="category[]" class="full-width category-select2" multiple>
                   @if($category)

@@ -378,11 +378,11 @@ var events_locations;
           }
         });
 
-        //Switchery
-        var changeCheckbox = document.querySelector('.js-check-change')
-          , changeField = document.querySelector('.js-check-change-field');
-
         if($('.social_group').exists()){
+          //Switchery
+          var changeCheckbox = document.querySelector('.js-check-change')
+            , changeField = document.querySelector('.js-check-change-field');
+            
           changeCheckbox.onchange = function() {
             changeField.value = changeCheckbox.checked;
             if(changeCheckbox.checked == true){

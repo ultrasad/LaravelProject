@@ -47,7 +47,7 @@
         <p>&nbsp;</p>
         <div class="item-header clearfix">
           <div class="thumbnail-wrapper d32 circular">
-            <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="{{ $event->brand_name }}" />
+            <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="{{ $event->brand->first()->name }}" />
           </div>
           <div class="inline m-l-10">
             <p class="no-margin">
@@ -79,7 +79,7 @@
         <div class="col-md-12">
           <div class="panel-body p-t-0 p-b-5 hint-text-9 event-branch-list">
             <!-- <hr class="p-b-t-1 m-t-10 m-b-10" /> -->
-            <u><b>{{ $event->brand_name }} สาขาที่ร่วมรายการ</b></u>
+            <u><b>{{ $event->brand->first()->name }} สาขาที่ร่วมรายการ</b></u>
             <span class="event">
               @if(!empty($branchs))
                 {!! implode(', ', $branchs) !!}

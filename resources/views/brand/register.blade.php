@@ -80,7 +80,7 @@
               <div class="social_group_link">
                 <div class="form-group">
                   <label class="social-facebook-title">Facebook</label>
-                  <button class="btn btn-complete fb_login" type="button" id="FBLogin"><i class="fa fa-facebook"></i>&nbsp;Facebook Login</button>
+                  <button class="btn btn-complete btn-xs fb_login" type="button" id="FBLogin"><i class="fa fa-facebook"></i>&nbsp;Facebook Login</button>
                   <span class="checkbox-inline">
                     <div class="checkbox check-warning">
                       <input type="checkbox" checked="checked" value="1" name="fb1" id="checkbox2" />
@@ -97,7 +97,7 @@
 
                 <div class="form-group">
                   <label class="social-twitter-title">Twitter</label>
-                  <button class="btn btn-success tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i>&nbsp;Twitter Login</button>
+                  <button class="btn btn-success btn-xs tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i>&nbsp;Twitter Login</button>
                   <span class="checkbox-inline">
                     <div class="checkbox check-warning">
                       <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
@@ -199,7 +199,7 @@
               </div>
 
               <div class="form-group">
-                  <button class="btn btn-danger btn-xs" type="button" id="add_branch">เพิ่มสาขา</button>
+                  <button class="btn btn-primary btn-xs" type="button" id="add_branch">เพิ่มสาขา</button>
                   <!--<span class="new-branch"><i class="fs-14 pg-plus"></i>เพิ่มสาขาใหม่</span>-->
               </div>
 
@@ -208,9 +208,9 @@
                   <div class="row">
                     <div class="branch_name_list col-xs-10">ชื่อสาขา ที่1 ชื่อสาขา ที่1</div>
                     <div class="btn-group btn_branch_action btn-xs">
-                      <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil"></i>
+                      <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
                       </button>
-                      <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o"></i>
+                      <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
                       </button>
                     </div>
                   </div>
@@ -219,9 +219,9 @@
                   <div class="row">
                     <div class="branch_name_list col-xs-10">ชื่อสาขา ที่2 ชื่อสาขา ที่2</div>
                     <div class="btn-group btn_branch_action btn-xs">
-                      <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil"></i>
+                      <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
                       </button>
-                      <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o"></i>
+                      <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
                       </button>
                     </div>
                   </div>

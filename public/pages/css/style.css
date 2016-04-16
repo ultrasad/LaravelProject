@@ -19,7 +19,7 @@
 
 /* brand */
 .branch_list .branch_name_list {
-  padding-right:  80px;
+  padding-right:  30px;
   position: relative;
 }
 
@@ -38,6 +38,10 @@ form .row .branch_list .branch_row {
 .branch_list .branch_row .btn-xs {
     padding: 2px 6px;
     line-height: 1.5;
+}
+
+.hint-text-8 {
+  opacity: 0.8;
 }
 
 .hint-text-9 {

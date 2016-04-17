@@ -90,7 +90,7 @@ class BrandController extends Controller
     } while($dup==1);
     $brand->url_slug = $base_slug;
 
-    $brand_id = $brand->save(); //brand id
+    $brand->save(); //brand insert
 
     //category
     $categoryId = $request->input('category');
@@ -98,7 +98,7 @@ class BrandController extends Controller
        $brand->category()->sync($categoryId);
     }
 
-    echo '=> ' . $brand_id;
+    echo '=> ' . $brand->id; //last id inserted.
   }
 
   public function facebook(Request $request)

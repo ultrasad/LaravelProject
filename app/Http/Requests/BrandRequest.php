@@ -24,7 +24,8 @@ class BrandRequest extends Request
     public function rules()
     {
       return [
-          'title' => 'required|min:3|max:255',
+          'name' => 'required|min:3|max:255',
+          'url_slug'  => 'required',
           //'name' => 'required|min:3|max:255',
           //'url_slug'  => 'required',
           //'image' => 'mimes:png,jpeg,jpg,gif'

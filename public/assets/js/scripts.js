@@ -116,6 +116,101 @@ var events_locations;
             e.preventDefault();
         });
 
+        $('#brand-register-form').on('submit',function(e){
+          if($(this).valid()){
+            e.preventDefault(e);
+            var _token, data;
+            _token = $('input[name=_token]').val();
+            //var form = $('#brand-register-form');
+            var form = document.getElementById('brand-register-form');
+            data = new FormData(form);
+
+            console.log(data);
+
+            $.ajax({
+                url: '/brand',
+                headers: {'X-CSRF-TOKEN': _token},
+                data: data,
+                type: 'POST',
+                datatype: 'JSON',
+                processData: false,
+                contentType: false,
+                success: function (resp) {
+                  console.log('ajax response => ' + resp);
+                  //window.location.href = base_url + '/events';
+                },
+                error: function(jqXHR, textStatus, errorThrown)
+                {
+                    $('.error-reponse').html(jqXHR.responseJSON);
+                }
+            });
+
+          }
+          return false;
+        });
+
+        if($('#brand-register-form').exists()){
+          $('#brand-register-form').validate({
+               //ignore: ".ignore :hidden" //is telling it to ignore hidden fields with the class ignore.
+               //ignore: ".ignore", //will tell it to only ignore fields will class .ignore.
+               //ignore: ".ignore, :hidden", //will tell it to ignore fields will class .ignore AND fields that are hidden.
+               //ignore:[], // tells the plugin to ignore nothing and validate everything.
+               ignore: ".ignore, :hidden:not(.validate)",
+               focusInvalid: false,
+               ignoreTitle: true,
+               errorClass:'error',
+               validClass:'success',
+               errorElement:'span',
+               highlight: function (element, errorClass, validClass) {
+                   $(element).parents("div[class='clearfix']").addClass(errorClass).removeClass(validClass);
+               },
+               unhighlight: function (element, errorClass, validClass) {
+                   $(element).parents(".error").removeClass(errorClass).addClass(validClass);
+               },
+               rules: {
+                  name: {
+                    required: true
+                  },
+                  url_slug: {
+                    required: true
+                  },
+                  "category[]": {
+                    required: true
+                  },
+                  detail: {
+                     required: true
+                  },
+                  published_at: {
+                    required: true
+                  }
+               },
+               messages: {
+                  name:{
+                  	required: "This field is required.",
+                  },
+                  url_slug:{
+                  	required: "This field is required.",
+                  },
+                  "category[]": {
+                    required: "This field is required.",
+                  },
+                  detail: {
+                    required: "This field is required.",
+                  },
+                  published_at: {
+                    required: "This field is required.",
+                  }
+          		 },
+               submitHandler: function(form) {
+                   // optional callback function
+                   // only fires on a valid form submission
+                   // do something only if/when form is valid
+                   // like process the dropzone queue HERE instead
+                   // then use .ajax() OR .submit();
+               }
+          });
+        }
+
         $.validator.addMethod("checkTags", function(value) { //add custom method
             //Tags input plugin converts input into div having id #YOURINPUTID_tagsinput
             //now you can count no of tags
@@ -123,107 +218,109 @@ var events_locations;
         });
 
         /* cache by bootstrap js */
-        $('#my-awesome-dropzone-form').validate({
-             //ignore: ".ignore :hidden" //is telling it to ignore hidden fields with the class ignore.
-             //ignore: ".ignore", //will tell it to only ignore fields will class .ignore.
-             //ignore: ".ignore, :hidden", //will tell it to ignore fields will class .ignore AND fields that are hidden.
-             //ignore:[], // tells the plugin to ignore nothing and validate everything.
-             ignore: ".ignore, :hidden:not(.validate)",
-             focusInvalid: false,
-             ignoreTitle: true,
-             errorClass:'error',
-             validClass:'success',
-             errorElement:'span',
-             highlight: function (element, errorClass, validClass) {
-                 //console.log(element.name);
-                 $(element).parents("div[class='clearfix']").addClass(errorClass).removeClass(validClass);
-             },
-             unhighlight: function (element, errorClass, validClass) {
-                 $(element).parents(".error").removeClass(errorClass).addClass(validClass);
-             },
-             /*
-            //When there is an error normally you just add the class to the element.
-            // But in the case of select2s you must add it to a UL to make it visible.
-            // The select element, which would otherwise get the class, is hidden from
-            // view.
-            highlight: function (element, errorClass, validClass) {
-              var elem = $(element);
-              console.log(element.name);
-              if (elem.hasClass("select2-offscreen")) {
-                  $("#s2id_" + elem.attr("id") + " a").addClass(errorClass);
-                  console.log('has class');
-              } else {
-                  elem.addClass(errorClass);
-                  console.log('no class');
-              }
-            },
-            //When removing make the same adjustments as when adding
-            unhighlight: function (element, errorClass, validClass) {
-              var elem = $(element);
-              if (elem.hasClass("select2-offscreen")) {
-                  $("#s2id_" + elem.attr("id") + " a").removeClass(errorClass);
-              } else {
-                  elem.removeClass(errorClass);
-              }
-            },*/
-             rules: {
-                title: {
-                  required: true
-                },
-                url_slug: {
-                  required: true
-                },
-                "category[]": {
-                  required: true
-                },
-                tag_list: {
-                  required: true,
-                  "checkTags": true
-                },
-                brief: {
-                   required: true
-                },
-                published_at: {
-                  required: true
+        if($('#my-awesome-dropzone-form').exists()){
+          $('#my-awesome-dropzone-form').validate({
+               //ignore: ".ignore :hidden" //is telling it to ignore hidden fields with the class ignore.
+               //ignore: ".ignore", //will tell it to only ignore fields will class .ignore.
+               //ignore: ".ignore, :hidden", //will tell it to ignore fields will class .ignore AND fields that are hidden.
+               //ignore:[], // tells the plugin to ignore nothing and validate everything.
+               ignore: ".ignore, :hidden:not(.validate)",
+               focusInvalid: false,
+               ignoreTitle: true,
+               errorClass:'error',
+               validClass:'success',
+               errorElement:'span',
+               highlight: function (element, errorClass, validClass) {
+                   //console.log(element.name);
+                   $(element).parents("div[class='clearfix']").addClass(errorClass).removeClass(validClass);
+               },
+               unhighlight: function (element, errorClass, validClass) {
+                   $(element).parents(".error").removeClass(errorClass).addClass(validClass);
+               },
+               /*
+              //When there is an error normally you just add the class to the element.
+              // But in the case of select2s you must add it to a UL to make it visible.
+              // The select element, which would otherwise get the class, is hidden from
+              // view.
+              highlight: function (element, errorClass, validClass) {
+                var elem = $(element);
+                console.log(element.name);
+                if (elem.hasClass("select2-offscreen")) {
+                    $("#s2id_" + elem.attr("id") + " a").addClass(errorClass);
+                    console.log('has class');
+                } else {
+                    elem.addClass(errorClass);
+                    console.log('no class');
                 }
-                /*
-                fb_message: {
-                   required: true
-                }*/
-             },
-             messages: {
-                title:{
-                	required: "This field is required.",
-                },
-                url_slug:{
-                	required: "This field is required.",
-                },
-                "category[]": {
-                  required: "This field is required.",
-                },
-                tag_list: {
-                  required: "This field is required.",
-                  "checkTags": "This field is required.",
-                },
-                brief: {
-                  required: "This field is required.",
-                },
-                published_at: {
-                  required: "This field is required.",
+              },
+              //When removing make the same adjustments as when adding
+              unhighlight: function (element, errorClass, validClass) {
+                var elem = $(element);
+                if (elem.hasClass("select2-offscreen")) {
+                    $("#s2id_" + elem.attr("id") + " a").removeClass(errorClass);
+                } else {
+                    elem.removeClass(errorClass);
                 }
-                /*
-                fb_message: {
-                  required: "This field is required.",
-                }*/
-        		 },
-             submitHandler: function(form) {
-                 // optional callback function
-                 // only fires on a valid form submission
-                 // do something only if/when form is valid
-                 // like process the dropzone queue HERE instead
-                 // then use .ajax() OR .submit()
-             }
-        });
+              },*/
+               rules: {
+                  title: {
+                    required: true
+                  },
+                  url_slug: {
+                    required: true
+                  },
+                  "category[]": {
+                    required: true
+                  },
+                  tag_list: {
+                    required: true,
+                    "checkTags": true
+                  },
+                  brief: {
+                     required: true
+                  },
+                  published_at: {
+                    required: true
+                  }
+                  /*
+                  fb_message: {
+                     required: true
+                  }*/
+               },
+               messages: {
+                  title:{
+                  	required: "This field is required.",
+                  },
+                  url_slug:{
+                  	required: "This field is required.",
+                  },
+                  "category[]": {
+                    required: "This field is required.",
+                  },
+                  tag_list: {
+                    required: "This field is required.",
+                    "checkTags": "This field is required.",
+                  },
+                  brief: {
+                    required: "This field is required.",
+                  },
+                  published_at: {
+                    required: "This field is required.",
+                  }
+                  /*
+                  fb_message: {
+                    required: "This field is required.",
+                  }*/
+          		 },
+               submitHandler: function(form) {
+                   // optional callback function
+                   // only fires on a valid form submission
+                   // do something only if/when form is valid
+                   // like process the dropzone queue HERE instead
+                   // then use .ajax() OR .submit()
+               }
+          });
+        }
 
         Dropzone.options.myAwesomeDropzoneForm = { // The camelized version of the ID of the form element
           // The configuration we've talked about above
@@ -259,6 +356,7 @@ var events_locations;
                 } else {
                      var _token, data;
                      _token = $('input[name=_token]').val();
+                     //var form = $('#my-awesome-dropzone-form');
                      var form = document.getElementById('my-awesome-dropzone-form');
                      data = new FormData(form);
 
@@ -378,11 +476,15 @@ var events_locations;
           }
         });
 
+        $('#category').on('change', function() {
+            $(this).valid();
+        });
+
         if($('.social_group').exists()){
           //Switchery
           var changeCheckbox = document.querySelector('.js-check-change')
             , changeField = document.querySelector('.js-check-change-field');
-            
+
           changeCheckbox.onchange = function() {
             changeField.value = changeCheckbox.checked;
             if(changeCheckbox.checked == true){

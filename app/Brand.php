@@ -9,7 +9,7 @@ class Brand extends Model
   protected $table = 'brand';
 
   //Mass Assignment
-  protected $fillable = ['name', 'logo_image', 'logo_cover', 'slogan', 'detail', 'category', 'facebook', 'twitter', 'line_officail', 'youtube', 'approve_status']; //Whitelist
+  protected $fillable = ['name', 'url_slug', 'logo_image', 'cover_image', 'slogan', 'detail', 'facebook', 'twitter', 'line_officail', 'youtube', 'approve_status']; //Whitelist
 
   public function events()
   {
@@ -19,6 +19,12 @@ class Brand extends Model
   public function branch()
   {
     return $this->belongsToMany('App\Branch', 'brand_branch')
+                ->withTimestamps(); //update created app, updated app relationship table
+  }
+
+  public function category()
+  {
+    return $this->belongsToMany('App\Category', 'brand_category', 'brand_id', 'cate_id')
                 ->withTimestamps(); //update created app, updated app relationship table
   }
 
@@ -41,5 +47,5 @@ class Brand extends Model
     return $branch_list;
   }
   */
-  
+
 }

@@ -2,7 +2,7 @@
 @section('page_title', 'Events Create')
 @section('content')
   <!-- START CONTAINER FLUID -->
-  <form class="brand-form" id="brand-form" role="form" action="/brand" enctype="multipart/form-data" method="POST">
+  <form class="brand-form" id="brand-register-form" role="form" action="/brand" enctype="multipart/form-data" method="POST">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   {{-- Form::token() --}}
   <div class="container-fluid container-fixed-lg">
@@ -19,11 +19,11 @@
           <div class="panel-body sm-p-t-20">
               <div class="form-group form-group-default required">
                 <label>ชื่อแบรนด์</label>
-                <input type="text" name="brand_name" class="form-control" placeholder="ชื่อแบรนด์" required />
+                <input type="text" name="name" class="form-control" placeholder="ชื่อแบรนด์" />
               </div>
               <div class="form-group form-group-default required">
                 <label>URL SLUG (ภาษาอังกฤษเท่านั้น / สูงสุด 60 ตัวอักษร)</label>
-                <input type="text" name="url_slug" class="form-control" placeholder="ex: my-brand-name" required />
+                <input type="text" name="url_slug" class="form-control" placeholder="ex: my-brand-name" />
               </div>
               <div class="form-group form-group-default input-group">
                 <label>Logo Image</label>
@@ -53,7 +53,7 @@
               </div>
               <div class="form-group form-group-default required">
                 <label>สโลแกน</label>
-                <input type="text" name="slogan" class="form-control" placeholder="สโลแกน" required />
+                <input type="text" name="slogan" class="form-control" placeholder="สโลแกน" />
               </div>
               <div class="form-group form-group-default form-group-area required">
                 <label>รายละเอียดแบบย่อ</label>
@@ -79,8 +79,8 @@
 
               <div class="social_group_link">
                 <div class="form-group">
-                  <label class="social-facebook-title">Facebook</label>
-                  <button class="btn btn-complete btn-xs fb_login" type="button" id="FBLogin"><i class="fa fa-facebook"></i>&nbsp;Facebook Login</button>
+                  <button class="btn btn-complete btn-xs fb_login" type="button" id="FBLogin"><i class="fa fa-facebook"></i><strong>&nbsp;FB Login</strong></button>
+                  <!--<label class="social-facebook-title">Facebook</label>-->
                   <span class="checkbox-inline">
                     <div class="checkbox check-warning">
                       <input type="checkbox" checked="checked" value="1" name="fb1" id="checkbox2" />
@@ -96,8 +96,8 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="social-twitter-title">Twitter</label>
-                  <button class="btn btn-success btn-xs tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i>&nbsp;Twitter Login</button>
+                  <button class="btn btn-success btn-xs tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i><strong>&nbsp;TW Login</strong></button>
+                  <!--<label class="social-twitter-title">Twitter</label>-->
                   <span class="checkbox-inline">
                     <div class="checkbox check-warning">
                       <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
@@ -120,19 +120,19 @@
               <div class="social_network_link">
                 <div class="form-group form-group-default">
                   <label>Facebook</label>
-                  <input type="text" name="brand_social_facebook" class="form-control" placeholder="Facebook" />
+                  <input type="text" name="facebook" class="form-control" placeholder="Facebook" />
                 </div>
                 <div class="form-group form-group-default">
                   <label>Twitter</label>
-                  <input type="text" name="brand_social_twitter" class="form-control" placeholder="Twitter" />
+                  <input type="text" name="twitter" class="form-control" placeholder="Twitter" />
                 </div>
                 <div class="form-group form-group-default">
                   <label>Line Officail</label>
-                  <input type="text" name="brand_social_line" class="form-control" placeholder="Line Officail" />
+                  <input type="text" name="line_officail" class="form-control" placeholder="Line Officail" />
                 </div>
                 <div class="form-group form-group-default">
                   <label>Youtube</label>
-                  <input type="text" name="brand_social_youtube" class="form-control" placeholder="Youtube" />
+                  <input type="text" name="youtube" class="form-control" placeholder="Youtube" />
                 </div>
               </div>
 
@@ -247,16 +247,9 @@
           <div class="panel-heading">
             <div class="panel-title">
               <div class="checkbox check-danger">
-                <input type="checkbox" checked="checked" class="published_check" name="published_now" value="{{ date('Y-m-d') }}" id="published_check">
-                <label class="label-master" for="published_check">Approved (Admin)</label>
+                <input type="checkbox" checked="checked" class="approve_status" name="approve_status" value="Y" id="approve_status">
+                <label class="label-master" for="approve_status">Approved (Admin)</label>
               </div>
-            </div>
-          </div>
-          <div class="panel-body published_set_time" style="display: none">
-            <div class="form-group form-group-default input-group col-sm-12">
-              <label>ตั้งเวลาขึ้นแสดง</label>
-              <input type="text" name="published_at" class="form-control" placeholder="Pick a date" id="datepicker-component3">
-              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
           </div>
         </div>

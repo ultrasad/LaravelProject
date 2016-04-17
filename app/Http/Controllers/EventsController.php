@@ -97,9 +97,10 @@ class EventsController extends Controller
 
     //image
     if($request->hasFile('image')){
-      $image_filename = $request->file('image')
-                       ->getClientOriginalName();
-      $image_name = date('Ymd-His-').str_slug($image_filename);
+      $image_filename = $request->file('image')->getClientOriginalName();
+      $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+      $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+      $image_name = date('Ymd-His-').str_slug($file_name) . '.' . $extension;
       $public_path = 'images/events/' . date('Y-m-d') . '/';
       $destination = base_path() . '/public/' . $public_path;
       $request->file('image')->move($destination, $image_name); //move file to destination
@@ -168,7 +169,9 @@ class EventsController extends Controller
       $images = array();
       foreach($gallery as $file){
          $image_filename = $file->getClientOriginalName();
-         $image_name = date('Ymd-His-').$image_filename;
+         $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+         $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+         $image_name = date('Ymd-His-').str_slug($file_name) . '.' . $extension;
          $public_path = 'images/events/'. date('Y-m-d') .'/gallery/'. $event_id . '/';
          $destination = base_path() . '/public/' . $public_path;
          $upload_success = $file->move($destination, $image_name); //move file to destination
@@ -287,9 +290,10 @@ class EventsController extends Controller
   public function desc_upload()
   {
       if(Request::ajax() && Request::hasFile('file_upload')){
-        $image_filename = Request::file('file_upload')
-                         ->getClientOriginalName();
-        $image_name = date('Ymd-His-').str_slug($image_filename);
+        $image_filename = Request::file('file_upload')->getClientOriginalName();
+        $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+        $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+        $image_name = date('Ymd-His-').str_slug($file_name) . '.' . $extension;
         $public_path = 'images/events/'. date('Y-m-d') .'/description/';
         $destination = base_path() . '/public/' . $public_path;
         $upload_success = Request::file('file_upload')->move($destination, $image_name); //move file to destination

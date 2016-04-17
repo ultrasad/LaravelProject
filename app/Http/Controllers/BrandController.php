@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\BrandRequest;
 
+//use Auth;
 use App\Event;
 use App\Brand;
 use App\Category;
@@ -42,12 +43,65 @@ class BrandController extends Controller
     return view('brand.register', compact('category'));
   }
 
-  /**
-  * Store a newly created resource in storage.
-  *
-  *@return Response
-  */
   public function store(BrandRequest $request)
+  {
+    $brand = new Brand($request->all());
+    //echo '<pre>';
+    //print_r($brand);
+    //exit;
+
+    //logo image
+    if($request->hasFile('logo_image')){
+      $image_filename = $request->file('logo_image')->getClientOriginalName();
+      $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+      $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+      $image_name = 'logo_'. date('Ymd-His-').str_slug($file_name) . '.' . $extension;
+      $public_path = 'images/brand/';
+      $destination = base_path() . '/public/' . $public_path;
+      $request->file('logo_image')->move($destination, $image_name); //move file to destination
+      $brand->logo_image = $public_path . $image_name; //set brand image name
+    }
+
+    //cover image
+    if($request->hasFile('cover_image')){
+      $image_filename = $request->file('cover_image')->getClientOriginalName();
+      $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+      $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+      $image_name = 'cover_'. date('Ymd-His-').str_slug($file_name) . '.' . $extension;
+      $public_path = 'images/brand/';
+      $destination = base_path() . '/public/' . $public_path;
+      $request->file('cover_image')->move($destination, $image_name); //move file to destination
+      $brand->cover_image = $public_path . $image_name; //set brand image name
+    }
+
+    //url slug
+    $url_slug = str_slug($request->input('url_slug'));
+    $base_slug = $url_slug;
+    //echo 'base => ' . $base_slug;
+
+    $i=1; $dup=1;
+    do {
+      $slug = Brand::firstOrNew(array('url_slug' => $base_slug));
+      if($slug->exists){
+        $base_slug = $url_slug . '-' . $i++;
+      } else {
+        $dup=0;
+      }
+    } while($dup==1);
+    $brand->url_slug = $base_slug;
+
+    $brand_id = $brand->save(); //brand id
+
+    //category
+    $categoryId = $request->input('category');
+    if(!empty($categoryId)){
+       $brand->category()->sync($categoryId);
+    }
+
+    echo '=> ' . $brand_id;
+  }
+
+  public function facebook(Request $request)
   {
 
     # /js-login.php
@@ -60,7 +114,6 @@ class BrandController extends Controller
     $helper = $fb->getJavaScriptHelper();
 
     //373634482682319
-
     try {
       $accessToken = $helper->getAccessToken();
       //posts message on page statues
@@ -105,12 +158,6 @@ class BrandController extends Controller
     print_r($brand);
   }
 
-  /**
-  * Display the speified resource.
-  *
-  *@param int $id
-  *@return Response
-  */
   public function branch(Request $request)
   {
     $id = $request->input('id');

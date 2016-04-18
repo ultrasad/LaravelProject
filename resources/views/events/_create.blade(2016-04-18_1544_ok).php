@@ -227,13 +227,36 @@
               </div>
 
               <div class="form-group">
-                  <a href="javascript: void(0);" title="เพิ่มสาขาใหม่" class="add_new_branch"><span class="new-branch"><i class="fs-14 pg-minus pg-plus"></i>เพิ่มสาขาใหม่</span></a>
+                  <span class="new-branch"><i class="fs-14 pg-plus"></i>เพิ่มสาขาใหม่</span>
               </div>
+
+              <!--
+              <div class="checkbox check-warning">
+                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="ladprao,12" id="checkbox7">
+                <label for="checkbox7">เซ็นทรัลลาดพร้าว</label>
+              </div>
+              <div class="checkbox check-warning">
+                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="bangkapi,13" id="checkbox8">
+                <label for="checkbox8">เดอะมอลล์บางกะปิ</label>
+              </div>
+              <div class="checkbox check-warning">
+                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="centralworld,21" id="checkbox9">
+                <label for="checkbox9">เซ็นทรัลเวิลด์</label>
+              </div>
+              <div class="checkbox check-warning">
+                <input type="checkbox" checked="checked" name="branch[]" class="branch" value="bangkapi,21" id="checkbox10">
+                <label for="checkbox10">เซ็นทรัลปิ่นเกล้า</label>
+              </div>
+              <div class="form-group">
+                  <span class="new-branch"><i class="fs-14 pg-plus"></i>เพิ่มสาขาใหม่</span>
+              </div>
+              <div class="clearfix"></div>
+              -->
 
             </div>
           </div>
 
-          <div class="panel-body new_branch_panel p-t-0" style="display: none;">
+          <div class="panel-body">
             <div class="form-group form-group-default form-group-map">
               <label>ชื่อสาขา</label>
               <input type="text" size="50" name="branch_name" class="form-control" id="branch_name" placeholder="ชื่อสาขา" />
@@ -246,7 +269,7 @@
 
             <div class="form-group form-group-default form-group-map">
               <label>ที่ตั้งสาขา</label>
-              <input type="text" size="50" name="branch_location" class="form-control" id="branch_location" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
+              <input type="text" size="50" name="branch_location_name" class="form-control" id="branch_location_name" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
             </div>
 
             <div class="form-group">
@@ -262,7 +285,6 @@
               <div class="form-group">
                   <button class="btn btn-primary btn-xs" type="button" id="add_branch">เพิ่มสาขา</button>
               </div>
-              {{--
               <div class="branch_list">
                 <div class="col-md-12 branch_row">
                   <div class="row">
@@ -287,7 +309,6 @@
                   </div>
                 </div>
               </div>
-              --}}
             </div>
           </div>
 

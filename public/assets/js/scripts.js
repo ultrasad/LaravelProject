@@ -506,6 +506,7 @@ var events_locations;
                    var _branch = $('.branch_child .list');
                    //var data = new FormData();
                    //data.append("id", brand_id);
+                   if(brand_id > 0){
                    $.ajax({
                      url: "/events/branch/" + brand_id,
                      //data: data,
@@ -532,9 +533,15 @@ var events_locations;
                        console.log(textStatus+" "+errorThrown);
                      }
                   });
+                } else {
+                  _branch.html('');
+                }
               }
           });
         }
+
+        //add branch
+        if($('.new_branch_panel').exists()){}
 
         $(document).on('change', '.branch_all', function(e){
           var _child = $('.branch_child');
@@ -744,6 +751,9 @@ owl.on('changed.owl.carousel', function(e) {
 //google map application
 var map;
 var mapObj;
+var mapBranch;
+var mapObjBranch;
+
 function initialize() {
     mapObj = new Object(google.maps);
     var default_latlng  = new mapObj.LatLng(13.7563309, 100.50176510000006);
@@ -768,9 +778,27 @@ function initialize() {
       anchorPoint: new mapObj.Point(0, -29)
     });
 
+    //map branch location
+    mapObjBranch = new Object(google.maps);
+    var latlngboundsBranch = new mapObjBranch.LatLngBounds();
+    var map_canvas_branch = $("#map_canvas_branch")[0];
+    mapBranch = new mapObjBranch.Map(map_canvas_branch, options);
+    mapObjBranch.event.addListener(mapBranch, 'zoom_changed', function() {
+        $("#branch_location_zoom").val(mapBranch.getZoom());
+    });
+
+    var infowindowBranch = new mapObjBranch.InfoWindow();
+    var markerBranch = new mapObjBranch.Marker({
+      map: mapBranch,
+      anchorPoint: new mapObj.Point(0, -29)
+    });
+
     var place = '';
     var address = '';
     var point = '';
+
+    var placeBranch = '';
+    var addressBranch = '';
 
     if($('.map-full').exists()){ //map full
       $.ajax({
@@ -935,8 +963,9 @@ function initialize() {
       });
     }
 
-    if($('#location_name').exists()){ //search box
-      var input = document.getElementById('location_name');
+    //event location
+    if($('#event_location').exists()){ //search box
+      var input = document.getElementById('event_location');
       var autocomplete = new mapObj.places.Autocomplete(input);
       autocomplete.bindTo('load', map);
 
@@ -950,16 +979,18 @@ function initialize() {
         } else {
           map.setZoom(17);
           map.setCenter(place.geometry.location);
-          //console.log('set center');
+          console.log('map set center');
         }
 
         // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport){
           map.fitBounds(place.geometry.viewport);
-        } else {
+          console.log('map fitBounds' + place.geometry.viewport);
+        }
+        /*else {
           map.setCenter(place.geometry.location);
           map.setZoom(17);  // Why 17? Because it looks good.
-        }
+        }*/
 
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
@@ -970,11 +1001,75 @@ function initialize() {
         infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);
         infowindow.open(map, marker);
       });
+
+      mapObj.event.addListener(marker, 'click', function() {
+        infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);
+        infowindow.open(map, marker);
+      });
     }
 
-    mapObj.event.addListener(marker, 'click', function() {
-      infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);
-      infowindow.open(map, this);
-    });
+    //branch location
+    if($('#branch_location').exists()){ //search box
+      var inputBranch = document.getElementById('branch_location');
+      var autocompleteBranch = new mapObjBranch.places.Autocomplete(inputBranch);
+      autocompleteBranch.bindTo('load', mapBranch);
+
+      autocompleteBranch.addListener('place_changed', function(){
+        infowindowBranch.close();
+        markerBranch.setVisible(false);
+        placeBranch = autocompleteBranch.getPlace();
+        if (!placeBranch.geometry){
+          window.alert("Autocomplete's returned place contains no geometry");
+          return;
+        } else {
+          mapBranch.setZoom(17);
+          mapBranch.setCenter(placeBranch.geometry.location);
+          console.log('branch set center');
+        }
+
+        // If the place has a geometry, then present it on a map.
+        if (placeBranch.geometry.viewport){
+          mapBranch.fitBounds(placeBranch.geometry.viewport);
+          console.log('branch fitBounds' + placeBranch.geometry.viewport);
+        }
+        /*else {
+          mapBranch.setCenter(placeBranch.geometry.location);
+          mapBranch.setZoom(17);  // Why 17? Because it looks good.
+          console.log('branch location');
+        }*/
+
+        markerBranch.setPosition(placeBranch.geometry.location);
+        markerBranch.setVisible(true);
+
+        $("#branch_location_lat").val(placeBranch.geometry.location.lat());
+        $("#branch_location_lon").val(placeBranch.geometry.location.lng());
+
+        infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div><br>' + addressBranch);
+        infowindowBranch.open(mapBranch, markerBranch);
+      });
+
+      mapObjBranch.event.addListener(markerBranch, 'click', function(){
+        infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div><br>' + addressBranch);
+        infowindowBranch.open(mapBranch, markerBranch);
+      });
+
+      $(document).on('click', '.add_new_branch', function(e){
+        $('.new_branch_panel').toggle();
+        $('i.pg-minus', this).toggleClass('pg-plus');
+        if ($('.new_branch_panel').css('display') != 'none'){
+          //markerBranch = [];
+          //markerBranch.setVisible(false);
+          $('#branch_location').val('');
+          //markerBranch.setMap(null);
+          mapBranch.setZoom(14);
+          mapObjBranch.event.trigger(mapBranch, 'resize');
+          //mapBranch.setCenter(placeBranch.geometry.location);
+          mapBranch.setCenter(default_latlng);
+          //google.maps.event.addDomListener(window, 'resize', function() {
+              //map.setCenter(center);
+          //});
+        }
+      });
+    }
 
 }

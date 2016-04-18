@@ -9,7 +9,7 @@ class Branch extends Model
     protected $table = 'branch';
 
     //Mass Assignment
-    protected $fillable = ['name', 'image', 'lat', 'lon', 'detail']; //Whitelist
+    protected $fillable = ['name', 'image', 'lat', 'lon', 'zoom', 'detail']; //Whitelist
 
     public function events()
     {

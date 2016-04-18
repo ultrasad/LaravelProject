@@ -205,7 +205,7 @@
             </div>
           </div>
           <div class="panel-body">
-            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all">
+            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all check-branch-all" style="display: none">
               <div class="checkbox check-success">
                 <input type="checkbox" checked="checked" name="branch_all" value="1" class="branch_all" id="branch_all">
                 <label class="label-master" for="branch_all">ทุกสาขา</label>
@@ -226,7 +226,7 @@
                 @endif
               </div>
 
-              <div class="form-group">
+              <div class="form-group new_branch_btn" style="display: none;">
                   <a href="javascript: void(0);" title="เพิ่มสาขาใหม่" class="add_new_branch"><span class="new-branch"><i class="fs-14 pg-minus pg-plus"></i>เพิ่มสาขาใหม่</span></a>
               </div>
 
@@ -241,7 +241,7 @@
 
             <div class="form-group form-group-default form-group-area">
               <label>ข้อมูลสาขาแบบย่อ</label>
-              <textarea class="form-control" name="branch_detail" rows="3"></textarea>
+              <textarea class="form-control" name="branch_detail" id="branch_detail" rows="3"></textarea>
             </div>
 
             <div class="form-group form-group-default form-group-map">

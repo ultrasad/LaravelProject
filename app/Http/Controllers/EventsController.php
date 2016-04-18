@@ -70,7 +70,8 @@ class EventsController extends Controller
   {
       $category = Category::select('name', 'id')->get();
       $brand = Brand::select('id', 'name')->get();
-      $branch = $brand->first()->branch_list;
+      //$branch = $brand->first()->branch_list; //default null
+      $branch = array();
 
       //echo '<pre>';
       //print_r($category);

@@ -9,6 +9,7 @@ use App\Http\Requests\BrandRequest;
 //use Auth;
 use App\Event;
 use App\Brand;
+use App\Branch;
 use App\Category;
 use Facebook;
 //use App\Branch;
@@ -163,5 +164,33 @@ class BrandController extends Controller
     $id = $request->input('id');
     $brand = Brand::find($id);
     echo json_encode($brand->branch_list);
+  }
+
+  public function add_branch(Request $request)
+  {
+    //echo 'name => ' . $request->input('branch_name');
+    // Getting all post data
+    /*if($request->ajax()){
+       echo 'name => ' . $request->json('branch_name');
+      //echo '<pre>';
+      //print_r($branch_name);
+      //$data = $request->all();
+      //print_r($data);die;
+    }
+    exit;*/
+
+    $branch = new Branch;
+    $branch->name = $request->json('branch_name');
+    $branch->detail = $request->json('branch_detail');
+    $branch->lat = $request->json('branch_lat');
+    $branch->lon = $request->json('branch_lon');
+    $branch->zoom = $request->json('branch_zoom');
+    $branch->save();
+
+    $brand = Brand::find($request->json('brand_id'));
+    $brand->branch()->attach($branch->id);
+    if($branch->id > 0){
+      echo 'insert branch id => '. $branch->id;
+    }
   }
 }

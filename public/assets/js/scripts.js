@@ -1,4 +1,6 @@
 var events_locations;
+var branch_list;
+var fx_select_brand;
 
 (function($) {
 
@@ -279,6 +281,9 @@ var events_locations;
                   brief: {
                      required: true
                   },
+                  branch_name: {
+                    required: true
+                  },
                   published_at: {
                     required: true
                   }
@@ -302,6 +307,9 @@ var events_locations;
                     "checkTags": "This field is required.",
                   },
                   brief: {
+                    required: "This field is required.",
+                  },
+                  branch_name: {
                     required: "This field is required.",
                   },
                   published_at: {
@@ -503,9 +511,14 @@ var events_locations;
           new SelectFx(el, {
               onChange: function(e) {
                    var brand_id = $(e).val();
+                   window.fx_select_brand = brand_id;
                    var _branch = $('.branch_child .list');
                    //var data = new FormData();
                    //data.append("id", brand_id);
+                   //$('.new_branch_panel').hide(); //hide add panel
+                   if ($('.new_branch_panel').css('display') != 'none'){
+                     $('.add_new_branch').trigger('click');
+                   }
                    if(brand_id > 0){
                    $.ajax({
                      url: "/events/branch/" + brand_id,
@@ -528,6 +541,8 @@ var events_locations;
                         });
                         _branch.append('<div class="clearfix"></div>');
                       }
+                      $('.new_branch_btn').show(); //show new branch btn
+                      $('.check-branch-all').show(); //show check all branch
                      },
                      error: function(jqXHR, textStatus, errorThrown) {
                        console.log(textStatus+" "+errorThrown);
@@ -535,6 +550,8 @@ var events_locations;
                   });
                 } else {
                   _branch.html('');
+                  $('.new_branch_btn').hide(); //hide new branch btn
+                  $('.check-branch-all').hide(); //hide check all branch
                 }
               }
           });
@@ -692,6 +709,52 @@ function sendFile(file,editor,welEditable)
        }
     });
 }
+
+//add branch
+$(document).on('click', '#add_branch', function(){
+  if($('#branch_name').valid()){
+    console.log('branch ok');
+    console.log('brand id => ' + window.fx_select_brand);
+
+    var _token = $('input[name=_token]').val();
+    var brand_id = window.fx_select_brand;
+    var branch_name = $('#branch_name').val();
+    var branch_detail = $('#branch_detail').val();
+    var branch_location = $('#branch_location').val();
+    var branch_lat = $('#branch_location_lat').val();
+    var branch_lon = $('#branch_location_lon').val();
+    var branch_zoom = $('#branch_location_zoom').val();
+
+    var data = {'brand_id':brand_id, 'branch_name':branch_name, 'branch_detail':branch_detail, 'branch_location':branch_location, 'branch_lat':branch_lat, 'branch_lon':branch_lon, 'branch_zoom':branch_zoom};
+    $.ajax({
+        url: '/brand/add_branch',
+        headers: {'X-CSRF-TOKEN': _token},
+        data: JSON.stringify(data), //stringify is important
+        //data: data,
+        type: 'POST',
+        datatype: 'JSON',
+        processData: false,
+        contentType: false,
+        success: function (resp) {
+          console.log('response => ' + resp);
+            /*$.each(resp.subramos, function (key, value) {
+                $('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
+            });*/
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+            // Handle errors here
+            console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+            //var resJson = JSON.stringify(jqXHR);
+            console.log(JSON.stringify(jqXHR.responseJSON));
+            // STOP LOADING SPINNER
+        }
+    });
+
+  } else {
+    console.log('branch is valid');
+  }
+});
 
 /*
     Look for data-image attribute and apply those
@@ -979,13 +1042,13 @@ function initialize() {
         } else {
           map.setZoom(17);
           map.setCenter(place.geometry.location);
-          console.log('map set center');
+          //console.log('map set center');
         }
 
         // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport){
           map.fitBounds(place.geometry.viewport);
-          console.log('map fitBounds' + place.geometry.viewport);
+          //console.log('map fitBounds' + place.geometry.viewport);
         }
         /*else {
           map.setCenter(place.geometry.location);
@@ -1024,13 +1087,13 @@ function initialize() {
         } else {
           mapBranch.setZoom(17);
           mapBranch.setCenter(placeBranch.geometry.location);
-          console.log('branch set center');
+          //console.log('branch set center');
         }
 
         // If the place has a geometry, then present it on a map.
         if (placeBranch.geometry.viewport){
           mapBranch.fitBounds(placeBranch.geometry.viewport);
-          console.log('branch fitBounds' + placeBranch.geometry.viewport);
+          //console.log('branch fitBounds' + placeBranch.geometry.viewport);
         }
         /*else {
           mapBranch.setCenter(placeBranch.geometry.location);
@@ -1061,6 +1124,9 @@ function initialize() {
           //markerBranch.setVisible(false);
           $('#branch_location').val('');
           //markerBranch.setMap(null);
+          infowindowBranch.close();
+          markerBranch.setVisible(false);
+
           mapBranch.setZoom(14);
           mapObjBranch.event.trigger(mapBranch, 'resize');
           //mapBranch.setCenter(placeBranch.geometry.location);

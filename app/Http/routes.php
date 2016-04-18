@@ -165,6 +165,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('events/branch/{id}', 'EventsController@branch');
     Route::get('maps/locations', 'MapsController@locations');
     Route::get('brand/register', 'BrandController@register');
+    Route::post('brand/add_branch', 'BrandController@add_branch');
     //Route::get('brand/(:number)', 'BrandController@index');
     //Route::get('/brand/{id}', array('as' => 'brand', function(){
         //return App::make('BrandController')->index(1);

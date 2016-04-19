@@ -13,7 +13,7 @@
           <div class="card no-border bg-transparent full-width" data-social="item"></div>
           <!-- END ITEM -->
           <!-- START ITEM -->
-
+          
           <div class="card col2 col-centered" data-social="item">
             <div class="gallery-item" data-width="2" data-height="2">
               <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">

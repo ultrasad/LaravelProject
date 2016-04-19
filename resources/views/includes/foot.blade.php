@@ -23,7 +23,7 @@
 <!-- BEGIN CORE TEMPLATE JS -->
 <!-- <script type="text/javascript" src="{{ URL::asset('pages/js/pages.min.js') }}"></script> -->
 <script type="text/javascript" src="{{ URL::asset('pages/js/pages.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('pages/js/pages.social.min.js') }}"></script>
+<!--<script type="text/javascript" src="{{ URL::asset('pages/js/pages.social.js') }}"></script>-->
 <!-- BEGIN PAGE LEVEL JS -->
 <script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js') }}"></script>
 <!-- END PAGE LEVEL JS -->

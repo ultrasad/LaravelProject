@@ -8,6 +8,27 @@ var fx_select_brand;
 
     $(document).ready(function() {
 
+      var $container = $('.day');
+      $container.masonry({itemSelector: '.card', columnWidth: '.col1', gutter: 10 });
+
+
+      /*$('.grid').masonry({
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: 200
+      });*/
+
+      /*
+      $('.day').isotope({
+          "itemSelector": '.card',
+          "masonry": {
+              "columnWidth": '.col1',
+              "gutter": 20,
+              "isFitWidth": true
+          }
+      });
+      */
+
         //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: true}});
 

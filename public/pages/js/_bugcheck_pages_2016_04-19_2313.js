@@ -1957,17 +1957,17 @@
              this.$body.removeClass('sidebar-open');
              timer = setTimeout(function() {
                  this.$element.removeClass('visible');
-           }.bind(this), 40);
+           }.bind(this), 40); //}.bind(this), 400);
          } else {
              clearTimeout(timer);
              this.$element.addClass('visible');
              setTimeout(function() {
                  this.$body.addClass('sidebar-open');
-             }.bind(this), 1);
+             }.bind(this), 1); //}.bind(this), 10);
              setTimeout(function(){
                 // remove background color
                 $('.page-container').css({'background-color': ''});
-             },100);
+             },100); //},1000);
          }
      }
 
@@ -1979,7 +1979,9 @@
          } else {
              this.$body.toggleClass('menu-pin');
          }
+
      }
+
 
      // SIDEBAR PLUGIN DEFINITION
      // =======================

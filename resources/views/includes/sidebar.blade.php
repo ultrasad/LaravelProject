@@ -1,6 +1,7 @@
 <!-- BEGIN SIDEBPANEL-->
 <nav class="page-sidebar" data-pages="sidebar">
   <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
+  {{--
   <div class="sidebar-overlay-slide from-top" id="appMenu">
     <div class="row">
       <div class="col-xs-6 no-padding">
@@ -23,8 +24,10 @@
       </div>
     </div>
   </div>
+  --}}
   <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
   <!-- BEGIN SIDEBAR MENU HEADER-->
+  {{--
   <div class="sidebar-header">
     <img src="{{ URL::asset('assets/img/logo_white.png') }}" alt="logo" class="brand" data-src="{{ URL::asset('assets/img/logo_white.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_white_2x.png') }}" width="78" height="22">
     <div class="sidebar-header-controls">
@@ -34,12 +37,13 @@
       </button>
     </div>
   </div>
+  --}}
   <!-- END SIDEBAR MENU HEADER-->
   <!-- START SIDEBAR MENU -->
-  <div class="sidebar-menu">
+  <div class="sidebar-menu m-t-40">
     <!-- BEGIN SIDEBAR MENU ITEMS-->
     <ul class="menu-items">
-      <li class="m-t-30 ">
+      <li class="m-t-30">
         <a href="index.html" class="detailed">
           <span class="title">Dashboard</span>
           <span class="details">12 New Updates</span>

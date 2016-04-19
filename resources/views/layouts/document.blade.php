@@ -4,7 +4,7 @@
     @include('includes.head')
   </head>
   <!-- <body class="fixed-header dashboard"> -->
-  <body class="fixed-header">
+  <body class="fixed-header menu-behind">
     @include('includes.sidebar')
     <!-- START PAGE-CONTAINER -->
     <div class="page-container">

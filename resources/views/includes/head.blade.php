@@ -32,7 +32,8 @@
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages-icons.css') }}" />
 <!-- <link rel="stylesheet" type="text/css" href="{{ URL::asset('pages/css/themes/simple.css') }}" class="main-stylesheet" /> -->
 
-<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages.css') }}" />
+<!--<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages.css') }}" />-->
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/themes/simple.min.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/style.css') }}" />
 
 <!--[if lte IE 9]>

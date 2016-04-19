@@ -15,7 +15,12 @@
     <div class="pull-center hidden-md hidden-lg">
       <div class="header-inner">
         <div class="brand inline">
-          <img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">
+          <!--<img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">-->
+          <div class="nav-logo nav-logo-center">
+              <a onclick="#" title="Hanajung" href="/">
+                  <img src="http://thenextweb.com/wp-content/themes/cyberdelia/assets/img/tnw.svg" alt="The Next Web">
+              </a>
+          </div>
         </div>
       </div>
     </div>
@@ -34,7 +39,12 @@
   <div class=" pull-left sm-table hidden-xs hidden-sm">
     <div class="header-inner">
       <div class="brand inline">
-        <img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">
+        <!--<img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">-->
+        <div class="nav-logo">
+            <a onclick="#" title="Hanajung" href="/">
+                <img src="http://thenextweb.com/wp-content/themes/cyberdelia/assets/img/tnw.svg" alt="The Next Web">
+            </a>
+        </div>
       </div>
       <!-- START NOTIFICATION LIST -->
       <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">

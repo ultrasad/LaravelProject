@@ -4,7 +4,27 @@
 }*/
 
 .header {
-  background: gold;
+  background: gold !important;
+}
+
+body.menu-behind .header .brand {
+    padding-left: 0px;
+}
+
+.nav-logo > a {
+    height: 60px;
+}
+
+.nav-logo > a {
+    background: rgba(0, 0, 0, 0) linear-gradient(to right bottom, #c09, #f42 85%) repeat scroll 0 0;
+    display: block;
+    padding: 16px 20px;
+    width: 106px;
+    will-change: height;
+}
+
+.nav-logo-center > a {
+  background: none;
 }
 
 .breadcrumb {
@@ -383,11 +403,13 @@ div.cs-select-brand {
     float: none;
     display: inline-block;
     margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .card.col2, .card.col1 {
   display:inline-block;
   vertical-align: top;
+  text-align: left;
 }
 
 .feed .card {

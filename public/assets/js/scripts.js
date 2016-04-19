@@ -944,7 +944,7 @@ function initialize() {
                 var clone = '<li class="map-event-list clearfix">';
                     clone += '<span class="col-xs-height col-top p-t-5">';
                     clone += '<span class="thumbnail-wrapper d32 circular bg-success">';
-                    clone += '<span class="thumbnail-wrapper d32 circular bg-success"><img width="34" height="34" class="col-top" src="assets/img/profiles/1.jpg" data-src="assets/img/profiles/1.jpg" data-src-retina="assets/img/profiles/1x.jpg" alt=""></span>';
+                    clone += '<span class="thumbnail-wrapper d32 circular bg-success"><img width="34" height="34" class="col-top" src="/assets/img/profiles/1.jpg" data-src="/assets/img/profiles/1.jpg" data-src-retina="/assets/img/profiles/1x.jpg" alt=""></span>';
                     clone += '</span>';
                     clone += '<div class="p-l-10 col-xs-height col-middle col-xs-12">';
                     clone += '<span class="text-master"><strong>'+v.brand+'</strong></span>';

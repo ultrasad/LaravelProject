@@ -14,7 +14,7 @@
           <!-- END ITEM -->
           <!-- START ITEM -->
 
-          <div class="card col2" data-social="item">
+          <div class="card col2 col-centered" data-social="item">
             <div class="gallery-item" data-width="2" data-height="2">
               <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">
                 <div class="slide-front">
@@ -141,7 +141,7 @@
           <!-- END ITEM -->
           @forelse($events as $event)
           <!-- START ITEM -->
-          <div class="card col1" data-social="item">
+          <div class="card col1 col-centered" data-social="item">
             <div class="panel no-border  no-margin">
               <div class="padding-15">
                 <div class="item-header clearfix">

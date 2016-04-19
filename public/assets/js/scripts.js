@@ -814,8 +814,9 @@ owl.on('changed.owl.carousel', function(e) {
 //google map application
 var map;
 var mapObj;
-var mapBranch;
-var mapObjBranch;
+var place = '';
+var address = '';
+var point = '';
 
 function initialize() {
     mapObj = new Object(google.maps);
@@ -830,6 +831,7 @@ function initialize() {
         center: default_latlng,
         mapTypeId:default_type
     };
+
     map = new mapObj.Map(map_canvas, options);
     mapObj.event.addListener(map, 'zoom_changed', function() {
         $("#location_zoom").val(map.getZoom());
@@ -842,28 +844,28 @@ function initialize() {
     });
 
     //map branch location
-    mapObjBranch = new Object(google.maps);
-    var latlngboundsBranch = new mapObjBranch.LatLngBounds();
-    var map_canvas_branch = $("#map_canvas_branch")[0];
-    mapBranch = new mapObjBranch.Map(map_canvas_branch, options);
-    mapObjBranch.event.addListener(mapBranch, 'zoom_changed', function() {
-        $("#branch_location_zoom").val(mapBranch.getZoom());
-    });
+    if($('#map_canvas_branch').exists()){
+      var mapBranch;
+      var mapObjBranch;
+      var placeBranch = '';
+      var addressBranch = '';
 
-    var infowindowBranch = new mapObjBranch.InfoWindow();
-    var markerBranch = new mapObjBranch.Marker({
-      map: mapBranch,
-      anchorPoint: new mapObj.Point(0, -29)
-    });
+      mapObjBranch = new Object(google.maps);
+      var latlngboundsBranch = new mapObjBranch.LatLngBounds();
+      var map_canvas_branch = $("#map_canvas_branch")[0];
+      mapBranch = new mapObjBranch.Map(map_canvas_branch, options);
+      mapObjBranch.event.addListener(mapBranch, 'zoom_changed', function() {
+          $("#branch_location_zoom").val(mapBranch.getZoom());
+      });
 
-    var place = '';
-    var address = '';
-    var point = '';
+      var infowindowBranch = new mapObjBranch.InfoWindow();
+      var markerBranch = new mapObjBranch.Marker({
+        map: mapBranch,
+        anchorPoint: new mapObj.Point(0, -29)
+      });
+    }
 
-    var placeBranch = '';
-    var addressBranch = '';
-
-    if($('.map-full').exists()){ //map full
+    if($('.map-full').exists()){ //main map full
       $.ajax({
           url: '/maps/locations/',
           type: 'GET',
@@ -973,6 +975,7 @@ function initialize() {
     }
 
     if($('.event_id').exists()){ //event locations
+      //console.log('evetn id >>');
       $.ajax({
           url: '/events/locations/'+$('.event_id').val(),
           type: 'GET',
@@ -1061,12 +1064,14 @@ function initialize() {
         $("#location_lat").val(place.geometry.location.lat());
         $("#location_lon").val(place.geometry.location.lng());
 
-        infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);
+        //infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);
+        infowindow.setContent('<div><strong>' + place.name + '</strong></div>');
         infowindow.open(map, marker);
       });
 
       mapObj.event.addListener(marker, 'click', function() {
-        infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);
+        //infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);
+        infowindow.setContent('<div><strong>' + place.name + '</strong></div>');
         infowindow.open(map, marker);
       });
     }
@@ -1107,12 +1112,14 @@ function initialize() {
         $("#branch_location_lat").val(placeBranch.geometry.location.lat());
         $("#branch_location_lon").val(placeBranch.geometry.location.lng());
 
-        infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div><br>' + addressBranch);
+        //infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div><br>' + addressBranch);
+        infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div>');
         infowindowBranch.open(mapBranch, markerBranch);
       });
 
       mapObjBranch.event.addListener(markerBranch, 'click', function(){
-        infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div><br>' + addressBranch);
+        //infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div><br>' + addressBranch);
+        infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div>');
         infowindowBranch.open(mapBranch, markerBranch);
       });
 

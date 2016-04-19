@@ -3,8 +3,20 @@
     padding-right: 0px;
 }*/
 
+.header {
+  background: gold;
+}
+
+.breadcrumb {
+  padding: 8px 15px;
+}
+
 .breadcrumb a.active {
     font-weight: 300;
+}
+
+.windows .jumbotron p {
+    font-size: 11px;
 }
 
 .windows h2 {
@@ -354,13 +366,32 @@ div.cs-select-brand {
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 
+.social .feed{
+  /*padding-left: 15px;*/
+}
+
 .feed .day-list {
-  padding-left: 30px;
+  margin-left: 17px;
+  left: 30px;
   height: auto;
+
+  text-align: center;
+  display: table;
+}
+
+.col-centered {
+    float: none;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.card.col2, .card.col1 {
+  display:inline-block;
+  vertical-align: top;
 }
 
 .feed .card {
-  margin-right: 20px;
+  margin-right: 16px;
 }
 
 .ads {
@@ -375,9 +406,8 @@ div.cs-select-brand {
 
 .card-relate-row {
   position: relative;
-
-  display: table;height: 100%;
   display: table;
+  height: 100%;
   margin: 0px;
   overflow: hidden;
 }
@@ -428,7 +458,6 @@ div.cs-select-brand {
 }
 
 @media (max-width: 1400px) {
-
 }
 
 @media (max-width: 992px) {
@@ -443,6 +472,12 @@ div.cs-select-brand {
 }
 
 @media (max-width: 767px) {
+  .event-gallery .dialog__content .dialog__overview {
+    height: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   .quickview-wrapper.maps {
     top: 48px;
   }
@@ -498,13 +533,13 @@ div.cs-select-brand {
 */
 
 @media (max-width: 767px) {
-  .event-gallery .dialog__content .dialog__overview {
+  /*.event-gallery .dialog__content .dialog__overview {
     height: 100%;
     margin-right: 0;
     margin-left: 0;
   }
 
-  /*.event-gallery {
+  .event-gallery {
     margin-left: 15px;
     margin-right: 15px;
   }*/

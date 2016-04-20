@@ -136,7 +136,7 @@ $( document ).ready(function() {
                 var columnHeight = $(this).height();
                 $(this).css({
                     width: columnWidth - margin,
-                    height: 'auto'
+                    height: columnHeight
                 });
             });
         } else {
@@ -144,31 +144,26 @@ $( document ).ready(function() {
               var columnHeight = $(this).height();
               $(this).css({
                   width: 300,
-                  height: 'auto'
+                  height: columnHeight
               });
           });
         }
-
         console.log('width => ' + w);
         return columnWidth;
     },
-    checkFit = function(){
-      var w = $container.width();
-      if (w < 600) {
-        return 'false';
-      } else {
-        return 'true';
-      }
-    },
     isotope = function(){
-        $container.isotope({
+    $grid = $container.isotope({
           itemSelector: '.card',
+          //layoutMode: 'fitRows',
+          //resizable: false,
           masonry: {
               //columnWidth: 300,
-              columnWidth: colWidth(),
-              gutter: 20,
-              //isFitWidth: true
-              isFitWidth: false
+              //columnWidth: colWidth(),
+              columnWidth: '.col1-test',
+              //gutter: 20,
+              isFitWidth: true
+              //isFitWidth: false,
+              //originLeft: false
           }
       });
     };
@@ -176,9 +171,8 @@ $( document ).ready(function() {
     //var $container = $('.day');
     //$container.masonry({itemSelector: '.card', columnWidth: '.col1', isFitWidth: true});
 
-    //isotope();
     isotope();
-    $(window).on('debouncedresize', isotope);
+    //$(window).on('debouncedresize', isotope);
     //$(window).on('debouncedresize', isotope);
     // usage:
     $(window).smartresize(function(){
@@ -186,7 +180,16 @@ $( document ).ready(function() {
       var $windowSize = $('.feed').width();
       console.log('window feed Size => ' + $windowSize);
 
+      /*$grid.isotope({
+            itemSelector: '.card',
+            masonry: {
+                columnWidth: '.col1-test',
+                isFitWidth: true
+            }
+      });*/
       isotope();
+      $grid.isotope('layout');
+      //isotope();
       //$container.isotope('layout');
     });
 

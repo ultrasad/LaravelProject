@@ -3,25 +3,24 @@
 @section('content')
 
 <div class="social-wrapper">
-  <div class="social" data-pages="social">
+  <div class="social-test" data-pages="social">
     <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10">
       <div class="feed">
         <!-- START DAY -->
         <div class="day" data-social="day">
-          <div class="day-list">
           <!-- START ITEM -->
           <div class="card no-border bg-transparent full-width" data-social="item"></div>
           <!-- END ITEM -->
           <!-- START ITEM -->
 
-          <div class="card col2 col-centered" data-social="item">
+          <div class="card col2-test col-centered" data-social="item">
             <div class="gallery-item" data-width="2" data-height="2">
               <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">
                 <div class="slide-front">
                   <img src="/images/events/2016-03-30/gallery/43/20160330-141855-Promotion-Reebok-Grand-Sale-2016-Sale-up-to-70-Off.png" />
                </div>
                <div class="slide-back">
-                  <img src="/images/events/2016-03-30/20160330-120609-Promotion-Crocs-End-Of-Season-Sale-up-to-50-Mar.2016.jpg" />
+                  <img src="/images/events/2016-03-30/20160330-120609-Promotion-Crocs-End-Of-Season-Sale-up-to-50-Mar.2016.jpg" class="img-responsive" />
                </div>
                 <!--<div class="slide-front">
                   <img src="/images/events/2016-03-29/gallery/23/20160329-203343-12022415_596810460475531_3646114147447548534_o.jpg" alt="" class="image-responsive-height">
@@ -142,7 +141,7 @@
           <!-- END ITEM -->
           @forelse($events as $event)
           <!-- START ITEM -->
-          <div class="card col1 col-centered" data-social="item" data-col="column">
+          <div class="card col1-test col-centered" data-social="item" data-col="column">
             <div class="panel no-border  no-margin">
               <div class="padding-15">
                 <div class="item-header clearfix">
@@ -187,7 +186,6 @@
           @empty
           @endforelse
           <div class="clearfix">&nbsp;</div>
-        </div>
         </div>
         <!-- END DAY -->
       </div>

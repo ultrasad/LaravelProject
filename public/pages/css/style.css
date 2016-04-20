@@ -392,7 +392,9 @@ div.cs-select-brand {
 }
 
 .feed .day {
-  margin: 0 auto;
+  margin: 0 auto !important;
+  overflow: hidden;
+  position: relative;
 }
 
 /* clear fix */
@@ -411,10 +413,25 @@ div.cs-select-brand {
 }
 
 .col-centered {
+  /*
     float: none;
     display: inline-block;
     margin: 0 auto;
     margin-bottom: 20px;
+    */
+    margin: 10px;
+    overflow: visible;
+    float: left;
+    display: inline;
+    position: relative;
+}
+
+.col1-test {
+  width: 300px;
+}
+
+.col2-test {
+  width: 620px;
 }
 
 .card.col1 {
@@ -428,7 +445,9 @@ div.cs-select-brand {
 }
 
 .feed .card {
-  margin-right: 16px;
+  /*margin-right: 16px;*/
+  position: relative;
+  left: 20px;
 }
 
 .card .slide img {
@@ -577,6 +596,7 @@ div.cs-select-brand {
     width: 100%;
   }
 
+
 }
 
 
@@ -584,6 +604,29 @@ div.cs-select-brand {
   /*.card.col1, .card.col2 {
     width: 400px;
   }*/
+
+  .feed {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .card.col1, .card.col2 {
+    width: 100% !important;
+    margin: 0 auto;
+    float: left;
+    margin-bottom: 20px;
+  }
+
+  .col1-test, .col2-test {
+    width: 450px;
+  }
+
+  .gallery-item[data-width="2"] {
+      width: 100%;
+      height: auto;
+  }
+
 }
 
 @media (max-width: 667px) {
@@ -599,12 +642,14 @@ div.cs-select-brand {
     text-align: center;
   }
 
+  /*
   .card.col1, .card.col2 {
     width: 100% !important;
     margin: 0 auto;
     float: left;
     margin-bottom: 20px;
   }
+  */
 
   .feed {
     width: 100%;
@@ -618,11 +663,6 @@ div.cs-select-brand {
       margin-left: 0;
   }
 
-  .gallery-item[data-width="2"] {
-    padding-top: 0;
-    width: 100%;
-  }
-
   .map-full {
     height: 480px; width: 100%;
   }
@@ -630,6 +670,14 @@ div.cs-select-brand {
   .gradient-grey {
     font-size: 0.7em;
   }
+
+  /*
+  .col1-test, .col2-test {
+    max-width: 100%;
+    width: auto !important;
+    width: 100%;
+  }
+  */
 
 }
 
@@ -658,6 +706,10 @@ div.cs-select-brand {
 @media (max-width: 467px) {
   .col2 .gallery-item {
     height: 50vh;
+  }
+
+  .col1-test, .col2-test {
+    width: 300px;
   }
 
 }

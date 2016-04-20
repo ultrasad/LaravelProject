@@ -393,8 +393,6 @@ div.cs-select-brand {
 
 .feed .day {
   margin: 0 auto !important;
-  overflow: hidden;
-  position: relative;
 }
 
 /* clear fix */
@@ -608,7 +606,6 @@ div.cs-select-brand {
   .feed {
     width: 100%;
     margin: 0 auto;
-    overflow: hidden;
   }
 
   .card.col1, .card.col2 {
@@ -619,12 +616,18 @@ div.cs-select-brand {
   }
 
   .col1-test, .col2-test {
-    width: 450px;
+    width: 640px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .gallery-item[data-width="2"] {
       width: 100%;
       height: auto;
+  }
+
+  .feed .card {
+    left: 10px;
   }
 
 }
@@ -671,6 +674,12 @@ div.cs-select-brand {
     font-size: 0.7em;
   }
 
+  .col1-test, .col2-test {
+    width: 540px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   /*
   .col1-test, .col2-test {
     max-width: 100%;
@@ -710,6 +719,10 @@ div.cs-select-brand {
 
   .col1-test, .col2-test {
     width: 300px;
+  }
+
+  .feed .card {
+    left: 0px;
   }
 
 }

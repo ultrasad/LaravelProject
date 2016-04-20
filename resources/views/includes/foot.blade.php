@@ -178,7 +178,7 @@ $( document ).ready(function() {
     $(window).smartresize(function(){
       // code that takes it easy...
       var $windowSize = $('.feed').width();
-      console.log('window feed Size => ' + $windowSize);
+      //console.log('window feed Size => ' + $windowSize);
 
       /*$grid.isotope({
             itemSelector: '.card',

@@ -47,6 +47,7 @@ body.menu-behind .header .brand {
 
 .windows h3, .windows h4 {
   font-size: 1.3em;
+  line-height: 20px;
 }
 
 /* brand */
@@ -390,13 +391,23 @@ div.cs-select-brand {
   /*padding-left: 15px;*/
 }
 
+.feed .day {
+  margin: 0 auto;
+}
+
+/* clear fix */
+.feed .day:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
 .feed .day-list {
   margin-left: 17px;
   left: 30px;
-  height: auto;
-
   text-align: center;
-  display: table;
+  /*background: #f00;*/
+  /*display: table;*/
 }
 
 .col-centered {
@@ -418,6 +429,10 @@ div.cs-select-brand {
 
 .feed .card {
   margin-right: 16px;
+}
+
+.card .slide img {
+  height: 100%;
 }
 
 .ads {
@@ -468,6 +483,7 @@ div.cs-select-brand {
 .relate .padding-right-active {
   padding-right: 0px;
 }
+
 /*
 .card-relate-footer div{
   margin-top: 5px;
@@ -475,9 +491,6 @@ div.cs-select-brand {
 */
 
 .gallery-item[data-width="2"] {
-    /*width: 100%;
-    padding-top: 25px;
-    */
     margin: 0 auto;
     width: 620px;
     height: 485px;
@@ -563,27 +576,38 @@ div.cs-select-brand {
   .social-wrapper .social .feed > .day {
     width: 100%;
   }
+
 }
 
-/*
+
 @media (max-width: 767px){
-  .card.col1, .card.col2 {
-    width: 100%;
-  }
-
-  .card {
-    width: 100%;
-  }
+  /*.card.col1, .card.col2 {
+    width: 400px;
+  }*/
 }
-*/
 
 @media (max-width: 667px) {
-  .social-wrapper .social .feed .day .card {
+  /*.social-wrapper .social .feed .day .card {
     width: 100% !important;
   }
 
   .social, .card.col2, .social .item {
     width: 100% !important;
+  }*/
+  .social .day {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .card.col1, .card.col2 {
+    width: 100% !important;
+    margin: 0 auto;
+    float: left;
+    margin-bottom: 20px;
+  }
+
+  .feed {
+    width: 100%;
   }
 
   .feed .card {
@@ -602,6 +626,11 @@ div.cs-select-brand {
   .map-full {
     height: 480px; width: 100%;
   }
+
+  .gradient-grey {
+    font-size: 0.7em;
+  }
+
 }
 
 /*
@@ -626,17 +655,11 @@ div.cs-select-brand {
 }
 */
 
-@media (max-width: 767px) {
-  /*.event-gallery .dialog__content .dialog__overview {
-    height: 100%;
-    margin-right: 0;
-    margin-left: 0;
+@media (max-width: 467px) {
+  .col2 .gallery-item {
+    height: 50vh;
   }
 
-  .event-gallery {
-    margin-left: 15px;
-    margin-right: 15px;
-  }*/
 }
 
 /*

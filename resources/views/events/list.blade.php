@@ -13,7 +13,7 @@
           <div class="card no-border bg-transparent full-width" data-social="item"></div>
           <!-- END ITEM -->
           <!-- START ITEM -->
-          
+
           <div class="card col2 col-centered" data-social="item">
             <div class="gallery-item" data-width="2" data-height="2">
               <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">
@@ -39,7 +39,7 @@
               </div>
               <div class="overlayer bottom-left full-width">
                 <div class="overlayer-wrapper item-info more-content">
-                  <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
+                  <div class="gradient-grey p-l-20 p-r-20 p-t-50 p-b-5">
                     <div class="">
                       <h3 class="pull-left bold text-white no-margin">โปรโมชั่น Sports Revolution Warehouse Sale ครั้งที่4 Nike, Under Armour, ASICS, Crocs Sale ลดสูงสุด 80%</h3>
 						          <!--<h3 class="pull-right semi-bold text-white font-montserrat bold no-margin">$25.00</h3>-->
@@ -75,6 +75,7 @@
               </div>
             </div>
           </div>
+
 
           <!--
           <div class="card col2" data-social="item">
@@ -141,7 +142,7 @@
           <!-- END ITEM -->
           @forelse($events as $event)
           <!-- START ITEM -->
-          <div class="card col1 col-centered" data-social="item">
+          <div class="card col1 col-centered" data-social="item" data-col="column">
             <div class="panel no-border  no-margin">
               <div class="padding-15">
                 <div class="item-header clearfix">
@@ -162,7 +163,7 @@
               <hr class="no-margin">
               <div class="relative">
                 <div class="no-overflow">
-                  <img src="{{ URL::asset($event->image) }}" class="block center-margin relative" alt="{{ $event->title }}" />
+                  <img src="{{ URL::asset($event->image) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
                 </div>
               </div>
               <div class="padding-15">
@@ -185,6 +186,7 @@
           <!-- END ITEM -->
           @empty
           @endforelse
+          <div class="clearfix">&nbsp;</div>
         </div>
         </div>
         <!-- END DAY -->

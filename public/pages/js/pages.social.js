@@ -123,8 +123,8 @@
                 $social.find('[data-social="status"] li.current input').focus();
             }, 1000);
 
-        })
-    })
+        });
+    });
 
     $(window).on('resize', function() {
         $('[data-pages="social"]').each(function() {

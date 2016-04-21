@@ -129,31 +129,35 @@
               <u><h4>โปรโมชั่นที่คุณอาจสนใจ</h4></u>
               <div class="row relate event-relate">
                 @for($i=0; $i<6; $i++)
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding-right-active">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding-right-active">
                   <div class="card card-relate relative">
                     <div class="row card-relate-row">
-                      <div class="relative col-md-4 col-xs-3 thumb padding-5">
+                      <div class="relative col-md-3 col-xs-4 thumb padding-5">
                           <img alt="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" class="block center-margin relative" src="/images/events/2016-04-01/20160401-110850-7-11-APRIL-1.jpg">
                       </div>
-                      <div class="col-md-8 col-xs-9 brief">
+                      <div class="col-md-9 col-xs-8 brief">
                           <div class="padding-5 card-relate-body">
                             <strong><a title="โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)" href="/events/7-11-april-2016">โปรฯ 7-11 เมษายน 2559 “แลกซื้อสุดคุ้ม” (26 มี.ค. &ndash; 25 เม.ย. 59)</a></strong>
                             <!--<p>โปรโมชั่น 7-eleven (7-11 เซเว่น อีเลฟเว่น) ประจำเดือน เมษายน 2559 (เม.ย.59 April 2016)
                               ระยะเวลาโปรโมชั่น 26 มีนาคม &ndash; 25 เมษายน  2559 นี้เท่านั้น</p>-->
                           </div>
-                          <div class="col-md-12 card-relate-footer p-l-0 p-r-0">
-                            <div class="col-md-12 p-r-0 p-l-5">
-                              <div class="hint-text pull-left">ถึงวันที่ : 25 เม.ย. 59</div>
-                              <ul class="list-inline pull-right no-margin">
-                                <li><a href="#" class="text-master hint-text">5,345 <i class="fa fa-comment-o"></i></a>
-                                </li>
-                                <li><a href="#" class="text-master hint-text">23K <i class="fa fa-heart-o"></i></a>
-                                </li>
-                              </ul>
-                              <div class="clearfix">&nbsp;</div>
-                            </div>
-                          </div>
                       </div>
+
+                      <div class="row col-md-9 padding-0 m-l-0 m-r-0 pull-right footer-relate">
+                        <div class="col-md-12 card-relate-footer p-l-0 p-r-0">
+                          <div class="col-md-12 p-r-0 p-l-5">
+                            <div class="hint-text pull-left">ถึงวันที่ : 25 เม.ย. 59</div>
+                            <ul class="list-inline pull-right no-margin">
+                              <li><a href="#" class="text-master hint-text">5,345 <i class="fa fa-comment-o"></i></a>
+                              </li>
+                              <li><a href="#" class="text-master hint-text">23K <i class="fa fa-heart-o"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix">&nbsp;</div>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>

@@ -43,6 +43,10 @@ body.menu-behind .header .brand {
     font-size: 11px;
 }
 
+.page-sidebar {
+  margin-top: 47px;
+}
+
 h2, .windows h2 {
   font-size: 1.8em;
   font-weight: 500;
@@ -512,7 +516,7 @@ div.cs-select-brand {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 75%%;
+  font-size: 0.9em;
 }
 
 .relate .brief .card-relate-footer {
@@ -603,7 +607,11 @@ div.cs-select-brand {
 
   h2, .windows h2 {
     font-size: 1.6em;
-    line-height: 22px;
+    line-height: 26px;
+  }
+
+  .breadcrumb {
+    padding: 8px 0;
   }
 
   .map-canvas {
@@ -670,7 +678,7 @@ div.cs-select-brand {
     transform: translate3d(0px, 0, 0);
     -ms-transform: translate(0px, 0);*/
     overflow: hidden;
-    position: fixed;
+    /*position: fixed;*/
   }
 
   .social-wrapper {
@@ -682,14 +690,23 @@ div.cs-select-brand {
       transform: translate3d(10%, 0px, 0px) !important;
   }
   */
-  body.sidebar-open .social-wrapper {
-    /*-webkit-transform: translate3d(10%, 0, 0);
+  body.sidebar-open .page-content-wrapper .content {
+    -webkit-transform: translate3d(10%, 0, 0);
     transform: translate3d(10%, 0, 0);
-    -ms-transform: translate(10%, 0);*/
+    -ms-transform: translate(10%, 0);
+  }
+
+  body.menu-behind .page-sidebar {
+    z-index: 799;
+  }
+
+  .header {
+    z-index: 800;
+    border-bottom: 1px solid rgba(213, 218, 219, 0.7);
   }
 
   .page-sidebar {
-      z-index: 99;
+      /*z-index: 11;*/
       display: block;
       transform: translateX(-100%) !important;
       -webkit-transform: translate3d(-100%, 0px, 0px) !important;
@@ -840,6 +857,10 @@ div.cs-select-brand {
     height: 50vh;
   }
 
+  /*.card-relate-footer .text-master span {
+    display: none;
+  }*/
+
   /*
   .col1-test, .col2-test {
     width: 300px;
@@ -850,6 +871,36 @@ div.cs-select-brand {
   }
   */
 
+}
+
+@media all and (max-width: 467px), (max-width: 820px) and (min-width: 770px),(min-width: 805px) {
+  .card-relate-footer .text-master span {
+    display: none;
+  }
+}
+
+@media all and (min-width: 1400px) {
+  .card-relate-footer .text-master span {
+    display: inline-block;
+  }
+}
+
+@media all and (min-width: 992px) and (max-width: 1100px){
+  .event-relate .col-relate {
+    width: 100%;
+  }
+
+  .card-relate-footer .text-master span {
+    display: inline-block;
+  }
+
+  .card-relate-row .thumb {
+    width: 16.6667%;
+  }
+
+  .card-relate-row .footer-relate {
+    width: 83.3333%;
+  }
 }
 
 /*

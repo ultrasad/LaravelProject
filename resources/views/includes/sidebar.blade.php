@@ -1,5 +1,5 @@
 <!-- BEGIN SIDEBPANEL-->
-<nav class="page-sidebar m-t-40" data-pages="sidebar">
+<nav class="page-sidebar" data-pages="sidebar">
   <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
   {{--
   <div class="sidebar-overlay-slide from-top" id="appMenu">

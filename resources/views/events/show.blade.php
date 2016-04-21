@@ -28,7 +28,7 @@
       <div class="panel-body p-b-0">
         <div class="dialog__content">
             <!-- START PANEL -->
-            <div class="fotorama" data-width="100%" data-ratio="5/3" data-height="70%" data-arrows="false" data-nav="thumbs" data-loop="true">
+            <div class="fotorama" data-width="100%" data-ratio="3/2" data-maxheight="70%" data-arrows="false" data-nav="thumbs" data-loop="true">
               @forelse($event->gallery_list as $id => $image)
                 <img src="{{ URL::asset($image) }}" class="img-responsive" data-fit="contain" />
               @empty
@@ -129,7 +129,7 @@
               <u><h4>โปรโมชั่นที่คุณอาจสนใจ</h4></u>
               <div class="row relate event-relate">
                 @for($i=0; $i<6; $i++)
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding-right-active">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding-right-active col-relate">
                   <div class="card card-relate relative">
                     <div class="row card-relate-row">
                       <div class="relative col-md-3 col-xs-4 thumb padding-5">
@@ -143,14 +143,14 @@
                           </div>
                       </div>
 
-                      <div class="row col-md-9 padding-0 m-l-0 m-r-0 pull-right footer-relate">
+                      <div class="row col-md-9 col-xs-8 padding-0 m-l-0 m-r-0 pull-right footer-relate">
                         <div class="col-md-12 card-relate-footer p-l-0 p-r-0">
                           <div class="col-md-12 p-r-0 p-l-5">
                             <div class="hint-text pull-left">ถึงวันที่ : 25 เม.ย. 59</div>
                             <ul class="list-inline pull-right no-margin">
-                              <li><a href="#" class="text-master hint-text">5,345 <i class="fa fa-comment-o"></i></a>
+                              <li><a href="#" class="text-master hint-text"><span>5,345</span> <i class="fa fa-comment-o"></i></a>
                               </li>
-                              <li><a href="#" class="text-master hint-text">23K <i class="fa fa-heart-o"></i></a>
+                              <li><a href="#" class="text-master hint-text"><span>23K</span> <i class="fa fa-heart-o"></i></a>
                               </li>
                             </ul>
                             <div class="clearfix">&nbsp;</div>

@@ -1026,7 +1026,7 @@ function initialize() {
                 });
 
                 mapObj.event.addListener(markers[k], 'click', function() {
-                    infowindow.setContent('<div class="popup_container"><strong>'+ markerName +'</strong></div>');
+                    infowindow.setContent('<div class="popup_container"><strong>'+ markerName +'</strong></div><p><a href="#" data-index="relate xxx" class="events_locations">ดูโปรโมชั่นอื่นๆ ของที่นี่</a></p>');
                     infowindow.open(map,markers[k]);
                     map.panTo(markers[k].getPosition());
                     //map.setZoom(14);

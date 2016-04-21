@@ -1957,7 +1957,7 @@
              this.$body.removeClass('sidebar-open');
              timer = setTimeout(function() {
                  this.$element.removeClass('visible');
-           }.bind(this), 40);
+           }.bind(this), 1);
          } else {
              clearTimeout(timer);
              this.$element.addClass('visible');

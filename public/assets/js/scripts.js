@@ -10,7 +10,7 @@ var fx_select_brand;
 
       //var $container = $('.day');
       //$container.masonry({itemSelector: '.card', columnWidth: '.col1', gutter: 10 });
-      
+
       /*$('.grid').masonry({
         // options
         itemSelector: '.grid-item',
@@ -350,159 +350,166 @@ var fx_select_brand;
           });
         }
 
-        Dropzone.options.myAwesomeDropzoneForm = { // The camelized version of the ID of the form element
-          // The configuration we've talked about above
-          paramName: "gallery",
-          autoDiscover: false,
-          autoProcessQueue: false,
-          uploadMultiple: true,
-          parallelUploads: 100,
-          maxFiles: 20,
-          maxFilesize: 2, // MB
-          acceptedFiles: "image/*",
-          addRemoveLinks: true,
-          previewsContainer: "#previews", // Define the container to display the previews
-          clickable: ".dropzone-file-previews",
+        if($('#my-awesome-dropzone-form').exists()){
+          Dropzone.options.myAwesomeDropzoneForm = { // The camelized version of the ID of the form element
+            // The configuration we've talked about above
+            paramName: "gallery",
+            autoDiscover: false,
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 100,
+            maxFiles: 20,
+            maxFilesize: 2, // MB
+            acceptedFiles: "image/*",
+            addRemoveLinks: true,
+            previewsContainer: "#previews", // Define the container to display the previews
+            clickable: ".dropzone-file-previews",
 
-          // The setting up of the dropzone
-          init: function() {
-            var myDropzone = this;
+            // The setting up of the dropzone
+            init: function() {
+              var myDropzone = this;
 
-            // First change the button to actually tell Dropzone to process the queue.
-            this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+              // First change the button to actually tell Dropzone to process the queue.
+              this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
 
-              e.preventDefault();
-              e.stopPropagation();
+                e.preventDefault();
+                e.stopPropagation();
 
-               if($('#my-awesome-dropzone-form').valid()){
+                 if($('#my-awesome-dropzone-form').valid()){
 
-                var description = $('textarea[name="description"]').html($('#summernote').code());
+                  var description = $('textarea[name="description"]').html($('#summernote').code());
 
-                if (myDropzone.getQueuedFiles().length > 0) {
-                     myDropzone.processQueue();
-                     //$('#my-awesome-dropzone-form')[0].submit();
-                } else {
-                     var _token, data;
-                     _token = $('input[name=_token]').val();
-                     //var form = $('#my-awesome-dropzone-form');
-                     var form = document.getElementById('my-awesome-dropzone-form');
-                     data = new FormData(form);
+                  if (myDropzone.getQueuedFiles().length > 0) {
+                       myDropzone.processQueue();
+                       //$('#my-awesome-dropzone-form')[0].submit();
+                  } else {
+                       var _token, data;
+                       _token = $('input[name=_token]').val();
+                       //var form = $('#my-awesome-dropzone-form');
+                       var form = document.getElementById('my-awesome-dropzone-form');
+                       data = new FormData(form);
 
-                     $.ajax({
-                         url: '/events',
-                         headers: {'X-CSRF-TOKEN': _token},
-                         data: data,
-                         type: 'POST',
-                         datatype: 'JSON',
-                         processData: false,
-                         contentType: false,
-                         success: function (resp) {
-                           console.log('ajax response => ' + resp);
-                           window.location.href = base_url + '/events';
-                         },
-                         error: function(jqXHR, textStatus, errorThrown)
-                         {
-                             $('.error-reponse').html(jqXHR.responseJSON);
-                         }
-                     });
+                       $.ajax({
+                           url: '/events',
+                           headers: {'X-CSRF-TOKEN': _token},
+                           data: data,
+                           type: 'POST',
+                           datatype: 'JSON',
+                           processData: false,
+                           contentType: false,
+                           success: function (resp) {
+                             console.log('ajax response => ' + resp);
+                             window.location.href = base_url + '/events';
+                           },
+                           error: function(jqXHR, textStatus, errorThrown)
+                           {
+                               $('.error-reponse').html(jqXHR.responseJSON);
+                           }
+                       });
 
+                  }
+                 } //valid
+              });
+
+              this.on("sending", function(file, xhr, data) {
+                  var file = $("#image")[0].files[0];
+                  //data.append('file-1', file);
+                  data.append("image", file);
+                  //data.append("filetype", "avataruploadtype");
+
+                  // Pass token. You can use the same method to pass any other values as well such as a id to associate the image with for example.
+                  data.append("_token", $('[name=_token').val()); // Laravel expect the token post value to be named _token by default
+              });
+
+              // Execute when file uploads are complete
+              this.on("complete", function() {
+                // If all files have been uploaded
+                if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
+                  var _this = this;
+                  // Remove all files
+                  //_this.removeAllFiles();
+
+                  //console.log('drop response => ' + _this);
+                  window.location.href = base_url + '/events';
                 }
-               } //valid
-            });
+              });
 
-            this.on("sending", function(file, xhr, data) {
-                var file = $("#image")[0].files[0];
-                //data.append('file-1', file);
-                data.append("image", file);
-                //data.append("filetype", "avataruploadtype");
+              this.on("addedfile", function(file) {
+                if($('.dropzone-previews').find('.dz-preview').length > 0){
+                  $('.dropzone-file-previews .dz-message').hide();
+                }
+              });
 
-                // Pass token. You can use the same method to pass any other values as well such as a id to associate the image with for example.
-                data.append("_token", $('[name=_token').val()); // Laravel expect the token post value to be named _token by default
-            });
+              this.on("removedfile", function(file) {
+                if($('.dropzone-previews').find('.dz-preview').length < 1){
+                  $('.dropzone-file-previews .dz-message').show();
+                }
+              });
 
-            // Execute when file uploads are complete
-            this.on("complete", function() {
-              // If all files have been uploaded
-              if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
-                var _this = this;
-                // Remove all files
-                //_this.removeAllFiles();
-
-                //console.log('drop response => ' + _this);
-                window.location.href = base_url + '/events';
-              }
-            });
-
-            this.on("addedfile", function(file) {
-              if($('.dropzone-previews').find('.dz-preview').length > 0){
-                $('.dropzone-file-previews .dz-message').hide();
-              }
-            });
-
-            this.on("removedfile", function(file) {
-              if($('.dropzone-previews').find('.dz-preview').length < 1){
-                $('.dropzone-file-previews .dz-message').show();
-              }
-            });
-
-            // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
-            // of the sending event because uploadMultiple is set to true.
-            this.on("sendingmultiple", function() {
-              // Gets triggered when the form is actually being sent.
-              // Hide the success button or the complete form.
-            });
-            this.on("successmultiple", function(files, response) {
-              // Gets triggered when the files have successfully been sent.
-              // Redirect user or notify of success.
-            });
-            this.on("errormultiple", function(files, response) {
-              // Gets triggered when there was an error sending the files.
-              // Maybe show form again, and notify user of error
-            });
+              // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+              // of the sending event because uploadMultiple is set to true.
+              this.on("sendingmultiple", function() {
+                // Gets triggered when the form is actually being sent.
+                // Hide the success button or the complete form.
+              });
+              this.on("successmultiple", function(files, response) {
+                // Gets triggered when the files have successfully been sent.
+                // Redirect user or notify of success.
+              });
+              this.on("errormultiple", function(files, response) {
+                // Gets triggered when there was an error sending the files.
+                // Maybe show form again, and notify user of error
+              });
+            }
           }
-
         }
 
         //Single instance of tag inputs - can be initiated with simply using data-role="tagsinput" attribute in any input field
-        $('.custom-tag-input').tagsinput({ maxTags: 20, tagClass: function(item) {return 'label label-custom-tag';} });
+        if($('.custom-tag-input').exists()){
+          $('.custom-tag-input').tagsinput({ maxTags: 20, tagClass: function(item) {return 'label label-custom-tag';} });
+        }
 
         //$(".custom-tag-input").on('itemRemoved', function (event) {
            //console.log('remove');
         //});
 
-        var $summernote = $('#summernote').summernote({
-            height: 200,
-            styleTags: ['pre', 'h1', 'h2'],
-            toolbar: [
-              // [groupName, [list of button]]
-              ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
-              //['font', ['strikethrough', 'superscript', 'subscript']],
-              ['fontsize', ['fontsize']],
-              ['color', ['color']],
-              ['para', ['ul', 'ol', 'paragraph']],
-              ['height', ['height']],
-              ['view', ['fullscreen', 'codeview']],
-              //['insert', ['link', 'picture', 'hr']],
-              ['picture', ['picture']]
-            ],
-            onImageUpload: function(files, editor, $editable) {
-              //console.log('file => ' + files[0]);
-              sendFile(files[0],editor,$editable);
-            }
-        });
+        if($('#summernote').exists()){
+          var $summernote = $('#summernote').summernote({
+              height: 200,
+              styleTags: ['pre', 'h1', 'h2'],
+              toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                //['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['view', ['fullscreen', 'codeview']],
+                //['insert', ['link', 'picture', 'hr']],
+                ['picture', ['picture']]
+              ],
+              onImageUpload: function(files, editor, $editable) {
+                //console.log('file => ' + files[0]);
+                sendFile(files[0],editor,$editable);
+              }
+          });
+        }
 
         //ignore valid popup model
         $('.note-modal-form').each( function() { $(this).validate({}) });
 
         //Multiselect - Select2 plug-in
-        $("#category").select2({
-          //maximumSelectionLength: 2,
-          maximumSelectionSize: 2,
-          formatSelectionTooBig: function (limit) {
-              // Callback
-              return 'Too many selected items';
-          }
-        });
+        if($('#category').exists()){
+          $("#category").select2({
+            //maximumSelectionLength: 2,
+            maximumSelectionSize: 2,
+            formatSelectionTooBig: function (limit) {
+                // Callback
+                return 'Too many selected items';
+            }
+          });
+        }
 
         $('#category').on('change', function() {
             $(this).valid();

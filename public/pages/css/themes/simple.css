@@ -12783,14 +12783,14 @@ Main components
 @media (max-width: 991px) {
   .page-container {
     padding-left: 0;
-  }
+  }/*
   body.sidebar-open .page-container {
     -webkit-transform: translate3d(250px, 0, 0);
     transform: translate3d(250px, 0, 0);
     -ms-transform: translate(250px, 0);
     overflow: hidden;
     position: fixed;
-  }
+  }*/
   body.box-layout > .container {
     padding: 0;
     height: 100%;
@@ -12870,8 +12870,8 @@ Main components
   .page-container {
     padding-left: 0;
     position: relative;
-    transition: transform .25s ease;
-    -webkit-transition: -webkit-transform 0.25s ease;
+    /*transition: transform .25s ease;
+    -webkit-transition: -webkit-transform 0.25s ease;*/
   }
   .page-container .page-content-wrapper .content {
     overflow-x: hidden;

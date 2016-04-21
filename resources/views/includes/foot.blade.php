@@ -105,7 +105,9 @@ $( document ).ready(function() {
       });
     }*/
 
-    var $container = $('.day'),
+    var resizeTimeout,
+    $grid,
+    $container = $('.day'),
     margin = 20,
     colWidth = function () {
         /* old master
@@ -151,46 +153,71 @@ $( document ).ready(function() {
         console.log('width => ' + w);
         return columnWidth;
     },
-    isotope = function(){
-    $grid = $container.isotope({
-          itemSelector: '.card',
-          //layoutMode: 'fitRows',
-          //resizable: false,
-          masonry: {
-              //columnWidth: 300,
-              //columnWidth: colWidth(),
-              columnWidth: '.col1-test',
-              //gutter: 20,
-              isFitWidth: true
-              //isFitWidth: false,
-              //originLeft: false
-          }
-      });
-    };
+    //isotope = function(){
+      //setTimeout(function() {
+        $grid = $container.isotope({
+            itemSelector: '.card',
+            //layoutMode: 'fitRows',
+            animationEngine: 'best-available',
+            resizable: false,
+            masonry: {
+                //columnWidth: 300,
+                //columnWidth: colWidth(),
+                columnWidth: '.col1-test',
+                //gutter: 20,
+                //isFitWidth: false,
+                //isResizable: true
+                //isFitWidth: false,
+                //originLeft: false
+            }
+        });
+
+      //}.bind(this), 500);
+    //};
+
+    $grid.isotope( 'on', 'arrangeComplete', function() {
+      console.log('arrange is complete');
+    });
+
+    $(window).on('load', function() {
+      //isotope();
+    });
 
     //var $container = $('.day');
     //$container.masonry({itemSelector: '.card', columnWidth: '.col1', isFitWidth: true});
 
-    isotope();
+    //isotope();
     //$(window).on('debouncedresize', isotope);
     //$(window).on('debouncedresize', isotope);
     // usage:
     $(window).smartresize(function(){
       // code that takes it easy...
-      var $windowSize = $('.feed').width();
-      //console.log('window feed Size => ' + $windowSize);
+      var $windowSize = $('body').width();
+      console.log('window feed Size => ' + $windowSize);
 
-      /*$grid.isotope({
+      /*$container.isotope({
             itemSelector: '.card',
             masonry: {
                 columnWidth: '.col1-test',
-                isFitWidth: true
+                isFitWidth: true,
+                isResizable: true
             }
       });*/
-      isotope();
-      $grid.isotope('layout');
-      //isotope();
+
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+          // $social.data('pg.social').setContainerWidth();
+          //isotope();
+          //$grid.isotope('layout');
+          $grid.isotope({ filter: '*' });
+      }, 810);
+
+      //$('.day').masonry({itemSelector: '.card', columnWidth: '.col1-test', isFitWidth: true});
       //$container.isotope('layout');
+      //isotope();
+      //$container.isotope();
+      //isotope();
+      //$grid.isotope('layout');
     });
 
     //$(window).on('resize', function() {

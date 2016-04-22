@@ -67,6 +67,14 @@ body.menu-behind .header .brand {
     width: 80%;
 }
 
+.page-sidebar .sidebar-menu .menu-items > li > span.title-header-category {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 40px;
+  min-height: 40px;
+  padding: 0 3px 0 32px;
+}
+
 h2, .windows h2 {
   font-size: 1.8em;
   font-weight: 500;
@@ -726,6 +734,8 @@ div.cs-select-brand {
   }
 
   .page-sidebar {
+      margin-top: 30px;
+
       /*z-index: 11;*/
       display: block;
       transform: translateX(-100%) !important;
@@ -738,6 +748,10 @@ div.cs-select-brand {
       transform: translateX(0%) !important;
       -webkit-transform: translate3d(0%, 0px, 0px) !important;
       transform: translate3d(0px, 0px, 0px) !important;
+  }
+
+  .page-sidebar .sidebar-menu .menu-items > li > span.title-header-category {
+    padding-left: 20px;
   }
 }
 

@@ -68,12 +68,16 @@
           <span class="details">โปรโมชั่นรอบๆตัวคุณ</span>
         </a>
         <span class="icon-thumbnail icon-category bg-success">
-          <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+          <i class="fa pg-map"></i>
           <!--<img src="{{ URL::asset('assets/img/category/icons/computer.png') }}" alt="Computer / IT" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/computer.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/computer_2x.png') }}" width="40" height="40">-->
         </span>
       </li>
 
-      <li class="m-t-30">
+      <li class="m-t-5">
+        <span class="title-header-category">BRAND</span>
+        <span class="icon-thumbnail">B</span>
+      </li>
+      <li class="">
         <a href="#" class="detailed">
           <span class="title">Food / Drink</span>
           <span class="details">อาหาร / เครื่องดื่ม</span>
@@ -155,7 +159,11 @@
         </span>
       </li>
 
-      <li class="m-t-30">
+      <li class="m-t-5">
+        <span class="title-header-category">CATEGORY</span>
+        <span class="icon-thumbnail">C</span>
+      </li>
+      <li class="">
         <a href="#" class="detailed">
           <span class="title">Computer / IT</span>
           <span class="details">คอมพิวเตอร์</span>

@@ -9,7 +9,7 @@
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-12">
-        <h3 class='page-title'>เพิ่มข่าวโปรโมชั่น / Multiple Language</h3>
+        <h3 class='page-title'>เพิ่มข่าวโปรโมชั่น</h3>
         <span class="error-reponse">
           @include('errors.list')
         </span>

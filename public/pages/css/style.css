@@ -47,6 +47,15 @@ body.menu-behind .header .brand {
   margin-top: 47px;
 }
 
+.icon-thumbnail > i.fa-home {
+    font-size: 2em;
+    margin-top: 5px;
+}
+
+.icon-category {
+  
+}
+
 h2, .windows h2 {
   font-size: 1.8em;
   font-weight: 500;

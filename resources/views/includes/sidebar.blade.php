@@ -43,13 +43,151 @@
   <div class="sidebar-menu">
     <!-- BEGIN SIDEBAR MENU ITEMS-->
     <ul class="menu-items">
+      {{--
       <li class="m-t-30">
         <a href="index.html" class="detailed">
-          <span class="title">Dashboard</span>
-          <span class="details">12 New Updates</span>
+          <span class="title">Home</span>
+          <span class="details">หน้าแรก</span>
         </a>
-        <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
+        <span class="bg-success icon-thumbnail"><i class="fa fa-home"></i></span>
       </li>
+      --}}
+      <li class="m-t-30">
+        <a href="#" class="detailed">
+          <span class="title">Computer / IT</span>
+          <span class="details">คอมพิวเตอร์</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/computer.png') }}" alt="Computer / IT" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/computer.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/computer_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Furniture</span>
+          <span class="details">เฟอร์นิเจอร์ / ของใช้ในบ้าน</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/furniture.png') }}" alt="Furniture" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/furniture.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/furniture_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Entertainment</span>
+          <span class="details">บันเทิง / ดนตรี / ภาพยนตร์</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/entertainment.png') }}" alt="Entertainment" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/entertainment.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/entertainment_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Money / Bank</span>
+          <span class="details">การเงิน-ธนาคาร</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/money_bank.png') }}" alt="Money / Bank" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/money_bank.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/money_bank_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Home / Condo</span>
+          <span class="details">บ้าน / คอนโด</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/home_condo.png') }}" alt="Home / Condo" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/home_condo.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/home_condo_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Automotive</span>
+          <span class="details">ยานยนต์</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/automotive.png') }}" alt="Automotive" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/automotive.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/automotive_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Health</span>
+          <span class="details">สุขภาพ / ร่างกาย</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/health.png') }}" alt="Health" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/health.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/health_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Book / stationery</span>
+          <span class="details">หนังสือ / เครื่องเขียน</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/book.png') }}" alt="Book / stationery" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/book.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/book_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Camera / Photograph</span>
+          <span class="details">กล้อง / ถ่ายภาพ</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/camera.png') }}" alt="Camera / Photograph" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/camera.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/camera_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Gift Shop</span>
+          <span class="details">ของขวัญ</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/gift.png') }}" alt="Gift Shop" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/gift.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/gift_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Office Supplies</span>
+          <span class="details">เครื่องใช้สำนักงาน</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/office_supplies.png') }}" alt="Office Supplies" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/office_supplies.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/office_supplies_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Kids</span>
+          <span class="details">เด็ก</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/kids.png') }}" alt="Kids" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/kids.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/kids_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Pet</span>
+          <span class="details">สัตว์เลี้ยง</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/pet.png') }}" alt="Pet" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/pet.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/pet_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Education</span>
+          <span class="details">การศึกษา</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/education.png') }}" alt="Education" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/education.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/education_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Consumer Goods</span>
+          <span class="details">เครื่องอุปโภคบริโภค</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/consumer_goods.png') }}" alt="Consumer Goods" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/consumer_goods.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/consumer_goods_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      {{--
       <li class="">
         <a href="http://pages.revox.io/dashboard/latest/html/widget.html" class="detailed">
           <span class="title">Widgets</span>
@@ -319,6 +457,7 @@
           </li>
         </ul>
       </li>
+      --}}
     </ul>
     <div class="clearfix"></div>
   </div>

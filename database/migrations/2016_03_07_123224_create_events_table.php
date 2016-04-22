@@ -42,7 +42,8 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('name'); //Cate Name Space
             $table->string('category'); //cate-name-space
-            $table->string('category_type', 60); //brand or event
+            $table->enum('category_type', ['event', 'brand']); //brand or event
+            $table->string('icons', 60)->nullable(); //brand or event
             $table->timestamps();
         });
 

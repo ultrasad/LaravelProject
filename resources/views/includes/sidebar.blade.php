@@ -228,7 +228,7 @@
       </li>
       <li class="">
         <a href="#" class="detailed">
-          <span class="title">Book / stationery</span>
+          <span class="title">Book / Stationery</span>
           <span class="details">หนังสือ / เครื่องเขียน</span>
         </a>
         <span class="icon-thumbnail icon-category bg-success">

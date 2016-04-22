@@ -52,8 +52,19 @@ body.menu-behind .header .brand {
     margin-top: 5px;
 }
 
-.icon-category {
-  
+.icon-category .fa {
+  font-size: 2em;
+  margin-top: 5px;
+}
+
+.page-sidebar .sidebar-menu .menu-items li:hover > .icon-thumbnail > i,
+.page-sidebar .sidebar-menu .menu-items li.open > .icon-thumbnail > i,
+.page-sidebar .sidebar-menu .menu-items li.active > .icon-thumbnail > i {
+    color: #fff;
+}
+
+.page-sidebar .sidebar-menu .menu-items > li > a > .title {
+    width: 80%;
 }
 
 h2, .windows h2 {

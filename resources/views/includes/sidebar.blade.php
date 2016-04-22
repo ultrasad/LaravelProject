@@ -54,6 +54,109 @@
       --}}
       <li class="m-t-30">
         <a href="#" class="detailed">
+          <span class="title">All Promotions</span>
+          <span class="details">โปรโมชั่นทั้งหมด</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+          <!--<img src="{{ URL::asset('assets/img/category/icons/computer.png') }}" alt="Computer / IT" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/computer.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/computer_2x.png') }}" width="40" height="40">-->
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Promotions Map</span>
+          <span class="details">โปรโมชั่นรอบๆตัวคุณ</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+          <!--<img src="{{ URL::asset('assets/img/category/icons/computer.png') }}" alt="Computer / IT" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/computer.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/computer_2x.png') }}" width="40" height="40">-->
+        </span>
+      </li>
+
+      <li class="m-t-30">
+        <a href="#" class="detailed">
+          <span class="title">Food / Drink</span>
+          <span class="details">อาหาร / เครื่องดื่ม</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/food_drink.png') }}" alt="Food / Drink" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/food_drink.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/food_drink_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Clothes</span>
+          <span class="details">เสื้อผ้า / แฟชั่น / เครื่องประดับ</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/clothes.png') }}" alt="Clothes" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/clothes.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/clothes_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Cosmetic</span>
+          <span class="details">เครื่องสำอาง / ความงาม</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/cosmetic.png') }}" alt="Cosmetic" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/cosmetic.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/cosmetic_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Supermarket</span>
+          <span class="details">ห้างฯ / ซูเปอร์มาเก็ต</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/supermarket.png') }}" alt="Cosmetic" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/supermarket.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/supermarket_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Airline</span>
+          <span class="details">สายการบิน / การเดินทาง</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/airline.png') }}" alt="Airline / Travel" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/airline.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/airline_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Sport</span>
+          <span class="details">กีฬา</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/sport.png') }}" alt="Sport" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/sport.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/sport_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Mobile</span>
+          <span class="details">มือถือ / สื่อสาร</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/mobile.png') }}" alt="Mobile" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/mobile.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/mobile_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Electronics</span>
+          <span class="details">เครื่องใช้ไฟฟ้า</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/electronics.png') }}" alt="Electronics" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/electronics.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/electronics_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+      <li class="">
+        <a href="#" class="detailed">
+          <span class="title">Travel</span>
+          <span class="details">ท่องเที่ยว / ที่พัก / โรงแรม / รีสอร์ท</span>
+        </a>
+        <span class="icon-thumbnail icon-category bg-success">
+          <img src="{{ URL::asset('assets/img/category/icons/travel.png') }}" alt="Travel" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/travel.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/travel_2x.png') }}" width="40" height="40">
+        </span>
+      </li>
+
+      <li class="m-t-30">
+        <a href="#" class="detailed">
           <span class="title">Computer / IT</span>
           <span class="details">คอมพิวเตอร์</span>
         </a>

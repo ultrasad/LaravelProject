@@ -219,8 +219,12 @@
       <div class="panel panel-default master-checkbox-all">
         <div class="panel-body">
           <div class="form-group form-group-default">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" id="branch_username" placeholder="Username" />
+          </div>
+          <div class="form-group form-group-default">
             <label>E-mail</label>
-            <input type="text" name="email" class="form-control" id="branch_username" placeholder="E-mail" />
+            <input type="text" name="email" class="form-control" id="branch_email" placeholder="E-mail" />
           </div>
           <div class="form-group form-group-default">
             <label>Password</label>

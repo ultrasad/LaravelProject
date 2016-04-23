@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'username', 'email', 'password',
     ];
 
     /**
@@ -35,5 +35,11 @@ class User extends Authenticatable
     public function events()
     {
       return $this->hasMany('App\Event');
+    }
+
+    public function roles()
+    {
+      return $this->belongsToMany('App\Role')
+                  ->withTimestamps(); //update created app, updated app relationship table
     }
 }

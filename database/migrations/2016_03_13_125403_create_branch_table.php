@@ -17,7 +17,8 @@ class CreateBranchTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->string('lat', 60);
-            $table->string('long', 60);
+            $table->string('lon', 60);
+            $table->integer('zoom');
             $table->text('detail');
             $table->timestamps();
         });

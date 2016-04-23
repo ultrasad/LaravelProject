@@ -31,10 +31,10 @@ class CreateEventsTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
           $table->integer('brand_id')->unsigned()->default(1);
-          $table->foreign('brand_id')
+          /*$table->foreign('brand_id')
                 ->references('id')
                 ->on('brand')
-                ->onDelete('cascade');
+                ->onDelete('cascade');*/
                 //$table->rememberToken();
         });
 
@@ -43,7 +43,7 @@ class CreateEventsTable extends Migration
             $table->string('name'); //Cate Name Space
             $table->string('category'); //cate-name-space
             $table->enum('category_type', ['event', 'brand']); //brand or event
-            $table->string('icons', 60)->nullable(); //brand or event
+            $table->string('icon', 60)->nullable(); //brand or event
             $table->timestamps();
         });
 

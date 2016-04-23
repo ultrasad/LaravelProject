@@ -31,6 +31,18 @@ class CreateSocialTable extends Migration
 
             $table->timestamps();
         });
+
+        /*Schema::create('brand_social', function (Blueprint $table) {
+            $table->integer('brand_id')->unsigned()->index();
+            $table->foreign('brand_id')->references('id')
+                  ->on('brand')->onDelete('cascade');
+
+            $table->integer('social_id')->unsigned()->index();
+            $table->foreign('social_id')->references('id')
+                  ->on('social')->onDelete('cascade');
+
+            $table->timestamps();
+        });*/
     }
 
     /**

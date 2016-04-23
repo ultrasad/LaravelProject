@@ -214,6 +214,7 @@ var fx_select_brand;
         });
 
         if($('#brand-register-form').exists()){
+          console.log('brand form..');
           $('#brand-register-form').validate({
                //ignore: ".ignore :hidden" //is telling it to ignore hidden fields with the class ignore.
                //ignore: ".ignore", //will tell it to only ignore fields will class .ignore.
@@ -244,6 +245,9 @@ var fx_select_brand;
                   detail: {
                      required: true
                   },
+                  branch_name: {
+                    required: true,
+                  },
                   published_at: {
                     required: true
                   }
@@ -259,6 +263,9 @@ var fx_select_brand;
                     required: "This field is required.",
                   },
                   detail: {
+                    required: "This field is required.",
+                  },
+                  branch_name: {
                     required: "This field is required.",
                   },
                   published_at: {
@@ -390,9 +397,7 @@ var fx_select_brand;
                    // then use .ajax() OR .submit()
                }
           });
-        }
 
-        if($('#my-awesome-dropzone-form').exists()){
           Dropzone.options.myAwesomeDropzoneForm = { // The camelized version of the ID of the form element
             // The configuration we've talked about above
             paramName: "gallery",
@@ -504,6 +509,7 @@ var fx_select_brand;
               });
             }
           }
+
         }
 
         //Single instance of tag inputs - can be initiated with simply using data-role="tagsinput" attribute in any input field
@@ -654,7 +660,7 @@ var fx_select_brand;
           }
         });
 
-        if($('#map_canvas').exists()){
+        if($('#map_canvas').exists() || $('#brand-register-form').exists()){
           $("<script/>", {
             "type": "text/javascript",
             src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&zoom=false&language=th&hl=th&callback=initialize&libraries=places"
@@ -892,29 +898,36 @@ var address = '';
 var point = '';
 
 function initialize() {
+
+  console.log('initialize..');
+
     mapObj = new Object(google.maps);
     var default_latlng  = new mapObj.LatLng(13.7563309, 100.50176510000006);
+
+    //Map default
     //Create LatLngBounds object.
-    var latlngbounds = new mapObj.LatLngBounds();
-    var default_type = mapObj.MapTypeId.ROADMAP;
-    var map_canvas = $("#map_canvas")[0];
-    var options = {
-        zoom: 14,
-        scrollwheel: false,
-        center: default_latlng,
-        mapTypeId:default_type
-    };
+    if($('#map_canvas').exists()){
+      var latlngbounds = new mapObj.LatLngBounds();
+      var default_type = mapObj.MapTypeId.ROADMAP;
+      var map_canvas = $("#map_canvas")[0];
+      var options = {
+          zoom: 14,
+          scrollwheel: false,
+          center: default_latlng,
+          mapTypeId:default_type
+      };
 
-    map = new mapObj.Map(map_canvas, options);
-    mapObj.event.addListener(map, 'zoom_changed', function() {
-        $("#location_zoom").val(map.getZoom());
-    });
+      map = new mapObj.Map(map_canvas, options);
+      mapObj.event.addListener(map, 'zoom_changed', function() {
+          $("#location_zoom").val(map.getZoom());
+      });
 
-    var infowindow = new mapObj.InfoWindow();
-    var marker = new mapObj.Marker({
-      map: map,
-      anchorPoint: new mapObj.Point(0, -29)
-    });
+      var infowindow = new mapObj.InfoWindow();
+      var marker = new mapObj.Marker({
+        map: map,
+        anchorPoint: new mapObj.Point(0, -29)
+      });
+    }
 
     //map branch location
     if($('#map_canvas_branch').exists()){

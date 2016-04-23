@@ -262,6 +262,32 @@
               <div class="form-group">
                   <button class="btn btn-primary btn-xs" type="button" id="add_branch">เพิ่มสาขา</button>
               </div>
+              {{--
+              <div class="branch_list">
+                <div class="col-md-12 branch_row">
+                  <div class="row">
+                    <div class="branch_name_list col-xs-10">ชื่อสาขา ที่1 ชื่อสาขา ที่1</div>
+                    <div class="btn-group btn_branch_action btn-xs">
+                      <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 branch_row">
+                  <div class="row">
+                    <div class="branch_name_list col-xs-10">ชื่อสาขา ที่2 ชื่อสาขา ที่2</div>
+                    <div class="btn-group btn_branch_action btn-xs">
+                      <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              --}}
             </div>
           </div>
 

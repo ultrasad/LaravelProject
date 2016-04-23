@@ -187,10 +187,14 @@ class BrandController extends Controller
     $branch->zoom = $request->json('branch_zoom');
     $branch->save();
 
-    $brand = Brand::find($request->json('brand_id'));
-    $brand->branch()->attach($branch->id);
-    if($branch->id > 0){
-      echo 'insert branch id => '. $branch->id;
+    if($request->json('brand_id')){ //case event, brand exists and create new branch
+      $brand = Brand::find($request->json('brand_id'));
+      $brand->branch()->attach($branch->id);
+      if($branch->id > 0){
+        echo 'insert branch id => '. $branch->id;
+      }
+    } else {
+        echo 'insert branch id => '. $branch->id;
     }
   }
 }

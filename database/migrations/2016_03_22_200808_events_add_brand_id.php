@@ -12,13 +12,13 @@ class EventsAddBrandId extends Migration
      */
     public function up()
     {
-        Schema::table('events', function (Blueprint $table) {
+        /*Schema::table('events', function (Blueprint $table) {
           $table->integer('brand_id')->unsigned()->default(1);
           $table->foreign('brand_id')
           ->references('id')
           ->on('brand')
           ->onDelete('cascade');
-        });
+        });*/
     }
 
     /**
@@ -28,8 +28,8 @@ class EventsAddBrandId extends Migration
      */
     public function down()
     {
-        Schema::table('events', function (Blueprint $table) {
+        //Schema::table('events', function (Blueprint $table) {
             //
-        });
+        //});
     }
 }

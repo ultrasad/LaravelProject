@@ -141,102 +141,127 @@
         <!-- END PANEL -->
       </div>
       <div class="col-md-4">
-       <!-- START PANEL -->
-       <div class="panel panel-default">
+        <!-- START PANEL -->
+        <div class="panel panel-default">
 
-        <div class="panel-heading">
-          <div class="panel-title">
-            สาขา
-          </div>
-        </div>
-
-        <div class="panel-body">
-          <div class="form-group new_branch_btn" style="display: ;">
-              <a href="javascript: void(0);" title="เพิ่มสาขาใหม่" class="add_new_branch"><span class="new-branch"><i class="fs-14 pg-minus pg-plus"></i>เพิ่มสาขาใหม่</span></a>
-          </div>
-        </div>
-
-        <div class="panel-body new_branch_panel" style="display: none;">
-          <div class="form-group form-group-default form-group-map">
-            <label>ชื่อสาขา</label>
-            <input type="text" size="50" name="branch_name" class="form-control" id="branch_name" placeholder="ชื่อสาขา" />
-          </div>
-
-          <div class="form-group form-group-default form-group-area">
-            <label>ข้อมูลสาขาแบบย่อ</label>
-            <textarea class="form-control" name="branch_detail" id="branch_detail" rows="3"></textarea>
-          </div>
-
-          <div class="form-group form-group-default form-group-map">
-            <label>ที่ตั้งสาขา</label>
-            <input type="text" size="50" name="branch_location" class="form-control" id="branch_location" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
-          </div>
-
-          <div class="form-group">
-            <div id="map_canvas_branch" class="map-canvas"></div>
-            <div class="row">
-              <input name="branch_location_lat" type="hidden" id="branch_location_lat" value="0" />
-              <input name="branch_location_lon" type="hidden" id="branch_location_lon" value="0" />
-              <input name="branch_location_zoom" type="hidden" id="branch_location_zoom" value="0" />
+          <div class="panel-heading">
+            <div class="panel-title">
+              สาขา
             </div>
           </div>
 
-          <div class="wizard-footer padding-5 branch_child">
+          <div class="panel-body">
+            <div class="form-group new_branch_btn" style="display: ;">
+                <a href="javascript: void(0);" title="เพิ่มสาขาใหม่" class="add_new_branch"><span class="new-branch"><i class="fs-14 pg-minus pg-plus"></i>เพิ่มสาขาใหม่</span></a>
+            </div>
+          </div>
+
+          <div class="panel-body new_branch_panel" style="display: none;">
+            <div class="form-group form-group-default form-group-map">
+              <label>ชื่อสาขา</label>
+              <input type="text" size="50" name="branch_name" class="form-control" id="branch_name" placeholder="ชื่อสาขา" />
+            </div>
+
+            <div class="form-group form-group-default form-group-area">
+              <label>ข้อมูลสาขาแบบย่อ</label>
+              <textarea class="form-control" name="branch_detail" rows="3"></textarea>
+            </div>
+
+            <div class="form-group form-group-default form-group-map">
+              <label>ที่ตั้งสาขา</label>
+              <input type="text" size="50" name="branch_location_name" class="form-control" id="branch_location_name" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
+            </div>
+
             <div class="form-group">
-                <button class="btn btn-primary btn-xs" type="button" id="add_branch">เพิ่มสาขา</button>
-            </div>
-          </div>
-
-          <div class="branch_list">
-            <div class="col-md-12 branch_row">
+              <div id="map_canvas" class="map-canvas"></div>
               <div class="row">
-                <div class="branch_name_list col-xs-10">ชื่อสาขา ที่1 ชื่อสาขา ที่1</div>
-                <div class="btn-group btn_branch_action btn-xs">
-                  <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
-                  </button>
-                  <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                  </button>
-                </div>
+                <input name="branch_location_lat" type="hidden" id="branch_location_lat" value="0" />
+                <input name="branch_location_lon" type="hidden" id="branch_location_lon" value="0" />
+                <input name="branch_location_zoom" type="hidden" id="branch_location_zoom" value="0" />
               </div>
             </div>
-            <div class="col-md-12 branch_row">
-              <div class="row">
-                <div class="branch_name_list col-xs-10">ชื่อสาขา ที่2 ชื่อสาขา ที่2</div>
-                <div class="btn-group btn_branch_action btn-xs">
-                  <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
-                  </button>
-                  <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                  </button>
+
+            {{--
+            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all">
+              <div class="checkbox check-success">
+                <input type="checkbox" checked="checked" name="branch_all" value="1" class="branch_all" id="branch_all">
+                <label class="label-master" for="branch_all">ทุกสาขา</label>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            --}}
+
+            <div class="wizard-footer padding-5 branch_child">
+              <div class="list">
+                {{--
+                @if($branch)
+                  @foreach($branch as $id => $name)
+                  <div class="checkbox check-warning">
+                    <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $id }}" id="branch_{{ $id }}">
+                    <label for="branch_{{ $id }}">{{ $name }}</label>
+                  </div>
+                  @endforeach
+                  <div class="clearfix"></div>
+                @endif
+                --}}
+              </div>
+
+              <div class="form-group">
+                  <button class="btn btn-primary btn-xs" type="button" id="add_branch">เพิ่มสาขา</button>
+                  <!--<span class="new-branch"><i class="fs-14 pg-plus"></i>เพิ่มสาขาใหม่</span>-->
+              </div>
+
+              <div class="branch_list">
+                <div class="col-md-12 branch_row">
+                  <div class="row">
+                    <div class="branch_name_list col-xs-10">ชื่อสาขา ที่1 ชื่อสาขา ที่1</div>
+                    <div class="btn-group btn_branch_action btn-xs">
+                      <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
+                <div class="col-md-12 branch_row">
+                  <div class="row">
+                    <div class="branch_name_list col-xs-10">ชื่อสาขา ที่2 ชื่อสาขา ที่2</div>
+                    <div class="btn-group btn_branch_action btn-xs">
+                      <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- END PANEL -->
+        <!-- START PANEL -->
+        <div class="panel panel-default master-checkbox-all">
+          <div class="panel-body">
+            <div class="form-group form-group-default">
+              <label>E-mail</label>
+              <input type="text" name="email" class="form-control" id="branch_username" placeholder="E-mail" />
+            </div>
+            <div class="form-group form-group-default">
+              <label>Password</label>
+              <input type="text" name="password" class="form-control" id="branch_password" placeholder="Password" />
+            </div>
+          </div>
+          <div class="panel-heading">
+            <div class="panel-title">
+              <div class="checkbox check-danger">
+                <input type="checkbox" checked="checked" class="approve_status" name="approve_status" value="Y" id="approve_status">
+                <label class="label-master" for="approve_status">Approved (Admin)</label>
               </div>
             </div>
           </div>
         </div>
-
-      </div>
-      <!-- END PANEL -->
-      <!-- START PANEL -->
-      <div class="panel panel-default master-checkbox-all">
-        <div class="panel-body">
-          <div class="form-group form-group-default">
-            <label>E-mail</label>
-            <input type="text" name="email" class="form-control" id="branch_username" placeholder="E-mail" />
-          </div>
-          <div class="form-group form-group-default">
-            <label>Password</label>
-            <input type="text" name="password" class="form-control" id="branch_password" placeholder="Password" />
-          </div>
-        </div>
-        <div class="panel-heading">
-          <div class="panel-title">
-            <div class="checkbox check-danger">
-              <input type="checkbox" checked="checked" class="approve_status" name="approve_status" value="Y" id="approve_status">
-              <label class="label-master" for="approve_status">Approved (Admin)</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- END PANEL -->
+        <!-- END PANEL -->
 
         <div class="row">
           <button class="btn btn-success" type="submit" id="submit_event">Submit</button>

@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\BrandRequest;
 
 //use Auth;
+use App\User;
 use App\Event;
 use App\Brand;
 use App\Branch;
@@ -90,6 +91,14 @@ class BrandController extends Controller
       }
     } while($dup==1);
     $brand->url_slug = $base_slug;
+
+    $name = $request->input('name');
+    $username = $request->input('username');
+    $password = $request->input('password');
+    $email = $request->input('email');
+    if(!empty($username) && !empty($password)){
+      $brand->user_id =  User::create(array('name' => $name,'username' => $username, 'password' => bcrypt($password), 'email' => !empty($email)?$email:NULL, 'role_id' => 4))->id;
+    }
 
     $brand->save(); //brand insert
 

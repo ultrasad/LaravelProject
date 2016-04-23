@@ -37,6 +37,11 @@ class Brand extends Model
       //return $this->tags->lists('id')->toArray();
   }
 
+  public function user()
+  {
+      return $this->belongsTo('App\User');
+  }
+
   /*
   public function branch($id=1)
   {

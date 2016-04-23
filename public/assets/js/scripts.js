@@ -248,6 +248,12 @@ var fx_select_brand;
                   branch_name: {
                     required: true,
                   },
+                  username: {
+                    required: true,
+                  },
+                  password: {
+                    required: true,
+                  },
                   published_at: {
                     required: true
                   }
@@ -266,6 +272,12 @@ var fx_select_brand;
                     required: "This field is required.",
                   },
                   branch_name: {
+                    required: "This field is required.",
+                  },
+                  username: {
+                    required: "This field is required.",
+                  },
+                  password: {
                     required: "This field is required.",
                   },
                   published_at: {

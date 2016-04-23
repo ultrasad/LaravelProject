@@ -14,11 +14,12 @@ class CreateRoleUserTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('role');
+            $table->string('name', 40);
+            $table->string('description');
             $table->timestamps();
         });
 
+        /*
         Schema::create('role_user', function (Blueprint $table) {
           $table->integer('role_id')->unsigned()->index();
           $table->foreign('role_id')->references('id')
@@ -30,6 +31,7 @@ class CreateRoleUserTable extends Migration
 
           $table->timestamps();
         });
+        */
     }
 
     /**
@@ -40,6 +42,6 @@ class CreateRoleUserTable extends Migration
     public function down()
     {
         Schema::drop('role');
-        Schema::drop('role_user');
+        //Schema::drop('role_user');
     }
 }

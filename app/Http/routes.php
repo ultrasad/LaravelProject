@@ -54,11 +54,18 @@ Route::delete('/articles/{id}', 'ArticlesController@distroy');
 //Route::post('/events/post_upload', 'EventsController@post_upload');
 //Route::post('events/desc_upload', 'EventsController@desc_upload');
 //Route::post('brand/branch', 'BrandController@branch');
+
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/', function () {
         return view('welcome');
     });
+
+    Route::get('user/{user}', [
+    	'middleware' => ['auth', 'roles'], // A 'roles' middleware must be specified
+    	'uses' => 'UserController@index',
+    	'roles' => ['administrator', 'manager'] // Only an administrator, or a manager can access this route
+    ]);
 
     Route::get('twitter/login',array('as' => 'twitter.login','uses' => 'TwitterController@login'));
     Route::get('twitter/callback', array('as' => 'twitter.callback','uses' =>'TwitterController@callback'));
@@ -164,7 +171,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('events/desc_upload', 'EventsController@desc_upload');
     Route::get('events/branch/{id}', 'EventsController@branch');
     Route::get('maps/locations', 'MapsController@locations');
-    Route::get('brand/register', 'BrandController@register');
+    Route::get('brand/register', [
+      'middleware' => ['auth', 'roles'],
+      'uses' => 'BrandController@register',
+      'roles' => ['administrator', 'manager', 'company manager']
+    ]);
     Route::post('brand/add_branch', 'BrandController@add_branch');
     //Route::get('brand/(:number)', 'BrandController@index');
     //Route::get('/brand/{id}', array('as' => 'brand', function(){

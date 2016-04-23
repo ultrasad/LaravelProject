@@ -43,10 +43,13 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+
+    // Register the new route middleware
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'roles' 	=> \App\Http\Middleware\CheckRole::class,
     ];
 }

@@ -54,7 +54,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/brand/{id}', array('as' => 'id', 'uses' => 'BrandController@index'))
     ->where('id', '[0-9]+');
 
-    Route::get('/events/admin','EventsController@admin');
+    Route::get('/admin',[
+      'middleware' => ['auth', 'roles'],
+      'uses' => 'EventsController@admin',
+      'roles' => ['administrator']
+    ]);
 
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers

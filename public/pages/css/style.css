@@ -179,6 +179,23 @@ h3.page-title, .windows h3.page-title {
   padding: 4px 6px 4px 9px;
 }
 
+/* datatable */
+table.dataTable thead .sorting_asc::after {
+    background-image: url("../img/icons/sort_asc.png");
+}
+table.dataTable thead .sorting_desc::after {
+    background-image: url("../img/icons/sort_desc.png");
+}
+table.dataTable thead .sorting::after {
+    background-image: url("../img/icons/sort_both.png");
+}
+table.dataTable thead .sorting_asc_disabled::after {
+    background-image: url("../img/icons/sort_asc_disabled.png");
+}
+table.dataTable thead .sorting_desc_disabled::after {
+    background-image: url("../img/icons/sort_desc_disabled.png");
+}
+
 /*
 .dropzone {
   border: none;

@@ -2,8 +2,10 @@
 @section('page_title', 'Events Edit')
 @section('content')
   <!-- START CONTAINER FLUID -->
-  <form class="events-form dropzone" id="my-awesome-dropzone-form-edit" role="form" action="/events" enctype="multipart/form-data" method="PATCH">
+  <form class="events-form dropzone" id="my-awesome-dropzone-form-edit" role="form" action="{{ url('/') }}/events/{{ $event->id }}" enctype="multipart/form-data" method="POST">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  <input name="_method" type="hidden" value="PATCH">
+  <input name="event_edit_id" class="event_edit_id" type="hidden" value="{{ $event->id }}">
   {{-- Form::token() --}}
   <div class="container-fluid container-fixed-lg">
     <div class="row">
@@ -78,15 +80,15 @@
 
               <div class="form-group form-group-default form-group-map">
                 <label>สถาณที่จัดโปรโมชั่น</label>
-                <input type="text" size="50" name="event_location" class="form-control" id="event_location" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
+                <input type="text" size="50" name="event_location" class="form-control event_location_name" id="event_location" value="{{ $location->name }}" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
               </div>
 
               <div class="form-group">
                 <div id="map_canvas" class="map-canvas"></div>
                 <div class="row">
-                  <input name="location_lat" type="hidden" id="location_lat" value="0" />
-                  <input name="location_lon" type="hidden" id="location_lon" value="0" />
-                  <input name="location_zoom" type="hidden" id="location_zoom" value="0" />
+                  <input name="location_lat" type="hidden" id="location_lat" value="{{ $location->lat }}" />
+                  <input name="location_lon" type="hidden" id="location_lon" value="{{ $location->lon }}" />
+                  <input name="location_zoom" type="hidden" id="location_zoom" value="{{ $location->zoom }}" />
                 </div>
               </div>
 

@@ -460,7 +460,8 @@ var fx_select_brand;
                            contentType: false,
                            success: function (resp) {
                              console.log('ajax response => ' + resp);
-                             window.location.href = base_url + '/events';
+                             //window.location.href = base_url + '/events';
+                             window.location.href = base_url;
                            },
                            error: function(jqXHR, textStatus, errorThrown)
                            {
@@ -528,6 +529,113 @@ var fx_select_brand;
 
         //dropzone edit form
         if($('#my-awesome-dropzone-form-edit').exists()){
+          $('#my-awesome-dropzone-form-edit').validate({
+               //ignore: ".ignore :hidden" //is telling it to ignore hidden fields with the class ignore.
+               //ignore: ".ignore", //will tell it to only ignore fields will class .ignore.
+               //ignore: ".ignore, :hidden", //will tell it to ignore fields will class .ignore AND fields that are hidden.
+               //ignore:[], // tells the plugin to ignore nothing and validate everything.
+               ignore: ".ignore, :hidden:not(.validate)",
+               focusInvalid: false,
+               ignoreTitle: true,
+               errorClass:'error',
+               validClass:'success',
+               errorElement:'span',
+               highlight: function (element, errorClass, validClass) {
+                   //console.log(element.name);
+                   $(element).parents("div[class='clearfix']").addClass(errorClass).removeClass(validClass);
+               },
+               unhighlight: function (element, errorClass, validClass) {
+                   $(element).parents(".error").removeClass(errorClass).addClass(validClass);
+               },
+               /*
+              //When there is an error normally you just add the class to the element.
+              // But in the case of select2s you must add it to a UL to make it visible.
+              // The select element, which would otherwise get the class, is hidden from
+              // view.
+              highlight: function (element, errorClass, validClass) {
+                var elem = $(element);
+                console.log(element.name);
+                if (elem.hasClass("select2-offscreen")) {
+                    $("#s2id_" + elem.attr("id") + " a").addClass(errorClass);
+                    console.log('has class');
+                } else {
+                    elem.addClass(errorClass);
+                    console.log('no class');
+                }
+              },
+              //When removing make the same adjustments as when adding
+              unhighlight: function (element, errorClass, validClass) {
+                var elem = $(element);
+                if (elem.hasClass("select2-offscreen")) {
+                    $("#s2id_" + elem.attr("id") + " a").removeClass(errorClass);
+                } else {
+                    elem.removeClass(errorClass);
+                }
+              },*/
+               rules: {
+                  title: {
+                    required: true
+                  },
+                  url_slug: {
+                    required: true
+                  },
+                  "category[]": {
+                    required: true
+                  },
+                  tag_list: {
+                    required: true,
+                    "checkTags": true
+                  },
+                  brief: {
+                     required: true
+                  },
+                  branch_name: {
+                    required: true
+                  },
+                  published_at: {
+                    required: true
+                  }
+                  /*
+                  fb_message: {
+                     required: true
+                  }*/
+               },
+               messages: {
+                  title:{
+                  	required: "This field is required.",
+                  },
+                  url_slug:{
+                  	required: "This field is required.",
+                  },
+                  "category[]": {
+                    required: "This field is required.",
+                  },
+                  tag_list: {
+                    required: "This field is required.",
+                    "checkTags": "This field is required.",
+                  },
+                  brief: {
+                    required: "This field is required.",
+                  },
+                  branch_name: {
+                    required: "This field is required.",
+                  },
+                  published_at: {
+                    required: "This field is required.",
+                  }
+                  /*
+                  fb_message: {
+                    required: "This field is required.",
+                  }*/
+          		 },
+               submitHandler: function(form) {
+                   // optional callback function
+                   // only fires on a valid form submission
+                   // do something only if/when form is valid
+                   // like process the dropzone queue HERE instead
+                   // then use .ajax() OR .submit()
+               }
+          });
 
           //console.log('dropzone exists...');
           Dropzone.options.myAwesomeDropzoneFormEdit = { // The camelized version of the ID of the form element
@@ -555,8 +663,8 @@ var fx_select_brand;
               $.each(thumb, function(key,value){ //loop through it
                   console.log('value => ' + value.name);
                   var mockFile = { name: value.name, size: value.size }; // here we get the file name and size as response
-                  myDropzone.options.addedfile.call(thisDropzone, mockFile);
-                  myDropzone.options.thumbnail.call(thisDropzone, mockFile, value.fileinfo);//uploadsfolder is the folder where you have all those uploaded files
+                  myDropzone.options.addedfile.call(myDropzone, mockFile);
+                  myDropzone.options.thumbnail.call(myDropzone, mockFile, value.fileinfo);//uploadsfolder is the folder where you have all those uploaded files
               });
 
               // First change the button to actually tell Dropzone to process the queue.
@@ -572,18 +680,24 @@ var fx_select_brand;
                   if (myDropzone.getQueuedFiles().length > 0) {
                        myDropzone.processQueue();
                        //$('#my-awesome-dropzone-form')[0].submit();
+
+                       console.log('drop zone file..');
                   } else {
+                      console.log('drop zone null, ajax post file..');
+
                        var _token, data;
                        _token = $('input[name=_token]').val();
                        //var form = $('#my-awesome-dropzone-form');
                        var form = document.getElementById('my-awesome-dropzone-form-edit');
                        data = new FormData(form);
 
+                       var event_edit_id = $('.event_edit_id').val();
+
                        $.ajax({
-                           url: '/events',
+                           url: base_url + '/events/' + event_edit_id,
                            headers: {'X-CSRF-TOKEN': _token},
                            data: data,
-                           type: 'PATCH',
+                           type: 'POST',
                            datatype: 'JSON',
                            processData: false,
                            contentType: false,
@@ -1339,6 +1453,36 @@ function initialize() {
         infowindow.setContent('<div><strong>' + place.name + '</strong></div>');
         infowindow.open(map, marker);
       });
+
+      //event edit
+      if($('.event_location_name').exists()){
+        console.log('event location edit....');
+        var markerEdit;
+
+        var markerName = $('.event_location_name').val();
+        var markerLat = $('#location_lat').val();
+        var markerLng = $('#location_lon').val();
+        //var markerZoom = $('#location_zoom').val();
+        var markerLatLng=new mapObj.LatLng(markerLat, markerLng);
+        markerEdit = new mapObj.Marker({
+            position:markerLatLng,
+            map: map,
+            title:markerName
+        });
+
+        mapObj.event.addListener(markerEdit, 'click', function() {
+            infowindow.setContent('<div><strong>'+ markerName +'</strong></div>');
+            infowindow.open(map,markerEdit);
+            map.panTo(markerEdit.getPosition());
+            //map.setZoom(markerZoom);
+        });
+
+        //Extend each marker's position in LatLngBounds object.
+        latlngbounds.extend(markerEdit.position);
+
+        map.setCenter(latlngbounds.getCenter());
+        map.fitBounds(latlngbounds);
+      }
 
       mapObj.event.addListener(marker, 'click', function() {
         //infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);

@@ -51,9 +51,10 @@ Route::group(['middleware' => 'web'], function () {
     ]);
     Route::post('brand/add_branch', 'BrandController@add_branch');
 
-
     Route::get('/brand/{id}', array('as' => 'id', 'uses' => 'BrandController@index'))
     ->where('id', '[0-9]+');
+
+    Route::get('/events/admin','EventsController@admin');
 
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers

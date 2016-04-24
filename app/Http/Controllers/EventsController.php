@@ -300,12 +300,12 @@ class EventsController extends Controller
       $filesize = filesize($fileinfo);
 
       //echo '<pre>';
-      //print_r($filename);
+      //print_r(pathinfo($fileinfo));
       //exit;
 
       $obj['name'] = $filename; //get the filename in array
       $obj['size'] = $filesize; //get the flesize in array
-      $obj['fileinfo'] = $fileinfo; //get the fileinfo in array
+      $obj['fileinfo'] = '/'.$file; //get the fileinfo in array
       $result[] = $obj; // copy it to another array
     }
 
@@ -317,11 +317,13 @@ class EventsController extends Controller
 
     $gallery =  json_encode($result);
 
+    $location = $event->location_first;
+
     //echo 'gallery => ' . $gallery;
     //exit;
 
     //echo '<pre>';
-    //print_r($gallery);
+    //print_r($location);
     //exit;
 
     $string_tag = implode(',', $event->tag_list);
@@ -330,7 +332,68 @@ class EventsController extends Controller
 
     if(empty($event))
       abort(404);
-    return  view('events.edit', compact('event', 'category', 'brand', 'branch', 'string_tag', 'gallery'));
+    return  view('events.edit', compact('event', 'category', 'brand', 'branch', 'string_tag', 'gallery', 'location'));
+  }
+
+  /**
+  * Update the specified resource in storage.
+  *
+  *@param int $id
+  *@return Response
+  */
+  public function update($id, EventRequest $request)
+  {
+    $event = Event::findOrFail($id);
+
+    //url slug
+    $url_slug = str_slug($request->input('url_slug'));
+    $base_slug = $url_slug;
+
+    $i=1; $dup=1;
+    do {
+      $slug = Event::firstOrNew(array('url_slug' => $base_slug));
+      if($slug->exists){
+        $base_slug = $url_slug . '-' . $i++;
+      } else {
+        $dup=0;
+      }
+    } while($dup==1);
+    $event->url_slug = $base_slug;
+
+    $event->save();
+
+    //$event->update($request->all());
+
+    //echo '<pre>';
+    //print_r($request->all());
+    //exit;
+
+    /*
+    if($request->hasFile('image')){
+      $image_filename = $request->file('image')
+                       ->getClientOriginalName();
+      $image_name = date('Ymd-His-').$image_filename;
+      $public_path = 'images/articles/';
+      $destination = base_path() . '/public/' . $public_path;
+      $request->file('image')->move($destination, $image_name); //move file to destination
+      $article->image = $public_path . $image_name; //set article image name
+      $article->save(); //update
+    }
+
+    $tagsId = $request->input('tag_list');
+    if(!empty($tagsId))
+      $article->tags()->sync($tagsId);
+    else
+      $article->tags()->detach();
+    return redirect('articles');
+    */
+  }
+
+  //admin event lists
+  public function admin()
+  {
+    $events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->get();
+    return view('events.admin', compact('events'));
   }
 
   public function locations($event)
@@ -338,7 +401,6 @@ class EventsController extends Controller
     $event = Event::findOrFail($event);
     echo json_encode($event->branch->all());
   }
-
 
   /*
   public function show($id)

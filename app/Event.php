@@ -55,6 +55,11 @@ class Event extends Model
         return $this->gallery->lists('image')->all();
     }
 
+    public function getLocationFirstAttribute()
+    {
+        return $this->location->first();
+    }
+
     public function getBranchListAttribute()
     {
       return $this->branch->lists('name', 'id')->all();

@@ -25,7 +25,7 @@ class ArticleRequest extends Request
     {
         return [
             'title' => 'required|min:3|max:255',
-            'body'  => 'required',
+            'description'  => 'required',
             'published_at'  => 'required|date',
             'image' => 'mimes:png,jpeg,jpg,gif'
         ];

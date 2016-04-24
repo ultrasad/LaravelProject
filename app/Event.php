@@ -35,14 +35,29 @@ class Event extends Model
       $query->where('end_date', '>=', Carbon::today());
     }
 
+    //category, edit list
+    public function getCategoryListAttribute()
+    {
+        //return $this->tags->lists('id');
+        return $this->category->lists('id')->all(); //relationship category events
+        //or ican do this
+        //return $this->category->lists('id')->toArray();
+    }
+
+    //tags, edit list
+    public function getTagListAttribute()
+    {
+        return $this->tags->lists('name')->all(); //relationship tags events
+    }
+
     public function getGalleryListAttribute()
     {
-        return $this->gallery->lists('image');
+        return $this->gallery->lists('image')->all();
     }
 
     public function getBranchListAttribute()
     {
-      return $this->branch->lists('name');
+      return $this->branch->lists('name', 'id')->all();
     }
 
     public function getCategoryFirstAttribute()
@@ -132,7 +147,7 @@ class Event extends Model
     {
       return $this->leftJoin('brand','brand.id','=','events.brand_id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');
     }
-    
+
     public function scopeBrandId($query, $brand)
     {
       return $this->where('brand_id', $brand);

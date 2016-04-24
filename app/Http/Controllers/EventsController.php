@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+//use Storage;
 //use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,8 @@ use App\Branch;
 use App\Gallery;
 use App\Location;
 
-use Request;
+//use Request;
+use Request as Response;
 //use Illuminate\Http\Request;
 
 class EventsController extends Controller
@@ -266,6 +268,69 @@ class EventsController extends Controller
       //exit;
 
       return view('events.show', compact('event', 'branchs', 'locations', 'tags'));
+  }
+
+  /**
+  * Show the form for editing the specified resource.
+  *
+  *@param int $id
+  *@return Response
+  */
+  public function edit($id)
+  {
+    $event = Event::find($id);
+    //$tag_list = Tag::lists('name', 'id');
+
+    $category = Category::select('name', 'id')->where('category_type', 'event')->get();
+    $brand = Brand::select('id', 'name')->get();
+    $brand_active = Brand::find($event->brand_id);
+    $branch = $brand_active->branch_list; //default null
+    //$branch = array();
+
+    /*if(in_array(1, $event->category_list)){
+      echo 'in array >>';
+    }*/
+
+    //echo $event->branch_list;
+    $obj = array();
+    $result = array();
+    foreach($event->gallery_list as $file){
+      $fileinfo = base_path() .'/public/'. $file;
+      $filename = pathinfo($fileinfo)['basename'];
+      $filesize = filesize($fileinfo);
+
+      //echo '<pre>';
+      //print_r($filename);
+      //exit;
+
+      $obj['name'] = $filename; //get the filename in array
+      $obj['size'] = $filesize; //get the flesize in array
+      $obj['fileinfo'] = $fileinfo; //get the fileinfo in array
+      $result[] = $obj; // copy it to another array
+    }
+
+    //echo '<pre>';
+    //print_r($result);
+    //exit;
+
+    //$gallery = Response::json('success', $result);
+
+    $gallery =  json_encode($result);
+
+    //echo 'gallery => ' . $gallery;
+    //exit;
+
+    //echo '<pre>';
+    //print_r($gallery);
+    //exit;
+
+    $string_tag = implode(',', $event->tag_list);
+    //echo $string_tag;
+    //exit;
+
+    if(empty($event))
+      abort(404);
+    return  view('events.edit', compact('event', 'category', 'brand', 'branch', 'string_tag', 'gallery'));
   }
 
   public function locations($event)

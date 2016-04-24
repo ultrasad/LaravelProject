@@ -8,7 +8,7 @@ use Carbon\Carbon;
 class Article extends Model
 {
     //Mass Assignment
-    protected $fillable = ['title', 'body', 'published_at', 'image']; //Whitelist
+    protected $fillable = ['title', 'description', 'published_at', 'image']; //Whitelist
     //protected $guarded = ['id'];// //Backlist
 
     protected $dates = ['published_at']; //register datetime to carbon object

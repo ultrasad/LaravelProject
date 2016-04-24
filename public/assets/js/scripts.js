@@ -526,6 +526,134 @@ var fx_select_brand;
 
         }
 
+        //dropzone edit form
+        if($('#my-awesome-dropzone-form-edit').exists()){
+
+          //console.log('dropzone exists...');
+          Dropzone.options.myAwesomeDropzoneFormEdit = { // The camelized version of the ID of the form element
+            // The configuration we've talked about above
+            paramName: "gallery",
+            autoDiscover: false,
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 100,
+            maxFiles: 20,
+            maxFilesize: 2, // MB
+            acceptedFiles: "image/*",
+            addRemoveLinks: true,
+            previewsContainer: "#previews", // Define the container to display the previews
+            clickable: ".dropzone-file-previews",
+
+            // The setting up of the dropzone
+            init: function() {
+              var myDropzone = this;
+
+              //console.log('dropzone...');
+
+              //Populate any existing thumbnails
+              var thumb = $.parseJSON($('#thumb_mock').val());
+              $.each(thumb, function(key,value){ //loop through it
+                  console.log('value => ' + value.name);
+                  var mockFile = { name: value.name, size: value.size }; // here we get the file name and size as response
+                  myDropzone.options.addedfile.call(thisDropzone, mockFile);
+                  myDropzone.options.thumbnail.call(thisDropzone, mockFile, value.fileinfo);//uploadsfolder is the folder where you have all those uploaded files
+              });
+
+              // First change the button to actually tell Dropzone to process the queue.
+              this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                 if($('#my-awesome-dropzone-form-edit').valid()){
+
+                  var description = $('textarea[name="description"]').html($('#summernote').code());
+
+                  if (myDropzone.getQueuedFiles().length > 0) {
+                       myDropzone.processQueue();
+                       //$('#my-awesome-dropzone-form')[0].submit();
+                  } else {
+                       var _token, data;
+                       _token = $('input[name=_token]').val();
+                       //var form = $('#my-awesome-dropzone-form');
+                       var form = document.getElementById('my-awesome-dropzone-form-edit');
+                       data = new FormData(form);
+
+                       $.ajax({
+                           url: '/events',
+                           headers: {'X-CSRF-TOKEN': _token},
+                           data: data,
+                           type: 'PATCH',
+                           datatype: 'JSON',
+                           processData: false,
+                           contentType: false,
+                           success: function (resp) {
+                             console.log('ajax response => ' + resp);
+                             window.location.href = base_url + '/events';
+                           },
+                           error: function(jqXHR, textStatus, errorThrown)
+                           {
+                               $('.error-reponse').html(jqXHR.responseJSON);
+                           }
+                       });
+
+                  }
+                 } //valid
+              });
+
+              this.on("sending", function(file, xhr, data) {
+                  var file = $("#image")[0].files[0];
+                  //data.append('file-1', file);
+                  data.append("image", file);
+                  //data.append("filetype", "avataruploadtype");
+
+                  // Pass token. You can use the same method to pass any other values as well such as a id to associate the image with for example.
+                  data.append("_token", $('[name=_token').val()); // Laravel expect the token post value to be named _token by default
+              });
+
+              // Execute when file uploads are complete
+              this.on("complete", function() {
+                // If all files have been uploaded
+                if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0) {
+                  var _this = this;
+                  // Remove all files
+                  //_this.removeAllFiles();
+
+                  //console.log('drop response => ' + _this);
+                  window.location.href = base_url + '/events';
+                }
+              });
+
+              this.on("addedfile", function(file) {
+                if($('.dropzone-previews').find('.dz-preview').length > 0){
+                  $('.dropzone-file-previews .dz-message').hide();
+                }
+              });
+
+              this.on("removedfile", function(file) {
+                if($('.dropzone-previews').find('.dz-preview').length < 1){
+                  $('.dropzone-file-previews .dz-message').show();
+                }
+              });
+
+              // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+              // of the sending event because uploadMultiple is set to true.
+              this.on("sendingmultiple", function() {
+                // Gets triggered when the form is actually being sent.
+                // Hide the success button or the complete form.
+              });
+              this.on("successmultiple", function(files, response) {
+                // Gets triggered when the files have successfully been sent.
+                // Redirect user or notify of success.
+              });
+              this.on("errormultiple", function(files, response) {
+                // Gets triggered when there was an error sending the files.
+                // Maybe show form again, and notify user of error
+              });
+            }
+          }
+        } //end dropzone edit
+
         //Single instance of tag inputs - can be initiated with simply using data-role="tagsinput" attribute in any input field
         if($('.custom-tag-input').exists()){
           $('.custom-tag-input').tagsinput({ maxTags: 20, tagClass: function(item) {return 'label label-custom-tag';} });

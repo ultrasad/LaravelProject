@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\BrandRequest;
 
-//use Auth;
+use Auth;
 use App\User;
 use App\Event;
 use App\Brand;
@@ -14,6 +14,7 @@ use App\Branch;
 use App\Category;
 use Facebook;
 //use App\Branch;
+use Request as Response;
 
 class BrandController extends Controller
 {
@@ -108,7 +109,18 @@ class BrandController extends Controller
        $brand->category()->sync($categoryId);
     }
 
-    echo '=> ' . $brand->id; //last id inserted.
+    //branch
+    $branchId = $request->input('branch');
+    if(!empty($branchId)){
+       $brand->branch()->sync($branchId);
+    }
+
+    if($brand->id > 0){
+      return Response::json('success', array(
+                  'status' => 'success',
+                  'branch_id'   => $brand->id
+              ));
+    }
   }
 
   public function facebook(Request $request)
@@ -199,11 +211,20 @@ class BrandController extends Controller
     if($request->json('brand_id')){ //case event, brand exists and create new branch
       $brand = Brand::find($request->json('brand_id'));
       $brand->branch()->attach($branch->id);
-      if($branch->id > 0){
-        echo 'insert branch id => '. $branch->id;
-      }
-    } else {
-        echo 'insert branch id => '. $branch->id;
+      /*if($branch->id > 0){
+        //echo json_encode(array('status' => 'success', 'branch_id' => $branch->id));
+        return Response::json(array(
+                    'status' => success,
+                    'branch_id'   => $branch->id
+                ));
+      }*/
+    }
+
+    if($branch->id > 0){
+      return Response::json('success', array(
+                  'status' => 'success',
+                  'branch_id'   => $branch->id
+              ));
     }
   }
 }

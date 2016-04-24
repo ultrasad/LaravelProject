@@ -222,7 +222,7 @@
                     <label for="branch_{{ $id }}">{{ $name }}</label>
                   </div>
                   @endforeach
-                  <div class="clearfix"></div>
+                  <!--<div class="clearfix"></div>-->
                 @endif
               </div>
 
@@ -296,6 +296,12 @@
   </div>
   </form>
   <!-- END CONTAINER FLUID -->
+
+  <div class="event_branch_row" style="display: none;">
+    <div class="checkbox check-warning branch_row">
+      <input type="checkbox" id="branch_x" value="" class="branch" name="branch[]" checked="checked"><label for="branch_x">สาขา</label>
+    </div>
+  </div>
 
   {{--
   <h1 class='page-title'>Write a New event</h1>

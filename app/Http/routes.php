@@ -57,9 +57,11 @@ Route::delete('/articles/{id}', 'ArticlesController@distroy');
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    Route::get('/', function () {
+    /*Route::get('/', function () {
         return view('welcome');
-    });
+    });*/
+
+    Route::get('/', 'EventsController@index'); 
 
     Route::get('user/{user}', [
     	'middleware' => ['auth', 'roles'], // A 'roles' middleware must be specified

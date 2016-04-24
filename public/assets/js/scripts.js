@@ -200,8 +200,10 @@ var fx_select_brand;
                 processData: false,
                 contentType: false,
                 success: function (resp) {
-                  console.log('ajax response => ' + resp);
-                  //window.location.href = base_url + '/events';
+                  //console.log('ajax response => ' + resp);
+                  if(resp.status == 'success'){
+                    window.location.href = base_url + '/events/create';
+                  }
                 },
                 error: function(jqXHR, textStatus, errorThrown)
                 {
@@ -606,6 +608,11 @@ var fx_select_brand;
                    if ($('.new_branch_panel').css('display') != 'none'){
                      $('.add_new_branch').trigger('click');
                    }
+
+                   _branch.html('');
+                   $('.new_branch_btn').hide(); //hide new branch btn
+                   $('.check-branch-all').hide(); //hide check all branch
+
                    if(brand_id > 0){
                    $.ajax({
                      url: "/events/branch/" + brand_id,
@@ -627,18 +634,17 @@ var fx_select_brand;
                             );
                         });
                         _branch.append('<div class="clearfix"></div>');
+                        $('.check-branch-all').show(); //show check all branch
+                      } else {
+                        $('.branch_child .list').append('<div class="checkbox"></div>');
                       }
                       $('.new_branch_btn').show(); //show new branch btn
-                      $('.check-branch-all').show(); //show check all branch
+
                      },
                      error: function(jqXHR, textStatus, errorThrown) {
                        console.log(textStatus+" "+errorThrown);
                      }
                   });
-                } else {
-                  _branch.html('');
-                  $('.new_branch_btn').hide(); //hide new branch btn
-                  $('.check-branch-all').hide(); //hide check all branch
                 }
               }
           });
@@ -809,6 +815,8 @@ $(document).on('click', '#add_branch', function(){
 
     var _token = $('input[name=_token]').val();
     var brand_id = window.fx_select_brand;
+    var brand_branch_row = $('.brand_branch_row');
+    var event_branch_row = $('.event_branch_row');
     var branch_name = $('#branch_name').val();
     var branch_detail = $('#branch_detail').val();
     var branch_location = $('#branch_location').val();
@@ -827,7 +835,44 @@ $(document).on('click', '#add_branch', function(){
         processData: false,
         contentType: false,
         success: function (resp) {
-          console.log('response => ' + resp);
+
+          var bname = $('#branch_name').val();
+          var bid = resp.branch_id;
+          //console.log('response => ' + bid + ' => ' + bname);
+
+          if(resp.status == 'success'){
+            if(brand_id != '' && $(event_branch_row).exists()){ //event, brand add new bracnh
+
+                //console.log('event branch');
+                var $clone = $('.event_branch_row > div.branch_row').clone();
+                $clone.find('label').attr('for', 'branch_' + bid).html(bname);
+                $clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
+                //console.log($clone);
+
+                $('.list .checkbox:last').after($clone);
+
+            } else if($(brand_branch_row).exists()) { //brand add new branch
+
+              //console.log('brand branch....');
+              var $clone = $('.brand_branch_row > div.branch_row').clone();
+              $clone.find('.branch_name_list').html(bname);
+              $clone.find('.branch_id').val(bid);
+              //console.log($clone);
+
+              $clone.appendTo('#branch_list');
+              //$('#branch_list').append($clone);
+
+            }
+
+            if($('.check-branch-all').css('display') == 'none'){
+              $('.check-branch-all').show(); //show check all branch
+            }
+
+            $('.add_new_branch').trigger('click');
+            $('html, body').animate({
+                scrollTop: $('.master-checkbox-all').offset().top - 20
+            }, 'slow');
+          }
             /*$.each(resp.subramos, function (key, value) {
                 $('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
             });*/
@@ -1242,5 +1287,9 @@ function initialize() {
         }
       });
     }
+
+    $(document).on('click', '.btn_branch_delete', function(e){
+      $(this).closest('.branch_row').remove();
+    });
 
 }

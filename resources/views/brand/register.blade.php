@@ -150,7 +150,7 @@
           </div>
         </div>
 
-        <div class="panel-body">
+        <div class="panel-body p-b-0">
           <div class="form-group new_branch_btn" style="display: ;">
               <a href="javascript: void(0);" title="เพิ่มสาขาใหม่" class="add_new_branch"><span class="new-branch"><i class="fs-14 pg-minus pg-plus"></i>เพิ่มสาขาใหม่</span></a>
           </div>
@@ -186,31 +186,10 @@
                 <button class="btn btn-primary btn-xs" type="button" id="add_branch">เพิ่มสาขา</button>
             </div>
           </div>
+        </div>
 
-          <div class="branch_list">
-            <div class="col-md-12 branch_row">
-              <div class="row">
-                <div class="branch_name_list col-xs-10">ชื่อสาขา ที่1 ชื่อสาขา ที่1</div>
-                <div class="btn-group btn_branch_action btn-xs">
-                  <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
-                  </button>
-                  <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12 branch_row">
-              <div class="row">
-                <div class="branch_name_list col-xs-10">ชื่อสาขา ที่2 ชื่อสาขา ที่2</div>
-                <div class="btn-group btn_branch_action btn-xs">
-                  <button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
-                  </button>
-                  <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="panel-body p-t-0">
+          <div class="branch_list" id="branch_list"></div>
         </div>
 
       </div>
@@ -281,5 +260,20 @@
   </div>
 
   </form>
+
+  <div class="brand_branch_row" style="display: none;">
+    <div class="col-md-12 branch_row">
+      <div class="row">
+        <div class="branch_name_list col-xs-10">ชื่อสาขา</div>
+        <input type="hidden" name="branch[]" class="branch_id" value="" />
+        <div class="btn-group btn_branch_action btn-xs">
+          <!--<button class="btn btn-success btn-xs" type="button"><i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>-->
+          <button class="btn btn-danger btn-xs btn_branch_delete" title="delete" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- END CONTAINER FLUID -->
 @stop

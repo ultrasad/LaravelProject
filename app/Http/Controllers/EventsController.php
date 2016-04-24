@@ -345,6 +345,18 @@ class EventsController extends Controller
   {
     $event = Event::findOrFail($id);
 
+    //image
+    if($request->hasFile('image')){
+      $image_filename = $request->file('image')->getClientOriginalName();
+      $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+      $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+      $image_name = date('Ymd-His-').str_slug($file_name) . '.' . $extension;
+      $public_path = 'images/events/' . date('Y-m-d') . '/';
+      $destination = base_path() . '/public/' . $public_path;
+      $request->file('image')->move($destination, $image_name); //move file to destination
+      $event->image = $public_path . $image_name; //set article image name
+    }
+
     //url slug
     $url_slug = str_slug($request->input('url_slug'));
     $base_slug = $url_slug;

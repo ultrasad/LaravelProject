@@ -26,6 +26,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/', 'EventsController@index');
+    Route::get('/register', function () {
+        return redirect('/');
+    });
 
     Route::get('user/{user}', [
     	'middleware' => ['auth', 'roles'], // A 'roles' middleware must be specified

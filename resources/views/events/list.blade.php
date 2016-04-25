@@ -125,7 +125,7 @@
             </div>
             <div class="card-description">
               <p>Inspired by : good design is obvious, great design is transparent</p>
-              <div class="via">via themeforest</div>
+              <div class="via">via welovepro</div>
             </div>
             <div class="card-footer clearfix">
               <div class="time">few seconds ago</div>
@@ -168,7 +168,7 @@
               <div class="padding-15">
                 <strong><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}">{{ $event->title }}</a></strong>
                 <p>{{ $event->brief }}</p>
-                <div class="hint-text">via themeforest</div>
+                <div class="hint-text">via welovepro</div>
               </div>
               <div class="padding-15">
                 <div class="hint-text pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>

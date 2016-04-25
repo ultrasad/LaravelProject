@@ -11,7 +11,7 @@
         <div class="panel-heading">
           <div class="panel-title">Table Event Lists
           </div>
-          <div class="export-options-container pull-right">
+          <div class="export-options-container-no pull-right">
             <div class="col-xs-12">
               <a href="/events/create" id="show-modal" class="btn btn-primary btn-cons"><i class="fa fa-plus"></i> Add Event</a>
             </div>
@@ -19,7 +19,7 @@
           <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-          <table class="table table-striped" id="tableWithExportOptions">
+          <table class="table table-striped" id="tableWithExportOptionsNo">
             <thead>
               <tr>
                 <th>Action</th>

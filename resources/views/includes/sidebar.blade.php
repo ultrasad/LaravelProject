@@ -53,7 +53,7 @@
       </li>
       --}}
       <li class="m-t-30">
-        <a href="#" class="detailed">
+        <a href="{{ url('/') }}" class="detailed">
           <span class="title">All Promotions</span>
           <span class="details">โปรโมชั่นทั้งหมด</span>
         </a>
@@ -63,7 +63,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="{{ url('/maps') }}" class="detailed">
           <span class="title">Promotions Map</span>
           <span class="details">โปรโมชั่นรอบๆตัวคุณ</span>
         </a>

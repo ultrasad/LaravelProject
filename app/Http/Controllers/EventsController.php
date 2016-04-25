@@ -343,7 +343,11 @@ class EventsController extends Controller
   */
   public function update($id, EventRequest $request)
   {
-    $event = Event::findOrFail($id);
+    //$event = Event::findOrFail($id);
+    //$event = new Event($request->all());
+    //$event->title = $request->input('title');
+    $event = Event::find($id);
+    $input = $request->all(); /* Request all inputs */
 
     //image
     if($request->hasFile('image')){
@@ -354,7 +358,7 @@ class EventsController extends Controller
       $public_path = 'images/events/' . date('Y-m-d') . '/';
       $destination = base_path() . '/public/' . $public_path;
       $request->file('image')->move($destination, $image_name); //move file to destination
-      $event->image = $public_path . $image_name; //set article image name
+      $input['image'] = $public_path . $image_name; //set article image name
     }
 
     //url slug
@@ -370,8 +374,15 @@ class EventsController extends Controller
         $dup=0;
       }
     } while($dup==1);
-    $event->url_slug = $base_slug;
+    $input['url_slug'] = $base_slug;
 
+    //category
+    $categoryId = $request->input('category');
+    if(!empty($categoryId)){
+       $event->category()->sync($categoryId);
+    }
+
+    $event->fill($input);
     $event->save();
 
     //$event->update($request->all());

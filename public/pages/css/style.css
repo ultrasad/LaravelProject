@@ -9,6 +9,7 @@
 */
 body.menu-behind .header .brand {
     padding-left: 0px;
+    width: 160px;
 }
 
 .nav-logo > a {
@@ -25,6 +26,33 @@ body.menu-behind .header .brand {
 
 .nav-logo-center > a {
   background: none;
+}
+
+/* nav */
+ol, ul {
+    list-style: outside none none;
+}
+
+
+.nav-follow {
+    display: block;
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.nav-follow li {
+  float: left;
+  padding-left: 20px;
+}
+
+.nav-follow li a i {
+  color: #aaa;
+}
+
+.nav-follow li a:hover i {
+  color: #333;
 }
 
 .breadcrumb {
@@ -55,6 +83,10 @@ body.menu-behind .header .brand {
 .icon-category .fa {
   font-size: 2em;
   margin-top: 5px;
+}
+
+.page-sidebar .sidebar-menu {
+    height: calc(100% - 20px);
 }
 
 .page-sidebar .sidebar-menu .menu-items li:hover > .icon-thumbnail > i,

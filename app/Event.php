@@ -148,6 +148,11 @@ class Event extends Model
        return $this->where('active', 'Y');
     }
 
+    public function scopeRelateThis($query, $id)
+    {
+      return $this->where('url_slug', '!=', $id);
+    }
+
     public function scopeEventBrand($query)
     {
       return $this->leftJoin('brand','brand.id','=','events.brand_id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');

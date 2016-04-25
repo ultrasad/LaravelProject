@@ -28,7 +28,7 @@
     <div class="pull-right full-height visible-sm visible-xs">
       <!-- START ACTION BAR -->
       <div class="header-inner">
-        <a href="#" class="btn-link visible-sm-inline-block visible-xs-inline-block" data-toggle="quickview" data-toggle-element="#quickview">
+        <a href="/events/create" class="btn-link visible-sm-inline-block visible-xs-inline-block">
           <span class="icon-set menu-hambuger-plus"></span>
         </a>
       </div>
@@ -59,7 +59,7 @@
   </div>
   <div class=" pull-right">
     <div class="header-inner">
-      <a href="#" class="btn-link icon-set menu-hambuger-plus m-l-20 sm-no-margin hidden-sm hidden-xs" data-toggle="quickview" data-toggle-element="#quickview"></a>
+      <a href="/events/create" class="btn-link icon-set menu-hambuger-plus m-l-20 sm-no-margin hidden-sm hidden-xs"></a>
     </div>
   </div>
   <div class=" pull-right">

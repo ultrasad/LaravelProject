@@ -268,9 +268,10 @@ class EventsController extends Controller
       //exit;
 
       //$relate = Event::published()->active()->eventBrand()->RelateThis($slug)->orderBy('events.created_at', 'desc')->limit(6);
-      //echo '<pre>';
-      //print_r($relate);
-      //exit;
+      $relate = Event::published()->active()->eventBrand()->RelateThis($slug)->orderBy('events.created_at', 'desc')->get();
+      echo '<pre>';
+      print_r($relate);
+      exit;
 
       return view('events.show', compact('event', 'branchs', 'locations', 'tags'));
   }

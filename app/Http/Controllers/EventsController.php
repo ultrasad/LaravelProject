@@ -267,8 +267,14 @@ class EventsController extends Controller
       //print_r($event->tags->all());
       //exit;
 
+      $event_id = $event->id;
+      $cate_id = $event->category->first()->id;
+
+      echo 'event id => ' . $event_id;
+      echo '<br />event cate id => ' . $cate_id;
+
       //$relate = Event::published()->active()->eventBrand()->RelateThis($slug)->orderBy('events.created_at', 'desc')->limit(6);
-      $relate = Event::published()->active()->eventBrand()->RelateThis($slug)->orderBy('events.created_at', 'desc')->get();
+      $relate = Event::published()->active()->eventBrand()->RelateThis($event_id, $cate_id)->orderBy('events.created_at', 'desc')->skip(0)->take(1)->get();
       echo '<pre>';
       print_r($relate);
       exit;

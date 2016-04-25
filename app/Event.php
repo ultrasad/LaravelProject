@@ -148,14 +148,23 @@ class Event extends Model
        return $this->where('active', 'Y');
     }
 
-    public function scopeRelateThis($query, $id)
+    public function scopeRelateThis($query, $event_id, $cate_id)
     {
-      return $this->where('url_slug', '!=', $id);
+      //return $this->where('id', '!=', $event_id);
+      //return $this->with(['category','tags'])->where('id', '!=', $event_id);
+      //return $this->where('id', '!=', $event_id);
+
+      /*return $this->with(['category' => function($query) use ($cate_id) {
+        $query->where('event_categories.event_id', $cate_id);
+      }])->where('id', '!=', $event_id); //->get();
+      */
+
+      return $this->leftJoin('event_category', 'events.id', '=', 'event_category.cate_id')->where('events.id', '!=', $event_id)->where('event_category.cate_id', '=', $cate_id); //->orWhere('event_category.cate_id', '=', $cate_id);
     }
 
     public function scopeEventBrand($query)
     {
-      return $this->leftJoin('brand','brand.id','=','events.brand_id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');
+      return $this->leftJoin('brand','events.brand_id','=','brand.id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');
     }
 
     public function scopeBrandId($query, $brand)

@@ -610,6 +610,38 @@ div.cs-select-brand {
   padding: 0px;
 }
 
+.relate .thumb {
+  min-height: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+/*
+.relate .thumb .img-thumb-relate {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+*/
+
+.relate .thumb img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  min-width: 100%;
+  width: auto !important;
+  width: 100%;
+
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
 .relate .brief {
   height: 100%;
   position: relative;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 //use Storage;
 //use Illuminate\Http\Request;
+use Redirect;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRequest;
@@ -224,9 +225,17 @@ class EventsController extends Controller
       //$event = Event::with('user', 'category')->where('slug', $slug)->first();
       //$event = Event::where('url_slug', $slug)->eventBrand()->first();
       $event = Event::where('url_slug', $slug)->first();
+      if(!$event)
+        return Redirect::back()->with('message','Event Not Exists !');
+
       $branchs = array();
       $tags = array();
       //$locations = array();
+
+      //echo '<pre>';
+      //print_r($event->branch);
+      //exit;
+
       foreach($event->branch->all() as $index => $branch){
         //$branchs[]= link_to('brand/'.$event->brand_id . '/' . $branch, $branch, array('alt' => $branch));
         //$branchs[]= link_to('#' . $branch, $branch, array('alt' => $branch));
@@ -268,18 +277,27 @@ class EventsController extends Controller
       //exit;
 
       $event_id = $event->id;
-      $cate_id = $event->category->first()->id;
+      $cate_id = isset($event->category->first()->id)?$event->category->first()->id:'';
+      $relates = array();
+      if($event_id && $cate_id !=''){
+        $relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id)->orderBy('events.created_at', 'desc')->skip(0)->take(6)->get();
+      }
 
-      echo 'event id => ' . $event_id;
-      echo '<br />event cate id => ' . $cate_id;
+      //echo 'cate id => ' . $cate_id;
+      //echo '<pre>';
+      //print_r($relates);
+      //exit;
+
+      //echo 'event id => ' . $event_id;
+      //echo '<br />event cate id => ' . $cate_id;
 
       //$relate = Event::published()->active()->eventBrand()->RelateThis($slug)->orderBy('events.created_at', 'desc')->limit(6);
-      $relate = Event::published()->active()->eventBrand()->RelateThis($event_id, $cate_id)->orderBy('events.created_at', 'desc')->skip(0)->take(1)->get();
-      echo '<pre>';
-      print_r($relate);
-      exit;
+      //**$relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id)->orderBy('events.created_at', 'desc')->skip(0)->take(1)->get();
+      //echo '<pre>';
+      //print_r($relate[0]->category[0]->name);
+      //exit;
 
-      return view('events.show', compact('event', 'branchs', 'locations', 'tags'));
+      return view('events.show', compact('event', 'branchs', 'locations', 'tags', 'relates'));
   }
 
   /**
@@ -292,44 +310,58 @@ class EventsController extends Controller
   {
     $event = Event::find($id);
     //$tag_list = Tag::lists('name', 'id');
+    if(!$event)
+      return Redirect::back()->with('message','Event Not Exists !');
 
     $category = Category::select('name', 'id')->where('category_type', 'event')->get();
     $brand = Brand::select('id', 'name')->get();
-    $brand_active = Brand::find($event->brand_id);
-    $branch = $brand_active->branch_list; //default null
+    //$branch = array();
+    //if(isset($event->brand_id)){
+      $brand_active = Brand::find($event->brand_id);
+      $branch = $brand_active->branch_list; //default null
+    //}
     //$branch = array();
 
     /*if(in_array(1, $event->category_list)){
       echo 'in array >>';
     }*/
 
+    //echo '<pre>';
+    //print_r($brand);
+    //exit;
+
     //echo $event->branch_list;
     $obj = array();
     $result = array();
-    foreach($event->gallery_list as $file){
-      $fileinfo = base_path() .'/public/'. $file;
-      $filename = pathinfo($fileinfo)['basename'];
-      $filesize = filesize($fileinfo);
+    //if(isset($event->gallery_list)){
+      foreach($event->gallery_list as $file){
+        $fileinfo = base_path() .'/public/'. $file;
+        $filename = pathinfo($fileinfo)['basename'];
+        $filesize = filesize($fileinfo);
 
-      //echo '<pre>';
-      //print_r(pathinfo($fileinfo));
-      //exit;
+        //echo '<pre>';
+        //print_r(pathinfo($fileinfo));
+        //exit;
 
-      $obj['name'] = $filename; //get the filename in array
-      $obj['size'] = $filesize; //get the flesize in array
-      $obj['fileinfo'] = '/'.$file; //get the fileinfo in array
-      $result[] = $obj; // copy it to another array
-    }
+        $obj['name'] = $filename; //get the filename in array
+        $obj['size'] = $filesize; //get the flesize in array
+        $obj['fileinfo'] = '/'.$file; //get the fileinfo in array
+        $result[] = $obj; // copy it to another array
+      }
+    //}
+    $gallery =  json_encode($result);
 
     //echo '<pre>';
     //print_r($result);
     //exit;
 
     //$gallery = Response::json('success', $result);
+    //$gallery =  json_encode($result);
 
-    $gallery =  json_encode($result);
-
-    $location = $event->location_first;
+    //$location = array();
+    //if(isset($event->location_first)){
+      $location = $event->location_first;
+    //}
 
     //echo 'gallery => ' . $gallery;
     //exit;
@@ -337,8 +369,10 @@ class EventsController extends Controller
     //echo '<pre>';
     //print_r($location);
     //exit;
-
-    $string_tag = implode(',', $event->tag_list);
+    //$string_tag = '';
+    //if(isset($event->tag_list)){
+      $string_tag = implode(',', $event->tag_list);
+    //}
     //echo $string_tag;
     //exit;
 
@@ -360,17 +394,31 @@ class EventsController extends Controller
     //$event->title = $request->input('title');
     $event = Event::find($id);
     $input = $request->all(); /* Request all inputs */
+    $event_id = $request->input('event_edit_id');
 
     //image
     if($request->hasFile('image')){
-      $image_filename = $request->file('image')->getClientOriginalName();
-      $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
-      $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
-      $image_name = date('Ymd-His-').str_slug($file_name) . '.' . $extension;
-      $public_path = 'images/events/' . date('Y-m-d') . '/';
-      $destination = base_path() . '/public/' . $public_path;
-      $request->file('image')->move($destination, $image_name); //move file to destination
-      $input['image'] = $public_path . $image_name; //set article image name
+      $base_hash = md5_file(base_path() . '/public/' . $event->image);
+      $image_hash = md5_file($request->file('image')->getPathName());
+
+      //echo 'old image => ' . base_path() . '/public/' . $event->image;
+      //echo '<br />path => ' . $request->file('image')->getPathName();
+      //echo '<br />base hash => ' . $base_hash;
+      //echo '<br />img hash => ' . $image_hash;
+      //exit;
+
+      if($base_hash != $image_hash){
+        $image_filename = $request->file('image')->getClientOriginalName();
+        $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+        $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+        $image_name = date('Ymd-His-').str_slug($file_name) . '.' . $extension;
+        $public_path = 'images/events/' . date('Y-m-d') . '/';
+        $destination = base_path() . '/public/' . $public_path;
+        $request->file('image')->move($destination, $image_name); //move file to destination
+        $input['image'] = $public_path . $image_name; //set article image name
+      } else {
+        $input['image'] = $event->image;
+      }
     }
 
     //url slug
@@ -379,8 +427,9 @@ class EventsController extends Controller
 
     $i=1; $dup=1;
     do {
-      $slug = Event::firstOrNew(array('url_slug' => $base_slug));
-      if($slug->exists){
+      //$slug = Event::firstOrNew(array('url_slug' => $base_slug));
+      $slug = Event::where('url_slug', '=', $base_slug)->where('id', '!=', $event_id)->first();
+      if($slug){
         $base_slug = $url_slug . '-' . $i++;
       } else {
         $dup=0;
@@ -392,6 +441,70 @@ class EventsController extends Controller
     $categoryId = $request->input('category');
     if(!empty($categoryId)){
        $event->category()->sync($categoryId);
+    }
+
+    //brand
+    $input['brand_id'] = $request->input('brand');
+
+    //branch
+    $branchId = $request->input('branch');
+    if(!empty($branchId)){
+       $event->branch()->sync($branchId);
+    }
+
+    //tags
+    $tagsId = $request->input('tag_list');
+    if(!empty($tagsId)){
+       $tag_list = explode(',', $tagsId);
+       //$tags = Event::InsertTag($tagsId);
+       $tags = array();
+       foreach($tag_list as $name)
+       {
+         //$tag = preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower(trim($name)));
+         //$tag = str_slug($name); //helper url
+         $tag = $this->string_friendly($name);
+         $tags[] = Tag::firstOrCreate(array('name' => $name, 'tag' => $tag))->id;
+       }
+       $event->tags()->sync($tags);
+    }
+
+    //gallery
+    $gallery = $request->file('gallery');
+    $success = 0;
+    $error = 0;
+    $file_index = 0;
+    if($gallery){
+      $images = array();
+      foreach($gallery as $file){
+         $image_filename = $file->getClientOriginalName();
+         $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+         $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+         $image_name = date('Ymd-His-').str_slug($file_name) . '.' . $extension;
+         $public_path = 'images/events/'. date('Y-m-d') .'/gallery/'. $event_id . '/';
+         $destination = base_path() . '/public/' . $public_path;
+         $upload_success = $file->move($destination, $image_name); //move file to destination
+         if( $upload_success ) {
+            $success++;
+            $image = $destination;
+            $images[] = Gallery::firstOrCreate(array('name' => $image_name, 'image' => $public_path . $image_name))->id;
+          } else {
+            $error++;
+          }
+          $file_index++;
+      }
+      $event->gallery()->sync($images);
+    }
+
+    //location
+    $location_name = $request->input('event_location');
+    $location_lat = $request->input('location_lat');
+    $location_lon = $request->input('location_lon');
+    $location_zoom = $request->input('location_zoom');
+
+    if($location_name != '' && $location_lat != '' && $location_lon != ''){
+      $location = array();
+      $location[] = Location::firstOrCreate(array('name' => $location_name, 'lat' => $location_lat, 'lon' => $location_lon, 'zoom' => $location_zoom))->id;
+      $event->location()->sync($location);
     }
 
     $event->fill($input);

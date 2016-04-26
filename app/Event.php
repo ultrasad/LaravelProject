@@ -14,7 +14,7 @@ class Event extends Model
      */
     //protected $table = 'events';
     //Mass Assignment
-    protected $fillable = ['title', 'url_slug', 'start_date', 'end_date', 'image', 'brief', 'description', 'published_at']; //Whitelist
+    protected $fillable = ['title', 'url_slug', 'start_date', 'end_date', 'image', 'brief', 'description', 'published_at', 'user_id', 'brand_id']; //Whitelist
     //protected $guarded = ['id'];// //Backlist
 
     protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object
@@ -154,12 +154,13 @@ class Event extends Model
       //return $this->with(['category','tags'])->where('id', '!=', $event_id);
       //return $this->where('id', '!=', $event_id);
 
-      /*return $this->with(['category' => function($query) use ($cate_id) {
-        $query->where('event_categories.event_id', $cate_id);
+      return $this->whereHas('category', function($query) use ($cate_id) {
+        $query->where('categories.id', $cate_id);
+      })->with(['category' => function($query) use ($cate_id){
+        //$query->where('category.id', $cate_id);
       }])->where('id', '!=', $event_id); //->get();
-      */
 
-      return $this->leftJoin('event_category', 'events.id', '=', 'event_category.cate_id')->where('events.id', '!=', $event_id)->where('event_category.cate_id', '=', $cate_id); //->orWhere('event_category.cate_id', '=', $cate_id);
+      //return $this->leftJoin('event_category', 'events.id', '=', 'event_category.cate_id')->where('events.id', '!=', $event_id)->where('event_category.cate_id', '=', $cate_id); //->orWhere('event_category.cate_id', '=', $cate_id);
     }
 
     public function scopeEventBrand($query)

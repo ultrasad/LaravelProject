@@ -80,15 +80,15 @@
 
               <div class="form-group form-group-default form-group-map">
                 <label>สถาณที่จัดโปรโมชั่น</label>
-                <input type="text" size="50" name="event_location" class="form-control event_location_name" id="event_location" value="{{ $location->name }}" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
+                <input type="text" size="50" name="event_location" class="form-control event_location_name" id="event_location" value="{{ $location->name or '' }}" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
               </div>
 
               <div class="form-group">
                 <div id="map_canvas" class="map-canvas"></div>
                 <div class="row">
-                  <input name="location_lat" type="hidden" id="location_lat" value="{{ $location->lat }}" />
-                  <input name="location_lon" type="hidden" id="location_lon" value="{{ $location->lon }}" />
-                  <input name="location_zoom" type="hidden" id="location_zoom" value="{{ $location->zoom }}" />
+                  <input name="location_lat" type="hidden" id="location_lat" value="{{ $location->lat or '' }}" />
+                  <input name="location_lon" type="hidden" id="location_lon" value="{{ $location->lon or '' }}" />
+                  <input name="location_zoom" type="hidden" id="location_zoom" value="{{ $location->zoom or '' }}" />
                 </div>
               </div>
 
@@ -170,7 +170,7 @@
                     <option value="">กรุณาเลือกแบรนด์สินค้า</option>
                     @if($brand)
                       @foreach($brand as $id => $brand)
-                        @if($id == $event->brand_id)
+                        @if($brand->id == $event->brand_id)
                           <option selected="selected" value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @else
                           <option value="{{ $brand->id }}">{{ $brand->name }}</option>

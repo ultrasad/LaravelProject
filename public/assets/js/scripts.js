@@ -1455,14 +1455,14 @@ function initialize() {
       });
 
       //event edit
-      if($('.event_location_name').exists()){
+      if($('.event_location_name').exists() && $('.event_location_name').val() != ''){
         console.log('event location edit....');
         var markerEdit;
 
         var markerName = $('.event_location_name').val();
         var markerLat = $('#location_lat').val();
         var markerLng = $('#location_lon').val();
-        //var markerZoom = $('#location_zoom').val();
+        var markerZoom = parseInt($('#location_zoom').val());
         var markerLatLng=new mapObj.LatLng(markerLat, markerLng);
         markerEdit = new mapObj.Marker({
             position:markerLatLng,
@@ -1480,8 +1480,9 @@ function initialize() {
         //Extend each marker's position in LatLngBounds object.
         latlngbounds.extend(markerEdit.position);
 
+        map.setZoom(markerZoom);
         map.setCenter(latlngbounds.getCenter());
-        map.fitBounds(latlngbounds);
+        //map.fitBounds(latlngbounds);
       }
 
       mapObj.event.addListener(marker, 'click', function() {

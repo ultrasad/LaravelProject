@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Iverberk\Larasearch\Traits\SearchableTrait;
 
 class Category extends Model
 {

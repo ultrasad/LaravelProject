@@ -174,8 +174,8 @@ trait AuthenticatesUsers
     public function logout()
     {
         Auth::guard($this->getGuard())->logout();
-        return redirect('login');
-        //return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
 
     /**

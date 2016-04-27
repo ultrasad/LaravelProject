@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Iverberk\Larasearch\Traits\SearchableTrait;
+//use Iverberk\Larasearch\Traits\MappableTrait;
 
 class Brand extends Model
 {
+  //use MappableTrait;
+
   protected $table = 'brand';
 
   //Mass Assignment

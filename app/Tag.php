@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Iverberk\Larasearch\Traits\SearchableTrait;
+//use Iverberk\Larasearch\Traits\MappableTrait;
 
 class Tag extends Model
 {
+    //use MappableTrait;
+
     //Mass Assignment
     protected $fillable = ['name', 'tag']; //Whitelist
 

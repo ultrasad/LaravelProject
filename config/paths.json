@@ -1,0 +1,27 @@
+{
+    "paths": {
+        "App\\Event": [
+          "Category",
+          "Tags",
+          "Brand",
+          "Branch"
+        ]
+    },
+    "reversedPaths": {
+        "App\\Event": [
+            ""
+        ],
+        "App\\Category": [
+            "events"
+        ],
+        "App\\Tag": [
+            "events"
+        ],
+        "App\\Brand": [
+            "events"
+        ],
+        "App\\Branch": [
+            "events"
+        ]
+    }
+}

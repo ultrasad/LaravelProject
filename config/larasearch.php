@@ -19,6 +19,7 @@ return array_merge($pathConfig, array(
 
         'params' => [
             'hosts'                 => [ 'localhost:9200' ],
+            //'hosts'                 => [ 'localhost:8000' ],
             'connectionClass'       => '\Elasticsearch\Connections\GuzzleConnection',
             'connectionFactoryClass'=> '\Elasticsearch\Connections\ConnectionFactory',
             'connectionPoolClass'   => '\Elasticsearch\ConnectionPool\StaticNoPingConnectionPool',

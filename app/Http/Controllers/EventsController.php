@@ -48,8 +48,15 @@ class EventsController extends Controller
   public function search()
   {
     echo 'test >>';
-    //$results = Event::search('watsons')->getResults();
-    $results = Event::getResults('watsons');
+    //$results = Event::searchById('41')->getResults();
+    $query['query']['match']['title'] = 'Sale';
+    $results = Event::searchByQuery($query)->getResults();
+    echo '<pre>';
+    print_r($results);
+    exit;
+
+    $results = Event::search('watsons')->getResults();
+    //$results = Event::getResults('watsons');
     foreach($results as $result)
     {
         // Convenience functions

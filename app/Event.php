@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 use Iverberk\Larasearch\Traits\SearchableTrait;
-//use Iverberk\Larasearch\Traits\TransformableTrait;
 
 class Event extends Model
 {
+    use SearchableTrait;
+
     /**
      * The table associated with the model.
      *
@@ -24,8 +25,22 @@ class Event extends Model
 
     //Larasearch
     /*public static $__es_config = [
-       'suggest' => ['title', 'url_slug', 'brief', 'relation.field1', 'relation.field2']
-   ];*/
+       'suggest' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name']
+    ];*/
+
+    public static $__es_config = [
+        'autocomplete' => ['title'],
+        'suggest' => ['title'],
+        'word_start' => ['title']
+    ];
+
+    /**
+    * @return bool
+    */
+    public function shouldIndex()
+    {
+        // Your custom logic to determine if a (re)index should be performed
+    }
 
     //Scope
     public function scopePublished($query)

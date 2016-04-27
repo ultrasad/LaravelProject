@@ -63,6 +63,8 @@ Route::group(['middleware' => 'web'], function () {
       'roles' => ['administrator']
     ]);
 
+    Route::get('events/search', 'EventsController@search');
+
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers
     Route::resource('maps', 'MapsController'); //RESTful Resource Controllers

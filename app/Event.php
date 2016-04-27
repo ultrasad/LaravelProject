@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 use Iverberk\Larasearch\Traits\SearchableTrait;
+//use Iverberk\Larasearch\Traits\TransformableTrait;
 
 class Event extends Model
 {
@@ -20,6 +21,11 @@ class Event extends Model
     //protected $guarded = ['id'];// //Backlist
 
     protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object
+
+    //Larasearch
+    /*public static $__es_config = [
+       'suggest' => ['title', 'url_slug', 'brief', 'relation.field1', 'relation.field2']
+   ];*/
 
     //Scope
     public function scopePublished($query)

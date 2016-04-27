@@ -27,7 +27,7 @@ class EventsController extends Controller
   public function __construct()
   {
     //$this->middleware('auth', ['only' => ['create', 'store']]);
-    $this->middleware('auth', ['except' => ['index', 'show', 'desc_upload', 'locations', 'branch']]);
+    $this->middleware('auth', ['except' => ['index', 'search', 'show', 'desc_upload', 'locations', 'branch']]);
   }
 
   function string_friendly($string)
@@ -40,6 +40,38 @@ class EventsController extends Controller
     $string = strtolower(preg_replace(array("`[^a-z0-9ก-๙เ-า]`i","`[-]+`"), "-", $string));
     return $string;
     //echo strtolower(trim($string, '-')).'.html';
+  }
+
+  /**
+  * Search Test
+  */
+  public function search()
+  {
+    echo 'test >>';
+    //$results = Event::search('watsons')->getResults();
+    $results = Event::getResults('watsons');
+    foreach($results as $result)
+    {
+        // Convenience functions
+        /*
+        $result->getId();
+        $result->getType();
+        $result->getIndex();
+        $result->getScore();
+        $result->getSource();
+        $result->getHit();
+        */
+
+        // Get results directly from the hit
+        // Object notation
+        //$result->wife
+
+        echo '<pre>';
+        print_r($result);
+
+        // Array notation
+        //$result['_source.wife.name']
+    }
   }
 
   /**

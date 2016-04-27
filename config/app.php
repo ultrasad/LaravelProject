@@ -149,6 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         'Thujohn\Twitter\TwitterServiceProvider',
+        'Iverberk\Larasearch\LarasearchServiceProvider',
 
         /*
          * Application Service Providers...

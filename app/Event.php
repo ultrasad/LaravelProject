@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
+use Iverberk\Larasearch\Traits\SearchableTrait;
+
 class Event extends Model
 {
     /**

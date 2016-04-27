@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Role;
 
-class RoleTableSeeder extends Seeder{
+class _RoleTableSeeder extends Seeder{
 
     public function run()
     {

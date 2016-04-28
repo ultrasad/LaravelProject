@@ -162,20 +162,20 @@
               <hr class="no-margin">
               <div class="relative">
                 <div class="no-overflow">
-                  <img src="{{ URL::asset($event->image) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
+                  <a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ URL::asset($event->image) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
                 </div>
               </div>
               <div class="padding-15">
-                <strong><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}">{{ $event->title }}</a></strong>
+                <strong><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
                 <p>{{ $event->brief }}</p>
                 <div class="hint-text">via welovepro</div>
               </div>
-              <div class="padding-15">
-                <div class="hint-text pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>
+              <div class="padding-15 card_footer">
+                <div class="pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>
                 <ul class="list-inline pull-right no-margin">
-                  <li><a class="text-master hint-text" href="#">5,345 <i class="fa fa-comment-o"></i></a>
+                  <li><a class="text-info-link" href="#">5,345 <i class="fa fa-comment-o"></i></a>
                   </li>
-                  <li><a class="text-master hint-text" href="#">23K <i class="fa fa-heart-o"></i></a>
+                  <li><a class="text-info-link" href="#">23K <i class="fa fa-heart-o"></i></a>
                   </li>
                 </ul>
                 <div class="clearfix"></div>

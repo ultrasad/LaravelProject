@@ -133,12 +133,12 @@
                   <div class="card card-relate relative">
                     <div class="row card-relate-row">
                       <div class="relative col-md-3 col-xs-4 thumb padding-5">
-                          <img alt="{{ $relate->title }}" class="block center-margin relative full-height" src="{{ URL::asset($relate->image) }}">
+                          <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><img alt="{{ $relate->title }}" class="block center-margin relative full-height" src="{{ URL::asset($relate->image) }}" /></a>
                           <!--<div class="col-sm-12 img-thumb-relate" style="background-image: url('{{ URL::asset($relate->image) }}')"></div>-->
                       </div>
                       <div class="col-md-9 col-xs-8 brief">
                           <div class="padding-5 card-relate-body">
-                            <strong><a title="{{ $relate->title }}" href="{{ $relate->url_slug }}">{{ $relate->title }}</a></strong>
+                            <strong><a title="{{ $relate->title }}" href="{{ $relate->url_slug }}" class="card_title">{{ $relate->title }}</a></strong>
                           </div>
                       </div>
 
@@ -147,9 +147,9 @@
                           <div class="col-md-12 p-r-0 p-l-5">
                             <div class="hint-text pull-left">ถึงวันที่ : {{ $relate->end_date_thai }}</div>
                             <ul class="list-inline pull-right no-margin">
-                              <li><a href="#" class="text-master hint-text"><span>5,345</span> <i class="fa fa-comment-o"></i></a>
+                              <li><a href="#" class="text-info-link"><span>5,345</span> <i class="fa fa-comment-o"></i></a>
                               </li>
-                              <li><a href="#" class="text-master hint-text"><span>23K</span> <i class="fa fa-heart-o"></i></a>
+                              <li><a href="#" class="text-info-link"><span>23K</span> <i class="fa fa-heart-o"></i></a>
                               </li>
                             </ul>
                             <div class="clearfix">&nbsp;</div>

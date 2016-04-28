@@ -7,6 +7,33 @@
   background: gold !important;
 }
 */
+
+body {
+    color: #8d959c;
+    /* hint color: #c6cace; */
+    /*color: #58647b;*/
+}
+
+.feed .day a.card_title, .card-relate a.card_title {
+  color: #1b9ad1;
+}
+
+.feed .day a.card_title:hover, .card-relate a.card_title:hover {
+  color: #167ba7;
+}
+
+.card_footer {
+  font-size: 0.9em;
+}
+
+.card_footer a.text-info-link, .relate a.footer-relate {
+  color: #8d959c;
+}
+
+.card_footer a.text-info-link:hover, a.relate .footer-relate:hover {
+  color: #1b9ad1;
+}
+
 body.menu-behind .header .brand {
     padding-left: 0px;
     width: 160px;

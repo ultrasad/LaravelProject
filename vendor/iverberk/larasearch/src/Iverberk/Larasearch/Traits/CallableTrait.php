@@ -10,6 +10,8 @@ trait CallableTrait {
      */
     public static function bootCallableTrait()
     {
+        //parent::bootCallableTrait();
+
         if (new static instanceof Model)
         {
             static::observe(new Observer);

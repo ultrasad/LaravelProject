@@ -26,6 +26,8 @@ class EventsController extends Controller
 {
   public function __construct()
   {
+    //ini_set('always_populate_raw_post_data', -1);
+
     //$this->middleware('auth', ['only' => ['create', 'store']]);
     $this->middleware('auth', ['except' => ['index', 'search', 'show', 'desc_upload', 'locations', 'branch']]);
   }
@@ -49,25 +51,25 @@ class EventsController extends Controller
   {
     echo 'test >>';
     //$results = Event::searchById('41')->getResults();
-    $query['query']['match']['title'] = 'Sale';
-    $results = Event::searchByQuery($query)->getResults();
-    echo '<pre>';
-    print_r($results);
-    exit;
+    //$query['query']['match']['title'] = 'Sale';
+    //$results = Event::searchByQuery($query)->getResults();
+    //echo '<pre>';
+    //print_r($results);
+    //exit;
 
-    $results = Event::search('watsons')->getResults();
+    $results = Event::search('เมย์เบลลีน')->getResults();
     //$results = Event::getResults('watsons');
     foreach($results as $result)
     {
         // Convenience functions
-        /*
+
         $result->getId();
         $result->getType();
         $result->getIndex();
         $result->getScore();
         $result->getSource();
         $result->getHit();
-        */
+
 
         // Get results directly from the hit
         // Object notation

@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Config;
 
 trait TransformableTrait {
-
     /**
      * Transform the Person model and its relations to an Elasticsearch document.
      *
@@ -18,5 +17,4 @@ trait TransformableTrait {
 
         return $doc;
     }
-
 }

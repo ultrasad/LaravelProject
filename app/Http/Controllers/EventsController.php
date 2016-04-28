@@ -57,6 +57,9 @@ class EventsController extends Controller
     //print_r($results);
     //exit;
 
+    $Index = new Event;
+    $Index->shouldIndex();
+
     $results = Event::search('ที่พัก')->getResults();
     //$results = Event::getResults('watsons');
     foreach($results as $result)

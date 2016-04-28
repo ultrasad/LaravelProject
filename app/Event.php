@@ -37,10 +37,11 @@ class Event extends Model
     /**
     * @return bool
     */
-    public function shouldIndex()
+    /*public function shouldIndex()
     {
         // Your custom logic to determine if a (re)index should be performed
-    }
+        //$this->shouldIndex();
+    }*/
 
     //Scope
     public function scopePublished($query)

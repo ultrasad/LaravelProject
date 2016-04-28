@@ -57,18 +57,18 @@ class EventsController extends Controller
     //print_r($results);
     //exit;
 
-    $results = Event::search('เมย์เบลลีน')->getResults();
+    $results = Event::search('ที่พัก')->getResults();
     //$results = Event::getResults('watsons');
     foreach($results as $result)
     {
         // Convenience functions
 
-        $result->getId();
+        /*$result->getId();
         $result->getType();
         $result->getIndex();
         $result->getScore();
         $result->getSource();
-        $result->getHit();
+        $result->getHit();*/
 
 
         // Get results directly from the hit

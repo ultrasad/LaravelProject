@@ -41,6 +41,7 @@ class Event extends Model
     {
         // Your custom logic to determine if a (re)index should be performed
         //$this->shouldIndex();
+        //$this->deleted('Event');
     }*/
 
     //Scope

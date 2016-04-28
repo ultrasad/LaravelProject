@@ -47,9 +47,9 @@ class EventsController extends Controller
   /**
   * Search Test
   */
-  public function search()
+  public function search($keywords='watsons')
   {
-    echo 'test >>';
+    //echo 'test >>';
     //$results = Event::searchById('41')->getResults();
     //$query['query']['match']['title'] = 'Sale';
     //$results = Event::searchByQuery($query)->getResults();
@@ -57,10 +57,43 @@ class EventsController extends Controller
     //print_r($results);
     //exit;
 
-    $Index = new Event;
-    $Index->shouldIndex();
+    //$Index = new Event;
+    //$Index->shouldIndex();
 
-    $results = Event::search('ที่พัก')->getResults();
+    //$event = new Event;
+    //$event->save();
+    //$event->reIndex();
+
+    //echo 'keyword => ' . $keywords . '<br />';
+    //exit;
+
+    //$query['query']['match']['title'] = 'Watsons';
+    //$results = Event::search(null, ['query' => $query])->getResults();
+
+    //$results = Event::search('Watsons', ['fields' => ['title'], 'highlight' => true])->getResults();
+    //$highlights = $results->first()->getHighlights(['title']);
+
+    //$search = 'Watsons';
+
+    /*
+    try {
+      //$results = $client->search($params);
+      $results = Event::search($search)->getResults();
+    } catch (Missing404Exception $e) {
+      print_r($e->getMessage());
+    }
+    */
+
+    $results = Event::search($keywords)->getResults();
+    //$results = Event::search('ที่พัก || pro')->getResults();
+
+    //$results = Event::search('%ที่พัก pro%')->getResults();
+
+    //echo '<pre>';
+    //print_r($results);
+    //exit;
+
+    //$results = Event::search('ที่พัก')->getResults();
     //$results = Event::getResults('watsons');
     foreach($results as $result)
     {

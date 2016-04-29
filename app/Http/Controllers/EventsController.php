@@ -84,10 +84,13 @@ class EventsController extends Controller
     }
     */
 
-    $results = Event::search($keywords)->getResults();
-    //$results = Event::search('ที่พัก || pro')->getResults();
+    //$query['query']['match']['url_slug'] = 'promotions-watsons-new-rates';
+    //$results = Event::search(null, ['query' => $query])->getResults();
 
-    //$results = Event::search('%ที่พัก pro%')->getResults();
+    //$results = Event::search($keywords)->getResults();
+
+    //$results = Event::search("Reebok", ['where' => ['active' => 'N']])->getResults();
+    $results = Event::search(['Baskin', 'Sports'])->getResults();
 
     //echo '<pre>';
     //print_r($results);

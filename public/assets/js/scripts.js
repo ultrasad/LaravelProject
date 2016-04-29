@@ -68,13 +68,14 @@ var fx_select_brand;
 
                       $.each(results, function (key, value) {
                           console.log('val => ' + value.title);
-                          var $clone = $('.row_search_result > div.col_result').clone();
+                          var $clone = $('.col_hidden_search > div.col_result').clone();
                           $clone.find('span.result-title').html(value.title);
                           $clone.css('display','block');
                           //$clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
                           //console.log($clone);
 
-                          $('.row_search_result .col_result:last').after($clone);
+                          $clone.appendTo('.row_search_result');
+                          //$('.row_search_result .col_result:last').after($clone);
                           //$('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
                       });
                     },

@@ -83,19 +83,20 @@
         <div class="container-fluid">
           <div class="search-results m-t-20">
             <p class="bold">Pages Search Results</p>
-            <div class="row row_search_result">
-              <div class="col-md-6 col_result" style="display: none;">
-                <div class="">
-                  <div class="thumbnail-wrapper d48 circular bg-success text-white inline m-t-10">
-                    <div>
-                      <img width="50" height="50" src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar2x.jpg') }}" alt="">
-                    </div>
-                  </div>
-                  <div class="p-l-10 inline p-t-5">
-                    <h5 class="m-b-5"><span class="semi-bold result-title">ice cream</span></h5>
-                    <p class="hint-text">via john smith</p>
-                  </div>
+            <div class="row row_search_result"></div>
+          </div>
+        </div>
+        <div class="col_hidden_search">
+          <div class="col-md-6 col_result" style="display: none;">
+            <div class="">
+              <div class="thumbnail-wrapper d48 circular bg-success text-white inline m-t-10">
+                <div>
+                  <img width="50" height="50" src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar2x.jpg') }}" alt="">
                 </div>
+              </div>
+              <div class="p-l-10 inline p-t-5">
+                <h5 class="m-b-5"><span class="semi-bold result-title"></span></h5>
+                <p class="hint-text">via john smith</p>
               </div>
             </div>
           </div>

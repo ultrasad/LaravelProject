@@ -66,6 +66,8 @@ var fx_select_brand;
                       var results = $.parseJSON(resp);
                       console.log(results);
 
+                      $('.row_search_result').html('');
+
                       $.each(results, function (key, value) {
                           console.log('val => ' + value.title);
                           var $clone = $('.col_hidden_search > div.col_result').clone();

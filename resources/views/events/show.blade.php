@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-6">
       <div class="panel-body">
-        <div class="no-margin fs-15 hint-text-9">Category :: {{ isset($event->category_first->name) ? $event->category_first->name : 'ไม่ระบุ' }}</div>
+        <div class="no-margin fs-15 hint-text-9">Category :: {{ isset($event->category_first->name) ? $event->category_first->name : 'ไม่ระบุ หมวดหมู่' }}</div>
         <!-- START PANEL -->
         <h2 class="text-master">{{ $event->title }}</h2>
         <p>{{ $event->brief }}</p>

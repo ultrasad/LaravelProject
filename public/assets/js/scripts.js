@@ -53,57 +53,67 @@ var fx_select_brand;
                 var _token, data;
                 _token = $('input[name=_token]').val();
                 //data = new FormData(this);
+                if($('#overlay-search').val() != ''){
+                  $.ajax({
+                      url: '/events/search/' + searchString,
+                      headers: {'X-CSRF-TOKEN': _token},
+                      type: 'GET',
+                      datatype: 'JSON',
+                      processData: false,
+                      contentType: false,
+                      success: function (resp) {
+                        //console.log('response => ' + resp);
+                        //var results = $.parseJSON(resp);
+                        //console.log(results);
 
-                $.ajax({
-                    url: '/events/search/' + searchString,
-                    headers: {'X-CSRF-TOKEN': _token},
-                    type: 'GET',
-                    datatype: 'JSON',
-                    processData: false,
-                    contentType: false,
-                    success: function (resp) {
-                      //console.log('response => ' + resp);
-                      var results = $.parseJSON(resp);
-                      //console.log(results);
+                        $('.row_search_result').html('');
+                        var results = $.parseJSON(resp);
+                        if($.isEmptyObject(results)){
+                          //console.log('yyy');
+                          $('.row_search_result').append('<div class="row p-l-15">ไม่พบข้อมูล...</div>');
+                          //console.log('xxxx');
 
-                      $('.row_search_result').html('');
-                      var $index  =0;
-                      $.each(results, function (key, value) {
-                          //console.log('val => ' + key);
-                          var $clone = $('.col_hidden_search > div.col_result').clone();
-                          $clone.find('span.result-title').html(value.title);
-                          $clone.find('img.result-image').attr('src', '/' + value.image).attr('data-src', '/' + value.image).html(value.title);
-                          $clone.find('span.result-brief').html(value.brief);
-                          $clone.find('a.result-url').attr('href', '/events/' + value.url_slug).attr('title', value.title);
-                          $clone.find('p.result-brand').html('via ' + value.brand);
-                          $clone.css('display','block');
-                          //$clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
-                          //console.log($clone);
+                        } else {
+                          //var results = $.parseJSON(resp);
+                          var $index  =0;
+                          $.each(results, function (key, value) {
+                              //console.log('val => ' + key);
+                              var $clone = $('.col_hidden_search > div.col_result').clone();
+                              $clone.find('span.result-title').html(value.title);
+                              $clone.find('img.result-image').attr('src', '/' + value.image).attr('data-src', '/' + value.image).html(value.title);
+                              $clone.find('span.result-brief').html(value.brief);
+                              $clone.find('a.result-url').attr('href', '/events/' + value.url_slug).attr('title', value.title);
+                              $clone.find('p.result-brand').html('via ' + value.brand);
+                              $clone.css('display','block');
+                              //$clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
+                              //console.log($clone);
 
-                          if($index % 2 == 0){
-                            //var $new_row = $('<div class="row new_create_row"></div>');
-                            //$clone.appendTo($new_row);
-                            var $div = $("<div class='row new_index_row'></div>").append($clone);
-                            $div.appendTo('.row_search_result');
-                          } else {
-                            $clone.appendTo('.row_search_result .new_index_row:last');
-                          }
+                              if($index % 2 == 0){
+                                //var $new_row = $('<div class="row new_create_row"></div>');
+                                //$clone.appendTo($new_row);
+                                var $div = $("<div class='row new_index_row'></div>").append($clone);
+                                $div.appendTo('.row_search_result');
+                              } else {
+                                $clone.appendTo('.row_search_result .new_index_row:last');
+                              }
 
-                          $index++;
+                              $index++;
 
-                          //$('.row_search_result .col_result:last').after($clone);
-                          //$('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
-                      });
-                    },
-                    error: function(jqXHR, textStatus, errorThrown)
-                    {
-                        // Handle errors here
-                        console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
-                        //var resJson = JSON.stringify(jqXHR);
-                        console.log(JSON.stringify(jqXHR.responseJSON));
-                        // STOP LOADING SPINNER
-                    }
-                });
+                              //$('.row_search_result .col_result:last').after($clone);
+                              //$('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
+                          });
+                        }
+                      },
+                      error: function(jqXHR, textStatus, errorThrown)
+                      {
+                          // Handle errors here
+                          console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+                          //var resJson = JSON.stringify(jqXHR);
+                          console.log(JSON.stringify(jqXHR.responseJSON));
+                          // STOP LOADING SPINNER
+                      }
+                  });
+                }
 
                 //    Do AJAX call here to get search results
                 //    and update DOM and use the following block

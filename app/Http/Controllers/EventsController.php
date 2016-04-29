@@ -99,7 +99,9 @@ class EventsController extends Controller
     //echo '<pre>';
     //print_r($results);
 
-    //echo '<pre>';
+    //echo '=> ' . $keywords;
+
+    ///echo '<pre>';
     //print_r($results);
     //exit;
 
@@ -139,9 +141,8 @@ class EventsController extends Controller
           // Array notation
           //$result['_source.wife.name']
       }
-
-      echo json_encode($arr_response);
     }
+    echo json_encode($arr_response);
   }
 
   /**

@@ -152,7 +152,7 @@
                     <p class="no-margin">
                       <strong>{{ $event->brand_name }}</strong>
                     </p>
-                    <p class="no-margin hint-text">หมวดหมู่แบรนด์</p>
+                    <p class="no-margin hint-text">{{ isset($event->category_first->name) ? $event->category_first->name : 'ไม่ระบุ หมวดหมู่' }}</p>
                   </div>
                   <div class="pull-top pull-right list-inline">
                     <i class="pg-map"></i>

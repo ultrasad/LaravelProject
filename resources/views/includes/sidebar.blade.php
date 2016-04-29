@@ -74,8 +74,8 @@
       </li>
 
       <li class="m-t-5">
-        <span class="title-header-category">BRAND</span>
-        <span class="icon-thumbnail">B</span>
+        <span class="title-header-category">BRAND GROUP</span>
+        <span class="icon-thumbnail">BG</span>
       </li>
       <li class="">
         <a href="#" class="detailed">

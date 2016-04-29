@@ -2188,11 +2188,11 @@
     }
 
     $(document).on('click.pg.search.data-api', '[data-toggle="search"]', function(e) {
-        /*var $this = $(this);
+        var $this = $(this);
         var $target = $('[data-pages="search"]');
         if ($this.is('a')) e.preventDefault();
         $target.data('pg.search').toggleOverlay('show');
-        */
+
         console.log('page search disabled.');
     });
 

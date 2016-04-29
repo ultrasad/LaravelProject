@@ -31,7 +31,7 @@ var fx_select_brand;
         // Initializes search overlay plugin.
         // Replace onSearchSubmit() and onKeyEnter() with
         // your logic to perform a search and display results
-        /*$(".list-view-wrapper").scrollbar();
+        $(".list-view-wrapper").scrollbar();
 
         $('[data-pages="search"]').search({
             // Bind elements that are included inside search overlay
@@ -45,10 +45,48 @@ var fx_select_brand;
             },
             // Callback that will be run whenever you enter a key into search box.
             // Perform any live search here.
-            onKeyEnter: function(searchString) {
+            onSearchSubmit: function(searchString) {
                 console.log("Live search for: " + searchString);
                 var searchField = $('#overlay-search');
                 var searchResults = $('.search-results');
+
+                var _token, data;
+                _token = $('input[name=_token]').val();
+                //data = new FormData(this);
+
+                $.ajax({
+                    url: '/events/search/' + searchString,
+                    headers: {'X-CSRF-TOKEN': _token},
+                    type: 'GET',
+                    datatype: 'JSON',
+                    processData: false,
+                    contentType: false,
+                    success: function (resp) {
+                      //console.log('response => ' + resp);
+                      var results = $.parseJSON(resp);
+                      console.log(results);
+
+                      $.each(results, function (key, value) {
+                          console.log('val => ' + value.title);
+                          var $clone = $('.row_search_result > div.col_result').clone();
+                          $clone.find('span.result-title').html(value.title);
+                          $clone.css('display','block');
+                          //$clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
+                          //console.log($clone);
+
+                          $('.row_search_result .col_result:last').after($clone);
+                          //$('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
+                      });
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        // Handle errors here
+                        console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+                        //var resJson = JSON.stringify(jqXHR);
+                        console.log(JSON.stringify(jqXHR.responseJSON));
+                        // STOP LOADING SPINNER
+                    }
+                });
 
                 //    Do AJAX call here to get search results
                 //    and update DOM and use the following block
@@ -56,6 +94,7 @@ var fx_select_brand;
                 //    inside the AJAX callback to update the DOM
 
                 // Timeout is used for DEMO purpose only to simulate an AJAX call
+                /*
                 clearTimeout($.data(this, 'timer'));
                 searchResults.fadeOut("fast"); // hide previously returned results until server returns new results
                 var wait = setTimeout(function() {
@@ -67,8 +106,9 @@ var fx_select_brand;
                     });
                 }, 500);
                 $(this).data('timer', wait);
+                */
             }
-        });*/
+        });
 
         //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: true}});

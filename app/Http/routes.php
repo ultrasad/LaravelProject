@@ -63,7 +63,7 @@ Route::group(['middleware' => 'web'], function () {
       'roles' => ['administrator']
     ]);
 
-    Route::get('events/_search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));
+    Route::get('events/search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));
 
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers

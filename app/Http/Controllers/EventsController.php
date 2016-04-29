@@ -88,9 +88,16 @@ class EventsController extends Controller
     //$results = Event::search(null, ['query' => $query])->getResults();
 
     //$results = Event::search($keywords)->getResults();
+    $results = Event::search($keywords)->getResults();
+
+    //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'url_slug'], 'highlight' => true])->getResults();
+    //$highlights = $results->first()->getHighlights(['title', 'brief']);
 
     //$results = Event::search("Reebok", ['where' => ['active' => 'N']])->getResults();
-    $results = Event::search(['Baskin', 'Sports'])->getResults();
+    //$results = Event::search(['Baskin', 'Sports'])->getResults();
+
+    //echo '<pre>';
+    //print_r($results);
 
     //echo '<pre>';
     //print_r($results);
@@ -98,27 +105,40 @@ class EventsController extends Controller
 
     //$results = Event::search('ที่พัก')->getResults();
     //$results = Event::getResults('watsons');
-    foreach($results as $result)
-    {
-        // Convenience functions
+    $arr_response = array();
+    if($results){
+      foreach($results as $result)
+      {
+          // Convenience functions
 
-        /*$result->getId();
-        $result->getType();
-        $result->getIndex();
-        $result->getScore();
-        $result->getSource();
-        $result->getHit();*/
+          /*$result->getId();
+          $result->getType();
+          $result->getIndex();
+          $result->getScore();
+          $result->getSource();
+          $result->getHit();*/
 
 
-        // Get results directly from the hit
-        // Object notation
-        //$result->wife
+          // Get results directly from the hit
+          // Object notation
+          //$result->wife
 
-        echo '<pre>';
-        print_r($result);
+          //echo '<pre>';
+          //print_r($result);
 
-        // Array notation
-        //$result['_source.wife.name']
+          //echo $result->title . '<br />';
+          //echo $result->image . '<br />';
+          //echo $result->url_slug . '<br />';
+          //echo $result->brief . '<br /> </p>';
+          
+          $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief);
+          array_push($arr_response, $arr_data);
+
+          // Array notation
+          //$result['_source.wife.name']
+      }
+
+      echo json_encode($arr_response);
     }
   }
 

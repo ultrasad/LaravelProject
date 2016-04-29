@@ -64,19 +64,33 @@ var fx_select_brand;
                     success: function (resp) {
                       //console.log('response => ' + resp);
                       var results = $.parseJSON(resp);
-                      console.log(results);
+                      //console.log(results);
 
                       $('.row_search_result').html('');
-
+                      var $index  =0;
                       $.each(results, function (key, value) {
-                          console.log('val => ' + value.title);
+                          //console.log('val => ' + key);
                           var $clone = $('.col_hidden_search > div.col_result').clone();
                           $clone.find('span.result-title').html(value.title);
+                          $clone.find('img.result-image').attr('src', '/' + value.image).attr('data-src', '/' + value.image).html(value.title);
+                          $clone.find('span.result-brief').html(value.brief);
+                          $clone.find('a.result-url').attr('href', '/events/' + value.url_slug).attr('title', value.title);
+                          $clone.find('p.result-brand').html('via ' + value.brand);
                           $clone.css('display','block');
                           //$clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
                           //console.log($clone);
 
-                          $clone.appendTo('.row_search_result');
+                          if($index % 2 == 0){
+                            //var $new_row = $('<div class="row new_create_row"></div>');
+                            //$clone.appendTo($new_row);
+                            var $div = $("<div class='row new_index_row'></div>").append($clone);
+                            $div.appendTo('.row_search_result');
+                          } else {
+                            $clone.appendTo('.row_search_result .new_index_row:last');
+                          }
+
+                          $index++;
+
                           //$('.row_search_result .col_result:last').after($clone);
                           //$('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
                       });

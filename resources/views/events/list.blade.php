@@ -168,7 +168,7 @@
               <div class="padding-15">
                 <strong><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
                 <p>{{ $event->brief }}</p>
-                <div class="hint-text">via welovepro</div>
+                <div class="hint-text small-text">via {{ $event->brand_name }}</div>
               </div>
               <div class="padding-15 card_footer">
                 <div class="pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>

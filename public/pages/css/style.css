@@ -14,6 +14,10 @@ body {
     /*color: #58647b;*/
 }
 
+.overlay {
+  padding-left: 0px;
+}
+
 .feed .day a.card_title, .card-relate a.card_title {
   color: #1b9ad1;
 }
@@ -141,7 +145,7 @@ h2, .windows h2 {
   color: #51646b;
 }
 
-h3, .windows h3, h4, .windows h4 {
+h3, .windows h3, h4, .windows h4, h5, windows.h5 {
   font-size: 1.3em;
   line-height: 20px;
   font-weight: 500;
@@ -808,6 +812,22 @@ div.cs-select-brand {
       transform: translate3d(0px, 0px, 0px) !important;
   }
   */
+  .overlay {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .row_search_result .result-title {
+    font-size: 0.7em;
+  }
+
+  .semi-bold {
+    font-weight: 600 !important;
+  }
+
+  .windows h5 {
+    line-height: 18px;
+}
 
   body.sidebar-open .page-container {
     /*-webkit-transform: translate3d(0px, 0, 0);

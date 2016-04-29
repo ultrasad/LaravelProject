@@ -83,20 +83,23 @@
         <div class="container-fluid">
           <div class="search-results m-t-20">
             <p class="bold">Pages Search Results</p>
-            <div class="row row_search_result"></div>
+            <div class="row_search_result"></div>
           </div>
         </div>
         <div class="col_hidden_search">
-          <div class="col-md-6 col_result" style="display: none;">
-            <div class="">
-              <div class="thumbnail-wrapper d48 circular bg-success text-white inline m-t-10">
-                <div>
-                  <img width="50" height="50" src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar2x.jpg') }}" alt="">
+          <div class="col-md-6 col-xs-12 col_result" style="display: none;">
+            <div class="col-sm-12 p-l-0 p-r-0">
+              <div class="col-md-1 col-sm-2 col-xs-3 padding-0">
+                <div class="thumbnail-wrapper d48 circular bg-success text-white inline m-t-10">
+                  <div>
+                    <img class="result-image" width="50" height="50" src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar2x.jpg') }}" alt="">
+                  </div>
                 </div>
               </div>
-              <div class="p-l-10 inline p-t-5">
-                <h5 class="m-b-5"><span class="semi-bold result-title"></span></h5>
-                <p class="hint-text">via john smith</p>
+              <div class="p-l-10 inline p-t-5 col-md-11 col-sm-10 col-xs-9 p-r-0">
+                <a class="result-url" href="#" title=""><h5 class="m-b-5"><span class="semi-bold result-title">title</span></h5></a>
+                <span class="result-brief">brief</span>
+                <p class="result-brand hint-text">via john smith</p>
               </div>
             </div>
           </div>

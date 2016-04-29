@@ -130,8 +130,10 @@ class EventsController extends Controller
           //echo $result->image . '<br />';
           //echo $result->url_slug . '<br />';
           //echo $result->brief . '<br /> </p>';
-          
-          $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief);
+
+          $brand = Brand::find($result->brand_id)->first()->name;
+
+          $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $brand);
           array_push($arr_response, $arr_data);
 
           // Array notation

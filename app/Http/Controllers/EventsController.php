@@ -70,8 +70,37 @@ class EventsController extends Controller
     //$query['query']['match']['title'] = 'Watsons';
     //$results = Event::search(null, ['query' => $query])->getResults();
 
-    //$results = Event::search('Watsons', ['fields' => ['title'], 'highlight' => true])->getResults();
-    //$highlights = $results->first()->getHighlights(['title']);
+    $results = Event::search($keywords, ['fields' => ['title', 'brand.name', 'locations.name'], 'select' => ['title', 'brand.name', 'locations.name'], 'highlight' => true, 'suggest' => true]);
+    //$field = $results->getResults()->first()->getFields(['brand.name']);
+    $highlights = $results->getResults()->first()->getHighlights(['brand.name']);
+    //$suggestios = $results->getSuggestions(['brand.name']);
+
+    //$params = ['fields' => ['locations.name'],'highlight' => true];
+
+    //$response = Event::search($keywords, $params);
+    //$results = $response->getResults();
+    //$aggregations = $response->getAggregations('agg_name');
+    //$title = $results->first()->getFields(['name']);
+
+    //$highlights = $results->first()->getHighlights(['locations.name']);
+
+    //echo '<pre>';
+    //print_r($field);
+
+    //echo '<pre>';
+    //print_r($aggregations);
+
+    /*foreach($results->getResults()->first() as $highlights){
+      echo '<pre>';
+      print_r($highlights->getHighlights(['title']));
+    }*/
+
+    echo '<pre>';
+    print_r($highlights);
+    exit;
+
+    //echo '<pre>';
+    //print_r($title);
 
     //$search = 'Watsons';
 
@@ -88,7 +117,40 @@ class EventsController extends Controller
     //$results = Event::search(null, ['query' => $query])->getResults();
 
     //$results = Event::search($keywords)->getResults();
-    $results = Event::search($keywords)->getResults();
+    //$query['query']['match']['url_slug'] = $keywords;
+    //$results = Event::searchByQuery($query)->getResults();
+
+    //$results = Event::search($keywords, ['fields' => ['events.title']])->getResults();
+
+    /*$params = [
+      'aggs' => [
+        'agg_name' => [
+            'type' => 'terms',
+            'field' => 'brand.name'
+        ]
+      ]
+    ];*/
+
+    //$results = Event::searchByQuery(array('match' => array('title' => $keywords)));
+    //$results = Event::search($keywords, ['fields' => ['brand.name']])->getResults();
+    //$name = $results->first()->getFields(['name']);
+
+    //$results = Event::search($keywords, [
+        //'fields' => ['title'],
+        //'select' => ['title', 'brand_id', 'brand.name']
+    //])->getResults();
+
+    //$name = $results->first()->getFields(['name']);
+
+    //$resultsX = Event::search($keywords, $params);
+    //$results = $resultsX->getResults();
+    //$aggregations = $resultsX->getAggregations('agg_name');
+    //$name = $results->first()->getFields(['events.title']);
+
+    $results = Event::search($keywords, ['fields' => ['title'], 'suggest' => true, 'highlight' => ['tag' => '<b>']]);
+    $resultsX = $results->getResults();
+    $suggestios = $results->getSuggestions(['title']);
+    $highlights = $results->first()->getHighlights(['name']);
 
     //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'url_slug'], 'highlight' => true])->getResults();
     //$highlights = $results->first()->getHighlights(['title', 'brief']);
@@ -100,10 +162,16 @@ class EventsController extends Controller
     //print_r($results);
 
     //echo '=> ' . $keywords;
+    //echo '<pre>';
+    //print_r($suggestios);
 
-    ///echo '<pre>';
-    //print_r($results);
-    //exit;
+    echo '<pre>';
+    print_r($highlights);
+    echo '<pre>';
+    print_r($suggestios);
+    echo '<pre>';
+    print_r($resultsX);
+    exit;
 
     //$results = Event::search('ที่พัก')->getResults();
     //$results = Event::getResults('watsons');

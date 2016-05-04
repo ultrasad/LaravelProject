@@ -114,7 +114,7 @@ var fx_select_brand;
                           $.each(results.map, function (key, value) {
                               var $clone = $('.col_hidden_search > div.col_result_map').clone();
                               $clone.find('span.result-title').html(value.name);
-                              $clone.find('a.result-url').attr('href', 'javascript:void(0);').attr('title', value.name);
+                              $clone.find('a.result-url').attr('href', 'javascript:void(0);').attr('title', value.name); //check map event, branch
                               $clone.css('display','block');
 
                               if($index % 2 == 0){

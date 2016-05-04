@@ -59,50 +59,16 @@ class EventsController extends Controller
     $arr_location = array();
     if($results){
       foreach($results->getResults() as $result){
-        //echo 'title => ' . $result->title.'<br />';
-        //echo 'image -> ' . $result->image . '<br />';
-        //echo 'slug -> ' . $result->url_slug . '<br />';
-        //echo 'brief -> ' . $result->brief . '<br />';
-        //echo 'brand -> ' . $result->brand['name'] . '<br /></p>';
-
         $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $result->brand['name']);
         array_push($arr_response, $arr_data);
 
-        //echo '<pre>';
-        //print_r($result->getHighlights(['location.name']));
         $locations = $result->getHighlights(['location.name']);
         if(!empty($locations)){
-          //echo '<pre>';
-          //print_r($locations['location.name'][0]);
           foreach($locations as $key => $location){
-            //echo 'lo nam '.$location[0].'<br />';
-            //echo 'lo lat '.$result->location[0]['lat'].'<br />';
-            //echo 'lo lon '.$result->location[0]['lon'].'<br />';
             $arr_map = array('name' => $location[0], 'lat' => $result->location[0]['lat'], 'lon' => $result->location[0]['lon']);
             array_push($arr_location, $arr_map);
           }
         }
-        //echo '</p>';
-
-        //echo '<pre>';
-        //print_r($result);
-
-        //$title = $result['title'];
-        //echo 'title => ' . $title . '<br />';
-
-        //$arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $brand);
-        //array_push($arr_response, $arr_data);
-
-        //echo '<pre>';
-        //print_r($result->getHighlights(['location']));
-
-        //$getHit = $result->getHit();
-        //echo '<pre>';
-        //print_r($getHit['highlight']);
-
-        //print_r($result['_source.brand.name']);
-        //echo '<pre>';
-        //print_r($getHit);
       }
     }
     echo json_encode(array('event' => $arr_response, 'map' => $arr_location));

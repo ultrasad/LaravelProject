@@ -10,6 +10,7 @@ use Iverberk\Larasearch\Traits\SearchableTrait;
 class Event extends Model
 {
     use SearchableTrait;
+    //public static $__es_enable = true;
 
     /**
      * The table associated with the model.
@@ -24,25 +25,26 @@ class Event extends Model
     protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object
 
     //Larasearch
-    /*public static $__es_config = [
-       'suggest' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name']
-    ];*/
-
     public static $__es_config = [
-        'autocomplete' => ['title'],
-        'suggest' => ['title'],
-        'word_start' => ['title']
+       'suggest' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name', 'tag.name', 'location.name']
     ];
+
+    /*public static $__es_config = [
+        'autocomplete' => ['title'],
+        'suggest' => ['title', 'brand.name', 'branch.name', 'location.name'],
+        'word_start' => ['title', 'brand.name', 'branch.name', 'location.name']
+    ];*/
 
     /**
     * @return bool
     */
-    /*public function shouldIndex()
+    public function shouldIndex()
     {
         // Your custom logic to determine if a (re)index should be performed
         //$this->shouldIndex();
         //$this->deleted('Event');
-    }*/
+        return true;
+    }
 
     //Scope
     public function scopePublished($query)

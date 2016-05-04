@@ -66,17 +66,20 @@ var fx_select_brand;
                         //var results = $.parseJSON(resp);
                         //console.log(results);
 
-                        $('.row_search_result').html('');
+                        $('.row_result').html('');
+                        $('.result_map').hide();
+                        $('.row_result_map').html('');
+
                         var results = $.parseJSON(resp);
-                        if($.isEmptyObject(results)){
+                        if($.isEmptyObject(results.event)){
                           //console.log('yyy');
-                          $('.row_search_result').append('<div class="row p-l-15">ไม่พบข้อมูล...</div>');
+                          $('.row_result').append('<div class="row p-l-15">ไม่พบข้อมูล...</div>');
                           //console.log('xxxx');
 
                         } else {
                           //var results = $.parseJSON(resp);
                           var $index  =0;
-                          $.each(results, function (key, value) {
+                          $.each(results.event, function (key, value) {
                               //console.log('val => ' + key);
                               var $clone = $('.col_hidden_search > div.col_result').clone();
                               $clone.find('span.result-title').html(value.title);
@@ -92,15 +95,35 @@ var fx_select_brand;
                                 //var $new_row = $('<div class="row new_create_row"></div>');
                                 //$clone.appendTo($new_row);
                                 var $div = $("<div class='row new_index_row'></div>").append($clone);
-                                $div.appendTo('.row_search_result');
+                                $div.appendTo('.row_result');
                               } else {
-                                $clone.appendTo('.row_search_result .new_index_row:last');
+                                $clone.appendTo('.row_result .new_index_row:last');
                               }
 
                               $index++;
 
                               //$('.row_search_result .col_result:last').after($clone);
                               //$('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
+                          });
+                        }
+
+                        //event maps
+                        if(!$.isEmptyObject(results.map)){
+                          $('.result_map').show();
+                          var $index  =0;
+                          $.each(results.map, function (key, value) {
+                              var $clone = $('.col_hidden_search > div.col_result_map').clone();
+                              $clone.find('span.result-title').html(value.name);
+                              $clone.css('display','block');
+
+                              if($index % 2 == 0){
+                                var $div = $("<div class='row new_index_row_result'></div>").append($clone);
+                                $div.appendTo('.row_result_map');
+                              } else {
+                                $clone.appendTo('.row_result_map .new_index_row_result:last');
+                              }
+
+                              $index++;
                           });
                         }
                       },

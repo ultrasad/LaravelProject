@@ -49,63 +49,200 @@ class EventsController extends Controller
   */
   public function search($keywords='watsons')
   {
-    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'image', 'brand.name', 'location.name'], 'highlight' => true, 'suggest' => true]);
+    //echo 'test >>';
+    //$results = Event::searchById('41')->getResults();
+    //$query['query']['match']['title'] = 'Sale';
+    //$results = Event::searchByQuery($query)->getResults();
+    //echo '<pre>';
+    //print_r($results);
+    //exit;
+
+    //$Index = new Event;
+    //$Index->shouldIndex();
+
+    //$event = new Event;
+    //$event->save();
+    //$event->reIndex('App\Event --relations');
+
+    //$location = new Location;
+    //$location->shouldIndex();
+
+    //echo 'keyword => ' . $keywords . '<br />';
+    //exit;
+
+    //$query['query']['match']['title'] = 'Watsons';
+    //$results = Event::search(null, ['query' => $query])->getResults();
+
+    $results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'image', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'brand.name', 'location.name'], 'highlight' => true, 'suggest' => true]);
     //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => '<span style="color:red">'], 'suggest' => true]);
-    $results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => true]);
+    //$field = $results->getResults()->first()->getFields(['brand.name']);
     //$highlights = $results->getResults()->first()->getHighlights(['location.name']);
-    //$suggestios = $results->getSuggestions();
+    $highlights = $results->getResults()->first()->getHighlights(['location.name']);
+    $suggestios = $results->getSuggestions();
 
+    //$results = Event::search($keywords)->getResults();
+
+    //$params = ['fields' => ['locations.name'],'highlight' => true];
+
+    //$response = Event::search($keywords, $params);
+    //$results = $response->getResults();
+    //$aggregations = $response->getAggregations('agg_name');
+    //$title = $results->first()->getFields(['name']);
+
+    //$highlights = $results->first()->getHighlights(['locations.name']);
+
+    //echo '<pre>';
+    //print_r($field);
+
+    //echo '<pre>';
+    //print_r($aggregations);
+
+    /*foreach($results->getResults()->first() as $highlights){
+      echo '<pre>';
+      print_r($highlights->getHighlights(['title']));
+    }*/
+
+    //echo '<pre>';
+    //print_r($suggestios);
+    //echo '<pre>';
+    //print_r($highlights);
+    //echo '<pre>';
+    //print_r($results);
+    foreach($results->getResults() as $result){
+      //echo '<pre>';
+      //print_r($result);
+
+      //$title = $result['title'];
+      //echo 'title => ' . $title . '<br />';
+
+      //$arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $brand);
+      //array_push($arr_response, $arr_data);
+
+      echo '<pre>';
+      print_r($result->getHighlights(['location']));
+
+      //$getHit = $result->getHit();
+      //echo '<pre>';
+      //print_r($getHit['highlight']);
+
+      //print_r($result['_source.brand.name']);
+      //echo '<pre>';
+      //print_r($getHit);
+    }
+    exit;
+
+    //echo '<pre>';
+    //print_r($title);
+
+    //$search = 'Watsons';
+
+    /*
+    try {
+      //$results = $client->search($params);
+      $results = Event::search($search)->getResults();
+    } catch (Missing404Exception $e) {
+      print_r($e->getMessage());
+    }
+    */
+
+    //$query['query']['match']['url_slug'] = 'promotions-watsons-new-rates';
+    //$results = Event::search(null, ['query' => $query])->getResults();
+
+    //$results = Event::search($keywords)->getResults();
+    //$query['query']['match']['url_slug'] = $keywords;
+    //$results = Event::searchByQuery($query)->getResults();
+
+    //$results = Event::search($keywords, ['fields' => ['events.title']])->getResults();
+
+    /*$params = [
+      'aggs' => [
+        'agg_name' => [
+            'type' => 'terms',
+            'field' => 'brand.name'
+        ]
+      ]
+    ];*/
+
+    //$results = Event::searchByQuery(array('match' => array('title' => $keywords)));
+    //$results = Event::search($keywords, ['fields' => ['brand.name']])->getResults();
+    //$name = $results->first()->getFields(['name']);
+
+    //$results = Event::search($keywords, [
+        //'fields' => ['title'],
+        //'select' => ['title', 'brand_id', 'brand.name']
+    //])->getResults();
+
+    //$name = $results->first()->getFields(['name']);
+
+    //$resultsX = Event::search($keywords, $params);
+    //$results = $resultsX->getResults();
+    //$aggregations = $resultsX->getAggregations('agg_name');
+    //$name = $results->first()->getFields(['events.title']);
+
+    $results = Event::search($keywords, ['fields' => ['title'], 'suggest' => true, 'highlight' => ['tag' => '<b>']]);
+    $resultsX = $results->getResults();
+    $suggestios = $results->getSuggestions(['title']);
+    $highlights = $results->first()->getHighlights(['name']);
+
+    //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'url_slug'], 'highlight' => true])->getResults();
+    //$highlights = $results->first()->getHighlights(['title', 'brief']);
+
+    //$results = Event::search("Reebok", ['where' => ['active' => 'N']])->getResults();
+    //$results = Event::search(['Baskin', 'Sports'])->getResults();
+
+    //echo '<pre>';
+    //print_r($results);
+
+    //echo '=> ' . $keywords;
+    //echo '<pre>';
+    //print_r($suggestios);
+
+    echo '<pre>';
+    print_r($highlights);
+    echo '<pre>';
+    print_r($suggestios);
+    echo '<pre>';
+    print_r($resultsX);
+    exit;
+
+    //$results = Event::search('ที่พัก')->getResults();
+    //$results = Event::getResults('watsons');
     $arr_response = array();
-    $arr_location = array();
     if($results){
-      foreach($results->getResults() as $result){
-        //echo 'title => ' . $result->title.'<br />';
-        //echo 'image -> ' . $result->image . '<br />';
-        //echo 'slug -> ' . $result->url_slug . '<br />';
-        //echo 'brief -> ' . $result->brief . '<br />';
-        //echo 'brand -> ' . $result->brand['name'] . '<br /></p>';
+      foreach($results as $result)
+      {
+          // Convenience functions
 
-        $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $result->brand['name']);
-        array_push($arr_response, $arr_data);
+          /*$result->getId();
+          $result->getType();
+          $result->getIndex();
+          $result->getScore();
+          $result->getSource();
+          $result->getHit();*/
 
-        //echo '<pre>';
-        //print_r($result->getHighlights(['location.name']));
-        $locations = $result->getHighlights(['location.name']);
-        if(!empty($locations)){
+
+          // Get results directly from the hit
+          // Object notation
+          //$result->wife
+
           //echo '<pre>';
-          //print_r($locations['location.name'][0]);
-          foreach($locations as $key => $location){
-            //echo 'lo nam '.$location[0].'<br />';
-            //echo 'lo lat '.$result->location[0]['lat'].'<br />';
-            //echo 'lo lon '.$result->location[0]['lon'].'<br />';
-            $arr_map = array('name' => $location[0], 'lat' => $result->location[0]['lat'], 'lon' => $result->location[0]['lon']);
-            array_push($arr_location, $arr_map);
-          }
-        }
-        //echo '</p>';
+          //print_r($result);
 
-        //echo '<pre>';
-        //print_r($result);
+          //echo $result->title . '<br />';
+          //echo $result->image . '<br />';
+          //echo $result->url_slug . '<br />';
+          //echo $result->brief . '<br /> </p>';
 
-        //$title = $result['title'];
-        //echo 'title => ' . $title . '<br />';
+          $brand = Brand::find($result->brand_id)->first()->name;
 
-        //$arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $brand);
-        //array_push($arr_response, $arr_data);
+          $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $brand);
+          array_push($arr_response, $arr_data);
 
-        //echo '<pre>';
-        //print_r($result->getHighlights(['location']));
-
-        //$getHit = $result->getHit();
-        //echo '<pre>';
-        //print_r($getHit['highlight']);
-
-        //print_r($result['_source.brand.name']);
-        //echo '<pre>';
-        //print_r($getHit);
+          // Array notation
+          //$result['_source.wife.name']
       }
     }
-    echo json_encode(array('event' => $arr_response, 'map' => $arr_location));
+    echo json_encode($arr_response);
   }
 
   /**

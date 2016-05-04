@@ -82,8 +82,11 @@
         <!-- BEGIN Overlay Search Results, This part is for demo purpose, you can add anything you like !-->
         <div class="container-fluid">
           <div class="search-results m-t-20">
-            <p class="bold">Pages Search Results</p>
-            <div class="row_search_result"></div>
+            <p class="bold">Promotion Search Results</p>
+            <div class="row_result"></div>
+            <p>&nbsp;</p>
+            <p class="bold result_map" style="display: none">Map Search Results</p>
+            <div class="row_result_map"></div>
           </div>
         </div>
         <div class="col_hidden_search">
@@ -99,7 +102,14 @@
               <div class="p-l-10 inline p-t-5 col-md-11 col-sm-10 col-xs-9 p-r-0">
                 <a class="result-url" href="#" title=""><h5 class="m-b-5"><span class="semi-bold result-title">title</span></h5></a>
                 <span class="result-brief">brief</span>
-                <p class="result-brand hint-text">via john smith</p>
+                <p class="result-brand hint-text">via promotion</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-12 col_result_map p-l-5" style="display: none">
+            <div class="col-sm-12 p-l-0 p-r-0">
+              <div class="p-l-10 inline p-t-5 col-md-12 p-r-0">
+                <a class="result-url" href="#" title=""><h5 class="m-b-5"><i class="pg-map pull-left"></i>&nbsp;<span class="semi-bold result-title">title</span></h5></a>
               </div>
             </div>
           </div>

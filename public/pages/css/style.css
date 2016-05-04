@@ -817,8 +817,8 @@ div.cs-select-brand {
     padding-right: 15px;
   }
 
-  .row_search_result .result-title {
-    font-size: 0.7em;
+  .row_result .result-title, .row_result_map .result-title {
+    font-size: 0.8em;
   }
 
   .semi-bold {

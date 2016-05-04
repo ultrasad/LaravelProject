@@ -95,9 +95,9 @@ class EventsController extends Controller
       print_r($highlights->getHighlights(['title']));
     }*/
 
-    echo '<pre>';
-    print_r($highlights);
-    exit;
+    //echo '<pre>';
+    //print_r($highlights);
+    //exit;
 
     //echo '<pre>';
     //print_r($title);

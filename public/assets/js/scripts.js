@@ -114,7 +114,7 @@ var fx_select_brand;
                           $.each(results.map, function (key, value) {
                               var $clone = $('.col_hidden_search > div.col_result_map').clone();
                               $clone.find('span.result-title').html(value.name);
-                              $clone.find('a.result-url').attr('href', 'javascript:void(0);').attr('title', value.name); //check map event location, event branch
+                              $clone.find('a.result-url').attr('href', '/maps/location/' + value.id).attr('title', value.name); //check map event location, event branch
                               $clone.css('display','block');
 
                               if($index % 2 == 0){
@@ -1388,7 +1388,7 @@ function initialize() {
                 });
 
                 mapObj.event.addListener(markers[k], 'click', function() {
-                    infowindow.setContent('<div class="popup_container"><strong>'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">มี '+ data.length +' โปรโมชั่นที่นี่</a></p>');
+                    infowindow.setContent('<div class="popup_container"><strong class="marker_name">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">มี '+ data.length +' โปรโมชั่นที่นี่</a></p>');
                     infowindow.open(map,markers[k]);
                     map.panTo(markers[k].getPosition());
                     //map.setZoom(14);
@@ -1420,17 +1420,18 @@ function initialize() {
                 var clone = '<li class="map-event-list clearfix">';
                     clone += '<span class="col-xs-height col-top p-t-5">';
                     clone += '<span class="thumbnail-wrapper d32 circular bg-success">';
-                    clone += '<span class="thumbnail-wrapper d32 circular bg-success"><img width="34" height="34" class="col-top" src="/assets/img/profiles/1.jpg" data-src="/assets/img/profiles/1.jpg" data-src-retina="/assets/img/profiles/1x.jpg" alt=""></span>';
+                    clone += '<span class="thumbnail-wrapper d32 circular bg-success"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
                     clone += '</span>';
                     clone += '<div class="p-l-10 col-xs-height col-middle col-xs-12">';
                     clone += '<span class="text-master"><strong>'+v.brand+'</strong></span>';
-                    clone += '<span class="block text-master hint-text fs-12">Category</span>';
+                    clone += '<span class="block text-master hint-text fs-12">'+v.category+'</span>';
                     clone += '<p><strong><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></strong></p>';
                     clone += '</div></li>';
 
                     //console.log('clone => ' + clone);
                     $('ul#map-items').append(clone);
               });
+              $('#filters .map-location').html($(this).closest('div').find('.marker_name').html());
               $('#filters.maps').addClass('open');
               return false;
             });

@@ -51,7 +51,7 @@ class EventsController extends Controller
   {
     //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'image', 'brand.name', 'location.name'], 'highlight' => true, 'suggest' => true]);
     //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => '<span style="color:red">'], 'suggest' => true]);
-    $results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => true]);
+    $results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
     //$highlights = $results->getResults()->first()->getHighlights(['location.name']);
     //$suggestios = $results->getSuggestions();
 
@@ -65,7 +65,7 @@ class EventsController extends Controller
         $locations = $result->getHighlights(['location.name']);
         if(!empty($locations)){
           foreach($locations as $key => $location){
-            $arr_map = array('name' => $location[0], 'lat' => $result->location[0]['lat'], 'lon' => $result->location[0]['lon']);
+            $arr_map = array('id' => $result->location[0]['id'], 'name' => $location[0], 'lat' => $result->location[0]['lat'], 'lon' => $result->location[0]['lon']);
             array_push($arr_location, $arr_map);
           }
         }

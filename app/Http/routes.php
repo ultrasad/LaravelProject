@@ -47,6 +47,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('events/desc_upload', 'EventsController@desc_upload');
     Route::get('events/branch/{id}', 'EventsController@branch');
     Route::get('maps/locations', 'MapsController@locations');
+    Route::get('maps/location/{id}', 'MapsController@locations');
     Route::get('brand/register', [
       'middleware' => ['auth', 'roles'],
       'uses' => 'BrandController@register',

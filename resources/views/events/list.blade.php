@@ -146,7 +146,7 @@
               <div class="padding-15">
                 <div class="item-header clearfix">
                   <div class="thumbnail-wrapper d32 circular">
-                    <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="{{ $event->brand_name }}" />
+                    <img width="40" height="40" src="{{ URL::asset($event->brand->logo_image) }}" data-src="{{ URL::asset($event->brand->logo_image) }}" data-src-retina="{{ URL::asset($event->brand->logo_image) }}" alt="{{ $event->brand_name }}" />
                   </div>
                   <div class="inline m-l-10">
                     <p class="no-margin">

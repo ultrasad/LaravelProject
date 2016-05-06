@@ -2188,10 +2188,6 @@
     }
 
     $(document).on('click.pg.search.data-api', '[data-toggle="search"]', function(e) {
-        $('.row_result').html('');
-        $('.row_result_map').html('');
-        console.log('page search disabled.');
-
         var $this = $(this);
         var $target = $('[data-pages="search"]');
         if ($this.is('a')) e.preventDefault();

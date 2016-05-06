@@ -33,6 +33,11 @@ var fx_select_brand;
         // your logic to perform a search and display results
         $(".list-view-wrapper").scrollbar();
 
+        $(document).on('click.pg.search.data-api', '[data-toggle="search"]', function(e) {
+            $('.row_result, .row_result_map').html('');
+            $('.result_pro, .result_map').hide();
+        });
+
         $('[data-pages="search"]').search({
             // Bind elements that are included inside search overlay
             searchField: '#overlay-search',
@@ -66,9 +71,8 @@ var fx_select_brand;
                         //var results = $.parseJSON(resp);
                         //console.log(results);
 
-                        $('.row_result').html('');
+                        $('.row_result, .row_result_map').html('');
                         $('.result_map').hide();
-                        $('.row_result_map').html('');
 
                         var results = $.parseJSON(resp);
                         if($.isEmptyObject(results.event)){
@@ -81,6 +85,7 @@ var fx_select_brand;
                           var $index  =0;
                           $.each(results.event, function (key, value) {
                               //console.log('val => ' + key);
+                              $('.result_pro').show();
                               var $clone = $('.col_hidden_search > div.col_result').clone();
                               $clone.find('span.result-title').html(value.title);
                               $clone.find('img.result-image').attr('src', '/' + value.image).attr('data-src', '/' + value.image).html(value.title);

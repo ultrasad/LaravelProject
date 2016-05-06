@@ -82,7 +82,7 @@
         <!-- BEGIN Overlay Search Results, This part is for demo purpose, you can add anything you like !-->
         <div class="container-fluid">
           <div class="search-results m-t-20">
-            <p class="bold">Promotion Search Results</p>
+            <p class="bold result_pro" style="display: none">Promotion Search Results</p>
             <div class="row_result"></div>
             <p>&nbsp;</p>
             <p class="bold result_map" style="display: none">Map Search Results</p>

@@ -50,7 +50,7 @@ var fx_select_brand;
             },
             // Callback that will be run whenever you enter a key into search box.
             // Perform any live search here.
-            onSearchSubmit: function(searchString) {
+            onKeyEnter: function(searchString) {
                 console.log("Live search for: " + searchString);
                 var searchField = $('#overlay-search');
                 var searchResults = $('.search-results');

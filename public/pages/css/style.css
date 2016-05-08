@@ -832,8 +832,16 @@ div.cs-select-brand {
     padding-right: 15px;
   }
 
-  body #overlay-search {
-    height: 0.9em;
+  /*body #overlay-search {
+    height: 50px;
+  }
+  */
+
+  body #overlay-search, .overlay .overlay-search {
+      font-size: 30px;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 5px !important;
   }
 
   .row_result .result-title, .row_result_map .result-title {
@@ -943,6 +951,13 @@ div.cs-select-brand {
 
   .nav-follow-footer {
     text-align: center;
+  }
+
+  body #overlay-search, .overlay .overlay-search {
+      font-size: 30px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 5px !important;
   }
 
 }

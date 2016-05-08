@@ -75,7 +75,7 @@
           <input id="overlay-search" class="no-border overlay-search bg-transparent" placeholder="Search..." autocomplete="off" spellcheck="false">
           <br>
           <div class="inline-block">
-            <i class="fa fa-search" aria-hidden="true"></i><p class="inline-block fs-13 m-l-10">Press enter to search</p>
+            <i class="fa fa-search p-l-5" aria-hidden="true"></i><p class="inline-block fs-13 m-l-10">Press enter to search</p>
           </div>
           <!-- END Overlay Controls !-->
         </div>

@@ -1,5 +1,5 @@
 @extends('layouts.document')
-@section('page_title', 'Events List')
+@section('page_title', 'Promotion, '. $event_title)
 @section('content')
 
 <!-- START JUMBOTRON -->

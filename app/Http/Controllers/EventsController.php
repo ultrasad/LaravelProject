@@ -81,7 +81,8 @@ class EventsController extends Controller
   */
   public function index()
   {
-    $events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->paginate(15);
+    //$events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->paginate(15); //old remove event brand
+    $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
     //$events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
 
     //echo '<pre>';
@@ -265,8 +266,9 @@ class EventsController extends Controller
       //$event = Event::with('user', 'category')->where('slug', $slug)->first();
       //$event = Event::where('url_slug', $slug)->eventBrand()->first();
       $event = Event::where('url_slug', $slug)->first();
-      if(!$event)
-        return Redirect::back()->with('message','Event Not Exists !');
+      if($event->count() < 1)
+        //return Redirect::back()->with('message','Event Not Exists !');
+        return redirect('/');
 
       $branchs = array();
       $tags = array();
@@ -285,7 +287,7 @@ class EventsController extends Controller
 
       foreach($event->tags->all() as $index => $tag){
         //$tags[] = '<i class="fa fa-check-circle hint-text m-t-10"></i> ' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
-        $tags[] = '<span><i class="fa fa-tag fa-flip-horizontal hint-text-8 m-t-10" aria-hidden="true"></i> </span>' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
+        $tags[] = '<span><i class="fa fa-tag fa-flip-horizontal hint-text-8 m-t-10" aria-hidden="true"></i> </span>' . link_to('/tags/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
       }
 
       //if(!empty($locations)){
@@ -317,6 +319,7 @@ class EventsController extends Controller
       //exit;
 
       $event_id = $event->id;
+      $event_title = $event->title;
       $cate_id = isset($event->category->first()->id)?$event->category->first()->id:'';
       $relates = array();
       if($event_id && $cate_id !=''){
@@ -337,7 +340,7 @@ class EventsController extends Controller
       //print_r($relate[0]->category[0]->name);
       //exit;
 
-      return view('events.show', compact('event', 'branchs', 'locations', 'tags', 'relates'));
+      return view('events.show', compact('event', 'branchs', 'locations', 'tags', 'relates', 'event_title'));
   }
 
   /**

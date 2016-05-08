@@ -1,6 +1,24 @@
 @extends('layouts.document')
-@section('page_title', 'Events List')
+@section('page_title', 'Promotion List, Category: ' . $category_name)
 @section('content')
+
+<!-- START JUMBOTRON -->
+<div class="jumbotron m-b-15" data-pages="parallax">
+  <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+    <div class="inner">
+      <!-- START BREADCRUMB -->
+      <ul class="breadcrumb">
+        <li>
+          <p>Category</p>
+        </li>
+        <li><a href="#" class="active">{{ $category_name }}</a>
+        </li>
+      </ul>
+      <!-- END BREADCRUMB -->
+    </div>
+  </div>
+</div>
+<!-- END JUMBOTRON -->
 
 <div class="social-wrapper">
   <div class="social-test" data-pages="social">
@@ -11,42 +29,6 @@
           <!-- START ITEM -->
           <div class="card no-border bg-transparent full-width" data-social="item"></div>
           <!-- END ITEM -->
-          <!-- START ITEM -->
-
-          <div class="card col2-test col-centered" data-social="item">
-            <div class="gallery-item" data-width="2" data-height="2">
-              <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">
-                <div class="slide-front">
-                  <img src="/images/events/2016-03-30/gallery/43/20160330-141855-Promotion-Reebok-Grand-Sale-2016-Sale-up-to-70-Off.png" class="img-responsive" />
-               </div>
-               <div class="slide-back">
-                  <img src="/images/events/2016-03-30/20160330-120609-Promotion-Crocs-End-Of-Season-Sale-up-to-50-Mar.2016.jpg" class="img-responsive" />
-               </div>
-              </div>
-              <div class="overlayer bottom-left full-width">
-                <div class="overlayer-wrapper item-info more-content">
-                  <div class="gradient-grey p-l-20 p-r-20 p-t-50 p-b-5">
-                    <div class="">
-                      <h3 class="pull-left bold text-white no-margin">โปรโมชั่น Sports Revolution Warehouse Sale ครั้งที่4 Nike, Under Armour, ASICS, Crocs Sale ลดสูงสุด 80%</h3>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="m-t-20">
-                      <div class="thumbnail-wrapper d32 circular m-t-5">
-                        <img width="40" height="40" src="/assets/img/profiles/avatar.jpg" data-src="/assets/img/profiles/avatar.jpg" data-src-retina="/assets/img/profiles/avatar2x.jpg" alt="">
-                      </div>
-                      <div class="inline m-l-10">
-                        <p class="no-margin text-white fs-12"><strong>Super Sport</strong></p>
-						            <p class="rating">หมวดหมู่แบรนด์</p>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END ITEM -->
-
           @forelse($events as $event)
           <!-- START ITEM -->
           <div class="card col1-test col-centered" data-social="item" data-col="column">
@@ -60,7 +42,7 @@
                     <p class="no-margin">
                       <strong>{{ $event->brand->first()->name }}</strong>
                     </p>
-                    @if(!empty($event->category_first))
+                    @if($category_name != 'unknow')
                         <p class="no-margin hint-text"><a class="category-url" href="{{ URL::to('category', $event->category_first->category) }}" title="{{ $event->category_first->name }}">{{ $event->category_first->name }}</a></p>
                     @else
                         <p class="no-margin hint-text"><a class="category-url" href="{{ URL::to('category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>

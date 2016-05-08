@@ -63,6 +63,14 @@ body.menu-behind .header .brand {
   background: none;
 }
 
+a.category-url {
+  color: #666;
+}
+
+a.category-url:hover {
+  color: #333;
+}
+
 /* nav */
 ol, ul {
     list-style: outside none none;

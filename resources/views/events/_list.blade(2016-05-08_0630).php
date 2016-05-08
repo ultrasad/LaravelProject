@@ -45,8 +45,47 @@
               </div>
             </div>
           </div>
-          <!-- END ITEM -->
 
+          <!-- END ITEM -->
+          <!-- START ITEM -->
+          {{--
+          <div class="card share col1" data-social="item">
+            <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+            </div>
+            <div class="card-header clearfix">
+              <div class="user-pic">
+                <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="">
+              </div>
+              <h5>Shannon Williams</h5>
+              <h6>Shared a photo</h6>
+            </div>
+            <div class="card-content">
+              <ul class="buttons ">
+                <li>
+                  <a href="#"><i class="fa fa-expand"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-heart-o"></i></a>
+                </li>
+              </ul>
+              <img src="{{ URL::asset('assets/img/social-post-image.png') }}" class="block center-margin relative" alt="Social Post" />
+            </div>
+            <div class="card-description">
+              <p>Inspired by : good design is obvious, great design is transparent</p>
+              <div class="via">via welovepro</div>
+            </div>
+            <div class="card-footer clearfix">
+              <div class="time">few seconds ago</div>
+              <ul class="reactions">
+                <li><a href="#">5,345 <i class="fa fa-comment-o"></i></a>
+                </li>
+                <li><a href="#">23K <i class="fa fa-heart-o"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          --}}
+          <!-- END ITEM -->
           @forelse($events as $event)
           <!-- START ITEM -->
           <div class="card col1-test col-centered" data-social="item" data-col="column">
@@ -58,13 +97,9 @@
                   </div>
                   <div class="inline m-l-10">
                     <p class="no-margin">
-                      <strong>{{ $event->brand->first()->name }}</strong>
+                      <strong>{{ $event->brand_name }}</strong>
                     </p>
-                    @if(!empty($event->category_first))
-                        <p class="no-margin hint-text"><a class="category-url" href="{{ URL::to('category', $event->category_first->category) }}" title="{{ $event->category_first->name }}">{{ $event->category_first->name }}</a></p>
-                    @else
-                        <p class="no-margin hint-text"><a class="category-url" href="{{ URL::to('category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
-                    @endif
+                    <p class="no-margin hint-text">{{ isset($event->category_first->name) ? $event->category_first->name : 'ไม่ระบุ หมวดหมู่' }}</p>
                   </div>
                   <div class="pull-top pull-right list-inline">
                     <i class="pg-map"></i>
@@ -80,7 +115,7 @@
               <div class="padding-15">
                 <strong><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
                 <p>{{ $event->brief }}</p>
-                <div class="hint-text small-text">via {{ $event->brand->first()->name }}</div>
+                <div class="hint-text small-text">via {{ $event->brand_name }}</div>
               </div>
               <div class="padding-15 card_footer">
                 <div class="pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>

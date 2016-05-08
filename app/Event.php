@@ -200,6 +200,27 @@ class Event extends Model
       return $this->where('brand_id', $brand);
     }
 
+    public function scopeTagList($query, $tag)
+    {
+      return $this->whereHas('tags', function($query) use ($tag)
+      {
+          $query->where('tag', '=', $tag);
+      });
+    }
+
+    public function scopeCategoryList($query, $category)
+    {
+      if($category != 'unknow'){
+        return $this->whereHas('category', function($query) use ($category)
+        {
+            $query->where('category', '=', $category);
+            //$query->where('category', '=', NULL);
+        });
+      } else {
+        return  $this->leftJoin('event_category','event_category.event_id','=','events.id')->leftJoin('categories','categories.id','=','event_category.cate_id')->whereNull('categories.name');
+      }
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

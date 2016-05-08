@@ -698,16 +698,10 @@ div.cs-select-brand {
 }
 */
 
-/*.gallery-item[data-width="2"] {
+.gallery-item[data-width="2"] {
     margin: 0 auto;
     width: 620px;
     height: 485px;
-}*/
-
-.card .gallery-item {
-  margin: 0 auto;
-  width: 620px;
-  height: 485px;
 }
 
 /* social card */
@@ -976,14 +970,9 @@ div.cs-select-brand {
   }
   */
 
-  /*.gallery-item[data-width="2"] {
+  .gallery-item[data-width="2"] {
       width: 100%;
       height: auto;
-  }*/
-
-  .card .gallery-item {
-    width: 80vw;
-    height: 80vh;
   }
 
 }
@@ -1063,8 +1052,7 @@ div.cs-select-brand {
 */
 
 @media (max-width: 467px) {
-  .card .gallery-item {
-    width: 50vw;
+  .col2 .gallery-item {
     height: 50vh;
   }
 

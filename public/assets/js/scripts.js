@@ -188,7 +188,7 @@ var fx_select_brand;
             Show a sliding item using MetroJS
             http://www.drewgreenwell.com/projects/metrojs
         */
-        $(".live-tile,.flip-list").liveTile();
+        $(".live-tile").liveTile();
 
         /* FILTERS OVERLAY
        -------------------------------------------------------------*/

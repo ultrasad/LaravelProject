@@ -147,9 +147,9 @@
                           <div class="col-md-12 p-r-0 p-l-5">
                             <div class="hint-text pull-left">ถึงวันที่ : {{ $relate->end_date_thai }}</div>
                             <ul class="list-inline pull-right no-margin">
-                              <li><a href="#" class="text-info-link"><span>5,345</span> <i class="fa fa-comment-o"></i></a>
+                              <li><a href="#" class="text-master text-info-link"><span>5,345</span> <i class="fa fa-comment-o"></i></a>
                               </li>
-                              <li><a href="#" class="text-info-link"><span>23K</span> <i class="fa fa-heart-o"></i></a>
+                              <li><a href="#" class="text-master text-info-link"><span>23K</span> <i class="fa fa-heart-o"></i></a>
                               </li>
                             </ul>
                             <div class="clearfix">&nbsp;</div>

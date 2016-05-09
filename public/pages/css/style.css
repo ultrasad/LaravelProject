@@ -79,6 +79,10 @@ ol, ul {
   text-align: right;
 }
 
+.nav-follow-footer a {
+    padding-left: 10px;
+}
+
 .nav-follow li {
   float: left;
   padding-left: 15px;

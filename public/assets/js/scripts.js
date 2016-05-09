@@ -36,6 +36,198 @@ var fx_select_brand;
           };
         })();
 
+        (function($,sr){
+          // debouncing function from John Hann
+          // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+          var debounce = function (func, threshold, execAsap) {
+              var timeout;
+
+              return function debounced () {
+                  var obj = this, args = arguments;
+                  function delayed () {
+                      if (!execAsap)
+                          func.apply(obj, args);
+                      timeout = null;
+                  };
+
+                  if (timeout)
+                      clearTimeout(timeout);
+                  else if (execAsap)
+                      func.apply(obj, args);
+
+                  timeout = setTimeout(delayed, threshold || 100);
+              };
+          }
+        	// smartresize
+        	jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+
+        })(jQuery,'smartresize');
+
+        (function(funcName, baseObj) {
+          // The public function name defaults to window.docReady
+          // but you can pass in your own object and own function name and those will be used
+          // if you want to put them in a different namespace
+          funcName = funcName || "docReady";
+          baseObj = baseObj || window;
+          var readyList = [];
+          var readyFired = false;
+          var readyEventHandlersInstalled = false;
+
+          // call this when the document is ready
+          // this function protects itself against being called more than once
+          function ready() {
+              if (!readyFired) {
+                  // this must be set to true before we start calling callbacks
+                  readyFired = true;
+                  for (var i = 0; i < readyList.length; i++) {
+                      // if a callback here happens to add new ready handlers,
+                      // the docReady() function will see that it already fired
+                      // and will schedule the callback to run right after
+                      // this event loop finishes so all handlers will still execute
+                      // in order and no new ones will be added to the readyList
+                      // while we are processing the list
+                      readyList[i].fn.call(window, readyList[i].ctx);
+                  }
+                  // allow any closures held by these functions to free
+                  readyList = [];
+              }
+          }
+
+          function readyStateChange() {
+              if ( document.readyState === "complete" ) {
+                  ready();
+              }
+          }
+
+          // This is the one public interface
+          // docReady(fn, context);
+          // the context argument is optional - if present, it will be passed
+          // as an argument to the callback
+          baseObj[funcName] = function(callback, context) {
+              // if ready has already fired, then just schedule the callback
+              // to fire asynchronously, but right away
+              if (readyFired) {
+                  setTimeout(function() {callback(context);}, 1);
+                  return;
+              } else {
+                  // add the function and context to the list
+                  readyList.push({fn: callback, ctx: context});
+              }
+              // if document already ready to go, schedule the ready function to run
+              if (document.readyState === "complete") {
+                  setTimeout(ready, 1);
+              } else if (!readyEventHandlersInstalled) {
+                  // otherwise if we don't have event handlers installed, install them
+                  if (document.addEventListener) {
+                      // first choice is DOMContentLoaded event
+                      document.addEventListener("DOMContentLoaded", ready, false);
+                      // backup is window load event
+                      window.addEventListener("load", ready, false);
+                  } else {
+                      // must be IE
+                      document.attachEvent("onreadystatechange", readyStateChange);
+                      window.attachEvent("onload", ready);
+                  }
+                  readyEventHandlersInstalled = true;
+              }
+          }
+        })("docReady", window);
+
+        /*grid card layout*/
+
+        /*docReady( function() {
+          var container = document.querySelector('.day');
+          var iso = window.iso = new Isotope( container, {
+            // sortBy: 'symbol',
+            // filter: '.metal',
+            layoutMode: 'masonry',
+            masonry: {
+              //columnWidth: 300
+              columnWidth: '.col1-test'
+            },
+            itemSelector: '.col-centered',
+            stamp: '.stamp',
+            getSortData: {
+
+              number: '.number parseInt',
+              symbol: '.symbol',
+              name: '.name',
+              category: '[data-category]',
+
+              weight: function( itemElem ) {
+                // remove parenthesis
+                return parseFloat( getText( itemElem.querySelector('.weight') ).replace( /[\(\)]/g, '') );
+              }
+
+            }
+          });
+
+          //var options = document.querySelector('#options');
+
+          eventie.bind( options, 'click', function( event ) {
+            if ( !matchesSelector( event.target, 'button' ) ) {
+              return;
+            }
+            var sortBy = event.target.getAttribute('data-sort-by');
+            iso.arrange({ sortBy: sortBy });
+          });
+
+        });*/
+
+        /*docReady( function() {
+          var container = document.querySelector('#container');
+          var iso = window.iso = new Isotope( container, {
+            // sortBy: 'symbol',
+            // filter: '.metal',
+            layoutMode: 'masonry',
+            masonry: {
+              //columnWidth: 90
+              columnWidth: '.element'
+            },
+            itemSelector: '.element',
+          });
+
+        });*/
+
+        var resizeTimeout,
+        $grid,
+        $container = $('.day'),
+        margin = 20,
+        $grid = $container.isotope({
+            itemSelector: '.col-centered',
+            //layoutMode: 'fitRows',
+            layoutMode: 'masonry',
+            //percentPosition: true,
+            //transitionDuration: '0.8s',
+            //layoutMode: 'fitRows',
+            //animationEngine: 'best-available',
+            resizable: false,
+            masonry: {
+              columnWidth: '.col1-element',
+            },
+        });
+
+        $grid.isotope('on', 'arrangeComplete', function() {
+          console.log('arrange is complete');
+        });
+
+        // layout Isotope after each image loads
+        $('.feed').imagesLoaded().progress( function() {
+          $grid.isotope('layout');
+        });
+
+        $(window).on('load', function() {
+          //isotope();
+        });
+
+        $(window).smartresize(function(){
+          delay(function(){
+            $grid.isotope('layout');
+          }, 810);
+
+        });
+        /*grid card layout*/
+
         // Initializes search overlay plugin.
         // Replace onSearchSubmit() and onKeyEnter() with
         // your logic to perform a search and display results

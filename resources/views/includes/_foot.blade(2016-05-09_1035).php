@@ -36,3 +36,76 @@
 <script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js') }}"></script>
 <script src="{{ URL::asset('assets/js/datatables.js') }}" type="text/javascript"></script>
 <!-- END PAGE LEVEL JS -->
+
+<script type="text/javascript">
+$( document ).ready(function() {
+
+    (function($,sr){
+      // debouncing function from John Hann
+      // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+      var debounce = function (func, threshold, execAsap) {
+          var timeout;
+
+          return function debounced () {
+              var obj = this, args = arguments;
+              function delayed () {
+                  if (!execAsap)
+                      func.apply(obj, args);
+                  timeout = null;
+              };
+
+              if (timeout)
+                  clearTimeout(timeout);
+              else if (execAsap)
+                  func.apply(obj, args);
+
+              timeout = setTimeout(delayed, threshold || 100);
+          };
+      }
+    	// smartresize
+    	jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+
+    })(jQuery,'smartresize');
+
+    var resizeTimeout,
+    $grid,
+    $container = $('.day'),
+    margin = 20,
+    $grid = $container.isotope({
+        itemSelector: '.card',
+        //layoutMode: 'fitRows',
+        //animationEngine: 'best-available',
+        resizable: false,
+        masonry: {
+          columnWidth: '.col1-test',
+        }
+    });
+
+    $grid.isotope( 'on', 'arrangeComplete', function() {
+      console.log('arrange is complete');
+    });
+
+    // layout Isotope after each image loads
+    $grid.imagesLoaded().progress( function() {
+      $grid.isotope('layout');
+    });
+
+    $(window).on('load', function() {
+      //isotope();
+    });
+
+    $(window).smartresize(function(){
+      // code that takes it easy...
+      var $windowSize = $('body').width();
+      //console.log('window feed Size => ' + $windowSize);
+
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+          // $social.data('pg.social').setContainerWidth();
+          //isotope();
+          $grid.isotope('layout');
+          //$grid.isotope({ filter: '*' });
+      }, 810);
+    });
+});
+</script>

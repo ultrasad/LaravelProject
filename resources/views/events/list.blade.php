@@ -3,17 +3,16 @@
 @section('content')
 
 <div class="social-wrapper">
-  <div class="social-test" data-pages="social">
+  <div class="social-element" data-pages="social">
     <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10">
+      <div class="m-b-5">&nbsp;</div>
+
       <div class="feed">
         <!-- START DAY -->
         <div class="day" data-social="day">
           <!-- START ITEM -->
-          <div class="card no-border bg-transparent full-width" data-social="item"></div>
-          <!-- END ITEM -->
-          <!-- START ITEM -->
 
-          <div class="card col2-test col-centered" data-social="item">
+          <div class="card col2-element col-centered" data-social="item">
             <div class="gallery-item" data-width="2" data-height="2">
               <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">
                 <div class="slide-front">
@@ -49,7 +48,7 @@
 
           @forelse($events as $event)
           <!-- START ITEM -->
-          <div class="card col1-test col-centered" data-social="item" data-col="column">
+          <div class="card col1-element col-centered" data-social="item" data-col="column">
             <div class="panel no-border  no-margin">
               <div class="padding-15">
                 <div class="item-header clearfix">

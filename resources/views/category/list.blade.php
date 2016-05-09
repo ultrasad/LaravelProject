@@ -9,7 +9,7 @@
       <!-- START BREADCRUMB -->
       <ul class="breadcrumb">
         <li>
-          <p>Category</p>
+          <p>Promotion Category</p>
         </li>
         <li><a href="#" class="active">{{ $category_name }}</a>
         </li>
@@ -33,17 +33,24 @@
               <div class="padding-15">
                 <div class="item-header clearfix">
                   <div class="thumbnail-wrapper d32 circular">
-                    <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand_name }}" />
+                    <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
                   </div>
                   <div class="inline m-l-10">
                     <p class="no-margin">
-                      <strong>{{ $event->brand->first()->name }}</strong>
+                      <strong>{{ $event->brand->name }}</strong>
                     </p>
-                    @if($category_name != 'unknow')
-                        <p class="no-margin hint-text"><a class="category-url" href="{{ URL::to('category', $event->category_first->category) }}" title="{{ $event->category_first->name }}">{{ $event->category_first->name }}</a></p>
+                    @if(!empty($event->brand->category_first->name))
+                        <p class="no-margin hint-text"><a class="category-brand-url" href="{{ URL::to('brand/category', $event->brand->category_first->category) }}" title="{{ $event->brand->category_first->name }}">{{ $event->brand->category_first->name }}</a></p>
                     @else
-                        <p class="no-margin hint-text"><a class="category-url" href="{{ URL::to('category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
+                        <p class="no-margin hint-text"><a class="category-brand-url" href="{{ URL::to('brand/category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
                     @endif
+                    {{--
+                    @if($category_name != 'unknow')
+                        <p class="no-margin hint-text"><a class="category-brand-url" href="{{ URL::to('category', $event->category_first->category) }}" title="{{ $event->category_first->name }}">{{ $event->category_first->name }}</a></p>
+                    @else
+                        <p class="no-margin hint-text"><a class="category-brand-url" href="{{ URL::to('category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
+                    @endif
+                    --}}
                   </div>
                   <div class="pull-top pull-right list-inline">
                     <i class="pg-map"></i>
@@ -64,9 +71,9 @@
               <div class="padding-15 card_footer">
                 <div class="pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>
                 <ul class="list-inline pull-right no-margin">
-                  <li><a class="text-info-link" href="#">5,345 <i class="fa fa-comment-o"></i></a>
+                  <li><a class="text-info-link" href="#"><span>5,345</span> <i class="fa fa-comment-o"></i></a>
                   </li>
-                  <li><a class="text-info-link" href="#">23K <i class="fa fa-heart-o"></i></a>
+                  <li><a class="text-info-link heart" href="#"><span>23K</span> <i class="fa fa-heart"></i></a>
                   </li>
                 </ul>
                 <div class="clearfix"></div>

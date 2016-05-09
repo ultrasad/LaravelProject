@@ -74,11 +74,11 @@
       </li>
 
       <li class="m-t-5">
-        <span class="title-header-category">BRAND GROUP</span>
-        <span class="icon-thumbnail">BG</span>
+        <span class="title-header-category">BRAND CATEGORY</span>
+        <span class="icon-thumbnail">BC</span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/brand/category/food-drink" class="detailed">
           <span class="title">Food / Drink</span>
           <span class="details">อาหาร / เครื่องดื่ม</span>
         </a>
@@ -87,7 +87,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/brand/category/clothes" class="detailed">
           <span class="title">Clothes</span>
           <span class="details">เสื้อผ้า / แฟชั่น / เครื่องประดับ</span>
         </a>
@@ -96,7 +96,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/brand/category/cosmetic" class="detailed">
           <span class="title">Cosmetic</span>
           <span class="details">เครื่องสำอาง / ความงาม</span>
         </a>
@@ -105,7 +105,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/brand/category/supermarket" class="detailed">
           <span class="title">Supermarket</span>
           <span class="details">ห้างฯ / ซูเปอร์มาเก็ต</span>
         </a>
@@ -114,7 +114,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/brand/category/airline" class="detailed">
           <span class="title">Airline</span>
           <span class="details">สายการบิน / การเดินทาง</span>
         </a>
@@ -123,7 +123,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/brand/category/sport" class="detailed">
           <span class="title">Sport</span>
           <span class="details">กีฬา</span>
         </a>
@@ -132,7 +132,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/brand/category/mobile" class="detailed">
           <span class="title">Mobile</span>
           <span class="details">มือถือ / สื่อสาร</span>
         </a>
@@ -141,7 +141,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/brand/category/electronics" class="detailed">
           <span class="title">Electronics</span>
           <span class="details">เครื่องใช้ไฟฟ้า</span>
         </a>
@@ -150,7 +150,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/brand/category/travel" class="detailed">
           <span class="title">Travel</span>
           <span class="details">ท่องเที่ยว / ที่พัก / โรงแรม / รีสอร์ท</span>
         </a>
@@ -160,11 +160,11 @@
       </li>
 
       <li class="m-t-5">
-        <span class="title-header-category">CATEGORY</span>
-        <span class="icon-thumbnail">C</span>
+        <span class="title-header-category">PROMOTION CATEGORY</span>
+        <span class="icon-thumbnail">PC</span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/computer" class="detailed">
           <span class="title">Computer / IT</span>
           <span class="details">คอมพิวเตอร์</span>
         </a>
@@ -173,7 +173,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/furniture" class="detailed">
           <span class="title">Furniture</span>
           <span class="details">เฟอร์นิเจอร์ / ของใช้ในบ้าน</span>
         </a>
@@ -182,7 +182,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/entertainment" class="detailed">
           <span class="title">Entertainment</span>
           <span class="details">บันเทิง / ดนตรี / ภาพยนตร์</span>
         </a>
@@ -191,7 +191,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/money-bank" class="detailed">
           <span class="title">Money / Bank</span>
           <span class="details">การเงิน-ธนาคาร</span>
         </a>
@@ -200,7 +200,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/home-condo" class="detailed">
           <span class="title">Home / Condo</span>
           <span class="details">บ้าน / คอนโด</span>
         </a>
@@ -209,7 +209,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/automotive" class="detailed">
           <span class="title">Automotive</span>
           <span class="details">ยานยนต์</span>
         </a>
@@ -218,7 +218,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/health" class="detailed">
           <span class="title">Health</span>
           <span class="details">สุขภาพ / ร่างกาย</span>
         </a>
@@ -227,7 +227,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/book-stationery" class="detailed">
           <span class="title">Book / Stationery</span>
           <span class="details">หนังสือ / เครื่องเขียน</span>
         </a>
@@ -236,7 +236,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/camera-photograph" class="detailed">
           <span class="title">Camera / Photograph</span>
           <span class="details">กล้อง / ถ่ายภาพ</span>
         </a>
@@ -245,7 +245,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/gift" class="detailed">
           <span class="title">Gift Shop</span>
           <span class="details">ของขวัญ</span>
         </a>
@@ -254,7 +254,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/office-supplies" class="detailed">
           <span class="title">Office Supplies</span>
           <span class="details">เครื่องใช้สำนักงาน</span>
         </a>
@@ -263,7 +263,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/kids" class="detailed">
           <span class="title">Kids</span>
           <span class="details">เด็ก</span>
         </a>
@@ -272,7 +272,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/pet" class="detailed">
           <span class="title">Pet</span>
           <span class="details">สัตว์เลี้ยง</span>
         </a>
@@ -281,7 +281,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/education" class="detailed">
           <span class="title">Education</span>
           <span class="details">การศึกษา</span>
         </a>
@@ -290,7 +290,7 @@
         </span>
       </li>
       <li class="">
-        <a href="#" class="detailed">
+        <a href="/category/consumer-goods" class="detailed">
           <span class="title">Consumer Goods</span>
           <span class="details">เครื่องอุปโภคบริโภค</span>
         </a>

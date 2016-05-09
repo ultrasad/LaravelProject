@@ -48,6 +48,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('events/branch/{id}', 'EventsController@branch');
     Route::get('tags/{name}', 'TagsController@index');
     Route::get('category/{name}', 'CategoryController@index');
+    Route::get('brand/category/{name}', 'BrandController@category');
     Route::get('maps/locations', 'MapsController@locations');
     Route::get('maps/location/{id}', 'MapsController@locations');
     Route::get('brand/register', [

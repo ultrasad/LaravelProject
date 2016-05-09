@@ -31,6 +31,14 @@ body {
   color: #1b9ad1;
 }
 
+a.text-info-link span {
+  display: none; /* hidden under constructor*/
+}
+
+a.text-info-link.heart:hover {
+    color: #EB0188;
+}
+
 body.menu-behind .header .brand {
     padding-left: 0px;
     width: 160px;
@@ -52,12 +60,20 @@ body.menu-behind .header .brand {
   background: none;
 }
 
-a.category-url {
+a.category-brand-url {
   color: #666;
 }
 
-a.category-url:hover {
+a.category-brand-url:hover {
   color: #333;
+}
+
+a.category-event-url {
+  color: #8d959c;
+}
+
+a.category-event-url:hover {
+  color: #767C82;
 }
 
 /* nav */
@@ -576,6 +592,10 @@ div.cs-select-brand {
   color: #3af !important;
 }
 
+.card-relate-footer a.text-master.heart:hover {
+    color: #EB0188 !important;
+}
+
 .relate .thumb, .relate .brief {
   padding: 0px;
 }
@@ -900,6 +920,10 @@ div.cs-select-brand {
 @media all and (min-width: 1400px) {
   .card-relate-footer .text-master span {
     display: inline-block;
+  }
+
+  .card-relate-footer .text-master span {
+    display: none; /* hidden under constructor*/
   }
 }
 

@@ -21,7 +21,7 @@ class BrandController extends Controller
   public function __construct()
   {
     //$this->middleware('auth', ['only' => ['create', 'store']]);
-    $this->middleware('auth', ['except' => ['index', 'show', 'branch']]);
+    $this->middleware('auth', ['except' => ['index', 'show', 'branch', 'category']]);
   }
 
   /**
@@ -34,6 +34,30 @@ class BrandController extends Controller
     //echo '=> ' . $brand;
     $events = Event::published()->active()->eventBrand()->BrandId($brand_id)->orderBy('events.created_at', 'desc')->paginate(15);
     return view('brand.index', compact('events'));
+  }
+
+  public function category($category='unknow')
+  {
+    //echo '=> ' . $category;
+    $events = Event::published()->active()->brandCategoryList($category)->orderBy('events.created_at', 'desc')->paginate(15);
+
+    //echo '<pre>';
+    //print_r($events);
+    //print_r($events->first()->brand->category->first()->name);
+    //exit;
+
+    if($events->count() < 1){
+      return redirect('/');
+    } else {
+      if($category == 'unknow'){
+        $category_name = 'unknow';
+      } else {
+        //$category_name = $events->first()->category->where('category', $category)->first()->name;
+        $category_name = $events->first()->brand->category->first()->name;
+      }
+    }
+
+    return view('brand.category', compact('events', 'category_name'));
   }
 
   /**

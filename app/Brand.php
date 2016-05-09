@@ -31,6 +31,11 @@ class Brand extends Model
                 ->withTimestamps(); //update created app, updated app relationship table
   }
 
+  public function getCategoryFirstAttribute()
+  {
+      return $this->category->first();
+  }
+
   //branch list
   public function getBranchListAttribute()
   {

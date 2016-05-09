@@ -40,20 +40,30 @@
     </div>
     <div class="col-md-6">
       <div class="panel-body">
-        <div class="no-margin fs-15 hint-text-9">Category :: {{ isset($event->category_first->name) ? $event->category_first->name : 'ไม่ระบุ หมวดหมู่' }}</div>
+        <div class="no-margin fs-15 hint-text-9">
+            @if(!empty($event->category_first->name))
+                Category :: <a class="category-event-url" href="{{ URL::to('category', $event->category_first->category) }}" title="{{ $event->category_first->name }}">{{ $event->category_first->name }}</a>
+            @else
+                Category :: <a class="category-event-url" href="{{ URL::to('category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a>
+            @endif
+        </div>
         <!-- START PANEL -->
         <h2 class="text-master">{{ $event->title }}</h2>
         <p>{{ $event->brief }}</p>
         <p>&nbsp;</p>
         <div class="item-header clearfix">
           <div class="thumbnail-wrapper d32 circular">
-            <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/3x.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/3.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/3x.jpg') }}" alt="{{ $event->brand->first()->name }}" />
+            <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
           </div>
           <div class="inline m-l-10">
             <p class="no-margin">
-              <strong>{{ $event->brand->first()->name }}</strong>
+              <strong>{{ $event->brand->name }}</strong>
             </p>
-            <p class="no-margin hint-text">หมวดหมู่แบรนด์</p>
+            @if(!empty($event->brand->category_first->name))
+                <p class="no-margin hint-text"><a class="category-brand-url" href="{{ URL::to('brand/category', $event->brand->category_first->category) }}" title="{{ $event->brand->category_first->name }}">{{ $event->brand->category_first->name }}</a></p>
+            @else
+                <p class="no-margin hint-text"><a class="category-brand-url" href="{{ URL::to('brand/category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
+            @endif
           </div>
         </div>
         <p>&nbsp;</p>
@@ -145,11 +155,11 @@
                       <div class="row col-md-9 col-xs-8 padding-0 m-l-0 m-r-0 pull-right footer-relate">
                         <div class="col-md-12 card-relate-footer p-l-0 p-r-0">
                           <div class="col-md-12 p-r-0 p-l-5">
-                            <div class="hint-text pull-left">ถึงวันที่ : {{ $relate->end_date_thai }}</div>
+                            <div class="pull-left">ถึงวันที่ : {{ $relate->end_date_thai }}</div>
                             <ul class="list-inline pull-right no-margin">
-                              <li><a href="#" class="hint-text text-master text-info-link"><span>5,345</span> <i class="fa fa-comment-o"></i></a>
+                              <li><a href="#" class="hint-text text-master text-info-link"><span>5,345</span> <i class="fa fa-comment"></i></a>
                               </li>
-                              <li><a href="#" class="hint-text text-master text-info-link"><span>23K</span> <i class="fa fa-heart-o"></i></a>
+                              <li><a href="#" class="hint-text text-master text-info-link heart"><span>23K</span> <i class="fa fa-heart"></i></a>
                               </li>
                             </ul>
                             <div class="clearfix">&nbsp;</div>

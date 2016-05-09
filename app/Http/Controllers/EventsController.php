@@ -82,7 +82,7 @@ class EventsController extends Controller
   public function index()
   {
     //$events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->paginate(15); //old remove event brand
-    $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
+    $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(20);
     //$events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
 
     //echo '<pre>';
@@ -338,6 +338,9 @@ class EventsController extends Controller
       //**$relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id)->orderBy('events.created_at', 'desc')->skip(0)->take(1)->get();
       //echo '<pre>';
       //print_r($relate[0]->category[0]->name);
+      //exit;
+
+      //echo 'brand => '. $event->brand->category_first->name;
       //exit;
 
       return view('events.show', compact('event', 'branchs', 'locations', 'tags', 'relates', 'event_title'));

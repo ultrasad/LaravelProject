@@ -568,6 +568,14 @@ div.cs-select-brand {
     bottom: 0;
 }
 
+.card-relate-footer a.text-master {
+  color: #8d959c !important;
+}
+
+.card-relate-footer a.text-master:hover {
+  color: #3af !important;
+}
+
 .relate .thumb, .relate .brief {
   padding: 0px;
 }

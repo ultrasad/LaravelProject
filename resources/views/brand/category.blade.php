@@ -71,7 +71,7 @@
               <div class="padding-15 card_footer">
                 <div class="pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>
                 <ul class="list-inline pull-right no-margin">
-                  <li><a class="text-info-link" href="#"><span>5,345</span> <i class="fa fa-comment-o"></i></a>
+                  <li><a class="text-info-link" href="#"><span>5,345</span> <i class="fa fa-comment"></i></a>
                   </li>
                   <li><a class="text-info-link heart" href="#"><span>23K</span> <i class="fa fa-heart"></i></a>
                   </li>

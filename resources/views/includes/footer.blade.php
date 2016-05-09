@@ -12,9 +12,9 @@
     <p class="small no-margin pull-right sm-pull-reset">
       <!--<a href="#">Hand-crafted</a> <span class="hint-text">&amp; Made with Love ®</span>-->
       <div class="nav-follow-footer">
-        <a target="_blank" href="#" title="Follow us on Facebook" class=""><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a>
-        <a target="_blank" href="#" title="Follow us on Twitter" class=""><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
-        <a target="_blank" href="#" title="Follow us on Youtube" class=""><i class="fa fa-youtube-square fa-lg" aria-hidden="true"></i></a>
+        <a target="_blank" href="#" title="Follow us on Facebook" class=""><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
+        <a target="_blank" href="#" title="Follow us on Twitter" class=""><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+        <a target="_blank" href="#" title="Follow us on Youtube" class=""><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></a>
       </div>
     </p>
     <div class="clearfix"></div>

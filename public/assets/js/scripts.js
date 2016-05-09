@@ -28,6 +28,14 @@ var fx_select_brand;
         });
         */
 
+        var delay = (function(){
+          var timer = 0;
+          return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+          };
+        })();
+
         // Initializes search overlay plugin.
         // Replace onSearchSubmit() and onKeyEnter() with
         // your logic to perform a search and display results
@@ -59,90 +67,95 @@ var fx_select_brand;
                 _token = $('input[name=_token]').val();
                 //data = new FormData(this);
                 if($('#overlay-search').val() != ''){
-                  $.ajax({
-                      url: '/events/search/' + searchString,
-                      headers: {'X-CSRF-TOKEN': _token},
-                      type: 'GET',
-                      datatype: 'JSON',
-                      processData: false,
-                      contentType: false,
-                      success: function (resp) {
-                        //console.log('response => ' + resp);
-                        //var results = $.parseJSON(resp);
-                        //console.log(results);
 
-                        $('.row_result, .row_result_map').html('');
-                        $('.result_map').hide();
-
-                        var results = $.parseJSON(resp);
-                        if($.isEmptyObject(results.event)){
-                          //console.log('yyy');
-                          $('.row_result').append('<div class="row p-l-15">ไม่พบข้อมูล...</div>');
-                          //console.log('xxxx');
-
-                        } else {
+                  delay(function(){
+                    //alert('Time elapsed!');
+                    $.ajax({
+                        url: '/events/search/' + searchString,
+                        headers: {'X-CSRF-TOKEN': _token},
+                        type: 'GET',
+                        datatype: 'JSON',
+                        processData: false,
+                        contentType: false,
+                        success: function (resp) {
+                          //console.log('response => ' + resp);
                           //var results = $.parseJSON(resp);
-                          var $index  =0;
-                          $.each(results.event, function (key, value) {
-                              //console.log('val => ' + key);
-                              $('.result_pro').show();
-                              var $clone = $('.col_hidden_search > div.col_result').clone();
-                              $clone.find('span.result-title').html(value.title);
-                              $clone.find('img.result-image').attr('src', '/' + value.image).attr('data-src', '/' + value.image).html(value.title);
-                              $clone.find('span.result-brief').html(value.brief);
-                              $clone.find('a.result-url').attr('href', '/events/' + value.url_slug).attr('title', value.title);
-                              $clone.find('p.result-brand').html('via ' + value.brand);
-                              $clone.css('display','block');
-                              //$clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
-                              //console.log($clone);
+                          //console.log(results);
 
-                              if($index % 2 == 0){
-                                //var $new_row = $('<div class="row new_create_row"></div>');
-                                //$clone.appendTo($new_row);
-                                var $div = $("<div class='row new_index_row'></div>").append($clone);
-                                $div.appendTo('.row_result');
-                              } else {
-                                $clone.appendTo('.row_result .new_index_row:last');
-                              }
+                          $('.row_result, .row_result_map').html('');
+                          $('.result_map').hide();
 
-                              $index++;
+                          var results = $.parseJSON(resp);
+                          if($.isEmptyObject(results.event)){
+                            //console.log('yyy');
+                            $('.row_result').append('<div class="row p-l-15">ไม่พบข้อมูล...</div>');
+                            //console.log('xxxx');
 
-                              //$('.row_search_result .col_result:last').after($clone);
-                              //$('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
-                          });
+                          } else {
+                            //var results = $.parseJSON(resp);
+                            var $index  =0;
+                            $.each(results.event, function (key, value) {
+                                //console.log('val => ' + key);
+                                $('.result_pro').show();
+                                var $clone = $('.col_hidden_search > div.col_result').clone();
+                                $clone.find('span.result-title').html(value.title);
+                                $clone.find('img.result-image').attr('src', '/' + value.image).attr('data-src', '/' + value.image).html(value.title);
+                                $clone.find('span.result-brief').html(value.brief);
+                                $clone.find('a.result-url').attr('href', '/events/' + value.url_slug).attr('title', value.title);
+                                $clone.find('p.result-brand').html('via ' + value.brand);
+                                $clone.css('display','block');
+                                //$clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
+                                //console.log($clone);
+
+                                if($index % 2 == 0){
+                                  //var $new_row = $('<div class="row new_create_row"></div>');
+                                  //$clone.appendTo($new_row);
+                                  var $div = $("<div class='row new_index_row'></div>").append($clone);
+                                  $div.appendTo('.row_result');
+                                } else {
+                                  $clone.appendTo('.row_result .new_index_row:last');
+                                }
+
+                                $index++;
+
+                                //$('.row_search_result .col_result:last').after($clone);
+                                //$('#subramos').append('<option>'+ value.nombre_subramo +'</option>');
+                            });
+                          }
+
+                          //event maps
+                          if(!$.isEmptyObject(results.map)){
+                            $('.result_map').show();
+                            var $index  =0;
+                            $.each(results.map, function (key, value) {
+                                var $clone = $('.col_hidden_search > div.col_result_map').clone();
+                                $clone.find('span.result-title').html(value.name);
+                                $clone.find('a.result-url').attr('href', '/maps/location/' + value.id).attr('title', value.name); //check map event location, event branch
+                                $clone.css('display','block');
+
+                                if($index % 2 == 0){
+                                  var $div = $("<div class='row new_index_row_result'></div>").append($clone);
+                                  $div.appendTo('.row_result_map');
+                                } else {
+                                  $clone.appendTo('.row_result_map .new_index_row_result:last');
+                                }
+
+                                $index++;
+                            });
+                          }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            // Handle errors here
+                            console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+                            //var resJson = JSON.stringify(jqXHR);
+                            console.log(JSON.stringify(jqXHR.responseJSON));
+                            // STOP LOADING SPINNER
                         }
+                    });
 
-                        //event maps
-                        if(!$.isEmptyObject(results.map)){
-                          $('.result_map').show();
-                          var $index  =0;
-                          $.each(results.map, function (key, value) {
-                              var $clone = $('.col_hidden_search > div.col_result_map').clone();
-                              $clone.find('span.result-title').html(value.name);
-                              $clone.find('a.result-url').attr('href', '/maps/location/' + value.id).attr('title', value.name); //check map event location, event branch
-                              $clone.css('display','block');
-
-                              if($index % 2 == 0){
-                                var $div = $("<div class='row new_index_row_result'></div>").append($clone);
-                                $div.appendTo('.row_result_map');
-                              } else {
-                                $clone.appendTo('.row_result_map .new_index_row_result:last');
-                              }
-
-                              $index++;
-                          });
-                        }
-                      },
-                      error: function(jqXHR, textStatus, errorThrown)
-                      {
-                          // Handle errors here
-                          console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
-                          //var resJson = JSON.stringify(jqXHR);
-                          console.log(JSON.stringify(jqXHR.responseJSON));
-                          // STOP LOADING SPINNER
-                      }
-                  });
-                }
+                  }, 1000 ); //delay
+                } //end check null
 
                 //    Do AJAX call here to get search results
                 //    and update DOM and use the following block

@@ -26,9 +26,6 @@
       <div class="feed">
         <!-- START DAY -->
         <div class="day" data-social="day">
-          <!-- START ITEM -->
-          <div class="card no-border bg-transparent full-width" data-social="item"></div>
-          <!-- END ITEM -->
           @forelse($events as $event)
           <!-- START ITEM -->
           <div class="card col1-test col-centered" data-social="item" data-col="column">

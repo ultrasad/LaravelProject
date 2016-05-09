@@ -322,7 +322,7 @@ var fx_select_brand;
                             $.each(results.map, function (key, value) {
                                 var $clone = $('.col_hidden_search > div.col_result_map').clone();
                                 $clone.find('span.result-title').html(value.name);
-                                $clone.find('a.result-url').attr('href', '/maps/location/' + value.id).attr('title', value.name); //check map event location, event branch
+                                $clone.find('a.result-url').attr('href', '/maps/' + value.id).attr('title', value.name); //check map event location, event branch
                                 $clone.css('display','block');
 
                                 if($index % 2 == 0){
@@ -1552,8 +1552,12 @@ function initialize() {
     }
 
     if($('.map-full').exists()){ //main map full
+      var $url = '/maps/locations/';
+      if($('#location_id').val() > 0){
+        $url = '/maps/locations/' + $('#location_id').val();
+      }
       $.ajax({
-          url: '/maps/locations/',
+          url: $url,
           type: 'GET',
           datatype: 'JSON',
           processData: false,

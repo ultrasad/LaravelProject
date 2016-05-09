@@ -50,7 +50,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('category/{name}', 'CategoryController@index');
     Route::get('brand/category/{name}', 'BrandController@category');
     Route::get('maps/locations', 'MapsController@locations');
-    Route::get('maps/location/{id}', 'MapsController@locations');
+    Route::get('maps/locations/{id}', 'MapsController@locations');
+    Route::get('maps', 'MapsController@index');
+    Route::get('maps/{id}', 'MapsController@index');
     Route::get('brand/register', [
       'middleware' => ['auth', 'roles'],
       'uses' => 'BrandController@register',
@@ -71,6 +73,6 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers
-    Route::resource('maps', 'MapsController'); //RESTful Resource Controllers
+    //Route::resource('maps', 'MapsController'); //RESTful Resource Controllers
     Route::resource('brand', 'BrandController'); //RESTful Resource Controllers
 });

@@ -237,6 +237,14 @@ class Event extends Model
       }
     }
 
+    public function scopeEventLocation($query, $location)
+    {
+      return $this->whereHas('location', function($query) use ($location)
+      {
+        $query->where('id', '=', $location);
+      });
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

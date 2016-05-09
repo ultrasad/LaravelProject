@@ -226,6 +226,7 @@ class BrandController extends Controller
 
     $branch = new Branch;
     $branch->name = $request->json('branch_name');
+    $branch->location = $request->json('branch_location');
     $branch->detail = $request->json('branch_detail');
     $branch->lat = $request->json('branch_lat');
     $branch->lon = $request->json('branch_lon');

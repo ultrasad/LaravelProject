@@ -1552,7 +1552,7 @@ function initialize() {
     }
 
     if($('.map-full').exists()){ //main map full
-      var $url = '/maps/locations/';
+      var $url = '/maps/locations';
       if($('#location_id').val() > 0){
         $url = '/maps/locations/' + $('#location_id').val();
       }

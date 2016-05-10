@@ -260,6 +260,7 @@ var fx_select_brand;
                 //data = new FormData(this);
                 if($('#overlay-search').val() != ''){
 
+                  $('.search-progress').show();
                   delay(function(){
                     //alert('Time elapsed!');
                     $.ajax({
@@ -274,6 +275,7 @@ var fx_select_brand;
                           //var results = $.parseJSON(resp);
                           //console.log(results);
 
+                          $('.search-progress').hide();
                           $('.row_result, .row_result_map').html('');
                           $('.result_map').hide();
 

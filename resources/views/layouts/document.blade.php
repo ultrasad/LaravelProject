@@ -83,6 +83,11 @@
         <div class="container-fluid">
           <div class="search-results m-t-20">
             <p class="bold result_pro" style="display: none">Promotion Search Results</p>
+            <div class="full-height search-progress" style="display: none">
+              <div class="panel-body text-center">
+                <img alt="Progress" src="{{ URL::asset('assets/img/demo/progress.svg') }}" class="image-responsive-height demo-mw-50">
+              </div>
+            </div>
             <div class="row_result"></div>
             <p>&nbsp;</p>
             <p class="bold result_map" style="display: none">Map Search Results</p>

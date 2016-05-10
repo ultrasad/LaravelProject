@@ -15,6 +15,7 @@ class CreateBranchTable extends Migration
         Schema::create('branch', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('location')->nullable();
             $table->string('image');
             $table->string('lat', 60);
             $table->string('lon', 60);

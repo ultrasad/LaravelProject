@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Event;
+use App\Category;
 
 class CategoryController extends Controller
 {
@@ -16,7 +17,8 @@ class CategoryController extends Controller
       $events = Event::published()->active()->categoryList($category)->orderBy('events.created_at', 'desc')->paginate(15);
       if($events->count() < 1){
         //return Redirect::back()->with('message','Tag Not Exists !');
-        return redirect('/');
+        //return redirect('/');
+        $category_name = Category::nameCateId($category);
       } else {
         if($category == 'unknow'){
           $category_name = 'unknow';

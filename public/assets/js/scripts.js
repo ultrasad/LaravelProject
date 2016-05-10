@@ -483,6 +483,7 @@ var fx_select_brand;
             e.preventDefault();
         });
 
+        //brand submit register
         $('#brand-register-form').on('submit',function(e){
           if($(this).valid()){
             e.preventDefault(e);
@@ -518,9 +519,46 @@ var fx_select_brand;
           return false;
         });
 
-        if($('#brand-register-form').exists()){
-          console.log('brand form..');
-          $('#brand-register-form').validate({
+        //brand submit edit
+        $('#brand-register-form-edit').on('submit',function(e){
+          console.log('update..');
+          if($(this).valid()){
+            e.preventDefault(e);
+            var _token, data;
+            _token = $('input[name=_token]').val();
+            //var form = $('#brand-register-form');
+            var form = document.getElementById('brand-register-form-edit');
+            data = new FormData(form);
+
+            var brand_edit_id = $('.brand_edit_id').val();
+            //console.log(data);
+
+            $.ajax({
+                url: base_url + '/brand/' + brand_edit_id,
+                headers: {'X-CSRF-TOKEN': _token},
+                data: data,
+                type: 'POST',
+                datatype: 'JSON',
+                processData: false,
+                contentType: false,
+                success: function (resp) {
+                  console.log('ajax response => ' + resp);
+                  if(resp.status == 'success'){
+                    //window.location.href = base_url + '/events/create';
+                  }
+                },
+                error: function(jqXHR, textStatus, errorThrown)
+                {
+                    $('.error-reponse').html(jqXHR.responseJSON);
+                }
+            });
+          }
+          return false;
+        });
+
+        if($('#brand-register-form, #brand-register-form-edit').exists()){
+          console.log('brand form, edit form..');
+          $('#brand-register-form, #brand-register-form-edit').validate({
                //ignore: ".ignore :hidden" //is telling it to ignore hidden fields with the class ignore.
                //ignore: ".ignore", //will tell it to only ignore fields will class .ignore.
                //ignore: ".ignore, :hidden", //will tell it to ignore fields will class .ignore AND fields that are hidden.
@@ -1222,8 +1260,8 @@ var fx_select_brand;
               $('.published_set_time').show();
           }
         });
-
-        if($('#map_canvas').exists() || $('#brand-register-form').exists()){
+        
+        if($('#map_canvas, #map_canvas_branch').exists()){
           $("<script/>", {
             "type": "text/javascript",
             src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&zoom=false&language=th&hl=th&callback=initialize&libraries=places"
@@ -1801,7 +1839,10 @@ function initialize() {
     }
 
     //branch location
-    if($('#branch_location').exists()){ //search box
+    if($('#branch_location').exists()){
+
+      console.log('branch location...');
+
       var inputBranch = document.getElementById('branch_location');
       var autocompleteBranch = new mapObjBranch.places.Autocomplete(inputBranch);
       autocompleteBranch.bindTo('load', mapBranch);

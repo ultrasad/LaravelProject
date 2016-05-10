@@ -47,7 +47,8 @@ class BrandController extends Controller
     //exit;
 
     if($events->count() < 1){
-      return redirect('/');
+      //return redirect('/');
+      $category_name = Category::nameCateId($category);
     } else {
       if($category == 'unknow'){
         $category_name = 'unknow';
@@ -145,6 +146,109 @@ class BrandController extends Controller
                   'branch_id'   => $brand->id
               ));
     }
+  }
+
+  /**
+  * Show the form for editing the specified resource.
+  *
+  *@param int $id
+  *@return Response
+  */
+  public function edit($id)
+  {
+    $brand = Brand::find($id);
+    $category = Category::select('name', 'id')->where('category_type', 'brand')->get();
+
+    if(empty($brand))
+      abort(404);
+    return  view('brand.edit', compact('brand', 'category'));
+  }
+
+  /**
+  * Update the specified resource in storage.
+  *
+  *@param int $id
+  *@return Response
+  */
+  public function update($id, BrandRequest $request)
+  {
+    $brand = Brand::find($id);
+    $input = $request->all(); /* Request all inputs */
+    $brand_id = $request->input('brand_edit_id');
+
+    //logo image
+    if($request->hasFile('logo_image')){
+      $base_hash = md5_file(base_path() . '/public/' . $brand->logo_image);
+      $image_hash = md5_file($request->file('logo_image')->getPathName());
+
+      if($base_hash != $image_hash){
+        $image_filename = $request->file('logo_image')->getClientOriginalName();
+        $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+        $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+        $image_name = 'logo_'. date('Ymd-His-').str_slug($file_name) . '.' . $extension;
+        $public_path = 'images/brand/';
+        $destination = base_path() . '/public/' . $public_path;
+        $request->file('logo_image')->move($destination, $image_name); //move file to destination
+        $input['logo_image'] = $public_path . $image_name; //set article image name
+      } else {
+        $input['logo_image'] = $brand->logo_image;
+      }
+    }
+
+    //cover image
+    if($request->hasFile('cover_image')){
+      $base_hash = md5_file(base_path() . '/public/' . $brand->cover_image);
+      $image_hash = md5_file($request->file('cover_image')->getPathName());
+
+      if($base_hash != $image_hash){
+        $image_filename = $request->file('cover_image')->getClientOriginalName();
+        $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
+        $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
+        $image_name = 'cover_'. date('Ymd-His-').str_slug($file_name) . '.' . $extension;
+        $public_path = 'images/brand/';
+        $destination = base_path() . '/public/' . $public_path;
+        $request->file('cover_image')->move($destination, $image_name); //move file to destination
+        $input['cover_image'] = $public_path . $image_name; //set article image name
+      } else {
+        $input['cover_image'] = $brand->cover_image;
+      }
+    }
+
+    //url slug
+    $url_slug = str_slug($request->input('url_slug'));
+    $base_slug = $url_slug;
+
+    $i=1; $dup=1;
+    do {
+      //$slug = Event::firstOrNew(array('url_slug' => $base_slug));
+      $slug = Brand::where('url_slug', '=', $base_slug)->where('id', '!=', $brand_id)->first();
+      if($slug){
+        $base_slug = $url_slug . '-' . $i++;
+      } else {
+        $dup=0;
+      }
+    } while($dup==1);
+    $input['url_slug'] = $base_slug;
+
+    //category
+    $categoryId = $request->input('category');
+    if(!empty($categoryId)){
+       $brand->category()->sync($categoryId);
+    }
+
+    //branch
+    $branchId = $request->input('branch');
+    if(!empty($branchId)){
+       $brand->branch()->sync($branchId);
+    }
+
+    $input['facebook'] = $request->input('facebook');
+    $input['twitter'] = $request->input('twitter');
+    $input['line_officail'] = $request->input('line_officail');
+    $input['youtube'] = $request->input('youtube');
+
+    $brand->fill($input);
+    $brand->save();
   }
 
   public function facebook(Request $request)

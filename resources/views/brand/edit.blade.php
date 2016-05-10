@@ -1,14 +1,16 @@
 @extends('layouts.document')
-@section('page_title', 'Brand Register')
+@section('page_title', 'Brand Edit')
 @section('content')
   <!-- START CONTAINER FLUID -->
-  <form class="brand-form" id="brand-register-form" role="form" action="/brand" enctype="multipart/form-data" method="POST">
+  <form class="brand-form" id="brand-register-form-edit" role="form" action="{{ url('/') }}/brand/{{ $brand->id }}" enctype="multipart/form-data" method="POST">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  <input name="_method" type="hidden" value="PATCH">
+  <input name="brand_edit_id" class="brand_edit_id" type="hidden" value="{{ $brand->id }}">
   {{-- Form::token() --}}
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-12">
-        <h3 class='page-title'>เพิ่มแบรนด์</h3>
+        <h3 class='page-title'>แก้ไขแบรนด์</h3>
         <span class="error-reponse">
           @include('errors.list')
         </span>
@@ -19,15 +21,15 @@
           <div class="panel-body sm-p-t-20">
               <div class="form-group form-group-default required">
                 <label>ชื่อแบรนด์</label>
-                <input type="text" name="name" class="form-control" placeholder="ชื่อแบรนด์" />
+                <input type="text" name="name" value="{{ $brand->name }}" class="form-control" placeholder="ชื่อแบรนด์" />
               </div>
               <div class="form-group form-group-default required">
                 <label>URL SLUG (ภาษาอังกฤษเท่านั้น / สูงสุด 60 ตัวอักษร)</label>
-                <input type="text" name="url_slug" class="form-control" placeholder="ex: my-brand-name" />
+                <input type="text" name="url_slug" value="{{ $brand->url_slug }}" class="form-control" placeholder="ex: my-brand-name" />
               </div>
               <div class="form-group form-group-default input-group">
                 <label>Logo Image</label>
-                <input type="text" class="form-control" />
+                <input type="text" class="form-control" value="{{ $brand->logo_image }}" />
                 <span class="input-group-addon btn-file">
                     <input type="file" name="logo_image" class="form-control form-control-image" id="logo_image" placeholder="รูปภาพ (Logo)" readonly />
                     <i class="fa fa-picture-o icon-picture"></i>
@@ -35,7 +37,7 @@
               </div>
               <div class="form-group form-group-default input-group">
                 <label>Cover Image</label>
-                <input type="text" class="form-control" />
+                <input type="text" class="form-control" value="{{ $brand->cover_image }}" />
                 <span class="input-group-addon btn-file">
                     <input type="file" name="cover_image" class="form-control form-control-image" id="cover_image" placeholder="รูปภาพ (Cover)" readonly />
                     <i class="fa fa-picture-o icon-picture"></i>
@@ -46,33 +48,24 @@
                 <select id="category" name="category[]" class="full-width category-select2" multiple>
                   @if($category)
                     @foreach($category as $id => $cate)
-                      <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                      @if(in_array($cate->id, $brand->category_list))
+                        <option selected="selected" value="{{ $cate->id }}">{{ $cate->name }}</option>
+                      @else
+                        <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                      @endif
                     @endforeach
                   @endif
                 </select>
               </div>
               <div class="form-group form-group-default required">
                 <label>สโลแกน</label>
-                <input type="text" name="slogan" class="form-control" placeholder="สโลแกน" />
+                <input type="text" name="slogan" class="form-control" placeholder="สโลแกน" value="{{ $brand->slogan }}" />
               </div>
               <div class="form-group form-group-default form-group-area required">
                 <label>รายละเอียดแบบย่อ</label>
-                <textarea class="form-control" name="detail" rows="3"></textarea>
+                <textarea class="form-control" name="detail" rows="3">{{ $brand->detail }}</textarea>
               </div>
-              <!--<div class="form-group">
-                <label>รายละเอียด</label>
-                <div class="tools">
-                  <a class="collapse" href="javascript:;"></a>
-                  <a class="config" data-toggle="modal" href="#grid-config"></a>
-                  <a class="reload" href="javascript:;"></a>
-                  <a class="remove" href="javascript:;"></a>
-                </div>
-                <div class="no-scroll">
-                  <div class="summernote-wrapper">
-                    <textarea class="input-block-level note-placeholder" id="summernote" name="description" class="summernote" rows="10"><div><br></div></textarea>
-                  </div>
-                </div>
-              </div>-->
+
               <div class="form-group social-post-title">
                 <h5><i class="fa fa-share-square-o fa-lg"></i> Social Linked สำหรับ Post ข่าวไปให้อัตโนมัติ</h5>
               </div>
@@ -97,7 +90,6 @@
 
                 <div class="form-group">
                   <button class="btn btn-success btn-xs tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i><strong>&nbsp;TW Login</strong></button>
-                  <!--<label class="social-twitter-title">Twitter</label>-->
                   <span class="checkbox-inline">
                     <div class="checkbox check-warning">
                       <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
@@ -120,19 +112,19 @@
               <div class="social_network_link">
                 <div class="form-group form-group-default">
                   <label>Facebook</label>
-                  <input type="text" name="facebook" class="form-control" placeholder="Facebook" />
+                  <input type="text" name="facebook" class="form-control" placeholder="Facebook" value="{{ $brand->facebook }}" />
                 </div>
                 <div class="form-group form-group-default">
                   <label>Twitter</label>
-                  <input type="text" name="twitter" class="form-control" placeholder="Twitter" />
+                  <input type="text" name="twitter" class="form-control" placeholder="Twitter" value="{{ $brand->twitter }}" />
                 </div>
                 <div class="form-group form-group-default">
                   <label>Line Officail</label>
-                  <input type="text" name="line_officail" class="form-control" placeholder="Line Officail" />
+                  <input type="text" name="line_officail" class="form-control" placeholder="Line Officail" value="{{ $brand->line_officail }}" />
                 </div>
                 <div class="form-group form-group-default">
                   <label>Youtube</label>
-                  <input type="text" name="youtube" class="form-control" placeholder="Youtube" />
+                  <input type="text" name="youtube" class="form-control" placeholder="Youtube" value="{{ $brand->youtube }}" />
                 </div>
               </div>
 
@@ -192,34 +184,21 @@
           <div class="branch_list" id="branch_list"></div>
         </div>
 
-      </div>
-      <!-- END PANEL -->
-      <!-- START PANEL -->
-      <div class="panel panel-default master-checkbox-all">
-        <div class="panel-body">
-          <div class="form-group form-group-default">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control" id="branch_username" placeholder="Username" />
-          </div>
-          <div class="form-group form-group-default">
-            <label>E-mail</label>
-            <input type="text" name="email" class="form-control" id="branch_email" placeholder="E-mail" />
-          </div>
-          <div class="form-group form-group-default">
-            <label>Password</label>
-            <input type="text" name="password" class="form-control" id="branch_password" placeholder="Password" />
-          </div>
         </div>
-        <div class="panel-heading">
-          <div class="panel-title">
-            <div class="checkbox check-danger">
-              <input type="checkbox" checked="checked" class="approve_status" name="approve_status" value="Y" id="approve_status">
-              <label class="label-master" for="approve_status">Approved (Admin)</label>
+        <!-- END PANEL -->
+
+        <!-- START PANEL -->
+        <div class="panel panel-default master-checkbox-all">
+          <div class="panel-heading">
+            <div class="panel-title">
+              <div class="checkbox check-danger">
+                <input type="checkbox" checked="checked" class="approve_status" name="approve_status" value="Y" id="approve_status">
+                <label class="label-master" for="approve_status">Approved (Admin)</label>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- END PANEL -->
+        <!-- END PANEL -->
 
         <div class="row">
           <button class="btn btn-success" type="submit" id="submit_event">Submit</button>

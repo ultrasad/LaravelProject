@@ -31,6 +31,15 @@ class Brand extends Model
                 ->withTimestamps(); //update created app, updated app relationship table
   }
 
+  //category, edit list
+  public function getCategoryListAttribute()
+  {
+      //return $this->tags->lists('id');
+      return $this->category->lists('id')->all(); //relationship category events
+      //or ican do this
+      //return $this->category->lists('id')->toArray();
+  }
+
   public function getCategoryFirstAttribute()
   {
       return $this->category->first();

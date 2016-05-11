@@ -42,7 +42,7 @@ class BrandController extends Controller
     $events = Event::published()->active()->brandCategoryList($category)->orderBy('events.created_at', 'desc')->paginate(15);
 
     //echo '<pre>';
-    //print_r($events);
+    //print_r($events->count());
     //print_r($events->first()->brand->category->first()->name);
     //exit;
 

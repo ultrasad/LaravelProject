@@ -163,7 +163,8 @@ ol, ul {
 
 .page-sidebar .sidebar-menu .menu-items li:hover > .icon-thumbnail > i,
 .page-sidebar .sidebar-menu .menu-items li.open > .icon-thumbnail > i,
-.page-sidebar .sidebar-menu .menu-items li.active > .icon-thumbnail > i {
+.page-sidebar .sidebar-menu .menu-items li.active > .icon-thumbnail > i,
+ {
     color: #fff;
     opacity: 1.0;
 }
@@ -184,7 +185,7 @@ ol, ul {
   opacity: 0.8;
 }
 
-.page-sidebar .sidebar-menu .menu-items > li:hover > .icon-thumbnail img {
+.page-sidebar .sidebar-menu .menu-items > li:hover > .icon-thumbnail img, .page-sidebar .sidebar-menu .menu-items > li:hover > a {
     opacity: 1.0;
 }
 
@@ -500,6 +501,10 @@ div.cs-select-brand {
 .feed .day {
   margin: 0 auto !important;
   overflow: hidden;
+}
+
+.feed .day  .promotion-empty {
+  overflow: visible;
 }
 
 /* no transition on .isotope container */
@@ -965,6 +970,10 @@ div.cs-select-brand {
 
   .card-relate-footer .text-master span {
     display: inline-block;
+  }
+
+  .card-relate-footer .text-master span {
+    display: none; /* hidden under constructor*/
   }
 
   .card-relate-row .thumb {

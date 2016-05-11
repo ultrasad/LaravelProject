@@ -28,9 +28,9 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/fotorama/fotorama.css') }}">
 <!--<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/owl-carousel/assets/owl.carousel.css') }}"/>-->
 
-<link href="{{ URL::asset('assets/jquery-datatable/media/css/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('assets/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('assets/datatables-responsive/css/datatables.responsive.css') }}" rel="stylesheet" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/jquery-datatable/media/css/dataTables.bootstrap.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen"  href="{{ URL::asset('assets/datatables-responsive/css/datatables.responsive.css') }}" />
 
 <link rel="stylesheet" type="text/css" media="screen"  href="{{ URL::asset('assets/codrops-stepsform/css/component.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages-icons.css') }}" />

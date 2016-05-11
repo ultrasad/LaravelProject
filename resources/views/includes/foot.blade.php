@@ -20,12 +20,12 @@
 <!--<script type="text/javascript" src="{{ URL::asset('assets/owl-carousel/owl.carousel.min.js') }}"></script>-->
 <script type="text/javascript" src="{{ URL::asset('assets/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
 
-<script src="{{ URL::asset('assets/jquery-datatable/media/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js') }}" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/jquery-datatable/media/js/dataTables.bootstrap.js') }}" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js') }}" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/datatables-responsive/js/datatables.responsive.js') }}" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/datatables-responsive/js/lodash.min.js') }}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/media/js/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/media/js/dataTables.bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/datatables-responsive/js/datatables.responsive.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/datatables-responsive/js/lodash.min.js') }}"></script>
 
 <!-- END VENDOR JS -->
 <!-- BEGIN CORE TEMPLATE JS -->
@@ -34,5 +34,5 @@
 <!--<script type="text/javascript" src="{{ URL::asset('pages/js/pages.social.js') }}"></script>-->
 <!-- BEGIN PAGE LEVEL JS -->
 <script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js') }}"></script>
-<script src="{{ URL::asset('assets/js/datatables.js') }}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/datatables.js') }}"></script>
 <!-- END PAGE LEVEL JS -->

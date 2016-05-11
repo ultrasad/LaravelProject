@@ -9,9 +9,12 @@
 
       <div class="feed">
         <!-- START DAY -->
+        @if($events->count() < 1)
+        <div class="p-l-0 col-md-12 promotion-empty">ยังไม่มีโปรโมชั่น ในขณะนี้...</div>
+        @endif
+
         <div class="day" data-social="day">
           <!-- START ITEM -->
-
           <div class="card col2-element col-centered" data-social="item">
             <div class="gallery-item" data-width="2" data-height="2">
               <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">

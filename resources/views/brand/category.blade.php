@@ -25,6 +25,10 @@
     <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10">
       <div class="feed">
         <!-- START DAY -->
+        @if($events->count() < 1)
+        <div class="p-l-0 col-md-12 promotion-empty">ยังไม่มีโปรโมชั่น ในหมวดหมู่นี้...</div>
+        @endif
+
         <div class="day" data-social="day">
           @forelse($events as $event)
           <!-- START ITEM -->

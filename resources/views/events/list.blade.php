@@ -36,8 +36,8 @@
                         <img width="40" height="40" src="/assets/img/profiles/avatar.jpg" data-src="/assets/img/profiles/avatar.jpg" data-src-retina="/assets/img/profiles/avatar2x.jpg" alt="">
                       </div>
                       <div class="inline m-l-10">
-                        <p class="no-margin text-white fs-12 text-master"><strong>Super Sport</strong></p>
-						            <p class="rating">หมวดหมู่แบรนด์</p>
+                        <p class="no-margin text-white fs-12 text-master"><strong class="text-master">Super Sport</strong></p>
+						            <p class="rating text-master">หมวดหมู่แบรนด์</p>
                       </div>
                       <div class="clearfix"></div>
                     </div>

@@ -285,8 +285,10 @@ class EventsController extends Controller
         //$locations[] = array('name' => $branch->name, 'lat' => $branch->lat, 'lon' => $branch->lon);
       }
 
+      $tags_relate = array();
       foreach($event->tags->all() as $index => $tag){
         //$tags[] = '<i class="fa fa-check-circle hint-text m-t-10"></i> ' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
+        array_push($tags_relate, $tag->tag);
         $tags[] = '<span><i class="fa fa-tag fa-flip-horizontal hint-text-8 m-t-10" aria-hidden="true"></i> </span>' . link_to('/tags/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
       }
 
@@ -322,13 +324,15 @@ class EventsController extends Controller
       $event_title = $event->title;
       $cate_id = isset($event->category->first()->id)?$event->category->first()->id:'';
       $relates = array();
-      if($event_id && $cate_id !=''){
-        $relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id)->orderBy('events.created_at', 'desc')->skip(0)->take(6)->get();
+      if($event_id){
+        //$relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id, $tags_relate)->orderBy('events.created_at', 'desc')->skip(0)->take(6)->get();
+        $relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id, $tags_relate)->skip(0)->take(6)->get();
       }
 
       //echo 'cate id => ' . $cate_id;
+      //echo 'tag => ' . $tags_relate;
       //echo '<pre>';
-      //print_r($relates);
+      //print_r($tags_relate);
       //exit;
 
       //echo 'event id => ' . $event_id;

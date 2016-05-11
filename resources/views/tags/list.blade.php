@@ -11,7 +11,7 @@
         <li>
           <p>Tag</p>
         </li>
-        <li><a href="#" class="active">{{ $tag_name }}</a>
+        <li><a href="#" title="{{ $tag_name }}" class="active">{{ $tag_name }}</a>
         </li>
       </ul>
       <!-- END BREADCRUMB -->
@@ -23,12 +23,11 @@
 <div class="social-wrapper">
   <div class="social-element" data-pages="social">
     <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10">
+      @if($events->count() < 1)
+      <div class="col-md-12 promotion-empty text-master">ยังไม่มีโปรโมชั่น ในแท็กนี้...</div>
+      @endif
       <div class="feed">
         <!-- START DAY -->
-        @if($events->count() < 1)
-        <div class="p-l-0 col-md-12 promotion-empty">ยังไม่มีโปรโมชั่น ในแท็กนี้...</div>
-        @endif
-
         <div class="day" data-social="day">
           @forelse($events as $event)
           <!-- START ITEM -->
@@ -41,12 +40,12 @@
                   </div>
                   <div class="inline m-l-10">
                     <p class="no-margin">
-                      <strong>{{ $event->brand->first()->name }}</strong>
+                      <strong class="text-master">{{ $event->brand->first()->name }}</strong>
                     </p>
                     @if(!empty($event->category_first))
-                        <p class="no-margin hint-text"><a class="category-url" href="{{ URL::to('category', $event->category_first->category) }}" title="{{ $event->category_first->name }}">{{ $event->category_first->name }}</a></p>
+                        <p class="no-margin hint-text text-master"><a class="category-url" href="{{ URL::to('category', $event->category_first->category) }}" title="{{ $event->category_first->name }}">{{ $event->category_first->name }}</a></p>
                     @else
-                        <p class="no-margin hint-text"><a class="category-url" href="{{ URL::to('category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
+                        <p class="no-margin hint-text text-master"><a class="category-url" href="{{ URL::to('category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
                     @endif
                   </div>
                   <div class="pull-top pull-right list-inline">
@@ -63,7 +62,12 @@
               <div class="padding-15">
                 <strong><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
                 <p>{{ $event->brief }}</p>
-                <div class="hint-text small-text">via {{ $event->brand->first()->name }}</div>
+                {{--<div class="hint-text small-text">via {{ $event->brand->first()->name }}</div>--}}
+                @if(!empty($event->category->first()->name))
+                  <div class="hint-text small-text text-master">via <a href="{{ URL::to('category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}" class="">{{ $event->category->first()->name }}</a></div>
+                @else
+                  <div class="hint-text small-text text-master">via <a href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุหมวดหมู่" class="">ไม่ระบุหมวดหมู่</a></div>
+                @endif
               </div>
               <div class="padding-15 card_footer">
                 <div class="pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>

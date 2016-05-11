@@ -11,7 +11,7 @@
         <li>
           <p>Event</p>
         </li>
-        <li><a href="#" class="active">{{ $event->title }}</a>
+        <li><a href="#" title="{{ $event->title }}" class="active">{{ $event->title }}</a>
         </li>
       </ul>
       <!-- END BREADCRUMB -->
@@ -40,11 +40,11 @@
     </div>
     <div class="col-md-6">
       <div class="panel-body">
-        <div class="no-margin fs-15 hint-text-9">
+        <div class="no-margin fs-15 hint-text-9 text-master">
             @if(!empty($event->category_first->name))
                 Category :: <a class="category-event-url" href="{{ URL::to('category', $event->category_first->category) }}" title="{{ $event->category_first->name }}">{{ $event->category_first->name }}</a>
             @else
-                Category :: <a class="category-event-url" href="{{ URL::to('category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a>
+                Category :: <a class="category-event-url" href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุ หมวดหมู่">ไม่ระบุ หมวดหมู่</a>
             @endif
         </div>
         <!-- START PANEL -->
@@ -57,21 +57,21 @@
           </div>
           <div class="inline m-l-10">
             <p class="no-margin">
-              <strong>{{ $event->brand->name }}</strong>
+              <strong class="text-master">{{ $event->brand->name }}</strong>
             </p>
             @if(!empty($event->brand->category_first->name))
-                <p class="no-margin hint-text"><a class="category-brand-url" href="{{ URL::to('brand/category', $event->brand->category_first->category) }}" title="{{ $event->brand->category_first->name }}">{{ $event->brand->category_first->name }}</a></p>
+                <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('brand/category', $event->brand->category_first->category) }}" title="{{ $event->brand->category_first->name }}">{{ $event->brand->category_first->name }}</a></p>
             @else
-                <p class="no-margin hint-text"><a class="category-brand-url" href="{{ URL::to('brand/category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
+                <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('brand/category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
             @endif
           </div>
         </div>
         <p>&nbsp;</p>
         <p class="col-middle m-b-5">
-          <span class="text-complete"><i class="fa fa-circle m-r-10"></i>{{ $event->start_date_thai }} - {{ $event->end_date_thai }}</span>
+          <span class="text-complete text-master"><i class="fa fa-circle m-r-10"></i>{{ $event->start_date_thai }} - {{ $event->end_date_thai }}</span>
         </p>
         <p class="col-middle m-b-5">
-          <span class="text-danger"><i class="fa fa-circle m-r-10"></i>{{ $event->check_expire }}</span>
+          <span class="text-danger text-master"><i class="fa fa-circle m-r-10"></i>{{ $event->check_expire }}</span>
         </p>
         <p>&nbsp;</p>
         <p class="col-middle m-b-5">
@@ -87,7 +87,7 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-12">
-          <div class="panel-body p-t-0 p-b-5 hint-text-9 event-branch-list">
+          <div class="panel-body p-t-0 p-b-5 event-branch-list text-master">
             <!-- <hr class="p-b-t-1 m-t-10 m-b-10" /> -->
             <u><b>{{ $event->brand->first()->name }} สาขาที่ร่วมรายการ</b></u>
             <span class="event">
@@ -121,11 +121,11 @@
         <div class="col-md-12">
             <div class="panel-body p-t-0 hint-text-9">
               <!--<hr class="p-b-t-1 m-t-10 m-b-10" />-->
-              <u><h4>รายละเอียดโปรโมชั่น</h4></u>
+              <u><h4 class="text-master">รายละเอียดโปรโมชั่น</h4></u>
               <p>{!! $event->description !!}</p>
             </div>
               @if(!empty($tags))
-              <div class="col-md-12">
+              <div class="col-md-12 text-master">
                 Tags :: {!! implode(', ', $tags) !!}
               </div>
               @endif
@@ -136,7 +136,7 @@
             </div>
             <div class="col-md-12">
               <p>&nbsp;</p>
-              <u><h4>โปรโมชั่นที่คุณอาจสนใจ</h4></u>
+              <u><h4 class="text-master">โปรโมชั่นที่คุณอาจสนใจ</h4></u>
               <div class="row relate event-relate">
                 @forelse($relates as $relate)
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding-right-active col-relate">
@@ -147,8 +147,8 @@
                           <!--<div class="col-sm-12 img-thumb-relate" style="background-image: url('{{ URL::asset($relate->image) }}')"></div>-->
                       </div>
                       <div class="col-md-9 col-xs-8 brief">
-                          <div class="padding-5 card-relate-body">
-                            <strong><a title="{{ $relate->title }}" href="{{ $relate->url_slug }}" class="card_title">{{ $relate->title }}</a></strong>
+                          <div class="padding-5 card-relate-body text-master">
+                            <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}" class="card_title">{{ $relate->title }}</a>
                           </div>
                       </div>
 

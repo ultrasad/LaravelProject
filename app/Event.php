@@ -175,17 +175,41 @@ class Event extends Model
        return $this->where('active', 'Y');
     }
 
-    public function scopeRelateThis($query, $event_id, $cate_id)
+    public function scopeRelateThis($query, $event_id, $cate_id, $tags=null)
     {
       //return $this->where('id', '!=', $event_id);
       //return $this->with(['category','tags'])->where('id', '!=', $event_id);
       //return $this->where('id', '!=', $event_id);
 
+      /*if($tags != null){
+        return $relate_tag = $this->whereHas('tags', function($query) use ($tags){
+          $query->whereIn('tags.tag', $tags);
+        })->where('id', '!=', $event_id);
+      }*/
+
+      /*
       return $this->whereHas('category', function($query) use ($cate_id) {
         $query->where('categories.id', $cate_id);
       })->with(['category' => function($query) use ($cate_id){
         //$query->where('category.id', $cate_id);
       }])->where('id', '!=', $event_id); //->get();
+      */
+
+      $relate_cate = $this->whereHas('category', function($query) use ($cate_id) {
+        $query->where('categories.id', $cate_id);
+      })->where('id', '!=', $event_id)->orderBy('events.created_at', 'desc');
+
+      $relate_tag = $this->whereHas('tags', function($query) use ($tags){
+        $query->whereIn('tags.tag', $tags);
+      })->with(['category' => function($query) use ($cate_id){
+        //$query->where('category.id', $cate_id);
+      }])->orderBy('events.created_at', 'desc')->union($relate_cate)->where('id', '!=', $event_id); //->get();
+
+      if($relate_tag->get()->count() < 1){
+        return $relate_cate;
+      } else {
+        return $relate_tag;
+      }
 
       //return $this->leftJoin('event_category', 'events.id', '=', 'event_category.cate_id')->where('events.id', '!=', $event_id)->where('event_category.cate_id', '=', $cate_id); //->orWhere('event_category.cate_id', '=', $cate_id);
     }

@@ -11,7 +11,7 @@
         <li>
           <p>Promotion Category</p>
         </li>
-        <li><a href="#" class="active">{{ $category_name }}</a>
+        <li><a href="#" class="active" title="{{ $category_name }}">{{ $category_name }}</a>
         </li>
       </ul>
       <!-- END BREADCRUMB -->
@@ -42,7 +42,7 @@
                     <p class="no-margin">
                       <strong class="text-master">{{ $event->brand->name }}</strong>
                     </p>
-                    @if(!empty($event->brand->category_first->name))
+                    @if(!empty($event->brand->category_first))
                         <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('brand/category', $event->brand->category_first->category) }}" title="{{ $event->brand->category_first->name }}">{{ $event->brand->category_first->name }}</a></p>
                     @else
                         <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('brand/category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
@@ -70,7 +70,7 @@
                 <strong><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
                 <p>{{ $event->brief }}</p>
                 {{-- <div class="hint-text small-text">via {{ $event->brand->first()->name }}</div> --}}
-                @if(!empty($event->category->first()->name))
+                @if($category_name != 'unknow')
                   <div class="hint-text small-text text-master">via <a href="{{ URL::to('category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}" class="">{{ $event->category->first()->name }}</a></div>
                 @else
                   <div class="hint-text small-text text-master">via <a href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุหมวดหมู่" class="">ไม่ระบุหมวดหมู่</a></div>

@@ -64,8 +64,11 @@
         </span>
       </li>
 
-      <li class="m-t-5 m-b-10">
-        <span class="title-header-category">BRAND CATEGORY</span>
+      <li class="">
+        <a href="{{ url('#') }}" class="detailed">
+          <span class="title"><strong>CATEGORY</strong></span>
+          <span class="details">BRAND</span>
+        </a>
         <span class="icon-thumbnail">BC</span>
       </li>
       <li class="">
@@ -150,8 +153,11 @@
         </span>
       </li>
 
-      <li class="m-t-5 m-b-10">
-        <span class="title-header-category">PROMOTION CATEGORY</span>
+      <li class="">
+        <a href="{{ url('#') }}" class="detailed">
+          <span class="title"><strong>CATEGORY</strong></span>
+          <span class="details">PROMOTION</span>
+        </a>
         <span class="icon-thumbnail">PC</span>
       </li>
       <li class="">

@@ -16,7 +16,7 @@ class Branch extends Model
 
     public function events()
     {
-      return $this->belongsToMany('App\Event');
+      return $this->belongsToMany('App\Event', 'event_branch');
     }
 
     public function brands()

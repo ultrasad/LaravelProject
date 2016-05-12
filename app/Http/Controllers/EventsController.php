@@ -281,7 +281,7 @@ class EventsController extends Controller
       foreach($event->branch->all() as $index => $branch){
         //$branchs[]= link_to('brand/'.$event->brand_id . '/' . $branch, $branch, array('alt' => $branch));
         //$branchs[]= link_to('#' . $branch, $branch, array('alt' => $branch));
-        $branchs[] = '<span><i class="pg-map hint-text-9" aria-hidden="true"></i> </span>' . link_to('#' . $branch->name, $branch->name, array('alt' => $branch->name, 'data-index' => $index, 'class' => 'place'));
+        $branchs[] = '<span><i class="pg-map hint-text-9" aria-hidden="true"></i> </span>' . link_to('#' . $branch->name, $branch->name, array('alt' => $branch->name, 'data-index' => $branch->lat.','.$branch->lon.','.$branch->name, 'class' => 'place'));
         //$locations[] = array('name' => $branch->name, 'lat' => $branch->lat, 'lon' => $branch->lon);
       }
 
@@ -594,10 +594,56 @@ class EventsController extends Controller
     return view('events.admin', compact('events'));
   }
 
-  public function locations($event)
+  public function _locations($event)
   {
     $event = Event::findOrFail($event);
     echo json_encode($event->branch->all());
+  }
+
+  public function locations($event)
+  {
+    //$event = Event::findOrFail($event);
+    //echo json_encode($event->branch->all());
+    $event_locations = array();
+    $event = Event::where('id', $event)->first();//->noExpire()->active()->get();
+
+    //echo 'name => ' . $event->category->first()->name;
+    //echo'<pre>';
+    //print_r($event);
+    //exit;
+
+    //foreach($events as $id => $event){
+      //$cate_name = isset($event->category->first()->name)?$event->category->first()->name:'ไม่ระบุ หมวดหมู่';
+      if($event->branch->count() > 0){
+        $event_count = 0;
+        foreach($event->branch->all() as $branch){
+          foreach($branch->events->where('id','!=', $event)->all() as $event_branch){
+            //echo '<pre>';
+            //print_r($event_branch);
+            //exit;
+            $cate_name = isset($event_branch->category->first()->name)?$event_branch->category->first()->name:'ไม่ระบุ หมวดหมู่';
+
+            if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
+              $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event_branch->title, 'slug' => $event_branch->url_slug, 'brand' => $event_branch->brand->name, 'image' => $event_branch->image, 'category' => $cate_name));
+            } else {
+              array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event_branch->title, 'slug' => $event_branch->url_slug, 'brand' => $event_branch->brand->name, 'image' => $event_branch->image, 'category' => $cate_name));
+            }
+
+            /*
+            if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
+              $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name));
+            } else {
+              array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name));
+            }
+            */
+          }
+          $event_count++;
+        }
+      } else {
+        //event location first
+      }
+    //}
+    echo json_encode($event_locations);
   }
 
   /*

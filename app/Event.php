@@ -172,7 +172,7 @@ class Event extends Model
     */
     public function scopeActive($query)
     {
-       return $this->where('active', 'Y');
+       return $query->where('active', 'Y');
     }
 
     public function scopeRelateThis($query, $event_id, $cate_id, $tags=null)
@@ -216,12 +216,12 @@ class Event extends Model
 
     public function scopeEventBrand($query)
     {
-      return $this->leftJoin('brand','events.brand_id','=','brand.id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');
+      return $query->leftJoin('brand','events.brand_id','=','brand.id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');
     }
 
     public function scopeBrandId($query, $brand)
     {
-      return $this->where('brand_id', $brand);
+      return $query->where('brand_id', $brand);
     }
 
     public function scopeTagList($query, $tag)

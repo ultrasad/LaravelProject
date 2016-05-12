@@ -1714,86 +1714,6 @@ function initialize() {
           processData: false,
           contentType: false,
           success: function (resp) {
-
-            var locations = $.parseJSON(resp);
-            var markers = [];
-            //var n = 0;
-
-            window.events_locations = new Array();
-            $.each(locations, function(k, v){
-                var data = [];
-                $.each(v, function(x, y){
-                    data.push(y);
-                });
-
-                window.events_locations[k] = data;
-                var location_list = k.split(",");
-                var name = location_list[2];
-                var lat = location_list[0];
-                var lon = location_list[1];
-
-                //var n = location_list[3];
-
-                var markerName = name;
-                var markerLat = lat;
-                var markerLng = lon;
-                var markerLatLng=new mapObj.LatLng(markerLat,markerLng);
-                markers[k] = new mapObj.Marker({
-                    position:markerLatLng,
-                    map: map,
-                    title:markerName
-                });
-
-                //console.log('marker => '+ k + '=>' + markers[k]);
-                mapObj.event.addListener(markers[k], 'click', function(){
-                    //infowindow.setContent('<div class="popup_container"><strong class="marker_name">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">มี '+ data.length +' โปรโมชั่นที่นี่</a></p>');
-                    infowindow.setContent('<div class="popup_container"><strong class="marker_name">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">ดูโปรโมชั่นอื่นๆ ของที่นี่</a></p>');
-                    infowindow.open(map,markers[k]);
-                    map.panTo(markers[k].getPosition());
-                    //map.setZoom(14);
-                });
-
-                //Extend each marker's position in LatLngBounds object.
-                latlngbounds.extend(markers[k].position);
-            });
-
-            //Center map and adjust Zoom based on the position of all markers.
-            map.setCenter(latlngbounds.getCenter());
-            map.fitBounds(latlngbounds);
-
-            $(document).on('click', '.events_locations', function(e){
-              var index = $(this).data('index');
-              $('#filters.maps').removeClass('open');
-              $('ul#map-items').html('');
-              $.each(window.events_locations[index], function(k,v){
-                //console.log(' => ' + v.title + ' => ' + v.slug + ' => ' + v.brand);
-                var clone = '<li class="map-event-list clearfix">';
-                    clone += '<span class="col-xs-height col-top p-t-5">';
-                    clone += '<span class="thumbnail-wrapper d32 circular bg-success">';
-                    clone += '<span class="thumbnail-wrapper d32 circular bg-success"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
-                    clone += '</span>';
-                    clone += '<div class="p-l-10 col-xs-height col-middle col-xs-12">';
-                    clone += '<span class="text-master"><strong>'+v.brand+'</strong></span>';
-                    clone += '<span class="block text-master hint-text fs-12">'+v.category+'</span>';
-                    clone += '<p><strong><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></strong></p>';
-                    clone += '</div></li>';
-
-                    //console.log('clone => ' + clone);
-                    $('ul#map-items').append(clone);
-              });
-              $('#filters .map-location').html($(this).closest('div').find('.marker_name').html());
-              $('#filters.maps').addClass('open');
-              return false;
-            });
-
-            $('.event').on('click', '.place', function(e){
-              var index = $(this).data('index');
-              //console.log('markers => ' + index);
-              mapObj.event.trigger(markers[index], 'click');
-              return false;
-            });
-
-            /*
             var locations = $.parseJSON(resp);
             var markers = [];
 
@@ -1821,6 +1741,7 @@ function initialize() {
 
             //Center map and adjust Zoom based on the position of all markers.
             map.setCenter(latlngbounds.getCenter());
+            //console.log('length => ' + locations.length);
             if(locations.length > 1){
               map.fitBounds(latlngbounds);
             }
@@ -1830,7 +1751,6 @@ function initialize() {
               mapObj.event.trigger(markers[index], 'click');
               return false;
             });
-            */
           },
           error: function(jqXHR, textStatus, errorThrown)
           {

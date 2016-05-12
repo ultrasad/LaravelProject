@@ -67,7 +67,7 @@
                 </div>
               </div>
               <div class="padding-15">
-                <strong><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
+                <strong class="text-master"><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
                 <p>{{ $event->brief }}</p>
                 {{-- <div class="hint-text small-text">via {{ $event->brand->first()->name }}</div> --}}
                 @if($category_name != 'unknow')

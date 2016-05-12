@@ -21,13 +21,10 @@
 <!-- END JUMBOTRON -->
 <!-- START CONTAINER FLUID -->
 <!--<form role="form">-->
-
-<div id="map_canvas" class="map-canvas map-show"></div>
-
 <div class="container-fluid container-fixed-lg">
   <!-- BEGIN PlACE PAGE CONTENT HERE -->
   <div class="row">
-    <div class="col-md-8 event-gallery">
+    <div class="col-md-6 event-gallery">
       <div class="panel-body p-b-0">
         <div class="dialog__content">
             <!-- START PANEL -->
@@ -41,19 +38,17 @@
         </div>
      </div>
     </div>
-    <div class="col-md-4 body-brief">
-      <div class="panel-body body-brief">
+    <div class="col-md-6">
+      <div class="panel-body">
         <div class="no-margin fs-15 hint-text-9 text-master">
-          <h4>
-            @if(!empty($event->brand->category_first->name))
-                <a class="category-event-url" href="{{ URL::to('category', $event->brand->category_first->category) }}" title="{{ $event->brand->category_first->name }}">{{ $event->brand->category_first->name }}</a>
+            @if(!empty($event->category_first->name))
+                Category :: <a class="category-event-url" href="{{ URL::to('category', $event->category_first->category) }}" title="{{ $event->category_first->name }}">{{ $event->category_first->name }}</a>
             @else
-                <a class="category-event-url" href="{{ URL::to('category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a>
+                Category :: <a class="category-event-url" href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุ หมวดหมู่">ไม่ระบุ หมวดหมู่</a>
             @endif
-          </h4>
         </div>
         <!-- START PANEL -->
-        <h2 class="text-master m-t-20">{{ $event->title }}</h2>
+        <h2 class="text-master">{{ $event->title }}</h2>
         <p>{{ $event->brief }}</p>
         <p>&nbsp;</p>
         <div class="item-header clearfix">

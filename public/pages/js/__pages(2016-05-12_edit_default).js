@@ -476,9 +476,9 @@
         this.initSelect2Plugin();
         this.initScrollBarPlugin();
         this.initSwitcheryPlugin();
-        this.initSelectFxPlugin();
+        //this.initSelectFxPlugin();
         this.initUnveilPlugin();
-        this.initValidatorPlugin();
+        //this.initValidatorPlugin();
         this.initListView();
         this.initInputFile();
         this.reponsiveTabs();
@@ -1946,9 +1946,7 @@
 
          this.$element.bind('mouseenter mouseleave', sidebarMouseEnter);
          this.$pageContainer.bind('mouseover', sidebarMouseLeave);
-
      }
-
 
      // Toggle sidebar for mobile view
      Sidebar.prototype.toggleSidebar = function(toggle) {
@@ -1959,20 +1957,18 @@
              this.$body.removeClass('sidebar-open');
              timer = setTimeout(function() {
                  this.$element.removeClass('visible');
-             }.bind(this), 400);
+           }.bind(this), 1);
          } else {
              clearTimeout(timer);
              this.$element.addClass('visible');
              setTimeout(function() {
                  this.$body.addClass('sidebar-open');
-             }.bind(this), 10);
+             }.bind(this), 1);
              setTimeout(function(){
                 // remove background color
                 $('.page-container').css({'background-color': ''});
-             },1000);
-
+             },100);
          }
-
      }
 
      Sidebar.prototype.togglePinSidebar = function(toggle) {
@@ -1983,9 +1979,7 @@
          } else {
              this.$body.toggleClass('menu-pin');
          }
-
      }
-
 
      // SIDEBAR PLUGIN DEFINITION
      // =======================
@@ -2198,8 +2192,7 @@
         var $target = $('[data-pages="search"]');
         if ($this.is('a')) e.preventDefault();
         $target.data('pg.search').toggleOverlay('show');
-    })
-
+    });
 
 })(window.jQuery);
 (function($) {

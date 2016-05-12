@@ -615,9 +615,9 @@ class EventsController extends Controller
     //foreach($events as $id => $event){
       //$cate_name = isset($event->category->first()->name)?$event->category->first()->name:'ไม่ระบุ หมวดหมู่';
       if($event->branch->count() > 0){
-        $event_count = 0;
         foreach($event->branch->all() as $branch){
-          foreach($branch->events->where('id','!=', $event)->all() as $event_branch){
+          //foreach($branch->events->where('id','!=', $event)->all() as $event_branch){
+          foreach($branch->events->all() as $event_branch){
             //echo '<pre>';
             //print_r($event_branch);
             //exit;
@@ -637,7 +637,6 @@ class EventsController extends Controller
             }
             */
           }
-          $event_count++;
         }
       } else {
         //event location first

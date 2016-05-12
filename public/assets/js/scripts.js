@@ -1541,6 +1541,29 @@ function initialize() {
 
   console.log('initialize..');
 
+    // Create an array of styles.
+    var styles = [
+      {
+        stylers: [
+          { hue: "#fff" },
+          { saturation: -100 }
+        ]
+      },{
+        featureType: "road",
+        elementType: "geometry",
+        stylers: [
+          { lightness: 50 },
+          { visibility: "simplified" }
+        ]
+      },{
+        featureType: "road",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+
     mapObj = new Object(google.maps);
     var default_latlng  = new mapObj.LatLng(13.7563309, 100.50176510000006);
 
@@ -1558,6 +1581,7 @@ function initialize() {
       };
 
       map = new mapObj.Map(map_canvas, options);
+      map.setOptions({styles: styles});
       mapObj.event.addListener(map, 'zoom_changed', function() {
           $("#location_zoom").val(map.getZoom());
       });

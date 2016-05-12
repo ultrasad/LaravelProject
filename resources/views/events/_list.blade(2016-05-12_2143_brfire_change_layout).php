@@ -1,5 +1,5 @@
 @extends('layouts.document')
-@section('page_title', 'โปรโมชั่นทั้งหมด')
+@section('page_title', 'Events List')
 @section('content')
 
 <div class="social-wrapper">
@@ -61,10 +61,10 @@
                     <p class="no-margin">
                       <strong class="text-master">{{ $event->brand->name }}</strong>
                     </p>
-                    @if(!empty($event->category->first()->name))
-                      <div class="hint-text small-text text-master"><a href="{{ URL::to('category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}" class="">{{ $event->category->first()->name }}</a></div>
+                    @if(!empty($event->brand->category_first->name))
+                        <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('brand/category', $event->brand->category_first->category) }}" title="{{ $event->brand->category_first->name }}">{{ $event->brand->category_first->name }}</a></p>
                     @else
-                      <div class="hint-text small-text text-master"><a href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุหมวดหมู่" class="">ไม่ระบุหมวดหมู่</a></div>
+                        <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('brand/category', 'unknow') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
                     @endif
                   </div>
                   <div class="pull-top pull-right list-inline">
@@ -78,16 +78,21 @@
                   <a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ URL::asset($event->image) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
                 </div>
               </div>
-              <div class="p-t-15 p-l-15 p-r-15 p-b-5">
+              <div class="padding-15">
                 <strong class="text-master"><a href="{{ URL::to('events', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
                 <p>{{ $event->brief }}</p>
+                @if(!empty($event->category->first()->name))
+                  <div class="hint-text small-text text-master">via <a href="{{ URL::to('category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}" class="">{{ $event->category->first()->name }}</a></div>
+                @else
+                  <div class="hint-text small-text text-master">via <a href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุหมวดหมู่" class="">ไม่ระบุหมวดหมู่</a></div>
+                @endif
               </div>
-              <div class="p-t-10 p-l-15 p-r-15 p-b-5 card_footer">
+              <div class="padding-15 card_footer">
                 <div class="pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>
                 <ul class="list-inline pull-right no-margin hint-text">
-                  <li><a class="text-info-link" href="#fb comment"><span>5,345</span> <i class="fs-14 pg-comment"></i></a>
+                  <li><a class="text-info-link" href="#"><span>5,345</span> <i class="fa fa-comment"></i></a>
                   </li>
-                  <li><a class="text-info-link heart" href="#"><span>23K</span> <i class="fa fa-heart-o"></i></a>
+                  <li><a class="text-info-link heart" href="#"><span>23K</span> <i class="fa fa-heart"></i></a>
                   </li>
                 </ul>
                 <div class="clearfix"></div>

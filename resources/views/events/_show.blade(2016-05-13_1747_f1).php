@@ -156,19 +156,6 @@
                 @endif
                 <div class="row relate event-relate">
                   @forelse($relates as $relate)
-
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padding-right-active col-relate">
-                    <div class="relative col-md-12 thumb padding-5">
-                        <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><img alt="{{ $relate->title }}" class="block center-margin relative full-height img-responsive" src="{{ URL::asset($relate->image) }}" /></a>
-                    </div>
-                    <div class="col-md-12 brief">
-                        <div class="padding-5 card-relate-body text-master">
-                          <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}" class="card_title">{{ $relate->title }}</a>
-                        </div>
-                    </div>
-                  </div>
-
-                  {{--
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 padding-right-active col-relate">
                     <div class="card card-relate relative">
                       <div class="row card-relate-row">
@@ -200,7 +187,6 @@
                       </div>
                     </div>
                   </div>
-                  --}}
                   @empty
                   @endforelse
                 </div>

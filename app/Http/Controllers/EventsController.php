@@ -607,9 +607,15 @@ class EventsController extends Controller
 
       if($event->branch->count() > 0){
         foreach($event->branch->all() as $branch){
+
+          if($branch->events->count() == 1){
+              $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
+          }
+
           foreach($branch->events->all() as $event_branch){
-            if($event_branch->id != $id){
-              $cate_name = isset($event_branch->category->first()->name)?$event_branch->category->first()->name:'ไม่ระบุ หมวดหมู่';
+            $cate_name = isset($event_branch->category->first()->name)?$event_branch->category->first()->name:'ไม่ระบุ หมวดหมู่';
+            if($event_branch->id != $id){ //without self
+              //$cate_name = isset($event_branch->category->first()->name)?$event_branch->category->first()->name:'ไม่ระบุ หมวดหมู่';
               if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
                 $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event_branch->title, 'slug' => $event_branch->url_slug, 'brand' => $event_branch->brand->name, 'image' => $event_branch->image, 'category' => $cate_name, 'start_date_thai' => $event_branch->start_date_thai, 'end_date_thai' => $event_branch->end_date_thai));
               } else {
@@ -617,6 +623,7 @@ class EventsController extends Controller
               }
             }
           }
+          
         }
       }
 

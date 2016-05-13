@@ -1699,9 +1699,9 @@ function initialize() {
                     clone += '<div class="col-xs-12 col-top padding-5">';
                     clone += '<span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
                     clone += '<div class="pull-left padding-0 p-l-10 col-xs-10">';
-                    clone += '<div class="col-md-12 padding-0"><span class="text-master col-sm-6 pull-left padding-0"><strong>'+v.brand+'</strong></span>';
+                    clone += '<div class="col-md-12 padding-0"><span class="text-master col-sm-6 pull-left padding-0">'+v.brand+'</span>';
                     clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span></div>';
-                    clone += '<p><strong><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></strong></p>';
+                    clone += '<p><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></p>';
                     clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
                     clone += '</div></div></li>';
 
@@ -1788,21 +1788,28 @@ function initialize() {
               var index = $(this).data('index');
               $('#filters.maps').removeClass('open');
               $('ul#map-items').html('');
+
+              //console.log('event location => ' + window.events_locations[index]);
               $.each(window.events_locations[index], function(k,v){
                 //console.log(' => ' + v.title + ' => ' + v.slug + ' => ' + v.brand);
                 var clone = '<li class="map-event-list clearfix text-master">';
                     clone += '<div class="col-xs-12 col-top padding-5">';
                     clone += '<span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
                     clone += '<div class="pull-left padding-0 p-l-10 col-xs-10">';
-                    clone += '<div class="col-md-12 padding-0"><span class="text-master col-sm-6 pull-left padding-0"><strong>'+v.brand+'</strong></span>';
+                    clone += '<div class="col-md-12 padding-0"><span class="text-master col-sm-6 pull-left padding-0">'+v.brand+'</span>';
                     clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span></div>';
-                    clone += '<p><strong><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></strong></p>';
+                    clone += '<p><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></p>';
                     clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
                     clone += '</div></div></li>';
 
                     //console.log('clone => ' + clone);
                     $('ul#map-items').append(clone);
               });
+
+              if(window.events_locations[index] == ''){
+                $('ul#map-items').html('<div class="col-md-12 text-master m-t-10 hint-text">ไม่มีโปรโมชั่นอื่นๆที่นี่</div>');
+              }
+
               $('#filters .map-location').html($(this).closest('div').find('.marker_name').html());
               $('#filters.maps').addClass('open');
               return false;

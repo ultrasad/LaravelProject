@@ -28,7 +28,7 @@
         <div class="quickview-list">
           <ul class="nav nav-tabs">
             <li class="">
-                <a href="#"><i class="pg-map pull-left"></i><span class="map-location"></span></a>
+                <a href="#"><i class="pg-map pull-left"></i><span class="map-location text-master"></span></a>
             </li>
           </ul>
           <a class="builder-close quickview-toggle pg-close" data-toggle="quickview" data-toggle-element="#filters" href="#"></a>

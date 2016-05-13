@@ -631,9 +631,9 @@ div.cs-select-brand {
   margin-bottom: 10px;
 }
 
-/*
 .card-relate-row {
   position: relative;
+  /*display: table;*/
   height: 100%;
   margin: 0px;
   overflow: hidden;
@@ -654,6 +654,7 @@ div.cs-select-brand {
 }
 
 .relate .brief .card-relate-footer {
+    /*display: table-row;*/
     width: 100%;
     font-size: 0.8em;
     height: 30px;
@@ -701,12 +702,12 @@ div.cs-select-brand {
 .relate .brief {
   height: 100%;
   position: relative;
+  /*display: table;*/
 }
 
 .relate .padding-right-active {
   padding-right: 0px;
 }
-*/
 
 .card .gallery-item {
   margin: 0 auto;

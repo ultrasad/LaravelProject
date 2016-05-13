@@ -14,6 +14,11 @@ class Branch extends Model
     //Mass Assignment
     protected $fillable = ['name', 'location', 'image', 'lat', 'lon', 'zoom', 'detail']; //Whitelist
 
+    /*public function getEventAllAttribute()
+    {
+        return $this->events->lists('title')->all();
+    }*/
+
     public function events()
     {
       return $this->belongsToMany('App\Event', 'event_branch');

@@ -1,6 +1,14 @@
 
-body {
-    color: #8d959c;
+body, .color-body {
+    color: #8d959c !important;
+}
+
+.bg-write {
+  background: #fff;
+}
+
+.align-right {
+  text-align: right;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
@@ -14,6 +22,10 @@ body {
   font-weight: normal;
 }
 
+.breadcrumb span {
+  font-weight: normal;
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 5px 0 10px 0;
     color: #444;
@@ -23,11 +35,11 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 0px;
 }
 
-.feed .day a.card_title, .card-relate a.card_title {
+.feed .day a.card_title, .card-relate a.card_title, a.tag {
   color: #1b9ad1;
 }
 
-.feed .day a.card_title:hover, .card-relate a.card_title:hover {
+.feed .day a.card_title:hover, .card-relate a.card_title:hover, a.tag:hover {
   color: #167ba7;
 }
 
@@ -81,7 +93,7 @@ body.menu-behind .header .brand {
 }
 
 .body-brief {
-  padding-left: 0px;
+  padding-left: 10px;
 }
 
 a.category-brand-url {
@@ -233,7 +245,7 @@ h2, .windows h2 {
 }
 
 h3, .windows h3, h4, .windows h4, h5, windows.h5 {
-  font-size: 1.3em;
+  font-size: 1.4em;
   line-height: 20px;
   font-weight: 400;
   /*color: #51646b;*/
@@ -471,7 +483,7 @@ div.cs-select-brand {
 .event-gallery .dialog__content {
   text-align: center;
   padding: 10px;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
 }
 
 .event-gallery .dialog__conten .fotorama__nav::before, .fotorama__stage::before {

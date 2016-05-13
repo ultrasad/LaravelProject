@@ -19,10 +19,10 @@
               <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">
                 <div class="slide-front">
                   <img src="/images/events/2016-03-30/gallery/43/20160330-141855-Promotion-Reebok-Grand-Sale-2016-Sale-up-to-70-Off.png" class="img-responsive" />
-                </div>
-                <div class="slide-back">
+               </div>
+               <div class="slide-back">
                   <img src="/images/events/2016-03-30/20160330-120609-Promotion-Crocs-End-Of-Season-Sale-up-to-50-Mar.2016.jpg" class="img-responsive" />
-                </div>
+               </div>
               </div>
               <div class="overlayer bottom-left full-width">
                 <div class="overlayer-wrapper item-info more-content">
@@ -83,9 +83,9 @@
                 <p>{{ $event->brief }}</p>
               </div>
               <div class="p-t-10 p-l-15 p-r-15 p-b-5 card_footer">
-                <div class="pull-left text-master hint-text fs-12 color-body">ถึงวันที่ : {{ $event->end_date_thai }}</div>
+                <div class="pull-left">ถึงวันที่ : {{ $event->end_date_thai }}</div>
                 <ul class="list-inline pull-right no-margin hint-text">
-                  <li><a class="text-info-link" href="#fb comment"><span>5,345</span> <i class="fs-12 pg-comment"></i></a>
+                  <li><a class="text-info-link" href="#fb comment"><span>5,345</span> <i class="fs-14 pg-comment"></i></a>
                   </li>
                   <li><a class="text-info-link heart" href="#"><span>23K</span> <i class="fa fa-heart-o"></i></a>
                   </li>

@@ -175,6 +175,11 @@ class Event extends Model
        return $query->where('active', 'Y');
     }
 
+    public function scopeOther($query, $id)
+    {
+      return $query->where('id', '!=', $id);
+    }
+
     public function scopeRelateThis($query, $event_id, $cate_id, $tags=null)
     {
       //return $this->where('id', '!=', $event_id);

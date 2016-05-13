@@ -1666,7 +1666,7 @@ function initialize() {
                 });
 
                 mapObj.event.addListener(markers[k], 'click', function(){
-                    infowindow.setContent('<div class="popup_container"><strong class="marker_name">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">มี '+ data.length +' โปรโมชั่นที่นี่</a></p>');
+                    infowindow.setContent('<div class="popup_container"><strong class="marker_name text-master">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">มี '+ data.length +' โปรโมชั่นที่นี่</a></p>');
                     infowindow.open(map,markers[k]);
                     map.panTo(markers[k].getPosition());
                     //map.setZoom(14);
@@ -1695,16 +1695,15 @@ function initialize() {
               $('ul#map-items').html('');
               $.each(window.events_locations[index], function(k,v){
                 //console.log(' => ' + v.title + ' => ' + v.slug + ' => ' + v.brand);
-                var clone = '<li class="map-event-list clearfix">';
-                    clone += '<span class="col-xs-height col-top p-t-5">';
-                    clone += '<span class="thumbnail-wrapper d32 circular bg-success">';
-                    clone += '<span class="thumbnail-wrapper d32 circular bg-success"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
-                    clone += '</span>';
-                    clone += '<div class="p-l-10 col-xs-height col-middle col-xs-12">';
-                    clone += '<span class="text-master"><strong>'+v.brand+'</strong></span>';
-                    clone += '<span class="block text-master hint-text fs-12">'+v.category+'</span>';
+                var clone = '<li class="map-event-list clearfix text-master">';
+                    clone += '<div class="col-xs-12 col-top padding-5">';
+                    clone += '<span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
+                    clone += '<div class="pull-left padding-0 p-l-10 col-xs-10">';
+                    clone += '<div class="col-md-12 padding-0"><span class="text-master col-sm-6 pull-left padding-0"><strong>'+v.brand+'</strong></span>';
+                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span></div>';
                     clone += '<p><strong><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></strong></p>';
-                    clone += '</div></li>';
+                    clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
+                    clone += '</div></div></li>';
 
                     //console.log('clone => ' + clone);
                     $('ul#map-items').append(clone);
@@ -1771,7 +1770,7 @@ function initialize() {
                 //console.log('marker => '+ k + '=>' + markers[k]);
                 mapObj.event.addListener(markers[k], 'click', function(){
                     //infowindow.setContent('<div class="popup_container"><strong class="marker_name">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">มี '+ data.length +' โปรโมชั่นที่นี่</a></p>');
-                    infowindow.setContent('<div class="popup_container"><strong class="marker_name">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">ดูโปรโมชั่นอื่นๆ ของที่นี่</a></p>');
+                    infowindow.setContent('<div class="popup_container"><strong class="marker_name text-master">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">ดูโปรโมชั่นอื่นๆ ของที่นี่</a></p>');
                     infowindow.open(map,markers[k]);
                     map.panTo(markers[k].getPosition());
                     //map.setZoom(14);
@@ -1791,16 +1790,15 @@ function initialize() {
               $('ul#map-items').html('');
               $.each(window.events_locations[index], function(k,v){
                 //console.log(' => ' + v.title + ' => ' + v.slug + ' => ' + v.brand);
-                var clone = '<li class="map-event-list clearfix">';
-                    clone += '<span class="col-xs-height col-top p-t-5">';
-                    clone += '<span class="thumbnail-wrapper d32 circular bg-success">';
-                    clone += '<span class="thumbnail-wrapper d32 circular bg-success"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
-                    clone += '</span>';
-                    clone += '<div class="p-l-10 col-xs-height col-middle col-xs-12">';
-                    clone += '<span class="text-master"><strong>'+v.brand+'</strong></span>';
-                    clone += '<span class="block text-master hint-text fs-12">'+v.category+'</span>';
+                var clone = '<li class="map-event-list clearfix text-master">';
+                    clone += '<div class="col-xs-12 col-top padding-5">';
+                    clone += '<span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
+                    clone += '<div class="pull-left padding-0 p-l-10 col-xs-10">';
+                    clone += '<div class="col-md-12 padding-0"><span class="text-master col-sm-6 pull-left padding-0"><strong>'+v.brand+'</strong></span>';
+                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span></div>';
                     clone += '<p><strong><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></strong></p>';
-                    clone += '</div></li>';
+                    clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
+                    clone += '</div></div></li>';
 
                     //console.log('clone => ' + clone);
                     $('ul#map-items').append(clone);
@@ -1900,7 +1898,7 @@ function initialize() {
         $("#location_lon").val(place.geometry.location.lng());
 
         //infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);
-        infowindow.setContent('<div><strong>' + place.name + '</strong></div>');
+        infowindow.setContent('<div><strong class="text-master">' + place.name + '</strong></div>');
         infowindow.open(map, marker);
       });
 
@@ -1921,7 +1919,7 @@ function initialize() {
         });
 
         mapObj.event.addListener(markerEdit, 'click', function() {
-            infowindow.setContent('<div><strong>'+ markerName +'</strong></div>');
+            infowindow.setContent('<div><strong class="text-master">'+ markerName +'</strong></div>');
             infowindow.open(map,markerEdit);
             map.panTo(markerEdit.getPosition());
             //map.setZoom(markerZoom);
@@ -1937,7 +1935,7 @@ function initialize() {
 
       mapObj.event.addListener(marker, 'click', function() {
         //infowindow.setContent('<div><strong>' + place.name + '</strong></div><br>' + address);
-        infowindow.setContent('<div><strong>' + place.name + '</strong></div>');
+        infowindow.setContent('<div><strong class="text-master">' + place.name + '</strong></div>');
         infowindow.open(map, marker);
       });
     }
@@ -1982,13 +1980,13 @@ function initialize() {
         $("#branch_location_lon").val(placeBranch.geometry.location.lng());
 
         //infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div><br>' + addressBranch);
-        infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div>');
+        infowindowBranch.setContent('<div><strong class="text-master">' + placeBranch.name + '</strong></div>');
         infowindowBranch.open(mapBranch, markerBranch);
       });
 
       mapObjBranch.event.addListener(markerBranch, 'click', function(){
         //infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div><br>' + addressBranch);
-        infowindowBranch.setContent('<div><strong>' + placeBranch.name + '</strong></div>');
+        infowindowBranch.setContent('<div><strong class="text-master">' + placeBranch.name + '</strong></div>');
         infowindowBranch.open(mapBranch, markerBranch);
       });
 

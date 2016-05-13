@@ -79,10 +79,10 @@ class MapsController extends Controller
             foreach($event->branch->all() as $branch){
               //echo $branch->name . ', lat =>' .$branch->lat . '<br />';
               if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
-                $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name));
+                $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
               } else {
                 //echo 'in array => ' . $branch->lat .','. $branch->lon;
-                array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name));
+                array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
               }
             }
           } else {

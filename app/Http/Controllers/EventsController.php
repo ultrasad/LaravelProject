@@ -266,7 +266,7 @@ class EventsController extends Controller
       //$event = Event::with('user', 'category')->where('slug', $slug)->first();
       //$event = Event::where('url_slug', $slug)->eventBrand()->first();
       $event = Event::where('url_slug', $slug)->first();
-      if($event->count() < 1)
+      if(!$event)
         //return Redirect::back()->with('message','Event Not Exists !');
         return redirect('/');
 
@@ -600,48 +600,26 @@ class EventsController extends Controller
     echo json_encode($event->branch->all());
   }
 
-  public function locations($event)
+  public function locations($id)
   {
-    //$event = Event::findOrFail($event);
-    //echo json_encode($event->branch->all());
     $event_locations = array();
-    $event = Event::where('id', $event)->first();//->noExpire()->active()->get();
+    $event = Event::where('id', $id)->first();
 
-    //echo 'name => ' . $event->category->first()->name;
-    //echo'<pre>';
-    //print_r($event);
-    //exit;
-
-    //foreach($events as $id => $event){
-      //$cate_name = isset($event->category->first()->name)?$event->category->first()->name:'ไม่ระบุ หมวดหมู่';
       if($event->branch->count() > 0){
         foreach($event->branch->all() as $branch){
-          //foreach($branch->events->where('id','!=', $event)->all() as $event_branch){
           foreach($branch->events->all() as $event_branch){
-            //echo '<pre>';
-            //print_r($event_branch);
-            //exit;
-            $cate_name = isset($event_branch->category->first()->name)?$event_branch->category->first()->name:'ไม่ระบุ หมวดหมู่';
-
-            if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
-              $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event_branch->title, 'slug' => $event_branch->url_slug, 'brand' => $event_branch->brand->name, 'image' => $event_branch->image, 'category' => $cate_name));
-            } else {
-              array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event_branch->title, 'slug' => $event_branch->url_slug, 'brand' => $event_branch->brand->name, 'image' => $event_branch->image, 'category' => $cate_name));
+            if($event_branch->id != $id){
+              $cate_name = isset($event_branch->category->first()->name)?$event_branch->category->first()->name:'ไม่ระบุ หมวดหมู่';
+              if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
+                $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event_branch->title, 'slug' => $event_branch->url_slug, 'brand' => $event_branch->brand->name, 'image' => $event_branch->image, 'category' => $cate_name, 'start_date_thai' => $event_branch->start_date_thai, 'end_date_thai' => $event_branch->end_date_thai));
+              } else {
+                array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event_branch->title, 'slug' => $event_branch->url_slug, 'brand' => $event_branch->brand->name, 'image' => $event_branch->image, 'category' => $cate_name, 'start_date_thai' => $event_branch->start_date_thai, 'end_date_thai' => $event_branch->end_date_thai));
+              }
             }
-
-            /*
-            if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
-              $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name));
-            } else {
-              array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name));
-            }
-            */
           }
         }
-      } else {
-        //event location first
       }
-    //}
+
     echo json_encode($event_locations);
   }
 

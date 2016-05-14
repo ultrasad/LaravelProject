@@ -63,6 +63,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/brand/{id}', array('as' => 'id', 'uses' => 'BrandController@index'))
     ->where('id', '[0-9]+');
 
+    Route::get('/brand/{slug}', array('as' => 'slug', 'uses' => 'BrandController@index'))
+    ->where('slug', '[A-Za-z0-9\-]+');
+
     Route::get('/admin',[
       'middleware' => ['auth', 'roles'],
       'uses' => 'EventsController@admin',

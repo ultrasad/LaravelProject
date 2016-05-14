@@ -3,6 +3,10 @@ body, .color-body {
     color: #8d959c !important;
 }
 
+.social-wrapper .social-element .jumbotron {
+    height: 60vh;
+}
+
 .bg-write {
   background: #fff;
 }
@@ -110,6 +114,22 @@ a.category-event-url {
 
 a.category-event-url:hover {
   color: #767C82;
+}
+
+a.brand-event-url {
+  color: #0DAD9E;
+}
+
+a.brand-event-url:hover {
+  color: #10CFBD;
+}
+
+.feed .day a.brand-event-url {
+  color: #626262;
+}
+
+.feed .day a.brand-event-url:hover {
+  color: #929292;
 }
 
 /* nav */
@@ -649,6 +669,20 @@ div.cs-select-brand {
 .footer-relate  .card_footer {
   border: 1px solid #e6e6e6;
   border-top: 0px;
+}
+
+.desc-footer {
+  border-left: 5px solid #e3e3e3;
+  padding-left: 15px;
+  line-height: 16px;
+}
+
+.desc-footer a {
+  color: #8d959c;
+}
+
+.desc-footer a:hover {
+  color: #333;
 }
 
 /*

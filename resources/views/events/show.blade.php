@@ -67,9 +67,9 @@
           </div>
           <div class="inline m-l-10">
             <p class="no-margin">
-              <strong class="text-master">{{ $event->brand->name }}</strong>
+              <strong class="text-master"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></strong>
             </p>
-            @if(!empty($event->category->count() > 0))
+            @if($event->category->count() > 0)
                 <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}">{{ $event->category->first()->name }}</a></p>
             @else
                 <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', 'ไม่ระบุ หมวดหมู่') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
@@ -107,7 +107,7 @@
         <div class="col-md-12">
           <div class="panel-body p-t-0 p-b-15 event-branch-list text-master">
             <!-- <hr class="p-b-t-1 m-t-10 m-b-10" /> -->
-            <u><b>{{ $event->brand->first()->name }} สาขาที่ร่วมรายการ</b></u>
+            <u><b>{{ $event->brand->name }} สาขาที่ร่วมรายการ</b></u>
             <span class="event">
               @if(!empty($branchs))
                 {!! implode(', ', $branchs) !!}
@@ -138,12 +138,16 @@
               <div class="panel-body p-t-10 hint-text-9">
                 <h4 class="text-master m-b-30">รายละเอียดโปรโมชั่น</h4>
                 <p>{!! $event->description !!}</p>
-              </div>
-                @if(!empty($tags))
-                <div class="col-md-12 text-master">
-                  {!! implode(', ', $tags) !!}
+                <div class="desc-footer hint-text p-t-5 p-b-5 m-t-20 m-b-30">
+                  <div class="pull-left"><div class="pull-left event-created b-grey b-r">Date : {{ date('Y-m-d', strtotime($event->created_at)) }}&nbsp;&nbsp;</div><div class="pull-left event-author b-grey b-r">&nbsp;&nbsp;Author : <a title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}&nbsp;&nbsp;</a></div><div class="pull-left event-publisher">&nbsp;&nbsp;Publisher : <a title="welovepro" href="/">welovepro</a></div></div>
+                  <div class="clearfix">&nbsp;</div>
                 </div>
-                @endif
+              </div>
+              @if(!empty($tags))
+              <div class="col-md-12 text-master">
+                {!! implode(', ', $tags) !!}
+              </div>
+              @endif
               <div class="col-sm-12 visible-xs">
                   <div class="ads bg-warning">
                     <h1>ADS</h1>
@@ -157,7 +161,7 @@
                 <div class="row relate event-relate">
                   @forelse($relates as $relate)
 
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-l-10 p-r-10 padding-right-active col-relate">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-l-10 p-r-10 m-b-20 padding-right-active col-relate">
                     <div class="relative col-md-12 thumb padding-0 p-b-0">
                       <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><div class="relate-img-thumb" style="background-image: url({{ URL::asset($relate->image) }});"></div></a>
                       <!--<a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><img alt="{{ $relate->title }}" class="block center-margin relative full-width img-responsive relate-img-thumb" src="{{ URL::asset($relate->image) }}" /></a>-->

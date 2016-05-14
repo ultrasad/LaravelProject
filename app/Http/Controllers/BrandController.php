@@ -29,10 +29,11 @@ class BrandController extends Controller
   *
   *@return Response
   */
-  public function index($brand_id)
+  public function index($brand)
   {
     //echo '=> ' . $brand;
-    $events = Event::published()->active()->eventBrand()->BrandId($brand_id)->orderBy('events.created_at', 'desc')->paginate(15);
+    //$events = Event::published()->active()->eventBrand()->BrandId($brand_id)->orderBy('events.created_at', 'desc')->paginate(15);
+    $events = Event::published()->active()->eventBrand()->BrandSlug($brand)->orderBy('events.created_at', 'desc')->paginate(15);
     return view('brand.index', compact('events'));
   }
 

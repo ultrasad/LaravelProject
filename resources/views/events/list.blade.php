@@ -59,7 +59,7 @@
                   </div>
                   <div class="inline m-l-10">
                     <p class="no-margin">
-                      <strong class="text-master">{{ $event->brand->name }}</strong>
+                      <strong class="text-master"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></strong>
                     </p>
                     @if(!empty($event->category->first()->name))
                       <div class="hint-text small-text text-master"><a href="{{ URL::to('category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}" class="">{{ $event->category->first()->name }}</a></div>

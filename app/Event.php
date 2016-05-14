@@ -229,6 +229,11 @@ class Event extends Model
       return $query->where('brand_id', $brand);
     }
 
+    public function scopeBrandSlug($query, $brand)
+    {
+      return $query->where('brand.url_slug', $brand);
+    }
+
     public function scopeTagList($query, $tag)
     {
       return $this->whereHas('tags', function($query) use ($tag)

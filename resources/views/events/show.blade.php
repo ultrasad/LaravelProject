@@ -135,7 +135,7 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-12">
-              <div class="panel-body p-t-0 hint-text-9">
+              <div class="panel-body p-t-10 hint-text-9">
                 <h4 class="text-master m-b-30">รายละเอียดโปรโมชั่น</h4>
                 <p>{!! $event->description !!}</p>
               </div>
@@ -157,14 +157,27 @@
                 <div class="row relate event-relate">
                   @forelse($relates as $relate)
 
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 padding-right-active col-relate">
-                    <div class="relative col-md-12 thumb padding-5">
-                        <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><img alt="{{ $relate->title }}" class="block center-margin relative full-height img-responsive" src="{{ URL::asset($relate->image) }}" /></a>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-l-10 p-r-10 padding-right-active col-relate">
+                    <div class="relative col-md-12 thumb padding-0 p-b-0">
+                      <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><div class="relate-img-thumb" style="background-image: url({{ URL::asset($relate->image) }});"></div></a>
+                      <!--<a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><img alt="{{ $relate->title }}" class="block center-margin relative full-width img-responsive relate-img-thumb" src="{{ URL::asset($relate->image) }}" /></a>-->
                     </div>
-                    <div class="col-md-12 brief">
-                        <div class="padding-5 card-relate-body text-master">
+                    <div class="col-md-12 brief p-l-10 p-r-10 card-relate-body">
+                        <div class="padding-5 p-t-10 text-master">
                           <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}" class="card_title">{{ $relate->title }}</a>
                         </div>
+                    </div>
+                    <div class="row col-md-12 padding-0 m-l-0 m-r-0 footer-relate">
+                      <div class="p-t-10 p-l-15 p-r-15 p-b-5 card_footer">
+                        <div class="pull-left text-master hint-text fs-12 color-body">ถึงวันที่ : {{ $relate->end_date_thai }}</div>
+                        <ul class="list-inline pull-right no-margin hint-text">
+                          <li><a class="text-info-link" href="#fb comment"><span>5,345</span> <i class="fs-12 pg-comment"></i></a>
+                          </li>
+                          <li><a class="text-info-link heart" href="#"><span>23K</span> <i class="fa fa-heart-o"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
                     </div>
                   </div>
 

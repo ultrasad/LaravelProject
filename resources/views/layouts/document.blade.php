@@ -81,8 +81,8 @@
         </div>
         <!-- BEGIN Overlay Search Results, This part is for demo purpose, you can add anything you like !-->
         <div class="container-fluid">
-          <div class="search-results m-t-20">
-            <p class="bold result_pro" style="display: none">Promotion Search Results</p>
+          <div class="search-results m-t-20 p-b-50">
+            <div class="search-header"><h4 class="bold hint-text result_pro" style="display: none">Promotion Search Results</h4></div>
             <div class="full-height search-progress" style="display: none">
               <div class="panel-body text-center">
                 <img alt="Progress" src="{{ URL::asset('assets/img/demo/progress.svg') }}" class="image-responsive-height demo-mw-50">
@@ -90,7 +90,7 @@
             </div>
             <div class="row_result"></div>
             <p>&nbsp;</p>
-            <p class="bold result_map" style="display: none">Map Search Results</p>
+            <div class="search-header"><h4 class="bold hint-text result_map" style="display: none">Map Search Results</h4></div>
             <div class="row_result_map"></div>
           </div>
         </div>
@@ -98,9 +98,9 @@
           <div class="col-md-6 col-xs-12 col_result" style="display: none;">
             <div class="col-sm-12 p-l-0 p-r-0">
               <div class="col-md-1 col-sm-2 col-xs-3 padding-0">
-                <div class="thumbnail-wrapper d48 circular bg-success text-white inline m-t-10">
-                  <div>
-                    <img class="result-image" width="50" height="50" src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar2x.jpg') }}" alt="">
+                <div class="col-xs-12 thumbnail-wrapper bg-success text-white inline m-t-10 p-l-0 p-r-0">
+                  <div class="search-img-thumb" style="background-image: url({{ URL::asset('assets/img/profiles/avatar.jpg') }});">>
+                    <!--<img class="result-image" width="100%" height="60px" src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar2x.jpg') }}" alt="">-->
                   </div>
                 </div>
               </div>

@@ -129,7 +129,7 @@
   <input name="location_zoom" type="hidden" id="location_zoom" value="0" />
 </div>
 
-<div class="bg-write m-t-20">
+<div class="bg-write p-t-10">
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-8">

@@ -1,5 +1,9 @@
 @extends('layouts.document')
 @section('page_title', 'โปรโมชั่นทั้งหมด')
+@section('og_url', URL::to('events', $events->first()->url_slug))
+@section('og_title', $events->first()->title)
+@section('og_description', $events->first()->brief)
+@section('og_image', URL::to($events->first()->image))
 @section('content')
 
 <div class="social-wrapper">

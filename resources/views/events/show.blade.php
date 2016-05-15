@@ -1,5 +1,9 @@
 @extends('layouts.document')
 @section('page_title', $event_title)
+@section('og_url', URL::to('events', $event->url_slug))
+@section('og_title', $event_title)
+@section('og_description', $event->brief)
+@section('og_image', URL::to($event->image))
 @section('content')
 
 <!-- START JUMBOTRON -->
@@ -91,7 +95,14 @@
         @endif
         <p>&nbsp;</p>
         <p class="col-middle m-b-5">
-          <span class="hint-text">FB Share | Like</span>
+          <div class="btn-social-group inline">
+            <div class="inline btn-social btn-facebook"><a class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></a></div><div class="inline btn-social btn-twitter"><a href="https://twitter.com/share" class="twitter-share-button"></a></div>
+            <div class="inline btn-social btn-line-official">
+              <script type="text/javascript">
+                  new media_line_me.LineButton({"pc":true,"lang":"en","type":"a"});
+              </script>
+            </div>
+          </div>
         </p>
         <!--<small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>-->
         <!-- END PANEL -->

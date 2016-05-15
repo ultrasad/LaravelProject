@@ -124,6 +124,24 @@ a.brand-event-url:hover {
   color: #10CFBD;
 }
 
+/* social share */
+.btn-social-group {
+  height: 22px;
+  line-height: 22px;
+  display: inline-block;
+}
+
+.btn-social-group .btn-social {
+  position: relative;
+  margin-right: 5px;
+}
+
+.btn-social-group .btn-twitter {
+  position: relative;
+  top: 0.45em;
+  margin-right: 1px;
+}
+
 .feed .day a.brand-event-url {
   color: #626262;
 }

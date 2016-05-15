@@ -14,6 +14,14 @@
 <meta content="" name="author" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<meta content="@yield('og_url')" property="og:url">
+<meta content="promotion" property="og:type">
+<meta content="@yield('og_title')" property="og:title">
+<meta content="@yield('og_description')" property="og:description">
+<meta content="@yield('og_image')" property="og:image">
+<meta content="Welovepro.com" property="og:site_name">
+<meta content="th_TH" property="og:locale">
+
 <!-- <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/pace/pace-theme-flash.css') }}" /> -->
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/font-awesome/css/font-awesome.css') }}" />
@@ -44,6 +52,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/codrops-dialogFx/dialog.ie.css') }}" />
 <![endif]-->
 
+<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script>
 <script type="text/javascript">
   var base_url = '{{ url('/') }}';
 </script>

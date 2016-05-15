@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta charset="utf-8" />
-  <title>Login</title>
+  <title>เข้าสู่ระบบ | WELOVEPRO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
   <link rel="apple-touch-icon" href="pages/ico/60.png">
   <link rel="apple-touch-icon" sizes="76x76" href="pages/ico/76.png">
@@ -17,7 +17,11 @@
   <meta content="" name="author" />
   <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}" />
   <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/font-awesome/css/font-awesome.css') }}" />
+
+  <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Kanit:400,500,700,200,100,100italic'>
+  <link href="pages/css/pages-icons.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages.css') }}" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/style.css') }}" />
 
   {{--
   <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" />

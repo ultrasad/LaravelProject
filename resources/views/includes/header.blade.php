@@ -9,7 +9,7 @@
         <a href="#" class="btn-link toggle-sidebar visible-sm-inline-block visible-xs-inline-block p-l-5 p-r-5" data-toggle="sidebar">
           <span class="icon-set menu-hambuger"></span>
         </a>
-        <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i><span class="bold">search</span></a>
+        <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>search</a>
       </div>
       <!-- END ACTION BAR -->
     </div>
@@ -57,7 +57,7 @@
             </a>
         </div>-->
       </div>
-      <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a>
+      <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to search</a>
     </div>
   </div>
 

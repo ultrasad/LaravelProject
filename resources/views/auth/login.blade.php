@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@include('includes.header_login')
 @section('content')
 <!-- START Login Background Pic Wrapper-->
 <div class="bg-pic">
@@ -19,8 +20,8 @@
 <!-- END Login Background Pic Wrapper-->
 <!-- START Login Right Container-->
 <div class="login-container bg-white">
-  <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
-    <img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">
+  <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-30 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
+    <!--<img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">-->
     <p class="p-t-35">Sign into your pages account</p>
     <!-- START Login Form -->
     <form id="form-login" class="p-t-15" role="form" method="POST" action="{{ url('/login') }}">
@@ -49,14 +50,18 @@
       </div>
       <!-- START Form Control-->
       <div class="row">
-        <div class="col-md-6 no-padding">
-          <div class="checkbox ">
-            <input type="checkbox" name="remember" id="remember">
-            <label for="remember">Remember Me</label>
+        <div class="col-md-12">
+          <div class="col-md-6 no-padding">
+            <div class="checkbox ">
+              <input type="checkbox" name="remember" id="remember">
+              <label for="remember">Remember Me</label>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6 text-right">
-          <a href="#" class="text-info small">Help? Contact Support</a>
+          <!--
+          <div class="col-md-6 text-right">
+            <a href="#" class="text-info small">Help? Contact Support</a>
+          </div>
+          -->
         </div>
       </div>
       <!-- END Form Control-->
@@ -65,9 +70,9 @@
     <!--END Login Form-->
     <div class="pull-bottom sm-pull-bottom">
       <div class="m-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
-        <div class="col-sm-3 col-md-2 no-padding">
+        <!--<div class="col-sm-3 col-md-2 no-padding">
           <img alt="" class="m-t-5" data-src="{{ URL::asset('assets/img/demo/pages_icon.png') }}" data-src-retina="{{ URL::asset('assets/img/demo/pages_icon_2x.png') }}" height="60" src="{{ URL::asset('assets/img/demo/pages_icon.png') }}" width="60">
-        </div>
+        </div>-->
         <div class="col-sm-9 no-padding m-t-10">
           <p>
             <small>

@@ -167,7 +167,7 @@
                       <!--<a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><img alt="{{ $relate->title }}" class="block center-margin relative full-width img-responsive relate-img-thumb" src="{{ URL::asset($relate->image) }}" /></a>-->
                     </div>
                     <div class="col-md-12 brief p-l-10 p-r-10 card-relate-body">
-                        <div class="padding-5 p-t-10 text-master">
+                        <div class="padding-5 p-t-10 text-master block-ellipsis">
                           <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}" class="card_title">{{ $relate->title }}</a>
                         </div>
                     </div>

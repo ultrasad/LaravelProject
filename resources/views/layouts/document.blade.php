@@ -82,7 +82,7 @@
         <!-- BEGIN Overlay Search Results, This part is for demo purpose, you can add anything you like !-->
         <div class="container-fluid">
           <div class="search-results m-t-20 p-b-50">
-            <div class="search-header"><h4 class="bold hint-text result_pro" style="display: none">Promotion Search Results</h4></div>
+            <div class="search-header"><h4 class="bold hint-text result_pro" style="display: none"><u>Promotion Search Results</u></h4></div>
             <div class="full-height search-progress" style="display: none">
               <div class="panel-body text-center">
                 <img alt="Progress" src="{{ URL::asset('assets/img/demo/progress.svg') }}" class="image-responsive-height demo-mw-50">
@@ -90,7 +90,7 @@
             </div>
             <div class="row_result"></div>
             <p>&nbsp;</p>
-            <div class="search-header"><h4 class="bold hint-text result_map" style="display: none">Map Search Results</h4></div>
+            <div class="search-header"><h4 class="bold hint-text result_map" style="display: none"><u>Map Search Results</u></h4></div>
             <div class="row_result_map"></div>
           </div>
         </div>
@@ -107,7 +107,7 @@
               <div class="p-l-10 inline p-t-5 col-md-11 col-sm-10 col-xs-9 p-r-0">
                 <a class="result-url" href="#" title=""><h5 class="m-b-5"><span class="semi-bold result-title">title</span></h5></a>
                 <span class="result-brief">brief</span>
-                <p class="result-brand hint-text">via promotion</p>
+                <!--<p class="result-brand hint-text">via promotion</p>-->
               </div>
             </div>
           </div>

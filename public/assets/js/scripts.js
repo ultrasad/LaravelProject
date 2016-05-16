@@ -1617,6 +1617,8 @@ function initialize() {
     }
 
     if($('.map-full').exists()){ //main map full
+      var styles = [];
+      map.setOptions({styles: styles});
       var $url = '/maps/locations';
       if($('#location_id').val() > 0){
         $url = '/maps/locations/' + $('#location_id').val();
@@ -1700,9 +1702,9 @@ function initialize() {
                     clone += '<div class="col-xs-12 col-top padding-5">';
                     clone += '<span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
                     clone += '<div class="pull-left padding-0 p-l-10 col-xs-10">';
-                    clone += '<div class="col-md-12 padding-0"><span class="text-master col-sm-6 pull-left padding-0">'+v.brand+'</span>';
-                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span><div class="clearfix">&nbsp;</div></div>';
-                    clone += '<p><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></p>';
+                    clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0">'+v.brand+'</span>';
+                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span></div>';
+                    clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></p>';
                     clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
                     clone += '</div></div></li>';
 
@@ -1797,9 +1799,9 @@ function initialize() {
                     clone += '<div class="col-xs-12 col-top padding-5">';
                     clone += '<span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
                     clone += '<div class="pull-left padding-0 p-l-10 col-xs-10">';
-                    clone += '<div class="col-md-12 padding-0"><span class="text-master col-sm-6 pull-left padding-0">'+v.brand+'</span>';
-                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span><div class="clearfix">&nbsp;</div></div>';
-                    clone += '<p><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></p>';
+                    clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0">'+v.brand+'</span>';
+                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span></div>';
+                    clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></p>';
                     clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
                     clone += '</div></div></li>';
 

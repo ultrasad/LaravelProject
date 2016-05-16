@@ -40,7 +40,7 @@
       <div class="panel-body p-b-0">
         <div class="dialog__content">
             <!-- START PANEL -->
-            <div class="fotorama" data-width="100%" data-ratio="5/3" data-maxheight="80%" data-arrows="false" data-nav="thumbs" data-loop="true">
+            <div class="fotorama" data-allowfullscreen="true" data-width="100%" data-ratio="8/5" data-arrows="false" data-nav="thumbs" data-loop="true">
               @forelse($event->gallery_list as $id => $image)
                 <img src="{{ URL::asset($image) }}" class="img-responsive" data-fit="contain" />
               @empty
@@ -96,12 +96,8 @@
         <p>&nbsp;</p>
         <p class="col-middle m-b-5">
           <div class="btn-social-group inline">
-            <div class="inline btn-social btn-facebook"><a class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></a></div><div class="inline btn-social btn-twitter"><a href="https://twitter.com/share" class="twitter-share-button"></a></div>
-            <div class="inline btn-social btn-line-official">
-              <script type="text/javascript">
-                  new media_line_me.LineButton({"pc":true,"lang":"en","type":"a"});
-              </script>
-            </div>
+            <div class="inline btn-social btn-facebook"><a class="fb-like" data-href="{{ URL::to('events', $event->url_slug) }}" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></a></div><div class="inline btn-social btn-twitter"><a href="https://twitter.com/share" class="twitter-share-button"></a></div>
+            <div class="inline btn-social btn-line-official"><a href="http://line.me/R/msg/text/?{{ $event_title }}"><img width="76px" height="20px" alt="LINE it!" src="{{ URL::asset('assets/img/linebutton.png')}}"></a></div>
           </div>
         </p>
         <!--<small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>-->

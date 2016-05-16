@@ -267,8 +267,7 @@ class EventsController extends Controller
       //$event = Event::where('url_slug', $slug)->eventBrand()->first();
       $event = Event::where('url_slug', $slug)->first();
       if(!$event)
-        //return Redirect::back()->with('message','Event Not Exists !');
-        return redirect('/');
+        return redirect('/'); //return Redirect::back()->with('message','Event Not Exists !');
 
       $branchs = array();
       $tags = array();
@@ -623,7 +622,7 @@ class EventsController extends Controller
               }
             }
           }
-          
+
         }
       }
 

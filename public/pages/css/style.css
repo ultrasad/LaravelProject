@@ -127,18 +127,19 @@ a.brand-event-url:hover {
 /* social share */
 .btn-social-group {
   height: 22px;
-  line-height: 22px;
-  display: inline-block;
+  line-height: 12px;
+  /*display: inline-block;*/
 }
 
 .btn-social-group .btn-social {
   position: relative;
   margin-right: 5px;
+  vertical-align: top;
 }
 
 .btn-social-group .btn-twitter {
-  position: relative;
-  top: 0.45em;
+  /*position: relative;
+  top: 0.45em;*/
   margin-right: 1px;
 }
 
@@ -204,6 +205,10 @@ ol, ul {
 
 .windows .jumbotron p {
     font-size: 12px;
+}
+
+.map-event-list .relate-event-header {
+  height: 25px;
 }
 
 /*

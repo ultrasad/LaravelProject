@@ -12,8 +12,8 @@
           <a href="/" title="หน้าแรก">หน้าแรก</a>
         </li>
         <li>
-          @if($events->first()->category)
-            <span class="p-l-5 m-l-5 fs-12">{{ $events->first()->category->first()->name }}</span>
+          @if($category_name != 'ไม่ระบุ หมวดหมู่')
+            <span class="p-l-5 m-l-5 fs-12">{{ $category_name }}</span>
           @else
             <span class="p-l-5 m-l-5 fs-12">ไม่ระบุ หมวดหมู่</span>
           @endif
@@ -29,7 +29,7 @@
   <div class="social-element" data-pages="social">
     <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10">
       @if($events->count() < 1)
-      <div class="p-l-0 col-md-12 promotion-empty text-master">ยังไม่มีโปรโมชั่น ในหมวดหมู่นี้...</div>
+      <div class="col-md-12 promotion-empty text-master">ยังไม่มีโปรโมชั่น ในหมวดหมู่นี้...</div>
       @endif
       <div class="feed">
         <!-- START DAY -->

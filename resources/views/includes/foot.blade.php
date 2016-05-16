@@ -8,6 +8,7 @@
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-select2/select2.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/classie/classie.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-metrojs/MetroJs.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/jquery-cookie/jquery.cookie.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/dropzone/dropzone.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-tag/bootstrap-tagsinput.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>

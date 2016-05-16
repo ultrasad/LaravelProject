@@ -1538,6 +1538,14 @@ var place = '';
 var address = '';
 var point = '';
 
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+}
+
 function initialize() {
 
   console.log('initialize..');
@@ -1578,7 +1586,8 @@ function initialize() {
           zoom: 14,
           scrollwheel: false,
           center: default_latlng,
-          mapTypeId:default_type
+          mapTypeId:default_type,
+          disableDefaultUI: true
       };
 
       map = new mapObj.Map(map_canvas, options);
@@ -1685,8 +1694,9 @@ function initialize() {
             //var bounds = new mapObj.LatLngBounds();
 
             //Center map and adjust Zoom based on the position of all markers.
-            map.setCenter(latlngbounds.getCenter());
-            map.fitBounds(latlngbounds);
+            //2016-05-16, edit set center, detect user location
+            //map.setCenter(latlngbounds.getCenter());
+            //map.fitBounds(latlngbounds);
 
             $(document).on('click', '.events_locations', function(e){
               var index = $(this).data('index');
@@ -1729,6 +1739,60 @@ function initialize() {
               console.log(JSON.stringify(jqXHR.responseJSON));
           }
       });
+
+      var userLocation = function(val){
+        // Try HTML5 geolocation.
+        if(navigator.geolocation){
+          map.setZoom(16);
+          if($.cookie('latlonUser')){
+
+            var temp = $.cookie("latlonUser").split(',');
+            map.setCenter(new mapObj.LatLng(temp[0], temp[1]));
+            console.log('get latlonUser pos => ' + ' temp => ' + temp + ', lat => ' + temp[0] + ', => ' + temp[1]);
+
+          } else {
+            navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            $.cookie('latlonUser', position.coords.latitude +','+position.coords.longitude);
+            //infowindow.setPosition(pos);
+            //infowindow.setContent('Location found.');
+            map.setCenter(pos);
+            console.log('set latlonUser pos => ' + pos.lat + ' => ' + pos.lng);
+            }, function() {
+              handleLocationError(true, infowindow, map.getCenter());
+            });
+          }
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infowindow, map.getCenter());
+          //map.setCenter(latlngbounds.getCenter());
+          //map.fitBounds(latlngbounds);
+        }
+      }
+      userLocation();
+
+      $(document).on('click', '#map-location-user', function(e){
+        console.log('user location...');
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        $.cookie('latlonUser', position.coords.latitude +','+position.coords.longitude);
+        //infowindow.setPosition(pos);
+        //infowindow.setContent('Location found.');
+        map.setCenter(pos);
+        console.log('set latlonUser pos => ' + pos.lat + ' => ' + pos.lng);
+        }, function() {
+          handleLocationError(true, infowindow, map.getCenter());
+        });
+
+      });
+
     }
 
     if($('.event_id').exists()){ //event locations

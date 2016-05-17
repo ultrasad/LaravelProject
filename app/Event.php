@@ -26,7 +26,15 @@ class Event extends Model
 
     //Larasearch
     public static $__es_config = [
-       'suggest' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name', 'tag.name', 'location.name']
+      'autocomplete' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name', 'tag.name', 'location.name'],
+      'suggest' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name', 'tag.name', 'location.name'],
+      'text_start' => ['title', 'brief'],
+      'text_middle' => ['title', 'brief'],
+      'text_end' => ['title', 'brief'],
+      'word_start' => ['title', 'brief'],
+      'word_middle' => ['title', 'brief'],
+      'word_end' => ['title', 'brief'],
+       //'suggest' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name', 'tag.name', 'location.name']
     ];
 
     /*public static $__es_config = [

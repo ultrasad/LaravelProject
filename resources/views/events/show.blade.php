@@ -76,7 +76,7 @@
             @if($event->category->count() > 0)
                 <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}">{{ $event->category->first()->name }}</a></p>
             @else
-                <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', 'ไม่ระบุ หมวดหมู่') }}" title="Unknow">ไม่ระบุ หมวดหมู่</a></p>
+                <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', 'unknow') }}" title="ไม่ระบุ หมวดหมู่">ไม่ระบุ หมวดหมู่</a></p>
             @endif
           </div>
         </div>

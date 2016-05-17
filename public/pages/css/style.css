@@ -288,7 +288,8 @@ h2, .windows h2 {
 
 h3, .windows h3, h4, .windows h4, h5, windows.h5 {
   /*font-size: 1.3em;*/
-  line-height: 20px;
+  font-size: 25px;
+  line-height: 25px;
   font-weight: 400;
 }
 

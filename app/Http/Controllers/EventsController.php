@@ -51,9 +51,59 @@ class EventsController extends Controller
   {
     //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'image', 'brand.name', 'location.name'], 'highlight' => true, 'suggest' => true]);
     //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => '<span style="color:red">'], 'suggest' => true]);
-    $results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+
+    //2016-05-17, master ok
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+
+    //$results = Event::search($keywords, ['highlight' => ['tag' => ' ']]);
+    //$response = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+
     //$highlights = $results->getResults()->first()->getHighlights(['location.name']);
     //$suggestios = $results->getSuggestions();
+
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'image', 'brand.name', 'location.name'], 'highlight' => true, 'suggest' => true]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => '<span style="color:red">'], 'suggest' => true]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$highlights = $results->getResults()->first()->getHighlights(['location.name']);
+    //$suggestios = $results->getSuggestions();
+
+    //$event = new Event;
+    //$event->reIndex('App\Event --relations');
+
+    //$query['query']['match']['title'] = $keywords;
+    $params = [
+      'fields' => ['event.title', 'event.url_slug', 'event.brief', 'brand.name', 'location.name'],
+      'highlight' => ['tag' => ' '],
+      /*'aggs' => [
+        'agg_title' => [
+            'type' => 'terms',
+            'field' => 'title'
+        ]
+      ],*/
+    ];
+
+    //$results = Event::search($keywords, [['highlight' => true]]);
+
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$query['query']['match']['_all'] = $keywords;
+    //$response = Event::search(null, ['query' => $query], $params);
+
+    //$results = Event::search($keywords, $params);
+    $results = Event::search(null, ['query' => $params]);
+
+    //$results = $response->getResults();
+    //$aggregations = $results->getAggregations('agg_title');
+    //echo '<pre>';
+    //print_r($results);
+
+    //$query['query']['match']['_all'] = $keywords;
+    //$results = Event::searchByQuery($query, $params);
+    //$results = Event::search($keywords, $params);
+
+    echo '<pre>';
+    print_r($results);
+    exit;
 
     $arr_response = array();
     $arr_location = array();
@@ -61,7 +111,6 @@ class EventsController extends Controller
       foreach($results->getResults() as $result){
         $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $result->brand['name']);
         array_push($arr_response, $arr_data);
-
         $locations = $result->getHighlights(['location.name']);
         if(!empty($locations)){
           foreach($locations as $key => $location){
@@ -245,8 +294,7 @@ class EventsController extends Controller
     //re(index) larasearch
     //$event->reIndex();
     $event->reIndex('App\Event --relations');
-
-    echo '-- exit --';
+    //echo '-- exit --';
     exit;
   }
 

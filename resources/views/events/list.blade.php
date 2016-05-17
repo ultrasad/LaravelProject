@@ -94,15 +94,16 @@
                   <li><a class="text-info-link heart" href="#"><span>23K</span> <i class="fa fa-heart-o"></i></a>
                   </li>
                 </ul>
-                <div class="clearfix"></div>
+                <!--<div class="clearfix xx"></div>-->
               </div>
             </div>
           </div>
           <!-- END ITEM -->
           @empty
           @endforelse
-          <div class="clearfix">&nbsp;</div>
+          <!--<div class="clearfix yy">&nbsp;</div>-->
         </div>
+        <div class="paginate"><a id="next" href="#">next page?</a></div>
         <!-- END DAY -->
       </div>
       <!-- END FEED -->

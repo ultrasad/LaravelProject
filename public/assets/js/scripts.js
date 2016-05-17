@@ -228,6 +228,59 @@ var fx_select_brand;
         });
         /*grid card layout*/
 
+        /* infinitescroll*/
+        $('.feed .day').infinitescroll({
+            navSelector     : ".paginate a#next:last",
+            nextSelector    : ".paginate a#next:last",
+            itemSelector    : ".card",
+            debug           : false,
+            dataType        : 'html',
+            path: function(index) {
+                return "?page=" + index;
+                //console.log('page index => ' + index);
+            },
+            errorCallback: function() {
+              //alert('no discounts');
+              console.log('no discounts');
+            },
+        }, function(newElements, data, url){
+            //console.log('page newElements => ' + newElements);
+            //var $newElems = $(newElements);
+            //remove the first item
+            //$(newElements).splice(0, 1);
+            //newElements.shift();
+            //console.log('page newElements => ' + $(newElements).html());
+            //var $newElems = $(newElements);
+            //return;
+
+            //var $col2 = $newElems.find('.col2-element').html();
+            /*if($newElems.find('.col2-element') != null){
+              console.log('new => ' + $newElems.html());
+              //$newElems.find('.col2-element').remove();
+              $newElems.find('.col2-element').hide();
+            } else {
+              console.log('other');
+            }*/
+
+            var $newElements = $(newElements).css({opacity: 0});
+            //remove the first item
+            $newElements.splice(0, 1);
+            //remove any repeated discounts
+            return $newElements.filter(function(i, el) {
+                //console.log('el => ' + $(el).html());
+                //return !$('.day').find('#' + $(el).attr('id')).length;
+                $grid.isotope()
+                .append( el )
+                .isotope( 'appended', el )
+                .isotope('layout');
+            });
+
+            /*$grid.isotope()
+            .append( $newElems )
+            .isotope( 'appended', $newElems )
+            .isotope('layout');*/
+        });
+
         // Initializes search overlay plugin.
         // Replace onSearchSubmit() and onKeyEnter() with
         // your logic to perform a search and display results
@@ -296,7 +349,7 @@ var fx_select_brand;
                                 //$clone.find('img.result-image').attr('src', '/' + value.image).attr('data-src', '/' + value.image).html(value.title);
                                 $clone.find('div.search-img-thumb').css('background-image', 'url(/' + value.image + ')');
                                 $clone.find('span.result-brief').html(value.brief);
-                                $clone.find('a.result-url').attr('href', '/events/' + value.url_slug).attr('title', value.title);
+                                $clone.find('a.result-url').attr('href', '/' + value.url_slug).attr('title', value.title);
                                 $clone.find('p.result-brand').html('via ' + value.brand);
                                 $clone.css('display','block');
                                 //$clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
@@ -1714,7 +1767,7 @@ function initialize() {
                     clone += '<div class="pull-left padding-0 p-l-10 col-xs-10">';
                     clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0">'+v.brand+'</span>';
                     clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span></div>';
-                    clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></p>';
+                    clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/'+v.slug+'">'+v.title+'</a></p>';
                     clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
                     clone += '</div></div></li>';
 
@@ -1863,9 +1916,9 @@ function initialize() {
                     clone += '<div class="col-xs-12 col-top padding-5">';
                     clone += '<span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
                     clone += '<div class="pull-left padding-0 p-l-10 col-xs-10">';
-                    clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0">'+v.brand+'</span>';
-                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span></div>';
-                    clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/events/'+v.slug+'">'+v.title+'</a></p>';
+                    clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0"><a class="relate-brand-url" title="'+v.brand+'" href="/brand/'+v.brand_slug+'">'+v.brand+'</a></span>';
+                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0"><a class="relate-category-url" title="'+v.category+'" href="/category/'+v.category_slug+'">'+v.category+'</a></span></div>';
+                    clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/'+v.slug+'">'+v.title+'</a></p>';
                     clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
                     clone += '</div></div></li>';
 

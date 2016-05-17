@@ -122,7 +122,7 @@ class EventsController extends Controller
     }
     echo json_encode(array('event' => $arr_response, 'map' => $arr_location));
   }
-  
+
   /**
   * Display a list of the event.
   *
@@ -131,7 +131,11 @@ class EventsController extends Controller
   public function index()
   {
     //$events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->paginate(15); //old remove event brand
-    $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(20);
+    //if($page > 1){
+    //  $events = array('page' => 2);
+    //} else {
+      $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
+    //}
     //$events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
 
     //echo '<pre>';
@@ -659,6 +663,33 @@ class EventsController extends Controller
               $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
           }
 
+          //$events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->eventOther($id)->orderBy('events.created_at', 'desc')->get();
+          $events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->orderBy('events.created_at', 'desc')->get();
+          //echo '<pre>';
+          //print_r($event_branch);
+
+          $cate_name = 'ไม่ระบุ หมวดหมู่';
+          $cate_slug = 'unknow';
+
+          foreach($events_branch as $event){
+            if($event->category->count() > 0){
+              $cate_name = $event->category->first()->name;
+              $cate_slug = $event->category->first()->category;
+            }
+
+            if($event->id != $id){ //without self
+              if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
+                $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
+              } else {
+                array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
+              }
+            } else {
+              $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
+            }
+
+          }
+
+          /*
           foreach($branch->events->all() as $event_branch){
             $cate_name = isset($event_branch->category->first()->name)?$event_branch->category->first()->name:'ไม่ระบุ หมวดหมู่';
             if($event_branch->id != $id){ //without self
@@ -670,6 +701,7 @@ class EventsController extends Controller
               }
             }
           }
+          */
 
         }
       }

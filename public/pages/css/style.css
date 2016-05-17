@@ -108,19 +108,19 @@ a.category-brand-url:hover {
   color: #333;
 }
 
-a.category-event-url {
+a.category-event-url, a.relate-category-url {
   color: #8d959c;
 }
 
-a.category-event-url:hover {
+a.category-event-url:hover, a.relate-category-url:hover {
   color: #767C82;
 }
 
-a.brand-event-url {
+a.brand-event-url, a.relate-brand-url {
   color: #0DAD9E;
 }
 
-a.brand-event-url:hover {
+a.brand-event-url:hover, a.relate-brand-url:hover {
   color: #10CFBD;
 }
 

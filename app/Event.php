@@ -183,7 +183,7 @@ class Event extends Model
        return $query->where('active', 'Y');
     }
 
-    public function scopeOther($query, $id)
+    public function scopeEventOther($query, $id)
     {
       return $query->where('id', '!=', $id);
     }
@@ -284,6 +284,14 @@ class Event extends Model
       return $this->whereHas('location', function($query) use ($location)
       {
         $query->where('id', '=', $location);
+      });
+    }
+
+    public function scopeEventBranch($query, $branch)
+    {
+      return $this->whereHas('branch', function($query) use ($branch)
+      {
+        $query->where('id', '=', $branch);
       });
     }
 

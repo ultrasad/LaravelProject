@@ -20,6 +20,7 @@
 <script type="text/javascript" src="{{ URL::asset('assets/fotorama/fotorama.js') }}"></script>
 <!--<script type="text/javascript" src="{{ URL::asset('assets/owl-carousel/owl.carousel.min.js') }}"></script>-->
 <script type="text/javascript" src="{{ URL::asset('assets/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/jquery-infinite-scroll/jquery.infinitescroll.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/media/js/jquery.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js') }}"></script>

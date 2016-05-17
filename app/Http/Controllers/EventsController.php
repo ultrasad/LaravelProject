@@ -51,7 +51,7 @@ class EventsController extends Controller
   {
     //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'image', 'brand.name', 'location.name'], 'highlight' => true, 'suggest' => true]);
     //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => '<span style="color:red">'], 'suggest' => true]);
-    
+
     //2016-05-17, master ok
     //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
     $results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
@@ -122,7 +122,7 @@ class EventsController extends Controller
     }
     echo json_encode(array('event' => $arr_response, 'map' => $arr_location));
   }
-
+  
   /**
   * Display a list of the event.
   *

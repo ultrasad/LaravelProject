@@ -51,10 +51,10 @@ class EventsController extends Controller
   {
     //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'image', 'brand.name', 'location.name'], 'highlight' => true, 'suggest' => true]);
     //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => '<span style="color:red">'], 'suggest' => true]);
-
+    
     //2016-05-17, master ok
     //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
-    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    $results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
 
     //$results = Event::search($keywords, ['highlight' => ['tag' => ' ']]);
     //$response = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
@@ -72,16 +72,16 @@ class EventsController extends Controller
     //$event->reIndex('App\Event --relations');
 
     //$query['query']['match']['title'] = $keywords;
-    $params = [
+    /*$params = [
       'fields' => ['event.title', 'event.url_slug', 'event.brief', 'brand.name', 'location.name'],
       'highlight' => ['tag' => ' '],
-      /*'aggs' => [
+      'aggs' => [
         'agg_title' => [
             'type' => 'terms',
             'field' => 'title'
         ]
-      ],*/
-    ];
+      ],
+    ];*/
 
     //$results = Event::search($keywords, [['highlight' => true]]);
 
@@ -90,7 +90,7 @@ class EventsController extends Controller
     //$response = Event::search(null, ['query' => $query], $params);
 
     //$results = Event::search($keywords, $params);
-    $results = Event::search(null, ['query' => $params]);
+    //$results = Event::search(null, ['query' => $params]);
 
     //$results = $response->getResults();
     //$aggregations = $results->getAggregations('agg_title');
@@ -101,9 +101,9 @@ class EventsController extends Controller
     //$results = Event::searchByQuery($query, $params);
     //$results = Event::search($keywords, $params);
 
-    echo '<pre>';
-    print_r($results);
-    exit;
+    //echo '<pre>';
+    //print_r($results);
+    //exit;
 
     $arr_response = array();
     $arr_location = array();

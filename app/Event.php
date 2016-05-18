@@ -227,6 +227,14 @@ class Event extends Model
       //return $this->leftJoin('event_category', 'events.id', '=', 'event_category.cate_id')->where('events.id', '!=', $event_id)->where('event_category.cate_id', '=', $cate_id); //->orWhere('event_category.cate_id', '=', $cate_id);
     }
 
+    public function scopeBrandEvent($query, $brand)
+    {
+      return $this->whereHas('brand', function($query) use ($brand)
+      {
+          $query->where('id', '=', $brand);
+      });
+    }
+
     public function scopeEventBrand($query)
     {
       return $query->leftJoin('brand','events.brand_id','=','brand.id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');

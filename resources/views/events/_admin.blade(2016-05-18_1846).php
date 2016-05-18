@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.document')
 @section('page_title', 'Events List')
 @section('content')
 

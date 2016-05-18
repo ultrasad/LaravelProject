@@ -387,7 +387,8 @@ class EventsController extends Controller
       $relates = array();
       if($event_id){
         //$relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id, $tags_relate)->orderBy('events.created_at', 'desc')->skip(0)->take(6)->get();
-        $relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id, $tags_relate)->skip(0)->take(6)->get();
+        //$relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id, $tags_relate)->skip(0)->take(6)->get();
+        $relates = Event::published()->active()->relateThis($event_id, $cate_id, $tags_relate)->skip(0)->take(6)->get();
       }
 
       //echo 'cate id => ' . $cate_id;
@@ -651,8 +652,24 @@ class EventsController extends Controller
   //admin event lists
   public function admin()
   {
-    $events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->get();
-    return view('events.admin', compact('events'));
+    $user_id = Auth::user()->id;
+    $role_id = Auth::user()->role_id;
+    if($role_id == 4){//brand
+      $brands = Brand::where('user_id', $user_id)->get();
+      $events = Event::published()->active()->brandEvent($user_id)->orderBy('events.created_at', 'desc')->get();
+    } else if($role_id < 4){ // manager, admin
+      $brands = Brand::all();
+      $events = Event::published()->active()->orderBy('events.created_at', 'desc')->get();
+    }
+
+    //echo 'user_role => ' . $user_role;
+    //echo '<pre>';
+    //print_r($brand_list);
+    //exit;
+
+    //$events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->get();
+    //$events = Event::published()->active()->brandEvent($user_id)->orderBy('events.created_at', 'desc')->get();
+    return view('events.admin', compact('events', 'role_id', 'user_id', 'brands'));
   }
 
   public function _locations($event)

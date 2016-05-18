@@ -69,7 +69,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/admin',[
       'middleware' => ['auth', 'roles'],
       'uses' => 'EventsController@admin',
-      'roles' => ['administrator']
+      'roles' => ['Administrator', 'Manager', 'Company Manager']
     ]);
 
     Route::get('events/search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));

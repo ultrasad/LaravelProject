@@ -3,6 +3,8 @@ body, .color-body {
     color: #8d959c !important;
 }
 
+
+
 .social-wrapper .social-element .jumbotron {
     height: 40vh;
 }
@@ -344,6 +346,27 @@ h3.page-title, .windows h3.page-title {
 
 .form-group-default.focused, .form-control:focus {
   background-color: #fff;
+}
+
+.form-group-default.has-error {
+  background: none;
+}
+
+div.cs-skin-slide > span.error::after, div.cs-skin-slide.cs-active > span.error::after, .cs-select > span.error::after {
+  content: none;
+}
+
+div.cs-skin-slide > span, div.cs-skin-slide .cs-options {
+  z-index: 2;
+}
+
+div.cs-skin-slide .cs-options {
+  top: 100%;
+  padding: 10px 0 20px 10px;
+}
+
+div.cs-skin-slide > span.error {
+  z-index: 1;
 }
 
 .category-select2 {

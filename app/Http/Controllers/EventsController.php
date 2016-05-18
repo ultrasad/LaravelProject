@@ -167,6 +167,7 @@ class EventsController extends Controller
   */
   public function create()
   {
+      $role_id = Auth::user()->role_id;
       $category = Category::select('name', 'id')->where('category_type', 'event')->get();
       $brand = Brand::select('id', 'name')->get();
       //$branch = $brand->first()->branch_list; //default null
@@ -176,7 +177,7 @@ class EventsController extends Controller
       //print_r($category);
       //exit;
 
-      return view('events.create', compact('brand', 'branch', 'category'));
+      return view('events.create', compact('brand', 'branch', 'category', 'role_id'));
   }
 
   /**
@@ -692,8 +693,11 @@ class EventsController extends Controller
 
           //$events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->eventOther($id)->orderBy('events.created_at', 'desc')->get();
           $events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->orderBy('events.created_at', 'desc')->get();
-          //echo '<pre>';
-          //print_r($event_branch);
+
+          echo 'branch id => ' . $branch->id;
+          echo '<pre>';
+          print_r($events_branch);
+          //exit;
 
           $cate_name = 'ไม่ระบุ หมวดหมู่';
           $cate_slug = 'unknow';
@@ -785,7 +789,7 @@ class EventsController extends Controller
   public function branch($id)
   {
     $brand = Brand::findOrFail($id);
-    echo json_encode($brand->branch_list);
+    echo json_encode(array('branch' => $brand->branch_list, 'category' => $brand->category_list));
   }
 
 }

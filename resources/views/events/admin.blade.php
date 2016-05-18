@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('page_title', 'Events List')
+@section('page_title', 'Administrator')
 @section('content')
 
 <div class="social-wrapper">

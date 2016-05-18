@@ -68,8 +68,10 @@ class BrandController extends Controller
   public function register()
   {
     //echo 'register';
-    $category = Category::select('name', 'id')->where('category_type', 'brand')->get();
-    return view('brand.register', compact('category'));
+    $role_id = Auth::user()->role_id;
+    //$category = Category::select('name', 'id')->where('category_type', 'brand')->get();
+    $category = Category::select('name', 'id')->get();
+    return view('brand.register', compact('category', 'role_id'));
   }
 
   public function store(BrandRequest $request)

@@ -35,6 +35,7 @@
           <i class="fa fa-user-plus" aria-hidden="true"></i>
         </span>
       </li>
+      @endif
       <li class="">
         <a href="{{ url('/brand/list') }}" class="detailed" title="แก้ไขข้อมูลแบรนด์">
           <span class="title">แก้ไขข้อมูลแบรนด์</span>
@@ -43,7 +44,6 @@
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </span>
       </li>
-      @endif
       {{--
       @forelse($brands as $brand)
       <li class="">

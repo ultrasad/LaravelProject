@@ -1,4 +1,4 @@
-@extends('layouts.document')
+@extends('layouts.admin')
 @section('page_title', 'Brand Register')
 @section('content')
   <!-- START CONTAINER FLUID -->

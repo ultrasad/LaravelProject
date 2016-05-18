@@ -680,6 +680,10 @@ var fx_select_brand;
             return ($(".bootstrap-tagsinput").find(".label-custom-tag").length > 0);
         });
 
+        $.validator.addMethod("checkBrand", function(value) { //add custom method
+            return ($("div.cs-select .cs-options").find("li.cs-selected").attr('data-value') > 0);
+        });
+
         /* cache by bootstrap js */
         if($('#my-awesome-dropzone-form').exists()){
           $('#my-awesome-dropzone-form').validate({
@@ -742,6 +746,10 @@ var fx_select_brand;
                   brief: {
                      required: true
                   },
+                  brand: {
+                    required: true,
+                    "checkBrand": true
+                  },
                   branch_name: {
                     required: true
                   },
@@ -765,10 +773,14 @@ var fx_select_brand;
                   },
                   tag_list: {
                     required: "This field is required.",
-                    "checkTags": "This field is required.",
+                    "checkTags": "This field is required."
                   },
                   brief: {
                     required: "This field is required.",
+                  },
+                  brand: {
+                    required: "This field is required.",
+                    "checkBrand": "This field is required."
                   },
                   branch_name: {
                     required: "This field is required.",
@@ -1215,13 +1227,14 @@ var fx_select_brand;
 
         //brand
         if($('.cs-select').exists()){
-          var el = $('.cs-select-brand').get(0);
+          var el = $('.cs-select.cs-select-brand').get(0);
           $(el).wrap('<div class="cs-wrapper" />');
           new SelectFx(el, {
               onChange: function(e) {
                    var brand_id = $(e).val();
                    window.fx_select_brand = brand_id;
                    var _branch = $('.branch_child .list');
+                   var _category = $('.brand-category');
                    //var data = new FormData();
                    //data.append("id", brand_id);
                    //$('.new_branch_panel').hide(); //hide add panel
@@ -1243,9 +1256,9 @@ var fx_select_brand;
                      dataType: 'JSON',
                      type: 'GET',
                      success: function(data){
-                      if(Object.keys(data).length > 0){
+                      if(Object.keys(data.branch).length > 0){
                         _branch.html('');
-                        $.each(data, function(id, value) {
+                        $.each(data.branch, function(id, value) {
                             _branch.append(
                               '<div class="checkbox check-warning">'
                               + '<input type="checkbox" checked="checked" name="branch[]" class="branch" value="'+id+'" id="branch_'+id+'">'
@@ -1258,6 +1271,18 @@ var fx_select_brand;
                       } else {
                         $('.branch_child .list').append('<div class="checkbox"></div>');
                       }
+
+                      //brand category
+                      if(Object.keys(data.category).length > 0){
+                        _category.html('');
+                        $.each(data.category, function(id, value) {
+                          console.log('id => ' + id + ' => '+ value);
+                            _category.append(
+                              '<input type="text" name="category[]" class="brand-category" value="'+id+'" id="category_'+id+'">'
+                            );
+                        });
+                      }
+
                       $('.new_branch_btn').show(); //show new branch btn
 
                      },
@@ -1748,8 +1773,8 @@ function initialize() {
                     clone += '<div class="col-xs-12 col-top padding-5">';
                     clone += '<span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.image+'" data-src="/'+v.image+'" data-src-retina="/'+v.image+'" alt=""></span>';
                     clone += '<div class="pull-left padding-0 p-l-10 col-xs-10">';
-                    clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0">'+v.brand+'</span>';
-                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0">'+v.category+'</span></div>';
+                    clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0"><a class="relate-brand-url" title="'+v.brand+'" href="/brand/'+v.brand_slug+'">'+v.brand+'</a></span>';
+                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0"><a class="relate-category-url" title="'+v.category+'" href="/category/'+v.category_slug+'">'+v.category+'</a></span></div>';
                     clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/'+v.slug+'">'+v.title+'</a></p>';
                     clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
                     clone += '</div></div></li>';

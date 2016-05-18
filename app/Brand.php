@@ -35,7 +35,7 @@ class Brand extends Model
   public function getCategoryListAttribute()
   {
       //return $this->tags->lists('id');
-      return $this->category->lists('id')->all(); //relationship category events
+      return $this->category->lists('name', 'id')->all(); //relationship category events
       //or ican do this
       //return $this->category->lists('id')->toArray();
   }

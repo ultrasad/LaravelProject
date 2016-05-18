@@ -103,7 +103,10 @@
           @endforelse
           <!--<div class="clearfix yy">&nbsp;</div>-->
         </div>
-        <div class="paginate"><a id="next" href="#">next page?</a></div>
+        <div class="paginate" style="display: none"><a id="next" href="#">next page?</a></div>
+        <input type="hidden" value="{{ $more_page }}"  id="more_page" />
+        <input type="hidden" value="{{ $total_page }}"  id="total_page" />
+        <input type="hidden" value="{{ $paginate }}"  id="paginate_page" />
         <!-- END DAY -->
       </div>
       <!-- END FEED -->

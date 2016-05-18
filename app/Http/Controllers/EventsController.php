@@ -134,9 +134,19 @@ class EventsController extends Controller
     //if($page > 1){
     //  $events = array('page' => 2);
     //} else {
-      $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
+      $paginate = 15;
+      $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate($paginate);
+      $more_page = $events->hasMorePages();
+      $total_page = $events->total();
     //}
     //$events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
+
+    //echo '<pre>';
+    //print_r($events);
+
+    //echo '<pre>';
+    //print_r($events->hasMorePages());
+    //exit;
 
     //echo '<pre>';
     //print_r($events);
@@ -147,7 +157,7 @@ class EventsController extends Controller
     //echo $tag;
     //exit;
 
-    return view('events.list', compact('events'));
+    return view('events.list', compact('events', 'more_page', 'total_page', 'paginate'));
   }
 
   /**

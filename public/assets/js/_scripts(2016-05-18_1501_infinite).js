@@ -208,7 +208,7 @@ var fx_select_brand;
         });
 
         $grid.isotope('on', 'arrangeComplete', function() {
-          //console.log('arrange is complete');
+          console.log('arrange is complete');
         });
 
         // layout Isotope after each image loads
@@ -234,12 +234,6 @@ var fx_select_brand;
             msgText: "<div class='center'>Loading news items...</div>",
             img: "/assets/img/ajax-loader.gif"
         };
-
-        var $per_page = parseInt($('#paginate_page').val(), 10);
-        var $total_page = parseInt($('#total_page').val(), 10);
-        var $num_page = Math.ceil($total_page / $per_page);
-        //console.log('page => ' + $per_page + ' total => ' + $total_page + ' num => ' + $num_page);
-
         $('.feed .day').infinitescroll({
             //loading: loading_options,
             navSelector     : ".paginate a#next:last",
@@ -247,21 +241,65 @@ var fx_select_brand;
             itemSelector    : ".card.col1-element",
             debug           : false,
             dataType        : 'html',
-            maxPage         : $num_page,
+            appendCallback	: false, // USE FOR PREPENDING
             path: function(index) {
+                //console.log('last page => ' + $('#more_page').last().val());
+                var $more_page = parseInt($('#paginate_page').val() * (index - 1), 10);
+                var $total_page = parseInt($('#total_page').val(), 10);
+
+                console.log('more_page => ' + $more_page + ' total => ' + $total_page + ' page => ' + index);
+
+                if($total_page > $more_page){
+                  console.log('more page');
+                  //return false;
                   return "?page=" + index;
+                }
+                //console.log('page index => ' + index);
             },
             errorCallback: function() {
+              //alert('no discounts');
               console.log('no discounts');
             },
         }, function(newElements, data, url){
+            //console.log('page newElements => ' + newElements);
+            //var $newElems = $(newElements);
+            //remove the first item
+            //$(newElements).splice(0, 1);
+            //newElements.shift();
+            //console.log('page newElements => ' + $(newElements).html());
+            //var $newElems = $(newElements);
+            return false;
+
+            //var $col2 = $newElems.find('.col2-element').html();
+            /*if($newElems.find('.col2-element') != null){
+              console.log('new => ' + $newElems.html());
+              //$newElems.find('.col2-element').remove();
+              $newElems.find('.col2-element').hide();
+            } else {
+              console.log('other');
+            }*/
+
             var $newElements = $(newElements).css({opacity: 0});
+            //remove the first item
+            //$newElements.splice(0, 1);
+
+            //var $more_page = $(newElements).html();
+            //console.log('more page => ' + $more_page);
+
+            //remove any repeated discounts
             return $newElements.filter(function(i, el) {
+                //console.log('el => ' + $(el).html());
+                //return !$('.day').find('#' + $(el).attr('id')).length;
                 $grid.isotope()
                 .append( el )
                 .isotope( 'appended', el )
                 .isotope('layout');
             });
+
+            /*$grid.isotope()
+            .append( $newElems )
+            .isotope( 'appended', $newElems )
+            .isotope('layout');*/
         });
 
         // Initializes search overlay plugin.

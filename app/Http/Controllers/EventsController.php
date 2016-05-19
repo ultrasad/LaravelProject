@@ -135,7 +135,7 @@ class EventsController extends Controller
     //  $events = array('page' => 2);
     //} else {
       $paginate = 15;
-      $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate($paginate);
+      $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
       $more_page = $events->hasMorePages();
       $total_page = $events->total();
     //}
@@ -167,17 +167,35 @@ class EventsController extends Controller
   */
   public function create()
   {
+      $user_id = Auth::user()->id;
       $role_id = Auth::user()->role_id;
-      $category = Category::select('name', 'id')->where('category_type', 'event')->get();
-      $brand = Brand::select('id', 'name')->get();
+      //$category = Category::select('name', 'id')->where('category_type', 'event')->get();
+      if($role_id == 4){ //brand
+        //$brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
+        $brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
+      } else { //manager, admin
+        $brand = Brand::select('id', 'name')->get();
+        //$brand = Brand::all();
+      }
       //$branch = $brand->first()->branch_list; //default null
-      $branch = array();
+      //$branch = array();
+      if($brand->count() == 1){
+        $branch = Branch::brandList($brand->first()->id)->get();
+      } else {
+        $branch = array();
+      }
+
+      $brand_category = $brand->first()->category_list;
 
       //echo '<pre>';
-      //print_r($category);
+      //print_r($brand_category);
       //exit;
 
-      return view('events.create', compact('brand', 'branch', 'category', 'role_id'));
+      //echo '<pre>';
+      //print_r(count($branch));
+      //exit;
+
+      return view('events.create', compact('brand', 'branch', 'brand_category', 'role_id'));
   }
 
   /**
@@ -421,13 +439,38 @@ class EventsController extends Controller
   */
   public function edit($id)
   {
+    $user_id = Auth::user()->id;
+    $role_id = Auth::user()->role_id;
     $event = Event::find($id);
+
+    //$user_id = Auth::user()->id;
+    //$role_id = Auth::user()->role_id;
+    //$category = Category::select('name', 'id')->where('category_type', 'event')->get();
+    if($role_id == 4){ //brand
+      //$brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
+      $brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
+    } else { //manager, admin
+      //$brand = Brand::select('id', 'name')->get();
+      //$brand = Brand::all();
+      $brand = Brand::select('id', 'name')->get();
+    }
+    //$branch = $brand->first()->branch_list; //default null
+    $branch = array();
+    if($brand->count() == 1){
+      $branch = Branch::brandList($brand->first()->id)->get();
+    }
+
     //$tag_list = Tag::lists('name', 'id');
     if(!$event)
       return Redirect::back()->with('message','Event Not Exists !');
 
-    $category = Category::select('name', 'id')->where('category_type', 'event')->get();
-    $brand = Brand::select('id', 'name')->get();
+    //$category = Category::select('name', 'id')->where('category_type', 'event')->get();
+    //$brand = Brand::select('id', 'name')->get();
+
+    //echo '<pre>';
+    //print_r($brand);
+    //exit;
+
     //$branch = array();
     //if(isset($event->brand_id)){
       $brand_active = Brand::find($event->brand_id);
@@ -489,9 +532,12 @@ class EventsController extends Controller
     //echo $string_tag;
     //exit;
 
+    $brand_category = $brand->first()->category_list;
+
     if(empty($event))
       abort(404);
-    return  view('events.edit', compact('event', 'category', 'brand', 'branch', 'string_tag', 'gallery', 'location'));
+    //return  view('events.edit', compact('event', 'category', 'brand', 'branch', 'string_tag', 'gallery', 'location', 'role_id'));
+    return  view('events.edit', compact('event', 'brand_category', 'brand', 'branch', 'string_tag', 'gallery', 'location', 'role_id'));
   }
 
   /**
@@ -511,7 +557,11 @@ class EventsController extends Controller
 
     //image
     if($request->hasFile('image')){
-      $base_hash = md5_file(base_path() . '/public/' . $event->image);
+      //echo ' => ' . base_path() . '/public/' . $event->image;
+      $base_hash = '';
+      if(is_file(base_path() . '/public/' . $event->image)){
+          $base_hash = md5_file(base_path() . '/public/' . $event->image);
+      }
       $image_hash = md5_file($request->file('image')->getPathName());
 
       //echo 'old image => ' . base_path() . '/public/' . $event->image;
@@ -556,6 +606,10 @@ class EventsController extends Controller
        $event->category()->sync($categoryId);
     }
 
+    //echo 'cate => ';
+    //echo '<pre>';
+    //print_r($categoryId);
+
     //brand
     $input['brand_id'] = $request->input('brand');
 
@@ -564,6 +618,9 @@ class EventsController extends Controller
     if(!empty($branchId)){
        $event->branch()->sync($branchId);
     }
+
+    //echo '<pre>';
+    //print_r($branchId);
 
     //tags
     $tagsId = $request->input('tag_list');
@@ -583,6 +640,11 @@ class EventsController extends Controller
 
     //gallery
     $gallery = $request->file('gallery');
+
+    //echo '<pre>';
+    //print_r($gallery);
+    //exit;
+
     $success = 0;
     $error = 0;
     $file_index = 0;
@@ -657,10 +719,19 @@ class EventsController extends Controller
     $role_id = Auth::user()->role_id;
     if($role_id == 4){//brand
       $brands = Brand::where('user_id', $user_id)->get();
-      $events = Event::published()->active()->brandEvent($user_id)->orderBy('events.created_at', 'desc')->get();
+      $brands_list = $brands->lists('id')->toArray();
+      //echo '<pre>';
+      //print_r($brands->lists('id')->toArray());
+      //exit;
+
+      $events = Event::published()->active()->brandEvent($brands_list)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->get();
+      //echo '<pre>';
+      //print_r($events);
+      //exit;
+
     } else if($role_id < 4){ // manager, admin
       $brands = Brand::all();
-      $events = Event::published()->active()->orderBy('events.created_at', 'desc')->get();
+      $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->get();
     }
 
     //echo 'user_role => ' . $user_role;
@@ -694,9 +765,9 @@ class EventsController extends Controller
           //$events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->eventOther($id)->orderBy('events.created_at', 'desc')->get();
           $events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->orderBy('events.created_at', 'desc')->get();
 
-          echo 'branch id => ' . $branch->id;
-          echo '<pre>';
-          print_r($events_branch);
+          //echo 'branch id => ' . $branch->id;
+          //echo '<pre>';
+          //print_r($events_branch);
           //exit;
 
           $cate_name = 'ไม่ระบุ หมวดหมู่';
@@ -710,12 +781,21 @@ class EventsController extends Controller
 
             if($event->id != $id){ //without self
               if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
+                //echo 'not exists => ' . $branch->lat . ' => ' . $event->title;
                 $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
+
+                //echo(json_encode($event_locations));
+                //exit;
+
               } else {
+                //echo 'exists array => ' . $branch->lat . ' => ' . $event->title;
                 array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
               }
             } else {
-              $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
+              //echo 'exists event => ' . $branch->lat . ' => ' . $event->title;
+              if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
+                $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
+              }
             }
 
           }
@@ -786,7 +866,7 @@ class EventsController extends Controller
     echo json_encode($brand->branch_list);
   }
 
-  public function branch($id)
+  public function brand($id)
   {
     $brand = Brand::findOrFail($id);
     echo json_encode(array('branch' => $brand->branch_list, 'category' => $brand->category_list));

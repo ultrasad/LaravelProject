@@ -231,14 +231,18 @@ class Event extends Model
     {
       return $this->whereHas('brand', function($query) use ($brand)
       {
-          $query->where('id', '=', $brand);
+        if(is_array($brand)){
+            $query->whereIn('id', $brand);
+        } else{
+            $query->where('id', '=', $brand);
+        }
       });
     }
 
-    public function scopeEventBrand($query)
+    /*public function scopeEventBrand($query)
     {
       return $query->leftJoin('brand','events.brand_id','=','brand.id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');
-    }
+    }*/
 
     public function scopeBrandId($query, $brand)
     {

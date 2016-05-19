@@ -19,6 +19,14 @@ class Branch extends Model
         return $this->events->lists('title')->all();
     }*/
 
+    public function scopeBrandList($query, $brand)
+    {
+      return $this->whereHas('brands', function($query) use ($brand)
+      {
+          $query->where('id', '=', $brand);
+      });
+    }
+
     public function events()
     {
       return $this->belongsToMany('App\Event', 'event_branch');
@@ -26,6 +34,6 @@ class Branch extends Model
 
     public function brands()
     {
-      return $this->belongsToMany('App\Brand');
+      return $this->belongsToMany('App\Brand', 'brand_branch');
     }
 }

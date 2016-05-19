@@ -851,7 +851,7 @@ var fx_select_brand;
                            success: function (resp) {
                              console.log('ajax response => ' + resp);
                              //window.location.href = base_url + '/events';
-                             window.location.href = base_url;
+                             window.location.href = base_url + '/admin';
                            },
                            error: function(jqXHR, textStatus, errorThrown)
                            {
@@ -882,7 +882,7 @@ var fx_select_brand;
                   //_this.removeAllFiles();
 
                   //console.log('drop response => ' + _this);
-                  window.location.href = base_url + '/events';
+                  window.location.href = base_url + '/admin';
                 }
               });
 
@@ -1093,7 +1093,7 @@ var fx_select_brand;
                            contentType: false,
                            success: function (resp) {
                              console.log('ajax response => ' + resp);
-                             window.location.href = base_url + '/events';
+                             window.location.href = base_url + '/admin';
                            },
                            error: function(jqXHR, textStatus, errorThrown)
                            {
@@ -1124,7 +1124,7 @@ var fx_select_brand;
                   //_this.removeAllFiles();
 
                   //console.log('drop response => ' + _this);
-                  window.location.href = base_url + '/events';
+                  window.location.href = base_url + '/admin';
                 }
               });
 
@@ -1248,7 +1248,7 @@ var fx_select_brand;
 
                    if(brand_id > 0){
                    $.ajax({
-                     url: "/events/branch/" + brand_id,
+                     url: "/events/brand/" + brand_id,
                      //data: data,
                      //cache: false,
                      contentType: false,
@@ -1261,7 +1261,7 @@ var fx_select_brand;
                         $.each(data.branch, function(id, value) {
                             _branch.append(
                               '<div class="checkbox check-warning">'
-                              + '<input type="checkbox" checked="checked" name="branch[]" class="branch" value="'+id+'" id="branch_'+id+'">'
+                              + '<input type="checkbox" checked="checked" name="branch[]" class="branch" value="'+id+'" id="branch_'+id+'" />'
                               + '<label for="branch_'+id+'">'+value+'</label>'
                               + '</div>'
                             );
@@ -1278,7 +1278,7 @@ var fx_select_brand;
                         $.each(data.category, function(id, value) {
                           console.log('id => ' + id + ' => '+ value);
                             _category.append(
-                              '<input type="text" name="category[]" class="brand-category" value="'+id+'" id="category_'+id+'">'
+                              '<input type="text" name="category[]" class="brand-category" value="'+id+'" id="category_'+id+'" />'
                             );
                         });
                       }

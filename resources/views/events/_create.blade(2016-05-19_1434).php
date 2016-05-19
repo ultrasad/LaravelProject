@@ -159,11 +159,7 @@
                     @endif
                   </select>
               </div>
-              <div class="brand-category" style="display: none">
-                @foreach($brand_category as $id => $category)
-                  <input type="text" name="category[]" class="brand-category" value="{{ $id }}" id="category_{{ $id }}" />
-                @endforeach
-              </div>
+              <div class="brand-category" style="display: none"></div>
           </div>
 
           <div class="panel-heading">
@@ -172,7 +168,7 @@
             </div>
           </div>
           <div class="panel-body">
-            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all check-branch-all" style="display: {{ (count($branch) > 0)?'':'none' }}">
+            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all check-branch-all" style="display: none">
               <div class="checkbox check-success">
                 <input type="checkbox" checked="checked" name="branch_all" value="1" class="branch_all" id="branch_all">
                 <label class="label-master" for="branch_all">ทุกสาขา</label>
@@ -183,16 +179,16 @@
             <div class="wizard-footer padding-5 branch_child">
               <div class="list">
                 @if($branch)
-                  @foreach($branch as $id => $branch)
+                  @foreach($branch as $id => $name)
                   <div class="checkbox check-warning">
-                    <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $id }}" id="branch_{{ $branch->id }}">
-                    <label for="branch_{{ $branch->id }}">{{ $branch->name }}</label>
+                    <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $id }}" id="branch_{{ $id }}">
+                    <label for="branch_{{ $id }}">{{ $name }}</label>
                   </div>
                   @endforeach
                 @endif
               </div>
 
-              <div class="form-group new_branch_btn" style="display: ">
+              <div class="form-group new_branch_btn" style="display: none;">
                   <a href="javascript: void(0);" title="เพิ่มสาขาใหม่" class="add_new_branch"><span class="new-branch"><i class="fs-14 pg-minus pg-plus"></i>เพิ่มสาขาใหม่</span></a>
               </div>
 

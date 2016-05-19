@@ -45,7 +45,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('home', 'HomeController@index');
     Route::get('events/locations/{id}', 'EventsController@locations');
     Route::post('events/desc_upload', 'EventsController@desc_upload');
-    Route::get('events/branch/{id}', 'EventsController@branch');
+    //Route::get('events/branch/{id}', 'EventsController@branch');
+    Route::get('events/brand/{id}', 'EventsController@brand');
     Route::get('tags/{name}', 'TagsController@index');
     Route::get('category/{name}', 'CategoryController@index');
     Route::get('brand/category/{name}', 'BrandController@category');

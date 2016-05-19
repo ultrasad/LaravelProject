@@ -1,4 +1,4 @@
-@extends('layouts.document')
+@extends('layouts.admin')
 @section('page_title', 'Events Edit')
 @section('content')
   <!-- START CONTAINER FLUID -->
@@ -27,6 +27,7 @@
                 <label>URL SLUG (ภาษาอังกฤษเท่านั้น / สูงสุด 60 ตัวอักษร)</label>
                 <input type="text" name="url_slug" class="form-control" value="{{ $event->url_slug }}" placeholder="ex: promotion-my-brand-my-name-date-year" required />
               </div>
+              {{--
               <div class="form-group form-group-default required">
                 <label>หมวดหมู่</label>
                 <select id="category" name="category[]" class="full-width category-select2" multiple>
@@ -41,6 +42,7 @@
                   @endif
                 </select>
               </div>
+              --}}
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group form-group-default input-group col-sm-12">
@@ -166,8 +168,10 @@
 
           <div class="row">
               <div class="col-sm-12 cs-brand">
-                  <select name="brand" class="cs-select cs-skin-slide cs-select-brand" data-init-plugin="cs-select">
+                  <select name="brand" class="cs-select cs-skin-slide cs-select-brand validate">
+                    @if($brand->count() > 1)
                     <option value="">กรุณาเลือกแบรนด์สินค้า</option>
+                    @endif
                     @if($brand)
                       @foreach($brand as $id => $brand)
                         @if($brand->id == $event->brand_id)
@@ -178,6 +182,11 @@
                       @endforeach
                     @endif
                   </select>
+              </div>
+              <div class="brand-category" style="display: none">
+                @foreach($brand_category as $id => $category)
+                  <input type="text" name="category[]" class="brand-category" value="{{ $id }}" id="category_{{ $id }}" />
+                @endforeach
               </div>
           </div>
 
@@ -215,7 +224,7 @@
                 @endif
               </div>
 
-              <div class="form-group new_branch_btn" style="display: none;">
+              <div class="form-group new_branch_btn" style="display: ;">
                   <a href="javascript: void(0);" title="เพิ่มสาขาใหม่" class="add_new_branch"><span class="new-branch"><i class="fs-14 pg-minus pg-plus"></i>เพิ่มสาขาใหม่</span></a>
               </div>
 

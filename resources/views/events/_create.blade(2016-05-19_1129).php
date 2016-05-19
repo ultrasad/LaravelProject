@@ -4,6 +4,8 @@
   <!-- START CONTAINER FLUID -->
   <form class="events-form dropzone" id="my-awesome-dropzone-form" role="form" action="/events" enctype="multipart/form-data" method="POST">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  {{-- Form::token() --}}
+  <!--<div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">-->
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-12">
@@ -15,15 +17,36 @@
       <div class="col-md-8">
         <!-- START PANEL -->
         <div class="panel panel-default">
+          <!--<div class="panel-heading">
+            <div class="panel-title">
+              Option #one
+            </div>
+          </div>-->
           <div class="panel-body sm-p-t-20">
+            <!-- <h5>Pages default style</h5>-->
               <div class="form-group form-group-default required">
                 <label>หัวข้อข่าว</label>
+                <!--<input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" oninvalid="this.setCustomValidity('Please Enter valid title')" required />-->
                 <input type="text" name="title" class="form-control" placeholder="โปรโมชั่น" required />
               </div>
               <div class="form-group form-group-default required">
                 <label>URL SLUG (ภาษาอังกฤษเท่านั้น / สูงสุด 60 ตัวอักษร)</label>
                 <input type="text" name="url_slug" class="form-control" placeholder="ex: promotion-my-brand-my-name-date-year" required />
               </div>
+              <!-- // 2016-05-19 use brand category for event //-->
+              {{--
+              <div class="form-group form-group-default required">
+                <label>หมวดหมู่</label>
+                <!--<input type="text" name="category" class="form-control" placeholder="" />-->
+                <select id="category" name="category[]" class="full-width category-select2" multiple>
+                  @if($category)
+                    @foreach($category as $id => $cate)
+                      <option value="{{ $cate->id }}">{{ $cate->name }}</option>
+                    @endforeach
+                  @endif
+                </select>
+              </div>
+              --}}
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group form-group-default input-group col-sm-12">
@@ -49,6 +72,17 @@
                 </span>
               </div>
 
+              <!--
+              <div class="input-group">
+                  <span class="input-group-btn">
+                      <span class="btn btn-primary btn-file">
+                          Browse&hellip; <input type="file" multiple>
+                      </span>
+                  </span>
+                  <input type="text" class="form-control" readonly>
+              </div>
+              -->
+
               <!-- START PANEL -->
               <div class="form-group form-group-default panel-gallery"><label>รูปภาพ Gallery (ต้องเชื่อมต่อกับ Facebook Fanpage)</label></div>
               <div class="panel-body no-scroll no-padding dropzone-file-previews">
@@ -63,6 +97,7 @@
               <div class="form-group form-group-default form-group-map">
                 <label>สถาณที่จัดโปรโมชั่น</label>
                 <input type="text" size="50" name="event_location" class="form-control" id="event_location" placeholder="กรอกข้อมูลสถาณที่เพื่อกำหนดตำแหน่ง" />
+                <!-- <input name="namePlace" type="text" id="namePlace" size="40" /><input type="button" name="SearchPlace" id="SearchPlace" value="Search" /> -->
               </div>
 
               <div class="form-group">
@@ -146,12 +181,19 @@
         <!-- START PANEL -->
         <div class="panel panel-default">
 
+          <!--
+          <div class="panel-heading">
+            <div class="panel-title">
+              แบรนด์สินค้า
+            </div>
+          </div>
+          -->
+
           <div class="row">
               <div class="col-sm-12 cs-brand">
+                  <!--<select name="brand" class="cs-select cs-skin-slide cs-select-brand" data-init-plugin="cs-select">-->
                   <select name="brand" class="cs-select cs-skin-slide cs-select-brand validate">
-                    @if($brand->count() > 1)
                     <option value="">กรุณาเลือกแบรนด์สินค้า</option>
-                    @endif
                     @if($brand)
                       @foreach($brand as $id => $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
@@ -159,11 +201,7 @@
                     @endif
                   </select>
               </div>
-              <div class="brand-category" style="display: none">
-                @foreach($brand_category as $id => $category)
-                  <input type="text" name="category[]" class="brand-category" value="{{ $id }}" id="category_{{ $id }}" />
-                @endforeach
-              </div>
+              <div class="brand-category" style="display: none"></div>
           </div>
 
           <div class="panel-heading">
@@ -172,7 +210,7 @@
             </div>
           </div>
           <div class="panel-body">
-            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all check-branch-all" style="display: {{ (count($branch) > 0)?'':'none' }}">
+            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all check-branch-all" style="display: none">
               <div class="checkbox check-success">
                 <input type="checkbox" checked="checked" name="branch_all" value="1" class="branch_all" id="branch_all">
                 <label class="label-master" for="branch_all">ทุกสาขา</label>
@@ -183,16 +221,17 @@
             <div class="wizard-footer padding-5 branch_child">
               <div class="list">
                 @if($branch)
-                  @foreach($branch as $id => $branch)
+                  @foreach($branch as $id => $name)
                   <div class="checkbox check-warning">
-                    <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $id }}" id="branch_{{ $branch->id }}">
-                    <label for="branch_{{ $branch->id }}">{{ $branch->name }}</label>
+                    <input type="checkbox" checked="checked" name="branch[]" class="branch" value="{{ $id }}" id="branch_{{ $id }}">
+                    <label for="branch_{{ $id }}">{{ $name }}</label>
                   </div>
                   @endforeach
+                  <!--<div class="clearfix"></div>-->
                 @endif
               </div>
 
-              <div class="form-group new_branch_btn" style="display: ">
+              <div class="form-group new_branch_btn" style="display: none;">
                   <a href="javascript: void(0);" title="เพิ่มสาขาใหม่" class="add_new_branch"><span class="new-branch"><i class="fs-14 pg-minus pg-plus"></i>เพิ่มสาขาใหม่</span></a>
               </div>
 
@@ -268,4 +307,12 @@
       <input type="checkbox" id="branch_x" value="" class="branch" name="branch[]" checked="checked"><label for="branch_x">สาขา</label>
     </div>
   </div>
+
+  {{--
+  <h1 class='page-title'>Write a New event</h1>
+  @include('errors.list')
+  {!! Form::open(array('method' => 'POST', 'id' => 'article', 'url' => 'articles', 'files' => true)) !!}
+    @include('events._form', ['submitButtonText' => '<i class="glyphicon glyphicon-plus"></i>Add Article', 'articleTagList' => null])
+  {!! Form::close() !!}
+  --}}
 @stop

@@ -35,7 +35,7 @@
               <tr class="odd gradeX">
                 <td><a href="/events/{{ $event->id }}/edit" id="show-modal" class="btn btn-danger btn-sm"><i class="fa fa-magic"></i> Edit</a></td>
                 <td>{{ $event->title }}</td>
-                <td>{{ $event->brand_name }}</td>
+                <td>{{ $event->brand->name }}</td>
                 <td class="center">{{ $event->start_date_thai }}</td>
                 <td class="center">{{ $event->end_date_thai }}</td>
               </tr>

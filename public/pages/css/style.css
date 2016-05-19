@@ -361,8 +361,7 @@ div.cs-skin-slide > span, div.cs-skin-slide .cs-options {
 }
 
 div.cs-skin-slide .cs-options {
-  top: 100%;
-  padding: 10px 0 20px 10px;
+  /*padding: 10px 0 20px 10px;*/
 }
 
 div.cs-skin-slide > span.error {
@@ -525,6 +524,7 @@ div.cs-skin-slide.cs-active {
 }
 
 div.cs-select-brand {
+  /*margin-top: 35px;*/
   max-width: 100%;
 }
 

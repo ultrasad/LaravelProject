@@ -29,7 +29,7 @@ class EventsController extends Controller
     //ini_set('always_populate_raw_post_data', -1);
 
     //$this->middleware('auth', ['only' => ['create', 'store']]);
-    $this->middleware('auth', ['except' => ['index', 'search', 'show', 'desc_upload', 'locations', 'branch']]);
+    $this->middleware('auth', ['except' => ['index', 'search', 'show', 'desc_upload', 'locations', 'removefile', 'branch']]);
   }
 
   function string_friendly($string)
@@ -758,16 +758,28 @@ class EventsController extends Controller
     $event = Event::where('id', $id)->first();
 
       if($event->branch->count() > 0){
+
+        //echo 'count more 0 >>';
         foreach($event->branch->all() as $branch){
 
           if($branch->events->count() == 1){
+              //echo '<br />count 1 >>';
               $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
           }
 
           //$events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->eventOther($id)->orderBy('events.created_at', 'desc')->get();
-          $events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->orderBy('events.created_at', 'desc')->get();
+          $events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->orderBy('events.created_at', 'desc')->get(); //check expire
+          //$events_branch = Event::eventBranch($branch->id)->published()->active()->orderBy('events.created_at', 'desc')->get(); //not check expire, check in loop
 
           //echo 'branch id => ' . $branch->id;
+          if($events_branch->count() < 1){
+            $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
+            continue;
+          }
+
+          //echo '<pre>';
+          //print_r($events_branch);
+
           //echo '<pre>';
           //print_r($events_branch);
           //exit;
@@ -799,6 +811,9 @@ class EventsController extends Controller
                 $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
               }
             }
+
+            //echo '<pre>';
+            //print_r($event_locations);
 
           }
 

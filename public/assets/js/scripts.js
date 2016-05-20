@@ -230,9 +230,10 @@ var fx_select_brand;
 
         /* infinitescroll*/
         var loading_options = {
-            finishedMsg: "<div class='end-msg'>Congratulations! You've reached the end of the internet</div>",
+            /*finishedMsg: "<div class='end-msg'>Congratulations! You've reached the end of the internet</div>",
             msgText: "<div class='center'>Loading news items...</div>",
             img: "/assets/img/ajax-loader.gif"
+            */
         };
 
         var $per_page = parseInt($('#paginate_page').val(), 10);
@@ -242,6 +243,16 @@ var fx_select_brand;
 
         $('.feed .day').infinitescroll({
             //loading: loading_options,
+            loading: {
+              finished: undefined,
+              finishedMsg: "",
+              img: "/pages/img/progress/progress-circle-success.svg",
+              msg: null,
+              msgText: "",
+              selector: null,
+              speed: 'fast',
+              start: undefined
+            },
             navSelector     : ".pagination",
             nextSelector    : ".pagination a#next",
             itemSelector    : ".card.col1-element",
@@ -1151,6 +1162,7 @@ var fx_select_brand;
 
                   // Pass token. You can use the same method to pass any other values as well such as a id to associate the image with for example.
                   data.append("_token", $('[name=_token').val()); // Laravel expect the token post value to be named _token by default
+                  //console.log('data => ' + data.toSource());
               });
 
               // Execute when file uploads are complete

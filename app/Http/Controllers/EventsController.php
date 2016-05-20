@@ -580,7 +580,10 @@ class EventsController extends Controller
         $input['image'] = $public_path . $image_name; //set article image name
       } else {
         $input['image'] = $event->image;
+        //echo '<br /> event image => ' . $event->image;
       }
+    } else {
+      $input['image'] = $event->image;
     }
 
     //url slug
@@ -875,13 +878,22 @@ class EventsController extends Controller
   {
     echo 'id => ' . $id . ',  image => ' . $image;
     //$image = Event::find($id)->gallery
-    $image_id = Gallery::select('id')->where('name', $image)->first()->id;
-    echo 'image id => ' . $image_id;
+    $image = Gallery::select('id')->where('name', $image)->first();
+    //echo '<pre>';
+    //print_r($image);
+    if($image){
+      //echo '<pre>';
+      //print_r($image);
+      $image_id = $image->first()->id;
+      $deletedRows = Event::find($id)->gallery()->detach($image_id); // delete the relationships with Image (Pivot table) first.
+    }
+
+    //echo 'image id => ' . $image_id;
     //print_r($image_id);
     //exit;
-    $deletedRows = Event::find($id)->gallery()->detach($image_id); // delete the relationships with Image (Pivot table) first.
+    //$deletedRows = Event::find($id)->gallery()->detach($image_id); // delete the relationships with Image (Pivot table) first.
     //$deletedRows = $event->eventGallery()->where('name', $image)->delete();
-    echo '<br /> del => ' . $deletedRows;
+    //echo '<br /> del => ' . $deletedRows;
   }
 
   /**

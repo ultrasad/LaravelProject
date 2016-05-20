@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    @include('includes.head')
+    @include('includes.head_admin')
   </head>
   <!-- <body class="fixed-header dashboard"> -->
   <body class="fixed-header menu-behind">
@@ -125,6 +125,6 @@
     </div>
     <!-- END OVERLAY -->
 
-    @include('includes.foot')
+    @include('includes.foot_admin')
  </body>
 </html>

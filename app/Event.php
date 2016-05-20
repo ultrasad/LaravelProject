@@ -307,6 +307,14 @@ class Event extends Model
       });
     }
 
+    public function scopeEventGallery($query, $image)
+    {
+      return $this->whereHas('gallery', function($query) use ($image)
+      {
+        $query->where('name', '=', $image);
+      });
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

@@ -134,7 +134,7 @@ class EventsController extends Controller
     //if($page > 1){
     //  $events = array('page' => 2);
     //} else {
-      $paginate = 15;
+      $paginate = 5;
       $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
       $more_page = $events->hasMorePages();
       $total_page = $events->total();
@@ -248,7 +248,6 @@ class EventsController extends Controller
 
     //brand
     $event->brand_id = $request->input('brand'); //event brand
-
     $event_id = Auth::user()->events()->save($event)->id; //user id
 
     //category
@@ -649,7 +648,7 @@ class EventsController extends Controller
     $error = 0;
     $file_index = 0;
     if($gallery){
-      $images = array();
+      //$images = array();
       foreach($gallery as $file){
          $image_filename = $file->getClientOriginalName();
          $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
@@ -661,13 +660,16 @@ class EventsController extends Controller
          if( $upload_success ) {
             $success++;
             $image = $destination;
-            $images[] = Gallery::firstOrCreate(array('name' => $image_name, 'image' => $public_path . $image_name))->id;
+            //$images[] = Gallery::firstOrCreate(array('name' => $image_name, 'image' => $public_path . $image_name))->id;
+            $images_id = Gallery::firstOrCreate(array('name' => $image_name, 'image' => $public_path . $image_name))->id;
+            $event_gallery = $event->gallery()->attach($images_id);
+            //$event->brand_id = $request->input('brand'); //event brand
           } else {
             $error++;
           }
           $file_index++;
       }
-      $event->gallery()->sync($images);
+      //$event->gallery()->sync($images);
     }
 
     //location
@@ -851,6 +853,20 @@ class EventsController extends Controller
       }
 
       return Response::json('success', 200);
+  }
+
+  /* remove file */
+  public function removefile($id, $image)
+  {
+    echo 'id => ' . $id . ',  image => ' . $image;
+    //$image = Event::find($id)->gallery
+    $image_id = Gallery::select('id')->where('name', $image)->first()->id;
+    echo 'image id => ' . $image_id;
+    //print_r($image_id);
+    //exit;
+    $deletedRows = Event::find($id)->gallery()->detach($image_id); // delete the relationships with Image (Pivot table) first.
+    //$deletedRows = $event->eventGallery()->where('name', $image)->delete();
+    echo '<br /> del => ' . $deletedRows;
   }
 
   /**

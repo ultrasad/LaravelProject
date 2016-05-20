@@ -242,8 +242,8 @@ var fx_select_brand;
 
         $('.feed .day').infinitescroll({
             //loading: loading_options,
-            navSelector     : ".paginate a#next:last",
-            nextSelector    : ".paginate a#next:last",
+            navSelector     : ".pagination",
+            nextSelector    : ".pagination a#next",
             itemSelector    : ".card.col1-element",
             debug           : false,
             dataType        : 'html',
@@ -447,7 +447,9 @@ var fx_select_brand;
 
         //Date Pickers
         //$('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker({ format: 'mm/dd/yyyy'});
-        $('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker({ format: 'yyyy-mm-dd'});
+        if($('.events-form').exists()){
+           $('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker({ format: 'yyyy-mm-dd'});
+        }
 
         //facebook login
 		    /*
@@ -674,15 +676,17 @@ var fx_select_brand;
           });
         }
 
-        $.validator.addMethod("checkTags", function(value) { //add custom method
-            //Tags input plugin converts input into div having id #YOURINPUTID_tagsinput
-            //now you can count no of tags
-            return ($(".bootstrap-tagsinput").find(".label-custom-tag").length > 0);
-        });
+        if($('.events-form').exists()){
+          $.validator.addMethod("checkTags", function(value) { //add custom method
+              //Tags input plugin converts input into div having id #YOURINPUTID_tagsinput
+              //now you can count no of tags
+              return ($(".bootstrap-tagsinput").find(".label-custom-tag").length > 0);
+          });
 
-        $.validator.addMethod("checkBrand", function(value) { //add custom method
-            return ($("div.cs-select .cs-options").find("li.cs-selected").attr('data-value') > 0);
-        });
+          $.validator.addMethod("checkBrand", function(value) { //add custom method
+              return ($("div.cs-select .cs-options").find("li.cs-selected").attr('data-value') > 0);
+          });
+        }
 
         /* cache by bootstrap js */
         if($('#my-awesome-dropzone-form').exists()){
@@ -887,15 +891,49 @@ var fx_select_brand;
               });
 
               this.on("addedfile", function(file) {
+
+                // Create the remove button
+                //var removeButton = Dropzone.createElement("<a href='javascript:void(0);' class='dz-remove del_thumbnail btn btn-default'><span class='glyphicon glyphicon-trash'></span></a>");
+
+                    console.log('add file');
+                    // Add the button to the file preview element.
+                    //file.previewElement.appendChild(removeButton);
+
                 if($('.dropzone-previews').find('.dz-preview').length > 0){
                   $('.dropzone-file-previews .dz-message').hide();
                 }
               });
 
               this.on("removedfile", function(file) {
-                if($('.dropzone-previews').find('.dz-preview').length < 1){
-                  $('.dropzone-file-previews .dz-message').show();
-                }
+
+                console.log('remove file');
+
+                /*var event_edit_id = $('.event_edit_id').val();
+                if(event_edit_id){ //for edit event
+                  $.ajax({
+                      url: base_url + '/events/removefile/' + event_edit_id,
+                      headers: {'X-CSRF-TOKEN': _token},
+                      data: data,
+                      type: 'POST',
+                      datatype: 'JSON',
+                      processData: false,
+                      contentType: false,
+                      success: function (resp) {
+
+                        if($('.dropzone-previews').find('.dz-preview').length < 1){
+                          $('.dropzone-file-previews .dz-message').show();
+                        }
+
+                        //console.log('ajax response => ' + resp);
+                        //window.location.href = base_url + '/admin';
+                      },
+                      error: function(jqXHR, textStatus, errorThrown)
+                      {
+                          $('.error-reponse').html(jqXHR.responseJSON);
+                      }
+                  });
+                }*/
+
               });
 
               // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
@@ -1135,9 +1173,37 @@ var fx_select_brand;
               });
 
               this.on("removedfile", function(file) {
-                if($('.dropzone-previews').find('.dz-preview').length < 1){
-                  $('.dropzone-file-previews .dz-message').show();
-                }
+                var _token = $('input[name=_token]').val();
+                var event_edit_id = $('.event_edit_id').val();
+                var img_name = file.name;
+                console.log('=> ' + img_name);
+
+                $.ajax({
+                    url: base_url + '/events/removefile/' + event_edit_id + '/' + img_name,
+                    headers: {'X-CSRF-TOKEN': _token},
+                    //data: data,
+                    type: 'GET',
+                    datatype: 'JSON',
+                    processData: false,
+                    contentType: false,
+                    success: function (resp) {
+
+                      if($('.dropzone-previews').find('.dz-preview').length < 1){
+                        $('.dropzone-file-previews .dz-message').show();
+                      }
+
+                      //console.log('ajax response => ' + resp);
+                      //window.location.href = base_url + '/admin';
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        $('.error-reponse').html(jqXHR.responseJSON);
+                    }
+                });
+
+                //if($('.dropzone-previews').find('.dz-preview').length < 1){
+                  //$('.dropzone-file-previews .dz-message').show();
+                //}
               });
 
               // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead

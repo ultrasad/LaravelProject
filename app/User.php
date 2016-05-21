@@ -37,7 +37,6 @@ class User extends Authenticatable
   		if($this->have_role->name == 'Root') {
   			return true;
   		}
-      
   		if(is_array($roles)){
   			foreach($roles as $need_role){
   				if($this->checkIfUserHasRole($need_role)) {

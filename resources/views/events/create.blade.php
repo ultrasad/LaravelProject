@@ -149,11 +149,11 @@
           <div class="row">
               <div class="col-sm-12 cs-brand">
                   <select name="brand" class="cs-select cs-skin-slide cs-select-brand validate">
-                    @if($brand->count() > 1)
+                    @if($brands->count() > 1)
                     <option value="">กรุณาเลือกแบรนด์สินค้า</option>
                     @endif
-                    @if($brand)
-                      @foreach($brand as $id => $brand)
+                    @if($brands)
+                      @foreach($brands as $id => $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                       @endforeach
                     @endif
@@ -164,6 +164,7 @@
                   <input type="text" name="category[]" class="brand-category" value="{{ $id }}" id="category_{{ $id }}" />
                 @endforeach
               </div>
+              <input type='hidden' id='brand_id' class='brand_id' name='brand_id' value='{{ ($brands->count() == 1)?$brands->first()->id:'' }}' />
           </div>
 
           <div class="panel-heading">
@@ -192,7 +193,7 @@
                 @endif
               </div>
 
-              <div class="form-group new_branch_btn" style="display: ">
+              <div class="form-group new_branch_btn" style="display: {{ (count($branch) > 0)?'':'none' }}">
                   <a href="javascript: void(0);" title="เพิ่มสาขาใหม่" class="add_new_branch"><span class="new-branch"><i class="fs-14 pg-minus pg-plus"></i>เพิ่มสาขาใหม่</span></a>
               </div>
 

@@ -62,7 +62,7 @@
   </div>
 
   @if (Auth::check())
-    @if( Auth::User()->hasRole(['Administrator', 'Manager', 'Company Manager']))
+    @if( Auth::User()->hasRole(['Administrator', 'Manager', 'Company Manager', 'User']))
     <div class=" pull-right">
       <div class="header-inner">
         <a href="/events/create" title="สร้างโปรโมชั่นใหม่" class="btn-link icon-set menu-hambuger-plus m-l-20 sm-no-margin hidden-sm hidden-xs"></a>
@@ -81,7 +81,7 @@
               </span>
             </button>
             <ul class="dropdown-menu profile-dropdown" role="menu">
-              <li><a href="#"><i class="pg-settings_small"></i> Settings</a>
+              <li><a href="/admin"><i class="pg-settings_small"></i> Manage</a>
               </li>
               <li><a href="#"><i class="pg-outdent"></i> Feedback</a>
               </li>

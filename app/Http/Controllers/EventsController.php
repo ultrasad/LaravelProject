@@ -172,20 +172,23 @@ class EventsController extends Controller
       //$category = Category::select('name', 'id')->where('category_type', 'event')->get();
       if($role_id == 4){ //brand
         //$brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
-        $brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
+        $brands = Brand::select('id', 'name')->where('user_id', $user_id)->get();
+        //echo $brand->count();
+        //exit;
+
       } else { //manager, admin
-        $brand = Brand::select('id', 'name')->get();
+        $brands = Brand::select('id', 'name')->get();
         //$brand = Brand::all();
       }
       //$branch = $brand->first()->branch_list; //default null
       //$branch = array();
-      if($brand->count() == 1){
-        $branch = Branch::brandList($brand->first()->id)->get();
+      if($brands->count() == 1){
+        $branch = Branch::brandList($brands->first()->id)->get();
       } else {
         $branch = array();
       }
 
-      $brand_category = $brand->first()->category_list;
+      $brand_category = $brands->first()->category_list;
 
       //echo '<pre>';
       //print_r($brand_category);
@@ -195,7 +198,11 @@ class EventsController extends Controller
       //print_r(count($branch));
       //exit;
 
-      return view('events.create', compact('brand', 'branch', 'brand_category', 'role_id'));
+      //echo $brands->count();
+      //echo $brands->first()->id;
+      //exit;
+
+      return view('events.create', compact('brands', 'branch', 'brand_category', 'role_id'));
   }
 
   /**
@@ -878,14 +885,15 @@ class EventsController extends Controller
   {
     echo 'id => ' . $id . ',  image => ' . $image;
     //$image = Event::find($id)->gallery
-    $image = Gallery::select('id')->where('name', $image)->first();
+    $image = Gallery::select('id')->where('name', $image)->get();
     //echo '<pre>';
     //print_r($image);
-    if($image){
+    if($image->first()){
       //echo '<pre>';
       //print_r($image);
       $image_id = $image->first()->id;
       $deletedRows = Event::find($id)->gallery()->detach($image_id); // delete the relationships with Image (Pivot table) first.
+      echo '<br /> del => ' . $deletedRows;
     }
 
     //echo 'image id => ' . $image_id;

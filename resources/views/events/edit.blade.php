@@ -188,6 +188,7 @@
                   <input type="text" name="category[]" class="brand-category" value="{{ $id }}" id="category_{{ $id }}" />
                 @endforeach
               </div>
+              <input type='hidden' id='brand_id' class='brand_id' name='brand_id' value='{{ $event->brand->id }}' />
           </div>
 
           <div class="panel-heading">
@@ -196,7 +197,7 @@
             </div>
           </div>
           <div class="panel-body">
-            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all check-branch-all" style="display: none">
+            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all check-branch-all" style="display: {{ ($event->brand->id > 0)? '':'none'}}">
               <div class="checkbox check-success">
                 <input type="checkbox" checked="checked" name="branch_all" value="1" class="branch_all" id="branch_all">
                 <label class="label-master" for="branch_all">ทุกสาขา</label>

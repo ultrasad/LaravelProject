@@ -1538,6 +1538,10 @@ $(document).on('click', '#add_branch', function(){
 
     var _token = $('input[name=_token]').val();
     var brand_id = window.fx_select_brand;
+    if(typeof brand_id === "undefined"){ //edit event brand
+      brand_id = $('#brand_id').val();
+      console.log('brand undefiend >>' + brand_id);
+    }
     var brand_branch_row = $('.brand_branch_row');
     var event_branch_row = $('.event_branch_row');
     var branch_name = $('#branch_name').val();

@@ -169,11 +169,11 @@
           <div class="row">
               <div class="col-sm-12 cs-brand">
                   <select name="brand" class="cs-select cs-skin-slide cs-select-brand validate">
-                    @if($brand->count() > 1)
+                    @if($brands->count() > 1)
                     <option value="">กรุณาเลือกแบรนด์สินค้า</option>
                     @endif
-                    @if($brand)
-                      @foreach($brand as $id => $brand)
+                    @if($brands)
+                      @foreach($brands as $id => $brand)
                         @if($brand->id == $event->brand_id)
                           <option selected="selected" value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @else
@@ -197,9 +197,9 @@
             </div>
           </div>
           <div class="panel-body">
-            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all check-branch-all" style="display: {{ ($event->brand->id > 0)? '':'none'}}">
+            <div class="wizard-footer padding-5 bg-master-lightest master-checkbox-all check-branch-all" style="display: {{ ($event->brand->branch->count() > 0)?'':'none' }}">
               <div class="checkbox check-success">
-                <input type="checkbox" checked="checked" name="branch_all" value="1" class="branch_all" id="branch_all">
+                <input type="checkbox" name="branch_all" value="1" class="branch_all" id="branch_all">
                 <label class="label-master" for="branch_all">ทุกสาขา</label>
               </div>
               <div class="clearfix"></div>

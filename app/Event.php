@@ -251,7 +251,7 @@ class Event extends Model
 
     public function scopeBrandSlug($query, $brand)
     {
-      return $query->where('brand.url_slug', $brand);
+      return $query->leftJoin('brand','events.brand_id','=','brand.id')->where('brand.url_slug', $brand);
     }
 
     public function scopeTagList($query, $tag)

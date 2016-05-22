@@ -33,7 +33,7 @@ class BrandController extends Controller
   {
     //echo '=> ' . $brand;
     //$events = Event::published()->active()->eventBrand()->BrandId($brand_id)->orderBy('events.created_at', 'desc')->paginate(15);
-    $events = Event::published()->active()->eventBrand()->BrandSlug($brand)->orderBy('events.created_at', 'desc')->paginate(15);
+    $events = Event::published()->active()->BrandSlug($brand)->orderBy('events.created_at', 'desc')->paginate(15);
     return view('brand.index', compact('events'));
   }
 
@@ -69,9 +69,31 @@ class BrandController extends Controller
   {
     //echo 'register';
     $role_id = Auth::user()->role_id;
+    $user_id = Auth::user()->id;
+    $brands = array();
+    if($role_id == 4){ //brand
+      $brands = Brand::where('user_id', $user_id)->get();
+    } elseif($role_id < 4) { //manager, admin
+      $brands = Brand::all();
+    }
+
     //$category = Category::select('name', 'id')->where('category_type', 'brand')->get();
     $category = Category::select('name', 'id')->get();
-    return view('brand.register', compact('category', 'role_id'));
+    return view('brand.register', compact('category', 'role_id', 'brands'));
+  }
+
+  public function lists()
+  {
+    $user_id = Auth::user()->id;
+    $role_id = Auth::user()->role_id;
+    $brands = array();
+    if($role_id == 4){ //brand
+      $brands = Brand::where('user_id', $user_id)->get();
+    } elseif($role_id < 4) { //manager, admin
+      $brands = Brand::all();
+    }
+
+    return view('brand.lists', compact('brands', 'role_id'));
   }
 
   public function store(BrandRequest $request)
@@ -159,12 +181,22 @@ class BrandController extends Controller
   */
   public function edit($id)
   {
+    $role_id = Auth::user()->role_id;
+    $user_id = Auth::user()->id;
+
+    $brands = array();
+    if($role_id == 4){ //brand
+      $brands = Brand::where('user_id', $user_id)->get();
+    } elseif($role_id < 4) { //manager, admin
+      $brands = Brand::all();
+    }
+
     $brand = Brand::find($id);
     $category = Category::select('name', 'id')->where('category_type', 'brand')->get();
 
     if(empty($brand))
       abort(404);
-    return  view('brand.edit', compact('brand', 'category'));
+    return  view('brand.edit', compact('brand', 'brands', 'category', 'role_id'));
   }
 
   /**

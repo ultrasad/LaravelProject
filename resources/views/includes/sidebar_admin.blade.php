@@ -26,6 +26,25 @@
           <i class="fa fa-plus" aria-hidden="true"></i>
         </span>
       </li>
+      @if($brands->count() > 1)
+      <li class="">
+        <a href="{{ url('/brand/lists') }}" class="detailed" title="แบรนด์ทั้งหมด">
+          <span class="title">แบรนด์ทั้งหมด</span>
+        </a>
+        <span class="icon-thumbnail icon-category">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </span>
+      </li>
+      @elseif($brands->count() == 1)
+      <li class="">
+        <a href="{{ url('/brand/'.$brands->first()->id.'/edit/') }}" class="detailed" title="แก้ไขข้อมูลแบรนด์">
+          <span class="title">แก้ไขข้อมูลแบรนด์</span>
+        </a>
+        <span class="icon-thumbnail icon-category">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </span>
+      </li>
+      @endif
       @if($role_id < 4)
       <li class="">
         <a href="{{ url('/brand/register') }}" class="detailed" title="สร้างแบรนด์ใหม่">
@@ -36,14 +55,6 @@
         </span>
       </li>
       @endif
-      <li class="">
-        <a href="{{ url('/brand/list') }}" class="detailed" title="แก้ไขข้อมูลแบรนด์">
-          <span class="title">แก้ไขข้อมูลแบรนด์</span>
-        </a>
-        <span class="icon-thumbnail icon-category">
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        </span>
-      </li>
       {{--
       @forelse($brands as $brand)
       <li class="">

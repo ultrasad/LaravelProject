@@ -59,9 +59,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('brand/register', [
       'middleware' => ['auth', 'roles'],
       'uses' => 'BrandController@register',
-      'roles' => ['administrator', 'manager', 'company manager']
+      'roles' => ['administrator', 'manager']
     ]);
     Route::post('brand/add_branch', 'BrandController@add_branch');
+
+    Route::get('brand/lists', 'BrandController@lists');
 
     Route::get('/brand/{id}', array('as' => 'id', 'uses' => 'BrandController@index'))
     ->where('id', '[0-9]+');

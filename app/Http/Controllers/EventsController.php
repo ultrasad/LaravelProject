@@ -176,7 +176,7 @@ class EventsController extends Controller
         //echo $brand->count();
         //exit;
 
-      } else { //manager, admin
+      } elseif($role_id < 4) { //manager, admin
         $brands = Brand::select('id', 'name')->get();
         //$brand = Brand::all();
       }
@@ -447,34 +447,62 @@ class EventsController extends Controller
   {
     $user_id = Auth::user()->id;
     $role_id = Auth::user()->role_id;
-    $event = Event::find($id);
+    //$event = Event::find($id);
 
     //$user_id = Auth::user()->id;
     //$role_id = Auth::user()->role_id;
     //$category = Category::select('name', 'id')->where('category_type', 'event')->get();
     if($role_id == 4){ //brand
       //$brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
-      $brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
-    } else { //manager, admin
+      $brands = Brand::select('id', 'name')->where('user_id', $user_id)->get();
+      $arr_brand = array();
+      foreach($brands as $brand){
+        array_push($arr_brand, $brand->id);
+      }
+
+      //echo '<pre>';
+      //print_r(array_values($arr_brand));
+      //exit;
+
+      //echo '<pre>';
+      //print_r($brand_array);
+      //exit;
+
+      $event = Event::whereIn('brand_id', $arr_brand)->where('id', $id)->first();
+
+      //echo '<pre>';
+      //print_r($event);
+      //exit;
+
+      if($event->count() < 1){
+        abort(401);
+        exit;
+      }
+
+    } elseif($role_id < 4){ // manager, admin
       //$brand = Brand::select('id', 'name')->get();
       //$brand = Brand::all();
-      $brand = Brand::select('id', 'name')->get();
+      $brands = Brand::select('id', 'name')->get();
+      $event = Event::find($id);
     }
     //$branch = $brand->first()->branch_list; //default null
     $branch = array();
-    if($brand->count() == 1){
-      $branch = Branch::brandList($brand->first()->id)->get();
+    if($brands->count() == 1){
+      $branch = Branch::brandList($brands->first()->id)->get();
     }
 
+    //echo '<pre>';
+    //print_r($event->count());
+    //exit;
+
     //$tag_list = Tag::lists('name', 'id');
-    if(!$event)
-      return Redirect::back()->with('message','Event Not Exists !');
+      //return Redirect::back()->with('message','Event Not Exists !');
 
     //$category = Category::select('name', 'id')->where('category_type', 'event')->get();
     //$brand = Brand::select('id', 'name')->get();
 
     //echo '<pre>';
-    //print_r($brand);
+    //print_r($event->first()->brand_id);
     //exit;
 
     //$branch = array();
@@ -538,12 +566,12 @@ class EventsController extends Controller
     //echo $string_tag;
     //exit;
 
-    $brand_category = $brand->first()->category_list;
+    $brand_category = $brands->first()->category_list;
 
     if(empty($event))
       abort(404);
     //return  view('events.edit', compact('event', 'category', 'brand', 'branch', 'string_tag', 'gallery', 'location', 'role_id'));
-    return  view('events.edit', compact('event', 'brand_category', 'brand', 'branch', 'string_tag', 'gallery', 'location', 'role_id'));
+    return  view('events.edit', compact('event', 'brand_category', 'brands', 'branch', 'string_tag', 'gallery', 'location', 'role_id'));
   }
 
   /**
@@ -741,14 +769,14 @@ class EventsController extends Controller
       //print_r($events);
       //exit;
 
-    } else if($role_id < 4){ // manager, admin
+    } elseif($role_id < 4){ // manager, admin
       $brands = Brand::all();
       $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->get();
     }
 
     //echo 'user_role => ' . $user_role;
     //echo '<pre>';
-    //print_r($brand_list);
+    //print_r($brands);
     //exit;
 
     //$events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->get();

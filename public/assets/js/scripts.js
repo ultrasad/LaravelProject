@@ -968,6 +968,27 @@ var fx_select_brand;
 
         //dropzone edit form
         if($('#my-awesome-dropzone-form-edit').exists()){
+
+          //checkbox blanch
+          if($('.branch').is(':checked')){
+            $('.branch_all').prop('checked', $('.branch_child').has(':checkbox:not(:checked)').length == 0);
+          }
+
+          /*if($('.brand_id').val() > 0){
+            $('.check-branch-all').show(); //show check all branch
+          }*/
+
+          /*$(document).on('change', '.branch', function(e){
+              var _parent = $('.branch_all');
+              var _child = $('.branch_child');
+              var _chk = $(this);
+              if (_chk.is(':checked')) {
+                 _parent.prop('checked', _child.has(':checkbox:not(:checked)').length == 0);
+              } else {
+                 _parent.prop('checked', false);
+              }
+          });*/
+
           $('#my-awesome-dropzone-form-edit').validate({
                //ignore: ".ignore :hidden" //is telling it to ignore hidden fields with the class ignore.
                //ignore: ".ignore", //will tell it to only ignore fields will class .ignore.
@@ -1345,6 +1366,12 @@ var fx_select_brand;
                             );
                         });
                         _branch.append('<div class="clearfix"></div>');
+
+                        //checkbox blanch
+                        if($('.branch').is(':checked')){
+                          $('.branch_all').prop('checked', $('.branch_child').has(':checkbox:not(:checked)').length == 0);
+                        }
+
                         $('.check-branch-all').show(); //show check all branch
                       } else {
                         $('.branch_child .list').append('<div class="checkbox"></div>');
@@ -1576,7 +1603,11 @@ $(document).on('click', '#add_branch', function(){
                 $clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
                 //console.log($clone);
 
-                $('.list .checkbox:last').after($clone);
+                if($('.list .checkbox').exists()){
+                  $('.list .checkbox:last').after($clone);
+                } else { //case empty branch
+                  $clone.appendTo('.list');
+                }
 
             } else if($(brand_branch_row).exists()) { //brand add new branch
 

@@ -90,7 +90,7 @@ class BrandController extends Controller
     if($role_id == 4){ //brand
       $brands = Brand::where('user_id', $user_id)->get();
     } elseif($role_id < 4) { //manager, admin
-      $brands = Brand::all();
+      $brands = Brand::orderBy('brand.updated_at', 'desc')->orderBy('brand.created_at', 'desc')->get();
     }
 
     return view('brand.lists', compact('brands', 'role_id'));
@@ -192,11 +192,19 @@ class BrandController extends Controller
     }
 
     $brand = Brand::find($id);
-    $category = Category::select('name', 'id')->where('category_type', 'brand')->get();
+    //$category = Category::select('name', 'id')->where('category_type', 'brand')->get();
+    $category = Category::select('name', 'id')->get();
+    $brand_category = isset($brand->category_list)?array_keys($brand->category_list):'';
+
+    $branchs = $brand->branch->all();
+
+    //echo '<pre>';
+    //print_r($branchs);
+    //exit;
 
     if(empty($brand))
       abort(404);
-    return  view('brand.edit', compact('brand', 'brands', 'category', 'role_id'));
+    return  view('brand.edit', compact('brand', 'brand_category', 'branchs', 'brands', 'category', 'role_id'));
   }
 
   /**
@@ -284,6 +292,15 @@ class BrandController extends Controller
 
     $brand->fill($input);
     $brand->save();
+
+    //echo 'brand id => ' . $brand->id;
+
+    if($brand->id > 0){
+      return Response::json('success', array(
+                  'status' => 'success',
+                  'branch_id'   => $brand->id
+              ));
+    }
   }
 
   public function facebook(Request $request)

@@ -556,7 +556,8 @@ var fx_select_brand;
                 success: function (resp) {
                   //console.log('ajax response => ' + resp);
                   if(resp.status == 'success'){
-                    window.location.href = base_url + '/events/create';
+                    //window.location.href = base_url + '/events/create';
+                    window.location.href = base_url + '/brand/lists';
                   }
                 },
                 error: function(jqXHR, textStatus, errorThrown)
@@ -595,6 +596,7 @@ var fx_select_brand;
                   console.log('ajax response => ' + resp);
                   if(resp.status == 'success'){
                     //window.location.href = base_url + '/events/create';
+                    window.location.href = base_url + '/brand/lists';
                   }
                 },
                 error: function(jqXHR, textStatus, errorThrown)

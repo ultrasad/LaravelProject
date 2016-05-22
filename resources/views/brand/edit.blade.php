@@ -48,7 +48,7 @@
                 <select id="category" name="category[]" class="full-width category-select2" multiple>
                   @if($category)
                     @foreach($category as $id => $cate)
-                      @if(in_array($cate->id, $brand->category_list))
+                      @if(in_array($cate->id, $brand_category))
                         <option selected="selected" value="{{ $cate->id }}">{{ $cate->name }}</option>
                       @else
                         <option value="{{ $cate->id }}">{{ $cate->name }}</option>
@@ -181,7 +181,20 @@
         </div>
 
         <div class="panel-body p-t-0">
-          <div class="branch_list" id="branch_list"></div>
+          <div class="branch_list" id="branch_list">
+            @foreach($branchs as $branch)
+            <div class="col-md-12 branch_row">
+              <div class="row">
+                <div class="branch_name_list col-xs-10">{{ $branch->name }}</div>
+                <input type="hidden" name="branch[]" class="branch_id" value="{{ $branch->id }}" />
+                <div class="btn-group btn_branch_action btn-xs">
+                  <button class="btn btn-danger btn-xs btn_branch_delete" title="delete" type="button"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            @endforeach
+          </div>
         </div>
 
         </div>

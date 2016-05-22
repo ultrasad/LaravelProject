@@ -9,11 +9,11 @@
       <!-- START PANEL -->
       <div class="panel panel-transparent">
         <div class="panel-heading">
-          <div class="panel-title">Table Event Lists
+          <div class="panel-title">Table Brand Lists
           </div>
           <div class="export-options-container-no pull-right">
             <div class="col-xs-12">
-              <a href="/events/create" id="show-modal" class="btn btn-primary btn-cons"><i class="fa fa-plus"></i> Add Event</a>
+              <a href="/brand/register" id="show-modal" class="btn btn-primary btn-cons"><i class="fa fa-plus"></i> Add Brand</a>
             </div>
           </div>
           <div class="clearfix"></div>

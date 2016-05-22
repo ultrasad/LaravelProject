@@ -334,7 +334,15 @@ class EventsController extends Controller
     //$event->reIndex();
     $event->reIndex('App\Event --relations');
     //echo '-- exit --';
-    exit;
+
+    if($event->id > 0){
+      return Response::json('success', array(
+                  'status' => 'success',
+                  'event_id'   => $event->id
+              ));
+    }
+
+    //exit;
   }
 
   /**
@@ -468,7 +476,7 @@ class EventsController extends Controller
       //print_r($brand_array);
       //exit;
 
-      $event = Event::whereIn('brand_id', $arr_brand)->where('id', $id)->first();
+      $event = Event::whereIn('brand_id', $arr_brand)->where('id', $id)->get();
 
       //echo '<pre>';
       //print_r($event);
@@ -502,7 +510,7 @@ class EventsController extends Controller
     //$brand = Brand::select('id', 'name')->get();
 
     //echo '<pre>';
-    //print_r($event->first()->brand_id);
+    //print_r($brand);
     //exit;
 
     //$branch = array();
@@ -724,6 +732,13 @@ class EventsController extends Controller
 
     $event->fill($input);
     $event->save();
+
+    if($event->id > 0){
+      return Response::json('success', array(
+                  'status' => 'success',
+                  'event_id'   => $event->id
+              ));
+    }
 
     //$event->update($request->all());
 

@@ -50,12 +50,25 @@ h1, h2, h3, h4, h5, h6 {
   vertical-align: -15%;
 }
 
-.brand-master-social i {
-  width: 25px;
-}
-
 .brand-master-social p {
   margin-bottom: 5px;
+  height: 25px;
+}
+
+.brand-master-social a {
+  height: 25px;
+  clear: both;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.brand-master-social i {
+  color: #8d959c;
+  float: left;
+  padding-top: 5px;
+  width: 25px;
 }
 
 .overlay {

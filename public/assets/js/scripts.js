@@ -1950,7 +1950,7 @@ function initialize() {
       }
       userLocation();
 
-      $(document).on('click', '#map-location-user', function(e){
+      $(document).on('click', '#map-user-location', function(e){
         console.log('user location...');
 
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -2264,8 +2264,54 @@ function initialize() {
 
     /* Modal Map */
     $(document).on('click', '.feed .btnToggleMap', function(){
-      console.log('toggle map...');
+        console.log('toggle map...');
+        $('#modal_slideup_map').modal('show');
+    });
 
+    $(document).on('click', '#btn-user-location', function(e){
+      console.log('user location...');
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      var infowindow = new google.maps.InfoWindow({
+          map: mapBranch,
+          position: geolocate,
+          content:
+              '<h1>Location pinned from HTML5 Geolocation!</h1>' +
+              '<h2>Latitude: ' + position.coords.latitude + '</h2>' +
+              '<h2>Longitude: ' + position.coords.longitude + '</h2>'
+      });
+
+      mapBranch.setCenter(geolocate);
+
+      //$.cookie('latlonUser', position.coords.latitude +','+position.coords.longitude);
+      //infowindow.setPosition(pos);
+      //infowindow.setContent('Location found.');
+      //map.setCenter(pos);
+      //console.log('set latlonUser pos => ' + pos.lat + ' => ' + pos.lng);
+      }, function() {
+        handleLocationError(true, infowindow, map.getCenter());
+      });
+
+    });
+
+    $('#modal_slideup_map').on('show.bs.modal', function() {
+      //mapObj.event.trigger(map, 'resize');
+      //$('#modal_slideup_map').modal('show');
+
+      if(typeof mapBranch =="undefined") return;
+      setTimeout( function(){resizingMap();} , 400);
+    });
+
+    function resizingMap()
+    {
+      console.log('resizingMap..');
+      if(typeof mapBranch =="undefined") return;
       infowindowBranch.close();
       markerBranch.setVisible(false);
 
@@ -2274,12 +2320,9 @@ function initialize() {
 
       mapBranch.setCenter(default_latlng);
 
-      //mapObj.event.trigger(map, 'resize');
-      $('#modal_slideup_map').modal('show');
-
-      console.log('show...');
-
-    });
+      //console.log('show...');
+      console.log('slideup map show modal.');
+    }
 
     $(document).on('click', '.btn_branch_delete', function(e){
       $(this).closest('.branch_row').remove();

@@ -151,7 +151,7 @@
                   </div>
                 </div>
                 <div class="col-sm-5 m-t-10 sm-m-t-10">
-                  <div class="col-md-7 p-r-0"><button type="button" class="btn btn-primary btn-block m-t-5">สาขาที่ใกล้คุณที่สุด</button></div>
+                  <div class="col-md-7 p-r-0"><button type="button" class="btn btn-primary btn-block m-t-5" id="btn-user-location">สาขาที่ใกล้คุณที่สุด</button></div>
                   <div class="col-md-5 p-r-5 p-l-10"><button type="button" class="btn btn-success btn-block m-t-5">ตกลง</button></div>
                 </div>
               </div>

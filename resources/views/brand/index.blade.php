@@ -12,15 +12,54 @@
       <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
         <div class="inner">
           <div class="pull-bottom bottom-left m-b-40">
-            <h5 class="text-white no-margin">welcome to pages social</h5>
-            <h1 class="text-white no-margin"><span class="semi-bold">social</span> cover</h1>
+            <h5 class="text-white no-margin">welcome to pages brand</h5>
+            <h1 class="text-white no-margin"><span class="semi-bold">{{ $brand->name }}</span></h1>
           </div>
         </div>
       </div>
     </div>
     <!-- END JUMBOTRON -->
-    <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10">
 
+    <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10 m-b-50 brand-master">
+      <div class="col-md-12">
+        <div class="col-sm-3">
+        <div class="thumbnail-wrapper d100 circular">
+          <img width="100" height="100" src="{{ file_exists($brand->logo_image) ? URL::asset($brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $brand->name }}" />
+        </div>
+        <div class="inline m-l-25">
+          <h3 class="m-b-5"><strong class="text-master"><a class="brand-event-url" title="{{ $events->first()->brand->name }}" href="{{ URL::to('brand', $brand->url_slug) }}">{{ $brand->name }}</a></strong><i class="fa fa-check-circle padding-5 text-success" aria-hidden="true"></i></h3>
+          <p class="hint-text-9">
+            <span class="text-slogan">{{ $brand->slogan }}</span>
+          </p>
+          @if(!empty($brand->category->first()->name))
+            <div class="hint-text small-text text-master"><a href="{{ URL::to('category', $brand->category->first()->category) }}" title="{{ $brand->category->first()->name }}" class="">{{ $brand->category->first()->name }}</a></div>
+          @else
+            <div class="hint-text small-text text-master"><a href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุหมวดหมู่" class="">ไม่ระบุหมวดหมู่</a></div>
+          @endif
+        </div>
+      </div>
+      <div class="col-sm-6 sm-m-l-5 sm-m-t-30">
+          <p class="m-t-10 hint-text text-master">{{ $brand->description or 'No Description.' }}</p>
+      </div>
+      <div class="col-sm-3 brand-master-social">
+          <p class="m-t-10 hint-text text-master"><i class="pg-map pg-map-lg"></i>&nbsp;<a href="javascript: void(0);" title="{{ $brand->name }} มีทั้งหมด {{ $brand->branch->count() }} สาขา">มีทั้งหมด {{ $brand->branch->count() }} สาขา</a></p>
+          @if($brand->facebook != '')
+            <p class="hint-text text-master"><i class="fa fa-facebook fa-lg p-l-5"></i>&nbsp;<a href="{{ $brand->facebook }}" target="_blank" title="{{ $brand->name }} Facebook: {{ $brand->facebook }}">{{ $brand->facebook }}</a></p>
+          @endif
+          @if($brand->twitter != '')
+            <p class="hint-text text-master"><i class="fa fa-twitter fa-lg p-l-5"></i>&nbsp;<a href="{{ $brand->twitter }}" target="_blank" title="{{ $brand->name }} Twitter: {{ $brand->twitter }}">{{ $brand->twitter }}</a></p>
+          @endif
+          @if($brand->line_officail != '')
+            <p class="hint-text text-master"><i class="fa fa-heart fa-lg p-l-5"></i>&nbsp;<a href="{{ $brand->line_officail }}" target="_blank" title="{{ $brand->name }} Line Official: {{ $brand->line_officail }}">{{ $brand->line_officail }}</a></p>
+          @endif
+          @if($brand->youtube != '')
+            <p class="hint-text text-master"><i class="fa fa-youtube fa-lg p-l-5"></i>&nbsp;<a href="{{ $brand->youtube }}" target="_blank" title="{{ $brand->name }} Yuotube: {{ $brand->youtube }}">{{ $brand->youtube }}</a></p>
+          @endif
+      </div>
+      </div>
+    </div>
+
+    <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10">
       @if($events->count() < 1)
       <div class="p-l-0 col-md-12 promotion-empty text-master">ยังไม่มีโปรโมชั่น ในขณะนี้...</div>
       @endif
@@ -43,8 +82,8 @@
                     <p class="no-margin">
                       <strong class="text-master"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></strong>
                     </p>
-                    @if(!empty($event->category->first()->name))
-                      <div class="hint-text small-text text-master"><a href="{{ URL::to('category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}" class="">{{ $event->category->first()->name }}</a></div>
+                    @if(!empty($brand->category->first()))
+                      <div class="hint-text small-text text-master"><a href="{{ URL::to('category', $brand->category->first()->category) }}" title="{{ $brand->category->first()->name }}" class="">{{ $brand->category->first()->name }}</a></div>
                     @else
                       <div class="hint-text small-text text-master"><a href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุหมวดหมู่" class="">ไม่ระบุหมวดหมู่</a></div>
                     @endif

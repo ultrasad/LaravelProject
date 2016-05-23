@@ -33,9 +33,29 @@ body, .color-body {
   font-weight: normal;
 }
 
+.thumbnail-wrapper.d100 {
+    height: 100px;
+    width: 100px;
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 5px 0 10px 0;
     color: #444;
+}
+
+.pg-map-lg {
+  padding-left: 3px;
+  font-size: 1.33333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+
+.brand-master-social i {
+  width: 25px;
+}
+
+.brand-master-social p {
+  margin-bottom: 5px;
 }
 
 .overlay {
@@ -146,11 +166,11 @@ a.brand-event-url:hover, a.relate-brand-url:hover {
   margin-right: 1px;
 }
 
-.feed .day a.brand-event-url {
+.feed .day a.brand-event-url, .brand-master a.brand-event-url {
   color: #626262;
 }
 
-.feed .day a.brand-event-url:hover {
+.feed .day a.brand-event-url:hover, .brand-master a.brand-event-url:hover {
   color: #929292;
 }
 

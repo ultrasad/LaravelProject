@@ -24,9 +24,15 @@ class CategoryController extends Controller
         }
       }
 
+      //echo 'cate => ' . $category . '<br />';
       //try {
-      $events = Event::published()->active()->categoryList($category)->orderBy('events.created_at', 'desc')->paginate(15);
+      //$events = Event::published()->active()->categoryList($category)->orderBy('events.created_at', 'desc')->paginate(15);
+      $events = Event::published()->active()->brandCategoryList($category)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate(15);
       //$category_name = $events->first()->category->where('category', $category)->first()->name;
+
+      //echo '<pre>';
+      //print_r($events);
+      //exit;
 
       /*if($events->count() > 0){
         if($category == 'unknow'){
@@ -56,6 +62,6 @@ class CategoryController extends Controller
 
       //echo 'name => '. $category_name;
       //exit;
-      return view('category.list', compact('events', 'category_name'));
+      return view('category.list', compact('events', 'category', 'category_name'));
   }
 }

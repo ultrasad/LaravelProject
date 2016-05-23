@@ -34,13 +34,18 @@ class BrandController extends Controller
     //echo '=> ' . $brand;
     //$events = Event::published()->active()->eventBrand()->BrandId($brand_id)->orderBy('events.created_at', 'desc')->paginate(15);
     $events = Event::published()->active()->BrandSlug($brand)->orderBy('events.created_at', 'desc')->paginate(15);
-    return view('brand.index', compact('events'));
+    $brand = Brand::where('url_slug', $brand)->first();
+    //echo '<pre>';
+    //print_r($brand->slogan);
+    //exit;
+
+    return view('brand.index', compact('events', 'brand'));
   }
 
   public function category($category='unknow')
   {
     //echo '=> ' . $category;
-    $events = Event::published()->active()->brandCategoryList($category)->orderBy('events.created_at', 'desc')->paginate(15);
+    $events = Event::published()->active()->brandCategoryList($category)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate(15);
 
     //echo '<pre>';
     //print_r($events->count());

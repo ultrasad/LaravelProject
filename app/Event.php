@@ -284,7 +284,6 @@ class Event extends Model
             $query->whereHas('category', function ($query) use ($category){
               $query->where('category', '=', $category);
             });
-
         });
       } else {
         return  $this->leftJoin('brand', 'brand.id', '=', 'events.brand_id')->leftJoin('brand_category','brand_category.brand_id','=','brand.id')->leftJoin('categories','categories.id','=','brand_category.cate_id')->select('events.*', 'brand.name')->whereNull('categories.name');

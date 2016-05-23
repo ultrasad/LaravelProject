@@ -16,8 +16,8 @@
           <a href="/" title="หน้าแรก">หน้าแรก</a>
         </li>
         <li>
-          @if($event->category->count() > 0)
-            <a href="{{ URL::to('category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}">{{ $event->category->first()->name }}</a>
+          @if(!empty($event->brand->category->first()->name))
+            <a href="{{ URL::to('category', $event->brand->category->first()->category) }}" title="{{ $event->brand->category->first()->name }}">{{ $event->brand->category->first()->name }}</a>
           @else
             <a href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุ หมวดหมู่">ไม่ระบุ หมวดหมู่</a>
           @endif
@@ -54,8 +54,8 @@
       <div class="panel-body body-brief">
         <div class="no-margin fs-15 hint-text-9 text-master">
           <h4>
-            @if($event->category->count() > 0)
-                <a class="category-event-url" href="{{ URL::to('category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}">{{ $event->category->first()->name }}</a>
+            @if(!empty($event->brand->category->first()->name))
+                <a class="category-event-url" href="{{ URL::to('category', $event->brand->category->first()->category) }}" title="{{ $event->brand->category->first()->name }}">{{ $event->brand->category->first()->name }}</a>
             @else
                 <a class="category-event-url" href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุ หมวดหมู่">ไม่ระบุ หมวดหมู่</a>
             @endif
@@ -73,8 +73,8 @@
             <p class="no-margin">
               <strong class="text-master"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></strong>
             </p>
-            @if($event->category->count() > 0)
-                <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}">{{ $event->category->first()->name }}</a></p>
+            @if(!empty($event->brand->category->first()->name))
+                <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', $event->brand->category->first()->category) }}" title="{{ $event->brand->category->first()->name }}">{{ $event->brand->category->first()->name }}</a></p>
             @else
                 <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', 'unknow') }}" title="ไม่ระบุ หมวดหมู่">ไม่ระบุ หมวดหมู่</a></p>
             @endif

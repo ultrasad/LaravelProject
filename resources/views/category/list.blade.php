@@ -12,7 +12,7 @@
           <a href="/" title="หน้าแรก">หน้าแรก</a>
         </li>
         <li>
-          @if($category_name != 'ไม่ระบุ หมวดหมู่')
+          @if($category != 'unknow')
             <span class="p-l-5 m-l-5 fs-12">{{ $category_name }}</span>
           @else
             <span class="p-l-5 m-l-5 fs-12">ไม่ระบุ หมวดหมู่</span>
@@ -47,8 +47,8 @@
                     <p class="no-margin">
                       <strong class="text-master"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></strong>
                     </p>
-                    @if($event->category)
-                      <div class="hint-text small-text text-master"><a href="{{ URL::to('category', $event->category->first()->category) }}" title="{{ $event->category->first()->name }}" class="">{{ $event->category->first()->name }}</a></div>
+                    @if($category != 'unknow')
+                      <div class="hint-text small-text text-master"><a href="{{ URL::to('category', $event->brand->category->first()->category) }}" title="{{ $event->brand->category->first()->name }}" class="">{{ $event->brand->category->first()->name }}</a></div>
                     @else
                       <div class="hint-text small-text text-master"><a href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุหมวดหมู่" class="">ไม่ระบุหมวดหมู่</a></div>
                     @endif

@@ -2262,6 +2262,25 @@ function initialize() {
       });
     }
 
+    /* Modal Map */
+    $(document).on('click', '.feed .btnToggleMap', function(){
+      console.log('toggle map...');
+
+      infowindowBranch.close();
+      markerBranch.setVisible(false);
+
+      mapBranch.setZoom(14);
+      mapObjBranch.event.trigger(mapBranch, 'resize');
+
+      mapBranch.setCenter(default_latlng);
+
+      //mapObj.event.trigger(map, 'resize');
+      $('#modal_slideup_map').modal('show');
+
+      console.log('show...');
+
+    });
+
     $(document).on('click', '.btn_branch_delete', function(e){
       $(this).closest('.branch_row').remove();
     });

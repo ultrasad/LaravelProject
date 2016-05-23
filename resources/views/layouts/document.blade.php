@@ -125,6 +125,44 @@
     </div>
     <!-- END OVERLAY -->
 
+    <!-- Modal -->
+    <!--<div id="map_canvas" class="map-canvas map-show" style="display: none"></div>-->
+    <!--<div class="modal fade slide-up disable-scroll" id="modal_slideup_map" tabindex="-1" role="dialog" aria-hidden="false">-->
+    <div class="modal fade slide-up disable-scroll" id="modal_slideup_map" tabindex="-1" role="dialog" aria-hidden="false">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-header clearfix text-left p-t-5 p-l-15 p-r-15">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+              </button>
+              <h5>Payment <span class="semi-bold">Information</span></h5>
+              <p class="p-b-10">We need payment information inorder to process your order</p>
+            </div>
+            <div class="modal-body">
+              <div id="map_canvas_branch" class="map-canvas"></div>
+              <!--<div id="map_canvas" class="map-canvas map-show"></div>
+              <div id="map_canvas_branch" class="map-canvas"></div>-->
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="p-t-20 clearfix p-l-10 p-r-10">
+                    <div class="pull-left">
+                      <p class="bold font-montserrat text-uppercase">&nbsp;</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-5 m-t-10 sm-m-t-10">
+                  <div class="col-md-7 p-r-0"><button type="button" class="btn btn-primary btn-block m-t-5">สาขาที่ใกล้คุณที่สุด</button></div>
+                  <div class="col-md-5 p-r-5 p-l-10"><button type="button" class="btn btn-success btn-block m-t-5">ตกลง</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+    </div>
+    <!-- End Modal -->
+
     @include('includes.foot')
  </body>
 </html>

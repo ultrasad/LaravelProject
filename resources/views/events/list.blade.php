@@ -72,7 +72,7 @@
                     @endif
                   </div>
                   <div class="pull-top pull-right list-inline">
-                    <i class="pg-map"></i>
+                    <a href="javascript: void(0);" class="btntoggle btnToggleMap" title="ทั้ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
                   </div>
                 </div>
               </div>

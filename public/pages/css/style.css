@@ -71,6 +71,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 25px;
 }
 
+.feed .day .btntoggle {
+  color: #8d959c;
+}
+
 .overlay {
   padding-left: 0px;
 }

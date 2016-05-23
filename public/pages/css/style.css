@@ -663,6 +663,10 @@ div.cs-select-brand {
   /*-webkit-transition-duration: 0.8s;
      -moz-transition-duration: 0.8s;
           transition-duration: 0.8s;*/
+          /*width: 16.6667%;
+          width: 25%;
+          width: 33.3333%;
+          width: 41.6667%;*/
 }
 
 .feed .card {
@@ -700,9 +704,9 @@ div.cs-select-brand {
   width: 620px;
 }
 
-.card.col1 {
+/*.card.col1 {
   width: 300px;
-}
+}*/
 
 .card.col2, .card.col1 {
   display:inline-block;
@@ -872,8 +876,12 @@ div.cs-select-brand {
 
 .card .gallery-item {
   margin: 0 auto;
+  /* old ok, 2016-05-23
   width: 620px;
   height: 485px;
+  */
+  width: 100%;
+  height: auto;
 }
 
 /* social card */
@@ -903,7 +911,8 @@ div.cs-select-brand {
 
 @media (max-width: 1080px) { /* 960 */
   .feed {
-    width: 640px;
+    width: 640px; /* old ok 2016-05-23 */
+    /*width: 100%;*/
     margin: 0 auto;
     /*background: #f00;*/
   }
@@ -965,13 +974,15 @@ div.cs-select-brand {
 
 @media (max-width: 560px) {
   .feed {
-    width: 300px;
+    /*width: 300px;*/
+    width: 100%;
     margin: 0 auto;
     /*background: #f00;*/
   }
 
   .col1-element, .col2-element {
-    width: 300px;
+    /*width: 300px;*/
+    width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
@@ -1203,4 +1214,10 @@ div.cs-select-brand {
   .card-relate-row .footer-relate {
     width: 83.3333%;
   }
+}
+
+/* 2016-05-23 new layout */
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
 }

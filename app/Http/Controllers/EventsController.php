@@ -54,7 +54,36 @@ class EventsController extends Controller
 
     //2016-05-17, master ok
     //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
-    $results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'description', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'description', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+
+    $query['query']['match']['_all'] = $keywords;
+    //$results = Event::searchByQuery($query, ['highlight' => ['tag' => ' ']]);
+    $results = Event::searchByQuery($query);
+    $highlights = Event::search($keywords, ['fields' => ['location.name'], 'highlight' => ['tag' => ' ']])->getResults();
+    //$highlights = $results_hi->getResults()->first()->getHighlights(['location.name']);
+
+    //echo 'hilight >>';
+    /*foreach($highlights as $result){
+      echo 'hilight >>';
+      echo '<pre>';
+      print_r($result->getHighlights(['location.name']));
+
+      echo 'result event >>';
+      echo '<pre>';
+      print_r($result);
+    }*/
+
+    //echo 'highlights event >>';
+    //echo '<pre>';
+    //print_r($highlights);
+    //exit;
+
+    //echo 'event >>';
+    //echo '<pre>';
+    //print_r($results);
+    //exit;
 
     //$results = Event::search($keywords, ['highlight' => ['tag' => ' ']]);
     //$response = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
@@ -111,15 +140,24 @@ class EventsController extends Controller
       foreach($results->getResults() as $result){
         $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $result->brand['name']);
         array_push($arr_response, $arr_data);
-        $locations = $result->getHighlights(['location.name']);
+        /*$locations = $result->getHighlights(['location.name']);
         if(!empty($locations)){
           foreach($locations as $key => $location){
             $arr_map = array('id' => $result->location[0]['id'], 'name' => $location[0], 'lat' => $result->location[0]['lat'], 'lon' => $result->location[0]['lon']);
             array_push($arr_location, $arr_map);
           }
-        }
+        }*/
       }
     }
+
+    if($highlights){
+      foreach($highlights as $key => $highlight){
+        $location = $highlight->getHighlights();
+        $arr_map = array('id' => $highlight->location[0]['id'], 'name' => $location['location.name.analyzed'][0], 'lat' => $highlight->location[0]['lat'], 'lon' => $highlight->location[0]['lon']);
+        array_push($arr_location, $arr_map);
+      }
+    }
+
     echo json_encode(array('event' => $arr_response, 'map' => $arr_location));
   }
 

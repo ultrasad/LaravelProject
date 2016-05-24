@@ -29,6 +29,15 @@ body, .color-body {
   font-weight: normal;
 }
 
+.windows body, .windows p {
+    font-size: 14px;
+}
+
+.modal .modal-header {
+  padding: 25px 25px 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
 .breadcrumb span {
   font-weight: normal;
 }

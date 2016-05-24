@@ -2,9 +2,6 @@ var events_locations;
 var event_id;
 var markers = []; //for modal marker
 var branch_marker = [];
-var infowindow_user;
-var latlngbounds;
-var latlngboundsBranch;
 var branch_list;
 var fx_select_brand;
 
@@ -269,7 +266,7 @@ var fx_select_brand;
                   return "?page=" + index;
             },
             errorCallback: function() {
-              //console.log('no discounts');
+              console.log('no discounts');
             },
         }, function(newElements, data, url){
             var $newElements = $(newElements).css({opacity: 0});
@@ -1730,7 +1727,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function initialize() {
 
-    //console.log('initialize..');
+  console.log('initialize..');
+
     // Create an array of styles.
     var styles = [
       {
@@ -1756,14 +1754,6 @@ function initialize() {
 
     mapObj = new Object(google.maps);
     var default_latlng  = new mapObj.LatLng(13.7563309, 100.50176510000006);
-    var default_type = mapObj.MapTypeId.ROADMAP;
-    var options = {
-        zoom: 14,
-        scrollwheel: false,
-        center: default_latlng,
-        mapTypeId:default_type,
-        disableDefaultUI: true
-    };
 
     //Map default
     //Create LatLngBounds object.
@@ -1771,9 +1761,16 @@ function initialize() {
 
       console.log('map_canvas');
 
-      //var latlngbounds = new mapObj.LatLngBounds();
-      window.latlngbounds = new mapObj.LatLngBounds();
+      var latlngbounds = new mapObj.LatLngBounds();
+      var default_type = mapObj.MapTypeId.ROADMAP;
       var map_canvas = $("#map_canvas")[0];
+      var options = {
+          zoom: 14,
+          scrollwheel: false,
+          center: default_latlng,
+          mapTypeId:default_type,
+          disableDefaultUI: true
+      };
 
       map = new mapObj.Map(map_canvas, options);
       map.setOptions({styles: styles});
@@ -1789,15 +1786,16 @@ function initialize() {
     }
 
     //map branch location
-    if($('#map_canvas_branch').exists() && document.getElementById("event_id") == null){
+    if($('#map_canvas_branch').exists()){
       var mapBranch;
       var mapObjBranch;
       var placeBranch = '';
       var addressBranch = '';
 
-      //console.log('map branch....');
+      console.log('map branch....');
+
       mapObjBranch = new Object(google.maps);
-      //var latlngboundsBranch = new mapObjBranch.LatLngBounds();
+      var latlngboundsBranch = new mapObjBranch.LatLngBounds();
       var map_canvas_branch = $("#map_canvas_branch")[0];
       mapBranch = new mapObjBranch.Map(map_canvas_branch, options);
       mapObjBranch.event.addListener(mapBranch, 'zoom_changed', function() {
@@ -1818,12 +1816,6 @@ function initialize() {
       if($('#location_id').val() > 0){
         $url = '/maps/locations/' + $('#location_id').val();
       }
-
-      console.log('map full...');
-
-      //default LatLngBounds
-      window.latlngbounds = new mapObj.LatLngBounds();
-
       $.ajax({
           url: $url,
           type: 'GET',
@@ -1878,8 +1870,7 @@ function initialize() {
                 });
 
                 //Extend each marker's position in LatLngBounds object.
-                //latlngbounds.extend(markers[k].position);
-                window.latlngbounds.extend(markers[k].position);
+                latlngbounds.extend(markers[k].position);
 
                 //loop++;
             });
@@ -1926,8 +1917,6 @@ function initialize() {
               return false;
             });*/
 
-            map.fitBounds(window.latlngbounds);
-
           },
           error: function(jqXHR, textStatus, errorThrown)
           {
@@ -1943,11 +1932,9 @@ function initialize() {
           if($.cookie('latlonUser')){
 
             var temp = $.cookie("latlonUser").split(',');
-            //map.setCenter(new mapObj.LatLng(temp[0], temp[1]));
-            var geolocate = new mapObj.LatLng(temp[0], temp[1]);
-            window.latlngbounds.extend(geolocate);
-            map.fitBounds(window.latlngbounds);
+            map.setCenter(new mapObj.LatLng(temp[0], temp[1]));
             console.log('get latlonUser pos => ' + ' temp => ' + temp + ', lat => ' + temp[0] + ', => ' + temp[1]);
+
           } else {
             navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -1957,10 +1944,7 @@ function initialize() {
             $.cookie('latlonUser', position.coords.latitude +','+position.coords.longitude);
             //infowindow.setPosition(pos);
             //infowindow.setContent('Location found.');
-            //map.setCenter(pos);
-            var geolocate = new mapObj.LatLng(position.coords.latitude, position.coords.longitude);
-            window.latlngbounds.extend(geolocate);
-            map.fitBounds(window.latlngbounds);
+            map.setCenter(pos);
             console.log('set latlonUser pos => ' + pos.lat + ' => ' + pos.lng);
             }, function() {
               handleLocationError(true, infowindow, map.getCenter());
@@ -1989,12 +1973,8 @@ function initialize() {
         //infowindow.setPosition(pos);
         //infowindow.setContent('Location found.');
 
-        if(window.infowindow_user){
-          window.infowindow_user.close();
-        }
-
         var geolocate = new mapObj.LatLng(position.coords.latitude, position.coords.longitude);
-        window.infowindow_user = new mapObj.InfoWindow({
+        var infowindow = new mapObj.InfoWindow({
             map: map,
             position: geolocate,
             content: 'คุณอยู่ที่นี่'
@@ -2003,15 +1983,7 @@ function initialize() {
                 //'<h2>Longitude: ' + position.coords.longitude + '</h2>'
         });
 
-        if(window.latlngbounds != ''){
-          //console.log('latlngboundsBranch => ' + window.latlngboundsBranch);
-          window.latlngbounds.extend(geolocate);
-          mapBranch.fitBounds(window.latlngbounds);
-        } else {
-          mapBranch.setCenter(geolocate);
-        }
-
-        //map.setCenter(pos);
+        map.setCenter(pos);
         console.log('set latlonUser pos => ' + pos.lat + ' => ' + pos.lng);
         }, function() {
           handleLocationError(true, infowindow, map.getCenter());
@@ -2031,13 +2003,12 @@ function initialize() {
           contentType: false,
           success: function (resp) {
 
-            //var locations = $.parseJSON(resp);
-            var info_event = $.parseJSON(resp);
+            var locations = $.parseJSON(resp);
             var markers = [];
             //var n = 0;
 
             window.events_locations = new Array();
-            $.each(info_event.locations, function(k, v){
+            $.each(locations, function(k, v){
                 var data = [];
                 $.each(v, function(x, y){
                     data.push(y);
@@ -2071,15 +2042,12 @@ function initialize() {
                 });
 
                 //Extend each marker's position in LatLngBounds object.
-                //latlngbounds.extend(markers[k].position);
-                window.latlngbounds.extend(markers[k].position);
+                latlngbounds.extend(markers[k].position);
             });
 
             //Center map and adjust Zoom based on the position of all markers.
-            //map.setCenter(latlngbounds.getCenter());
-            //map.fitBounds(latlngbounds);
-            map.setCenter(window.latlngbounds.getCenter());
-            map.fitBounds(window.latlngbounds);
+            map.setCenter(latlngbounds.getCenter());
+            map.fitBounds(latlngbounds);
 
             $(document).on('click', '.events_locations', function(e){
               var index = $(this).data('index');
@@ -2230,11 +2198,10 @@ function initialize() {
         });
 
         //Extend each marker's position in LatLngBounds object.
-        //latlngbounds.extend(markerEdit.position);
-        window.latlngbounds.extend(markerEdit.position);
+        latlngbounds.extend(markerEdit.position);
 
         map.setZoom(markerZoom);
-        map.setCenter(window.latlngbounds.getCenter());
+        map.setCenter(latlngbounds.getCenter());
         //map.fitBounds(latlngbounds);
       }
 
@@ -2320,7 +2287,7 @@ function initialize() {
     /* Modal Map */
     $(document).on('click', '.feed .btnToggleMap', function(){
         window.event_id = $(this).data('id');
-        //console.log('toggle map, ' + window.event_id);
+        console.log('toggle map, ' + window.event_id);
         $('#modal_slideup_map').modal('show');
     });
 
@@ -2332,28 +2299,28 @@ function initialize() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      //console.log('map branch zoom => ' + position.coords.zoom);
 
-      if(window.infowindow_user){
-        window.infowindow_user.close();
-      }
-
+      //var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      //map = new mapObj.Map(map_canvas, options);
       var geolocate = new mapObj.LatLng(position.coords.latitude, position.coords.longitude);
-      window.infowindow_user = new mapObj.InfoWindow({
+      var infowindow = new mapObj.InfoWindow({
           map: mapBranch,
           position: geolocate,
           content: 'คุณอยู่ที่นี่'
+              //'<h1>Location pinned from HTML5 Geolocation!</h1>' +
+              //'<h2>Latitude: ' + position.coords.latitude + '</h2>' +
+              //'<h2>Longitude: ' + position.coords.longitude + '</h2>'
       });
 
-      //mapBranch.setZoom(17);
       //mapBranch.setCenter(geolocate);
-      if(window.latlngboundsBranch != ''){
-        //console.log('latlngboundsBranch => ' + window.latlngboundsBranch);
-        window.latlngboundsBranch.extend(geolocate);
-        mapBranch.fitBounds(window.latlngboundsBranch);
-      } else {
-        mapBranch.setCenter(geolocate);
-      }
+      mapBranch.setCenter(geolocate);
 
+      //$.cookie('latlonUser', position.coords.latitude +','+position.coords.longitude);
+      //infowindow.setPosition(pos);
+      //infowindow.setContent('Location found.');
+      //map.setCenter(pos);
+      //console.log('set latlonUser pos => ' + pos.lat + ' => ' + pos.lng);
       }, function() {
         handleLocationError(true, infowindow, map.getCenter());
       });
@@ -2361,30 +2328,43 @@ function initialize() {
     });
 
     $('#modal_slideup_map').on('show.bs.modal', function() {
+      //mapObj.event.trigger(map, 'resize');
+      //$('#modal_slideup_map').modal('show');
+
       if(typeof mapBranch =="undefined") return;
       setTimeout( function(){resizingMap();} , 400);
     });
 
     function resizingMap()
     {
-      //mapObjBranch.event.trigger(mapBranch, 'resize');
+      //console.log('resizingMap..');
+      if(typeof mapBranch =="undefined") return;
+      //infowindowBranch.close();
+      //markerBranch.setVisible(false);
+
       //mapBranch.setZoom(14);
+      //mapObjBranch.event.trigger(mapBranch, 'resize');
       //mapBranch.setCenter(default_latlng);
 
-      if(typeof mapBranch =="undefined") return;
-
-      if(window.branch_marker.length > 0){ // clear marker branch
+      /*if(window.branch_marker.length > 0){ // clear marker branch
         //console.log('branch more 0' + window.branch_marker.toSource());
         $.each(window.branch_marker, function(x, y){
+            //console.log('y => ' + y);
             window.markers[y].setMap(null);
         });
-      }
+        //mapObjBranch.event.trigger(mapBranch, 'resize');
+        //mapBranch.setCenter(default_latlng);
+      }*/
 
-      //default LatLngBounds
-      window.latlngboundsBranch = new mapObjBranch.LatLngBounds();
+      //Center map and adjust Zoom based on the position of all markers.
+      //mapBranch.setCenter(latlngboundsBranch.getCenter());
+      //mapBranch.fitBounds(default_latlng);
+
+      //mapObjBranch.event.trigger(mapBranch, 'resize');
+      //mapBranch.setCenter(default_latlng);
 
       //ajax branch
-      $.ajax({
+      /*$.ajax({
           url: '/events/locations/' + window.event_id,
           type: 'GET',
           datatype: 'JSON',
@@ -2392,48 +2372,22 @@ function initialize() {
           contentType: false,
           success: function (resp) {
 
-            var info_event = $.parseJSON(resp);
+            var locations = $.parseJSON(resp);
             //var markers = [];
             //mapObjBranch.event.trigger(mapBranch, 'resize');
-            //window.latlngboundsBranch = new mapObjBranch.LatLngBounds();
-
-            var brand_name = info_event.brand.name;
-            var brand_slug = info_event.brand.url_slug;
-            var brand_image = info_event.brand.image;
-            var category_slug = info_event.brand.category_slug;
-            var caegory_name = info_event.brand.category;
-
-            if(brand_image == null){
-              brand_image = 'assets/img/profiles/e.jpg';
-            }
-            $('.modal .thumbnail-wrapper img').attr('src', base_url + '/' + brand_image).attr('alt', brand_name);
-            $('.modal .brand-event-url').attr('href', base_url + '/brand/' + brand_slug).attr('title', brand_name).html(brand_name);
-            $('.modal .category-event-url').attr('href', base_url + '/category/' + category_slug).attr('title', caegory_name).html(caegory_name);
-
-            //console.log('image => ' + base_url + '/' + info_event.brand.image);
-            //.attr('href', '/' + value.url_slug).attr('title', value.title);
 
             window.events_locations = new Array();
-            var index_location = 0;
-            $.each(info_event.locations, function(k, v){
+            $.each(locations, function(k, v){
                 var data = [];
                 $.each(v, function(x, y){
                     data.push(y);
                 });
 
-                //console.log('location => ' + k + ' => ' + v);
                 window.events_locations[k] = data;
                 var location_list = k.split(",");
                 var markerName = location_list[2];
                 var markerLat = location_list[0];
                 var markerLng = location_list[1];
-
-                if(index_location > 0){
-                  $('#modal_slideup_map .brand_branch_list').append(', <span><i aria-hidden="true" class="pg-map hint-text-9"></i></span><a class="place" data-index="'+k+'" title="'+markerName+'" href="#'+markerName+'">'+markerName+'</a>');
-                } else {
-                  $('#modal_slideup_map .brand_branch_list').html('').append('<span><i aria-hidden="true" class="pg-map hint-text-9"></i></span><a class="place" data-index="'+k+'" title="'+markerName+'" href="#'+markerName+'">'+markerName+'</a>');
-                }
-                index_location++;
 
                 var markerLatLng = new mapObjBranch.LatLng(markerLat,markerLng);
                 window.markers[k] = new mapObjBranch.Marker({
@@ -2451,13 +2405,13 @@ function initialize() {
                 window.branch_marker.push(k);
 
                 //Extend each marker's position in LatLngBounds object.
-                window.latlngboundsBranch.extend(window.markers[k].position);
+                latlngboundsBranch.extend(window.markers[k].position);
             });
 
             mapObjBranch.event.trigger(mapBranch, 'resize');
             //Center map and adjust Zoom based on the position of all markers.
-            //mapBranch.setCenter(latlngboundsBranch.getCenter());
-            mapBranch.fitBounds(window.latlngboundsBranch);
+            mapBranch.setCenter(latlngboundsBranch.getCenter());
+            mapBranch.fitBounds(latlngboundsBranch);
 
           },
           error: function(jqXHR, textStatus, errorThrown)
@@ -2465,19 +2419,10 @@ function initialize() {
               console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
               console.log(JSON.stringify(jqXHR.responseJSON));
           }
-      });
+      });*/
 
-      $('.modal').on('click', '.place', function(e){
-        var index = $(this).data('index');
-        //console.log('markers => ' + index);
-        mapObjBranch.event.trigger(window.markers[index], 'click');
-        return false;
-      });
-
-      //console.log('mapObjBranch' + mapObjBranch);
-      //mapObjBranch.event.trigger(mapBranch, 'resize');
-      //mapBranch.setCenter(default_latlng);
-      //console.log('slideup map show modal.');
+      //console.log('show...');
+      console.log('slideup map show modal.');
     }
 
     $(document).on('click', '.btn_branch_delete', function(e){

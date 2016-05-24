@@ -132,16 +132,31 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content-wrapper">
           <div class="modal-content">
-            <div class="modal-header clearfix text-left p-t-5 p-l-15 p-r-15">
+            <div class="modal-header clearfix text-master text-left p-t-5 p-l-15 p-r-15">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
               </button>
-              <h5>Payment <span class="semi-bold">Information</span></h5>
-              <p class="p-b-10">We need payment information inorder to process your order</p>
+              <!--<h5>Payment <span class="semi-bold">Information</span></h5>-->
+              <div class="item-header clearfix p-t-10">
+                  <div class="thumbnail-wrapper d32 circular">
+                    <img width="40" height="40" alt="Nivea Men" data-src-retina="" data-src="" src="http://localhost:8000/images/brand/logo_20160510-172006-nivea-0.png">
+                  </div>
+                  <div class="inline m-l-10">
+                    <p class="no-margin">
+                      <strong class="text-master"><a href="http://localhost:8000/brand/nivea-men" title="Nivea Men" class="brand-event-url">Nivea Men</a></strong>
+                    </p>
+                    <div class="hint-text small-text text-master"><a class="category-event-url" title="เครื่องสำอาง / ความงาม" href="http://localhost:8000/category/cosmetic">เครื่องสำอาง / ความงาม</a></div>
+                  </div>
+              </div>
+            </div>
+            <div class="modal-body p-t-15">
+              <div class="modal-branch text-master"><u><b><span class="brand">Nivea Men</span> สาขาที่ร่วมรายการ</b></u> <span class="brand_branch_list"></span></div>
             </div>
             <div class="modal-body">
               <div id="map_canvas_branch" class="map-canvas"></div>
-              <!--<div id="map_canvas" class="map-canvas map-show"></div>
-              <div id="map_canvas_branch" class="map-canvas"></div>-->
+              <input name="branch_location_lat" type="hidden" id="branch_location_lat" value="0" />
+              <input name="branch_location_lon" type="hidden" id="branch_location_lon" value="0" />
+              <input name="branch_location_zoom" type="hidden" id="branch_location_zoom" value="0" />
+
               <div class="row">
                 <div class="col-sm-7">
                   <div class="p-t-20 clearfix p-l-10 p-r-10">
@@ -152,7 +167,7 @@
                 </div>
                 <div class="col-sm-5 m-t-10 sm-m-t-10">
                   <div class="col-md-7 p-r-0"><button type="button" class="btn btn-primary btn-block m-t-5" id="btn-user-location">สาขาที่ใกล้คุณที่สุด</button></div>
-                  <div class="col-md-5 p-r-5 p-l-10"><button type="button" class="btn btn-success btn-block m-t-5">ตกลง</button></div>
+                  <div class="col-md-5 p-r-5 p-l-10"><button type="button" data-dismiss="modal" class="btn btn-success btn-block m-t-5">ยกเลิก</button></div>
                 </div>
               </div>
             </div>

@@ -246,7 +246,7 @@
     <!-- END PLACE PAGE CONTENT HERE -->
   </div>
 </div>
-<input type="hidden" name="event_id" class="event_id" value="{{ $event->id }}" />
+<input type="hidden" name="event_id" id="event_id" class="event_id" value="{{ $event->id }}" />
 <!--</form>-->
 <!-- END CONTAINER FLUID -->
 @stop

@@ -58,9 +58,11 @@
             <div class="panel no-border  no-margin">
               <div class="padding-10">
                 <div class="item-header clearfix">
-                  <div class="thumbnail-wrapper d32 circular">
-                    <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
-                  </div>
+                  <a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">
+                    <div class="thumbnail-wrapper d32 circular">
+                      <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+                    </div>
+                  </a>
                   <div class="inline m-l-10">
                     <p class="no-margin">
                       <strong class="text-master"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></strong>
@@ -72,7 +74,7 @@
                     @endif
                   </div>
                   <div class="pull-top pull-right list-inline">
-                    <a href="javascript: void(0);" class="btntoggle btnToggleMap" data-id="{{ $event->id }}" title="ทั้ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
+                    <a href="javascript: void(0);" class="btntoggle btnToggleMap" data-id="{{ $event->id }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
                   </div>
                 </div>
               </div>

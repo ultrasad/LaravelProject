@@ -850,7 +850,13 @@ class EventsController extends Controller
     $event = Event::where('id', $id)->first();
 
       if($event->brand->count() > 0){
-        $event_brand = array('name' => $event->brand->name, 'image' => $event->brand->logo_image, 'url_slug' => $event->brand->url_slug, 'category' => $event->brand->category->first()->name, 'category_slug' => $event->brand->category->first()->category);
+        $cate_name = 'ไม่ระบุหมวดหมู่';
+        $cate_slug = 'unknow';
+        if($event->brand->category->count() > 0){
+          $cate_name = $event->brand->category->first()->name;
+          $cate_slug = $event->brand->category->first()->category;
+        }
+        $event_brand = array('name' => $event->brand->name, 'image' => $event->brand->logo_image, 'url_slug' => $event->brand->url_slug, 'category' => $cate_name, 'category_slug' => $cate_slug);
       }
 
       //echo '<pre>';

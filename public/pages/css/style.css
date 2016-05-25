@@ -1,6 +1,6 @@
 
 body, .color-body {
-    color: #8d959c !important;
+    color: #7f8c90 !important;
 }
 
 #infscr-loading { position: absolute; bottom: 0; width: 100%; text-align: center;  margin-top: 30px;}
@@ -33,6 +33,10 @@ body, .color-body {
     font-size: 14px;
 }
 
+.windows p.list-brief {
+  font-size: 13px;
+}
+
 .modal .modal-header {
   padding: 25px 25px 15px;
   border-bottom: 1px solid #e5e5e5;
@@ -50,6 +54,10 @@ body, .color-body {
 h1, h2, h3, h4, h5, h6 {
     margin: 5px 0 10px 0;
     color: #444;
+}
+
+.result_pro, .result_map {
+    color: #5a6779;
 }
 
 .pg-map-lg {
@@ -792,14 +800,14 @@ div.cs-select-brand {
 }
 
 .desc-footer, .search-header {
-  border-left: 5px solid #d3d3d3;
-  padding-left: 15px;
+  border-left: 3px solid #9ba6b5;
+  padding-left: 5px;
   line-height: 16px;
 }
 
 .search-header {
   margin-left: 5px;
-  border-left: 5px solid #7d7d7d;
+  border-left: 3px solid #9ba6b5;
 }
 
 .desc-footer a {

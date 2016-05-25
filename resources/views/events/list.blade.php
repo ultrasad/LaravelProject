@@ -86,7 +86,7 @@
               </div>
               <div class="p-t-15 p-l-15 p-r-15 p-b-5">
                 <strong class="text-master"><a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
-                <p>{{ $event->brief }}</p>
+                <p class="list-brief">{{ $event->brief }}</p>
               </div>
               <div class="p-t-10 p-l-15 p-r-15 p-b-5 card_footer">
                 <div class="pull-left text-master hint-text fs-12 color-body">ถึงวันที่ : {{ $event->end_date_thai }}</div>

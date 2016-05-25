@@ -40,9 +40,11 @@
             <div class="panel no-border  no-margin">
               <div class="padding-10">
                 <div class="item-header clearfix">
-                  <div class="thumbnail-wrapper d32 circular">
-                    <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
-                  </div>
+                  <a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">
+                    <div class="thumbnail-wrapper d32 circular">
+                      <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+                    </div>
+                  </a>
                   <div class="inline m-l-10">
                     <p class="no-margin">
                       <strong class="text-master"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></strong>
@@ -66,7 +68,7 @@
               </div>
               <div class="p-t-15 p-l-15 p-r-15 p-b-5">
                 <strong class="text-master"><a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
-                <p>{{ $event->brief }}</p>
+                <p class="list-brief">{{ $event->brief }}</p>
               </div>
               <div class="p-t-10 p-l-15 p-r-15 p-b-5 card_footer">
                 <div class="pull-left text-master hint-text fs-12 color-body">ถึงวันที่ : {{ $event->end_date_thai }}</div>

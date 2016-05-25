@@ -1,3 +1,4 @@
+//var elixir = require('node_modules/laravel-elixir');
 var elixir = require('laravel-elixir');
 
 /*
@@ -12,5 +13,17 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    //mix.sass('app.scss');
+    //mix.browserify('/assets/js/scripts.js');
+    //mix.version("public/js/scripts.js");
+    mix.scripts(
+    //['scripts.js', 'module2.js'],
+    ['scripts.js'],
+      'public/build/js/everything.js',
+      'public/assets/js'
+    );
+    mix.browserSync({
+        online: false,
+        proxy : 'localhost:8000'
+    });
 });

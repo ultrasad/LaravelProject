@@ -23,9 +23,11 @@
     <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10 m-b-30 brand-master">
       <div class="col-md-12 sm-padding-0">
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 sm-padding-0">
-          <div class="thumbnail-wrapper d100 circular">
-            <img width="100" height="100" src="{{ file_exists($brand->logo_image) ? URL::asset($brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $brand->name }}" />
-          </div>
+          <a class="brand-event-url" title="{{ $events->first()->brand->name }}" href="{{ URL::to('brand', $brand->url_slug) }}">
+            <div class="thumbnail-wrapper d100 circular">
+              <img width="100" height="100" src="{{ file_exists($brand->logo_image) ? URL::asset($brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $brand->name }}" />
+            </div>
+          </a>
           <div class="inline m-l-10">
             <h3 class="m-b-5"><strong class="text-master"><a class="brand-event-url" title="{{ $events->first()->brand->name }}" href="{{ URL::to('brand', $brand->url_slug) }}">{{ $brand->name }}</a></strong><i class="fa fa-check-circle padding-5 text-success" aria-hidden="true"></i></h3>
             <p class="hint-text-9">
@@ -82,9 +84,11 @@
             <div class="panel no-border  no-margin">
               <div class="padding-10">
                 <div class="item-header clearfix">
-                  <div class="thumbnail-wrapper d32 circular">
-                    <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
-                  </div>
+                  <a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">
+                    <div class="thumbnail-wrapper d32 circular">
+                      <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+                    </div>
+                  </a>
                   <div class="inline m-l-10">
                     <p class="no-margin">
                       <strong class="text-master"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></strong>

@@ -249,6 +249,7 @@
   </div>
 </div>
 <input type="hidden" name="event_id" id="event_id" class="event_id" value="{{ $event->id }}" />
+<input type="hidden" name="event_slug" id="event_slug" class="event_slug" value="{{ $event->url_slug }}" />
 <!--</form>-->
 <!-- END CONTAINER FLUID -->
 @stop

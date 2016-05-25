@@ -2021,10 +2021,11 @@ function initialize() {
 
     }
 
-    if($('.event_id').exists()){ //event locations
+    //if($('.event_id').exists()){ //event locations
+    if($('.event_slug').exists()){ //event locations
       //console.log('evetn id >>');
       $.ajax({
-          url: '/events/locations/'+$('.event_id').val(),
+          url: '/events/locations/'+$('.event_slug').val(),
           type: 'GET',
           datatype: 'JSON',
           processData: false,
@@ -2319,7 +2320,8 @@ function initialize() {
 
     /* Modal Map */
     $(document).on('click', '.feed .btnToggleMap', function(){
-        window.event_id = $(this).data('id');
+        //window.event_id = $(this).data('id');
+        window.event_id = $(this).data('slug');
         //console.log('toggle map, ' + window.event_id);
         $('#modal_slideup_map').modal('show');
     });

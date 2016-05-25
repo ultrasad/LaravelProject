@@ -1,17 +1,17 @@
 <!-- BEGIN VENDOR JS -->
-<script type="text/javascript" src="{{ URL::asset('assets/jquery/jquery-1.11.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/modernizr.custom.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/jquery-cookie/jquery.cookie.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/jquery-metrojs/MetroJs.min.js') }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/jquery/jquery-1.11.1.min.js')) }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/modernizr.custom.js')) }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/bootstrap/js/bootstrap.min.js')) }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/jquery-scrollbar/jquery.scrollbar.min.js')) }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/jquery-cookie/jquery.cookie.js')) }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/jquery-metrojs/MetroJs.min.js')) }}"></script>
 
-<script type="text/javascript" src="{{ URL::asset('assets/jquery-isotope/isotope.pkgd.min.js') }}" ></script>
-<script type="text/javascript" src="{{ URL::asset('assets/fotorama/fotorama.js') }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/jquery-isotope/isotope.pkgd.min.js')) }}" ></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/fotorama/fotorama.js')) }}"></script>
 
-<script type="text/javascript" src="{{ URL::asset('assets/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/jquery-infinite-scroll/jquery.infinitescroll.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/datatables-responsive/js/lodash.min.js') }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/imagesloaded/imagesloaded.pkgd.min.js')) }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/jquery-infinite-scroll/jquery.infinitescroll.min.js')) }}"></script>
+<script type="text/javascript" src="{{ elixir(URL::asset('assets/datatables-responsive/js/lodash.min.js')) }}"></script>
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

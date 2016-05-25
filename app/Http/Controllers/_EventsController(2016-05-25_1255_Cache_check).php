@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+//use Storage;
+//use Illuminate\Http\Request;
 use Cache;
 use Redirect;
 use Illuminate\Http\Request;
@@ -18,12 +20,17 @@ use App\Branch;
 use App\Gallery;
 use App\Location;
 
+//use Request;
 use Request as Response;
+//use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
   public function __construct()
   {
+    //ini_set('always_populate_raw_post_data', -1);
+
+    //$this->middleware('auth', ['only' => ['create', 'store']]);
     $this->middleware('auth', ['except' => ['index', 'search', 'show', 'desc_upload', 'locations', 'removefile', 'branch']]);
   }
 
@@ -36,6 +43,7 @@ class EventsController extends Controller
     $string = preg_replace("`&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig|quot|rsquo);`i","\\1", $string);
     $string = strtolower(preg_replace(array("`[^a-z0-9ก-๙เ-า]`i","`[-]+`"), "-", $string));
     return $string;
+    //echo strtolower(trim($string, '-')).'.html';
   }
 
   /**
@@ -43,10 +51,90 @@ class EventsController extends Controller
   */
   public function search($keywords='watsons')
   {
-    $query['query']['match']['_all'] = $keywords;
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'image', 'brand.name', 'location.name'], 'highlight' => true, 'suggest' => true]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => '<span style="color:red">'], 'suggest' => true]);
 
+    //2016-05-17, master ok
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'description', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'description', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+
+    $query['query']['match']['_all'] = $keywords;
+    //$results = Event::searchByQuery($query, ['highlight' => ['tag' => ' ']]);
     $results = Event::searchByQuery($query);
     $highlights = Event::search($keywords, ['fields' => ['location.name'], 'highlight' => ['tag' => ' ']])->getResults();
+    //$highlights = $results_hi->getResults()->first()->getHighlights(['location.name']);
+
+    //echo 'hilight >>';
+    /*foreach($highlights as $result){
+      echo 'hilight >>';
+      echo '<pre>';
+      print_r($result->getHighlights(['location.name']));
+
+      echo 'result event >>';
+      echo '<pre>';
+      print_r($result);
+    }*/
+
+    //echo 'highlights event >>';
+    //echo '<pre>';
+    //print_r($highlights);
+    //exit;
+
+    //echo 'event >>';
+    //echo '<pre>';
+    //print_r($results);
+    //exit;
+
+    //$results = Event::search($keywords, ['highlight' => ['tag' => ' ']]);
+    //$response = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+
+    //$highlights = $results->getResults()->first()->getHighlights(['location.name']);
+    //$suggestios = $results->getSuggestions();
+
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'image', 'brand.name', 'location.name'], 'highlight' => true, 'suggest' => true]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'brief', 'brand.name', 'location.name'], 'select' => ['title', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => '<span style="color:red">'], 'suggest' => true]);
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$highlights = $results->getResults()->first()->getHighlights(['location.name']);
+    //$suggestios = $results->getSuggestions();
+
+    //$event = new Event;
+    //$event->reIndex('App\Event --relations');
+
+    //$query['query']['match']['title'] = $keywords;
+    /*$params = [
+      'fields' => ['event.title', 'event.url_slug', 'event.brief', 'brand.name', 'location.name'],
+      'highlight' => ['tag' => ' '],
+      'aggs' => [
+        'agg_title' => [
+            'type' => 'terms',
+            'field' => 'title'
+        ]
+      ],
+    ];*/
+
+    //$results = Event::search($keywords, [['highlight' => true]]);
+
+    //$results = Event::search($keywords, ['fields' => ['title', 'url_slug', 'brief', 'brand.name', 'location.name'], 'highlight' => ['tag' => ' ']]);
+    //$query['query']['match']['_all'] = $keywords;
+    //$response = Event::search(null, ['query' => $query], $params);
+
+    //$results = Event::search($keywords, $params);
+    //$results = Event::search(null, ['query' => $params]);
+
+    //$results = $response->getResults();
+    //$aggregations = $results->getAggregations('agg_title');
+    //echo '<pre>';
+    //print_r($results);
+
+    //$query['query']['match']['_all'] = $keywords;
+    //$results = Event::searchByQuery($query, $params);
+    //$results = Event::search($keywords, $params);
+
+    //echo '<pre>';
+    //print_r($results);
+    //exit;
 
     $arr_response = array();
     $arr_location = array();
@@ -54,6 +142,13 @@ class EventsController extends Controller
       foreach($results->getResults() as $result){
         $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $result->brand['name']);
         array_push($arr_response, $arr_data);
+        /*$locations = $result->getHighlights(['location.name']);
+        if(!empty($locations)){
+          foreach($locations as $key => $location){
+            $arr_map = array('id' => $result->location[0]['id'], 'name' => $location[0], 'lat' => $result->location[0]['lat'], 'lon' => $result->location[0]['lon']);
+            array_push($arr_location, $arr_map);
+          }
+        }*/
       }
     }
 
@@ -75,11 +170,39 @@ class EventsController extends Controller
   */
   public function index(Request $request)
   {
-    $paginate = 5;
-    $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
+    //$events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->paginate(15); //old remove event brand
+    //if($page > 1){
+    //  $events = array('page' => 2);
+    //} else {
+      $paginate = 5;
+      //$events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
 
-    $more_page = $events->hasMorePages();
-    $total_page = $events->total();
+      $page = !is_null($request->input('page'))?$request->input('page'):1;
+      $page *= $paginate;
+
+      $events = Cache::remember('Promotions' . $page, 1440, function() use ($page) {
+        return Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate(5);
+      });
+      $more_page = $events->hasMorePages();
+      $total_page = $events->total();
+    //}
+    //$events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate(15);
+
+    //echo '<pre>';
+    //print_r($events);
+
+    //echo '<pre>';
+    //print_r($events->hasMorePages());
+    //exit;
+
+    //echo '<pre>';
+    //print_r($events);
+    //exit;
+
+    //$tag = 'โปรโมชั่น watsons ภาษาไทย';
+    //$tag = $this->string_friendly($tag);
+    //echo $tag;
+    //exit;
 
     return view('events.list', compact('events', 'more_page', 'total_page', 'paginate'));
   }
@@ -93,13 +216,19 @@ class EventsController extends Controller
   {
       $user_id = Auth::user()->id;
       $role_id = Auth::user()->role_id;
-
+      //$category = Category::select('name', 'id')->where('category_type', 'event')->get();
       if($role_id == 4){ //brand
+        //$brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
         $brands = Brand::select('id', 'name')->where('user_id', $user_id)->get();
+        //echo $brand->count();
+        //exit;
+
       } elseif($role_id < 4) { //manager, admin
         $brands = Brand::select('id', 'name')->get();
+        //$brand = Brand::all();
       }
-
+      //$branch = $brand->first()->branch_list; //default null
+      //$branch = array();
       if($brands->count() == 1){
         $branch = Branch::brandList($brands->first()->id)->get();
       } else {
@@ -107,6 +236,18 @@ class EventsController extends Controller
       }
 
       $brand_category = $brands->first()->category_list;
+
+      //echo '<pre>';
+      //print_r($brand_category);
+      //exit;
+
+      //echo '<pre>';
+      //print_r(count($branch));
+      //exit;
+
+      //echo $brands->count();
+      //echo $brands->first()->id;
+      //exit;
 
       return view('events.create', compact('brands', 'branch', 'brand_category', 'role_id'));
   }
@@ -119,6 +260,13 @@ class EventsController extends Controller
   public function store(EventRequest $request)
   {
     $event = new Event($request->all());
+
+    //echo '<pre>';
+    //print_r($request->input('branch'));
+
+    //echo '<pre>';
+    //print_r($event);
+    //exit;
 
     //image
     if($request->hasFile('image')){
@@ -172,9 +320,12 @@ class EventsController extends Controller
     $tagsId = $request->input('tag_list');
     if(!empty($tagsId)){
        $tag_list = explode(',', $tagsId);
+       //$tags = Event::InsertTag($tagsId);
        $tags = array();
        foreach($tag_list as $name)
        {
+         //$tag = preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower(trim($name)));
+         //$tag = str_slug($name); //helper url
          $tag = $this->string_friendly($name);
          $tags[] = Tag::firstOrCreate(array('name' => $name, 'tag' => $tag))->id;
        }
@@ -199,9 +350,11 @@ class EventsController extends Controller
          if( $upload_success ) {
             $success++;
             $image = $destination;
+            //$images[] = Gallery::firstOrCreate(array('name' => $name, 'tag' => $tag))->id;
             $images[] = Gallery::firstOrCreate(array('name' => $image_name, 'image' => $public_path . $image_name))->id;
           } else {
             $error++;
+            //echo $upload_success . '<br />';
           }
           $file_index++;
       }
@@ -218,9 +371,16 @@ class EventsController extends Controller
       $location = array();
       $location[] = Location::firstOrCreate(array('name' => $location_name, 'lat' => $location_lat, 'lon' => $location_lon, 'zoom' => $location_zoom))->id;
       $event->location()->sync($location);
+      echo '<pre>';
+      print_r($location);
+    } else {
+      echo 'null location >>';
     }
 
+    //re(index) larasearch
+    //$event->reIndex();
     $event->reIndex('App\Event --relations');
+    //echo '-- exit --';
 
     if($event->id > 0){
       return Response::json('success', array(
@@ -228,6 +388,8 @@ class EventsController extends Controller
                   'event_id'   => $event->id
               ));
     }
+
+    //exit;
   }
 
   /**
@@ -243,33 +405,89 @@ class EventsController extends Controller
           return redirect()->action('EventsController@show', ['slug' => $event->url_slug]);
       }
 
-      $event = Cache::remember('Promotion_' . $slug, 1440, function() use ($slug) {
-        return $event = Event::where('url_slug', $slug)->first();
-      });
-
+      //$event = Event::with('user', 'category')->where('slug', $slug)->first();
+      //$event = Event::where('url_slug', $slug)->eventBrand()->first();
+      $event = Event::where('url_slug', $slug)->first();
       if(!$event)
-        return redirect('/');
+        return redirect('/'); //return Redirect::back()->with('message','Event Not Exists !');
 
       $branchs = array();
       $tags = array();
+      //$locations = array();
+
+      //echo '<pre>';
+      //print_r($event->branch);
+      //exit;
 
       foreach($event->branch->all() as $index => $branch){
+        //$branchs[]= link_to('brand/'.$event->brand_id . '/' . $branch, $branch, array('alt' => $branch));
+        //$branchs[]= link_to('#' . $branch, $branch, array('alt' => $branch));
         $branchs[] = '<span><i class="pg-map hint-text-9" aria-hidden="true"></i></span>' . link_to('#' . $branch->name, $branch->name, array('title' => $branch->name, 'data-index' => $branch->lat.','.$branch->lon.','.$branch->name, 'class' => 'place'));
+        //$locations[] = array('name' => $branch->name, 'lat' => $branch->lat, 'lon' => $branch->lon);
       }
 
       $tags_relate = array();
       foreach($event->tags->all() as $index => $tag){
+        //$tags[] = '<i class="fa fa-check-circle hint-text m-t-10"></i> ' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
         array_push($tags_relate, $tag->tag);
         $tags[] = '<span><i class="fa fa-tag fa-flip-horizontal hint-text-8 m-t-10" aria-hidden="true"></i></span>' . link_to('/tags/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
       }
+
+      //if(!empty($locations)){
+        //$locations = json_encode($locations);
+      //}
+
+      //echo '<pre>';
+      //print_r($branchs_location);
+      //foreach($event->brand->all() as $brand){
+        //echo ($brand->name) . '<br />';
+      //}
+      //echo $branchs_location;
+      //exit;
+
+      //echo '<pre>';
+      //print_r($branchs);
+      //echo implode(', ', $branchs);
+      //exit;
+
+      //echo $event->category_first->name;
+      //exit;
+
+      //echo '<pre>';
+      //print_r($event->category_first->name);
+      //exit;
+
+      //echo '<pre>';
+      //print_r($event->tags->all());
+      //exit;
 
       $event_id = $event->id;
       $event_title = $event->title;
       $cate_id = isset($event->category->first()->id)?$event->category->first()->id:'';
       $relates = array();
       if($event_id){
+        //$relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id, $tags_relate)->orderBy('events.created_at', 'desc')->skip(0)->take(6)->get();
+        //$relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id, $tags_relate)->skip(0)->take(6)->get();
         $relates = Event::published()->active()->relateThis($event_id, $cate_id, $tags_relate)->skip(0)->take(6)->get();
       }
+
+      //echo 'cate id => ' . $cate_id;
+      //echo 'tag => ' . $tags_relate;
+      //echo '<pre>';
+      //print_r($tags_relate);
+      //exit;
+
+      //echo 'event id => ' . $event_id;
+      //echo '<br />event cate id => ' . $cate_id;
+
+      //$relate = Event::published()->active()->eventBrand()->RelateThis($slug)->orderBy('events.created_at', 'desc')->limit(6);
+      //**$relates = Event::published()->active()->eventBrand()->relateThis($event_id, $cate_id)->orderBy('events.created_at', 'desc')->skip(0)->take(1)->get();
+      //echo '<pre>';
+      //print_r($relate[0]->category[0]->name);
+      //exit;
+
+      //echo 'brand => '. $event->brand->category_first->name;
+      //exit;
 
       return view('events.show', compact('event', 'branchs', 'locations', 'tags', 'relates', 'event_title'));
   }
@@ -284,55 +502,130 @@ class EventsController extends Controller
   {
     $user_id = Auth::user()->id;
     $role_id = Auth::user()->role_id;
+    //$event = Event::find($id);
 
+    //$user_id = Auth::user()->id;
+    //$role_id = Auth::user()->role_id;
+    //$category = Category::select('name', 'id')->where('category_type', 'event')->get();
     if($role_id == 4){ //brand
+      //$brand = Brand::select('id', 'name')->where('user_id', $user_id)->get();
       $brands = Brand::select('id', 'name')->where('user_id', $user_id)->get();
       $arr_brand = array();
       foreach($brands as $brand){
         array_push($arr_brand, $brand->id);
       }
 
+      //echo '<pre>';
+      //print_r(array_values($arr_brand));
+      //exit;
+
+      //echo '<pre>';
+      //print_r($brand_array);
+      //exit;
+
       $event = Event::whereIn('brand_id', $arr_brand)->where('id', $id)->get();
+
+      //echo '<pre>';
+      //print_r($event);
+      //exit;
+
       if($event->count() < 1){
         abort(401);
         exit;
       }
 
     } elseif($role_id < 4){ // manager, admin
+      //$brand = Brand::select('id', 'name')->get();
+      //$brand = Brand::all();
       $brands = Brand::select('id', 'name')->get();
       $event = Event::find($id);
     }
-
+    //$branch = $brand->first()->branch_list; //default null
     $branch = array();
     if($brands->count() == 1){
       $branch = Branch::brandList($brands->first()->id)->get();
     }
 
-    $brand_active = Brand::find($event->brand_id);
-    $branch = $brand_active->branch_list; //default null
+    //echo '<pre>';
+    //print_r($event->count());
+    //exit;
 
+    //$tag_list = Tag::lists('name', 'id');
+      //return Redirect::back()->with('message','Event Not Exists !');
+
+    //$category = Category::select('name', 'id')->where('category_type', 'event')->get();
+    //$brand = Brand::select('id', 'name')->get();
+
+    //echo '<pre>';
+    //print_r($brand);
+    //exit;
+
+    //$branch = array();
+    //if(isset($event->brand_id)){
+      $brand_active = Brand::find($event->brand_id);
+      $branch = $brand_active->branch_list; //default null
+    //}
+    //$branch = array();
+
+    /*if(in_array(1, $event->category_list)){
+      echo 'in array >>';
+    }*/
+
+    //echo '<pre>';
+    //print_r($brand);
+    //exit;
+
+    //echo $event->branch_list;
     $obj = array();
     $result = array();
-    foreach($event->gallery_list as $file){
-      $fileinfo = base_path() .'/public/'. $file;
-      $filename = pathinfo($fileinfo)['basename'];
-      $filesize = filesize($fileinfo);
+    //if(isset($event->gallery_list)){
+      foreach($event->gallery_list as $file){
+        $fileinfo = base_path() .'/public/'. $file;
+        $filename = pathinfo($fileinfo)['basename'];
+        $filesize = filesize($fileinfo);
 
-      $obj['name'] = $filename; //get the filename in array
-      $obj['size'] = $filesize; //get the flesize in array
-      $obj['fileinfo'] = '/'.$file; //get the fileinfo in array
-      $result[] = $obj; // copy it to another array
-    }
+        //echo '<pre>';
+        //print_r(pathinfo($fileinfo));
+        //exit;
+
+        $obj['name'] = $filename; //get the filename in array
+        $obj['size'] = $filesize; //get the flesize in array
+        $obj['fileinfo'] = '/'.$file; //get the fileinfo in array
+        $result[] = $obj; // copy it to another array
+      }
+    //}
     $gallery =  json_encode($result);
 
-    $location = $event->location_first;
+    //echo '<pre>';
+    //print_r($result);
+    //exit;
 
-    $string_tag = implode(',', $event->tag_list);
+    //$gallery = Response::json('success', $result);
+    //$gallery =  json_encode($result);
+
+    //$location = array();
+    //if(isset($event->location_first)){
+      $location = $event->location_first;
+    //}
+
+    //echo 'gallery => ' . $gallery;
+    //exit;
+
+    //echo '<pre>';
+    //print_r($location);
+    //exit;
+    //$string_tag = '';
+    //if(isset($event->tag_list)){
+      $string_tag = implode(',', $event->tag_list);
+    //}
+    //echo $string_tag;
+    //exit;
+
     $brand_category = $brands->first()->category_list;
 
     if(empty($event))
       abort(404);
-
+    //return  view('events.edit', compact('event', 'category', 'brand', 'branch', 'string_tag', 'gallery', 'location', 'role_id'));
     return  view('events.edit', compact('event', 'brand_category', 'brands', 'branch', 'string_tag', 'gallery', 'location', 'role_id'));
   }
 
@@ -344,17 +637,27 @@ class EventsController extends Controller
   */
   public function update($id, EventRequest $request)
   {
+    //$event = Event::findOrFail($id);
+    //$event = new Event($request->all());
+    //$event->title = $request->input('title');
     $event = Event::find($id);
     $input = $request->all(); /* Request all inputs */
     $event_id = $request->input('event_edit_id');
 
     //image
     if($request->hasFile('image')){
+      //echo ' => ' . base_path() . '/public/' . $event->image;
       $base_hash = '';
       if(is_file(base_path() . '/public/' . $event->image)){
           $base_hash = md5_file(base_path() . '/public/' . $event->image);
       }
       $image_hash = md5_file($request->file('image')->getPathName());
+
+      //echo 'old image => ' . base_path() . '/public/' . $event->image;
+      //echo '<br />path => ' . $request->file('image')->getPathName();
+      //echo '<br />base hash => ' . $base_hash;
+      //echo '<br />img hash => ' . $image_hash;
+      //exit;
 
       if($base_hash != $image_hash){
         $image_filename = $request->file('image')->getClientOriginalName();
@@ -367,6 +670,7 @@ class EventsController extends Controller
         $input['image'] = $public_path . $image_name; //set article image name
       } else {
         $input['image'] = $event->image;
+        //echo '<br /> event image => ' . $event->image;
       }
     } else {
       $input['image'] = $event->image;
@@ -378,6 +682,7 @@ class EventsController extends Controller
 
     $i=1; $dup=1;
     do {
+      //$slug = Event::firstOrNew(array('url_slug' => $base_slug));
       $slug = Event::where('url_slug', '=', $base_slug)->where('id', '!=', $event_id)->first();
       if($slug){
         $base_slug = $url_slug . '-' . $i++;
@@ -393,6 +698,10 @@ class EventsController extends Controller
        $event->category()->sync($categoryId);
     }
 
+    //echo 'cate => ';
+    //echo '<pre>';
+    //print_r($categoryId);
+
     //brand
     $input['brand_id'] = $request->input('brand');
 
@@ -402,13 +711,19 @@ class EventsController extends Controller
        $event->branch()->sync($branchId);
     }
 
+    //echo '<pre>';
+    //print_r($branchId);
+
     //tags
     $tagsId = $request->input('tag_list');
     if(!empty($tagsId)){
        $tag_list = explode(',', $tagsId);
+       //$tags = Event::InsertTag($tagsId);
        $tags = array();
        foreach($tag_list as $name)
        {
+         //$tag = preg_replace('/[^a-zA-Z0-9]+/', '-', strtolower(trim($name)));
+         //$tag = str_slug($name); //helper url
          $tag = $this->string_friendly($name);
          $tags[] = Tag::firstOrCreate(array('name' => $name, 'tag' => $tag))->id;
        }
@@ -418,10 +733,15 @@ class EventsController extends Controller
     //gallery
     $gallery = $request->file('gallery');
 
+    //echo '<pre>';
+    //print_r($gallery);
+    //exit;
+
     $success = 0;
     $error = 0;
     $file_index = 0;
     if($gallery){
+      //$images = array();
       foreach($gallery as $file){
          $image_filename = $file->getClientOriginalName();
          $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
@@ -433,13 +753,16 @@ class EventsController extends Controller
          if( $upload_success ) {
             $success++;
             $image = $destination;
+            //$images[] = Gallery::firstOrCreate(array('name' => $image_name, 'image' => $public_path . $image_name))->id;
             $images_id = Gallery::firstOrCreate(array('name' => $image_name, 'image' => $public_path . $image_name))->id;
             $event_gallery = $event->gallery()->attach($images_id);
+            //$event->brand_id = $request->input('brand'); //event brand
           } else {
             $error++;
           }
           $file_index++;
       }
+      //$event->gallery()->sync($images);
     }
 
     //location
@@ -463,6 +786,32 @@ class EventsController extends Controller
                   'event_id'   => $event->id
               ));
     }
+
+    //$event->update($request->all());
+
+    //echo '<pre>';
+    //print_r($request->all());
+    //exit;
+
+    /*
+    if($request->hasFile('image')){
+      $image_filename = $request->file('image')
+                       ->getClientOriginalName();
+      $image_name = date('Ymd-His-').$image_filename;
+      $public_path = 'images/articles/';
+      $destination = base_path() . '/public/' . $public_path;
+      $request->file('image')->move($destination, $image_name); //move file to destination
+      $article->image = $public_path . $image_name; //set article image name
+      $article->save(); //update
+    }
+
+    $tagsId = $request->input('tag_list');
+    if(!empty($tagsId))
+      $article->tags()->sync($tagsId);
+    else
+      $article->tags()->detach();
+    return redirect('articles');
+    */
   }
 
   //admin event lists
@@ -473,13 +822,27 @@ class EventsController extends Controller
     if($role_id == 4){//brand
       $brands = Brand::where('user_id', $user_id)->get();
       $brands_list = $brands->lists('id')->toArray();
+      //echo '<pre>';
+      //print_r($brands->lists('id')->toArray());
+      //exit;
 
       $events = Event::published()->active()->brandEvent($brands_list)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->get();
+      //echo '<pre>';
+      //print_r($events);
+      //exit;
 
     } elseif($role_id < 4){ // manager, admin
       $brands = Brand::all();
       $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->get();
     }
+
+    //echo 'user_role => ' . $user_role;
+    //echo '<pre>';
+    //print_r($brands);
+    //exit;
+
+    //$events = Event::published()->active()->eventBrand()->orderBy('events.created_at', 'desc')->get();
+    //$events = Event::published()->active()->brandEvent($user_id)->orderBy('events.created_at', 'desc')->get();
     return view('events.admin', compact('events', 'role_id', 'user_id', 'brands'));
   }
 
@@ -489,17 +852,11 @@ class EventsController extends Controller
     echo json_encode($event->branch->all());
   }
 
-  //public function locations($id)
-  public function locations($slug)
+  public function locations($id)
   {
     $event_locations = array();
     $event_brand = array();
-      //$event = Event::where('id', $id)->first();
-      $event = Cache::remember('Promotion_' . $slug, 1440, function() use ($slug) {
-        return $event = Event::where('url_slug', $slug)->first();
-      });
-
-      $event_slug_id = $event->id;
+    $event = Event::where('id', $id)->first();
 
       if($event->brand->count() > 0){
         $cate_name = 'ไม่ระบุหมวดหมู่';
@@ -511,16 +868,35 @@ class EventsController extends Controller
         $event_brand = array('name' => $event->brand->name, 'image' => $event->brand->logo_image, 'url_slug' => $event->brand->url_slug, 'category' => $cate_name, 'category_slug' => $cate_slug);
       }
 
+      //echo '<pre>';
+      //print_r($event_brand);
+
       if($event->branch->count() > 0){
+
+        //echo 'count more 0 >>';
         foreach($event->branch->all() as $branch){
+
           if($branch->events->count() == 1){
+              //echo '<br />count 1 >>';
               $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
           }
+
+          //$events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->eventOther($id)->orderBy('events.created_at', 'desc')->get();
           $events_branch = Event::eventBranch($branch->id)->published()->active()->noExpire()->orderBy('events.created_at', 'desc')->get(); //check expire
+          //$events_branch = Event::eventBranch($branch->id)->published()->active()->orderBy('events.created_at', 'desc')->get(); //not check expire, check in loop
+
+          //echo 'branch id => ' . $branch->id;
           if($events_branch->count() < 1){
             $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
             continue;
           }
+
+          //echo '<pre>';
+          //print_r($events_branch);
+
+          //echo '<pre>';
+          //print_r($events_branch);
+          //exit;
 
           $cate_name = 'ไม่ระบุ หมวดหมู่';
           $cate_slug = 'unknow';
@@ -531,24 +907,62 @@ class EventsController extends Controller
               $cate_slug = $event->category->first()->category;
             }
 
-            //if($event->id != $id){ //without self
-            if($event->id != $event_slug_id){
+            if($event->id != $id){ //without self
               if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
+                //echo 'not exists => ' . $branch->lat . ' => ' . $event->title;
                 $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
+
+                //echo(json_encode($event_locations));
+                //exit;
+
               } else {
+                //echo 'exists array => ' . $branch->lat . ' => ' . $event->title;
                 array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
               }
             } else {
+              //echo 'exists event => ' . $branch->lat . ' => ' . $event->title;
               if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
                 $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
               }
             }
+
+            //echo '<pre>';
+            //print_r($event_locations);
+
           }
+
+          /*
+          foreach($branch->events->all() as $event_branch){
+            $cate_name = isset($event_branch->category->first()->name)?$event_branch->category->first()->name:'ไม่ระบุ หมวดหมู่';
+            if($event_branch->id != $id){ //without self
+              //$cate_name = isset($event_branch->category->first()->name)?$event_branch->category->first()->name:'ไม่ระบุ หมวดหมู่';
+              if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
+                $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event_branch->title, 'slug' => $event_branch->url_slug, 'brand' => $event_branch->brand->name, 'image' => $event_branch->image, 'category' => $cate_name, 'start_date_thai' => $event_branch->start_date_thai, 'end_date_thai' => $event_branch->end_date_thai));
+              } else {
+                array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event_branch->title, 'slug' => $event_branch->url_slug, 'brand' => $event_branch->brand->name, 'image' => $event_branch->image, 'category' => $cate_name, 'start_date_thai' => $event_branch->start_date_thai, 'end_date_thai' => $event_branch->end_date_thai));
+              }
+            }
+          }
+          */
+
         }
       }
 
     echo json_encode(array('brand'=> $event_brand, 'locations' => $event_locations));
   }
+
+  /*
+  public function show($id)
+  {
+    //echo '=> ' . $id;
+
+    $event = Event::find($id);
+    if(empty($event))
+      abort(404);
+
+    return view('events.show', compact('event'));
+  }
+  */
 
   public function desc_upload()
   {
@@ -573,11 +987,25 @@ class EventsController extends Controller
   /* remove file */
   public function removefile($id, $image)
   {
+    echo 'id => ' . $id . ',  image => ' . $image;
+    //$image = Event::find($id)->gallery
     $image = Gallery::select('id')->where('name', $image)->get();
+    //echo '<pre>';
+    //print_r($image);
     if($image->first()){
+      //echo '<pre>';
+      //print_r($image);
       $image_id = $image->first()->id;
       $deletedRows = Event::find($id)->gallery()->detach($image_id); // delete the relationships with Image (Pivot table) first.
+      echo '<br /> del => ' . $deletedRows;
     }
+
+    //echo 'image id => ' . $image_id;
+    //print_r($image_id);
+    //exit;
+    //$deletedRows = Event::find($id)->gallery()->detach($image_id); // delete the relationships with Image (Pivot table) first.
+    //$deletedRows = $event->eventGallery()->where('name', $image)->delete();
+    //echo '<br /> del => ' . $deletedRows;
   }
 
   /**

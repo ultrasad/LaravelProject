@@ -1,5 +1,5 @@
 @extends('layouts.document')
-@section('page_title', 'โปรโมชั่นทั้งหมด')
+@section('page_title', 'รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง')
 @section('og_url', URL::to('events', $events->first()->url_slug))
 @section('og_title', $events->first()->title)
 @section('og_description', $events->first()->brief)

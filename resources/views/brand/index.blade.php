@@ -1,5 +1,5 @@
 @extends('layouts.document')
-@section('page_title', $events->first()->brand->name . ' - โปรโมชั่นทั้งหมด')
+@section('page_title', $events->first()->brand->name . ' - รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง')
 @section('content')
 
 <div class="social-wrapper">

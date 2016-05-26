@@ -1,5 +1,5 @@
 @extends('layouts.document')
-@section('page_title', 'โปรโมชั่นรอบๆตัวคุณ')
+@section('page_title', 'โปรโมชั่นรอบๆตัวคุณ - รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง')
 @section('content')
     <div class="map-controls">
       <div class="pull-left">

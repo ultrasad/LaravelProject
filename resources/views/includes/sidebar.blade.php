@@ -29,7 +29,7 @@
   <!-- BEGIN SIDEBAR MENU HEADER-->
 
   <div class="sidebar-header">
-    <img src="{{ URL::asset('assets/img/logo_white.png') }}" alt="logo" class="brand" data-src="{{ URL::asset('assets/img/logo_white.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_white_2x.png') }}" width="" height="38">
+    <a href="/" title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="clearfix"><img src="{{ URL::asset('assets/img/logo_white.png') }}" alt="รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="brand" data-src="{{ URL::asset('assets/img/logo_white.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_white_2x.png') }}" width="" height="38"></a>
     <!--<div class="sidebar-header-controls">
       <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" data-pages-toggle="#appMenu"><i class="fa fa-angle-down fs-16"></i>
       </button>
@@ -48,7 +48,7 @@
           <span class="title">โปรโมชั่นทั้งหมด</span>
         </a>
         <span class="icon-thumbnail icon-category bg-success">
-          <i class="fa fa-heart" aria-hidden="true"></i>
+          <i class="fa fa-home" aria-hidden="true"></i>
           <!--<img src="{{ URL::asset('assets/img/category/icons/computer.png') }}" alt="Computer / IT" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/computer.png') }}" data-src-retina="{{ URL::asset('assets/img/category/icons/computer_2x.png') }}" width="20" height="20">-->
         </span>
       </li>

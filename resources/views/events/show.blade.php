@@ -13,7 +13,7 @@
       <!-- START BREADCRUMB -->
       <ul class="breadcrumb">
         <li>
-          <a href="/" title="หน้าแรก">หน้าแรก</a>
+          <a href="/" title="หน้าแรก"><i class="fa fa-home" aria-hidden="true"></i></a>
         </li>
         <li>
           @if(!empty($event->brand->category->first()->name))

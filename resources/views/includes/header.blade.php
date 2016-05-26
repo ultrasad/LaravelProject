@@ -50,7 +50,7 @@
   <div class="pull-left sm-table hidden-xs hidden-sm">
     <div class="header-inner">
       <div class="brand inline">
-        <img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="" height="50">
+        <a href="/" title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="clearfix"><img src="{{ URL::asset('assets/img/logo.png') }}" alt="รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="" height="50"></a>
         <!--<div class="nav-logo">
             <a title="WELOVEPRO" href="/">
                 <img src="{{ URL::asset('assets/img/tnw.png') }}" class="img-responsive" alt="WELOVEPRO" />

@@ -1,5 +1,5 @@
 @extends('layouts.document')
-@section('page_title', $tag_name . ' - โปรโมชั่นทั้งหมด')
+@section('page_title', $tag_name . ' - รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง')
 @section('content')
 
 <!-- START JUMBOTRON -->
@@ -9,7 +9,7 @@
       <!-- START BREADCRUMB -->
       <ul class="breadcrumb">
         <li>
-          <a href="/" title="หน้าแรก">หน้าแรก</a>
+          <a href="/" title="หน้าแรก"><i class="fa fa-home" aria-hidden="true"></i></a>
         </li>
         <li>
           <span class="p-l-5 m-l-5 fs-12">{{ $tag_name }}</span>

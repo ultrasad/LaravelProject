@@ -28,18 +28,22 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<!--
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/font-awesome/css/font-awesome.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/jquery-scrollbar/jquery.scrollbar.css') }}" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/jquery-metrojs/MetroJs.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/fotorama/fotorama.css') }}">
-
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/jquery-datatable/media/css/dataTables.bootstrap.min.css') }}" />
-<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages-icons.css') }}" />
 
 <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Kanit:400,500,700,200,100,100italic'>
-<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages.css') }}" />
-<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/style.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/css/pages-icons.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/css/pages.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/css/style.css') }}" />
+-->
+
+<link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Kanit:400,500,700,200,100,100italic'>
+<link rel="stylesheet" type="text/css" media="screen" href="{{ elixir('css/all.css') }}" />
 
 <!--[if lte IE 9]>
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/codrops-dialogFx/dialog.ie.css') }}" />

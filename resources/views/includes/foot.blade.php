@@ -1,4 +1,5 @@
 <!-- BEGIN VENDOR JS -->
+<!--
 <script type="text/javascript" src="{{ URL::asset('assets/jquery/jquery-1.11.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/modernizr.custom.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -13,6 +14,10 @@
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-infinite-scroll/jquery.infinitescroll.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/datatables-responsive/js/lodash.min.js') }}"></script>
 
+<script type="text/javascript" src="{{ URL::asset('pages/js/pages.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js') }}"></script>
+-->
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -24,9 +29,4 @@
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-<!-- END VENDOR JS -->
-<!-- BEGIN CORE TEMPLATE JS -->
-<script type="text/javascript" src="{{ URL::asset('pages/js/pages.js') }}"></script>
-<!-- BEGIN PAGE LEVEL JS -->
-<script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js') }}"></script>
-<!-- END PAGE LEVEL JS -->
+<script type="text/javascript" src="{{ elixir('js/all.js') }}"></script>

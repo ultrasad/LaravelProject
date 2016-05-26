@@ -49,7 +49,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('events/brand/{id}', 'EventsController@brand');
     Route::get('events/removefile/{id}/{image}', 'EventsController@removefile');
 
-    Route::get('tags/{name}', 'TagsController@index');
+    Route::get('tag/{name}', 'TagsController@index');
     Route::get('category/{name}', 'CategoryController@index');
     Route::get('brand/category/{name}', 'BrandController@category');
     Route::get('maps/locations', 'MapsController@locations');

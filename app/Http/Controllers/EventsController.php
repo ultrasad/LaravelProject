@@ -260,7 +260,7 @@ class EventsController extends Controller
       $tags_relate = array();
       foreach($event->tags->all() as $index => $tag){
         array_push($tags_relate, $tag->tag);
-        $tags[] = '<span><i class="fa fa-tag fa-flip-horizontal hint-text-8 m-t-10" aria-hidden="true"></i></span>' . link_to('/tags/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
+        $tags[] = '<span><i class="fa fa-tag fa-flip-horizontal hint-text-8 m-t-10" aria-hidden="true"></i></span>' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
       }
 
       $event_id = $event->id;

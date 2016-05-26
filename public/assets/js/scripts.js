@@ -1757,6 +1757,8 @@ function initialize() {
     mapObj = new Object(google.maps);
     var default_latlng  = new mapObj.LatLng(13.7563309, 100.50176510000006);
     var default_type = mapObj.MapTypeId.ROADMAP;
+    var icon_image = base_url + '/assets/img/basket.png';
+    //console.log('icon_image => ' + icon_image);
     var options = {
         zoom: 14,
         scrollwheel: false,
@@ -1784,6 +1786,7 @@ function initialize() {
       var infowindow = new mapObj.InfoWindow();
       var marker = new mapObj.Marker({
         map: map,
+        icon: icon_image,
         anchorPoint: new mapObj.Point(0, -29)
       });
     }
@@ -1807,6 +1810,7 @@ function initialize() {
       var infowindowBranch = new mapObjBranch.InfoWindow();
       var markerBranch = new mapObjBranch.Marker({
         map: mapBranch,
+        icon: icon_image,
         anchorPoint: new mapObj.Point(0, -29)
       });
     }
@@ -1867,7 +1871,8 @@ function initialize() {
                 markers[k] = new mapObj.Marker({
                     position:markerLatLng,
                     map: map,
-                    title:markerName
+                    title:markerName,
+                    icon: icon_image
                 });
 
                 mapObj.event.addListener(markers[k], 'click', function(){
@@ -2059,7 +2064,8 @@ function initialize() {
                 markers[k] = new mapObj.Marker({
                     position:markerLatLng,
                     map: map,
-                    title:markerName
+                    title:markerName,
+                    icon: icon_image
                 });
 
                 //console.log('marker => '+ k + '=>' + markers[k]);
@@ -2220,7 +2226,8 @@ function initialize() {
         markerEdit = new mapObj.Marker({
             position:markerLatLng,
             map: map,
-            title:markerName
+            title:markerName,
+            icon: icon_image
         });
 
         mapObj.event.addListener(markerEdit, 'click', function() {
@@ -2441,7 +2448,8 @@ function initialize() {
                 window.markers[k] = new mapObjBranch.Marker({
                     position:markerLatLng,
                     map: mapBranch,
-                    title:markerName
+                    title:markerName,
+                    icon: icon_image
                 });
 
                 mapObjBranch.event.addListener(window.markers[k], 'click', function(){

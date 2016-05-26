@@ -75,7 +75,7 @@ class EventsController extends Controller
   */
   public function index(Request $request)
   {
-    $paginate = 5;
+    $paginate = 10;
     $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
 
     $more_page = $events->hasMorePages();

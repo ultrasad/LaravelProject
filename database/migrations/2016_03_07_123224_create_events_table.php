@@ -44,6 +44,7 @@ class CreateEventsTable extends Migration
             $table->string('category'); //cate-name-space
             $table->enum('category_type', ['event', 'brand']); //brand or event
             $table->string('icon', 60)->nullable(); //brand or event
+            $table->integer('order_id')->unsigned()->default(1);
             $table->timestamps();
         });
 

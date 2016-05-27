@@ -496,7 +496,8 @@ class EventsController extends Controller
     $event_brand = array();
       //$event = Event::where('id', $id)->first();
       $event = Cache::remember('Promotion_' . $slug, 1440, function() use ($slug) {
-        return $event = Event::where('url_slug', $slug)->first();
+        //return $event = Event::where('url_slug', $slug)->first();
+        return Event::where('url_slug', $slug)->first();
       });
 
       $event_slug_id = $event->id;

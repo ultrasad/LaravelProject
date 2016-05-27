@@ -29,14 +29,15 @@ class BrandController extends Controller
   *
   *@return Response
   */
-  public function index($brand)
+  public function index($slug)
   {
     //echo '=> ' . $brand;
     //$events = Event::published()->active()->eventBrand()->BrandId($brand_id)->orderBy('events.created_at', 'desc')->paginate(15);
-    $events = Event::published()->active()->BrandSlug($brand)->orderBy('events.created_at', 'desc')->paginate(15);
-    $brand = Brand::where('url_slug', $brand)->first();
+    $brand = Brand::where('url_slug', $slug)->first();
+    $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->BrandSlug($slug)->orderBy('events.created_at', 'desc')->paginate(15);
+
     //echo '<pre>';
-    //print_r($brand->slogan);
+    //print_r($events);
     //exit;
 
     return view('brand.index', compact('events', 'brand'));

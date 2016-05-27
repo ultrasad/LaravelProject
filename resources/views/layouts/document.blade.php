@@ -19,7 +19,9 @@
           <!-- END ROW -->
         </div>
         <!-- END PAGE CONTENT -->
-        @include('includes.footer')
+        @if(!Request::is('map'))
+          @include('includes.footer')
+        @endif
       </div>
       <!-- END PAGE CONTENT WRAPPER -->
     </div>

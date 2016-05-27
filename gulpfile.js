@@ -55,7 +55,7 @@ elixir(function(mix) {
            'assets/imagesloaded/imagesloaded.pkgd.min.js',
            'assets/jquery-infinite-scroll/jquery.infinitescroll.min.js',
            'assets/datatables-responsive/js/lodash.min.js',
-           'pages/js/pages.js',
+           'assets/js/pages.js',
            'assets/js/scripts.js',
        ], 'public/js/all.js','public');
 

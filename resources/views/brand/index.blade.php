@@ -20,7 +20,7 @@
     </div>
     <!-- END JUMBOTRON -->
 
-    <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10 m-b-30 brand-master">
+    <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10 m-b-10 brand-master">
       <div class="col-md-12 sm-padding-0">
         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 sm-padding-0">
           <a class="brand-event-url" title="{{ $events->first()->brand->name }}" href="{{ URL::to('brand', $brand->url_slug) }}">
@@ -68,6 +68,8 @@
       </div>
     </div>
 
+    <div class="clearfix m-b-20 brand-master-border">&nbsp;</div>
+
     <div class="container-fluid container-fixed-lg sm-p-l-10 sm-p-r-10">
       @if($events->count() < 1)
       <div class="p-l-0 col-md-12 promotion-empty text-master">ยังไม่มีโปรโมชั่น ในขณะนี้...</div>
@@ -100,7 +102,7 @@
                     @endif
                   </div>
                   <div class="pull-top pull-right list-inline">
-                    <i class="pg-map"></i>
+                    <a href="javascript: void(0);" class="btntoggle btnToggleMap" data-id="{{ $event->id }}" data-slug="{{ $event->url_slug }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
                   </div>
                 </div>
               </div>

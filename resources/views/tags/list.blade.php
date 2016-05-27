@@ -15,6 +15,11 @@
           <span class="p-l-5 m-l-5 fs-12">{{ $tag_name }}</span>
         </li>
       </ul>
+      <ul class="breadcrumb breadcrumb-header">
+        <li>
+          <div><i class="pull-left p-t-10 fa fa-tags fa-2x" aria-hidden="true"></i><div class="pull-left p-l-15 bread_cate_name">{{ $tag_name }}</div></div>
+        </li>
+      </ul>
       <!-- END BREADCRUMB -->
     </div>
   </div>
@@ -52,7 +57,7 @@
                     @endif
                   </div>
                   <div class="pull-top pull-right list-inline">
-                    <i class="pg-map"></i>
+                    <a href="javascript: void(0);" class="btntoggle btnToggleMap" data-id="{{ $event->id }}" data-slug="{{ $event->url_slug }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
                   </div>
                 </div>
               </div>

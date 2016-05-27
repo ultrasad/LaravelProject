@@ -198,6 +198,12 @@ body, .color-body {
 #infscr-loading { position: absolute; bottom: 0; width: 100%; text-align: center;  margin-top: 30px;}
 #infscr-loading img, #infscr-loading div { position: relative; margin: 0 auto; margin-top: 100px; padding-top: 100px;}
 
+.breadcrumb-header .bread_cate_name, .breadcrumb-header .bread_tag_name {
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 40px;
+}
+
 .social-wrapper .social-element .jumbotron {
     height: 40vh;
 }
@@ -323,9 +329,9 @@ a.text-info-link.heart:hover {
 }
 
 body.menu-behind .header .brand {
+    width: 120px;
     padding-left: 0px;
     margin-left:  80px;
-    width: 120px;
     border-right: 1px solid #ededed;
 }
 
@@ -392,6 +398,10 @@ a.brand-event-url:hover, a.relate-brand-url:hover {
   margin-right: 1px;
 }
 
+.brand-master-border {
+  border-bottom: 1px solid #e6e6e6;
+}
+
 .feed .day a.brand-event-url, .brand-master a.brand-event-url {
   color: #626262;
 }
@@ -404,7 +414,6 @@ a.brand-event-url:hover, a.relate-brand-url:hover {
 ol, ul {
     list-style: outside none none;
 }
-
 
 .nav-follow {
     display: block;
@@ -520,6 +529,14 @@ ol, ul {
   min-height: 40px;
   padding: 0 3px 0 32px;
 }*/
+
+.page-sidebar .sidebar-menu .menu-items > li > span.title-header-category {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 40px;
+  min-height: 40px;
+  padding: 0 3px 0 32px;
+}
 
 .page-sidebar .sidebar-menu .menu-items > li > .icon-thumbnail img {
   opacity: 0.8;
@@ -1291,9 +1308,9 @@ div.cs-select-brand {
   }
   */
 
-  /*.page-sidebar .sidebar-menu .menu-items > li > span.title-header-category {
+  .page-sidebar .sidebar-menu .menu-items > li > span.title-header-category {
     padding-left: 20px;
-  }*/
+  }
 
   body .header .search-link {
     display: inline;
@@ -1304,6 +1321,17 @@ div.cs-select-brand {
   body .header .search-link i {
     margin-right: 5px;
   }
+
+  body.menu-behind .header .brand {
+      margin-left:  0;
+      border-right: 0 none;
+  }
+
+  /*.breadcrumb-header .bread_cate_name, .breadcrumb-header .bread_tag_name {
+    font-size: 1.2em;
+    line-height: 40px;
+  }
+  */
 }
 
 @media (max-width: 767px) {

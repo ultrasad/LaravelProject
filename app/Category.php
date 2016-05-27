@@ -26,4 +26,9 @@ class Category extends Model
     {
       return $this->belongsToMany('App\Event');
     }
+
+    public function brand()
+    {
+        return $this->belongToMany('App\Brand');
+    }
 }

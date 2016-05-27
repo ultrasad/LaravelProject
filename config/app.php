@@ -206,6 +206,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Twitter'   => 'Thujohn\Twitter\Facades\Twitter',
+        'menuHelper'=> App\Helpers\MenuHelper::class, //for Laravel 5.1, 5.2
     ],
 
 ];

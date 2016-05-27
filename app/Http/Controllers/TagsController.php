@@ -15,7 +15,7 @@ class TagsController extends Controller
 {
   public function index($tag='')
   {
-      $events = Event::published()->active()->tagList($tag)->orderBy('events.created_at', 'desc')->paginate(15);
+      $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->tagList($tag)->orderBy('events.created_at', 'desc')->paginate(15);
       if($events->count() < 1){
         //return Redirect::back()->with('message','Tag Not Exists !');
         return redirect('/');

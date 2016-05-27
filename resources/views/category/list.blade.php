@@ -19,6 +19,13 @@
           @endif
         </li>
       </ul>
+      @if($category != 'unknow')
+      <ul class="breadcrumb breadcrumb-header">
+        <li>
+          <div><img src="{{ URL::asset('assets/img/category/icons/gray/'. $category_icon) }}" alt="{{ $category_name }}" class="pull-left category-img img-responsive" data-src="{{ URL::asset('assets/img/category/icons/gray/' . $category_icon) }}" data-src-retina="{{ URL::asset('assets/img/category/icons/gray/'.$category_icon) }}" width="40" height="40"><div class="pull-left p-l-15 bread_cate_name">{{ $category_name }}</div></div>
+        </li>
+      </ul>
+      @endif
       <!-- END BREADCRUMB -->
     </div>
   </div>
@@ -56,7 +63,7 @@
                     @endif
                   </div>
                   <div class="pull-top pull-right list-inline">
-                    <i class="pg-map"></i>
+                    <a href="javascript: void(0);" class="btntoggle btnToggleMap" data-id="{{ $event->id }}" data-slug="{{ $event->url_slug }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
                   </div>
                 </div>
               </div>

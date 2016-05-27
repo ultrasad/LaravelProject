@@ -16,11 +16,12 @@
     <div class="pull-center hidden-md hidden-lg">
       <div class="header-inner">
         <div class="brand inline">
-          <div class="nav-logo nav-logo-center">
-              <a title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" href="/">
-                <img src="{{ URL::asset('assets/img/logo.png') }}" class="img-responsive" alt="รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="70%" height="">
+          <!--<img src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="78" height="22">-->
+          <!--<div class="nav-logo nav-logo-center">
+              <a title="WELOVEPRO" href="/">
+                  <img src="{{ URL::asset('assets/img/tnw.png') }}" class="img-responsive" alt="WELOVEPRO" />
               </a>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
@@ -50,6 +51,11 @@
     <div class="header-inner">
       <div class="brand inline">
         <a href="/" title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="clearfix"><img src="{{ URL::asset('assets/img/logo.png') }}" alt="รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="" height="50"></a>
+        <!--<div class="nav-logo">
+            <a title="WELOVEPRO" href="/">
+                <img src="{{ URL::asset('assets/img/tnw.png') }}" class="img-responsive" alt="WELOVEPRO" />
+            </a>
+        </div>-->
       </div>
       <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to search</a>
     </div>

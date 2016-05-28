@@ -722,6 +722,25 @@ div.cs-skin-slide.cs-active {
   height: 800px; width: 100%;
 }
 
+/*.map-container .map-full {
+  height: 100% !important;
+}*/
+
+/*
+.page-content-wrapper .map-full {
+  height: 100% !important;
+}
+*/
+
+.map-controls {
+  left: 10px;
+  top: 105px;
+}
+
+.map-controls .btn-xs {
+  padding: 2px 6px;
+}
+
 .label-custom-tag {
   background-color: #AEB4C1;
 }
@@ -1406,6 +1425,10 @@ div.cs-select-brand {
   .map-full {
     height: 480px; width: 100%;
   }
+
+  /*.map-container .map-full {
+    height: 100% !important;
+  }*/
 
   .gradient-grey {
     font-size: 0.7em;

@@ -40,7 +40,7 @@
       <div class="panel-body p-b-0">
         <div class="dialog__content">
             <!-- START PANEL -->
-            <div class="fotorama" data-allowfullscreen="true" data-width="100%" data-ratio="8/5" data-arrows="false" data-nav="thumbs" data-loop="true">
+            <div class="fotorama" data-allowfullscreen="false" data-width="100%" data-ratio="8/5" data-click="false" data-arrows="true" data-nav="thumbs" data-loop="true">
               @forelse($event->gallery_list as $id => $image)
                 <img src="{{ URL::asset($image) }}" class="img-responsive" data-fit="contain" />
               @empty
@@ -230,6 +230,9 @@
                   @empty
                   @endforelse
                 </div>
+              </div>
+              <div class="fb-comment full-width">
+                <div class="fb-comments full-width" data-width="100%" data-numposts="10"></div>
               </div>
           </div>
         </div>

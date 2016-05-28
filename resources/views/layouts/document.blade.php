@@ -10,10 +10,10 @@
     <div class="page-container">
       @include('includes.header')
       <!-- START PAGE CONTENT WRAPPER -->
-      <div class="page-content-wrapper">
+      <div class="page-content-wrapper {{ Request::is('map') ? 'full-height':'' }}">
         <!-- START PAGE CONTENT -->
         <!-- <div class="content sm-gutter"> -->
-        <div class="content">
+        <div class="content {{ Request::is('map') ? 'full-width full-height overlay-footer':'' }}">
           <!-- START ROW -->
           @yield('content')
           <!-- END ROW -->

@@ -8,7 +8,9 @@
         </div>
       </div>
     </div>
-    <div id="map_canvas" class="map-canvas map-full"></div>
+    <div class="map-container full-width full-height">
+      <div id="map_canvas" class="map-canvas map-full full-width full-height"></div>
+    </div>
     <div class="row">
       <input name="location_id" type="hidden" id="location_id" value="{{ $id }}">
       <input name="location_lat" type="hidden" id="location_lat" value="0" />

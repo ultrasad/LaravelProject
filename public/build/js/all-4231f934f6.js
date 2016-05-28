@@ -2938,6 +2938,24 @@ var fx_select_brand;
         } //exists brand register form
 		    */
 
+        if($('.fotorama').exists()){
+          console.log('fotorama...');
+          var $fotorama = $('.fotorama');
+          $(document).on('click', '.fotorama__stage__frame img.fotorama__img', function(){
+            console.log('potorama img click...');
+            //var fotorama = $('.fotorama')
+            //.fotorama({allowfullscreen: true})
+            //.data('fotorama');
+
+            //fotorama.requestFullScreen();
+            $fotorama.fotorama({allowfullscreen: true}).data('fotorama').requestFullScreen();
+          });
+
+          $(document).on('click', '.fotorama__fullscreen-icon', function(){
+              $fotorama.fotorama({allowfullscreen: false});
+          });
+        }
+
         if($('.brand-form').exists()){
       		$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
       			FB.init({
@@ -3883,7 +3901,8 @@ var fx_select_brand;
         if($('#map_canvas, #map_canvas_branch').exists()){
           $("<script/>", {
             "type": "text/javascript",
-            src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&zoom=false&language=th&hl=th&callback=initialize&libraries=places"
+            //src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&zoom=false&language=th&hl=th&callback=initialize&libraries=places"
+            src: "https://maps.googleapis.com/maps/api/js?v=3.exp&language=th&hl=th&callback=initialize&libraries=places"
           }).appendTo("body");
         }
 
@@ -4205,10 +4224,10 @@ function initialize() {
     //console.log('icon_image => ' + icon_image);
     var options = {
         zoom: 14,
-        scrollwheel: false,
+        scrollwheel: true,
         center: default_latlng,
         mapTypeId:default_type,
-        disableDefaultUI: true
+        disableDefaultUI: false
     };
 
     //Map default

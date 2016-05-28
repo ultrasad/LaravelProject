@@ -535,9 +535,9 @@ class EventsController extends Controller
             //if($event->id != $id){ //without self
             if($event->id != $event_slug_id){
               if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){
-                $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
+                $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'brand_logo' => $event->brand->logo_image,'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
               } else {
-                array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
+                array_push($event_locations[$branch->lat .','. $branch->lon .','. $branch->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'brand_slug' => $event->brand->url_slug, 'brand_logo' => $event->brand->logo_image, 'image' => $event->image, 'category' => $cate_name, 'category_slug' => $cate_slug, 'start_date_thai' => $event->start_date_thai, 'end_date_thai' => $event->end_date_thai));
               }
             } else {
               if(!array_key_exists($branch->lat .','. $branch->lon . ',' . $branch->name, $event_locations)){

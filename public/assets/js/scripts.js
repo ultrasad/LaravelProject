@@ -1351,7 +1351,7 @@ var fx_select_brand;
         }
 
         //brand
-        if($('.cs-select').exists()){
+        if($('.events-form .cs-select').exists()){
           var el = $('.cs-select.cs-select-brand').get(0);
           $(el).wrap('<div class="cs-wrapper" />');
           new SelectFx(el, {

@@ -19,11 +19,11 @@
                   <div class="col-sm-12">
                     <div class="form-group form-group-default required form-group-default-selectFx">
                       <label>หัวข้อที่ต้องการติดต่อ</label>
-                      <!--<select class="cs-select cs-skin-slide cs-transparent form-control" name="topic" data-init-plugin="cs-select">
+                      <select class="cs-select cs-select-contact cs-skin-slide cs-transparent form-control" name="topic" data-init-plugin="cs-select">
                         <option value="ซื้อโฆษณา">ซื้อโฆษณา</option>
                         <option value="ขอเข้าร่วมเป็น Brand และเพิ่มข่าวด้วยตัวเอง">ขอเข้าร่วมเป็น Brand และเพิ่มข่าวด้วยตัวเอง</option>
                         <option value="อื่นๆ">อื่นๆ</option>
-                      </select>-->
+                      </select>
                     </div>
                   </div>
                 </div>

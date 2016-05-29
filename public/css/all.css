@@ -21594,7 +21594,7 @@ div.cs-skin-slide.cs-active {
   max-width: 100%;
 }
 
-div.cs-select-brand {
+div.cs-select-brand, div.cs-select-contact {
   /*margin-top: 35px;*/
   max-width: 100%;
 }

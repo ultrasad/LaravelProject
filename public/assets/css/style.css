@@ -254,6 +254,15 @@ h1, h2, h3, h4, h5, h6 {
     color: #444;
 }
 
+.form-contact .contact-area {
+  width: 100%;
+  height: 80px;
+}
+
+.register-container.form-contact {
+    width: 50%;
+}
+
 .result_pro, .result_map {
     color: #5a6779;
 }

@@ -77,11 +77,16 @@ Route::group(['middleware' => 'web'], function () {
       'roles' => ['Administrator', 'Manager', 'Company Manager']
     ]);
 
+    Route::resource('brand', 'BrandController'); //RESTful Resource Controllers
+    Route::resource('contact', 'ContactController'); //RESTful Resource Controllers
+    Route::resource('events', 'EventsController'); //RESTful Resource Controllers
+    
     Route::get('events/search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));
     Route::get('/{slug}', array('as' => 'slug', 'uses' => 'EventsController@show'));
 
-    Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
-    Route::resource('events', 'EventsController'); //RESTful Resource Controllers
+    //Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
+    //Route::resource('events', 'EventsController'); //RESTful Resource Controllers
     //Route::resource('maps', 'MapsController'); //RESTful Resource Controllers
-    Route::resource('brand', 'BrandController'); //RESTful Resource Controllers
+    //Route::resource('brand', 'BrandController'); //RESTful Resource Controllers
+    //Route::resource('contact', 'ContactController'); //RESTful Resource Controllers
 });

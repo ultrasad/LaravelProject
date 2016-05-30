@@ -1928,7 +1928,7 @@ function initialize() {
                 //console.log(' => ' + v.title + ' => ' + v.slug + ' => ' + v.brand);
                 var clone = '<li class="map-event-list clearfix text-master">';
                     clone += '<div class="col-xs-12 col-top padding-5">';
-                    clone += '<div class="relate-header-group"><a target="_blank" href="/brand/'+v.brand_slug+'" title="'+v.brand+'"><span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.brand_logo+'" data-src="/'+v.brand_logo+'" data-src-retina="/'+v.brand_logo+'" alt="'+v.brand+'"></span></a>';
+                    clone += '<div class="relate-header-group"><a target="_blank" href="/brand/'+v.brand_slug+'" title="'+v.brand+'"><span class="thumbnail-wrapper d32 circular pull-left"><img width="34" height="34" class="col-top" src="/'+v.brand_logo+'" data-src="/'+v.brand_logo+'" data-src-retina="/'+v.brand_logo+'" alt="'+v.brand+'"></span></a>';
                     clone += '<div class="pull-left padding-0 p-l-5 col-xs-10">';
                     clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0"><a class="relate-brand-url" title="'+v.brand+'" href="/brand/'+v.brand_slug+'">'+v.brand+'</a></span>';
                     clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0"><a class="relate-category-url" title="'+v.category+'" href="/category/'+v.category_slug+'">'+v.category+'</a></span></div></div></div>';
@@ -2118,7 +2118,7 @@ function initialize() {
                 //console.log(' => ' + v.title + ' => ' + v.slug + ' => ' + v.brand);
                 var clone = '<li class="map-event-list clearfix text-master">';
                     clone += '<div class="col-xs-12 col-top padding-5">';
-                    clone += '<div class="relate-header-group"><a target="_blank" href="/brand/'+v.brand_slug+'" title="'+v.brand+'"><span class="thumbnail-wrapper d32 circular bg-success pull-left"><img width="34" height="34" class="col-top" src="/'+v.brand_logo+'" data-src="/'+v.brand_logo+'" data-src-retina="/'+v.brand_logo+'" alt="'+v.brand+'"></span></a>';
+                    clone += '<div class="relate-header-group"><a target="_blank" href="/brand/'+v.brand_slug+'" title="'+v.brand+'"><span class="thumbnail-wrapper d32 circular pull-left"><img width="34" height="34" class="col-top" src="/'+v.brand_logo+'" data-src="/'+v.brand_logo+'" data-src-retina="/'+v.brand_logo+'" alt="'+v.brand+'"></span></a>';
                     clone += '<div class="pull-left padding-0 p-l-5 col-xs-10">';
                     clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0"><a class="relate-brand-url" title="'+v.brand+'" href="/brand/'+v.brand_slug+'">'+v.brand+'</a></span>';
                     clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0"><a class="relate-category-url" title="'+v.category+'" href="/category/'+v.category_slug+'">'+v.category+'</a></span></div></div></div>';

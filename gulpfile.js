@@ -37,7 +37,7 @@ elixir(function(mix) {
            'assets/jquery-scrollbar/jquery.scrollbar.css',
            'assets/jquery-metrojs/MetroJs.css',
            'assets/fotorama/fotorama.css',
-           'assets/jquery-datatable/media/css/dataTables.bootstrap.min.css',
+           //'assets/jquery-datatable/media/css/dataTables.bootstrap.min.css',
            'assets/css/pages-icons.css',
            'assets/css/pages.css',
            'assets/css/style.css'
@@ -54,7 +54,7 @@ elixir(function(mix) {
            'assets/fotorama/fotorama.js',
            'assets/imagesloaded/imagesloaded.pkgd.min.js',
            'assets/jquery-infinite-scroll/jquery.infinitescroll.min.js',
-           'assets/datatables-responsive/js/lodash.min.js',
+           //'assets/datatables-responsive/js/lodash.min.js',
            'assets/js/pages.js',
            'assets/js/scripts.js',
        ], 'public/js/all.js','public');

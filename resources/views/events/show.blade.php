@@ -232,7 +232,7 @@
                 </div>
               </div>
               <div class="fb-comment full-width">
-                <div class="fb-comments full-width" data-width="100%" data-numposts="10"></div>
+                <div class="fb-comments full-width" data-href="{{ URL::to($event->url_slug) }}" data-width="100%" data-numposts="10"></div>
               </div>
           </div>
         </div>

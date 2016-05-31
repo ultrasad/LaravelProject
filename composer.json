@@ -10,7 +10,8 @@
         "laravelcollective/html": "~5.0",
         "facebook/php-sdk-v4" : "~5.0",
         "thujohn/twitter": "~2.0",
-        "iverberk/larasearch": "dev-L5"
+        "iverberk/larasearch": "dev-L5",
+        "spatie/laravel-glide": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

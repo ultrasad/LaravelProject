@@ -9,6 +9,7 @@ return array(
     'tmhOAuth' => array($vendorDir . '/themattharris/tmhoauth'),
     'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'Thujohn\\Twitter' => array($vendorDir . '/thujohn/twitter/src'),
+    'Spatie\\Glide' => array($vendorDir . '/spatie/laravel-glide/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),

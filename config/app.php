@@ -150,6 +150,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         'Thujohn\Twitter\TwitterServiceProvider',
         'Iverberk\Larasearch\LarasearchServiceProvider',
+         //Spatie\Glide\GlideServiceProvider::class,
+        //'Spatie\Glide\GlideServiceProvider',
 
         /*
          * Application Service Providers...
@@ -158,6 +160,8 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        'Spatie\Glide\GlideServiceProvider',
 
     ],
 
@@ -206,7 +210,10 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Twitter'   => 'Thujohn\Twitter\Facades\Twitter',
+        //'GlideImage' => 'Spatie\Glide\GlideImageFacade',
+        //'GlideImage' => Spatie\Glide\GlideImageFacade::class,
         'menuHelper'=> App\Helpers\MenuHelper::class, //for Laravel 5.1, 5.2
+        'GlideImage' => 'Spatie\Glide\GlideImageFacade',
     ],
 
 ];

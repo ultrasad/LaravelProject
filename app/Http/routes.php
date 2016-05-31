@@ -22,6 +22,11 @@
 |
 */
 
+Route::get('/images/events/2016-05-23/{$path}}', function(League\Glide\Server $server, $path){
+  echo 'xx path => ';
+  //dd($path);
+});
+
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
@@ -80,7 +85,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('brand', 'BrandController'); //RESTful Resource Controllers
     Route::resource('contact', 'ContactController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers
-    
+
     Route::get('events/search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));
     Route::get('/{slug}', array('as' => 'slug', 'uses' => 'EventsController@show'));
 

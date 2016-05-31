@@ -18,6 +18,8 @@ use App\Branch;
 use App\Gallery;
 use App\Location;
 
+//use GlideImage;
+
 use Request as Response;
 
 class EventsController extends Controller
@@ -75,6 +77,16 @@ class EventsController extends Controller
   */
   public function index(Request $request)
   {
+
+    /*$outputPath = base_path('public/images/outputfolder/second_image.jpg');
+    $glideImage = GlideImage::load('images/stock-photo-120916649.jpg', ['w' => '250' , 'filt' => 'greyscale'])
+      ->save($outputPath);
+
+    return view('welcome')
+      ->with(compact('glideImage'));
+
+    exit;*/
+
     $paginate = 10;
     $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
 

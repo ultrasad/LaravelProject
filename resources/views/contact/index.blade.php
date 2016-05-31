@@ -14,7 +14,15 @@
             <div class="col-sm-12 col-sm-height col-middle">
               <h3>ติดต่อเรา</h3>
               <p><small>65/3 Soi Vibhavadi-Rangsit20, Bangkok, Thailand 10900.</small></p>
-              <form id="form-contact" class="p-t-15 form-contact" role="form" action="">
+              @if($errors->any())
+                 <ul class="alert alert-danger">
+                   @foreach($errors->all() as $error)
+                     <li>{{$error}}</li>
+                   @endforeach
+                 </ul>
+               @endif
+              <form id="form-contact" class="p-t-15 form-contact" role="form" method="POST" role="form" action="/contact">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row clearfix">
                   <div class="col-sm-12">
                     <div class="form-group form-group-default required form-group-default-selectFx">
@@ -53,7 +61,7 @@
                   <div class="col-sm-12">
                     <div class="form-group form-group-default">
                       <label>เบอร์โทร</label>
-                      <input type="text" name="phone" placeholder="เบอร์โทร" class="form-control" required>
+                      <input type="text" name="phone" placeholder="เบอร์โทร" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -65,6 +73,11 @@
                     </div>
                   </div>
                 </div>
+
+                  <div class="cols-sm-12">
+                      <div class="recaptcha">{!! app('captcha')->display(); !!}</div>
+                  </div>
+
                 <button class="btn btn-primary btn-cons m-t-10" type="submit">ส่งข้อความ</button>
               </form>
             </div>

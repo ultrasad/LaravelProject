@@ -22,10 +22,10 @@
 |
 */
 
-Route::get('/images/events/2016-05-23/{$path}}', function(League\Glide\Server $server, $path){
-  echo 'xx path => ';
+//Route::get('/images/events/2016-05-23/{$path}}', function(League\Glide\Server $server, $path){
+  //echo 'xx path => ';
   //dd($path);
-});
+//});
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();

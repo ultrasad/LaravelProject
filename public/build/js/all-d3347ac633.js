@@ -4143,6 +4143,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
 }
 
+/* map overlay */
+function CustomMarker(latlng, map, args) {
+  this.latlng = latlng;
+  this.args = args;
+  this.setMap(map);
+  console.log('CustomMarker..');
+}
+/* end map overlay */
+
 function initialize() {
 
     //console.log('initialize..');
@@ -4166,6 +4175,22 @@ function initialize() {
         stylers: [
           { visibility: "off" }
         ]
+      },{ //remove_poi
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+
+    var remove_poi = [
+      {
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
       }
     ];
 
@@ -4179,8 +4204,9 @@ function initialize() {
         scrollwheel: true,
         center: default_latlng,
         mapTypeId:default_type,
-        disableDefaultUI: false
+        disableDefaultUI: false,
     };
+
 
     //Map default
     //Create LatLngBounds object.
@@ -4193,7 +4219,7 @@ function initialize() {
       var map_canvas = $("#map_canvas")[0];
 
       map = new mapObj.Map(map_canvas, options);
-      map.setOptions({styles: styles});
+      map.setOptions({styles: styles, clickableIcons: false});
       mapObj.event.addListener(map, 'zoom_changed', function() {
           $("#location_zoom").val(map.getZoom());
       });
@@ -4232,13 +4258,95 @@ function initialize() {
 
     if($('.map-full').exists()){ //main map full
       var styles = [];
-      map.setOptions({styles: styles});
+      //var disable_info = [{clickableIcons: false}]; //This will keep the POI icons but disable the infowindows just as you want.
+      map.setOptions({styles: styles, clickableIcons: false});
       var $url = '/maps/locations';
       if($('#location_id').val() > 0){
         $url = '/maps/locations/' + $('#location_id').val();
       }
 
       console.log('map full...');
+
+      /* map overlay */
+      CustomMarker.prototype = new mapObj.OverlayView();
+      CustomMarker.prototype.draw = function(){
+
+        var self = this;
+        var div = this.div;
+
+        if (!div) {
+          div = this.div = document.createElement('div');
+          div.className = 'marker';
+          div.style.position = 'absolute';
+          div.style.cursor = 'pointer';
+          div.style.width = '50px';
+          div.style.height = '50px';
+          //div.style.background = 'pink';
+          div.innerHTML = '<img src="'+ base_url +'/assets/img/map-marker.png" stye="position: absolute; top: 0px; left: 0px; clip: rect(0px, 50px, 50px, 0px);" /><div class="text-count" style="position: absolute; top: 5px;left: 5px; color: #ffffff; background: #ffa500; -moz-border-radius: 70px; -webkit-border-radius: 70px; border-radius: 70px; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
+          //div.innerHTML = '<div class="text-count" style="position: absolute; top: 5px;left: 5px; color: #ffffff; background: red; -moz-border-radius: 70px; -webkit-border-radius: 70px; border-radius: 70px; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
+
+          if (typeof(self.args.marker_id) !== 'undefined') {
+            div.dataset.marker_id = self.args.marker_id;
+          }
+
+          mapObj.event.addDomListener(div, "click", function(event) {
+            //alert('You clicked on a custom marker!');
+            console.log('self.args.marker_name => ' + self.args.marker_name);
+            console.log('self.args.marker_id => ' + self.args.marker_id);
+            console.log('self.args.event_count => ' + self.args.event_count);
+            console.log('div => ' + div);
+            console.log('event => ' + event);
+
+            infowindow.setContent('<div class="popup_container"><strong class="marker_name text-master">'+ self.args.marker_name +'</strong></div><p><a href="#" data-index="'+ self.args.marker_id +'" class="events_locations">มี '+ self.args.event_count +' โปรโมชั่นที่นี่</a></p>');
+            infowindow.open(map, self);
+            map.panTo(self.args.latlon);
+            //mapObj.event.trigger(self, "click");
+          });
+
+          var panes = this.getPanes();
+          panes.overlayImage.appendChild(div);
+        }
+
+        var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
+
+        if (point) {
+          div.style.left = (point.x - 10) + 'px';
+          div.style.top = (point.y - 20) + 'px';
+        }
+      };
+
+      CustomMarker.prototype.remove = function() {
+        if (this.div) {
+          this.div.parentNode.removeChild(this.div);
+          this.div = null;
+        }
+      };
+
+      CustomMarker.prototype.getPosition = function() {
+        return this.latlng;
+      };
+      /* end map overlay */
+
+      /*var latlon1  = new mapObj.LatLng(13.8157963, 100.5595078);
+      overlay1 = new CustomMarker(
+    		latlon1,
+    		map,
+    		{
+    			marker_id: '1',
+    			event_count: 5
+    		}
+    	);
+
+      var latlon2  = new mapObj.LatLng(13.8137992, 100.56169449999993);
+      overlay2 = new CustomMarker(
+    		latlon2,
+    		map,
+    		{
+    			marker_id: '2',
+    			event_count: 10
+    		}
+    	);
+      */
 
       //default LatLngBounds
       window.latlngbounds = new mapObj.LatLngBounds();
@@ -4251,77 +4359,47 @@ function initialize() {
           contentType: false,
           success: function (resp) {
             var locations = $.parseJSON(resp);
-            var markers = [];
-
-            //var location_list = locations.split(",");
-            //console.log(location_list[0] +'=>'+ location_list[1] +'=>'+ location_list[2]);
+            //var markers = [];
             window.events_locations = new Array();
-            //var loop = 0;
-            //var bounds = new google.maps.LatLngBounds();
             $.each(locations, function(k, v){
-                //window.events_locations = [];
                 var data = [];
                 $.each(v, function(x, y){
-                    //window.events_locations.push(y);
                     data.push(y);
-                    //data.index = k;
-                    //data.value = y;
                 });
                 window.events_locations[k] = data;
-
-                //console.log('y => ' + window.events_locations[k]);
 
                 var location_list = k.split(",");
                 var markerName = location_list[2];
                 var markerLat = location_list[0];
                 var markerLng = location_list[1];
-                //console.log(location_list[0] +'=>'+ location_list[1] +'=>'+ location_list[2]);
-                //console.log('=> ' + k + ' => ' + name + ' => ' + lat + '=> ' + lon);
-                //var markerID = i;
 
-                //var markerName = name;
-                //var markerLat = lat;
-                //var markerLng = lon;
-                var markerLatLng = new mapObj.LatLng(markerLat,markerLng);
-                markers[k] = new mapObj.Marker({
-                    position:markerLatLng,
-                    map: map,
-                    title:markerName,
-                    icon: icon_image
-                });
+                var latlon  = new mapObj.LatLng(markerLat, markerLng);
+                overlay = new CustomMarker(
+              		latlon,
+              		map,
+              		{
+              			marker_id: k,
+              			event_count: data.length,
+                    latlon: latlon,
+                    marker_name: markerName,
+              		}
+              	);
 
-                mapObj.event.addListener(markers[k], 'click', function(){
+                /*mapObj.event.addListener(latlon, 'click', function(){
                     infowindow.setContent('<div class="popup_container"><strong class="marker_name text-master">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">มี '+ data.length +' โปรโมชั่นที่นี่</a></p>');
-                    infowindow.open(map,markers[k]);
-                    map.panTo(markers[k].getPosition());
-                    //map.setZoom(14);
-                });
+                    infowindow.open(map,latlon);
+                    map.panTo(latlon.getPosition());
+                });*/
 
-                //Extend each marker's position in LatLngBounds object.
-                //latlngbounds.extend(markers[k].position);
-                window.latlngbounds.extend(markers[k].position);
-
-                //loop++;
+                window.latlngbounds.extend(latlon);
             });
 
-            //Get the boundaries of the Map.
-            //var bounds = new mapObj.LatLngBounds();
-
-            //Center map and adjust Zoom based on the position of all markers.
-            //2016-05-16, edit set center, detect user location
-            //map.setCenter(latlngbounds.getCenter());
-            //map.fitBounds(latlngbounds);
 
             $(document).on('click', '.events_locations', function(e){
               var index = $(this).data('index');
-              //mapObj.event.trigger(markers[index], 'click');
-              //return false;
-              //console.log('index => ' + index);
-              //console.log('value => ' + window.events_locations[index]);
               $('#filters.maps').removeClass('open');
               $('ul#map-items').html('');
               $.each(window.events_locations[index], function(k,v){
-                //console.log(' => ' + v.title + ' => ' + v.slug + ' => ' + v.brand);
                 var clone = '<li class="map-event-list clearfix text-master">';
                     clone += '<div class="col-xs-12 col-top padding-5">';
                     clone += '<div class="relate-header-group"><a target="_blank" href="/brand/'+v.brand_slug+'" title="'+v.brand+'"><span class="thumbnail-wrapper d32 circular pull-left"><img width="34" height="34" class="col-top" src="/'+v.brand_logo+'" data-src="/'+v.brand_logo+'" data-src-retina="/'+v.brand_logo+'" alt="'+v.brand+'"></span></a>';
@@ -4332,21 +4410,12 @@ function initialize() {
                     clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/'+v.slug+'">'+v.title+'</a></p>';
                     clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
                     clone += '</div></div></li>';
-
-                    //console.log('clone => ' + clone);
                     $('ul#map-items').append(clone);
               });
               $('#filters .map-location').html($(this).closest('div').find('.marker_name').html());
               $('#filters.maps').addClass('open');
               return false;
             });
-
-            /*$('.event').on('click', '.place', function(e){
-              var index = $(this).data('index');
-              mapObj.event.trigger(markers[index], 'click');
-              return false;
-            });*/
-
             map.fitBounds(window.latlngbounds);
 
           },
@@ -4364,7 +4433,6 @@ function initialize() {
           if($.cookie('latlonUser')){
 
             var temp = $.cookie("latlonUser").split(',');
-            //map.setCenter(new mapObj.LatLng(temp[0], temp[1]));
             var geolocate = new mapObj.LatLng(temp[0], temp[1]);
             window.latlngbounds.extend(geolocate);
             map.fitBounds(window.latlngbounds);
@@ -4376,9 +4444,6 @@ function initialize() {
               lng: position.coords.longitude
             };
             $.cookie('latlonUser', position.coords.latitude +','+position.coords.longitude);
-            //infowindow.setPosition(pos);
-            //infowindow.setContent('Location found.');
-            //map.setCenter(pos);
             var geolocate = new mapObj.LatLng(position.coords.latitude, position.coords.longitude);
             window.latlngbounds.extend(geolocate);
             map.fitBounds(window.latlngbounds);
@@ -4390,11 +4455,9 @@ function initialize() {
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infowindow, map.getCenter());
-          //map.setCenter(latlngbounds.getCenter());
-          //map.fitBounds(latlngbounds);
         }
       }
-      userLocation();
+      //userLocation();
 
       $(document).on('click', '#map-user-location', function(e){
         console.log('user location...');
@@ -4405,10 +4468,7 @@ function initialize() {
           lng: position.coords.longitude
         };
 
-        //console.log('map branch zoom => ' + position.coords.zoom);
         $.cookie('latlonUser', position.coords.latitude +','+position.coords.longitude);
-        //infowindow.setPosition(pos);
-        //infowindow.setContent('Location found.');
 
         if(window.infowindow_user){
           window.infowindow_user.close();
@@ -4419,20 +4479,15 @@ function initialize() {
             map: map,
             position: geolocate,
             content: 'คุณอยู่ที่นี่'
-                //'<h1>Location pinned from HTML5 Geolocation!</h1>' +
-                //'<h2>Latitude: ' + position.coords.latitude + '</h2>' +
-                //'<h2>Longitude: ' + position.coords.longitude + '</h2>'
         });
 
         if(window.latlngbounds != ''){
-          //console.log('latlngboundsBranch => ' + window.latlngboundsBranch);
           window.latlngbounds.extend(geolocate);
           mapBranch.fitBounds(window.latlngbounds);
         } else {
           mapBranch.setCenter(geolocate);
         }
 
-        //map.setCenter(pos);
         console.log('set latlonUser pos => ' + pos.lat + ' => ' + pos.lng);
         }, function() {
           handleLocationError(true, infowindow, map.getCenter());
@@ -4442,9 +4497,7 @@ function initialize() {
 
     }
 
-    //if($('.event_id').exists()){ //event locations
     if($('.event_slug').exists()){ //event locations
-      //console.log('evetn id >>');
       $.ajax({
           url: '/events/locations/'+$('.event_slug').val(),
           type: 'GET',
@@ -4452,11 +4505,8 @@ function initialize() {
           processData: false,
           contentType: false,
           success: function (resp) {
-
-            //var locations = $.parseJSON(resp);
             var info_event = $.parseJSON(resp);
             var markers = [];
-            //var n = 0;
 
             window.events_locations = new Array();
             $.each(info_event.locations, function(k, v){
@@ -4471,11 +4521,6 @@ function initialize() {
                 var markerLat = location_list[0];
                 var markerLng = location_list[1];
 
-                //var n = location_list[3];
-
-                //var markerName = name;
-                //var markerLat = lat;
-                //var markerLng = lon;
                 var markerLatLng=new mapObj.LatLng(markerLat,markerLng);
                 markers[k] = new mapObj.Marker({
                     position:markerLatLng,
@@ -4484,23 +4529,14 @@ function initialize() {
                     icon: icon_image
                 });
 
-                //console.log('marker => '+ k + '=>' + markers[k]);
                 mapObj.event.addListener(markers[k], 'click', function(){
-                    //infowindow.setContent('<div class="popup_container"><strong class="marker_name">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">มี '+ data.length +' โปรโมชั่นที่นี่</a></p>');
                     infowindow.setContent('<div class="popup_container"><strong class="marker_name text-master">'+ markerName +'</strong></div><p><a href="#" data-index="'+k+'" class="events_locations">ดูโปรโมชั่นอื่นๆ ของที่นี่</a></p>');
                     infowindow.open(map,markers[k]);
                     map.panTo(markers[k].getPosition());
-                    //map.setZoom(14);
                 });
-
-                //Extend each marker's position in LatLngBounds object.
-                //latlngbounds.extend(markers[k].position);
                 window.latlngbounds.extend(markers[k].position);
             });
 
-            //Center map and adjust Zoom based on the position of all markers.
-            //map.setCenter(latlngbounds.getCenter());
-            //map.fitBounds(latlngbounds);
             map.setCenter(window.latlngbounds.getCenter());
             map.fitBounds(window.latlngbounds);
 
@@ -4509,9 +4545,7 @@ function initialize() {
               $('#filters.maps').removeClass('open');
               $('ul#map-items').html('');
 
-              //console.log('event location => ' + window.events_locations[index]);
               $.each(window.events_locations[index], function(k,v){
-                //console.log(' => ' + v.title + ' => ' + v.slug + ' => ' + v.brand);
                 var clone = '<li class="map-event-list clearfix text-master">';
                     clone += '<div class="col-xs-12 col-top padding-5">';
                     clone += '<div class="relate-header-group"><a target="_blank" href="/brand/'+v.brand_slug+'" title="'+v.brand+'"><span class="thumbnail-wrapper d32 circular pull-left"><img width="34" height="34" class="col-top" src="/'+v.brand_logo+'" data-src="/'+v.brand_logo+'" data-src-retina="/'+v.brand_logo+'" alt="'+v.brand+'"></span></a>';
@@ -4522,8 +4556,6 @@ function initialize() {
                     clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/'+v.slug+'">'+v.title+'</a></p>';
                     clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
                     clone += '</div></div></li>';
-
-                    //console.log('clone => ' + clone);
                     $('ul#map-items').append(clone);
               });
 
@@ -4538,49 +4570,9 @@ function initialize() {
 
             $('.event').on('click', '.place', function(e){
               var index = $(this).data('index');
-              //console.log('markers => ' + index);
               mapObj.event.trigger(markers[index], 'click');
               return false;
             });
-
-            /*
-            var locations = $.parseJSON(resp);
-            var markers = [];
-
-            $.each(locations, function(k, v){
-                //var markerID = v.id;
-                var markerName = v.name;
-                var markerLat = v.lat;
-                var markerLng = v.lon;
-                var markerLatLng=new mapObj.LatLng(markerLat,markerLng);
-                markers[k] = new mapObj.Marker({
-                    position:markerLatLng,
-                    map: map,
-                    title:markerName
-                });
-
-                mapObj.event.addListener(markers[k], 'click', function() {
-                    infowindow.setContent('<div class="popup_container"><strong>'+ markerName +'</strong></div><p><a href="#" data-index="relate xxx" class="events_locations">ดูโปรโมชั่นอื่นๆ ของที่นี่</a></p>');
-                    infowindow.open(map,markers[k]);
-                    map.panTo(markers[k].getPosition());
-                    //map.setZoom(14);
-                });
-
-                latlngbounds.extend(markers[k].position);
-            });
-
-            //Center map and adjust Zoom based on the position of all markers.
-            map.setCenter(latlngbounds.getCenter());
-            if(locations.length > 1){
-              map.fitBounds(latlngbounds);
-            }
-
-            $('.event').on('click', '.place', function(e){
-              var index = $(this).data('index');
-              mapObj.event.trigger(markers[index], 'click');
-              return false;
-            });
-            */
           },
           error: function(jqXHR, textStatus, errorThrown)
           {

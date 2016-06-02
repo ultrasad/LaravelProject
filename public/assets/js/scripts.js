@@ -1779,16 +1779,10 @@ function initialize() {
         stylers: [
           { visibility: "off" }
         ]
-      },{ //remove_poi
-        featureType: "poi",
-        elementType: "labels",
-        stylers: [
-          { visibility: "off" }
-        ]
       }
     ];
 
-    var remove_poi = [
+    /*var remove_poi = [
       {
         featureType: "poi",
         elementType: "labels",
@@ -1796,7 +1790,7 @@ function initialize() {
           { visibility: "off" }
         ]
       }
-    ];
+    ];*/
 
     mapObj = new Object(google.maps);
     var default_latlng  = new mapObj.LatLng(13.7563309, 100.50176510000006);
@@ -1869,7 +1863,7 @@ function initialize() {
         $url = '/maps/locations/' + $('#location_id').val();
       }
 
-      console.log('map full...');
+      console.log('map full xx...');
 
       /* map overlay */
       CustomMarker.prototype = new mapObj.OverlayView();
@@ -1878,15 +1872,16 @@ function initialize() {
         var self = this;
         var div = this.div;
 
-        if (!div) {
+        if(!div){
           div = this.div = document.createElement('div');
           div.className = 'marker';
           div.style.position = 'absolute';
           div.style.cursor = 'pointer';
-          div.style.width = '50px';
-          div.style.height = '50px';
+          div.style.width = '40px';
+          div.style.height = '40px';
           //div.style.background = 'pink';
-          div.innerHTML = '<img src="'+ base_url +'/assets/img/map-marker.png" stye="position: absolute; top: 0px; left: 0px; clip: rect(0px, 50px, 50px, 0px);" /><div class="text-count" style="position: absolute; top: 5px;left: 5px; color: #ffffff; background: #ffa500; -moz-border-radius: 70px; -webkit-border-radius: 70px; border-radius: 70px; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
+          div.style.margin = '-20px 0px 0px -10px';
+          div.innerHTML = '<img src="'+ base_url +'/assets/img/pin_icon.png" stye="position: absolute; top: 0px; left: 0px; clip: rect(0px, 40px, 40px, 0px);" /><div class="text-count" style="position: absolute; top: 0px;left: 5px; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
           //div.innerHTML = '<div class="text-count" style="position: absolute; top: 5px;left: 5px; color: #ffffff; background: red; -moz-border-radius: 70px; -webkit-border-radius: 70px; border-radius: 70px; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
 
           if (typeof(self.args.marker_id) !== 'undefined') {
@@ -1959,12 +1954,19 @@ function initialize() {
           url: $url,
           type: 'GET',
           datatype: 'JSON',
-          processData: false,
-          contentType: false,
+          //processData: false,
+          //contentType: false,
           success: function (resp) {
+            //console.log('resp length => ' + resp.length);
             var locations = $.parseJSON(resp);
+            console.log('data => ' + $.isEmptyObject(locations));
+            //console.log('data 0 length => ' + locations.length);
+            if(!$.isEmptyObject(locations)){
+
+            console.log('not empty');
             //var markers = [];
             window.events_locations = new Array();
+            //console.log('count => ' + locations.length);
             $.each(locations, function(k, v){
                 var data = [];
                 $.each(v, function(x, y){
@@ -1998,7 +2000,6 @@ function initialize() {
                 window.latlngbounds.extend(latlon);
             });
 
-
             $(document).on('click', '.events_locations', function(e){
               var index = $(this).data('index');
               $('#filters.maps').removeClass('open');
@@ -2021,6 +2022,9 @@ function initialize() {
               return false;
             });
             map.fitBounds(window.latlngbounds);
+          } else {
+            console.log('empty object');
+          }
 
           },
           error: function(jqXHR, textStatus, errorThrown)

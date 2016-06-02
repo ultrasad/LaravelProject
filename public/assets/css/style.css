@@ -345,13 +345,10 @@ body.menu-behind .header .brand {
 }
 
 .nav-logo > a {
-    height: 60px;
-}
-
-.nav-logo > a {
     background: rgba(0, 0, 0, 0) linear-gradient(to right bottom, #c09, #f42 85%) repeat scroll 0 0;
     display: block;
     padding: 16px 20px;
+    height: 60px;
     width: 106px;
     will-change: height;
 }
@@ -1410,6 +1407,10 @@ div.cs-select-brand, div.cs-select-contact {
       height: 60px;
       line-height: 60px;
       padding-left: 5px !important;
+  }
+
+  .nav-logo > a {
+    margin-left: 10px;
   }
 }
 

@@ -504,12 +504,13 @@ var fx_select_brand;
             //.data('fotorama');
 
             //fotorama.requestFullScreen();
-            $fotorama.fotorama({allowfullscreen: true}).data('fotorama').requestFullScreen();
+            //$fotorama.fotorama({allowfullscreen: true}).data('fotorama').requestFullScreen();
+            $fotorama.fotorama().data('fotorama').requestFullScreen();
           });
 
-          $(document).on('click', '.fotorama__fullscreen-icon', function(){
+          /*$(document).on('click', '.fotorama__fullscreen-icon', function(){
               $fotorama.fotorama({allowfullscreen: false});
-          });
+          });*/
         }
 
         if($('.brand-form').exists()){

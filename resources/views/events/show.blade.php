@@ -40,9 +40,9 @@
       <div class="panel-body p-b-0">
         <div class="dialog__content">
             <!-- START PANEL -->
-            <div class="fotorama" data-allowfullscreen="false" data-width="100%" data-ratio="8/5" data-click="false" data-arrows="true" data-nav="thumbs" data-loop="true">
+            <div class="fotorama" data-allowfullscreen="true" data-width="100%" data-ratio="8/5" data-click="false" data-arrows="always" click="false" data-nav="thumbs" data-loop="true">
               @forelse($event->gallery_list as $id => $image)
-                <img src="{{ URL::asset($image) }}" class="img-responsive" data-fit="contain" />
+                <img src="{{ URL::asset($image) }}" class="fotoclick" class="img-responsive" data-fit="contain" />
               @empty
               @endforelse
             </div>

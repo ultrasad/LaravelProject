@@ -853,6 +853,14 @@ div.cs-select-brand, div.cs-select-contact {
     background-image: none;
 }
 
+.fotorama .fotorama__fullscreen-icon {
+  display: none;
+}
+
+.fullscreen .fotorama .fotorama__fullscreen-icon {
+  display: block;
+}
+
 .quickview-wrapper.maps {
   top: 60px;
 }

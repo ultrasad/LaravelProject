@@ -75,7 +75,7 @@
                 </div>
 
                   <div class="cols-sm-12">
-                      <div class="recaptcha">{!! app('captcha')->display(); !!}</div>
+                      <div class="recaptchatable" data-size="compact">{!! app('captcha')->display(); !!}</div>
                   </div>
 
                 <button class="btn btn-primary btn-cons m-t-10" type="submit">ส่งข้อความ</button>

@@ -39,11 +39,11 @@ class ContactController extends Controller
            'fname' => 'required',
            'lname' => 'required',
            'email' => 'required|email',
-           'phone' => 'required',
+           //'phone' => 'required',
            'g-recaptcha-response' => 'required|captcha'
            //'phone' => 'required',
            //'body' => 'required',
-       ], ['phone.required' => 'เบอร์โทรดิวะ', 'g-recaptcha-response.required' => 'แคปช่าดิวะ']);
+       ], ['phone.required' => 'กรุณากรอกเบอร์โทรศัพท์', 'g-recaptcha-response.required' => 'กรุณาติ๊กลงในช่องป้องกันสแปม']);
 
        //dd($request->all());
        if ($validator->fails()) {

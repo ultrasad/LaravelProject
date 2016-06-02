@@ -31,6 +31,12 @@
 <!--<link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Kanit:400,500,700,200,100,100italic'>-->
 <link rel="stylesheet" type="text/css" media="screen" href="{{ elixir('css/all.css') }}" />
 
+<!--<link rel="preload" href="{{ elixir('css/all.css') }}" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ elixir('css/all.css') }}"></noscript>
+<script type="text/javascript" src="{{ URL::asset('assets/js/loadCSS.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/onloadCSS.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/cssrelpreload.js') }}"></script>-->
+
 <!--[if lte IE 9]>
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/codrops-dialogFx/dialog.ie.css') }}" />
 <![endif]-->

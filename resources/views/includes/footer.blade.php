@@ -11,6 +11,7 @@
         <a target="_blank" href="#" title="Follow us on Facebook" class=""><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
         <a target="_blank" href="#" title="Follow us on Twitter" class=""><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
         <a target="_blank" href="#" title="Follow us on Youtube" class=""><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></a>
+        <a href="/contact" title="Contact Us" class=""><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
       </div>
     </p>
     <div class="clearfix"></div>

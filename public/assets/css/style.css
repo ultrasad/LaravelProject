@@ -1362,6 +1362,10 @@ div.cs-select-brand, div.cs-select-contact {
       border-right: 0 none;
   }
 
+  .register-container.form-contact {
+      width: 100%;
+  }
+
   /*.breadcrumb-header .bread_cate_name, .breadcrumb-header .bread_tag_name {
     font-size: 1.2em;
     line-height: 40px;
@@ -1498,6 +1502,10 @@ div.cs-select-brand, div.cs-select-contact {
   .card-relate-row .footer-relate {
     width: 83.3333%;
   }
+}
+
+@media screen and (max-height: 575px){
+  #rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
 }
 
 /* 2016-05-23 new layout */

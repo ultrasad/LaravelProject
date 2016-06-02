@@ -13,7 +13,7 @@
       </div>
       <!-- END ACTION BAR -->
     </div>
-    <div class="pull-center hidden-md hidden-lg">
+    <!--<div class="pull-center hidden-md hidden-lg">
       <div class="header-inner">
         <div class="brand inline">
           <div class="nav-logo nav-logo-center">
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!-- RIGHT SIDE -->
     <div class="pull-right full-height visible-sm visible-xs">
       <!-- START ACTION BAR -->
@@ -41,6 +41,7 @@
           <li><a target="_blank" href="#" title="Follow us on Facebook" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
           <li><a target="_blank" href="#" title="Follow us on Twitter" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
           <li><a target="_blank" href="#" title="Follow us on Youtube" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-youtube-square fa-lg" aria-hidden="true"></i></a></li>
+          <li><a href="/contact" title="Contact Us" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
         </ul>
       </div>
     </div>
@@ -106,6 +107,7 @@
         <li><a target="_blank" href="#" title="Follow us on Facebook" class="hidden-sm hidden-xs"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
         <li><a target="_blank" href="#" title="Follow us on Twitter" class="hidden-sm hidden-xs"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
         <li><a target="_blank" href="#" title="Follow us on Youtube" class="hidden-sm hidden-xs"><i class="fa fa-youtube-square fa-lg" aria-hidden="true"></i></a></li>
+        <li><a href="/contact" title="Contact Us" class="hidden-sm hidden-xs"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
       </ul>
     </div>
   </div>

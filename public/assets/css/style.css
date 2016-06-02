@@ -1430,6 +1430,8 @@ div.cs-select-brand, div.cs-select-contact {
     height: 50%;
     width: 100%;
   }
+
+  #rc-imageselect, .g-recaptcha {transform:scale(0.89);-webkit-transform:scale(0.89);transform-origin:0 0;-webkit-transform-origin:0 0;}
 }
 
 @media (max-width: 667px) {
@@ -1504,9 +1506,11 @@ div.cs-select-brand, div.cs-select-contact {
   }
 }
 
+/*
 @media screen and (max-height: 575px){
   #rc-imageselect, .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;}
 }
+*/
 
 /* 2016-05-23 new layout */
 .container-fluid {

@@ -46,7 +46,7 @@
         </div>
 
         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 sm-p-t-10 sm-p-l-0 brand-master-social">
-            <p class="m-t-10 hint-text text-master"><a href="javascript: void(0);" title="{{ $brand->name }} มีทั้งหมด {{ $brand->branch->count() }} สาขา"><i class="pg-map pg-map-lg"></i>&nbsp; มีทั้งหมด {{ $brand->branch->count() }} สาขา</a></p>
+            <p class="m-t-10 hint-text text-master"><a class="btnToggleMap" href="#modal_map" data-toggle="modal" data-type="brand" data-slug="{{ $brand->url_slug }}" title="{{ $brand->name }} มีทั้งหมด {{ $brand->branch->count() }} สาขา"><i class="pg-map pg-map-lg"></i>&nbsp; มีทั้งหมด {{ $brand->branch->count() }} สาขา</a></p>
             @if($brand->facebook != '')
               <p class="hint-text text-master"><a href="{{ $brand->facebook }}" target="_blank" title="{{ $brand->name }} Facebook: {{ $brand->facebook }}"><i class="fa fa-facebook fa-lg p-l-5"></i>&nbsp; {{ $brand->facebook }}</a></p>
             @endif
@@ -102,7 +102,7 @@
                     @endif
                   </div>
                   <div class="pull-top pull-right list-inline">
-                    <a href="javascript: void(0);" class="btntoggle btnToggleMap" data-id="{{ $event->id }}" data-slug="{{ $event->url_slug }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
+                    <a href="#modal_map" data-toggle="modal" class="btntoggle btnToggleMap" data-type="promotion" data-id="{{ $event->id }}" data-slug="{{ $event->url_slug }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
                   </div>
                 </div>
               </div>

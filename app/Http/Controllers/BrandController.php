@@ -21,7 +21,7 @@ class BrandController extends Controller
   public function __construct()
   {
     //$this->middleware('auth', ['only' => ['create', 'store']]);
-    $this->middleware('auth', ['except' => ['index', 'show', 'branch', 'category']]);
+    $this->middleware('auth', ['except' => ['index', 'show', 'branch', 'category', 'locations']]);
   }
 
   /**
@@ -413,5 +413,36 @@ class BrandController extends Controller
                   'branch_id'   => $branch->id
               ));
     }
+  }
+
+  public function locations($slug) //branch loation
+  {
+    $event_locations = array();
+    $event_brand = array();
+      //$event = Event::where('id', $id)->first();
+      //$event = Cache::remember('Promotion_' . $slug, 1440, function() use ($slug) {
+        //return $event = Event::where('url_slug', $slug)->first();
+        //return Event::where('url_slug', $slug)->first();
+      //});
+
+      //$event_slug_id = $event->id;
+
+      $brand = Brand::where('url_slug', $slug)->first();
+      $cate_name = 'ไม่ระบุหมวดหมู่';
+      $cate_slug = 'unknow';
+      if($brand->category->count() > 0){
+          $cate_name = $brand->category->first()->name;
+          $cate_slug = $brand->category->first()->category;
+      }
+      $event_brand = array('name' => $brand->name, 'image' => $brand->logo_image, 'url_slug' => $brand->url_slug, 'category' => $cate_name, 'category_slug' => $cate_slug);
+
+
+      if($brand->branch->count() > 0){
+        foreach($brand->branch->all() as $branch){
+          $event_locations[$branch->lat .','. $branch->lon .','. $branch->name] = array();
+        }
+      }
+
+    echo json_encode(array('brand'=> $event_brand, 'locations' => $event_locations));
   }
 }

@@ -130,7 +130,7 @@
     <!-- Modal -->
     <!--<div id="map_canvas" class="map-canvas map-show" style="display: none"></div>-->
     <!--<div class="modal fade slide-up disable-scroll" id="modal_slideup_map" tabindex="-1" role="dialog" aria-hidden="false">-->
-    <div class="modal fade slide-up disable-scroll" id="modal_slideup_map" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal fade slide-up disable-scroll" id="modal_map" tabindex="-1" role="dialog" aria-hidden="false">
       <div class="modal-dialog modal-lg">
         <div class="modal-content-wrapper">
           <div class="modal-content">

@@ -1,5 +1,6 @@
 var events_locations;
-var event_id;
+//var event_id;
+//var brand_id;
 var markers = []; //for modal marker
 var branch_marker = [];
 var infowindow_user;
@@ -2344,12 +2345,19 @@ function initialize() {
     }
 
     /* Modal Map */
-    $(document).on('click', '.feed .btnToggleMap', function(){
+    //$(document).on('click', '.feed .btnToggleMap, .brand-master-social .btnToggleMap', function(){
         //window.event_id = $(this).data('id');
-        window.event_id = $(this).data('slug');
+        /*if ($(this).data("slug")){
+          window.brand_id = null;
+          window.event_id = $(this).data('slug');
+        } else if ($(this).data("brand-slug")){
+          window.event_id = null;
+          window.brand_id = $(this).data('brand-slug');
+        }*/
+        //window.event_id = $(this).data('slug');
         //console.log('toggle map, ' + window.event_id);
-        $('#modal_slideup_map').modal('show');
-    });
+        //$('#modal_slideup_map').modal('show');
+    //});
 
     $(document).on('click', '#btn-user-location', function(e){
       console.log('user location...');
@@ -2387,12 +2395,16 @@ function initialize() {
 
     });
 
-    $('#modal_slideup_map').on('show.bs.modal', function() {
+    $('#modal_map').on('show.bs.modal', function(e){
       if(typeof mapBranch =="undefined") return;
-      setTimeout( function(){resizingMap();} , 400);
+
+      //var action_id = $(event.relatedTarget).data('slug');
+      var slug = $(e.relatedTarget).data('slug');
+      var type = $(e.relatedTarget).data('type');
+      setTimeout(function(){resizingMap(slug, type);} , 400);
     });
 
-    function resizingMap()
+    function resizingMap(slug, type)
     {
       //mapObjBranch.event.trigger(mapBranch, 'resize');
       //mapBranch.setZoom(14);
@@ -2410,9 +2422,24 @@ function initialize() {
       //default LatLngBounds
       window.latlngboundsBranch = new mapObjBranch.LatLngBounds();
 
+      //alert('=> ' + event);
+
       //ajax branch
+      /*var page_url;
+      if(window.page_active = 'feed'){ //feed
+        page_url = '/events/locations/' + window.event_id;
+      } else { //brand
+        page_url = '/brand/locations/' + window.brand_id;
+      }*/
+
+      var url;
+      if(type == 'promotion'){
+        url = '/events/locations/' + slug;
+      } else if (type == 'brand'){
+        url = '/brand/locations/' + slug;
+      }
       $.ajax({
-          url: '/events/locations/' + window.event_id,
+          url: url,
           type: 'GET',
           datatype: 'JSON',
           processData: false,
@@ -2437,6 +2464,8 @@ function initialize() {
             $('.modal .brand-event-url').attr('href', base_url + '/brand/' + brand_slug).attr('title', brand_name).html(brand_name);
             $('.modal .category-event-url').attr('href', base_url + '/category/' + category_slug).attr('title', caegory_name).html(caegory_name);
 
+            $('.modal span.brand').html(brand_name);
+
             //console.log('image => ' + base_url + '/' + info_event.brand.image);
             //.attr('href', '/' + value.url_slug).attr('title', value.title);
 
@@ -2456,9 +2485,9 @@ function initialize() {
                 var markerLng = location_list[1];
 
                 if(index_location > 0){
-                  $('#modal_slideup_map .brand_branch_list').append(', <span><i aria-hidden="true" class="pg-map hint-text-9"></i></span><a class="place" data-index="'+k+'" title="'+markerName+'" href="#'+markerName+'">'+markerName+'</a>');
+                  $('#modal_map .brand_branch_list').append(', <span><i aria-hidden="true" class="pg-map hint-text-9"></i></span><a class="place" data-index="'+k+'" title="'+markerName+'" href="#'+markerName+'">'+markerName+'</a>');
                 } else {
-                  $('#modal_slideup_map .brand_branch_list').html('').append('<span><i aria-hidden="true" class="pg-map hint-text-9"></i></span><a class="place" data-index="'+k+'" title="'+markerName+'" href="#'+markerName+'">'+markerName+'</a>');
+                  $('#modal_map .brand_branch_list').html('').append('<span><i aria-hidden="true" class="pg-map hint-text-9"></i></span><a class="place" data-index="'+k+'" title="'+markerName+'" href="#'+markerName+'">'+markerName+'</a>');
                 }
                 index_location++;
 

@@ -74,7 +74,7 @@
                     @endif
                   </div>
                   <div class="pull-top pull-right list-inline">
-                    <a href="javascript: void(0);" class="btntoggle btnToggleMap" data-id="{{ $event->id }}" data-slug="{{ $event->url_slug }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
+                    <a href="#modal_map" data-toggle="modal" class="btntoggle btnToggleMap" data-type="promotion" data-id="{{ $event->id }}" data-slug="{{ $event->url_slug }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
                   </div>
                 </div>
               </div>

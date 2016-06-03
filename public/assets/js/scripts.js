@@ -497,7 +497,7 @@ var fx_select_brand;
         if($('.fotorama').exists()){
           console.log('fotorama...');
           var $fotorama = $('.fotorama');
-          $(document).on('click', '.fotorama__stage__frame img.fotorama__img', function(){
+          $(document).on('click', '.fotorama__stage__frame div.fotorama__active', function(){
             console.log('potorama img click...');
             //var fotorama = $('.fotorama')
             //.fotorama({allowfullscreen: true})

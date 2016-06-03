@@ -37,7 +37,7 @@
   <!-- BEGIN PlACE PAGE CONTENT HERE -->
   <div class="row">
     <div class="col-md-8 event-gallery">
-      <div class="panel-body p-b-0">
+      <div class="panel-body p-b-0 p-l-0 p-r-0">
         <div class="dialog__content">
             <!-- START PANEL -->
             <div class="fotorama" data-allowfullscreen="true" data-width="100%" data-ratio="8/5" data-click="false" data-arrows="always" click="false" data-nav="thumbs" data-loop="true">
@@ -51,7 +51,7 @@
      </div>
     </div>
     <div class="col-md-4 body-brief">
-      <div class="panel-body body-brief">
+      <div class="panel-body body-brief p-l-0 p-r-0">
         <div class="no-margin fs-15 hint-text-9 text-master">
           <h4>
             @if(!empty($event->brand->category->first()->name))
@@ -99,7 +99,7 @@
         <p class="col-middle m-b-5">
           <div class="btn-social-group inline">
             <div class="inline btn-social btn-facebook"><a class="fb-like" data-href="{{ URL::to('events', $event->url_slug) }}" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></a></div><div class="inline btn-social btn-twitter"><a href="https://twitter.com/share" class="twitter-share-button"></a></div>
-            <div class="inline btn-social btn-line-official"><a href="http://line.me/R/msg/text/?{{ $event_title }}"><img width="76px" height="20px" alt="LINE it!" src="{{ URL::asset('assets/img/linebutton.png')}}"></a></div>
+            <div class="inline btn-social btn-line-official"><a href="http://line.me/R/msg/text/?{{ $event_title }}%0D%0A{{ URL::to('/', $event->url_slug) }}"><img width="76px" height="20px" alt="LINE it!" src="{{ URL::asset('assets/img/linebutton.png')}}"></a></div>
           </div>
         </p>
         <!--<small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>-->
@@ -114,7 +114,7 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-12">
-          <div class="panel-body p-t-0 p-b-15 event-branch-list text-master">
+          <div class="panel-body p-t-0 p-b-15 p-l-0 p-r-0 event-branch-list text-master">
             <!-- <hr class="p-b-t-1 m-t-10 m-b-10" /> -->
             <u><b>{{ $event->brand->name }} สาขาที่ร่วมรายการ</b></u>
             <span class="event">
@@ -144,7 +144,7 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-12">
-              <div class="panel-body p-t-10 hint-text-9">
+              <div class="panel-body p-t-10 hint-text-9 p-l-0 p-r-0">
                 <h4 class="text-master m-b-30">รายละเอียดโปรโมชั่น</h4>
                 <p>{!! $event->description !!}</p>
                 <div class="desc-footer hint-text p-t-5 p-b-5 m-t-20 m-b-30">
@@ -153,16 +153,16 @@
                 </div>
               </div>
               @if(!empty($tags))
-              <div class="col-md-12 text-master">
+              <div class="col-md-12 text-master p-l-0 p-r-0">
                 {!! implode(', ', $tags) !!}
               </div>
               @endif
-              <div class="col-sm-12 visible-xs">
+              <div class="col-sm-12 visible-xs p-l-0 p-r-0">
                   <div class="ads bg-warning">
                     <h1>ADS</h1>
                   </div>
               </div>
-              <div class="col-md-12">
+              <div class="col-md-12 p-l-0 p-r-0">
                 @if($relates->count() > 0)
                   <p>&nbsp;</p>
                   <h4 class="text-master m-b-20"><i class="fa fa-heartbeat" aria-hidden="true"></i>&nbsp;โปรโมชั่นที่คุณอาจสนใจ</h4>
@@ -231,14 +231,14 @@
                   @endforelse
                 </div>
               </div>
-              <div class="fb-comment full-width">
+              <div class="fb-comment full-width p-l-0 p-r-0">
                 <div class="fb-comments full-width" data-href="{{ URL::to($event->url_slug) }}" data-width="100%" data-numposts="10"></div>
               </div>
           </div>
         </div>
       </div>
       <div class="col-md-4 col-sm-12 hidden-xs">
-          <div class="panel-body">
+          <div class="panel-body p-l-0 p-r-0">
             <div class="ads bg-warning">
               <h1>ADS</h1>
             </div>

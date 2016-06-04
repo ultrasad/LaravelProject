@@ -533,6 +533,22 @@ ol, ul {
     font-size: 0.9em;
 }
 
+.page-sidebar .sidebar-menu .menu-items > li > a > .title-group {
+  width: 65%;
+}
+
+.page-sidebar .sidebar-menu .menu-items > li.brand-group {
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.page-sidebar .sidebar-menu .menu-items > li.brand-group > a {
+  clear:left;
+  width: 35px;
+  padding: 0;
+  margin-left: 5px;
+}
+
 /*.page-sidebar .sidebar-menu .menu-items > li > span.title-header-category {
   font-size: 14px;
   font-weight: bold;

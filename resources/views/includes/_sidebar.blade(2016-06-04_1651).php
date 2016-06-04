@@ -25,49 +25,26 @@
         </span>
       </li>
       <li class="m-t-0 m-b-5">
-        <span class="title-header-category p-l-32">แบรนด์</span>
+        <span class="title-header-category p-l-32">BRAND</span>
         <span class="icon-thumbnail">B</span>
       </li>
-      <?php $i = 0; $j = 0; ?>
       @foreach(menuHelper::brand() as $brand)
-        @if($i == 0)
-          <li class="brand-group">
-          <?php ++$i; ?>
-        @endif
-        @if($brand->master_group == 'Y')
-          <a href="/brand/{{ $brand->url_slug }}" title="{{ $brand->name }}">
-            <img src="{{ URL::asset($brand->logo_image) }}" alt="{{ $brand->name }}" class="category-img" data-src="{{ URL::asset($brand->logo_image) }}" data-src-retina="{{ URL::asset($brand->logo_image) }}" width="35" height="35">
+        <li class="">
+          <a href="/brand/{{ $brand->url_slug }}" class="detailed" title="{{ $brand->name }}">
+            <span class="title">{{ $brand->name }}</span>
           </a>
-        @else
-          @if($j == 0)
-            </li>
-            <li class="">
-            <a href="javascript:;"><span class="title title-group">แบรนด์ทั้งหมด</span>
-            <span class="arrow"></span></a>
-            <span class="icon-thumbnail"><i class="pg-menu_lv"></i></span>
-            <ul class="sub-menu">
-            <?php ++$j; ?>
-          @else
-            <li class="">
-              <a href="/brand/{{ $brand->url_slug }}" class="detailed" title="{{ $brand->name }}">
-                <span class="title">{{ $brand->name }}</span>
-              </a>
-              <span class="icon-thumbnail icon-category {{ Request::is('brand/'. $brand->url_slug) ? 'bg-success' : '' }}">
-              @if(isset($brand->category->first()->icon))
-                <img src="{{ URL::asset('assets/img/category/icons/'.$brand->category->first()->icon) }}" alt="{{ $brand->name }}" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/'.$brand->category->first()->icon) }}" data-src-retina="{{ URL::asset('assets/img/category/icons/'.$brand->category->first()->icon) }}" width="20" height="20">
-              @endif
-              </span>
-            </li>
+          <span class="icon-thumbnail icon-category {{ Request::is('brand/'. $brand->url_slug) ? 'bg-success' : '' }}">
+          @if(isset($brand->category->first()->icon))
+            <img src="{{ URL::asset('assets/img/category/icons/'.$brand->category->first()->icon) }}" alt="{{ $brand->name }}" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/'.$brand->category->first()->icon) }}" data-src-retina="{{ URL::asset('assets/img/category/icons/'.$brand->category->first()->icon) }}" width="20" height="20">
           @endif
-        @endif
+          </span>
+        </li>
       @endforeach
-        </ul>
-      </li>
       <li class="m-t-0 m-b-5">
-        <span class="title-header-category p-l-32">หมวดหมู่</span>
+        <span class="title-header-category p-l-32">CATEGORY</span>
         <span class="icon-thumbnail">C</span>
       </li>
-      <?php $k = 0; ?>
+      <?php $i = 0; ?>
       @foreach(menuHelper::menu() as $menu)
         @if($menu->master_group == 'Y')
         <li class="">
@@ -79,13 +56,13 @@
           </span>
         </li>
         @else
-          @if($k == 0)
+          @if($i == 0)
           <li class="">
           <a href="javascript:;"><span class="title title-group">หมวดหมู่อื่นๆ</span>
           <span class="arrow"></span></a>
           <span class="icon-thumbnail"><i class="pg-menu_lv"></i></span>
           <ul class="sub-menu">
-          <?php ++$k; ?>
+          <?php ++$i; ?>
           @endif
             <li class="">
               <a href="/category/{{ $menu->category }}" class="detailed" title="{{ $menu->name }}">
@@ -95,10 +72,12 @@
                 <img src="{{ URL::asset('assets/img/category/icons/'.$menu->icon) }}" alt="{{ $menu->name }}" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/'.$menu->icon) }}" data-src-retina="{{ URL::asset('assets/img/category/icons/'.$menu->icon) }}" width="20" height="20">
               </span>
             </li>
+          @if($i == 0)
+          </ul>
+          </li>
+          @endif
         @endif
       @endforeach
-        </ul>
-      </li>
     <div class="clearfix"></div>
   </div>
   <!-- END SIDEBAR MENU -->

@@ -3,6 +3,7 @@
 namespace App\Helpers;
 use Illuminate\Database\Eloquent\Model;
 
+use Cache;
 use App\Category;
 use App\Brand;
 
@@ -10,12 +11,20 @@ class MenuHelper {
 
   public static function brand()
   {
-    return Brand::get();
+    $brand = Cache::remember('Brand_all', 1440, function() {
+      return Brand::orderBy('master_group', 'asc')->get();
+    });
+    return $brand;
+    //return Brand::orderBy('master_group', 'asc')->get();
   }
 
   public static function menu()
   {
-    return Category::orderBy('order_id', 'asc')->get();
+    $category = Cache::remember('Category_all', 1440, function() {
+      return Category::orderBy('order_id', 'asc')->get();
+    });
+    return $category;
+    //return Category::orderBy('order_id', 'asc')->get();
   }
 
   /*public static function dateFormat1($date) {

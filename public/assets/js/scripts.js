@@ -277,16 +277,16 @@ var fx_select_brand;
         }, function(newElements, data, url){
             var $newElements = $(newElements).css({opacity: 0});
             return $newElements.filter(function(i, el) {
+              $grid.isotope()
+              .append( el )
+              .isotope( 'appended', el );
+
               $('.feed').imagesLoaded().progress( function() {
-                //$grid.isotope('layout');
                 delay(function(){
-                  //$grid.isotope('layout');
-                  $grid.isotope()
-                  .append( el )
-                  .isotope( 'appended', el )
-                  .isotope('layout');
+                  $grid.isotope('layout');
                 }, 810);
               });
+
               /*delay(function(){
                 //$grid.isotope('layout');
                 $grid.isotope()
@@ -299,6 +299,7 @@ var fx_select_brand;
                 .append( el )
                 .isotope( 'appended', el )
                 .isotope('layout');*/
+
             });
         });
 

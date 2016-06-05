@@ -36,7 +36,7 @@
         @endif
         @if($brand->master_group == 'Y')
           <a href="/brand/{{ $brand->url_slug }}" title="{{ $brand->name }}">
-            <img src="{{ URL::asset($brand->logo_image) }}" alt="{{ $brand->name }}" class="category-img" data-src="{{ URL::asset($brand->logo_image) }}" data-src-retina="{{ URL::asset($brand->logo_image) }}" width="35" height="35">
+            <img src="{{ GlideImage::load($brand->logo_image)->modify(['w'=> 100]) }}" alt="{{ $brand->name }}" class="category-img" data-src="" data-src-retina="" width="35" height="35">
           </a>
         @else
           @if($j == 0)
@@ -54,7 +54,7 @@
               </a>
               <span class="icon-thumbnail icon-category {{ Request::is('brand/'. $brand->url_slug) ? 'bg-success' : '' }}">
               @if(isset($brand->category->first()->icon))
-                <img src="{{ URL::asset('assets/img/category/icons/'.$brand->category->first()->icon) }}" alt="{{ $brand->name }}" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/'.$brand->category->first()->icon) }}" data-src-retina="{{ URL::asset('assets/img/category/icons/'.$brand->category->first()->icon) }}" width="20" height="20">
+                <img src="{{ GlideImage::load('assets/img/category/icons/'.$brand->category->first()->icon)->modify(['w'=> 40]) }}" alt="{{ $brand->name }}" class="category-img" data-src="" data-src-retina="" width="20" height="20">
               @endif
               </span>
             </li>
@@ -75,7 +75,7 @@
             <span class="title">{{ $menu->name }}</span>
           </a>
           <span class="icon-thumbnail icon-category {{ Request::is('category/'. $menu->category) ? 'bg-success' : '' }}">
-            <img src="{{ URL::asset('assets/img/category/icons/'.$menu->icon) }}" alt="{{ $menu->name }}" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/'.$menu->icon) }}" data-src-retina="{{ URL::asset('assets/img/category/icons/'.$menu->icon) }}" width="20" height="20">
+            <img src="{{ GlideImage::load('assets/img/category/icons/'.$menu->icon)->modify(['w'=> 40]) }}" alt="{{ $menu->name }}" class="category-img" data-src="" data-src-retina="" width="20" height="20">
           </span>
         </li>
         @else
@@ -92,7 +92,7 @@
                 <span class="title">{{ $menu->name }}</span>
               </a>
               <span class="icon-thumbnail icon-category {{ Request::is('category/'. $menu->category) ? 'bg-success' : '' }}">
-                <img src="{{ URL::asset('assets/img/category/icons/'.$menu->icon) }}" alt="{{ $menu->name }}" class="category-img" data-src="{{ URL::asset('assets/img/category/icons/'.$menu->icon) }}" data-src-retina="{{ URL::asset('assets/img/category/icons/'.$menu->icon) }}" width="20" height="20">
+                <img src="{{ GlideImage::load('assets/img/category/icons/'.$menu->icon)->modify(['w'=> 40]) }}" alt="{{ $menu->name }}" class="category-img" data-src="" data-src-retina="" width="20" height="20">
               </span>
             </li>
         @endif

@@ -22,10 +22,10 @@
             <div class="gallery-item" data-width="2" data-height="2">
               <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">
                 <div class="slide-front">
-                  <img src="/images/events/2016-03-30/gallery/43/20160330-141855-Promotion-Reebok-Grand-Sale-2016-Sale-up-to-70-Off.png" class="img-responsive" />
+                  <img src="{{ GlideImage::load('/images/events/2016-03-30/gallery/43/20160330-141855-Promotion-Reebok-Grand-Sale-2016-Sale-up-to-70-Off.png')->modify(['w'=> 640, 'fm'=>'jpg']) }}" class="img-responsive" />
                 </div>
                 <div class="slide-back">
-                  <img src="/images/events/2016-03-30/20160330-120609-Promotion-Crocs-End-Of-Season-Sale-up-to-50-Mar.2016.jpg" class="img-responsive" />
+                  <img src="{{ GlideImage::load('/images/events/2016-03-30/20160330-120609-Promotion-Crocs-End-Of-Season-Sale-up-to-50-Mar.2016.jpg')->modify(['w'=> 640, 'fm'=>'jpg']) }}" class="img-responsive" />
                 </div>
               </div>
               <div class="overlayer bottom-left full-width">
@@ -60,7 +60,11 @@
                 <div class="item-header clearfix">
                   <a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">
                     <div class="thumbnail-wrapper d32 circular">
-                      <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+                      @if(file_exists($event->brand->logo_image))
+                        <img width="40" height="40" src="{{ GlideImage::load($event->brand->logo_image)->modify(['w'=> 100]) }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+                      @else
+                        <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+                      @endif
                     </div>
                   </a>
                   <div class="inline m-l-10">

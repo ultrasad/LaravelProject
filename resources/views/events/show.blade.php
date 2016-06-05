@@ -42,7 +42,7 @@
             <!-- START PANEL -->
             <div class="fotorama" data-allowfullscreen="true" data-width="100%" data-ratio="8/5" data-click="false" data-arrows="always" click="false" data-nav="thumbs" data-loop="true">
               @forelse($event->gallery_list as $id => $image)
-                <img src="{{ URL::asset($image) }}" class="fotoclick" class="img-responsive" data-fit="contain" />
+                <img src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}" class="fotoclick" class="img-responsive" data-fit="contain" />
               @empty
               @endforelse
             </div>
@@ -68,7 +68,11 @@
         <div class="item-header clearfix">
           <a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">
             <div class="thumbnail-wrapper d32 circular">
-              <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+              @if(file_exists($event->brand->logo_image))
+                <img width="40" height="40" src="{{ GlideImage::load($event->brand->logo_image)->modify(['w'=> 100]) }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+              @else
+                <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+              @endif
             </div>
           </a>
           <div class="inline m-l-10">

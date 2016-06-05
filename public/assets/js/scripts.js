@@ -219,19 +219,21 @@ var fx_select_brand;
         });
 
         // layout Isotope after each image loads
-        $('.feed').imagesLoaded().progress( function() {
+        /*$('.feed').imagesLoaded().progress( function() {
           $grid.isotope('layout');
-        });
+        });*/
 
         $(window).on('load', function() {
           //isotope();
+          $('.feed').imagesLoaded().progress( function() {
+            $grid.isotope('layout');
+          });
         });
 
         $(window).smartresize(function(){
           delay(function(){
             $grid.isotope('layout');
           }, 810);
-
         });
         /*grid card layout*/
 
@@ -275,10 +277,28 @@ var fx_select_brand;
         }, function(newElements, data, url){
             var $newElements = $(newElements).css({opacity: 0});
             return $newElements.filter(function(i, el) {
+              $('.feed').imagesLoaded().progress( function() {
+                //$grid.isotope('layout');
+                delay(function(){
+                  //$grid.isotope('layout');
+                  $grid.isotope()
+                  .append( el )
+                  .isotope( 'appended', el )
+                  .isotope('layout');
+                }, 810);
+              });
+              /*delay(function(){
+                //$grid.isotope('layout');
                 $grid.isotope()
                 .append( el )
                 .isotope( 'appended', el )
                 .isotope('layout');
+              }, 810);*/
+
+                /*$grid.isotope()
+                .append( el )
+                .isotope( 'appended', el )
+                .isotope('layout');*/
             });
         });
 

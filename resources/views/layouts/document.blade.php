@@ -140,13 +140,13 @@
               <!--<h5>Payment <span class="semi-bold">Information</span></h5>-->
               <div class="item-header clearfix p-t-10">
                   <div class="thumbnail-wrapper d32 circular">
-                    <img width="40" height="40" alt="Nivea Men" data-src-retina="" data-src="" src="http://localhost:8000/images/brand/logo_20160510-172006-nivea-0.png">
+                    <img width="40" height="40" alt="Welovepro" data-src-retina="" data-src="" src="{{ URL::asset('assets/img/profiles/b2x.jpg') }}">
                   </div>
                   <div class="inline m-l-10">
                     <p class="no-margin">
-                      <strong class="text-master"><a href="http://localhost:8000/brand/nivea-men" title="Nivea Men" class="brand-event-url">Nivea Men</a></strong>
+                      <strong class="text-master"><a href="#" title="Nivea Men" class="brand-event-url">&nbsp;</a></strong>
                     </p>
-                    <div class="hint-text small-text text-master"><a class="category-event-url" title="เครื่องสำอาง / ความงาม" href="http://localhost:8000/category/cosmetic">เครื่องสำอาง / ความงาม</a></div>
+                    <div class="hint-text small-text text-master"><a class="category-event-url" title="เครื่องสำอาง / ความงาม" href="#">&nbsp;</a></div>
                   </div>
               </div>
             </div>

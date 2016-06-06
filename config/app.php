@@ -163,8 +163,6 @@ return [
 
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         'Spatie\Glide\GlideServiceProvider',
-
-
     ],
 
     /*

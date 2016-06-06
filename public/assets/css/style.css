@@ -546,7 +546,7 @@ ol, ul {
   clear:left;
   width: 35px;
   padding: 0;
-  margin-left: 5px;
+  margin-left: 6px;
 }
 
 /*.page-sidebar .sidebar-menu .menu-items > li > span.title-header-category {
@@ -1404,6 +1404,10 @@ div.cs-select-brand, div.cs-select-contact {
 
   .register-container.form-contact {
       width: 100%;
+  }
+
+  .page-sidebar .sidebar-menu .menu-items > li.brand-group {
+    padding-left: 14px;
   }
 
   /*.breadcrumb-header .bread_cate_name, .breadcrumb-header .bread_tag_name {

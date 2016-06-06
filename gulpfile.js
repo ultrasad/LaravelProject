@@ -39,7 +39,7 @@ elixir(function(mix) {
            'assets/fotorama/fotorama.css',
            //'assets/jquery-datatable/media/css/dataTables.bootstrap.min.css',
            'assets/css/pages-icons.css',
-           'assets/css/pages.css',
+           'assets/css/pages-main.css',
            'assets/css/style.css'
        ], 'public/css/all.css','public');
 

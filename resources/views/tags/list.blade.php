@@ -43,7 +43,12 @@
                 <div class="item-header clearfix">
                   <a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">
                     <div class="thumbnail-wrapper d32 circular">
-                      <img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+                      <!--<img width="40" height="40" src="{{ file_exists($event->brand->logo_image) ? URL::asset($event->brand->logo_image) : URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />-->
+                      @if(file_exists($event->brand->logo_image))
+                        <img width="40" height="40" src="{{ GlideImage::load($event->brand->logo_image)->modify(['w'=> 100]) }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+                      @else
+                        <img width="40" height="40" src="{{ URL::asset('assets/img/profiles/e.jpg') }}" data-src="" data-src-retina="" alt="{{ $event->brand->name }}" />
+                      @endif
                     </div>
                   </a>
                   <div class="inline m-l-10">
@@ -64,7 +69,8 @@
               <hr class="no-margin">
               <div class="relative">
                 <div class="no-overflow">
-                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ URL::asset($event->image) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                  <!--<a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ URL::asset($event->image) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>-->
+                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
                 </div>
               </div>
               <div class="p-t-15 p-l-15 p-r-15 p-b-5">

@@ -228,6 +228,72 @@ var fx_select_brand;
           $('.feed').imagesLoaded().progress( function() {
             $grid.isotope('layout');
           });
+
+          /* infinitescroll*/
+          var loading_options = {
+              /*finishedMsg: "<div class='end-msg'>Congratulations! You've reached the end of the internet</div>",
+              msgText: "<div class='center'>Loading news items...</div>",
+              img: "/assets/img/ajax-loader.gif"
+              */
+          };
+
+          var $per_page = parseInt($('#paginate_page').val(), 10);
+          var $total_page = parseInt($('#total_page').val(), 10);
+          var $num_page = Math.ceil($total_page / $per_page);
+          //console.log('page => ' + $per_page + ' total => ' + $total_page + ' num => ' + $num_page);
+
+          $('.feed .day').infinitescroll({
+              //loading: loading_options,
+              loading: {
+                finished: undefined,
+                finishedMsg: "",
+                img: "/pages/img/progress/progress-circle-success.svg",
+                msg: null,
+                msgText: "",
+                selector: null,
+                speed: 'fast',
+                start: undefined
+              },
+              navSelector     : ".pagination",
+              nextSelector    : ".pagination a#next",
+              itemSelector    : ".card.col1-element",
+              debug           : false,
+              dataType        : 'html',
+              maxPage         : $num_page,
+              path: function(index) {
+                    return "?page=" + index;
+              },
+              errorCallback: function() {
+                //console.log('no discounts');
+              },
+          }, function(newElements, data, url){
+              var $newElements = $(newElements).css({opacity: 0});
+              return $newElements.filter(function(i, el) {
+                $grid.isotope()
+                .append( el )
+                .isotope( 'appended', el );
+
+                $('.feed').imagesLoaded().progress( function() {
+                  delay(function(){
+                    $grid.isotope('layout');
+                  }, 810);
+                });
+
+                /*delay(function(){
+                  //$grid.isotope('layout');
+                  $grid.isotope()
+                  .append( el )
+                  .isotope( 'appended', el )
+                  .isotope('layout');
+                }, 810);*/
+
+                  /*$grid.isotope()
+                  .append( el )
+                  .isotope( 'appended', el )
+                  .isotope('layout');*/
+
+              });
+          });
         });
 
         $(window).smartresize(function(){
@@ -236,72 +302,6 @@ var fx_select_brand;
           }, 810);
         });
         /*grid card layout*/
-
-        /* infinitescroll*/
-        var loading_options = {
-            /*finishedMsg: "<div class='end-msg'>Congratulations! You've reached the end of the internet</div>",
-            msgText: "<div class='center'>Loading news items...</div>",
-            img: "/assets/img/ajax-loader.gif"
-            */
-        };
-
-        var $per_page = parseInt($('#paginate_page').val(), 10);
-        var $total_page = parseInt($('#total_page').val(), 10);
-        var $num_page = Math.ceil($total_page / $per_page);
-        //console.log('page => ' + $per_page + ' total => ' + $total_page + ' num => ' + $num_page);
-
-        $('.feed .day').infinitescroll({
-            //loading: loading_options,
-            loading: {
-              finished: undefined,
-              finishedMsg: "",
-              img: "/pages/img/progress/progress-circle-success.svg",
-              msg: null,
-              msgText: "",
-              selector: null,
-              speed: 'fast',
-              start: undefined
-            },
-            navSelector     : ".pagination",
-            nextSelector    : ".pagination a#next",
-            itemSelector    : ".card.col1-element",
-            debug           : false,
-            dataType        : 'html',
-            maxPage         : $num_page,
-            path: function(index) {
-                  return "?page=" + index;
-            },
-            errorCallback: function() {
-              //console.log('no discounts');
-            },
-        }, function(newElements, data, url){
-            var $newElements = $(newElements).css({opacity: 0});
-            return $newElements.filter(function(i, el) {
-              $grid.isotope()
-              .append( el )
-              .isotope( 'appended', el );
-
-              $('.feed').imagesLoaded().progress( function() {
-                delay(function(){
-                  $grid.isotope('layout');
-                }, 810);
-              });
-
-              /*delay(function(){
-                //$grid.isotope('layout');
-                $grid.isotope()
-                .append( el )
-                .isotope( 'appended', el )
-                .isotope('layout');
-              }, 810);*/
-
-                /*$grid.isotope()
-                .append( el )
-                .isotope( 'appended', el )
-                .isotope('layout');*/
-
-            });
-        });
 
         // Initializes search overlay plugin.
         // Replace onSearchSubmit() and onKeyEnter() with

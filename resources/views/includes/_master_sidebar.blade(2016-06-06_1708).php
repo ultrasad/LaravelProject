@@ -28,18 +28,40 @@
         <span class="title-header-category p-l-32">แบรนด์</span>
         <span class="icon-thumbnail">B</span>
       </li>
-      <li class="brand-group">
+      <?php $i = 0; $j = 0; ?>
       @foreach(menuHelper::brand() as $brand)
+        @if($i == 0)
+          <li class="brand-group">
+          <?php ++$i; ?>
+        @endif
         @if($brand->master_group == 'Y')
           <a href="/brand/{{ $brand->url_slug }}" title="{{ $brand->name }}">
             <img src="{{ GlideImage::load($brand->logo_image)->modify(['w'=> 100]) }}" alt="{{ $brand->name }}" class="category-img" data-src="" data-src-retina="" width="35" height="35">
           </a>
+        @else
+          @if($j == 0)
+            </li>
+            <li class="">
+            <a href="javascript:;"><span class="title title-group">แบรนด์ทั้งหมด</span>
+            <span class="arrow"></span></a>
+            <span class="icon-thumbnail"><i class="pg-menu_lv"></i></span>
+            <ul class="sub-menu">
+            <?php ++$j; ?>
+          @else
+            <li class="">
+              <a href="/brand/{{ $brand->url_slug }}" class="detailed" title="{{ $brand->name }}">
+                <span class="title">{{ $brand->name }}</span>
+              </a>
+              <span class="icon-thumbnail icon-category {{ Request::is('brand/'. $brand->url_slug) ? 'bg-success' : '' }}">
+              @if(isset($brand->category->first()->icon))
+                <img src="{{ GlideImage::load('assets/img/category/icons/'.$brand->category->first()->icon)->modify(['w'=> 40]) }}" alt="{{ $brand->name }}" class="category-img" data-src="" data-src-retina="" width="20" height="20">
+              @endif
+              </span>
+            </li>
+          @endif
         @endif
       @endforeach
-      </li>
-      <li class="">
-        <a href="/brand" title="แบรนด์ทั้งหมด"><span class="title title-group">แบรนด์ทั้งหมด</span></a>
-        <span class="icon-thumbnail"><i class="pg-menu_lv"></i></span>
+        </ul>
       </li>
       <li class="m-t-0 m-b-5">
         <span class="title-header-category p-l-32">หมวดหมู่</span>

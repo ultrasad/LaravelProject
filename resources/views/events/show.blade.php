@@ -152,8 +152,10 @@
                 <h4 class="text-master m-b-30">รายละเอียดโปรโมชั่น</h4>
                 <p>{!! $event->description !!}</p>
                 <div class="desc-footer hint-text p-t-5 p-b-5 m-t-20 m-b-30">
-                  <div class="pull-left"><div class="pull-left event-created b-grey b-r">Date : {{ date('Y-m-d', strtotime($event->created_at)) }}&nbsp;&nbsp;</div><div class="pull-left event-author b-grey b-r">&nbsp;&nbsp;Author : <a title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}&nbsp;&nbsp;</a></div><div class="pull-left event-publisher">&nbsp;&nbsp;Publisher : <a title="welovepro" href="/">welovepro</a></div></div>
-                  <div class="clearfix">&nbsp;</div>
+                    <div class="pull-left inline event-created b-grey b-r"><b>Date : </b>{{ date('Y-m-d', strtotime($event->created_at)) }}&nbsp;&nbsp;</div>
+                    <div class="pull-left inline event-author b-grey b-r"><b>Author : </b><a title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}&nbsp;&nbsp;</a></div>
+                    <div class="pull-left inline event-publisher"><b>Publisher : </b><a title="WelovePro" href="/">WelovePro</a></div>
+                    <div class="clearfix">&nbsp;</div>
                 </div>
               </div>
               @if(!empty($tags))

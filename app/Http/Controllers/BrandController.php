@@ -29,18 +29,18 @@ class BrandController extends Controller
   *
   *@return Response
   */
-  public function index($slug)
+  public function index($slug='false')
   {
     //echo '=> ' . $brand;
     //$events = Event::published()->active()->eventBrand()->BrandId($brand_id)->orderBy('events.created_at', 'desc')->paginate(15);
-    $brand = Brand::where('url_slug', $slug)->first();
-    $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->BrandSlug($slug)->orderBy('events.created_at', 'desc')->paginate(15);
-
-    //echo '<pre>';
-    //print_r($events);
-    //exit;
-
-    return view('brand.index', compact('events', 'brand'));
+    if($slug == 'false'){
+      $brands = Brand::approved()->paginate(20);
+      return view('brand.main', compact('brands'));
+    } else {
+      $brand = Brand::where('url_slug', $slug)->first();
+      $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->BrandSlug($slug)->orderBy('events.created_at', 'desc')->paginate(10);
+      return view('brand.index', compact('events', 'brand'));
+    }
   }
 
   public function category($category='unknow')

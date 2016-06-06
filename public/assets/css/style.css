@@ -549,6 +549,10 @@ ol, ul {
   margin-left: 6px;
 }
 
+.page-sidebar .sidebar-menu .menu-items > li.brand-group > a img {
+  background: #fff;
+}
+
 /*.page-sidebar .sidebar-menu .menu-items > li > span.title-header-category {
   font-size: 14px;
   font-weight: bold;
@@ -970,6 +974,7 @@ div.cs-select-brand, div.cs-select-contact {
 }
 
 .feed .card {
+  border-radius: 0;
   -webkit-transition-property: -webkit-transform, opacity;
      -moz-transition-property:    -moz-transform, opacity;
           transition-property:         transform, opacity;
@@ -1187,6 +1192,14 @@ div.cs-select-brand, div.cs-select-contact {
   */
   width: 100%;
   height: 435px;
+}
+
+.card .gallery-item.gallery-brand  {
+  height: 240px;
+}
+
+.card .gallery-brand img {
+  height: 100%;
 }
 
 /* social card */

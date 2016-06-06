@@ -14,6 +14,11 @@ class Brand extends Model
   //Mass Assignment
   protected $fillable = ['name', 'url_slug', 'logo_image', 'cover_image', 'slogan', 'detail', 'facebook', 'twitter', 'line_officail', 'youtube', 'approve_status']; //Whitelist
 
+  public function scopeApproved($query)
+  {
+    $query->where('approve_status', '=', 'Y');
+  }
+
   public function events()
   {
     return $this->hasMany('App\Event');

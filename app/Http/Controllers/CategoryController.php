@@ -29,7 +29,7 @@ class CategoryController extends Controller
       //echo 'cate => ' . $category . '<br />';
       //try {
       //$events = Event::published()->active()->categoryList($category)->orderBy('events.created_at', 'desc')->paginate(15);
-      $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->brandCategoryList($category)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate(15);
+      $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->brandCategoryList($category)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate(10);
       //$category_name = $events->first()->category->where('category', $category)->first()->name;
 
       //echo '<pre>';

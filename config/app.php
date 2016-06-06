@@ -162,7 +162,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-        'Spatie\Glide\GlideServiceProvider',
+        Spatie\Glide\GlideServiceProvider::class,
+        GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
     ],
 
     /*
@@ -213,7 +214,8 @@ return [
         //'GlideImage' => 'Spatie\Glide\GlideImageFacade',
         //'GlideImage' => Spatie\Glide\GlideImageFacade::class,
         'menuHelper'=> App\Helpers\MenuHelper::class, //for Laravel 5.1, 5.2
-        'GlideImage' => 'Spatie\Glide\GlideImageFacade',
+        'GlideImage' => Spatie\Glide\GlideImageFacade::class,
+        'HTMLMin' => GrahamCampbell\HTMLMin\Facades\HTMLMin::class,
     ],
 
 ];

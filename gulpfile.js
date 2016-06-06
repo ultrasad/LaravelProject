@@ -1,34 +1,8 @@
-//var elixir = require('node_modules/laravel-elixir');
 var elixir = require('laravel-elixir');
-require('./elixir-extensions')
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+//require('./elixir-extensions');
+
 
 elixir(function(mix) {
-    //mix.sass('app.scss');
-    //mix.browserify('/assets/js/scripts.js');
-    //mix.version("public/js/scripts.js");
-    /*mix.scripts(
-    //['scripts.js', 'module2.js'],
-    ['scripts.js'],
-      'public/build/js/all.js',
-      'public/assets/js'
-    );
-
-    mix.version("public/assets/js/scripts.js");
-
-    mix.browserSync({
-        online: false,
-        proxy : 'localhost:8000'
-    });*/
 
     elixir(function(mix) {
        mix.styles([
@@ -37,7 +11,6 @@ elixir(function(mix) {
            'assets/jquery-scrollbar/jquery.scrollbar.css',
            'assets/jquery-metrojs/MetroJs.css',
            'assets/fotorama/fotorama.css',
-           //'assets/jquery-datatable/media/css/dataTables.bootstrap.min.css',
            'assets/css/pages-icons.css',
            'assets/css/pages-main.css',
            'assets/css/style.css'
@@ -54,7 +27,6 @@ elixir(function(mix) {
            'assets/fotorama/fotorama.js',
            'assets/imagesloaded/imagesloaded.pkgd.min.js',
            'assets/jquery-infinite-scroll/jquery.infinitescroll.min.js',
-           //'assets/datatables-responsive/js/lodash.min.js',
            'assets/js/pages.js',
            'assets/js/scripts.js',
        ], 'public/js/all.js','public');
@@ -63,8 +35,10 @@ elixir(function(mix) {
            'css/all.css',
            'js/all.js'
        ]);
-
-       mix.compressHtml();
    });
 
 });
+
+//elixir(function(mix) {
+    //mix.compressHtml();
+//});

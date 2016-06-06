@@ -1,6 +1,6 @@
 //var elixir = require('node_modules/laravel-elixir');
 var elixir = require('laravel-elixir');
-
+require('./elixir-extensions')
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -63,6 +63,8 @@ elixir(function(mix) {
            'css/all.css',
            'js/all.js'
        ]);
+
+       mix.compressHtml();
    });
 
 });

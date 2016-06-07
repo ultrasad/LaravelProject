@@ -90,6 +90,12 @@ class EventsController extends Controller
     $paginate = 10;
     $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
 
+    //$paginate = 10;
+    //$events = Cache::remember('Promotion_Page_' . $paginate, 1440, function() use ($paginate) {
+      //return Event::where('url_slug', $slug)->first();
+      //return Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
+    //});
+
     $more_page = $events->hasMorePages();
     $total_page = $events->total();
 

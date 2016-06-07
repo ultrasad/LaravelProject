@@ -36,11 +36,12 @@
       <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/ie9.css') }}" />
   <![endif]-->
   <script type="text/javascript">
-  <!-- // fix for windows 8 -->
   window.onload = function()
   {
-    if (navigator.appVersion.indexOf("Windows NT 6.2") != -1)
+    // fix for windows 8
+    if (navigator.appVersion.indexOf("Windows NT 6.2") != -1){
       document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="{{ URL::asset('pages/css/windows.chrome.fix.css') }}" />';
+    }
   }
   </script>
 </head>

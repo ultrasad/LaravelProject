@@ -1478,11 +1478,26 @@ var fx_select_brand;
         });
 
         if($('#map_canvas, #map_canvas_branch').exists()){
-          $("<script/>", {
+          /*$("<script/>", {
             "type": "text/javascript",
             //src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&zoom=false&language=th&hl=th&callback=initialize&libraries=places"
             src: "https://maps.googleapis.com/maps/api/js?v=3.exp&language=th&hl=th&callback=initialize&libraries=places"
-          }).appendTo("body");
+          }).appendTo("body");*/
+          /*$.getScript('[js containing the initialize function]',function(){
+              $.getScript('https://maps.googleapis.com/maps/api/js?v=3.exp&callback=initialize');
+          });
+          */
+          //$.getScript("http://maps.google.com/maps/api/js?sensor=false&region=th&async=2&callback=initialize", function () {});
+
+          function loadScript(src,callback){
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            if(callback)script.onload=callback;
+            document.getElementsByTagName("head")[0].appendChild(script);
+            script.src = src;
+          }
+
+          loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=initialize',function(){});
         }
 
         $(document).on('change', '.btn-file :file', function() {

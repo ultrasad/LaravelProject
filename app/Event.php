@@ -25,17 +25,17 @@ class Event extends Model
     protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object
 
     //Larasearch
-    public static $__es_config = [
+    /*public static $__es_config = [
       'autocomplete' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name', 'tag.name', 'location.name'],
       'suggest' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name', 'tag.name', 'location.name'],
-      'text_start' => ['title', 'brief'],
-      'text_middle' => ['title', 'brief'],
-      'text_end' => ['title', 'brief'],
-      'word_start' => ['title', 'brief'],
-      'word_middle' => ['title', 'brief'],
-      'word_end' => ['title', 'brief'],
+      'text_start' => ['title', 'brief', 'branch.name'],
+      'text_middle' => ['title', 'brief', 'branch.name'],
+      'text_end' => ['title', 'brief', 'branch.name'],
+      'word_start' => ['title', 'brief', 'branch.name'],
+      'word_middle' => ['title', 'brief', 'branch.name'],
+      'word_end' => ['title', 'brief', 'branch.name'],
        //'suggest' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name', 'tag.name', 'location.name']
-    ];
+    ];*/
 
     /*public static $__es_config = [
         'autocomplete' => ['title'],
@@ -350,7 +350,7 @@ class Event extends Model
 
     public function branch()
     {
-      return $this->belongsToMany('App\Branch', 'event_branch')
+      return $this->belongsToMany('App\Branch', 'event_branch', 'event_id')
                   ->withTimestamps(); //update created app, updated app relationship table
     }
 }

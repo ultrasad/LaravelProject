@@ -149,7 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         'Thujohn\Twitter\TwitterServiceProvider',
-        'Iverberk\Larasearch\LarasearchServiceProvider',
+        Iverberk\Larasearch\LarasearchServiceProvider::class,
          //Spatie\Glide\GlideServiceProvider::class,
         //'Spatie\Glide\GlideServiceProvider',
 

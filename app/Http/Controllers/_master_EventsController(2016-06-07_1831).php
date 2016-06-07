@@ -40,60 +40,16 @@ class EventsController extends Controller
     return $string;
   }
 
-
   /**
   * Search Test
   */
   public function search($keywords='watsons')
   {
-    //$event = new Event;
-    //$event->reIndex('App\Event --relations');
+    $query['query']['match']['_all'] = $keywords;
 
-    //$query['query']['match']['_all'] = $keywords;
-    //$results = Event::searchByQuery($query);
-    //$highlights = Event::search($keywords, ['fields' => ['location.name'], 'highlight' => ['tag' => ' ']])->getResults();
-    //$highlights = Event::search($keywords, ['fields' => ['branch.name', 'branch.location', 'branch.detail'], 'highlight' => ['tag' => ' ']])->getResults();
-    //$highlights = Event::search($keywords, ['fields' => ['branch.name']])->getResults();
-    //$results = Event::search($keywords, ['fields' => ['branch.name']])->getResults();
-    //$results = Branch::search($keywords)->getResults();
+    $results = Event::searchByQuery($query);
+    $highlights = Event::search($keywords, ['fields' => ['location.name'], 'highlight' => ['tag' => ' ']])->getResults();
 
-    //$query['query']['match']['_all'] = $keywords;
-    //$results = Event::searchByQuery($query);
-    //$results = Event::search($keywords, ['fields' => ['branch.name']])->getResults();
-    //$results = Event::search($keywords, ['fields' => ['branch.name']])->getResults();
-    //$query['query']['match']['_all'] = 'แคราย';
-    //$results = Event::searchByQuery($query);
-    //$results = Event::search('แคราย')->getResults();
-    //$results = Event::search('MBK', ['fields' => ['title', 'branch.name']])->getResults();
-
-    $results = Event::search('ยูเนี่ยนมอลล์', [
-        'fields' => ['title', 'branch.name'],
-        'select' => ['title', 'branch.name']
-    ])->getResults();
-
-    //$name = $results->first()->getFields(['name']);
-
-    //$name = $results->first()->getFields(['name']);
-
-    //foreach($results as $result)
-    //{
-      //echo '<pre>';
-      //print_r($result['_source']);
-      // Array notation
-      //$result['_source.wife.name']
-    //}
-
-    //echo '<pre>';
-    //print_r($name);
-
-    //echo '<pre>';
-    //print_r($name);
-
-    echo '<pre>';
-    print_r($results);
-    exit;
-
-    /*
     $arr_response = array();
     $arr_location = array();
     if($results){
@@ -110,9 +66,8 @@ class EventsController extends Controller
         array_push($arr_location, $arr_map);
       }
     }
-    */
 
-    //echo json_encode(array('event' => $arr_response, 'map' => $arr_location));
+    echo json_encode(array('event' => $arr_response, 'map' => $arr_location));
   }
 
   /**

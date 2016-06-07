@@ -4,10 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 //use Iverberk\Larasearch\Traits\MappableTrait;
-
+//use Iverberk\Larasearch\Traits\TransformableTrait;
+//use Iverberk\Larasearch\Traits\CallableTrait;
+use Iverberk\Larasearch\Traits\SearchableTrait;
 class Branch extends Model
 {
     //use MappableTrait;
+    //use TransformableTrait;
+    use SearchableTrait;
+    //use TransformableTrait, CallableTrait;
 
     protected $table = 'branch';
 
@@ -19,6 +24,11 @@ class Branch extends Model
         return $this->events->lists('title')->all();
     }*/
 
+    public static $__es_config = [
+      'autocomplete' => ['event.title', 'event.url_slug', 'event.brief', 'brand.name', 'branch.name'],
+      'suggest' => ['event.title', 'event.url_slug', 'event.brief', 'brand.name', 'branch.name'],
+    ];
+
     public function scopeBrandList($query, $brand)
     {
       return $this->whereHas('brands', function($query) use ($brand)
@@ -29,7 +39,8 @@ class Branch extends Model
 
     public function events()
     {
-      return $this->belongsToMany('App\Event', 'event_branch');
+      //return $this->belongsToMany('App\Event', 'event_branch');
+      return $this->belongsToMany('App\Event', 'event_branch', 'branch_id');
     }
 
     public function brands()

@@ -66,9 +66,21 @@ class EventsController extends Controller
     //$results = Event::search('แคราย')->getResults();
     //$results = Event::search('MBK', ['fields' => ['title', 'branch.name']])->getResults();
 
-    $results = Event::search('ยูเนี่ยนมอลล์', [
+    /*$results = Event::search('พารากอน', [
         'fields' => ['title', 'branch.name'],
         'select' => ['title', 'branch.name']
+    ])->getResults();*/
+
+    //$query['query']['match']['_all'] = 'เซ็นทรัลลาดพร้าว';
+    //$results = Branch::searchByQuery($query);
+
+    $results = Branch::search('เซ็นทรัล', [
+        //'autocomplete' => true
+        'fields' => ['name' => 'word_start']
+        //'fields' => ['title', 'branch.name' => 'word_start'],
+        //'select' => ['title', 'branch.name'],
+        //'suggest' => true,
+        //'highlight' => true
     ])->getResults();
 
     //$name = $results->first()->getFields(['name']);

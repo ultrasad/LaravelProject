@@ -37,11 +37,14 @@ class Event extends Model
        //'suggest' => ['title', 'url_slug', 'brief', 'brand.name', 'branch.name', 'tag.name', 'location.name']
     ];*/
 
-    /*public static $__es_config = [
-        'autocomplete' => ['title'],
-        'suggest' => ['title', 'brand.name', 'branch.name', 'location.name'],
-        'word_start' => ['title', 'brand.name', 'branch.name', 'location.name']
-    ];*/
+    public static $__es_config = [
+        //'autocomplete' => ['title'],
+        //'suggest' => ['title', 'brand.name', 'branch.name', 'location.name'],
+        'word_start' => ['title', 'brief', 'branch.name'],
+        'word_end' => ['title', 'brief', 'branch.name'],
+        'text_start' => ['title', 'brief', 'branch.name'],
+        'text_end' => ['title', 'brief', 'branch.name'],
+    ];
 
     /**
     * @return bool

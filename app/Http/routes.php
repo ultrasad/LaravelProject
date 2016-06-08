@@ -59,9 +59,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('brand/category/{name}', 'BrandController@category');
     Route::get('brand/locations/{slug}', 'BrandController@locations');
     Route::get('maps/locations', 'MapsController@locations');
-    Route::get('maps/locations/{id}', 'MapsController@locations');
+    //Route::get('maps/locations/{id}', 'MapsController@locations');
+    Route::get('maps/locations/{lat}/{lon}', 'MapsController@latlon');
+    Route::get('maps/{lat}/{lon}', 'MapsController@index')->where(['lat' => '[0-9\.]+', 'lon' => '[0-9\.]+']);
     Route::get('map', 'MapsController@index');
-    Route::get('maps/{id}', 'MapsController@index');
+    //Route::get('maps/{id}', 'MapsController@index'); //old solution
     Route::get('brand/register', [
       'middleware' => ['auth', 'roles'],
       'uses' => 'BrandController@register',

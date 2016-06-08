@@ -74,63 +74,19 @@ class EventsController extends Controller
     //$query['query']['match']['_all'] = 'เซ็นทรัลลาดพร้าว';
     //$results = Branch::searchByQuery($query);
 
-    /*$results = Branch::search(trim($keywords), [
-        //'fields' => ['name' => 'text_start'],
-        //'fields' => ['name' => 'word_start'],
-        //'fields' => ['name' => 'text_start'],
+    /*$results = Branch::search('พารากอน', [
+        //'autocomplete' => true
+        'fields' => ['name' => 'word_start', 'name' => 'word_end']
         //'fields' => ['title', 'branch.name' => 'word_start'],
-        //'select' => ['name'],
+        //'select' => ['title', 'branch.name'],
         //'suggest' => true,
-        'autocomplete' => true,
-        'highlight' => true
+        //'highlight' => true
     ])->getResults();*/
 
-    //$query['query']['match']['_all'] = trim($keywords);
-    //$results = Branch::search(null, ['query' => $query])->getResults();
-    //$results = Branch::searchByQuery($query)->getResults();
-
-    //$results = Branch::search(trim($keywords))->getResults();
-
-    //$results = Branch::search(null, ['json' => ['query' => ['match' => ['_all' => trim($keywords)]]]])->getResults();
-
-    //$query['query']['match']['name'] = trim($keywords);
-    //$results = Branch::search(null, ['query' => $query])->getResults();
-
-    //$results = Branch::search(trim($keywords), ['fields' => ['name'], 'suggest' => true])->getResults();
-    //$suggestios = $results->first()->getSuggestions(['name']);
-
-    /*$results = Branch::search(trim($keywords), [
-      //'fields' => ['name'],
-      'suggest' => true,
-      'autocomplete' => true,
-      'highlight' => true,
-    ])->getResults();
-
-    echo '<pre>';
-    print_r($results);
-    exit;*/
-
-    /*$results = Event::search(trim($keywords), [
-        'fields' => ['branch.name' => 'word_start', 'branch.name' => 'word_end', 'branch.name' => 'text_start', 'branch.name' => 'text_end'],
-        //'fields' => ['title', 'description', 'branch.name' => 'text_start', 'branch.name' => 'text_end'],
-        //'fields' => ['branch.name' => 'text_start', 'branch.name' => 'text_end'],
+    $results = Event::search('สาขาใหม่', [
+        'fields' => ['title', 'description', 'branch.name' => 'word_start', 'branch.name' => 'word_end'],
         'select' => ['title', 'image', 'url_slug', 'brief', 'branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
-        //'select' => ['branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
-        //'highlight' => ['tag' => '']
-        'highlight' => true,
-        //'suggest' => true,
-    ])->getResults();*/
-
-    $results = Event::search(trim($keywords), [
-        //'fields' => ['branch.name' => 'word_start', 'branch.name' => 'text_start'],
-        'fields' => ['title', 'description', 'branch.name' => 'text_start', 'branch.location' => 'text_start', 'brand.name' => 'text_start'],
-        //'fields' => ['branch.name' => 'text_start', 'branch.name' => 'text_end'],
-        'select' => ['title', 'image', 'url_slug', 'brief', 'brand.name', 'brand.url_slug', 'brand.logo_image', 'brand.slogan', 'branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
-        //'select' => ['branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
-        //'highlight' => ['tag' => '']
-        //'autocomplete' => true,
-        'highlight' => true,
-        //'suggest' => true,
+        'highlight' => ['tag' => '']
     ])->getResults();
 
     //$name = $results->first()->getFields(['name']);
@@ -157,8 +113,6 @@ class EventsController extends Controller
 
     $arr_response = array();
     $arr_location = array();
-    $arr_brand = array();
-    $arr_index = array();
     foreach($results as $result){
       //$branch_arr =  $result['branch.name'];
       //echo 'branch >>';
@@ -168,19 +122,14 @@ class EventsController extends Controller
       $fields = $result->getFields();
       $arr_branch = $fields['branch.name'];
       //echo 'branch >>';
-      //echo '<pre>';
-      //print_r($fields);
-      //echo '</pre>';
+      echo '<pre>';
+      print_r($fields);
+      echo '</pre>';
 
       $arr_data = array('title' => $fields['title'][0], 'image' => $fields['image'][0], 'url_slug' => $fields['url_slug'][0], 'brief' => $fields['brief'][0]);
       array_push($arr_response, $arr_data);
 
-      $highlights = $result->getHighlights(['branch.name']);
-
-      //echo '<pre>';
-      //print_r($highlights);
-      //exit;
-
+      $highlights = $result->getHighlights();
       if($highlights){
         foreach($highlights as $highlight){
             //echo 'highlight >>';
@@ -191,33 +140,12 @@ class EventsController extends Controller
               //echo 'name => ' . $value . '<br />';
               //$name = preg_replace('/<em>/', '', $value);
               $name = strip_tags($value);
-              //echo 'name => ' . $name . '<br />';
+              echo 'name => ' . $name . '<br />';
               $branch_index = array_search($name, $arr_branch);
-              //echo 'branch id => ' . $branch_index . '<br />';
+              echo 'branch id => ' . $branch_index . '<br />';
 
-              /*if(in_array($branch_index, $arr_index)){
-                echo 'in array index >> <br />';
-                //continue;
-              } else {
-                array_push($arr_index, $branch_index);
-              }*/
-
-              if($branch_index !== false){
-                if(in_array($name, $arr_index) == false){
-
-                  //echo 'index => ' . $branch_index . '<br />';
-                  //echo 'name => '. $name . '<br />';
-                  //echo 'lat => '.  $fields['branch.lat'][$branch_index] . '<br />';
-                  //echo 'lon => '.  $fields['branch.lon'][$branch_index] . '<br />';
-
-                  $arr_map = array('name' => $name, 'lat' => $fields['branch.lat'][$branch_index], 'lon' => $fields['branch.lon'][$branch_index]);
-                  array_push($arr_location, $arr_map);
-                  array_push($arr_index, $name);
-                  //echo '<pre>';
-                  //print_r($arr_index);
-                  //echo '</pre>';
-                }
-              }
+              $arr_map = array('name' => $name, 'lat' => $fields['branch.lat'][$branch_index], 'lon' => $fields['branch.lon'][$branch_index]);
+              array_push($arr_location, $arr_map);
             }
         }
       }

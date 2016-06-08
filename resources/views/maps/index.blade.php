@@ -12,7 +12,8 @@
       <div id="map_canvas" class="map-canvas map-full full-width full-height"></div>
     </div>
     <div class="row">
-      <input name="location_id" type="hidden" id="location_id" value="{{ $id }}">
+      <input name="location_branch_lat" type="hidden" id="location_branch_lat" value="{{ $lat }}">
+      <input name="location_branch_lon" type="hidden" id="location_branch_lon" value="{{ $lon }}">
       <input name="location_lat" type="hidden" id="location_lat" value="0" />
       <input name="location_lon" type="hidden" id="location_lon" value="0" />
       <input name="location_zoom" type="hidden" id="location_zoom" value="0" />

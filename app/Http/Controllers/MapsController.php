@@ -16,11 +16,34 @@ class MapsController extends Controller
   *
   *@return Response
   */
-  public function index($id=0)
+  //public function index($id=0)
+  public function index($lat=0, $lon=0)
   {
-    return view('maps.index', compact('id'));
+    //echo 'lat => ' . $lat . ', lon => ' . $lon . '<br />';
+    return view('maps.index', compact('lat', 'lon'));
   }
 
+  public function latlon($lat=0, $lon=0)
+  {
+    $event_locations = array();
+    if($lat > 0 && $lon > 0){
+      $events = Event::noExpire()->active()->eventLocation($id)->get();
+
+      foreach($events as $id => $event){
+
+        $cate_name = isset($event->category->first()->name)?$event->category->first()->name:'ไม่ระบุ หมวดหมู่';
+
+        if(!array_key_exists($event->location->first()->lat .','. $event->location->first()->lon . ',' . $event->location->first()->name, $event_locations)){
+          $event_locations[$event->location->first()->lat .','. $event->location->first()->lon .','. $event->location->first()->name] = array(array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name));
+        } else {
+          //echo 'in array => ' . $branch->lat .','. $branch->lon;
+          array_push($event_locations[$event->location->first()->lat .','. $event->location->first()->lon .','. $event->location->first()->name], array('title' => $event->title, 'slug' => $event->url_slug, 'brand' => $event->brand->name, 'image' => $event->image, 'category' => $cate_name));
+        }
+      }
+    }
+  }
+
+  //public function locations($id=0)
   public function locations($id=0)
   {
     $event_locations = array();

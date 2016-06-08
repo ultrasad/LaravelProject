@@ -1,7 +1,8 @@
 {
     "paths": {
         "App\\Event": [
-          "Branch"
+          "Branch",
+          "Brand"
         ]
     },
     "reversedPaths": {
@@ -9,6 +10,9 @@
             ""
         ],
         "App\\Branch": [
+            "Events"
+        ],
+        "App\\Brand": [
             "Events"
         ]
     }

@@ -27,6 +27,8 @@ class Branch extends Model
     public static $__es_config = [
       //'autocomplete' => ['event.title', 'event.url_slug', 'event.brief', 'brand.name', 'branch.name'],
       //'suggest' => ['event.title', 'event.url_slug', 'event.brief', 'brand.name', 'branch.name'],
+      'autocomplete' => ['name'],
+      'suggest' => ['name'],
       'word_start' => ['name'],
       'word_end' => ['name'],
       'text_start' => ['name'],

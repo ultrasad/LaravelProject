@@ -38,12 +38,15 @@ class Event extends Model
     ];*/
 
     public static $__es_config = [
-        //'autocomplete' => ['title'],
-        //'suggest' => ['title', 'brand.name', 'branch.name', 'location.name'],
-        'word_start' => ['title', 'brief', 'branch.name'],
-        'word_end' => ['title', 'brief', 'branch.name'],
-        'text_start' => ['title', 'brief', 'branch.name'],
-        'text_end' => ['title', 'brief', 'branch.name'],
+        'autocomplete' => ['title', 'branch.name', 'branch.location'],
+        //'suggest' => ['title', 'branch.name'],
+        'word_start' => ['title', 'description', 'branch.name', 'branch.location'],
+        'word_end' => ['title', 'description', 'branch.name', 'branch.location'],
+        'text_start' => ['title', 'description', 'branch.name', 'branch.location'],
+        'text_middle' => ['title', 'branch.name', 'branch.location'],
+        'text_end' => ['title', 'branch.name', 'branch.location'],
+        //'text_start' => ['title', 'brief', 'description'],
+        //'text_end' => ['title', 'brief', 'description'],
     ];
 
     /**

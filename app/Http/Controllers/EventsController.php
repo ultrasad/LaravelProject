@@ -90,7 +90,8 @@ class EventsController extends Controller
           }
         }
       } else {
-        $arr_data = array('name' => $result->name, 'logo_image' => $result->logo_image, 'url_slug' => $result->url_slug, 'slogan' => $result->slogan);
+        $cate = Brand::find($result->id)->category->first();
+        $arr_data = array('name' => $result->name, 'logo_image' => $result->logo_image, 'url_slug' => $result->url_slug, 'slogan' => $result->slogan, 'category' => $cate->name, 'category_slug' => $cate->category);
         array_push($arr_brand, $arr_data);
       }
     }

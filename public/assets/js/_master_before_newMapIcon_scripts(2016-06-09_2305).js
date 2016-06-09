@@ -310,9 +310,7 @@ var fx_select_brand;
 
         $(document).on('click.pg.search.data-api', '[data-toggle="search"]', function(e) {
             $('.row_result, .row_result_map').html('');
-            $('.row_result, .row_result_brand').html('');
-            $('.result_pro, .result_map, .result_brand').hide();
-            $('#type_promotion').prop("checked", true);
+            $('.result_pro, .result_map').hide();
         });
 
         $('[data-pages="search"]').search({
@@ -356,9 +354,8 @@ var fx_select_brand;
                           //console.log(results);
 
                           $('.search-progress').hide();
-                          $('.result_pro, .result_map, .result_brand').hide();
-                          $('.row_result, .row_result_map, .row_result_brand').html('');
-                          //$('.result_map').hide();
+                          $('.row_result, .row_result_map').html('');
+                          $('.result_map').hide();
 
                           var results = $.parseJSON(resp);
                           if($.isEmptyObject(results.event)){
@@ -372,24 +369,21 @@ var fx_select_brand;
 
                                   console.log('brand => ' + value.name);
 
-                                  var $clone = $('.col_hidden_search > div.col_result_brand').clone();
-                                  $clone.find('span.result-name').html(value.name);
-                                  $clone.find('div.search-img-thumb').css('background-image', 'url(/' + value.logo_image + ')');
-                                  $clone.find('a.result-url').attr('href', '/brand/' + value.url_slug).attr('title', value.name);
-                                  $clone.find('span.result-category').html(value.category);
-                                  $clone.find('a.result-category-url').attr('href', '/category/' + value.category_slug).attr('title', value.category);
+                                  /*var $clone = $('.col_hidden_search > div.col_result_map').clone();
+                                  $clone.find('span.result-title').html(value.name);
+                                  $clone.find('a.result-url').attr('href', '/map/' + value.lat + '/' + value.lon).attr('title', value.name); //check map event location, event branch
                                   $clone.css('display','block');
 
                                   if($index % 2 == 0){
                                     var $div = $("<div class='row new_index_row_result'></div>").append($clone);
-                                    $div.appendTo('.row_result_brand');
+                                    $div.appendTo('.row_result_map');
                                   } else {
-                                    $clone.appendTo('.row_result_brand .new_index_row_result:last');
+                                    $clone.appendTo('.row_result_map .new_index_row_result:last');
                                   }
+                                  */
                                   $index++;
                               });
                             } else {
-                              //$('.result_pro, .result_map, .result_brand').hide();
                               $('.row_result').append('<div class="row p-l-15">ไม่พบข้อมูล...</div>');
                             }
 

@@ -100,6 +100,8 @@
         <!-- BEGIN Overlay Search Results, This part is for demo purpose, you can add anything you like !-->
         <div class="container-fluid">
           <div class="search-results m-t-20 p-b-50">
+            <div class="search-header"><h4 class="bold hint-text result_brand" style="display: none"><u>Brand Search Results</u></h4></div>
+            <div class="row_result_brand"></div>
             <div class="search-header"><h4 class="bold hint-text result_pro" style="display: none"><u>Promotion Search Results</u></h4></div>
             <div class="full-height search-progress" style="display: none">
               <div class="panel-body text-center">
@@ -110,21 +112,38 @@
             <p>&nbsp;</p>
             <div class="search-header"><h4 class="bold hint-text result_map" style="display: none"><u>Map Search Results</u></h4></div>
             <div class="row_result_map"></div>
+            <p>&nbsp;</p>
           </div>
         </div>
         <div class="col_hidden_search">
           <div class="col-md-6 col-xs-12 col_result" style="display: none;">
             <div class="col-sm-12 p-l-0 p-r-0">
               <div class="col-md-1 col-sm-2 col-xs-3 padding-0">
-                <div class="col-xs-12 thumbnail-wrapper bg-success text-white inline m-t-10 p-l-0 p-r-0">
-                  <div class="search-img-thumb" style="background-image: url({{ URL::asset('assets/img/profiles/avatar.jpg') }});">>
+                <div class="col-xs-12 thumbnail-wrapper bg-info text-white inline m-t-10 p-l-0 p-r-0">
+                  <div class="search-img-thumb" style="background-image: url({{ URL::asset('assets/img/profiles/avatar.jpg') }});">
                     <!--<img class="result-image" width="100%" height="60px" src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar2x.jpg') }}" alt="">-->
                   </div>
                 </div>
               </div>
               <div class="p-l-10 inline p-t-5 col-md-11 col-sm-10 col-xs-9 p-r-0">
-                <a class="result-url" href="#" title=""><h5 class="m-b-5"><span class="semi-bold result-title">title</span></h5></a>
-                <span class="result-brief">brief</span>
+                <a class="result-url" href="#" title=""><h5 class="m-b-5"><span class="semi-bold result-title">โปรโมชั่น</span></h5></a>
+                <span class="result-brief">รายละเอีนดแบบย่อ</span>
+                <!--<p class="result-brand hint-text">via promotion</p>-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-12 col_result_brand" style="display: none;">
+            <div class="col-sm-12 p-l-0 p-r-0">
+              <div class="col-md-1 col-sm-2 col-xs-3 padding-0">
+                <div class="col-xs-12 thumbnail-wrapper bg-info text-white inline m-t-10 p-l-0 p-r-0">
+                  <div class="search-img-thumb" style="background-image: url({{ URL::asset('assets/img/profiles/avatar.jpg') }});">
+                    <!--<img class="result-image" width="100%" height="60px" src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src="{{ URL::asset('assets/img/profiles/avatar.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/avatar2x.jpg') }}" alt="">-->
+                  </div>
+                </div>
+              </div>
+              <div class="p-l-10 inline p-t-5 col-md-11 col-sm-10 col-xs-9 p-r-0">
+                <a class="result-url" href="#" title=""><h5 class="m-b-5"><span class="semi-bold result-name">แบรนด์</span></h5></a>
+                <a class="result-category-url" href="#" title=""><span class="result-category">หมวดหมู่</span></a>
                 <!--<p class="result-brand hint-text">via promotion</p>-->
               </div>
             </div>
@@ -132,7 +151,7 @@
           <div class="col-md-6 col-xs-12 col_result_map p-l-5" style="display: none">
             <div class="col-sm-12 p-l-0 p-r-0">
               <div class="p-l-10 inline p-t-5 col-md-12 p-r-0">
-                <a class="result-url" href="#" title=""><h5 class="m-b-5"><i class="pg-map pull-left"></i>&nbsp;<span class="semi-bold result-title">title</span></h5></a>
+                <a class="result-url" href="#" title=""><h5 class="m-b-5"><i class="pg-map pull-left"></i>&nbsp;<span class="semi-bold result-title">โปรโมชั่น</span></h5></a>
               </div>
             </div>
           </div>
@@ -160,14 +179,14 @@
                   </div>
                   <div class="inline m-l-10">
                     <p class="no-margin">
-                      <strong class="text-master"><a href="#" title="Nivea Men" class="brand-event-url">&nbsp;</a></strong>
+                      <strong class="text-master"><a href="#" title="แบรนด์" class="brand-event-url">แบรนด์</a></strong>
                     </p>
-                    <div class="hint-text small-text text-master"><a class="category-event-url" title="เครื่องสำอาง / ความงาม" href="#">&nbsp;</a></div>
+                    <div class="hint-text small-text text-master"><a class="category-event-url" title="หมวดหมู่" href="#">หมวดหมู่</a></div>
                   </div>
               </div>
             </div>
             <div class="modal-body p-t-15">
-              <div class="modal-branch text-master"><u><b><span class="brand">Nivea Men</span> สาขาที่ร่วมรายการ</b></u> <span class="brand_branch_list"></span></div>
+              <div class="modal-branch text-master"><u><b><span class="brand">แบรนด์</span> สาขาที่ร่วมรายการ</b></u> <span class="brand_branch_list"></span></div>
             </div>
             <div class="modal-body">
               <div id="map_canvas_branch" class="map-canvas"></div>

@@ -263,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 50%;
 }
 
-.result_pro, .result_map {
+.result_pro, .result_map, .result_brand {
     color: #5a6779;
 }
 
@@ -1039,7 +1039,7 @@ div.cs-select-brand, div.cs-select-contact {
   margin-bottom: 10px;
 }
 
-.event-relate .relate-img-thumb, .row_result .search-img-thumb, .relate-event-image .relate-img-thumb{
+.event-relate .relate-img-thumb, .row_result .search-img-thumb, .row_result_brand .search-img-thumb, .relate-event-image .relate-img-thumb {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1047,7 +1047,7 @@ div.cs-select-brand, div.cs-select-contact {
     height: 250px;
 }
 
-.row_result .search-img-thumb {
+.row_result .search-img-thumb, .row_result_brand .search-img-thumb {
   width: 100%;
   height: 60px;
 }

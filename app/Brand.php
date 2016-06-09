@@ -3,16 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//use Iverberk\Larasearch\Traits\MappableTrait;
+use Iverberk\Larasearch\Traits\SearchableTrait;
 
 class Brand extends Model
 {
-  //use MappableTrait;
+  use SearchableTrait;
 
   protected $table = 'brand';
 
   //Mass Assignment
   protected $fillable = ['name', 'url_slug', 'logo_image', 'cover_image', 'slogan', 'detail', 'facebook', 'twitter', 'line_officail', 'youtube', 'approve_status']; //Whitelist
+
+  public static $__es_config = [
+      'autocomplete' => ['name'],
+      'text_start' => ['name', 'detail'],
+  ];
 
   public function scopeApproved($query)
   {

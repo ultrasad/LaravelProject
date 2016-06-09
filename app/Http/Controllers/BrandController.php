@@ -228,7 +228,10 @@ class BrandController extends Controller
 
     //logo image
     if($request->hasFile('logo_image')){
-      $base_hash = md5_file(base_path() . '/public/' . $brand->logo_image);
+      $base_hash = '';
+      if(is_file(base_path() . '/public/' . $brand->logo_image)){
+        $base_hash = md5_file(base_path() . '/public/' . $brand->logo_image);
+      }
       $image_hash = md5_file($request->file('logo_image')->getPathName());
 
       if($base_hash != $image_hash){

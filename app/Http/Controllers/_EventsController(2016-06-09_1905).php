@@ -44,69 +44,249 @@ class EventsController extends Controller
   /**
   * Search Test
   */
+  //public function search($keywords='watsons')
   public function search($type="promotion", $keywords='welovepro')
   {
+    //$event = new Event;
+    //$event->reIndex('App\Event --relations');
+
+    //$query['query']['match']['_all'] = $keywords;
+    //$results = Event::searchByQuery($query);
+    //$highlights = Event::search($keywords, ['fields' => ['location.name'], 'highlight' => ['tag' => ' ']])->getResults();
+    //$highlights = Event::search($keywords, ['fields' => ['branch.name', 'branch.location', 'branch.detail'], 'highlight' => ['tag' => ' ']])->getResults();
+    //$highlights = Event::search($keywords, ['fields' => ['branch.name']])->getResults();
+    //$results = Event::search($keywords, ['fields' => ['branch.name']])->getResults();
+    //$results = Branch::search($keywords)->getResults();
+
+    //$query['query']['match']['_all'] = $keywords;
+    //$results = Event::searchByQuery($query);
+    //$results = Event::search($keywords, ['fields' => ['branch.name']])->getResults();
+    //$results = Event::search($keywords, ['fields' => ['branch.name']])->getResults();
+    //$query['query']['match']['_all'] = 'แคราย';
+    //$results = Event::searchByQuery($query);
+    //$results = Event::search('แคราย')->getResults();
+    //$results = Event::search('MBK', ['fields' => ['title', 'branch.name']])->getResults();
+
+    /*$results = Event::search('พารากอน', [
+        'fields' => ['title', 'branch.name'],
+        'select' => ['title', 'branch.name']
+    ])->getResults();*/
+
+    //$query['query']['match']['_all'] = 'เซ็นทรัลลาดพร้าว';
+    //$results = Branch::searchByQuery($query);
+
+    /*$results = Branch::search(trim($keywords), [
+        //'fields' => ['name' => 'text_start'],
+        //'fields' => ['name' => 'word_start'],
+        //'fields' => ['name' => 'text_start'],
+        //'fields' => ['title', 'branch.name' => 'word_start'],
+        //'select' => ['name'],
+        //'suggest' => true,
+        'autocomplete' => true,
+        'highlight' => true
+    ])->getResults();*/
+
+    //$query['query']['match']['_all'] = trim($keywords);
+    //$results = Branch::search(null, ['query' => $query])->getResults();
+    //$results = Branch::searchByQuery($query)->getResults();
+
+    //$results = Branch::search(trim($keywords))->getResults();
+
+    //$results = Branch::search(null, ['json' => ['query' => ['match' => ['_all' => trim($keywords)]]]])->getResults();
+
+    //$query['query']['match']['name'] = trim($keywords);
+    //$results = Branch::search(null, ['query' => $query])->getResults();
+
+    //$results = Branch::search(trim($keywords), ['fields' => ['name'], 'suggest' => true])->getResults();
+    //$suggestios = $results->first()->getSuggestions(['name']);
+
+    /*$results = Branch::search(trim($keywords), [
+      //'fields' => ['name'],
+      'suggest' => true,
+      'autocomplete' => true,
+      'highlight' => true,
+    ])->getResults();
+
+    echo '<pre>';
+    print_r($results);
+    exit;*/
+
+    /*$results = Event::search(trim($keywords), [
+        'fields' => ['branch.name' => 'word_start', 'branch.name' => 'word_end', 'branch.name' => 'text_start', 'branch.name' => 'text_end'],
+        //'fields' => ['title', 'description', 'branch.name' => 'text_start', 'branch.name' => 'text_end'],
+        //'fields' => ['branch.name' => 'text_start', 'branch.name' => 'text_end'],
+        'select' => ['title', 'image', 'url_slug', 'brief', 'branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
+        //'select' => ['branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
+        //'highlight' => ['tag' => '']
+        'highlight' => true,
+        //'suggest' => true,
+    ])->getResults();*/
+
     if($type == 'promotion'){
       $results = Event::search(trim($keywords), [
+          //'fields' => ['branch.name' => 'word_start', 'branch.name' => 'text_start'],
           'fields' => ['title', 'description', 'branch.name' => 'text_start', 'branch.location' => 'text_start'],
+          //'fields' => ['branch.name' => 'text_start', 'branch.name' => 'text_end'],
           'select' => ['title', 'image', 'url_slug', 'brief', 'branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
+          //'select' => ['branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
+          //'highlight' => ['tag' => '']
+          //'autocomplete' => true,
           'highlight' => true,
+          //'suggest' => true,
       ])->getResults();
-    } else {
-        $results = Brand::search(trim($keywords), [
-            'autocomplete' => true,
-            'highlight' => true,
-        ])->getResults();
-    }
+  } else {
+      $results = Brand::search(trim($keywords), [
+          //'fields' => ['branch.name' => 'word_start', 'branch.name' => 'text_start'],
+          //'fields' => ['name' => 'text_start'],
+          //'fields' => ['branch.name' => 'text_start', 'branch.name' => 'text_end'],
+          //'select' => ['brand.name', 'brand.url_slug', 'brand.logo_image', 'brand.slogan'],
+          //'select' => ['branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
+          //'highlight' => ['tag' => '']
+          'autocomplete' => true,
+          'highlight' => true,
+          //'suggest' => true,
+      ])->getResults();
+  }
+
+    //$name = $results->first()->getFields(['name']);
+
+    //$name = $results->first()->getFields(['name']);
+
+    //foreach($results as $result)
+    //{
+      //echo '<pre>';
+      //print_r($result['_source']);
+      // Array notation
+      //$result['_source.wife.name']
+    //}
 
     //echo '<pre>';
-    //print_r($results);
-    //exit;
+    //print_r($name);
+
+    //echo '<pre>';
+    //print_r($name);
+
+    echo '<pre>';
+    print_r($results);
+    exit;
 
     $arr_response = array();
     $arr_location = array();
     $arr_brand = array();
     $arr_index = array();
     foreach($results as $result){
-      if($type == 'promotion'){
-        $fields = $result->getFields();
-        $arr_branch = $fields['branch.name'];
-        $arr_data = array('title' => $fields['title'][0], 'image' => $fields['image'][0], 'url_slug' => $fields['url_slug'][0], 'brief' => $fields['brief'][0]);
-        array_push($arr_response, $arr_data);
-        $highlights = $result->getHighlights(['branch.name']);
-        if($highlights){
-          foreach($highlights as $highlight){
-              foreach($highlight as $value){
-                $name = strip_tags($value);
-                $branch_index = array_search($name, $arr_branch);
-                if($branch_index !== false){
-                  if(in_array($name, $arr_index) == false){
-                    $arr_map = array('name' => $name, 'lat' => $fields['branch.lat'][$branch_index], 'lon' => $fields['branch.lon'][$branch_index]);
-                    array_push($arr_location, $arr_map);
-                    array_push($arr_index, $name);
-                  }
+      //$branch_arr =  $result['branch.name'];
+      //echo 'branch >>';
+      //echo '<pre>';
+      //print_r($result->getFields());
+
+      $fields = $result->getFields();
+      $arr_branch = $fields['branch.name'];
+      //echo 'branch >>';
+      //echo '<pre>';
+      //print_r($fields);
+      //echo '</pre>';
+
+      $arr_data = array('title' => $fields['title'][0], 'image' => $fields['image'][0], 'url_slug' => $fields['url_slug'][0], 'brief' => $fields['brief'][0]);
+      array_push($arr_response, $arr_data);
+
+      $highlights = $result->getHighlights(['branch.name']);
+
+      //echo '<pre>';
+      //print_r($highlights);
+      //exit;
+
+      if($highlights){
+        foreach($highlights as $highlight){
+            //echo 'highlight >>';
+            //echo '<pre>';
+            //print_r($highlight);
+            //echo 'highlights => ' . $highlights[$key] . '<br />';
+            foreach($highlight as $value){
+              //echo 'name => ' . $value . '<br />';
+              //$name = preg_replace('/<em>/', '', $value);
+              $name = strip_tags($value);
+              //echo 'name => ' . $name . '<br />';
+              $branch_index = array_search($name, $arr_branch);
+              //echo 'branch id => ' . $branch_index . '<br />';
+
+              /*if(in_array($branch_index, $arr_index)){
+                echo 'in array index >> <br />';
+                //continue;
+              } else {
+                array_push($arr_index, $branch_index);
+              }*/
+
+              if($branch_index !== false){
+                if(in_array($name, $arr_index) == false){
+
+                  //echo 'index => ' . $branch_index . '<br />';
+                  //echo 'name => '. $name . '<br />';
+                  //echo 'lat => '.  $fields['branch.lat'][$branch_index] . '<br />';
+                  //echo 'lon => '.  $fields['branch.lon'][$branch_index] . '<br />';
+
+                  $arr_map = array('name' => $name, 'lat' => $fields['branch.lat'][$branch_index], 'lon' => $fields['branch.lon'][$branch_index]);
+                  array_push($arr_location, $arr_map);
+                  array_push($arr_index, $name);
+                  //echo '<pre>';
+                  //print_r($arr_index);
+                  //echo '</pre>';
                 }
               }
-          }
+            }
         }
-      } else {
-        $arr_data = array('name' => $result->name, 'logo_image' => $result->logo_image, 'url_slug' => $result->url_slug, 'slogan' => $result->slogan);
-        array_push($arr_brand, $arr_data);
       }
     }
 
-    //echo '<pre>';
-    //print_r($arr_brand);
-    //exit;
-
-    echo json_encode(array('event' => $arr_response, 'map' => $arr_location, 'brand' => $arr_brand));
+    echo json_encode(array('event' => $arr_response, 'map' => $arr_location));
     exit;
+
+    /*
+    $arr_response = array();
+    $arr_location = array();
+    if($results){
+      foreach($results->getResults() as $result){
+        $arr_data = array('title' => $result->title, 'image' => $result->image, 'url_slug' => $result->url_slug, 'brief' => $result->brief, 'brand' => $result->brand['name']);
+        array_push($arr_response, $arr_data);
+      }
+    }
+
+    if($highlights){
+      foreach($highlights as $key => $highlight){
+        $location = $highlight->getHighlights();
+        $arr_map = array('id' => $highlight->location[0]['id'], 'name' => $location['location.name.analyzed'][0], 'lat' => $highlight->location[0]['lat'], 'lon' => $highlight->location[0]['lon']);
+        array_push($arr_location, $arr_map);
+      }
+    }
+    echo json_encode(array('event' => $arr_response, 'map' => $arr_location));
+    */
   }
 
+  /**
+  * Display a list of the event.
+  *
+  *@return Response
+  */
   public function index(Request $request)
   {
+
+    /*$outputPath = base_path('public/images/outputfolder/second_image.jpg');
+    $glideImage = GlideImage::load('images/stock-photo-120916649.jpg', ['w' => '250' , 'filt' => 'greyscale'])
+      ->save($outputPath);
+
+    return view('welcome')
+      ->with(compact('glideImage'));
+
+    exit;*/
+
     $paginate = 10;
     $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
+
+    //$paginate = 10;
+    //$events = Cache::remember('Promotion_Page_' . $paginate, 1440, function() use ($paginate) {
+      //return Event::where('url_slug', $slug)->first();
+      //return Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
+    //});
 
     $more_page = $events->hasMorePages();
     $total_page = $events->total();
@@ -114,6 +294,11 @@ class EventsController extends Controller
     return view('events.list', compact('events', 'more_page', 'total_page', 'paginate'));
   }
 
+  /**
+  * Show the form for creating a new resource.
+  *
+  *@return Response
+  */
   public function create()
   {
       $user_id = Auth::user()->id;
@@ -136,6 +321,11 @@ class EventsController extends Controller
       return view('events.create', compact('brands', 'branch', 'brand_category', 'role_id'));
   }
 
+  /**
+  * Store a newly created resource in storage.
+  *
+  *@return Response
+  */
   public function store(EventRequest $request)
   {
     $event = new Event($request->all());

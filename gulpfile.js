@@ -13,7 +13,7 @@ elixir(function(mix) {
            'assets/fotorama/fotorama.css',
            'assets/css/pages-icons.css',
            'assets/css/pages-main.css',
-           'assets/css/style.css'
+           //'assets/css/style.css'
        ], 'public/css/all.css','public');
 
        mix.scripts([
@@ -28,7 +28,7 @@ elixir(function(mix) {
            'assets/imagesloaded/imagesloaded.pkgd.min.js',
            'assets/jquery-infinite-scroll/jquery.infinitescroll.min.js',
            'assets/js/pages.js',
-           'assets/js/scripts.js',
+           //'assets/js/scripts.js',
        ], 'public/js/all.js','public');
 
        mix.version([

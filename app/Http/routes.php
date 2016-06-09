@@ -59,10 +59,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('brand/category/{name}', 'BrandController@category');
     Route::get('brand/locations/{slug}', 'BrandController@locations');
     Route::get('maps/locations', 'MapsController@locations');
-    //Route::get('maps/locations/{id}', 'MapsController@locations');
-    Route::get('maps/locations/{lat}/{lon}', 'MapsController@latlon');
-    Route::get('maps/{lat}/{lon}', 'MapsController@index')->where(['lat' => '[0-9\.]+', 'lon' => '[0-9\.]+']);
     Route::get('map', 'MapsController@index');
+    //Route::get('map/check', 'MapsController@check');
+    //Route::get('events/check', 'EventsController@check');
+    Route::get('map/locations/{id}', 'MapsController@locations');
+    Route::get('map/latlon/{lat}/{lon}', 'MapsController@latlon');
+    //Route::get('map/{lat}/{lon}', 'MapsController@index')->where(['lat' => '[0-9\.]+', 'lon' => '[0-9\.]+']);
+    Route::get('map/{lat}/{lon}', 'MapsController@index')->where(['lat' => '[0-9\.]+', 'lon' => '[0-9\.]+']);
     //Route::get('maps/{id}', 'MapsController@index'); //old solution
     Route::get('brand/register', [
       'middleware' => ['auth', 'roles'],
@@ -89,7 +92,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('contact', 'ContactController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers
 
-    Route::get('events/search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));
+    //Route::get('events/search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));
+    Route::get('events/search/{type}/{keywords}', 'EventsController@search');
     Route::get('/{slug}', array('as' => 'slug', 'uses' => 'EventsController@show'));
 
     //Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers

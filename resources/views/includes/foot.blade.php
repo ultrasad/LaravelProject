@@ -15,3 +15,5 @@
 <script type="text/javascript" src="{{ URL::asset('assets/classie/classie.js') }}"></script>
 @endif
 <script type="text/javascript" src="{{ elixir('js/all.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initialize&libraries=places" async defer></script>

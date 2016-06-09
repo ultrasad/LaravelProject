@@ -40,11 +40,11 @@ class Event extends Model
     public static $__es_config = [
         'autocomplete' => ['title', 'branch.name', 'branch.location'],
         //'suggest' => ['title', 'branch.name'],
-        'word_start' => ['title', 'description', 'branch.name', 'branch.location'],
-        'word_end' => ['title', 'description', 'branch.name', 'branch.location'],
+        //'word_start' => ['title', 'description', 'branch.name', 'branch.location'],
+        //'word_end' => ['title', 'description', 'branch.name', 'branch.location'],
         'text_start' => ['title', 'description', 'branch.name', 'branch.location'],
-        'text_middle' => ['title', 'branch.name', 'branch.location'],
-        'text_end' => ['title', 'branch.name', 'branch.location'],
+        //'text_middle' => ['title', 'branch.name', 'branch.location'],
+        //'text_end' => ['title', 'branch.name', 'branch.location'],
         //'text_start' => ['title', 'brief', 'description'],
         //'text_end' => ['title', 'brief', 'description'],
     ];
@@ -301,6 +301,14 @@ class Event extends Model
       return $this->whereHas('location', function($query) use ($location)
       {
         $query->where('id', '=', $location);
+      });
+    }
+
+    public function scopeEventLatLon($query, $lat, $lon)
+    {
+      return $this->whereHas('branch', function($query) use ($lat, $lon)
+      {
+        $query->where('lat', '=', $lat)->where('lon', '=', $lon);
       });
     }
 

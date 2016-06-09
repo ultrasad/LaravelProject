@@ -10,18 +10,22 @@
     <div class="page-container">
       @include('includes.header')
       <!-- START PAGE CONTENT WRAPPER -->
-      <div class="page-content-wrapper {{ Request::is('map') ? 'full-height':'' }}">
+      <div class="page-content-wrapper {{ (Request::segment(1) == 'map')?'full-height':'' }}">
         <!-- START PAGE CONTENT -->
         <!-- <div class="content sm-gutter"> -->
-        <div class="content {{ Request::is('map') ? 'full-width full-height overlay-footer':'' }}">
+        <!--<div class="content {{ (Request::segment(1) == 'map')?'full-width full-height overlay-footer':'' }}">-->
+        <div class="content {{ (Request::segment(1) == 'map')?'full-width full-height overlay-footer':'' }}">
           <!-- START ROW -->
           @yield('content')
           <!-- END ROW -->
         </div>
         <!-- END PAGE CONTENT -->
-        @if(!Request::is('map'))
+        <!--
+        @if(Request::segment(1) != 'map')
           @include('includes.footer')
         @endif
+        -->
+        @include('includes.footer')
       </div>
       <!-- END PAGE CONTENT WRAPPER -->
     </div>
@@ -77,6 +81,18 @@
           <input id="overlay-search" class="no-border overlay-search bg-transparent" placeholder="Search..." autocomplete="off" spellcheck="false">
           <br />
           <div class="inline-block">
+            <!--<p class="fs-13">
+              <input type="radio" id="promotion" name="search_type" value="promotion" /> Promotion
+              <input type="radio" id="brand" name="search_type" value="brand" /> Brand
+            </p>-->
+            <div class="radio radio-success">
+              <input type="radio" id="type_promotion" name="searchtype" value="promotion" checked="checked">
+              <label for="type_promotion">Promotion</label>
+              <input type="radio" id="type_brand" name="searchtype" value="brand">
+              <label for="type_brand">Brand</label>
+            </div>
+          </div>
+          <div class="inline-block m-l-10">
             <i class="fa fa-search p-l-5" aria-hidden="true"></i><p class="inline-block fs-13 m-l-10">Press enter to search</p>
           </div>
           <!-- END Overlay Controls !-->

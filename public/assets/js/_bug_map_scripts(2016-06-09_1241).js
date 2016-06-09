@@ -334,15 +334,12 @@ var fx_select_brand;
                 _token = $('input[name=_token]').val();
                 //data = new FormData(this);
                 if($('#overlay-search').val() != ''){
-                  var check_type = 'promotion';
-                  if($('.overlay-content #type_brand').is(':checked')){
-                    var check_type = 'brand';
-                  }
+
                   $('.search-progress').show();
                   delay(function(){
                     //alert('Time elapsed!');
                     $.ajax({
-                        url: '/events/search/' + check_type + '/' + searchString,
+                        url: '/events/search/' + searchString,
                         headers: {'X-CSRF-TOKEN': _token},
                         type: 'GET',
                         datatype: 'JSON',
@@ -359,33 +356,9 @@ var fx_select_brand;
 
                           var results = $.parseJSON(resp);
                           if($.isEmptyObject(results.event)){
-
-                            console.log('empty promotion...');
-
-                            if(!$.isEmptyObject(results.brand)){
-                              $('.result_brand').show();
-                              var $index  =0;
-                              $.each(results.brand, function (key, value) {
-
-                                  console.log('brand => ' + value.name);
-
-                                  /*var $clone = $('.col_hidden_search > div.col_result_map').clone();
-                                  $clone.find('span.result-title').html(value.name);
-                                  $clone.find('a.result-url').attr('href', '/map/' + value.lat + '/' + value.lon).attr('title', value.name); //check map event location, event branch
-                                  $clone.css('display','block');
-
-                                  if($index % 2 == 0){
-                                    var $div = $("<div class='row new_index_row_result'></div>").append($clone);
-                                    $div.appendTo('.row_result_map');
-                                  } else {
-                                    $clone.appendTo('.row_result_map .new_index_row_result:last');
-                                  }
-                                  */
-                                  $index++;
-                              });
-                            } else {
-                              $('.row_result').append('<div class="row p-l-15">ไม่พบข้อมูล...</div>');
-                            }
+                            //console.log('yyy');
+                            $('.row_result').append('<div class="row p-l-15">ไม่พบข้อมูล...</div>');
+                            //console.log('xxxx');
 
                           } else {
                             //var results = $.parseJSON(resp);
@@ -427,7 +400,7 @@ var fx_select_brand;
                             $.each(results.map, function (key, value) {
                                 var $clone = $('.col_hidden_search > div.col_result_map').clone();
                                 $clone.find('span.result-title').html(value.name);
-                                $clone.find('a.result-url').attr('href', '/map/' + value.lat + '/' + value.lon).attr('title', value.name); //check map event location, event branch
+                                $clone.find('a.result-url').attr('href', '/maps/' + value.lat + '/' + value.lon).attr('title', value.name); //check map event location, event branch
                                 $clone.css('display','block');
 
                                 if($index % 2 == 0){
@@ -1504,17 +1477,12 @@ var fx_select_brand;
           }
         });
 
-        //if($('#map_canvas, #map_canvas_branch').exists()){
-          /*$("<script/>", {
+        if($('#map_canvas, #map_canvas_branch').exists()){
+          $("<script/>", {
             "type": "text/javascript",
             //src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&zoom=false&language=th&hl=th&callback=initialize&libraries=places"
-            src: "https://maps.googleapis.com/maps/api/js?v=3.exp&language=th&hl=th&callback=initialize&libraries=places",
-            //async: true,
-            //defer: true,
+            src: "https://maps.googleapis.com/maps/api/js?v=3.exp&language=th&hl=th&callback=initialize&libraries=places"
           }).appendTo("body");
-          */
-          //console.log('google map hide load..');
-
           /*$.getScript('[js containing the initialize function]',function(){
               $.getScript('https://maps.googleapis.com/maps/api/js?v=3.exp&callback=initialize');
           });
@@ -1529,7 +1497,7 @@ var fx_select_brand;
             script.src = src;
           }
           loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=initialize',function(){});*/
-        //}
+        }
 
         $(document).on('change', '.btn-file :file', function() {
           var input = $(this),
@@ -1938,10 +1906,15 @@ function initialize() {
       CustomMarker.prototype = new mapObj.OverlayView();
       CustomMarker.prototype.draw = function(){
 
+        console.log('draw map..');
+
         var self = this;
         var div = this.div;
 
         if(!div){
+
+          console.log('div ok..');
+
           div = this.div = document.createElement('div');
           div.className = 'marker';
           div.style.position = 'absolute';
@@ -1953,6 +1926,7 @@ function initialize() {
           div.innerHTML = '<img src="'+ base_url +'/assets/img/pin_icon.png" stye="position: absolute; top: 0px; left: 0px; clip: rect(0px, 40px, 40px, 0px);" /><div class="text-count" style="position: absolute; top: 0px;left: 5px; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
           //div.innerHTML = '<div class="text-count" style="position: absolute; top: 5px;left: 5px; color: #ffffff; background: red; -moz-border-radius: 70px; -webkit-border-radius: 70px; border-radius: 70px; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
 
+          console.log('maker id => ' + self.args.marker_id);
           if (typeof(self.args.marker_id) !== 'undefined') {
             div.dataset.marker_id = self.args.marker_id;
           }
@@ -1973,6 +1947,8 @@ function initialize() {
 
           var panes = this.getPanes();
           panes.overlayImage.appendChild(div);
+        } else {
+          console.log('don\'t div..');
         }
 
         var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
@@ -2048,6 +2024,12 @@ function initialize() {
                 var markerLat = location_list[0];
                 var markerLng = location_list[1];
 
+                console.log('k => ' + k);
+                console.log('lat => ' + markerLat);
+                console.log('lon => ' + markerLng);
+                console.log('count => ' + data.length);
+                console.log('name => ' + markerName);
+
                 var latlon  = new mapObj.LatLng(markerLat, markerLng);
                 overlay = new CustomMarker(
               		latlon,
@@ -2090,7 +2072,11 @@ function initialize() {
               $('#filters.maps').addClass('open');
               return false;
             });
+
+            //mapObj.event.trigger(map, 'resize');
             map.fitBounds(window.latlngbounds);
+            //mapBranch.fitBounds(window.latlngboundsBranch);
+
           } else {
             console.log('empty object');
           }

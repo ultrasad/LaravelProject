@@ -1903,7 +1903,7 @@ function initialize() {
         icon: icon_image,
         anchorPoint: new mapObj.Point(0, -29)
       });
-    }
+    } //end map canvas check
 
     //map branch location
     if($('#map_canvas_branch').exists() && document.getElementById("event_id") == null){
@@ -1927,7 +1927,7 @@ function initialize() {
         icon: icon_image,
         anchorPoint: new mapObj.Point(0, -29)
       });
-    }
+    } //end map canvas branch check
 
     if($('.map-full').exists()){ //main map full
       var styles = [];
@@ -2178,7 +2178,7 @@ function initialize() {
 
       });
 
-    }
+    } //end map full
 
     if($('.event_slug').exists()){ //event locations
       $.ajax({
@@ -2263,7 +2263,7 @@ function initialize() {
               console.log(JSON.stringify(jqXHR.responseJSON));
           }
       });
-    }
+    } //end map event detail
 
     //event location
     if($('#event_location').exists()){ //search box
@@ -2343,10 +2343,9 @@ function initialize() {
         infowindow.setContent('<div><strong class="text-master">' + place.name + '</strong></div>');
         infowindow.open(map, marker);
       });
-    }
+    } //end event location backend
 
-    //branch location
-    if($('#branch_location').exists()){
+    if($('#branch_location').exists()){ //branch location
 
       console.log('branch location...');
 
@@ -2415,7 +2414,7 @@ function initialize() {
           //});
         }
       });
-    }
+    } //end brand location
 
     /* Modal Map */
     //$(document).on('click', '.feed .btnToggleMap, .brand-master-social .btnToggleMap', function(){
@@ -2432,7 +2431,7 @@ function initialize() {
         //$('#modal_slideup_map').modal('show');
     //});
 
-    $(document).on('click', '#btn-user-location', function(e){
+    $(document).on('click', '#btn-user-location', function(e){ //btn user location
       console.log('user location...');
 
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -2466,7 +2465,7 @@ function initialize() {
         handleLocationError(true, infowindow, map.getCenter());
       });
 
-    });
+    }); //end user location
 
     $('#modal_map').on('show.bs.modal', function(e){
       if(typeof mapBranch =="undefined") return;
@@ -2477,8 +2476,261 @@ function initialize() {
       setTimeout(function(){resizingMap(slug, type);} , 400);
     });
 
-    function resizingMap(slug, type)
-    {
+    function resizingMap(slug, type){
+      /* map overlay */
+      CustomMarker.prototype = new mapObj.OverlayView();
+      CustomMarker.prototype.draw = function(){
+
+        var self = this;
+        var div = this.div;
+
+        if(!div){
+          div = this.div = document.createElement('div');
+          div.className = 'marker';
+          div.style.position = 'absolute';
+          div.style.cursor = 'pointer';
+          div.style.width = '40px';
+          div.style.height = '40px';
+          //div.style.background = 'pink';
+          div.style.margin = '-20px 0px 0px -10px';
+          //div.innerHTML = '<img src="'+ base_url +'/assets/img/pin_icon.png" stye="position: absolute; top: 0px; left: 0px; clip: rect(0px, 40px, 40px, 0px);" /><div class="text-count" style="position: absolute; top: 0px;left: 5px; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
+          //div.innerHTML = '<div class="text-count" style="position: absolute; top: 5px;left: 5px; color: #ffffff; background: red; -moz-border-radius: 70px; -webkit-border-radius: 70px; border-radius: 70px; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
+          div.innerHTML = '<img src="'+ base_url +'/assets/img/pin_icon.png" stye="position: absolute; top: 0px; left: 0px; clip: rect(0px, 40px, 40px, 0px);" /><div class="text-count" style="position: absolute; top: 0px;left: 5px; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;"><img src="'+self.args.brand_logo+'" width="30" height="30" class="img-brand-branch" /></div>';
+
+          if (typeof(self.args.marker_id) !== 'undefined') {
+            div.dataset.marker_id = self.args.marker_id;
+          }
+
+          mapObjBranch.event.addDomListener(div, "click", function(event) {
+            //alert('You clicked on a custom marker!');
+            console.log('self.args.marker_name => ' + self.args.marker_name);
+            console.log('self.args.marker_id => ' + self.args.marker_id);
+            console.log('self.args.event_count => ' + self.args.event_count);
+            console.log('self.args.brand_logo => ' + self.args.brand_logo);
+            console.log('div => ' + div);
+            console.log('event => ' + event);
+
+            /* hide info window, 2016-06-10 0106
+            infowindowBranch.setContent('<div class="popup_container"><strong class="marker_name text-master">'+ self.args.marker_name +'</strong></div><p><a href="#" data-index="'+ self.args.marker_id +'" class="events_locations">มี '+ self.args.event_count +' โปรโมชั่นที่นี่</a></p>');
+            infowindowBranch.open(map, self);
+            mapBranch.panTo(self.args.latlon);
+            //mapObj.event.trigger(self, "click");
+            */
+          });
+
+          var panes = this.getPanes();
+          panes.overlayImage.appendChild(div);
+        }
+
+        var point = this.getProjection().fromLatLngToDivPixel(this.latlng);
+
+        if (point) {
+          div.style.left = (point.x - 10) + 'px';
+          div.style.top = (point.y - 20) + 'px';
+        }
+      };
+
+      CustomMarker.prototype.remove = function() {
+        if (this.div) {
+          this.div.parentNode.removeChild(this.div);
+          this.div = null;
+        }
+      };
+
+      CustomMarker.prototype.getPosition = function() {
+        return this.latlng;
+      };
+      /* end map overlay */
+
+      //default LatLngBounds
+      window.latlngboundsBranch = new mapObjBranch.LatLngBounds();
+
+      var $url;
+      if(type == 'promotion'){
+        $url = '/events/locations/' + slug;
+      } else if (type == 'brand'){
+        $url = '/brand/locations/' + slug;
+      }
+
+      $.ajax({
+          url: $url,
+          type: 'GET',
+          datatype: 'JSON',
+          processData: false,
+          contentType: false,
+          success: function (resp) {
+
+            var info_event = $.parseJSON(resp);
+            var brand_name = info_event.brand.name;
+            var brand_slug = info_event.brand.url_slug;
+            var brand_image = info_event.brand.image;
+            var category_slug = info_event.brand.category_slug;
+            var caegory_name = info_event.brand.category;
+
+            if(brand_image == null){
+              brand_image = 'assets/img/profiles/e.jpg';
+            }
+
+            $('.modal .thumbnail-wrapper img').attr('src', base_url + '/' + brand_image).attr('alt', brand_name);
+            $('.modal .brand-event-url').attr('href', base_url + '/brand/' + brand_slug).attr('title', brand_name).html(brand_name);
+            $('.modal .category-event-url').attr('href', base_url + '/category/' + category_slug).attr('title', caegory_name).html(caegory_name);
+            $('.modal span.brand').html(brand_name);
+
+            window.events_locations = new Array();
+            var index_location = 0;
+            $.each(info_event.locations, function(k, v){ //loop location map
+                var data = [];
+                $.each(v, function(x, y){
+                    data.push(y);
+                });
+
+                window.events_locations[k] = data;
+                var location_list = k.split(",");
+                var markerName = location_list[2];
+                var markerLat = location_list[0];
+                var markerLng = location_list[1];
+
+                if(index_location > 0){
+                  $('#modal_map .brand_branch_list').append(', <span><i aria-hidden="true" class="pg-map hint-text-9"></i></span><a class="place" data-index="'+k+'" title="'+markerName+'" href="#'+markerName+'">'+markerName+'</a>');
+                } else {
+                  $('#modal_map .brand_branch_list').html('').append('<span><i aria-hidden="true" class="pg-map hint-text-9"></i></span><a class="place" data-index="'+k+'" title="'+markerName+'" href="#'+markerName+'">'+markerName+'</a>');
+                }
+                index_location++;
+
+                console.log('k => ' + k);
+                console.log('markerName => ' + markerName);
+
+                var $brand_logo = $('#modal_map .thumbnail-wrapper img').attr('src');
+
+                console.log('brand_image => ' + $brand_logo);
+                var latlon  = new mapObj.LatLng(markerLat, markerLng);
+                overlay = new CustomMarker(
+              		latlon,
+              		mapBranch,
+              		{
+              			marker_id: k,
+              			//event_count: data.length,
+                    event_count: 1,
+                    brand_logo: $brand_logo,
+                    latlon: latlon,
+                    marker_name: markerName,
+              		}
+              	);
+                window.latlngboundsBranch.extend(latlon);
+
+                /*var markerLatLng = new mapObjBranch.LatLng(markerLat,markerLng);
+                window.markers[k] = new mapObjBranch.Marker({
+                    position:markerLatLng,
+                    map: mapBranch,
+                    title:markerName,
+                    icon: icon_image
+                });
+
+                mapObjBranch.event.addListener(window.markers[k], 'click', function(){
+                    infowindowBranch.setContent('<div class="popup_container"><strong class="marker_name text-master">'+ markerName +'</strong></div>');
+                    infowindowBranch.open(mapBranch,window.markers[k]);
+                    mapBranch.panTo(window.markers[k].getPosition());
+                });
+
+                window.branch_marker.push(k);
+
+                //Extend each marker's position in LatLngBounds object.
+                window.latlngboundsBranch.extend(window.markers[k].position);
+                */
+
+            }); //end loop location map
+
+            mapObjBranch.event.trigger(mapBranch, 'resize');
+            //Center map and adjust Zoom based on the position of all markers.
+            mapBranch.fitBounds(window.latlngboundsBranch);
+          },
+          error: function(jqXHR, textStatus, errorThrown)
+          {
+              console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+              console.log(JSON.stringify(jqXHR.responseJSON));
+          }
+      }); //end ajax
+
+      //example
+      /*$.ajax({
+          url: $url,
+          type: 'GET',
+          datatype: 'JSON',
+          //processData: false,
+          //contentType: false,
+          success: function (resp) {
+            //console.log('resp length => ' + resp.length);
+            var locations = $.parseJSON(resp);
+            console.log('data => ' + $.isEmptyObject(locations));
+            //console.log('data 0 length => ' + locations.length);
+            if(!$.isEmptyObject(locations)){
+
+            console.log('not empty');
+            //var markers = [];
+            window.events_locations = new Array();
+            //console.log('count => ' + locations.length);
+            $.each(locations, function(k, v){
+                var data = [];
+                $.each(v, function(x, y){
+                    data.push(y);
+                });
+                window.events_locations[k] = data;
+
+                var location_list = k.split(",");
+                var markerName = location_list[2];
+                var markerLat = location_list[0];
+                var markerLng = location_list[1];
+
+                var latlon  = new mapObj.LatLng(markerLat, markerLng);
+                overlay = new CustomMarker(
+              		latlon,
+              		map,
+              		{
+              			marker_id: k,
+              			event_count: data.length,
+                    latlon: latlon,
+                    marker_name: markerName,
+              		}
+              	);
+                window.latlngbounds.extend(latlon);
+            });
+
+            $(document).on('click', '.events_locations', function(e){
+              var index = $(this).data('index');
+              $('#filters.maps').removeClass('open');
+              $('ul#map-items').html('');
+              $.each(window.events_locations[index], function(k,v){
+                var clone = '<li class="map-event-list clearfix text-master">';
+                    clone += '<div class="col-xs-12 col-top padding-5">';
+                    clone += '<div class="relate-header-group"><a target="_blank" href="/brand/'+v.brand_slug+'" title="'+v.brand+'"><span class="thumbnail-wrapper d32 circular pull-left"><img width="34" height="34" class="col-top" src="/'+v.brand_logo+'" data-src="/'+v.brand_logo+'" data-src-retina="/'+v.brand_logo+'" alt="'+v.brand+'"></span></a>';
+                    clone += '<div class="pull-left padding-0 p-l-5 col-xs-10">';
+                    clone += '<div class="col-md-12 padding-0 relate-event-header"><span class="text-master col-sm-6 pull-left padding-0"><a class="relate-brand-url" title="'+v.brand+'" href="/brand/'+v.brand_slug+'">'+v.brand+'</a></span>';
+                    clone += '<span class="block text-master hint-text fs-12 col-sm-6 pull-right align-right padding-0"><a class="relate-category-url" title="'+v.category+'" href="/category/'+v.category_slug+'">'+v.category+'</a></span></div></div></div>';
+                    clone += '<div class="full-width clearfix relate-event-body p-l-5 p-r-10"><a target="_blank" title="'+v.title+'" href="/'+v.slug+'"><div class="relate-event-image"><div class="relate-img-thumb full-width m-t-5 m-b-5" width="100%" style="background-image: url('+base_url +'/'+ v.image+');"></div></a></div>';
+                    clone += '<p class="relate-event-title"><a target="_blank" title="'+v.title+'" href="/'+v.slug+'">'+v.title+'</a></p>';
+                    clone += '<p class="block text-master hint-text fs-12"><i class="fa fa-calendar" aria-hidden="true"></i> '+v.start_date_thai+' - '+v.end_date_thai+'</p>';
+                    clone += '</div></div></li>';
+                    $('ul#map-items').append(clone);
+              });
+              $('#filters .map-location').html($(this).closest('div').find('.marker_name').html());
+              $('#filters.maps').addClass('open');
+              return false;
+            });
+            map.fitBounds(window.latlngbounds);
+          } else {
+            console.log('empty object');
+          }
+
+          },
+          error: function(jqXHR, textStatus, errorThrown)
+          {
+              console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+              console.log(JSON.stringify(jqXHR.responseJSON));
+          }
+      });*/
+    }
+
+    function _resizingMap(slug, type){ //old OK, 2016-06-10 1232
       //mapObjBranch.event.trigger(mapBranch, 'resize');
       //mapBranch.setZoom(14);
       //mapBranch.setCenter(default_latlng);
@@ -2544,7 +2796,7 @@ function initialize() {
 
             window.events_locations = new Array();
             var index_location = 0;
-            $.each(info_event.locations, function(k, v){
+            $.each(info_event.locations, function(k, v){ //loop location map
                 var data = [];
                 $.each(v, function(x, y){
                     data.push(y);
@@ -2582,7 +2834,8 @@ function initialize() {
 
                 //Extend each marker's position in LatLngBounds object.
                 window.latlngboundsBranch.extend(window.markers[k].position);
-            });
+
+            }); //end loop location map
 
             mapObjBranch.event.trigger(mapBranch, 'resize');
             //Center map and adjust Zoom based on the position of all markers.
@@ -2608,7 +2861,8 @@ function initialize() {
       //mapObjBranch.event.trigger(mapBranch, 'resize');
       //mapBranch.setCenter(default_latlng);
       //console.log('slideup map show modal.');
-    }
+
+    } //end resize map
 
     $(document).on('click', '.btn_branch_delete', function(e){
       $(this).closest('.branch_row').remove();

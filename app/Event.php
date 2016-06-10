@@ -179,6 +179,20 @@ class Event extends Model
       Carbon::setLocale('th');
     }
 
+    public function scopeFilter($query, $condition)
+    {
+      if($condition == 'today'){
+       return $query->where('start_date', date('Y-m-d'));
+     } else if ($condition == 'thisweek'){
+       return $query->whereBetween('start_date', [
+            Carbon::parse('last monday')->startOfDay(),
+            Carbon::parse('next friday')->endOfDay(),
+        ]);
+     } else if(preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$condition)){ //Y-m-d
+       return $query->where('start_date', date('Y-m-d', strtotime($condition)));
+     }
+    }
+
     /**
     * Scope a query to only include active events.
     *

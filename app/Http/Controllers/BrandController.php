@@ -171,6 +171,8 @@ class BrandController extends Controller
     if(!empty($branchId)){
        $brand->branch()->sync($branchId);
     }
+    
+    $brand->reIndex(); //reindex search
 
     if($brand->id > 0){
       return Response::json('success', array(

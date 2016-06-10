@@ -92,6 +92,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('contact', 'ContactController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers
 
+    //filter
+    Route::get('/{filter}', array('as' => 'filter', 'uses' => 'FilterController@condition'))
+    ->where('filter', '(today|thisweek|[0-9]{4}-[0-9]{2}-[0-9]{2})');
+
     //Route::get('events/search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));
     Route::get('events/search/{type}/{keywords}', 'EventsController@search');
     Route::get('/{slug}', array('as' => 'slug', 'uses' => 'EventsController@show'));

@@ -46,6 +46,12 @@ class EventsController extends Controller
   */
   public function search($type="promotion", $keywords='welovepro')
   {
+    //$event = new Event;
+    //$event->reIndex('App\Event --relations');
+
+    //$brand = new Brand;
+    //$brand->reIndex();
+
     if($type == 'promotion'){
       $results = Event::search(trim($keywords), [
           'fields' => ['title', 'description', 'branch.name' => 'text_start', 'branch.location' => 'text_start'],
@@ -90,8 +96,14 @@ class EventsController extends Controller
           }
         }
       } else {
+        $category_name = 'ไม่ระบุหมวดหมู่';
+        $category_slug = 'unknow';
         $cate = Brand::find($result->id)->category->first();
-        $arr_data = array('name' => $result->name, 'logo_image' => $result->logo_image, 'url_slug' => $result->url_slug, 'slogan' => $result->slogan, 'category' => $cate->name, 'category_slug' => $cate->category);
+        if($cate){
+          $category_name = $cate->name;
+          $category_slug = $cate->category;
+        }
+        $arr_data = array('name' => $result->name, 'logo_image' => $result->logo_image, 'url_slug' => $result->url_slug, 'slogan' => $result->slogan, 'category' => $category_name, 'category_slug' => $category_slug);
         array_push($arr_brand, $arr_data);
       }
     }
@@ -241,7 +253,7 @@ class EventsController extends Controller
       $event->location()->sync($location);
     }
 
-    $event->reIndex('App\Event --relations');
+    $event->reIndex('App\Event --relations'); //reindex search
 
     if($event->id > 0){
       return Response::json('success', array(

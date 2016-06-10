@@ -19,6 +19,17 @@ class Brand extends Model
       'text_start' => ['name', 'detail'],
   ];
 
+  /**
+  * @return bool
+  */
+  public function shouldIndex()
+  {
+      // Your custom logic to determine if a (re)index should be performed
+      //$this->shouldIndex();
+      //$this->deleted('Event');
+      return true;
+  }
+
   public function scopeApproved($query)
   {
     $query->where('approve_status', '=', 'Y');

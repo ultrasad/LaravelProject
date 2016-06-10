@@ -538,8 +538,12 @@ ol, ul {
 }
 
 .page-sidebar .sidebar-menu .menu-items > li.brand-group {
-  padding-left: 28px;
-  padding-right: 28px;
+  padding-left: 41px;
+  /*padding-right: 28px;*/
+}
+
+body.sidebar-visible .page-sidebar .menu-items .brand-group {
+  transform: translate3d(-14px, 0px, 0px);
 }
 
 .page-sidebar .sidebar-menu .menu-items > li.brand-group > a {

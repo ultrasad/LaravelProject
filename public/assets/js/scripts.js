@@ -2477,6 +2477,18 @@ function initialize() {
     });
 
     function resizingMap(slug, type){
+
+      if(typeof mapBranch =="undefined") return;
+
+      if(window.branch_marker.length > 0){ // clear marker branch
+        //console.log('branch more 0' + window.branch_marker.toSource());
+        $.each(window.branch_marker, function(x, y){
+            window.markers[y].setMap(null);
+            //window.branch_marker[y].setMap(null);
+            console.log('x => ' + x + ', y => ' + y);
+        });
+      }
+
       /* map overlay */
       CustomMarker.prototype = new mapObj.OverlayView();
       CustomMarker.prototype.draw = function(){
@@ -2489,13 +2501,13 @@ function initialize() {
           div.className = 'marker';
           div.style.position = 'absolute';
           div.style.cursor = 'pointer';
-          div.style.width = '40px';
-          div.style.height = '40px';
+          div.style.width = '43px';
+          div.style.height = '42px';
           //div.style.background = 'pink';
           div.style.margin = '-20px 0px 0px -10px';
           //div.innerHTML = '<img src="'+ base_url +'/assets/img/pin_icon.png" stye="position: absolute; top: 0px; left: 0px; clip: rect(0px, 40px, 40px, 0px);" /><div class="text-count" style="position: absolute; top: 0px;left: 5px; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
           //div.innerHTML = '<div class="text-count" style="position: absolute; top: 5px;left: 5px; color: #ffffff; background: red; -moz-border-radius: 70px; -webkit-border-radius: 70px; border-radius: 70px; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;">'+self.args.event_count+'</div>';
-          div.innerHTML = '<img src="'+ base_url +'/assets/img/pin_icon.png" stye="position: absolute; top: 0px; left: 0px; clip: rect(0px, 40px, 40px, 0px);" /><div class="text-count" style="position: absolute; top: 0px;left: 5px; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;"><img src="'+self.args.brand_logo+'" width="30" height="30" class="img-brand-branch" /></div>';
+          div.innerHTML = '<img src="'+ base_url +'/assets/img/pin_icon_white.png" stye="position: absolute; top: 0px; left: 0px; clip: rect(0px, 40px, 40px, 0px);" /><div class="text-count" style="position: absolute; top: 0px;left: 5px; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif; font-weight: bold; font-style: normal; text-decoration: none; text-align: center; width: 30px; line-height:30px;"><img src="'+self.args.brand_logo+'" width="30" height="30" class="img-brand-branch" /></div>';
 
           if (typeof(self.args.marker_id) !== 'undefined') {
             div.dataset.marker_id = self.args.marker_id;
@@ -2604,7 +2616,7 @@ function initialize() {
 
                 console.log('brand_image => ' + $brand_logo);
                 var latlon  = new mapObj.LatLng(markerLat, markerLng);
-                overlay = new CustomMarker(
+                window.markers[k] = new CustomMarker(
               		latlon,
               		mapBranch,
               		{
@@ -2616,6 +2628,8 @@ function initialize() {
                     marker_name: markerName,
               		}
               	);
+
+                window.branch_marker.push(k); //add marker overlay into array for delete.
                 window.latlngboundsBranch.extend(latlon);
 
                 /*var markerLatLng = new mapObjBranch.LatLng(markerLat,markerLng);
@@ -2740,22 +2754,22 @@ function initialize() {
       if(window.branch_marker.length > 0){ // clear marker branch
         //console.log('branch more 0' + window.branch_marker.toSource());
         $.each(window.branch_marker, function(x, y){
-            window.markers[y].setMap(null);
+            //window.markers[y].setMap(null);
+            window.branch_marker[y].setMap(null);
+            console.log('x => ' + x + ', y => ' + y);
         });
       }
 
       //default LatLngBounds
       window.latlngboundsBranch = new mapObjBranch.LatLngBounds();
 
-      //alert('=> ' + event);
-
       //ajax branch
-      /*var page_url;
-      if(window.page_active = 'feed'){ //feed
-        page_url = '/events/locations/' + window.event_id;
-      } else { //brand
-        page_url = '/brand/locations/' + window.brand_id;
-      }*/
+      //var page_url;
+      //if(window.page_active = 'feed'){ //feed
+        //page_url = '/events/locations/' + window.event_id;
+      //} else { //brand
+        //page_url = '/brand/locations/' + window.brand_id;
+      //}
 
       var url;
       if(type == 'promotion'){

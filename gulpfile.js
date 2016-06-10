@@ -16,6 +16,10 @@ elixir(function(mix) {
            //'assets/css/style.css'
        ], 'public/css/all.css','public');
 
+       mix.styles([
+           'assets/css/style.css'
+       ], 'public/css/style.css','public');
+
        mix.scripts([
            'assets/jquery/jquery-1.11.1.min.js',
            'assets/modernizr.custom.js',
@@ -31,9 +35,15 @@ elixir(function(mix) {
            //'assets/js/scripts.js',
        ], 'public/js/all.js','public');
 
+       mix.scripts([
+           'assets/js/scripts.js',
+       ], 'public/js/scripts.js','public');
+
        mix.version([
            'css/all.css',
-           'js/all.js'
+           'css/style.css',
+           'js/all.js',
+           'js/scripts.js'
        ]);
    });
 

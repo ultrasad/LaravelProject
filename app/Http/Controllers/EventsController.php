@@ -17,6 +17,8 @@ use App\Tag;
 use App\Branch;
 use App\Gallery;
 use App\Location;
+use Facebook;
+use Session;
 
 //use GlideImage;
 
@@ -256,11 +258,67 @@ class EventsController extends Controller
     $event->reIndex('App\Event --relations'); //reindex search
 
     if($event->id > 0){
+      //hide 2016-06-13, 1714
+      //$pageToken = Session::get('pageTokenTest');
+      //$this->facebook_post($pageToken);
+      //exit;
+
       return Response::json('success', array(
                   'status' => 'success',
                   'event_id'   => $event->id
               ));
     }
+  }
+
+  function facebook_post($pageToken=null)
+  {
+    # /js-login.php
+    $fb = new Facebook\Facebook([
+      'app_id' => '586408658176811',
+      'app_secret' => '2b75dba58fc378a00b4858afc7866aed',
+      'default_graph_version' => 'v2.6',
+    ]);
+
+    $helper = $fb->getJavaScriptHelper();
+
+    //373634482682319
+    try {
+      $accessToken = $helper->getAccessToken();
+      //posts message on page statues
+      //$pageToken = $request->input('access_token');
+      $pageToken = $pageToken; //from brand session fix
+      echo 'page token => ' . $pageToken . '<br />';
+      $msg_body = array(
+        'message' => 'Test Facebook Message, Promotion !!',
+        'access_token' => (string) $pageToken
+      );
+      try {
+           $postResult = $fb->post('192272534234138/feed', $msg_body );
+       } catch (FacebookApiException $e) {
+           echo $e->getMessage();
+       }
+    } catch(Facebook\Exceptions\FacebookResponseException $e) {
+      // When Graph returns an error
+      echo 'Graph returned an error: ' . $e->getMessage();
+      exit;
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      // When validation fails or other local issues
+      echo 'Facebook SDK returned an error: ' . $e->getMessage();
+      exit;
+    }
+
+    if (! isset($accessToken)) {
+      echo 'No cookie set or no OAuth data could be obtained from cookie.';
+      exit;
+    }
+
+    // Logged in
+    echo '<h3>Access Token</h3>';
+    var_dump($accessToken->getValue());
+
+    $_SESSION['fb_access_token'] = (string) $accessToken;
+
+    return true;
   }
 
   /**

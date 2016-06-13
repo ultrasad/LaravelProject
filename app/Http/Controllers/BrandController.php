@@ -12,7 +12,8 @@ use App\Event;
 use App\Brand;
 use App\Branch;
 use App\Category;
-use Facebook;
+//use Facebook;
+use Session;
 //use App\Branch;
 use Request as Response;
 
@@ -171,7 +172,7 @@ class BrandController extends Controller
     if(!empty($branchId)){
        $brand->branch()->sync($branchId);
     }
-    
+
     $brand->reIndex(); //reindex search
 
     if($brand->id > 0){
@@ -308,6 +309,10 @@ class BrandController extends Controller
     //echo 'brand id => ' . $brand->id;
 
     if($brand->id > 0){
+      //hide, 2016-06-13 1716
+      //$pageToken = $request->input('access_token');
+      //Session::set('pageTokenTest', $pageToken);
+
       return Response::json('success', array(
                   'status' => 'success',
                   'branch_id'   => $brand->id
@@ -320,9 +325,9 @@ class BrandController extends Controller
 
     # /js-login.php
     $fb = new Facebook\Facebook([
-      'app_id' => '1532458647022405',
-      'app_secret' => '87129e473f042ee605b6914f4b9d5506',
-      'default_graph_version' => 'v2.2',
+      'app_id' => '586408658176811',
+      'app_secret' => '2b75dba58fc378a00b4858afc7866aed',
+      'default_graph_version' => 'v2.6',
     ]);
 
     $helper = $fb->getJavaScriptHelper();

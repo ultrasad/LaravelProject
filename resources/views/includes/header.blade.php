@@ -97,7 +97,7 @@
   @else
   <div class=" pull-right">
     <div class="header-inner">
-      <a href="/login" title="Member Login" class="btn-link icon-set menu-hambuger-plus m-l-20 sm-no-margin hidden-sm hidden-xs"></a>
+      <a href="/events/create" title="Member Login" class="btn-link icon-set menu-hambuger-plus m-l-20 sm-no-margin hidden-sm hidden-xs"></a>
     </div>
   </div>
   @endif

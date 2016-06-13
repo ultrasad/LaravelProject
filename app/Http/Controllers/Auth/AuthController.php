@@ -28,7 +28,9 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/events';
+    //protected $redirectTo = '/events'; //remove for redirect 2016-06-13 1742
+    //protected $redirectTo = '/';
+    protected $redirectPath = '/';
     protected $username = 'username';
 
     /**

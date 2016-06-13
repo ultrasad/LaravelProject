@@ -1608,10 +1608,9 @@ function statusChangeCallback(response){
        $.each(response.data, function(k,v){
          ++i;
          if(v.id == '192272534234138'){
-           $("#fbPostModal .modal-body #tokenId").val( v.access_token );
+         $("#fbPostModal .modal-body #tokenId").val( v.access_token );
          }
-         //console.log('k => ' + k.toSource() + ' v => '+ v.id + ' => ' + v.name + ' => ' + v.access_token);
-         console.log('k => ' + ' v => '+ v.id + ' => ' + v.name + ' => ' + v.access_token);
+         console.log('k => ' + k.toSource() + ' v => '+ v.id + ' => ' + v.name + ' => ' + v.access_token);
        });
        console.log('account => ' + response.data[0].name);
       });

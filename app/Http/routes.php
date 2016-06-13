@@ -35,6 +35,13 @@ Route::group(['middleware' => 'web'], function () {
         return redirect('/');
     });
 
+    Route::get('/clear-cache', function() {
+        $clearCompiled = Artisan::call('clear-compiled');
+        $clearView = Artisan::call('view:clear');
+        $clearCache = Artisan::call('cache:clear');
+        // return what you want
+    });
+
     Route::get('user/{user}', [
     	'middleware' => ['auth', 'roles'], // A 'roles' middleware must be specified
     	'uses' => 'UserController@index',

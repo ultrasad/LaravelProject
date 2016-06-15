@@ -91,8 +91,16 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/admin',[
       'middleware' => ['auth', 'roles'],
-      'uses' => 'EventsController@admin',
+      //'uses' => 'EventsController@admin',
+      'uses' => 'AdminController@index',
       'roles' => ['Administrator', 'Manager', 'Company Manager']
+    ]);
+
+    Route::get('/admin/setting',[
+      'middleware' => ['auth', 'roles'],
+      //'uses' => 'EventsController@admin',
+      'uses' => 'AdminController@setting',
+      'roles' => ['Administrator', 'Manager']
     ]);
 
     Route::resource('brand', 'BrandController'); //RESTful Resource Controllers

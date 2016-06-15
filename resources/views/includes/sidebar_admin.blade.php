@@ -11,7 +11,15 @@
     <!-- BEGIN SIDEBAR MENU ITEMS-->
     <ul class="menu-items">
       <li class="m-t-30">
-        <a href="{{ url('/admin') }}" class="detailed">
+        <a href="{{ url('/admin/setting') }}" class="detailed" title="ตั้งค่าทั่วไป">
+          <span class="title">ตั้งค่าทั่วไป</span>
+        </a>
+        <span class="icon-thumbnail icon-category">
+          <i class="fa fa-gear" aria-hidden="true"></i>
+        </span>
+      </li>
+      <li class="">
+        <a href="{{ url('/admin') }}" class="detailed" title="โปรโมชั่นทั้งหมด">
           <span class="title">โปรโมชั่นทั้งหมด</span>
         </a>
         <span class="icon-thumbnail icon-category bg-success">

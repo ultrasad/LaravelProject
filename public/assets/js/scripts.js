@@ -572,7 +572,7 @@ var fx_select_brand;
           console.log('brand form fb...');
       		$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
       			FB.init({
-      			  appId: '586408658176811',
+      			  appId: '141016549272100',
               cookie   : true,  // enable cookies to allow the server to access // the session
       			  version: 'v2.6' // or v2.0, v2.1, v2.2, v2.3
       			});
@@ -1614,6 +1614,8 @@ function statusChangeCallback(response){
          console.log('k => ' + ' v => '+ v.id + ' => ' + v.name + ' => ' + v.access_token);
        });
        console.log('account => ' + response.data[0].name);
+
+        $('#fbPostModal').modal({show: true});
       });
 
 

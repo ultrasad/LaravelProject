@@ -228,46 +228,38 @@
       </div>
     </div>
   </div>
-  </form>
 
-  <div class="modal fade slide-up disable-scroll" id="fbPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+  <div class="modal fade slide-up" id="fbPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog">
-      <div class="modal-content-wrapper">
-      	<div class="modal-content">
-      	  <div class="modal-header clearfix text-master text-left p-t-5 p-l-15 p-r-15">
-      		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i></button>
-              <div class="item-header clearfix">
-                <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>&nbsp;Facebook Fanpage(Admin)
-              </div>
-      	  </div>
+  	<div class="modal-content">
+  	  <div class="modal-header">
+  		<div class="close" data-dismiss="modal" aria-label="Close"></div>
+  		<span class="modal-title" id="myModalLabel">
+  			<img class="img-responsive" width="316" src="/assets/img/text_header_popup.png" />
+  		</span>
+  	  </div>
 
-      		<div class="modal-body modal-fb-page padding-15">
-            <div class="fanpage-list"></div>
-            <div class="checkbox check-success checkbox-master" style="display: none">
-              <input type="checkbox" checked="checked" value="1" name="page1" id="page1" />
-              <label class="label-master" for="page1">Page 1</label>
-            </div>
-            <!--<div class="checkbox check-success">
-              <input type="checkbox" checked="checked" value="1" name="page2" id="page2">
-              <label class="label-master" for="page2">One</label>
-            </div>-->
+  		<div class="modal-body">
+  			<textarea name="message" class="box-mind form-control" rows="2" placeholder="What's on your mind?"></textarea>
+  			<img src="/assets/img/sabaideetv_pr6years_407-132.png" width="405" class="img-responsive" />
+  			<input type="hidden" name="access_token" id="tokenId" value=""/>
+  			<input type="hidden" name="fb_id" id="fbId" value=""/>
+  			<input type="hidden" name="first_name" id="firstName" value=""/>
+  			<input type="hidden" name="last_name" id="lastName" value=""/>
+  			<input type="hidden" name="gender" id="gender" value=""/>
+  			<input type="hidden" name="email" id="email" value=""/>
+  		</div>
+  		<div class="modal-footer">
+  			<div class="loading"><img src="/assets/img/barloader.gif" width="220" class="img-responsive" /></div>
+  			<div class="notification">&nbsp;</div>
+  			<button id="subscribe-email-submit" type="submit" class="btn_share" />
+  		</div>
 
-      			<input type="hidden" name="access_token" id="tokenId" value=""/>
-      			<!--<input type="hidden" name="fb_id" id="fbId" value=""/>
-      			<input type="hidden" name="first_name" id="firstName" value=""/>
-      			<input type="hidden" name="last_name" id="lastName" value=""/>
-      			<input type="hidden" name="gender" id="gender" value=""/>
-      			<input type="hidden" name="email" id="email" value=""/>-->
-      		</div>
-      		<div class="modal-footer">
-      			<div class="notification">&nbsp;</div>
-            <button id="submit_facebook_page" type="submit" class="btn btn-danger">Submit</button>
-      		</div>
-
-      	</div>
-      </div>
+  	</div>
     </div>
   </div>
+
+  </form>
 
   <div class="brand_branch_row" style="display: none;">
     <div class="col-md-12 branch_row">

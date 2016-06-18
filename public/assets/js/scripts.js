@@ -1503,6 +1503,23 @@ var fx_select_brand;
             }
         });
 
+        //fb all
+        $(document).on('change', '.fb_all', function(e){
+          var _child = $('.fb_row_result');
+          _child.find(':checkbox').prop('checked', this.checked);
+        });
+
+        $(document).on('change', '.fb_child', function(e){
+            var _parent = $('.fb_all');
+            var _child = $('.fb_row_result');
+            var _chk = $(this);
+            if (_chk.is(':checked')) {
+               _parent.prop('checked', _child.has(':checkbox:not(:checked)').length == 0);
+            } else {
+               _parent.prop('checked', false);
+            }
+        });
+
         //publiched
         $(document).on('change', '.published_check', function(e){
           if(this.checked) {
@@ -1607,13 +1624,21 @@ function statusChangeCallback(response){
        //console.log('account => ' + response.toSource());
        //var i = 0;
        //var $clone = $('.modal .modal-fb-page .checkbox-master').clone();
+       if(response.data.length > 0){
+         $('.modal .fanpage-list').html('');
+         var $clone = '<div class="checkbox check-warning"><input type="checkbox" checked="checked" name="fb_all" value="1" class="fb_all" id="fb_all">';
+             $clone += '<label class="label-master" for="fb_all">ทุกเพจ</label></div>';
+         var $div = $('<div class="fb_page_all"></div>').append($clone);
+         $div.appendTo('.modal .fanpage-list');
+       }
+
        $.each(response.data, function(k,v){
          //var $clone = $('.modal .modal-fb-page .checkbox-master').clone();
          //$clone.find('input').attr({'value':v.id, 'name':v.id, 'id':v.id});
          //$clone.find('label').attr('for', v.id).html(v.name);
          //$clone.css('display','block');
          //$('.modal .fanpage-list').append($clone);
-         var $clone = '<div class="checkbox check-success"><input type="checkbox" checked="checked" value="'+v.id+'" name="'+v.id+'" id="'+v.id+'" />';
+         var $clone = '<div class="checkbox check-success"><input type="checkbox" checked="checked" class="fb_child" value="'+v.id+'" name="'+v.id+'" id="'+v.id+'" />';
              $clone += '<label class="label-master" for="'+v.id+'">'+v.name+'</label></div>';
          var $div = $("<div class='fb_row_result'></div>").append($clone);
          $div.appendTo('.modal .fanpage-list');

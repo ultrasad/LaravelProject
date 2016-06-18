@@ -12,7 +12,7 @@ use App\Event;
 use App\Brand;
 use App\Branch;
 use App\Category;
-//use Facebook;
+use Facebook;
 use Session;
 //use App\Branch;
 use Request as Response;
@@ -104,12 +104,109 @@ class BrandController extends Controller
     return view('brand.lists', compact('brands', 'role_id'));
   }
 
+  function facebook_token()
+  {
+    # /js-login.php
+    $fb = new Facebook\Facebook([
+      //'app_id' => env('FACEBOK_APP_KEY'),
+      'app_id' => '141016549272100',
+      //'app_secret' => env('FACEBOOK_APP_SECRET'),
+      'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
+      'default_graph_version' => 'v2.6',
+    ]);
+
+    $helper = $fb->getJavaScriptHelper();
+    $accessToken = $helper->getAccessToken();
+
+    echo 'accesss token => ' . $accessToken . '<br />';
+    $response = $fb->get('/me/accounts', $accessToken);
+    //echo '<pre>';
+    //print_r($accounts);
+    //echo '<pre>';
+
+    $pageList = $response->getGraphEdge()->asArray();
+
+    foreach ($pageList as $page) {
+      $pageID = $page['id'];
+      $pageName = $page['name'];
+      $pageAccessToken = $page['access_token'];
+      // Store $pageAccessToken and/or
+      // send requests to Graph on behalf of the page
+
+      echo 'id => ' . $pageID . ', name => ' . $pageName . ', token => ' . $pageAccessToken . '</p>';
+
+      //echo '<pre>';
+      //print_r($page);
+      //echo '</pre>';
+    }
+
+    /*foreach($accounts as $page)
+    {
+
+      echo '<pre>';
+      print_r($page);
+      echo '</pre>';
+
+      echo 'page id => ' . $page->id . '<br >';
+      echo 'page name => ' . $page->name . '<br >';
+      echo 'page access_token => ' . $page->access_token . '<br ></p>';
+    }*/
+    exit;
+
+    //373634482682319
+    try {
+      $accessToken = $helper->getAccessToken();
+      if($accessToken){
+        $accounts = $fb->get('/me/accounts', function($response){
+          foreach($response as $page){
+            echo '<pre>';
+            print_r($page);
+            echo '</pre>';
+          }
+        });
+      }
+      //posts message on page statues
+      /*$pageToken = $request->input('access_token');
+      $msg_body = array(
+        'message' => 'Test User Message !!',
+        'access_token' => (string) $pageToken
+      );
+      try {
+           $postResult = $fb->post('192272534234138/feed', $msg_body );
+       } catch (FacebookApiException $e) {
+           echo $e->getMessage();
+       }
+       */
+    } catch(Facebook\Exceptions\FacebookResponseException $e) {
+      // When Graph returns an error
+      echo 'Graph returned an error: ' . $e->getMessage();
+      exit;
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      // When validation fails or other local issues
+      echo 'Facebook SDK returned an error: ' . $e->getMessage();
+      exit;
+    }
+
+    if (! isset($accessToken)) {
+      echo 'No cookie set or no OAuth data could be obtained from cookie.';
+      exit;
+    }
+
+    // Logged in
+    echo '<h3>Access Token</h3>';
+    var_dump($accessToken->getValue());
+  }
+
   public function store(BrandRequest $request)
   {
     $brand = new Brand($request->all());
     //echo '<pre>';
     //print_r($brand);
     //exit;
+
+    $this->facebook_token();
+    echo 'break >>';
+    exit;
 
     //logo image
     if($request->hasFile('logo_image')){
@@ -325,8 +422,8 @@ class BrandController extends Controller
 
     # /js-login.php
     $fb = new Facebook\Facebook([
-      'app_id' => '586408658176811',
-      'app_secret' => '2b75dba58fc378a00b4858afc7866aed',
+      'app_id' => env('FACEBOK_APP_KEY', '141016549272100'),
+      'app_secret' => env('FACEBOOK_APP_SECRET', '302ab7af4dc97ec2179efad4e2131dc8'),
       'default_graph_version' => 'v2.6',
     ]);
 

@@ -79,37 +79,32 @@
 
               <div class="social_group_link">
                 <div class="form-group">
-                  <button class="btn btn-complete btn-xs fb_login" type="button" id="FBLogin"><i class="fa fa-facebook"></i><strong>&nbsp;FB Login</strong></button>
+                  <button class="btn btn-complete btn-xs fb_login" type="button" id="FBLogin"><i class="fa fa-facebook"></i><strong>&nbsp;Login</strong></button>
                   <!--<label class="social-facebook-title">Facebook</label>-->
-                  <span class="checkbox-inline">
-                    <div class="checkbox check-warning">
-                      <input type="checkbox" checked="checked" value="1" name="fb1" id="checkbox2" />
-                      <label class="label-master" for="checkbox2">Channel 2</label>
-                    </div>
-                  </span>
-                  <span class="checkbox-inline">
-                    <div class="checkbox check-warning">
-                      <input type="checkbox" checked="checked" value="1" name="fb2" id="checkbox3">
-                      <label class="label-master" for="checkbox3">One</label>
-                    </div>
-                  </span>
+                  <div class="row">
+                    <label class="social-facebook-title">Facebook</label>
+                    <div class="facebook_page_list"></div>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <button class="btn btn-success btn-xs tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i><strong>&nbsp;TW Login</strong></button>
+                  <button class="btn btn-success btn-xs tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i><strong>&nbsp;Login</strong></button>
                   <!--<label class="social-twitter-title">Twitter</label>-->
-                  <span class="checkbox-inline">
-                    <div class="checkbox check-warning">
-                      <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
-                      <label class="label-master" for="checkbox4">Ch8</label>
-                    </div>
-                  </span>
-                  <span class="checkbox-inline">
-                    <div class="checkbox check-warning">
-                      <input type="checkbox" checked="checked" value="1" name="tw2" id="checkbox5">
-                      <label class="label-master" for="checkbox5">Sabaidee</label>
-                    </div>
-                  </span>
+                  <div class="row">
+                    <label class="social-twitter-title">Twitter</label>
+                    <span class="checkbox-inline">
+                      <div class="checkbox check-warning">
+                        <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
+                        <label class="label-master" for="checkbox4">Ch8</label>
+                      </div>
+                    </span>
+                    <span class="checkbox-inline">
+                      <div class="checkbox check-warning">
+                        <input type="checkbox" checked="checked" value="1" name="tw2" id="checkbox5">
+                        <label class="label-master" for="checkbox5">Sabaidee</label>
+                      </div>
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -230,7 +225,7 @@
   </div>
   </form>
 
-  <div class="modal fade slide-up disable-scroll" id="fbPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+  <div class="modal fade slide-up fbmodal" id="fbPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog">
       <div class="modal-content-wrapper">
       	<div class="modal-content">
@@ -252,7 +247,7 @@
               <label class="label-master" for="page2">One</label>
             </div>-->
 
-      			<input type="hidden" name="access_token" id="tokenId" value=""/>
+      			<!--<input type="hidden" name="access_token" id="tokenId" value=""/>-->
       			<!--<input type="hidden" name="fb_id" id="fbId" value=""/>
       			<input type="hidden" name="first_name" id="firstName" value=""/>
       			<input type="hidden" name="last_name" id="lastName" value=""/>
@@ -261,12 +256,21 @@
       		</div>
       		<div class="modal-footer">
       			<div class="notification">&nbsp;</div>
-            <button id="submit_facebook_page" type="submit" class="btn btn-danger">Submit</button>
+            <button id="submit_facebook_page" type="submit" class="btn btn-danger">Change</button>
       		</div>
 
       	</div>
       </div>
     </div>
+  </div>
+
+  <div class="facebook_page_account" style="display: none">
+    <span class="checkbox-inline">
+      <div class="checkbox check-warning">
+        <input type="checkbox" checked="checked" value="1" name="gfb1" id="getpage1" />
+        <label class="label-master" for="getpage1">Channel 2</label>
+      </div>
+    </span>
   </div>
 
   <div class="brand_branch_row" style="display: none;">

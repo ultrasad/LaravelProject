@@ -52,7 +52,7 @@
 
 <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Kanit:400,500,700,200,100,100italic'>
 <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/pages.css') }}" />
-<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('pages/css/style.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/css/style.css') }}" />
 
 <!--[if lte IE 9]>
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/codrops-dialogFx/dialog.ie.css') }}" />

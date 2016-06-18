@@ -577,7 +577,8 @@ var fx_select_brand;
       			  version: 'v2.6' // or v2.0, v2.1, v2.2, v2.3
       			});
       			$('#FBLogin,#feedbutton').removeAttr('disabled');
-      			FB.getLoginStatus(statusChangeCallback);
+            //stop callback auto, 2016-06-18
+      			//FB.getLoginStatus(statusChangeCallback);
       		});
         }
 
@@ -1604,12 +1605,26 @@ function statusChangeCallback(response){
 
       FB.api('/me/accounts', function(response){
        //console.log('account => ' + response.toSource());
-       var i = 0;
+       //var i = 0;
+       //var $clone = $('.modal .modal-fb-page .checkbox-master').clone();
        $.each(response.data, function(k,v){
-         ++i;
-         if(v.id == '192272534234138'){
+         //var $clone = $('.modal .modal-fb-page .checkbox-master').clone();
+         //$clone.find('input').attr({'value':v.id, 'name':v.id, 'id':v.id});
+         //$clone.find('label').attr('for', v.id).html(v.name);
+         //$clone.css('display','block');
+         //$('.modal .fanpage-list').append($clone);
+         var $clone = '<div class="checkbox check-success"><input type="checkbox" checked="checked" value="'+v.id+'" name="'+v.id+'" id="'+v.id+'" />';
+             $clone += '<label class="label-master" for="'+v.id+'">'+v.name+'</label></div>';
+         var $div = $("<div class='fb_row_result'></div>").append($clone);
+         $div.appendTo('.modal .fanpage-list');
+         //$clone.appendTo('.modal .fanpage-list');
+         //var $clone = $('.event_branch_row > div.branch_row').clone();
+         //$clone.find('label').attr('for', 'branch_' + bid).html(bname);
+         //$clone.find('.branch').attr('id', 'branch_' + bid).val(bid);
+         //++i;
+         /*if(v.id == '192272534234138'){
            $("#fbPostModal .modal-body #tokenId").val( v.access_token );
-         }
+         }*/
          //console.log('k => ' + k.toSource() + ' v => '+ v.id + ' => ' + v.name + ' => ' + v.access_token);
          console.log('k => ' + ' v => '+ v.id + ' => ' + v.name + ' => ' + v.access_token);
        });
@@ -1617,7 +1632,6 @@ function statusChangeCallback(response){
 
         $('#fbPostModal').modal({show: true});
       });
-
 
      } else {
          console.log('User cancelled login or did not fully authorize.');

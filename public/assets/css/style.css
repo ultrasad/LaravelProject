@@ -240,6 +240,11 @@ body, .color-body {
   border-bottom: 1px solid #e5e5e5;
 }
 
+.fbmodal .modal-fb-page {
+  max-height: 340px;
+  overflow-y: auto;
+}
+
 .breadcrumb span {
   font-weight: normal;
 }
@@ -247,6 +252,14 @@ body, .color-body {
 .thumbnail-wrapper.d100 {
     height: 100px;
     width: 100px;
+}
+
+.social_group_link .checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.social_group_link .checkbox label {
+  margin-right: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {

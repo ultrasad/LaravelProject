@@ -83,7 +83,20 @@
                   <!--<label class="social-facebook-title">Facebook</label>-->
                   <div class="row">
                     <label class="social-facebook-title">Facebook</label>
-                    <div class="facebook_page_list inline"></div>
+                    <div class="facebook_page_list inline">
+                      <span class="checkbox-inline">
+                        <div class="checkbox check-warning">
+                          <input type="checkbox" checked="checked" value="373634482682319" name="fbpage[]" id="373634482682319">
+                          <label class="label-master" for="373634482682319">Downloads Hot</label>
+                        </div>
+                      </span>
+                      <span class="checkbox-inline">
+                        <div class="checkbox check-warning">
+                          <input type="checkbox" checked="checked" value="192272534234138" name="fbpage[]" id="192272534234138">
+                          <label class="label-master" for="192272534234138">Promotion Seed | อัพเดท โปรโมชั่น ใหม่ล่าสุด</label>
+                        </div>
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -93,7 +106,7 @@
                   <div class="row">
                     <label class="social-twitter-title">Twitter</label>
                     <div class="twitter_page_list inline">
-                      <!--<span class="checkbox-inline">
+                      <span class="checkbox-inline">
                         <div class="checkbox check-warning">
                           <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
                           <label class="label-master" for="checkbox4">Ch8</label>
@@ -104,7 +117,7 @@
                           <input type="checkbox" checked="checked" value="1" name="tw2" id="checkbox5">
                           <label class="label-master" for="checkbox5">Sabaidee</label>
                         </div>
-                      </span>-->
+                      </span>
                     </div>
                   </div>
                 </div>

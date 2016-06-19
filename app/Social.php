@@ -15,7 +15,7 @@ class Social extends Model
         return $this->belongsToMany('App\Brand');
     }
 
-    public function scopePageExists($query, $brand_id, $page_id)
+    public function scopePageExists($query, $brand_id, $page_id=array())
     {
       //echo 'id => '. $brand_id;
       //echo '<pre>';
@@ -23,6 +23,6 @@ class Social extends Model
 
       return $this->whereHas('brand', function($query) use ($brand_id){
         $query->where('id', '=', $brand_id);
-      })->select('social_id')->whereIn('social.social_id', $page_id);
+      })->select('id')->whereIn('social.social_id', $page_id);
     }
 }

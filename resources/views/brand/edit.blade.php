@@ -3,9 +3,9 @@
 @section('content')
   <!-- START CONTAINER FLUID -->
   <form class="brand-form" id="brand-register-form-edit" role="form" action="{{ url('/') }}/brand/{{ $brand->id }}" enctype="multipart/form-data" method="POST">
-  <input type="hidden" name="_token" value="{{ csrf_token() }}">
   <input name="_method" type="hidden" value="PATCH">
   <input name="brand_edit_id" class="brand_edit_id" type="hidden" value="{{ $brand->id }}">
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
   {{-- Form::token() --}}
   <div class="container-fluid container-fixed-lg">
     <div class="row">
@@ -72,36 +72,45 @@
 
               <div class="social_group_link">
                 <div class="form-group">
-                  <button class="btn btn-complete btn-xs fb_login" type="button" id="FBLogin"><i class="fa fa-facebook"></i><strong>&nbsp;FB Login</strong></button>
+                  <button class="btn btn-complete btn-xs fb_login" type="button" id="FBLogin"><i class="fa fa-facebook"></i><strong>&nbsp;Login</strong></button>
                   <!--<label class="social-facebook-title">Facebook</label>-->
-                  <span class="checkbox-inline">
-                    <div class="checkbox check-warning">
-                      <input type="checkbox" checked="checked" value="1" name="fb1" id="checkbox2" />
-                      <label class="label-master" for="checkbox2">Channel 2</label>
+                  <div class="row">
+                    <label class="social-facebook-title">Facebook</label>
+                    <div class="facebook_page_list inline">
+                      @if($facebook)
+                        @foreach($facebook as $id => $page)
+                        <span class="checkbox-inline">
+                          <div class="checkbox check-warning">
+                            <input type="checkbox" checked="checked" value="{{ $page->social_id }}" name="fbpage[]" id="{{ $page->social_id }}">
+                            <label class="label-master" for="{{ $page->social_id }}">{{ $page->name }}</label>
+                          </div>
+                        </span>
+                        @endforeach
+                      @endif
                     </div>
-                  </span>
-                  <span class="checkbox-inline">
-                    <div class="checkbox check-warning">
-                      <input type="checkbox" checked="checked" value="1" name="fb2" id="checkbox3">
-                      <label class="label-master" for="checkbox3">One</label>
-                    </div>
-                  </span>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <button class="btn btn-success btn-xs tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i><strong>&nbsp;TW Login</strong></button>
-                  <span class="checkbox-inline">
-                    <div class="checkbox check-warning">
-                      <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
-                      <label class="label-master" for="checkbox4">Ch8</label>
+                  <button class="btn btn-success btn-xs tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i><strong>&nbsp;Login</strong></button>
+                  <!--<label class="social-twitter-title">Twitter</label>-->
+                  <div class="row">
+                    <label class="social-twitter-title">Twitter</label>
+                    <div class="twitter_page_list inline">
+                      <!--<span class="checkbox-inline">
+                        <div class="checkbox check-warning">
+                          <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
+                          <label class="label-master" for="checkbox4">Ch8</label>
+                        </div>
+                      </span>
+                      <span class="checkbox-inline">
+                        <div class="checkbox check-warning">
+                          <input type="checkbox" checked="checked" value="1" name="tw2" id="checkbox5">
+                          <label class="label-master" for="checkbox5">Sabaidee</label>
+                        </div>
+                      </span>-->
                     </div>
-                  </span>
-                  <span class="checkbox-inline">
-                    <div class="checkbox check-warning">
-                      <input type="checkbox" checked="checked" value="1" name="tw2" id="checkbox5">
-                      <label class="label-master" for="checkbox5">Sabaidee</label>
-                    </div>
-                  </span>
+                  </div>
                 </div>
               </div>
 
@@ -220,38 +229,36 @@
       </div>
     </div>
   </div>
+  </form>
 
-  <div class="modal fade" id="fbPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade slide-up fbmodal" id="fbPostModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog">
-  	<div class="modal-content">
-  	  <div class="modal-header">
-  		<div class="close" data-dismiss="modal" aria-label="Close"></div>
-  		<span class="modal-title" id="myModalLabel">
-  			<img class="img-responsive" width="316" src="/assets/img/text_header_popup.png" />
-  		</span>
-  	  </div>
+      <div class="modal-content-wrapper">
+      	<div class="modal-content">
+      	  <div class="modal-header clearfix text-master text-left p-t-5 p-l-15 p-r-15">
+      		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i></button>
+              <div class="item-header clearfix">
+                <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i>&nbsp;Facebook Fanpage(Admin)
+              </div>
+      	  </div>
 
-  		<div class="modal-body">
-  			<textarea name="message" class="box-mind form-control" rows="2" placeholder="What's on your mind?"></textarea>
-  			<img src="/assets/img/sabaideetv_pr6years_407-132.png" width="405" class="img-responsive" />
-  			<input type="hidden" name="access_token" id="tokenId" value=""/>
-  			<input type="hidden" name="fb_id" id="fbId" value=""/>
-  			<input type="hidden" name="first_name" id="firstName" value=""/>
-  			<input type="hidden" name="last_name" id="lastName" value=""/>
-  			<input type="hidden" name="gender" id="gender" value=""/>
-  			<input type="hidden" name="email" id="email" value=""/>
-  		</div>
-  		<div class="modal-footer">
-  			<div class="loading"><img src="/assets/img/barloader.gif" width="220" class="img-responsive" /></div>
-  			<div class="notification">&nbsp;</div>
-  			<button id="subscribe-email-submit" type="submit" class="btn_share" />
-  		</div>
+      		<div class="modal-body modal-fb-page padding-15">
+            <div class="fanpage-list"></div>
+            <div class="checkbox check-success checkbox-master" style="display: none">
+              <input type="checkbox" checked="checked" value="1" name="page1" id="page1" />
+              <label class="label-master" for="page1">Page 1</label>
+            </div>
 
-  	</div>
+      		</div>
+      		<div class="modal-footer">
+      			<div class="notification">&nbsp;</div>
+            <button id="submit_facebook_page" type="submit" class="btn btn-danger">Change</button>
+      		</div>
+
+      	</div>
+      </div>
     </div>
   </div>
-
-  </form>
 
   <div class="brand_branch_row" style="display: none;">
     <div class="col-md-12 branch_row">

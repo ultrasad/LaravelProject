@@ -86,15 +86,19 @@ class Brand extends Model
       return $this->belongsTo('App\User');
   }
 
-  public function scopePageExists($query, $brand_id, $page_id)
+  public function getPageExistsAttribute()
   {
     //echo 'id => '. $brand_id;
     //echo '<pre>';
     //print_r($page_id);
 
-    return $this->whereHas('social', function($query) use ($page_id){
+    return $this->social->lists('id', 'social_id')->toArray();
+    //return $this->social;
+    //return $this->social->pluck('id', 'social_id');
+
+    /*return $this->whereHas('social', function($query) use ($page_id){
       $query->whereNotIn('social.social_id', $page_id);
-    })->where('id', '=', $brand_id);
+    })->where('id', '=', $brand_id);*/
   }
 
   /*

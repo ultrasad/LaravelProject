@@ -483,7 +483,9 @@ var fx_select_brand;
         });
 
         //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-        $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: true}});
+        //$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: true}});
+        //$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: false}});
+        //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 
         $.fn.exists = function(){return this.length>0;}
 

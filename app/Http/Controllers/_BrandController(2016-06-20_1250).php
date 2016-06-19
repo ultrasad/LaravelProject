@@ -112,30 +112,29 @@ class BrandController extends Controller
     return view('brand.lists', compact('brands', 'role_id'));
   }
 
-  function facebook_token($brand='', $fbpage=array(), $update=false)
+  function facebook_token($brand='', $fbpage=array())
   {
-    $fa_master = array();
-    if($update == true){
-      $brand = Brand::find($brand->id);
-      $social = $brand->page_exists;
-      //echo '<pre>';
-      //print_r(array_values($social));
-      //print_r($social);
+    //$social = Social::pageExists(25, $fbpage)->get();
+    $brand = Brand::find(25);
+    $social = $brand->page_exists;
+    //echo 'count >>' . $social->count() . '<br />';
+    //foreach($social as $key => $page){
+      //echo 'page => ' . $page->social_id . '<br />';
+    //}
 
-      $fa_master = Social::pageExists($brand->id, $fbpage)->lists('id')->all();
-      //echo '<pre>';
-      //print_r($fa_master);
+    echo '<pre>';
+    print_r($social);
 
-      //$social = $brand->page_exists->lists('social_id');
-      $fbpage = array_diff($fbpage, array_keys($social)); //(keys)page_id from db
+    $diff = array_diff($fbpage, $social);
 
-      //echo '<pre>';
-      //print_r($fbpage);
-    }
+    echo '<pre>';
+    print_r($diff);
+    exit;
 
-    if(count($fbpage) > 0){
+    if($social->count() > 0){
 
-      //echo 'count more than 0 >> ' . $brand->id . '<br />';
+      echo 'count more than 0 >> ' . $brand->id . '<br />';
+
       $fb = new Facebook\Facebook([
         //'app_id' => env('FACEBOK_APP_KEY'),
         'app_id' => '141016549272100',
@@ -210,7 +209,6 @@ class BrandController extends Controller
         }
 
         if($pages){
-          $pages =  array_merge($fa_master, $pages);
           $brand->social()->sync($pages);
         }
 
@@ -228,11 +226,7 @@ class BrandController extends Controller
            echo $e->getMessage();
        }*/
 
-    }  else {//check count diff, update brand check
-      if(count($fa_master) > 0){
-        $brand->social()->sync($fa_master); //ease old page and not new
-      }
-    }
+    } //check count diff, update brand check
     return true;
   }
 
@@ -313,7 +307,6 @@ class BrandController extends Controller
        $brand->branch()->sync($branchId);
     }
 
-    //facebook
     $fbpage = $request->input('fbpage');
     if($fbpage){
       $this->facebook_token($brand, $fbpage);
@@ -352,8 +345,6 @@ class BrandController extends Controller
     $category = Category::select('name', 'id')->get();
     $brand_category = isset($brand->category_list)?array_keys($brand->category_list):'';
 
-    $facebook = $brand->social->all();
-
     $branchs = $brand->branch->all();
 
     //echo '<pre>';
@@ -362,7 +353,7 @@ class BrandController extends Controller
 
     if(empty($brand))
       abort(404);
-    return  view('brand.edit', compact('brand', 'brand_category', 'facebook', 'branchs', 'brands', 'category', 'role_id'));
+    return  view('brand.edit', compact('brand', 'brand_category', 'branchs', 'brands', 'category', 'role_id'));
   }
 
   /**
@@ -446,12 +437,6 @@ class BrandController extends Controller
        $brand->branch()->sync($branchId);
     }
 
-    //facebook
-    $fbpage = $request->input('fbpage');
-    if($fbpage){
-      $this->facebook_token($brand, $fbpage, $update=true);
-    }
-
     $input['facebook'] = $request->input('facebook');
     $input['twitter'] = $request->input('twitter');
     $input['line_officail'] = $request->input('line_officail');
@@ -469,7 +454,7 @@ class BrandController extends Controller
 
       return Response::json('success', array(
                   'status' => 'success',
-                  'brand_id'   => $brand->id
+                  'branch_id'   => $brand->id
               ));
     }
   }

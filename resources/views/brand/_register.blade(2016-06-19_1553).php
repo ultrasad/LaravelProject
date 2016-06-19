@@ -3,7 +3,7 @@
 @section('content')
   <!-- START CONTAINER FLUID -->
   <form class="brand-form" id="brand-register-form" role="form" action="/brand" enctype="multipart/form-data" method="POST">
-  <!--<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
   {{-- Form::token() --}}
   <div class="container-fluid container-fixed-lg">
     <div class="row">

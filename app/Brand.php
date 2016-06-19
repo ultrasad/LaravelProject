@@ -52,6 +52,12 @@ class Brand extends Model
                 ->withTimestamps(); //update created app, updated app relationship table
   }
 
+  public function social()
+  {
+    return $this->belongsToMany('App\Social', 'brand_social', 'brand_id', 'social_id')
+                ->withTimestamps(); //update created app, updated app relationship table
+  }
+
   //category, edit list
   public function getCategoryListAttribute()
   {
@@ -78,6 +84,17 @@ class Brand extends Model
   public function user()
   {
       return $this->belongsTo('App\User');
+  }
+
+  public function scopePageExists($query, $brand_id, $page_id)
+  {
+    //echo 'id => '. $brand_id;
+    //echo '<pre>';
+    //print_r($page_id);
+
+    return $this->whereHas('social', function($query) use ($page_id){
+      $query->whereNotIn('social.social_id', $page_id);
+    })->where('id', '=', $brand_id);
   }
 
   /*

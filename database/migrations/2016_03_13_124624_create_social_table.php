@@ -14,9 +14,12 @@ class CreateSocialTable extends Migration
     {
         Schema::create('social', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fbid');
+            $table->string('social', 120);
+            $table->string('social_id');
             $table->string('name');
-            $table->string('token');
+            $table->string('token')->nullable();
+            $table->string('long_live_token')->nullable();
+            $table->string('page_token')->nullable();
             $table->timestamps();
         });
 

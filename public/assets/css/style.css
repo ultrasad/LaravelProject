@@ -258,8 +258,17 @@ body, .color-body {
   margin-top: 0;
   margin-bottom: 0;
 }
+
 .social_group_link .checkbox label {
   margin-right: 0;
+}
+
+.checkbox-inline + .checkbox-inline {
+  margin-left: 0px;
+}
+
+.social_group_link .checkbox-inline {
+  padding-left: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {

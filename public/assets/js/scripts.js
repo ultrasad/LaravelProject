@@ -1626,11 +1626,18 @@ function statusChangeCallback(response){
        //var $clone = $('.modal .modal-fb-page .checkbox-master').clone();
        if(response.data.length > 0){
          $('.modal .fanpage-list').html('');
-         var $clone = '<div class="checkbox check-warning"><input type="checkbox" checked="checked" name="fb_all" value="1" class="fb_all" id="fb_all">';
+         var $clone = '<div class="checkbox check-success"><input type="checkbox" checked="checked" name="fb_all" value="1" class="fb_all" id="fb_all">';
              $clone += '<label class="label-master" for="fb_all">ทุกเพจ</label></div>';
          var $div = $('<div class="fb_page_all"></div>').append($clone);
          $div.appendTo('.modal .fanpage-list');
        }
+
+       var fbArray = [];
+       $(".facebook_page_list span.checkbox-inline" ).each(function( index ) {
+          var page_id = $(this).find('input').attr('id');
+          console.log(index + ": " + page_id);
+          fbArray.push(page_id);
+       });
 
        $.each(response.data, function(k,v){
          //var $clone = $('.modal .modal-fb-page .checkbox-master').clone();
@@ -1638,10 +1645,12 @@ function statusChangeCallback(response){
          //$clone.find('label').attr('for', v.id).html(v.name);
          //$clone.css('display','block');
          //$('.modal .fanpage-list').append($clone);
-         var $clone = '<div class="checkbox check-success"><input type="checkbox" checked="checked" class="fb_child" value="'+v.id+'" name="'+v.id+'" id="'+v.id+'" />';
-             $clone += '<label class="label-master" for="'+v.id+'">'+v.name+'</label></div>';
-         var $div = $("<div class='fb_row_result'></div>").append($clone);
-         $div.appendTo('.modal .fanpage-list');
+         if(jQuery.inArray(v.id, fbArray) === -1){
+           var $clone = '<div class="checkbox check-warning"><input type="checkbox" checked="checked" class="fb_child" value="'+v.id+'" name="fbpage[]" id="'+v.id+'" />';
+               $clone += '<label class="label-master" for="'+v.id+'">'+v.name+'</label></div>';
+           var $div = $("<div class='fb_row_result'></div>").append($clone);
+           $div.appendTo('.modal .fanpage-list');
+         }
          //$clone.appendTo('.modal .fanpage-list');
          //var $clone = $('.event_branch_row > div.branch_row').clone();
          //$clone.find('label').attr('for', 'branch_' + bid).html(bname);
@@ -1680,6 +1689,18 @@ function facebookLogin() {
 $(document).on('click', "#FBLogin", function(){
   facebookLogin();
   return false;
+});
+
+$(document).on('click', '#submit_facebook_page', function(){
+  $(".fanpage-list div.fb_row_result" ).each(function( index ){
+     var page_input = $(this).find('input');
+     if(page_input.is(':checked')){
+       var $div = $("<span class='checkbox-inline'></span>").append($(this).html());
+       $div.appendTo('.facebook_page_list');
+       console.log(index + ": " + page_input.attr('id'));
+     }
+  });
+  $('#fbPostModal').modal('toggle');
 });
 
 function sendFile(file,editor,welEditable)

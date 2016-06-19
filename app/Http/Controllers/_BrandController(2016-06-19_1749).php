@@ -12,7 +12,6 @@ use App\Event;
 use App\Brand;
 use App\Branch;
 use App\Category;
-use App\Social;
 
 use Facebook;
 //use Facebook\Authentication\AccessToken;
@@ -112,100 +111,173 @@ class BrandController extends Controller
     return view('brand.lists', compact('brands', 'role_id'));
   }
 
-  function facebook_token($brand='', $fbpage=array())
+  function facebook_token($fbpage=array())
   {
-    $social = Social::pageExists(25, $fbpage)->get();
-    //echo 'count >>' . $social->count() . '<br />';
-    //foreach($social as $key => $page){
-      //echo 'page => ' . $page->social_id . '<br />';
-    //}
+
+    $fb = new Facebook\Facebook([
+      //'app_id' => env('FACEBOK_APP_KEY'),
+      'app_id' => '141016549272100',
+      //'app_secret' => env('FACEBOOK_APP_SECRET'),
+      'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
+      'default_graph_version' => 'v2.6',
+    ]);
+
+    $helper = $fb->getJavaScriptHelper();
+
+    try {
+      $accessToken = $helper->getAccessToken();
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      // There was an error communicating with Graph
+      // Or there was a problem validating the signed request
+      echo $e->getMessage();
+      exit;
+    }
+
+    if ($accessToken) {
+      // Logged in.
+      $_SESSION['facebook_access_token'] = (string) $accessToken;
+      echo 'session token => ' . $_SESSION['facebook_access_token'] . '<br />';
+    }
+
+    # v5
+    $client = $fb->getOAuth2Client();
+
+    try {
+      // Returns a long-lived access token
+      $accessToken = $client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      // There was an error communicating with Graph
+      echo $e->getMessage();
+      exit;
+    }
+
+    if (isset($accessToken)) {
+      // Logged in.
+      $_SESSION['facebook_access_token'] = (string) $accessToken;
+
+      echo 'longLivedAccessToken >> <br />';
+      echo '<pre>';
+      print_r($accessToken);
+      echo '</pre>';
+    }
+
+
+    //$longLivedAccessToken = new AccessToken($_SESSION['facebook_access_token']);
+
+    try {
+      // Get a code from a long-lived access token
+      $code = $client->getCodeFromLongLivedAccessToken($_SESSION['facebook_access_token']);
+    } catch(FacebookSDKException $e) {
+      echo 'Error getting code: ' . $e->getMessage();
+      exit;
+    }
+
+    try {
+      // Get a new long-lived access token from the code
+      $newLongLivedAccessToken = $client->getAccessTokenFromCode($code);
+    } catch(FacebookSDKException $e) {
+      echo 'Error getting a new long-lived access token: ' . $e->getMessage();
+      exit;
+    }
+
+    // Make calls to Graph using $shortLivedAccessToken
+    //$session = new FacebookSession($newLongLivedAccessToken);
+
+    echo 'newLongLivedAccessToken >> <br />';
     echo '<pre>';
-    print_r($social);
+    print_r($newLongLivedAccessToken);
+    echo '</pre>';
+
+    //echo '<pre>';
+    //print_r($session);
+    //echo '</pre>';
+
     exit;
-    if($social->count() > 0){
+    # /js-login.php
+    $fb = new Facebook\Facebook([
+      //'app_id' => env('FACEBOK_APP_KEY'),
+      'app_id' => '141016549272100',
+      //'app_secret' => env('FACEBOOK_APP_SECRET'),
+      'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
+      'default_graph_version' => 'v2.6',
+    ]);
 
-      echo 'count more than 0 >> ' . $brand->id . '<br />';
+    $helper = $fb->getJavaScriptHelper();
+    $accessToken = $helper->getAccessToken();
 
-      $fb = new Facebook\Facebook([
-        //'app_id' => env('FACEBOK_APP_KEY'),
-        'app_id' => '141016549272100',
-        //'app_secret' => env('FACEBOOK_APP_SECRET'),
-        'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
-        'default_graph_version' => 'v2.6',
-      ]);
+    /*$accessToken = new AccessToken($accessToken);
+    try {
+      // Get info about the token
+      // Returns a GraphSessionInfo object
+      $accessTokenInfo = $accessToken->getInfo();
+    } catch(FacebookSDKException $e) {
+      echo 'Error getting access token info: ' . $e->getMessage();
+      exit;
+    }
 
-      $helper = $fb->getJavaScriptHelper();
+    // Dump the info about the token
+    var_dump($accessTokenInfo->asArray());*/
 
-      try {
-        $accessToken = $helper->getAccessToken();
-      } catch(Facebook\Exceptions\FacebookSDKException $e) {
-        // There was an error communicating with Graph
-        // Or there was a problem validating the signed request
-        echo $e->getMessage();
-        exit;
-      }
+    /*try {
+        $session = $helper->getSessionFromRedirect();
+    } catch(FacebookSDKException $e) {
+        $session = null;
+    }*/
 
-      if ($accessToken) {
-        // Logged in.
-        $_SESSION['facebook_access_token'] = (string) $accessToken;
-        //echo 'session token => ' . $_SESSION['facebook_access_token'] . '<br />';
+    exit;
 
-        # v5
-        $client = $fb->getOAuth2Client();
+    echo 'accesss token => ' . $accessToken . '<br />';
+    $response = $fb->get('/me/accounts', $accessToken);
+    //echo '<pre>';
+    //print_r($accounts);
+    //echo '<pre>';
 
-        try {
-          // Returns a long-lived access token
-          $longLivedAccessToken = $client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
-        } catch(Facebook\Exceptions\FacebookSDKException $e) {
-          // There was an error communicating with Graph
-          echo $e->getMessage();
-          exit;
-        }
-      }
+    $pageList = $response->getGraphEdge()->asArray();
+    foreach ($pageList as $page) {
+      $pageID = $page['id'];
+      if(in_array($pageID, $fbpage)){
+        $pageName = $page['name'];
+        $pageAccessToken = $page['access_token'];
+        // Store $pageAccessToken and/or
+        // send requests to Graph on behalf of the page
 
-      if (isset($longLivedAccessToken)) {
-        // Logged in.
-        $_SESSION['facebook_longlived_token'] = (string) $longLivedAccessToken;
-
-        //echo 'longLivedAccessToken >> <br />';
         //echo '<pre>';
-        //print_r($longLivedAccessToken);
+        //print_r($pageAccessToken);
         //echo '</pre>';
-        $response = $fb->get('/me/accounts', $longLivedAccessToken);
-        $pageList = $response->getGraphEdge()->asArray();
-        $pages = array();
-        foreach ($pageList as $page) {
-          $pageID = $page['id'];
-          if(in_array($pageID, $fbpage)){
-            $pageName = $page['name'];
-            $pageAccessToken = $page['access_token'];
-            //echo 'id => ' . $pageID . ', name => ' . $pageName . ', token => ' . $pageAccessToken . '</p>';
 
+        echo 'id => ' . $pageID . ', name => ' . $pageName . ', token => ' . $pageAccessToken . '</p>';
+      }
 
-            $pages[] = Social::firstOrCreate(array('social' => 'facebook', 'social_id' => $pageID, 'name' => $pageName, 'token' => $accessToken, 'long_live_token' => $longLivedAccessToken, 'page_token' => $pageAccessToken))->id;
+      //echo '<pre>';
+      //print_r($page);
+      //echo '</pre>';
+    }
 
-            /*if($pageID == '192272534234138'){
-              $msg_body = array(
-                'message' => 'Test User Message !!',
-                'access_token' => (string) $pageAccessToken
-              );
-              try {
-                   $postResult = $fb->post('192272534234138/feed', $msg_body);
-               } catch (FacebookApiException $e) {
-                   echo $e->getMessage();
-               }
-            } //check page post test
-            */
+    /*foreach($accounts as $page)
+    {
 
+      echo '<pre>';
+      print_r($page);
+      echo '</pre>';
+
+      echo 'page id => ' . $page->id . '<br >';
+      echo 'page name => ' . $page->name . '<br >';
+      echo 'page access_token => ' . $page->access_token . '<br ></p>';
+    }*/
+    exit;
+
+    //373634482682319
+    try {
+      $accessToken = $helper->getAccessToken();
+      if($accessToken){
+        $accounts = $fb->get('/me/accounts', function($response){
+          foreach($response as $page){
+            echo '<pre>';
+            print_r($page);
+            echo '</pre>';
           }
-        }
-
-        if($pages){
-          $brand->social()->sync($pages);
-        }
-
-      } //end access token
-
+        });
+      }
       //posts message on page statues
       /*$pageToken = $request->input('access_token');
       $msg_body = array(
@@ -213,13 +285,29 @@ class BrandController extends Controller
         'access_token' => (string) $pageToken
       );
       try {
-           $postResult = $fb->post('192272534234138/feed', $msg_body);
+           $postResult = $fb->post('192272534234138/feed', $msg_body );
        } catch (FacebookApiException $e) {
            echo $e->getMessage();
-       }*/
+       }
+       */
+    } catch(Facebook\Exceptions\FacebookResponseException $e) {
+      // When Graph returns an error
+      echo 'Graph returned an error: ' . $e->getMessage();
+      exit;
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      // When validation fails or other local issues
+      echo 'Facebook SDK returned an error: ' . $e->getMessage();
+      exit;
+    }
 
-    } //check count diff, update brand check
-    return true;
+    if (! isset($accessToken)) {
+      echo 'No cookie set or no OAuth data could be obtained from cookie.';
+      exit;
+    }
+
+    // Logged in
+    echo '<h3>Access Token</h3>';
+    var_dump($accessToken->getValue());
   }
 
   public function store(BrandRequest $request)
@@ -230,12 +318,15 @@ class BrandController extends Controller
     //echo '</pre>';
     //exit;
 
-
+    $fbpage = $request->input('fbpage');
+    if($fbpage){
+      $this->facebook_token($fbpage);
+    }
     //echo '<pre>';
     //print_r($fbpage);
     //echo '</pre>';
-    //echo 'break >>';
-    //exit;
+    echo 'break >>';
+    exit;
 
     //logo image
     if($request->hasFile('logo_image')){
@@ -299,17 +390,12 @@ class BrandController extends Controller
        $brand->branch()->sync($branchId);
     }
 
-    $fbpage = $request->input('fbpage');
-    if($fbpage){
-      $this->facebook_token($brand, $fbpage);
-    }
-
     $brand->reIndex(); //reindex search
 
     if($brand->id > 0){
       return Response::json('success', array(
                   'status' => 'success',
-                  'brand_id'   => $brand->id
+                  'branch_id'   => $brand->id
               ));
     }
   }

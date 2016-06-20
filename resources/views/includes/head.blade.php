@@ -3,7 +3,7 @@
 
 <meta content="@yield('og_url')" property="og:url">
 <meta content="article" property="og:type">
-<meta content="1532458647022405" property="fb:app_id">
+<meta content="{{ env('FACEBOK_APP_KEY') }}" property="fb:app_id">
 <meta content="@yield('og_title')" property="og:title">
 <meta content="@yield('og_description')" name="description" />
 <meta content="@yield('og_description')" property="og:description">
@@ -34,4 +34,8 @@
 <!--[if lte IE 9]>
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/codrops-dialogFx/dialog.ie.css') }}" />
 <![endif]-->
-<script type="text/javascript">var base_url = '{{ url('/') }}';</script>
+<script type="text/javascript">
+var base_url = '{{ url('/') }}';
+var app_id = '{{ env("FACEBOK_APP_KEY") }}';
+console.log(app_id);
+</script>

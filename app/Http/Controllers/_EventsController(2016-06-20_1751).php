@@ -42,43 +42,24 @@ class EventsController extends Controller
     return $string;
   }
 
-  function post_social($id=0)
+  function post_social()
   {
-    $event = Event::find($id);
-    if($event->brand->social){
-      //echo '<pre>';
-      //print_r($event->brand->social->all());
-      foreach($event->brand->social->all() as $page){
-        echo 'page id => ' . $page->social_id . '<br />';
-        echo 'page token => ' . $page->page_token . '<br />';
-        echo 'event title => ' . $event->title . '<br />';
-        echo 'event url slug => ' . $event->url_slug . '<br />';
-        echo 'event image => ' . $event->image . '<br />';
-        echo 'event brief => ' . $event->brief . '<br /><br /><br />';
-
-        //echo '<pre>';
-        //print_r($page);
-      }
-    } else {
-      echo 'brand not social >> <br />';
-    }
-
-    exit;
-
     $fb = new Facebook\Facebook([
       'app_id' => env('FACEBOK_APP_KEY'),
+      //'app_id' => '141016549272100',
       'app_secret' => env('FACEBOOK_APP_SECRET'),
+      //'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
       'default_graph_version' => 'v2.6',
     ]);
 
+    //$page_token = $fb->get('192272534234138?fields=access_token&access_token=EAAIVVefDiysBAPUHTkHZAlJlA78d2R3I6zQvW5yWP4cAw8ZCjxwZAaTpsTZCjdmUqTnzWyISsiRUdV21YZCzSjSbqSokM06NEZBWdiFULZCqGhTGZA4QlYCbSBAVsAm5sp1WHTV2RPIm5z2GwHmxUsQChP2NZBfqo2ZBEZD');
+    //echo 'page token >>';
+    //echo '<pre>';
+    //print_r($page_token->getAccessToken());
+    
     $msg_body = array(
-      'message' => 'msg',
-      'name' => 'title',
-      'link' => 'url',
-      'caption' => 'brief',
-      'description' => 'brief',
-      'picture' => 'thumb',
-      'access_token' => 'page token'
+      'message' => 'Downloadhot Page by | welovepro !!',
+      'access_token' => 'EAAIVVefDiysBACuTXqv6G1Uf8sopYG4ZBf9ZBKSo6ZBLb6o6CAEoXQQ4aaRB6Cju64ccHFQvxISABvJq3lq6AF6Gi6IZCKK3j45EFZAztfIZBk8umZCNcmGPbrRMiAZA75mqFyVKc2CyK0zRyQUaxmZBaRLJRcZAZBXoRldREVySdSCSwZDZD'
     );
 
     try {

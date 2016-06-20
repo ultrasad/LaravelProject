@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" sizes="76x76" href="{{ URL::asset('pages/ico/76.png') }}" />
 <link rel="apple-touch-icon" sizes="120x120" href="{{ URL::asset('pages/ico/120.png') }}" />
 <link rel="apple-touch-icon" sizes="152x152" href="{{ URL::asset('pages/ico/152.png') }}" />
-<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/x-icon" href="{{ URL::asset('assets/img/favicon.ico') }}" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-touch-fullscreen" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -60,5 +60,7 @@
 
 <!--<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script>-->
 <script type="text/javascript">
-  var base_url = '{{ url('/') }}';
+var base_url = '{{ url('/') }}';
+var app_id = '{{ env("FACEBOK_APP_KEY") }}';
+console.log(app_id);
 </script>

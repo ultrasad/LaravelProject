@@ -485,7 +485,7 @@ var fx_select_brand;
         //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         //$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: true}});
         //$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: false}});
-        //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 
         $.fn.exists = function(){return this.length>0;}
 
@@ -571,10 +571,10 @@ var fx_select_brand;
         }
 
         if($('.brand-form').exists()){
-          console.log('brand form fb...');
+          console.log('brand form fb...' + app_id);
       		$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
       			FB.init({
-      			  appId: '141016549272100',
+      			  appId: app_id, //config .env
               cookie   : true,  // enable cookies to allow the server to access // the session
       			  version: 'v2.6' // or v2.0, v2.1, v2.2, v2.3
       			});
@@ -1532,14 +1532,14 @@ var fx_select_brand;
         });
 
         //if($('#map_canvas, #map_canvas_branch').exists()){
-          /*$("<script/>", {
+          $("<script/>", {
             "type": "text/javascript",
             //src: "http://maps.google.com/maps/api/js?v=3.2&sensor=false&zoom=false&language=th&hl=th&callback=initialize&libraries=places"
             src: "https://maps.googleapis.com/maps/api/js?v=3.exp&language=th&hl=th&callback=initialize&libraries=places",
             //async: true,
             //defer: true,
           }).appendTo("body");
-          */
+
           //console.log('google map hide load..');
 
           /*$.getScript('[js containing the initialize function]',function(){

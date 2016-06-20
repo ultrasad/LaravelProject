@@ -137,10 +137,10 @@ class BrandController extends Controller
 
       //echo 'count more than 0 >> ' . $brand->id . '<br />';
       $fb = new Facebook\Facebook([
-        //'app_id' => env('FACEBOK_APP_KEY'),
-        'app_id' => '141016549272100',
-        //'app_secret' => env('FACEBOOK_APP_SECRET'),
-        'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
+        'app_id' => env('FACEBOK_APP_KEY'),
+        //'app_id' => '141016549272100',
+        'app_secret' => env('FACEBOOK_APP_SECRET'),
+        //'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
         'default_graph_version' => 'v2.6',
       ]);
 
@@ -181,6 +181,7 @@ class BrandController extends Controller
         //echo '<pre>';
         //print_r($longLivedAccessToken);
         //echo '</pre>';
+
         $response = $fb->get('/me/accounts', $longLivedAccessToken);
         $pageList = $response->getGraphEdge()->asArray();
         $pages = array();
@@ -195,7 +196,7 @@ class BrandController extends Controller
 
             /*if($pageID == '192272534234138'){
               $msg_body = array(
-                'message' => 'Test User Message !!',
+                'message' => 'Test Promotion User Message !!',
                 'access_token' => (string) $pageAccessToken
               );
               try {
@@ -461,6 +462,8 @@ class BrandController extends Controller
     $brand->save();
 
     //echo 'brand id => ' . $brand->id;
+
+    $brand->reIndex(); //reindex search
 
     if($brand->id > 0){
       //hide, 2016-06-13 1716

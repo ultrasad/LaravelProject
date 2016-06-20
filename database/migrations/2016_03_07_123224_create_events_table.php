@@ -25,7 +25,7 @@ class CreateEventsTable extends Migration
           $table->date('published_at')->nullable();
           $table->timestamps(); //auto crete created_at, updated_at
           $table->timestamp('deleted_at')->nullable();
-          $table->integer('user_id')->unsigned()->default(1);
+          $table->integer('user_id')->unsigned()->index()->default(1);
           $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

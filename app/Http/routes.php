@@ -39,8 +39,11 @@ Route::group(['middleware' => 'web'], function () {
         $clearCompiled = Artisan::call('clear-compiled');
         $clearView = Artisan::call('view:clear');
         $clearCache = Artisan::call('cache:clear');
+        //$clearRoute = Artisan::call('route:cache');
         // return what you want
     });
+
+    Route::get('/events/post_social/{event_id}', 'EventsController@post_social');
 
     Route::get('user/{user}', [
     	'middleware' => ['auth', 'roles'], // A 'roles' middleware must be specified

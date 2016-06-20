@@ -352,6 +352,11 @@ class Event extends Model
         return $this->belongsTo('App\Brand');
     }
 
+    public function socialPost()
+    {
+        return $this->hasMany('App\SocialPost');
+    }
+
     public function tags()
     {
       return $this->belongsToMany('App\Tag')

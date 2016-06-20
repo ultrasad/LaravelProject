@@ -48,8 +48,8 @@
 <script type="text/javascript" src="{{ URL::asset('pages/js/pages.js') }}"></script>
 <!--<script type="text/javascript" src="{{ URL::asset('pages/js/pages.social.js') }}"></script>-->
 <!-- BEGIN PAGE LEVEL JS -->
-<script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js?v=1.0.0') }}"></script>
 <!--<script type="text/javascript" src="{{ elixir('js/scripts.js') }}"></script>-->
 <script type="text/javascript" src="{{ URL::asset('assets/js/datatables.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?callback=initialize&libraries=places" async defer></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?callback=initialize&libraries=places" async defer></script>-->
 <!-- END PAGE LEVEL JS -->

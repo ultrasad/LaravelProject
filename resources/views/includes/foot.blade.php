@@ -17,4 +17,4 @@
 <script type="text/javascript" src="{{ elixir('js/all.js') }}"></script>
 <!--<script type="text/javascript" src="{{ elixir('js/scripts.js') }}"></script>-->
 <script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js') }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?callback=initialize&libraries=places" async defer></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?callback=initialize&libraries=places" async defer></script>-->

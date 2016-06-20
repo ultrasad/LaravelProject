@@ -14,7 +14,7 @@ class Social extends Model
     {
         return $this->belongsToMany('App\Brand');
     }
-
+    
     public function scopePageExists($query, $brand_id, $page_id=array())
     {
       //echo 'id => '. $brand_id;

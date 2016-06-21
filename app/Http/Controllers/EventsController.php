@@ -17,6 +17,7 @@ use App\Tag;
 use App\Branch;
 use App\Gallery;
 use App\Location;
+use App\SocialPost;
 use Facebook;
 use Session;
 
@@ -42,28 +43,10 @@ class EventsController extends Controller
     return $string;
   }
 
-  function post_social($id=0)
+  function post_social($event_id=0)
   {
-    $event = Event::find($id);
+    $event = Event::find($event_id);
     if($event->brand->social){
-      //echo '<pre>';
-      //print_r($event->brand->social->all());
-      foreach($event->brand->social->all() as $page){
-        echo 'page id => ' . $page->social_id . '<br />';
-        echo 'page token => ' . $page->page_token . '<br />';
-        echo 'event title => ' . $event->title . '<br />';
-        echo 'event url slug => ' . $event->url_slug . '<br />';
-        echo 'event image => ' . $event->image . '<br />';
-        echo 'event brief => ' . $event->brief . '<br /><br /><br />';
-
-        //echo '<pre>';
-        //print_r($page);
-      }
-    } else {
-      echo 'brand not social >> <br />';
-    }
-
-    exit;
 
     $fb = new Facebook\Facebook([
       'app_id' => env('FACEBOK_APP_KEY'),
@@ -71,44 +54,49 @@ class EventsController extends Controller
       'default_graph_version' => 'v2.6',
     ]);
 
-    $msg_body = array(
-      'message' => 'msg',
-      'name' => 'title',
-      'link' => 'url',
-      'caption' => 'brief',
-      'description' => 'brief',
-      'picture' => 'thumb',
-      'access_token' => 'page token'
-    );
+    foreach($event->brand->social->all() as $page){
+        /*echo 'page id => ' . $page->social_id . '<br />';
+        echo 'page token => ' . $page->page_token . '<br />';
+        echo 'event title => ' . $event->title . '<br />';
+        echo 'event url slug => ' . $event->url_slug . '<br />';
+        echo 'event image => ' . $event->image . '<br />';
+        echo 'event brief => ' . $event->brief . '<br /><br /><br />';*/
 
-    try {
-         $postResult = $fb->post('373634482682319/feed', $msg_body);
-         echo 'post id => ' . json_decode($postResult->getBody(), true)['id'] . '<br />';
-         echo '<pre>';
-         print_r($postResult->getBody());
+        $msg_body = array(
+          'message' => $event->title,
+          'name' => $event->title,
+          'link' => url($event->url_slug),
+          'caption' => $event->brief,
+          'description' => $event->brief,
+          'picture' => url($event->image),
+          'access_token' => $page->page_token
+        );
 
-     } catch (FacebookApiException $e) {
-         echo $e->getMessage();
+        //echo 'image => ' . $event->image . '<br />';
+        //echo 'id => ' . $page->social_id . '<br />';
+        //echo '<pre>';
+        //print_r($msg_body);
+        //exit;
+
+        try {
+             $postResult = $fb->post($page->social_id . '/feed', $msg_body);
+             $post_id = json_decode($postResult->getBody(), true)['id'];
+             //echo '<pre>';
+             //print_r($postResult->getBody());
+             echo 'post id => ' . $post_id . '<br />';
+             echo 'event id => ' . $event_id . '<br />';
+             echo 'page id => ' . $page->social_id . '<br />';
+             $social = SocialPost::firstOrCreate(array('social' => 'facebook','event_id' => $event_id, 'page_id' => $page->social_id, 'post_id' => $post_id, 'published_at' => date('Y-m-d')))->id;
+
+         } catch (FacebookApiException $e) {
+             echo $e->getMessage();
+         }
+
+       }
      }
 
-     /*$response = $fb->get('/me/accounts', 'EAAIVVefDiysBAFpyFgJM1fwoAVRZC2UGWOkgq1idUyZAcORw4Xh2lfJZBBZBI2hpvgfU4JjiWS4SnZA9SLjBGc2ZAbhZAdWnwl9WMRZANyuLRGlG7CbEFtLF3w3khgjXe3x6KZCt1aii8JX27tk1pUYOSiI9NfY0UVVkZD');
-     $pageList = $response->getGraphEdge()->asArray();
-     foreach ($pageList as $page) {
-         $pageID = $page['id'];
-         $pageAccessToken = $page['access_token'];
-
-         if($pageID == '192272534234138'){
-           $msg_body = array(
-             'message' => 'Test Promotion Page Dummy !!',
-             'access_token' => (string) $pageAccessToken
-           );
-           try {
-                $postResult = $fb->post('192272534234138/feed', $msg_body);
-            } catch (FacebookApiException $e) {
-                echo $e->getMessage();
-            }
-         } //check page post test
-     }*/
+     //return true;
+     echo 'OK';
   }
 
   /**
@@ -330,6 +318,8 @@ class EventsController extends Controller
       //$pageToken = Session::get('pageTokenTest');
       //$this->facebook_post($pageToken);
       //exit;
+
+      $this->post_social($event->id);
 
       return Response::json('success', array(
                   'status' => 'success',

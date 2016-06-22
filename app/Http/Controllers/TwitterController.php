@@ -88,7 +88,7 @@ class TwitterController extends Controller
 
     public function tweet()
     {
-        Twitter::postTweet(['status' => 'Laravel is beautiful', 'format' => 'json']);
+        Twitter::postTweet(['status' => 'Laravel is beautiful, Make with Love.', 'format' => 'json']);
         echo 'tweet >>';
     }
 

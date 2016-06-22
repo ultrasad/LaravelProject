@@ -169,6 +169,9 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content-wrapper">
           <div class="modal-content">
+
+            <button onclick="call_login()">login</button>
+
             <div class="modal-header clearfix text-master text-left p-t-5 p-l-15 p-r-15">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i></button>
               <!--<h5>Payment <span class="semi-bold">Information</span></h5>-->

@@ -320,6 +320,12 @@ class BrandController extends Controller
       $this->facebook_token($brand, $fbpage);
     }
 
+    //twitter
+    $twuser = $request->input('twuser');
+    if($twuser){
+      $brand->social()->attach($twuser);
+    }
+
     $brand->reIndex(); //reindex search
 
     if($brand->id > 0){

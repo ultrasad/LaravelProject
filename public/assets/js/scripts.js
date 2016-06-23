@@ -8,7 +8,7 @@ var latlngbounds;
 var latlngboundsBranch;
 var branch_list;
 var fx_select_brand;
-
+var twit = {}; //twitter data
 (function($) {
 
     'use strict';
@@ -1744,14 +1744,30 @@ $(document).on('click', '#submit_facebook_page', function(){
 });
 
 $(document).on('click', '#TWLogin', function(){
-        $.oauthpopup({
-            path: '/twitter/login',
-            callback: function(){
-                //window.location.reload();
-                console.log('login js reload...');
-            }
-        });
+  //window.twit.user_id = '1234';
+  //window.twit.user_name = 'test';
+  //console.log('==> ' +  window.twit.user_name);
+
+    $.oauthpopup({
+        path: '/twitter/login',
+        callback: function(){
+            //window.location.reload();
+            console.log('login js callback.');
+            console.log('twit => ' + window.twit.user_name);
+        }
     });
+});
+
+var setTwitterAuthData = function(e)
+{
+  window.twit = e;
+  console.log('refresh js twitter login.' + window.twit.social_id + ' => ' + window.twit.user_name);
+
+  var $clone = '<div class="checkbox check-warning"><input type="checkbox" checked="checked" class="tw_child" value="'+window.twit.social_id+'" name="twuser[]" id="'+window.twit.user_name+'" />';
+      $clone += '<label class="label-master" for="'+window.twit.social_id+'">'+window.twit.user_name+'</label></div>';
+  var $div = $("<div class='tw_row_result'></div>").append($clone);
+  $div.appendTo('.social_group_link .twitter_page_list');
+}
 
 function sendFile(file,editor,welEditable)
 {

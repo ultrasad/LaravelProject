@@ -7,15 +7,17 @@ use Illuminate\Http\Response;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Social;
 use Session;
 use Twitter;
+
 
 class TwitterController extends Controller
 {
     public function login(){
          // your SIGN IN WITH TWITTER  button should point to this route
         $sign_in_twitter = true;
-        $force_login = false;
+        $force_login = false; //false
 
         // Make sure we make this request w/o tokens, overwrite the default values in case of login.
         Twitter::reconfig(array('token' => '', 'secret' => ''));
@@ -55,7 +57,7 @@ class TwitterController extends Controller
 
             if ($request->has('oauth_verifier')) {
                 $oauth_verifier = $request->oauth_verifier;
-                echo 'oauth => ' . $request->oauth_verifier;
+                //echo 'oauth => ' . $request->oauth_verifier;
             }
 
             // getAccessToken() will reset the token for you
@@ -78,8 +80,22 @@ class TwitterController extends Controller
                 // This is also the moment to log in your users if you're using Laravel's Auth class
                 // Auth::login($user) should do the trick.
                 Session::put('access_token', $token);
+
+                //echo 'token ok >>>';
+
+                //insert token to database
+                $user = Twitter::get('account/verify_credentials');
+                $token['user_name'] = $user->name;
+                $tToken = json_encode($token);
+                //$twitter = array();
+                $twitter = Social::firstOrCreate(array('social' => 'twitter', 'social_id' => $user->id, 'name' => $user->name, 'token' => $tToken, 'long_live_token' => null, 'page_token' => null))->id;
+                //$brand->social()->sync($twitter);
+
                 //return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
-                return redirect('/twitter/tweet')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
+                //return redirect('/twitter/tweet')->with('flash_notice', 'Congrats! You\'ve successfully signed in!'); //master ok, 2016-06-24 0004
+                $user_id = $token['user_id'];
+                $user_name = $token['user_name'];
+                return view('brand.twitter', compact('user_id', 'user_name', 'twitter'));
             }
             //return Redirect::route('twitter.error')->with('flash_error', 'Crab! Something went wrong while signing you up!');
             return redirect()->route('twitter.error')->with('flash_error', 'Crab! Something went wrong while signing you up!');
@@ -89,16 +105,21 @@ class TwitterController extends Controller
     public function tweet()
     {
         //Test Current User
-        $user = Twitter::getUsers();
+        /*$user = Twitter::get('account/verify_credentials');
+        echo 'id => ' . $user->id . '<br />';
         echo '<pre>';
-        print_r($user);
-        
+        print_r(Session::get('access_token'));
+        echo '<pre>';
+        print_r($user);*/
+
+        return view('brand.twitter');
+
         //Twitter::postTweet(['status' => 'Laravel is beautiful, Make with Love.', 'format' => 'json']);
         //echo 'tweet >>';
     }
 
     public function error(){
-
+      //echo 'error';
     }
 
     public function logout(){

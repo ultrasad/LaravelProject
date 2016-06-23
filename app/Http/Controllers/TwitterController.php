@@ -88,8 +88,13 @@ class TwitterController extends Controller
 
     public function tweet()
     {
-        Twitter::postTweet(['status' => 'Laravel is beautiful, Make with Love.', 'format' => 'json']);
-        echo 'tweet >>';
+        //Test Current User
+        $user = Twitter::getUsers();
+        echo '<pre>';
+        print_r($user);
+        
+        //Twitter::postTweet(['status' => 'Laravel is beautiful, Make with Love.', 'format' => 'json']);
+        //echo 'tweet >>';
     }
 
     public function error(){

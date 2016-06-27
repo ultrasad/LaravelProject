@@ -44,6 +44,11 @@
               @forelse($event->gallery_list as $id => $image)
                 <img src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}"  data-thumb="{{ GlideImage::load($image)->modify(['w'=> 100, 'h' => 100, 'fit' => 'crop']) }}" class="fotoclick" class="img-responsive" data-fit="contain" />
               @empty
+                @if(is_file($event->image))
+                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                @else
+                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                @endif
               @endforelse
             </div>
             <!-- END PANEL -->
@@ -113,7 +118,7 @@
   </div>
 
   <div class="col-md-12"><hr /></div>
-
+  @if(!empty($branchs))
   <div class="row">
     <div class="col-md-12">
       <div class="row">
@@ -133,16 +138,19 @@
       </div>
     </div>
   </div>
+  @endif
 </div>
 
+@if(!empty($branchs))
 <div class="map_wide">
   <div id="map_canvas" class="map-canvas map-show"></div>
   <input name="location_lat" type="hidden" id="location_lat" value="0" />
   <input name="location_lon" type="hidden" id="location_lon" value="0" />
   <input name="location_zoom" type="hidden" id="location_zoom" value="0" />
 </div>
+@endif
 
-<div class="bg-write p-t-10">
+<div class="bg-write p-t-10 description">
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-8">

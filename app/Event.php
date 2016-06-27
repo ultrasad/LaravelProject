@@ -165,7 +165,12 @@ class Event extends Model
     public function getEndDateThaiAttribute()
     {
       //return $this->convertDate($this->getAttribute('end_date'));
-      return $this->convertDate($this->end_date);
+      if($this->end_date){
+        return $this->convertDate($this->end_date);
+      } else {
+        //return date('Y-m-d', strtotime('+5 years'));
+        return $this->convertDate($this->start_date);
+      }
     }
 
     public function getStartDateThaiAttribute()

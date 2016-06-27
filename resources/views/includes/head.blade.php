@@ -30,7 +30,7 @@
 
 <link rel="stylesheet" type="text/css" media="screen" href="{{ elixir('css/all.css') }}" />
 <!--<link rel="stylesheet" type="text/css" media="screen" href="{{ elixir('css/style.css') }}" />-->
-<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/css/style.css') }}" />
+<link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('assets/css/style.css?v=1.0.0') }}" />
 <!--[if lte IE 9]>
 <link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('assets/codrops-dialogFx/dialog.ie.css') }}" />
 <![endif]-->

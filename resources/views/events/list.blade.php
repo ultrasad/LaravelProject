@@ -13,6 +13,11 @@
       @if($events->count() < 1)
       <div class="p-l-0 col-md-12 promotion-empty text-master">ยังไม่มีโปรโมชั่น ในขณะนี้...</div>
       @endif
+
+      <div class="fotorama" data-allowfullscreen="true" data-width="100%" data-ratio="3/2">
+        <img src="http://s.fotorama.io/okonechnikov/7.jpg" class="fotorama__img" />
+      </div>
+
       <div class="feed">
         <!-- START DAY -->
         <div class="day" data-social="day">

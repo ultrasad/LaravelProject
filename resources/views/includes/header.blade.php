@@ -38,8 +38,8 @@
     <div class="pull-right full-height visible-sm visible-xs">
       <div class="header-inner">
         <ul class="nav-follow">
-          <li><a target="_blank" href="#" title="Follow us on Facebook" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
-          <li><a target="_blank" href="#" title="Follow us on Twitter" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
+          <li><a target="_blank" href="http://www.facebook.com/WeLoveProFan" title="Follow us on Facebook" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
+          <li><a target="_blank" href="http://twitter.com/welovepro" title="Follow us on Twitter" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
           <li><a target="_blank" href="#" title="Follow us on Youtube" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-youtube-square fa-lg" aria-hidden="true"></i></a></li>
           <li><a href="/contact" title="Contact Us" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
         </ul>
@@ -104,8 +104,8 @@
   <div class="pull-right">
     <div class="header-inner">
       <ul class="nav-follow">
-        <li><a target="_blank" href="#" title="Follow us on Facebook" class="hidden-sm hidden-xs"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
-        <li><a target="_blank" href="#" title="Follow us on Twitter" class="hidden-sm hidden-xs"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
+        <li><a target="_blank" href="http://www.facebook.com/WeLoveProFan" title="Follow us on Facebook" class="hidden-sm hidden-xs"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
+        <li><a target="_blank" href="http://twitter.com/welovepro" title="Follow us on Twitter" class="hidden-sm hidden-xs"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
         <li><a target="_blank" href="#" title="Follow us on Youtube" class="hidden-sm hidden-xs"><i class="fa fa-youtube-square fa-lg" aria-hidden="true"></i></a></li>
         <li><a href="/contact" title="Contact Us" class="hidden-sm hidden-xs"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
       </ul>

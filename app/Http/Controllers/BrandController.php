@@ -42,14 +42,18 @@ class BrandController extends Controller
   {
     //echo '=> ' . $brand;
     //$events = Event::published()->active()->eventBrand()->BrandId($brand_id)->orderBy('events.created_at', 'desc')->paginate(15);
+    $paginate = 10;
     if($slug == 'false'){
-      $brands = Brand::approved()->paginate(20);
+      $brands = Brand::approved()->paginate($paginate);
       return view('brand.main', compact('brands'));
     } else {
       $brand = Brand::where('url_slug', $slug)->first();
-      $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->BrandSlug($slug)->orderBy('events.created_at', 'desc')->paginate(10);
+      $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->BrandSlug($slug)->orderBy('events.created_at', 'desc')->paginate($paginate);
       //dd($events);
-      return view('brand.index', compact('events', 'brand'));
+      $more_page = $events->hasMorePages();
+      $total_page = $events->total();
+
+      return view('brand.index', compact('events', 'brand', 'more_page', 'total_page', 'paginate'));
     }
   }
 

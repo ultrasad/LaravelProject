@@ -76,9 +76,11 @@
                       <div class="hint-text small-text text-master"><a href="{{ URL::to('category', 'unknow') }}" title="ไม่ระบุหมวดหมู่" class="">ไม่ระบุหมวดหมู่</a></div>
                     @endif
                   </div>
+                  @if(!empty($event->brand->branch->first()->name))
                   <div class="pull-top pull-right list-inline">
                     <a href="#modal_map" data-toggle="modal" class="btntoggle btnToggleMap" data-type="promotion" data-id="{{ $event->id }}" data-slug="{{ $event->url_slug }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
                   </div>
+                  @endif
                 </div>
               </div>
               <hr class="no-margin">

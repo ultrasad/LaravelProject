@@ -2310,7 +2310,7 @@ function initialize() {
 
     } //end map full
 
-    if($('.event_slug').exists()){ //event locations
+    if($('.event_slug').exists() && $('#map_canvas').exists()){ //event locations
       $.ajax({
           url: '/events/locations/'+$('.event_slug').val(),
           type: 'GET',

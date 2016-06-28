@@ -1,7 +1,7 @@
 <!-- BEGIN SIDEBPANEL-->
 <nav class="page-sidebar" data-pages="sidebar">
   <div class="sidebar-header">
-    <a href="/" title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="clearfix"><img src="{{ URL::asset('assets/img/logo_white.png') }}" alt="รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="brand" data-src="{{ URL::asset('assets/img/logo_white.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_white_2x.png') }}" width="" height="38"></a>
+    <a href="/" title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="clearfix"><img src="{{ URL::asset('assets/img/logo_white.png?v=1.0.0') }}" alt="รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="brand" data-src="{{ URL::asset('assets/img/logo_white.png?v=1.0.0') }}" data-src-retina="{{ URL::asset('assets/img/logo_white_2x.png?v=1.0.0') }}" width="" height="38"></a>
   </div>
 
   <!-- START SIDEBAR MENU -->

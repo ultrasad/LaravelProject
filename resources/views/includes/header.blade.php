@@ -50,7 +50,7 @@
   <div class="pull-left sm-table hidden-xs hidden-sm">
     <div class="header-inner">
       <div class="brand inline">
-        <a href="/" title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="clearfix"><img src="{{ URL::asset('assets/img/logo.png') }}" alt="รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="" height="50"></a>
+        <a href="/" title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="clearfix"><img src="{{ URL::asset('assets/img/logo.png?v=1.0.0') }}" alt="รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" data-src="{{ URL::asset('assets/img/logo.png?v=1.0.0') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png?v=1.0.0') }}" width="" height="50"></a>
       </div>
       <a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Type anywhere to search</a>
     </div>

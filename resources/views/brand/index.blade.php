@@ -46,7 +46,9 @@
         </div>
 
         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 sm-p-t-10 sm-p-l-0 brand-master-social">
-            <p class="m-t-10 hint-text text-master"><a class="btnToggleMap" href="#modal_map" data-toggle="modal" data-type="brand" data-slug="{{ $brand->url_slug }}" title="{{ $brand->name }} มีทั้งหมด {{ $brand->branch->count() }} สาขา"><i class="pg-map pg-map-lg"></i>&nbsp; มีทั้งหมด {{ $brand->branch->count() }} สาขา</a></p>
+            @if(!empty($brand->branch->first()->name))
+              <p class="m-t-10 hint-text text-master"><a class="btnToggleMap" href="#modal_map" data-toggle="modal" data-type="brand" data-slug="{{ $brand->url_slug }}" title="{{ $brand->name }} มีทั้งหมด {{ $brand->branch->count() }} สาขา"><i class="pg-map pg-map-lg"></i>&nbsp; มีทั้งหมด {{ $brand->branch->count() }} สาขา</a></p>
+            @endif
             @if($brand->facebook != '')
               <p class="hint-text text-master"><a href="{{ $brand->facebook }}" target="_blank" title="{{ $brand->name }} Facebook: {{ $brand->facebook }}"><i class="fa fa-facebook fa-lg p-l-5"></i>&nbsp; {{ $brand->facebook }}</a></p>
             @endif
@@ -115,7 +117,12 @@
               <div class="relative">
                 <div class="no-overflow">
                   <!--<a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ URL::asset($event->image) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>-->
-                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                  <!--<a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>-->
+                  @if(is_file($event->image))
+                    <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                  @else
+                    <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                  @endif
                 </div>
               </div>
               <div class="p-t-15 p-l-15 p-r-15 p-b-5">

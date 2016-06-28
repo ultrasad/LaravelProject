@@ -67,7 +67,7 @@
         <!-- BEGIN Overlay Header !-->
         <div class="container-fluid">
           <!-- BEGIN Overlay Logo !-->
-          <a href="/" title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="clearfix"><img class="overlay-brand" src="{{ URL::asset('assets/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png') }}" width="" height="50"></a>
+          <a href="/" title="WELOVEPRO | รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง" class="clearfix"><img class="overlay-brand" src="{{ URL::asset('assets/img/logo.png?v=1.0.0') }}" alt="logo" data-src="{{ URL::asset('assets/img/logo.png?v=1.0.0') }}" data-src-retina="{{ URL::asset('assets/img/logo_2x.png?v=1.0.0') }}" width="" height="50"></a>
           <!-- END Overlay Logo !-->
           <!-- BEGIN Overlay Close !-->
           <a href="#" class="close-icon-light overlay-close text-black fs-16">
@@ -169,9 +169,6 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content-wrapper">
           <div class="modal-content">
-
-            <button onclick="call_login()">login</button>
-
             <div class="modal-header clearfix text-master text-left p-t-5 p-l-15 p-r-15">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i></button>
               <!--<h5>Payment <span class="semi-bold">Information</span></h5>-->

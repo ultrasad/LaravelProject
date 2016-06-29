@@ -37,7 +37,8 @@
 
     <div class="pull-right full-height visible-sm visible-xs">
       <div class="header-inner">
-        <ul class="nav-follow">
+        <ul class="nav-follow">yy
+          <glyph glyph-name="line" unicode="&#xe800;" d="m530 684c-227 0-411-155-411-346 0-175 153-319 353-343 2-1 4-1 6-2 29-4 33-15 27-44-7-30-20-57-16-68 4-11 20-18 62 9 43 27 217 157 248 182 12 10 21 19 29 27 71 62 114 146 114 239 0 191-184 346-412 346z m-29-235c4 0 7 0 10-2 3-1 5-2 7-4 2-2 4-5 6-8 2-4 4-7 6-11l79-120 0 122c0 7 2 13 5 17 4 4 8 6 14 6 6 0 11-2 14-6 4-4 5-10 5-17l0-162c0-18-7-27-22-27-4 0-7 1-10 2-3 1-6 3-8 5-3 2-5 5-8 8-2 3-4 7-6 10l-77 119 0-120c0-8-2-14-6-18-3-4-8-6-13-6-6 0-11 2-15 7-3 4-5 9-5 17l0 158c0 7 1 12 2 16 2 4 5 8 9 10 4 3 9 4 13 4z m-82 0c7 0 12-2 15-6 4-4 6-10 6-19l0-161c0-9-2-15-6-19-3-4-8-7-15-7-6 0-10 3-14 7-4 4-6 10-6 19l0 161c0 9 2 15 6 19 3 4 8 6 14 6z m-147 0c6 0 11-2 15-6 4-4 6-10 6-19l0-149 61 0c7 0 12-2 16-5 3-3 5-7 5-12 0-5-2-9-5-12-4-3-9-5-16-5l-77 0c-9 0-15 2-19 6-4 4-6 10-6 19l0 158c0 9 2 15 5 19 4 4 9 6 15 6z m429-1l85 0c7 0 12-1 15-4 3-3 5-7 5-12 0-5-2-8-5-11-3-3-8-5-15-5l-70 0 0-50 63 0c6 0 11-1 14-4 3-3 5-7 5-12 0-4-2-8-5-11-3-3-8-4-14-4l-63 0 0-59 73 0c7 0 12-1 15-4 3-3 5-7 5-12 0-5-2-9-5-12-3-3-8-5-15-5l-88 0c-9 0-16 2-20 6-4 4-6 11-6 20l0 154c0 6 1 11 3 14 2 4 4 7 8 9 4 1 9 2 15 2z" horiz-adv-x="1000" />
           <li><a target="_blank" href="http://www.facebook.com/WeLoveProFan" title="Follow us on Facebook" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
           <li><a target="_blank" href="http://twitter.com/welovepro" title="Follow us on Twitter" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
           <li><a target="_blank" href="#" title="Follow us on Youtube" class="visible-sm-inline-block visible-xs-inline-block"><i class="fa fa-youtube-square fa-lg" aria-hidden="true"></i></a></li>
@@ -103,7 +104,8 @@
   @endif
   <div class="pull-right">
     <div class="header-inner">
-      <ul class="nav-follow">
+      <ul class="nav-follow">xx
+        <glyph glyph-name="line" unicode="&#xe800;" d="m530 684c-227 0-411-155-411-346 0-175 153-319 353-343 2-1 4-1 6-2 29-4 33-15 27-44-7-30-20-57-16-68 4-11 20-18 62 9 43 27 217 157 248 182 12 10 21 19 29 27 71 62 114 146 114 239 0 191-184 346-412 346z m-29-235c4 0 7 0 10-2 3-1 5-2 7-4 2-2 4-5 6-8 2-4 4-7 6-11l79-120 0 122c0 7 2 13 5 17 4 4 8 6 14 6 6 0 11-2 14-6 4-4 5-10 5-17l0-162c0-18-7-27-22-27-4 0-7 1-10 2-3 1-6 3-8 5-3 2-5 5-8 8-2 3-4 7-6 10l-77 119 0-120c0-8-2-14-6-18-3-4-8-6-13-6-6 0-11 2-15 7-3 4-5 9-5 17l0 158c0 7 1 12 2 16 2 4 5 8 9 10 4 3 9 4 13 4z m-82 0c7 0 12-2 15-6 4-4 6-10 6-19l0-161c0-9-2-15-6-19-3-4-8-7-15-7-6 0-10 3-14 7-4 4-6 10-6 19l0 161c0 9 2 15 6 19 3 4 8 6 14 6z m-147 0c6 0 11-2 15-6 4-4 6-10 6-19l0-149 61 0c7 0 12-2 16-5 3-3 5-7 5-12 0-5-2-9-5-12-4-3-9-5-16-5l-77 0c-9 0-15 2-19 6-4 4-6 10-6 19l0 158c0 9 2 15 5 19 4 4 9 6 15 6z m429-1l85 0c7 0 12-1 15-4 3-3 5-7 5-12 0-5-2-8-5-11-3-3-8-5-15-5l-70 0 0-50 63 0c6 0 11-1 14-4 3-3 5-7 5-12 0-4-2-8-5-11-3-3-8-4-14-4l-63 0 0-59 73 0c7 0 12-1 15-4 3-3 5-7 5-12 0-5-2-9-5-12-3-3-8-5-15-5l-88 0c-9 0-16 2-20 6-4 4-6 11-6 20l0 154c0 6 1 11 3 14 2 4 4 7 8 9 4 1 9 2 15 2z" horiz-adv-x="1000" />
         <li><a target="_blank" href="http://www.facebook.com/WeLoveProFan" title="Follow us on Facebook" class="hidden-sm hidden-xs"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a></li>
         <li><a target="_blank" href="http://twitter.com/welovepro" title="Follow us on Twitter" class="hidden-sm hidden-xs"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
         <li><a target="_blank" href="#" title="Follow us on Youtube" class="hidden-sm hidden-xs"><i class="fa fa-youtube-square fa-lg" aria-hidden="true"></i></a></li>

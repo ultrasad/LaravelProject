@@ -14,6 +14,7 @@ class CategoryController extends Controller
 {
   public function index($category='')
   {
+      $paginate = 10;
       $category_name = 'ไม่ระบุ หมวดหมู่';
       $category_icon = '';
       $cate = Category::where('category', $category)->first();
@@ -29,8 +30,11 @@ class CategoryController extends Controller
       //echo 'cate => ' . $category . '<br />';
       //try {
       //$events = Event::published()->active()->categoryList($category)->orderBy('events.created_at', 'desc')->paginate(15);
-      $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->brandCategoryList($category)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate(10);
+      $events = Event::select('events.*', 'events.url_slug as url_slug')->published()->active()->brandCategoryList($category)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
       //$category_name = $events->first()->category->where('category', $category)->first()->name;
+
+      $more_page = $events->hasMorePages();
+      $total_page = $events->total();
 
       //echo '<pre>';
       //print_r($events);
@@ -64,6 +68,6 @@ class CategoryController extends Controller
 
       //echo 'name => '. $category_name;
       //exit;
-      return view('category.list', compact('events', 'category', 'category_name', 'category_icon'));
+      return view('category.list', compact('events', 'category', 'category_name', 'category_icon', 'more_page', 'total_page', 'paginate'));
   }
 }

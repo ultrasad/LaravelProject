@@ -879,6 +879,7 @@ div.cs-select-brand, div.cs-select-contact {
 
 .fotorama > .fotorama__wrap {
   visibility: visible;
+  margin: 0 auto;
 }
 
 .event-gallery .dialog__content {

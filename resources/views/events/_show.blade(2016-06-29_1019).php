@@ -40,14 +40,14 @@
       <div class="panel-body p-b-0 p-l-0 p-r-0">
         <div class="dialog__content">
             <!-- START PANEL -->
-            <div class="fotorama" data-allowfullscreen="true" data-maxwidth="800"  data-width="100%" data-click="false" data-arrows="always" click="false" data-nav="thumbs" data-loop="true">
+            <div class="fotorama" data-allowfullscreen="true" data-width="100%" data-fit="none" data-fit="cover" data-ratio="3/2" data-click="false" data-arrows="always" click="false" data-nav="thumbs" data-loop="true">
               @forelse($event->gallery_list as $id => $image)
-                <img src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}"  data-thumb="{{ GlideImage::load($image)->modify(['w'=> 100, 'h' => 100, 'fit' => 'crop']) }}" class="fotoclick" class="img-responsive" />
+                <img src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}"  data-thumb="{{ GlideImage::load($image)->modify(['w'=> 100, 'h' => 100, 'fit' => 'crop']) }}" class="fotoclick" class="img-responsive" data-fit="contain" />
               @empty
                 @if(is_file($event->image))
-                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" data-fit="contain" /></a>
                 @else
-                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" data-fit="contain" /></a>
                 @endif
               @endforelse
             </div>

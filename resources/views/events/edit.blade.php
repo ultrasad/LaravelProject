@@ -126,7 +126,7 @@
               <div class="social_group">
                 <div class="form-group">
                   <label class="social-facebook-title">Facebook</label>
-                  <span class="checkbox-inline">
+                  <!--<span class="checkbox-inline">
                     <div class="checkbox check-warning">
                       <input type="checkbox" checked="checked" value="1" name="fb1" id="checkbox2" />
                       <label class="label-master" for="checkbox2">Channel 2</label>
@@ -137,13 +137,13 @@
                       <input type="checkbox" checked="checked" value="1" name="fb2" id="checkbox3">
                       <label class="label-master" for="checkbox3">One</label>
                     </div>
-                  </span>
+                  </span>-->
                   <textarea class="form-control" name="fb_message" rows="3"></textarea>
                 </div>
 
                 <div class="form-group">
                   <label class="social-twitter-title">Twitter</label>
-                  <span class="checkbox-inline">
+                  <!--<span class="checkbox-inline">
                     <div class="checkbox check-warning">
                       <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
                       <label class="label-master" for="checkbox4">Ch8</label>
@@ -154,7 +154,7 @@
                       <input type="checkbox" checked="checked" value="1" name="tw2" id="checkbox5">
                       <label class="label-master" for="checkbox5">Sabaidee</label>
                     </div>
-                  </span>
+                  </span>-->
                   <textarea class="form-control" name="tw_message" rows="3"></textarea>
                 </div>
               </div>

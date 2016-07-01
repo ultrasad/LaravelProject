@@ -99,13 +99,28 @@ class EventsController extends Controller
      echo 'OK';
   }
 
+  function reindex()
+  {
+    //ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+    set_time_limit(0);
+    $event = new Event;
+    $event->reIndex('App\Event --relations');
+    echo 'OK >>';
+  }
+
   /**
   * Search Test
   */
   public function search($type="promotion", $keywords='welovepro')
   {
+    //ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+    //set_time_limit(0);
     //$event = new Event;
     //$event->reIndex('App\Event --relations');
+    //$event->shouldIndex();
+
+    //Artisan::call('larasearch:reindex App\Event --relations');
+    //exit;
 
     //$brand = new Brand;
     //$brand->reIndex();
@@ -134,7 +149,10 @@ class EventsController extends Controller
     foreach($results as $result){
       if($type == 'promotion'){
         $fields = $result->getFields();
-        $arr_branch = $fields['branch.name'];
+        $arr_branch = '';
+        if(isset($fields['branch.name'])){
+          $arr_branch = $fields['branch.name'];
+        }
         $arr_data = array('title' => $fields['title'][0], 'image' => $fields['image'][0], 'url_slug' => $fields['url_slug'][0], 'brief' => $fields['brief'][0]);
         array_push($arr_response, $arr_data);
         $highlights = $result->getHighlights(['branch.name']);
@@ -209,6 +227,8 @@ class EventsController extends Controller
 
   public function store(EventRequest $request)
   {
+    //ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+    //set_time_limit(0);
     $event = new Event($request->all());
 
     //image
@@ -311,7 +331,7 @@ class EventsController extends Controller
       $event->location()->sync($location);
     }
 
-    $event->reIndex('App\Event --relations'); //reindex search
+    //$event->reIndex('App\Event --relations'); //reindex search
 
     if($event->id > 0){
       //hide 2016-06-13, 1714

@@ -42,7 +42,8 @@ class Event extends Model
         //'suggest' => ['title', 'branch.name'],
         //'word_start' => ['title', 'description', 'branch.name', 'branch.location'],
         //'word_end' => ['title', 'description', 'branch.name', 'branch.location'],
-        'text_start' => ['title', 'description', 'branch.name', 'branch.location'],
+        //'text_start' => ['title', 'description', 'branch.name', 'branch.location'], //old not work for length
+        'text_start' => ['title', 'brief', 'branch.name', 'branch.location'], //old not work for length
         //'text_middle' => ['title', 'branch.name', 'branch.location'],
         //'text_end' => ['title', 'branch.name', 'branch.location'],
         //'text_start' => ['title', 'brief', 'description'],
@@ -57,6 +58,8 @@ class Event extends Model
         // Your custom logic to determine if a (re)index should be performed
         //$this->shouldIndex();
         //$this->deleted('Event');
+
+        //$this->reIndex('App\Event --relations');
         return true;
     }
 

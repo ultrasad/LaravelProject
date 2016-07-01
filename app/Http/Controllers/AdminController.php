@@ -18,15 +18,17 @@ class AdminController extends Controller
   {
     $user_id = Auth::user()->id;
     $role_id = Auth::user()->role_id;
+    $paginate = 20;
     if($role_id == 4){//brand
       $brands = Brand::where('user_id', $user_id)->get();
       $brands_list = $brands->lists('id')->toArray();
 
-      $events = Event::published()->active()->brandEvent($brands_list)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->get();
+      //$events = Event::published()->active()->brandEvent($brands_list)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->get();
+      $events = Event::published()->active()->brandEvent($brands_list)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
 
     } elseif($role_id < 4){ // manager, admin
       $brands = Brand::all();
-      $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->get();
+      $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
     }
     return view('admin.index', compact('events', 'role_id', 'user_id', 'brands'));
   }

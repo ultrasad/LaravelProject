@@ -13,7 +13,8 @@
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-tag/bootstrap-tagsinput.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
 <!-- <script type="text/javascript" src="{{ URL::asset('assets/summernote/js/summernote.0.5.1.min.js') }}"></script> -->
-<script type="text/javascript" src="{{ URL::asset('assets/summernote/js/summernote.0.5.1.min.js') }}"></script>
+<!--<script type="text/javascript" src="{{ URL::asset('assets/summernote/js/summernote.0.5.1.min.js') }}"></script>-->
+<script type="text/javascript" src="{{ URL::asset('assets/summernote/js/summernote.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/switchery/js/switchery.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-isotope/isotope.pkgd.min.js') }}" ></script>
 <script type="text/javascript" src="{{ URL::asset('assets/codrops-stepsform/js/stepsForm.js') }}"></script>
@@ -45,7 +46,7 @@
 <!-- END VENDOR JS -->
 <!-- BEGIN CORE TEMPLATE JS -->
 <!-- <script type="text/javascript" src="{{ URL::asset('pages/js/pages.min.js') }}"></script> -->
-<script type="text/javascript" src="{{ URL::asset('pages/js/pages.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('pages/js/pages.js?v=1.0.0') }}"></script>
 <!--<script type="text/javascript" src="{{ URL::asset('pages/js/pages.social.js') }}"></script>-->
 <!-- BEGIN PAGE LEVEL JS -->
 <script type="text/javascript" src="{{ URL::asset('assets/js/scripts.js?v=1.0.0') }}"></script>

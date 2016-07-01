@@ -2102,11 +2102,10 @@
                 _this.toggleOverlay('hide');
             }
         });
-
     }
 
-
     Search.prototype.keypress = function(e) {
+      //console.log('keyup => ' + e.toSource());
 
         e = e || event; // to deal with IE
         var nodeName = e.target.nodeName;
@@ -2122,9 +2121,11 @@
         }
     }
 
-
     Search.prototype.toggleOverlay = function(action, key) {
         var _this = this;
+        console.log('this =>' + _this);
+        console.log('action =>' + action);
+        console.log('key =>' + key);
         if (action == 'show') {
             this.$element.removeClass("hide");
             this.$element.fadeIn("fast");
@@ -2158,7 +2159,6 @@
     // SEARCH PLUGIN DEFINITION
     // =======================
 
-
     function Plugin(option) {
         return this.each(function() {
             var $this = $(this);
@@ -2170,7 +2170,7 @@
 
             }
             if (typeof option == 'string') data[option]();
-        })
+        });
     }
 
     var old = $.fn.search
@@ -2198,8 +2198,7 @@
         var $target = $('[data-pages="search"]');
         if ($this.is('a')) e.preventDefault();
         $target.data('pg.search').toggleOverlay('show');
-    })
-
+    });
 
 })(window.jQuery);
 (function($) {

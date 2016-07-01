@@ -183,13 +183,26 @@ return array_merge($pathConfig, array(
                                     'mapping' => [
                                         # http://www.elasticsearch.org/guide/reference/mapping/multi-field-type/
                                         'type' => 'multi_field',
+                                        //'path'   => 'full',
                                         'fields' => [
                                             # analyzed field must be the default field for include_in_all
                                             # http://www.elasticsearch.org/guide/reference/mapping/multi-field-type/
                                             # however, we can include the not_analyzed field in _all
                                             # and the _all index analyzer will take care of it
-                                            '{name}' => ['type' => 'string', 'index' => 'not_analyzed'],
-                                            'analyzed' => ['type' => 'string', 'index' => 'analyzed']
+                                            //'{name}' => ['type' => 'string', 'index' => 'not_analyzed'],
+                                            //'analyzed' => ['type' => 'string', 'index' => 'analyzed']
+                                            //'{name}' => ['type' => 'string', 'index' => 'analyzed', 'analyzer' => 'standard'],
+                                            //'analyzed' => ['type' => 'string', 'index' => 'not_analyzed', 'ignore_above' => 256]
+                                            '{name}' => [
+                                                'type'     => 'string',
+                                                'index'    => 'analyzed',
+                                                'analyzer' => 'standard',
+                                            ],
+                                            'raw' => [
+                                                'type'         => 'string',
+                                                'index'        => 'not_analyzed',
+                                                'ignore_above' => 256,
+                                            ],
                                         ]
                                     ]
                                 ]
@@ -199,7 +212,7 @@ return array_merge($pathConfig, array(
                 ]
             ]
         ],
-	    
+
         'index_prefix' => ''
     ],
 

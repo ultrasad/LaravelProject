@@ -43,6 +43,12 @@ Route::group(['middleware' => 'web'], function () {
         // return what you want
     });
 
+    Route::get('/reindex', 'EventsController@reindex');
+
+    //Route::get('/reindex', function() {
+      //$reIndex = Artisan::call('larasearch:reindex', ['--relations App\Event']);
+    //});
+
     /*Route::get('/posttweet', function()
     {
         return Twitter::postTweet(['status' => 'Laravel is beautiful', 'format' => 'json']);

@@ -95,8 +95,8 @@ class EventsController extends Controller
        }
      }
 
-     //return true;
-     echo 'OK';
+     return true;
+     //echo 'OK';
   }
 
   function reindex()

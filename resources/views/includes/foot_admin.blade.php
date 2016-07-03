@@ -11,6 +11,7 @@
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-cookie/jquery.cookie.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/dropzone/dropzone.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-tag/bootstrap-tagsinput.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/bootstrap-typeahead/bootstrap3-typeahead.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
 <!-- <script type="text/javascript" src="{{ URL::asset('assets/summernote/js/summernote.0.5.1.min.js') }}"></script> -->
 <!--<script type="text/javascript" src="{{ URL::asset('assets/summernote/js/summernote.0.5.1.min.js') }}"></script>-->

@@ -9,7 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Event;
-//use App\Tag;
+use App\Tag;
 
 class TagsController extends Controller
 {
@@ -26,5 +26,16 @@ class TagsController extends Controller
       //echo 'name => '. $tag_name;
       //exit;
       return view('tags.list', compact('events', 'tag_name'));
+  }
+
+  public function all_tags()
+  {
+    $tags = Tag::select('name')->get();
+    $arr_tag = array();
+    foreach($tags as $tag){
+      array_push($arr_tag, $tag->name);
+    }
+
+    echo json_encode($arr_tag);
   }
 }

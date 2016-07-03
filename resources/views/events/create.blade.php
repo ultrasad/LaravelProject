@@ -75,7 +75,7 @@
               </div>
 
               <!-- END PANEL -->
-              <div class="form-group form-group-default required">
+              <div class="form-group form-group-default form-group-normal required">
                 <label>Keyword (สูงสุด 20 คำ)</label>
                 <input class="tagsinput custom-tag-input validate" id="tag_list" name="tag_list" type="text" value="" />
               </div>

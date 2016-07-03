@@ -677,6 +677,10 @@ h3.page-title, .windows h3.page-title {
   background: none;
 }
 
+.form-group-normal {
+  overflow: visible;
+}
+
 div.cs-skin-slide > span.error::after, div.cs-skin-slide.cs-active > span.error::after, .cs-select > span.error::after {
   content: none;
 }

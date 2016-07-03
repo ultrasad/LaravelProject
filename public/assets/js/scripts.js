@@ -1388,7 +1388,44 @@ var twit = {}; //twitter data
 
         //Single instance of tag inputs - can be initiated with simply using data-role="tagsinput" attribute in any input field
         if($('.custom-tag-input').exists()){
-          $('.custom-tag-input').tagsinput({ maxTags: 20, tagClass: function(item) {return 'label label-custom-tag';} });
+          //var colors = ["red", "blue", "green", "yellow", "brown", "black"];
+           /*var elt = $('.custom-tag-input');
+           elt.typeahead();
+           $('.custom-tag-input').tagsinput({
+                typeahead: {
+                     source: colors
+                }
+           });*/
+
+           /*var citynames = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+              url: '/tag/all_tags',
+              filter: function(list) {
+                return $.map(list, function(cityname) {
+                  return { name: cityname }; });
+              }
+            }
+          });
+          citynames.initialize();*/
+
+          var tagsname = $.getJSON('/tag/all_tags');
+          //console.log(JSON.stringify(tagsname));
+          $('.custom-tag-input').tagsinput({
+            maxTags: 20,
+            tagClass: function(item) {return 'label label-custom-tag';} ,
+            typeahead: {
+                  source: function(query) {
+                    return tagsname;
+                  }
+                  //source: function(query) {
+                      //return ['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo'];
+                      //return tagsname;
+                      //return ["hello World"," quotes"," inspiration","test sadd","Check Dup","shoes","super sport","running","Test","crocs","crocs ale 2016","Crocs End Of Season Sale","crocs sale 50%","featured","spotlight","asics","Nike","Sports Revolution","Reebok","Reebok sale","Reebok Sale 2016","reebok sale 70%","Baskin Robbins","Baskin Robbins Buy 1 Fee 1","Baskin Robbins Buy Fun Scoop 1 Fee 1","Promotion Baskin Robbins","air asia promotion","air asia thailand","air asia \u0e44\u0e17\u0e22","Airasia BIG Sale","promotion yayoi","yayoi","\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19 \u0e22\u0e32\u0e42\u0e22\u0e2d\u0e34","NanYang Suga","Promotion NanYang Sugar","\u0e19\u0e31\u0e19\u0e22\u0e32\u0e07 \u0e0a\u0e39\u0e01\u0e32\u0e23\u0e4c","AIIZ","BONNY","Butterfly Twists","Camel Active","Columbia","Emquatier","Fitflop","fitflop sale","\u0e27\u0e31\u0e15\u0e2a\u0e31\u0e19 \u0e25\u0e14\u0e23\u0e32\u0e04\u0e32","\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19 Watsons","\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19 \u0e27\u0e31\u0e15\u0e2a\u0e31\u0e19 2559","Salute","summer","M Point","Koh Samui","Summer Aloha","Outlet","Gift Voucher","\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c","\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19 MBK","7-11","April","\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19 7-eleven","7 Card","All Cafe","sadd","Nivea","nivea promotion","nivea promotion 2016","Promotion Nivea","galaxy gift","\u0e40\u0e04\u0e40\u0e2d\u0e1f\u0e0b\u0e35","\u0e40\u0e21\u0e01\u0e30\u0e1a\u0e32\u0e07\u0e19\u0e32","\u0e25\u0e14\u0e23\u0e32\u0e04\u0e32","watson18","boots18","\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19 7-eleven","crocs sale 50%","\u0e27\u0e31\u0e15\u0e2a\u0e31\u0e19 \u0e25\u0e14\u0e23\u0e32\u0e04\u0e32","\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19 Watsons","\u0e42\u0e1b\u0e23\u0e42\u0e21\u0e0a\u0e31\u0e48\u0e19 \u0e27\u0e31\u0e15\u0e2a\u0e31\u0e19 2559","\u0e40\u0e04\u0e40\u0e2d\u0e1f\u0e0b\u0e35"]
+                  //}
+            }
+          });
         }
 
         //$(".custom-tag-input").on('itemRemoved', function (event) {

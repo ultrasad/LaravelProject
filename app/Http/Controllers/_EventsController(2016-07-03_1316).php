@@ -414,7 +414,7 @@ class EventsController extends Controller
           return redirect()->action('EventsController@show', ['slug' => $event->url_slug]);
       }
 
-      $event = Cache::remember('_' . $slug, 1440, function() use ($slug) { //1440 Min(24 Hr.)
+      $event = Cache::remember('Promotion_' . $slug, 1440, function() use ($slug) {
         return Event::where('url_slug', $slug)->first();
       });
 
@@ -437,26 +437,17 @@ class EventsController extends Controller
       $event_id = $event->id;
       $event_title = $event->title;
       $cate_id = isset($event->category->first()->id)?$event->category->first()->id:'';
-      $brand_cate_id = isset($event->brand->category->first()->id)?$event->brand->category->first()->id:'';
       $relates = array();
 
       //echo '<pre>';
       //print_r($tags_relate);
       //echo '</pre>';
-      //echo 'cate id => ' . $brand_cate_id . '<br />';
+
+      //echo 'cate id => ' . $cate_id . '<br />';
 
       if($event_id){
-        //$relates = Event::published()->active()->relateThis($event_id, $brand_cate_id, $tags_relate)->skip(0)->take(6)->get();
-        $relates = Cache::remember('_relate_' . $slug, 1440, function() use ($event_id, $cate_id, $brand_cate_id, $tags_relate) { //1440 Min(24 Hr.)
-          //echo $event_id . '=>' . $cate_id . '=>'. $brand_cate_id;
-          //print_r($tags_relate);
-          //exit;
-          return Event::published()->active()->relateThis($event_id, $cate_id, $brand_cate_id, $tags_relate)->skip(0)->take(6)->get();
-        });
+        $relates = Event::published()->active()->relateThis($event_id, $cate_id, $tags_relate)->skip(0)->take(6)->get();
       }
-
-      //echo count($relates);
-      //exit;
 
       //echo '<pre>';
       //print_r($relates);
@@ -669,7 +660,7 @@ class EventsController extends Controller
     $event_locations = array();
     $event_brand = array();
       //$event = Event::where('id', $id)->first();
-      $event = Cache::remember('_promotion_' . $slug, 1440, function() use ($slug) {
+      $event = Cache::remember('Promotion_' . $slug, 1440, function() use ($slug) {
         //return $event = Event::where('url_slug', $slug)->first();
         return Event::where('url_slug', $slug)->first();
       });

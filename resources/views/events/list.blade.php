@@ -1,9 +1,11 @@
 @extends('layouts.document')
 @section('page_title', 'รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง')
-@section('og_url', URL::to('events', $events->first()->url_slug))
-@section('og_title', $events->first()->title)
-@section('og_description', $events->first()->brief)
-@section('og_image', URL::to($events->first()->image))
+@if($events->count() > 0)
+  @section('og_url', URL::to('events', $events->first()->url_slug))
+  @section('og_title', $events->first()->title)
+  @section('og_description', $events->first()->brief)
+  @section('og_image', URL::to($events->first()->image))
+@endif
 @section('content')
 
 <div class="social-wrapper">

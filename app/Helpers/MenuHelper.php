@@ -11,7 +11,7 @@ class MenuHelper {
 
   public static function brand()
   {
-    $brand = Cache::remember('Brand_all', 1440, function() {
+    $brand = Cache::remember('_brand_all', 1440, function() {
       return Brand::orderBy('master_group', 'asc')->get();
     });
     return $brand;
@@ -20,7 +20,7 @@ class MenuHelper {
 
   public static function menu()
   {
-    $category = Cache::remember('Category_all', 1440, function() {
+    $category = Cache::remember('_category_all', 1440, function() {
       return Category::orderBy('order_id', 'asc')->get();
     });
     return $category;

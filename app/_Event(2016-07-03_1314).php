@@ -216,60 +216,43 @@ class Event extends Model
       return $query->where('id', '!=', $id);
     }
 
-    public function scopeRelateThis($query, $event_id, $cate_id, $brand_cate_id, $tags=null)
+    public function scopeRelateThis($query, $event_id, $cate_id, $tags=null)
     {
+      //return $this->where('id', '!=', $event_id);
+      //return $this->with(['category','tags'])->where('id', '!=', $event_id);
+      //return $this->where('id', '!=', $event_id);
 
-      //echo $event_id . '=>' . $cate_id . '=>'. $brand_cate_id;
-      //exit;
-
-      //print_r($tags);
-      //exit;
-
-        if($brand_cate_id > 0){
-          $relate_cate = $query->select('events.*')->leftJoin('brand', 'events.brand_id', '=', 'brand.id')
-          ->leftJoin('brand_category', 'brand_category.brand_id', '=', 'brand.id')
-          ->where('brand_category.cate_id', '=', $brand_cate_id)
-          ->where('events.id', '!=', $event_id)->orderBy('events.created_at', 'desc')->limit(6);
-
-        } else { //unknow category
-          $relate_cate = $query->select('events.*')->leftJoin('brand', 'events.brand_id', '=', 'brand.id')
-          ->leftJoin('brand_category', 'brand_category.brand_id', '=', 'brand.id')
-          ->whereNull('brand_category.cate_id')
-          ->where('events.id', '!=', $event_id)->orderBy('events.created_at', 'desc')->limit(6);
-        }
-
-        $relate_tag_count = 0;
-        if(!empty($tags)){
-          //echo 'tag xx';
-          //exit;
-          $relate_tag = $this->select('events.*')->whereHas('tags', function($query) use ($tags){
-            $query->whereIn('tags.tag', $tags);
-          })->orderBy('events.created_at', 'desc')->union($relate_cate)->where('id', '!=', $event_id)->limit(6);
-
-          $relate_tag_count = $relate_tag->get()->count();
-        }
-
-        if($relate_tag_count < 1){
-          return $relate_cate;
-        } else {
-          return $relate_tag;
-        }
-
-        /*$relate_cate = $this->whereHas('category', function($query) use ($cate_id) {
-          $query->where('categories.id', $cate_id);
-        })->where('id', '!=', $event_id)->orderBy('events.created_at', 'desc');
-
-        $relate_tag = $this->whereHas('tags', function($query) use ($tags){
+      /*if($tags != null){
+        return $relate_tag = $this->whereHas('tags', function($query) use ($tags){
           $query->whereIn('tags.tag', $tags);
-        })->with(['category' => function($query) use ($cate_id){
-          //$query->where('category.id', $cate_id);
-        }])->orderBy('events.created_at', 'desc')->union($relate_cate)->where('id', '!=', $event_id); //->get();
+        })->where('id', '!=', $event_id);
+      }*/
 
-        if($relate_tag->get()->count() < 1){
-          return $relate_cate;
-        } else {
-          return $relate_tag;
-        }*/
+      /*
+      return $this->whereHas('category', function($query) use ($cate_id) {
+        $query->where('categories.id', $cate_id);
+      })->with(['category' => function($query) use ($cate_id){
+        //$query->where('category.id', $cate_id);
+      }])->where('id', '!=', $event_id); //->get();
+      */
+
+      $relate_cate = $this->whereHas('category', function($query) use ($cate_id) {
+        $query->where('categories.id', $cate_id);
+      })->where('id', '!=', $event_id)->orderBy('events.created_at', 'desc');
+
+      $relate_tag = $this->whereHas('tags', function($query) use ($tags){
+        $query->whereIn('tags.tag', $tags);
+      })->with(['category' => function($query) use ($cate_id){
+        //$query->where('category.id', $cate_id);
+      }])->orderBy('events.created_at', 'desc')->union($relate_cate)->where('id', '!=', $event_id); //->get();
+
+      if($relate_tag->get()->count() < 1){
+        return $relate_cate;
+      } else {
+        return $relate_tag;
+      }
+
+      //return $this->leftJoin('event_category', 'events.id', '=', 'event_category.cate_id')->where('events.id', '!=', $event_id)->where('event_category.cate_id', '=', $cate_id); //->orWhere('event_category.cate_id', '=', $cate_id);
     }
 
     public function scopeBrandEvent($query, $brand)

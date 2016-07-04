@@ -409,6 +409,10 @@ class EventsController extends Controller
   */
   public function show($slug)
   {
+
+      //echo 'slug => ' . rawurlencode($slug) . '<br />';
+      //exit;
+      $slug = rawurlencode($slug);
       if(is_numeric($slug)) {
           $event = Event::findOrFail($slug);
           return redirect()->action('EventsController@show', ['slug' => $event->url_slug]);

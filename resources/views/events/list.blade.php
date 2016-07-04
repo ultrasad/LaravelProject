@@ -1,7 +1,7 @@
 @extends('layouts.document')
 @section('page_title', 'รวม โปรโมชั่น ลดราคา Sale ชิงโชค discount คูปอง')
 @if($events->count() > 0)
-  @section('og_url', URL::to('events', $events->first()->url_slug))
+  @section('og_url', URL::to('events', rawurldecode($events->first()->url_slug)))
   @section('og_title', $events->first()->title)
   @section('og_description', $events->first()->brief)
   @section('og_image', URL::to($events->first()->image))
@@ -81,7 +81,7 @@
                   </div>
                   @if(!empty($event->brand->branch->first()->name))
                   <div class="pull-top pull-right list-inline">
-                    <a href="#modal_map" data-toggle="modal" class="btntoggle btnToggleMap" data-type="promotion" data-id="{{ $event->id }}" data-slug="{{ $event->url_slug }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
+                    <a href="#modal_map" data-toggle="modal" class="btntoggle btnToggleMap" data-type="promotion" data-id="{{ $event->id }}" data-slug="{{ rawurldecode($event->url_slug) }}" title="ที่ตั้งสาขา {{ $event->brand->name }}"><i class="pg-map"></i></a>
                   </div>
                   @endif
                 </div>
@@ -91,14 +91,14 @@
                 <div class="no-overflow">
                   <!--<a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ URL::asset($event->image) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>-->
                   @if(is_file($event->image))
-                    <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                    <a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
                   @else
-                    <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                    <a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}"><img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
                   @endif
                 </div>
               </div>
               <div class="p-t-15 p-l-15 p-r-15 p-b-5">
-                <strong class="text-master"><a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
+                <strong class="text-master"><a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></strong>
                 <p class="list-brief">{{ $event->brief }}</p>
               </div>
               <div class="p-t-10 p-l-15 p-r-15 p-b-5 card_footer">

@@ -1,6 +1,6 @@
 @extends('layouts.document')
 @section('page_title', $event_title)
-@section('og_url', URL::to('events', $event->url_slug))
+@section('og_url', URL::to('events', rawurldecode($event->url_slug)))
 @section('og_title', $event_title)
 @section('og_description', $event->brief)
 @section('og_image', URL::to($event->image))
@@ -45,9 +45,9 @@
                 <img src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}"  data-thumb="{{ GlideImage::load($image)->modify(['w'=> 100, 'h' => 100, 'fit' => 'crop']) }}" class="fotoclick" class="img-responsive" />
               @empty
                 @if(is_file($event->image))
-                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                  <a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
                 @else
-                  <a href="{{ URL::to('/', $event->url_slug) }}" title="{{ $event->title }}"><img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                  <a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}"><img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
                 @endif
               @endforelse
             </div>
@@ -107,8 +107,8 @@
         <p>&nbsp;</p>
         <p class="col-middle m-b-5">
           <div class="btn-social-group inline">
-            <div class="inline btn-social btn-facebook"><a class="fb-like" data-href="{{ URL::to('events', $event->url_slug) }}" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></a></div><div class="inline btn-social btn-twitter"><a href="https://twitter.com/share" class="twitter-share-button"></a></div>
-            <div class="inline btn-social btn-line-official"><a href="http://line.me/R/msg/text/?{{ $event_title }}%0D%0A{{ URL::to('/', $event->url_slug) }}"><img width="76px" height="20px" alt="LINE it!" src="{{ URL::asset('assets/img/linebutton.png')}}"></a></div>
+            <div class="inline btn-social btn-facebook"><a class="fb-like" data-href="{{ URL::to('events', rawurldecode($event->url_slug)) }}" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></a></div><div class="inline btn-social btn-twitter"><a href="https://twitter.com/share" class="twitter-share-button"></a></div>
+            <div class="inline btn-social btn-line-official"><a href="http://line.me/R/msg/text/?{{ $event_title }}%0D%0A{{ URL::to('/', rawurldecode($event->url_slug)) }}"><img width="76px" height="20px" alt="LINE it!" src="{{ URL::asset('assets/img/linebutton.png')}}"></a></div>
           </div>
         </p>
         <!--<small class="fs-12 hint-text">15 January 2015, 06:50 PM</small>-->
@@ -186,12 +186,12 @@
 
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 p-l-10 p-r-10 m-b-20 padding-right-active col-relate">
                     <div class="relative col-md-12 thumb padding-0 p-b-0">
-                      <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><div class="relate-img-thumb" style="background-image: url({{ URL::asset($relate->image) }});"></div></a>
+                      <a title="{{ $relate->title }}" href="{{ rawurldecode($relate->url_slug) }}"><div class="relate-img-thumb" style="background-image: url({{ URL::asset($relate->image) }});"></div></a>
                       <!--<a title="{{ $relate->title }}" href="{{ $relate->url_slug }}"><img alt="{{ $relate->title }}" class="block center-margin relative full-width img-responsive relate-img-thumb" src="{{ URL::asset($relate->image) }}" /></a>-->
                     </div>
                     <div class="col-md-12 brief p-l-10 p-r-10 card-relate-body">
                         <div class="padding-5 p-t-10 text-master block-ellipsis">
-                          <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}" class="card_title">{{ $relate->title }}</a>
+                          <a title="{{ $relate->title }}" href="{{ rawurldecode($relate->url_slug) }}" class="card_title">{{ $relate->title }}</a>
                         </div>
                     </div>
                     <div class="row col-md-12 padding-0 m-l-0 m-r-0 footer-relate">
@@ -218,7 +218,7 @@
                         </div>
                         <div class="col-md-9 col-xs-8 brief">
                             <div class="padding-5 card-relate-body text-master">
-                              <a title="{{ $relate->title }}" href="{{ $relate->url_slug }}" class="card_title">{{ $relate->title }}</a>
+                              <a title="{{ $relate->title }}" href="{{ rawurldecode($relate->url_slug) }}" class="card_title">{{ $relate->title }}</a>
                             </div>
                         </div>
 
@@ -246,7 +246,7 @@
                 </div>
               </div>
               <div class="fb-comment full-width p-l-0 p-r-0">
-                <div class="fb-comments full-width" data-href="{{ URL::to($event->url_slug) }}" data-width="100%" data-numposts="10"></div>
+                <div class="fb-comments full-width" data-href="{{ URL::to(rawurldecode($event->url_slug)) }}" data-width="100%" data-numposts="10"></div>
               </div>
           </div>
         </div>
@@ -266,7 +266,7 @@
   </div>
 </div>
 <input type="hidden" name="event_id" id="event_id" class="event_id" value="{{ $event->id }}" />
-<input type="hidden" name="event_slug" id="event_slug" class="event_slug" value="{{ $event->url_slug }}" />
+<input type="hidden" name="event_slug" id="event_slug" class="event_slug" value="{{ rawurldecode($event->url_slug) }}" />
 <!--</form>-->
 <!-- END CONTAINER FLUID -->
 @stop

@@ -44,4 +44,57 @@ class AdminController extends Controller
     }
     return view('admin.setting', compact('role_id', 'user_id', 'brands'));
   }
+
+  public function events(Request $request)
+  {
+    //echo($request->input('test'));
+
+    /*$start = isset($request['start'])?$request['start']:0;
+		$info['PerPage'] = isset($request['length'])?$request['length']:20;
+		if($start == 0){
+			$pageNo = 1;
+		} else if($start == 20) {
+			$pageNo = 2;
+      //echo 'start => ' . $start . '<br />';
+      //echo 'pageNo => ' . $pageNo . '<br />';
+		} else {
+			$pageNo = ($start/20)+1;
+		}*/
+
+    $user_id = Auth::user()->id;
+    $role_id = Auth::user()->role_id;
+    $paginate = 20;
+    if($role_id == 4){//brand
+      $brands = Brand::where('user_id', $user_id)->get();
+      $brands_list = $brands->lists('id')->toArray();
+      $events = Event::published()->active()->brandEvent($brands_list)->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
+
+    } elseif($role_id < 4){ // manager, admin
+      //$brands = Brand::all();
+      $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
+    }
+
+    $totaldata = $events->total();
+    $totalfiltered = $totaldata;
+    $data = array();
+
+    foreach($events as $event){
+      $nestedData=array();
+      $nestedData[] = "<a href='/events/{$event->id}/edit' id='show-modal' class='btn btn-danger btn-sm'><i class='fa fa-magic'></i> Edit</a>";
+      $nestedData[] = $event->title;
+      $nestedData[] = $event->brand->name;
+      $nestedData[] = $event->start_date_thai;
+      $nestedData[] = $event->end_date_thai;
+      $data[] = $nestedData;
+    }
+
+    $draw = isset($request['draw'])?$request['draw']:1;
+    $json_data = array(
+			"draw" => intval( $draw ),
+			"recordsTotal" => intval( $totaldata ),
+			"recordsFiltered" => intval( $totalfiltered ),
+			"data"  => $data
+		);
+		echo json_encode($json_data);
+  }
 }

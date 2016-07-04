@@ -527,8 +527,8 @@ var twit = {}; //twitter data
 
         //$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         //$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: true}});
-        //$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), cache: false}});
-        $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }});
+        $.ajaxSetup({headers: {'csrftoken' : $('meta[name="csrf-token"]').attr('content') }});
 
         $.fn.exists = function(){return this.length>0;}
 
@@ -561,6 +561,67 @@ var twit = {}; //twitter data
        $('.quickview-wrapper ul.map-items').scrollbar({
            ignoreOverlay: false
        });
+
+       //admin event list
+       if($('.table-list-admin').exists()){
+          var tableElement = $('#table_event_list_admin');
+          var breakpointDefinition, responsiveHelper, responsiveHelper2, tableElement;
+      		responsiveHelper = void 0;
+      		responsiveHelper2 = void 0;
+      		breakpointDefinition = {
+      			tablet: 1024,
+      			phone: 480
+      		};
+
+  				var table =  tableElement.dataTable({
+  					responsive: true,
+  					autoWidth: false,
+  					searching: false,
+  					sort: false,
+  					lengthChange: false,
+  					processing: true,
+  					serverSide: true,
+  					ajax: {
+              url: '/admin/events',
+  						//url : base_url + 'admin/events', // json datasource
+  						type: "post",  // method  , by default get
+  						data: function(d) {
+                      d.test = 'hanajung';
+                      var info = $('#table_event_list_admin').DataTable().page.info();
+                      d.page = info.page+1;
+                      //d.page = 1;
+  								   //d.CustomerID = $('#inputCustomerCode').val();
+  								   //d.CustomerName = $('#inputCustomerName').val();
+  								   //d.CustomerIDCard = $('#inputCustomerIDCard').val();
+  								   //d.CustomerMobile = $('#inputCustomerMobile').val();
+  						},
+  						error: function(){//error handling
+  								$(".table_event_list_admin-error").html("");
+  								$("#table_event_list_admin").append('<tbody class="table_customer-error"><tr><th colspan="6">No data found in the server</th></tr></tbody>');
+  								$("#table_event_list_admin_processing").css("display","none");
+  							}
+  					},
+  					language: {
+  						emptyTable: "ไม่มีโปรโมชั่น"
+  					},
+  					dom: "<'row'<'col-sm-6 col-xs-12'l><'col-xs-6'f>r>"+"t"+"<'row'<'col-sm-6 col-xs-12'i><'col-sm-6 col-xs-12'p>>",
+  					pageLength: 20,
+  					preDrawCallback:function(){
+  						// Initialize the responsive datatables helper once.
+  						if (!responsiveHelper) {
+  							responsiveHelper = new ResponsiveDatatablesHelper(tableElement, breakpointDefinition);
+  						}
+  					},
+  					rowCallback:function(nRow){
+  						responsiveHelper.createExpandIcon(nRow);
+  					},
+  					drawCallback:function(oSettings){
+  						responsiveHelper.respond();
+  					},
+  				});
+
+          console.log('ajax table, admin event list');
+       }
 
         //Date Pickers
         //$('#datepicker-component, #datepicker-component2, #datepicker-component3').datepicker({ format: 'mm/dd/yyyy'});

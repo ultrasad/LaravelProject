@@ -19,7 +19,7 @@
           <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-          <table class="table table-striped" id="tableWithExportOptionsNo">
+          <table class="table table-striped table-list-admin" id="table_event_list_admin">
             <thead>
               <tr>
                 <th>Action</th>
@@ -31,6 +31,7 @@
             </thead>
             <tbody>
 
+              {{--
               @forelse($events as $event)
               <tr class="odd gradeX">
                 <td><a href="/events/{{ $event->id }}/edit" id="show-modal" class="btn btn-danger btn-sm"><i class="fa fa-magic"></i> Edit</a></td>
@@ -41,6 +42,7 @@
               </tr>
               @empty
               @endforelse
+              --}}
 
             </tbody>
           </table>

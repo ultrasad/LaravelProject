@@ -119,6 +119,9 @@ Route::group(['middleware' => 'web'], function () {
       'roles' => ['Administrator', 'Manager']
     ]);
 
+    Route::post('/admin/events', 'AdminController@events');
+    Route::get('/admin/events', 'AdminController@events');
+
     Route::resource('brand', 'BrandController'); //RESTful Resource Controllers
     Route::resource('contact', 'ContactController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers

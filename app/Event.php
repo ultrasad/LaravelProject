@@ -22,7 +22,8 @@ class Event extends Model
     protected $fillable = ['title', 'url_slug', 'start_date', 'end_date', 'image', 'brief', 'description', 'published_at', 'user_id', 'brand_id']; //Whitelist
     //protected $guarded = ['id'];// //Backlist
 
-    protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object
+    //protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object
+    protected $dates = ['start_date', 'published_at'];
 
     //Larasearch
     /*public static $__es_config = [
@@ -155,7 +156,9 @@ class Event extends Model
           $difference = 'เหลือเวลาอีก : ' . $diff_end . ' วัน';
         break;
         case ($diff_end < 1):
-          $difference = 'หมดโปรโมชั่นแล้ว!!';
+          if(!starts_with($this->end_date, '0000')) {
+            $difference = 'หมดโปรโมชั่นแล้ว!!';
+          }
         break;
         default:
           $difference = 'ไม่ระบุ';
@@ -167,13 +170,14 @@ class Event extends Model
 
     public function getEndDateThaiAttribute()
     {
-      //return $this->convertDate($this->getAttribute('end_date'));
-      if($this->end_date){
+      //echo '=> ' . $this->getAttribute('end_date');
+      return $this->convertDate($this->getAttribute('end_date'));
+      /*if($this->end_date){
         return $this->convertDate($this->end_date);
       } else {
         //return date('Y-m-d', strtotime('+5 years'));
         return $this->convertDate($this->start_date);
-      }
+      }*/
     }
 
     public function getStartDateThaiAttribute()

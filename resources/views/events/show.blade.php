@@ -45,7 +45,7 @@
                 <img src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}"  data-thumb="{{ GlideImage::load($image)->modify(['w'=> 100, 'h' => 100, 'fit' => 'crop']) }}" class="fotoclick" class="img-responsive" />
               @empty
                 @if(is_file($event->image))
-                  <a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
+                  <a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
                 @else
                   <a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}"><img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
                 @endif
@@ -101,7 +101,11 @@
         </p>
         @else
         <p class="col-middle m-b-5">
-          <span class="text-danger text-master"><i class="fa fa-circle m-r-10"></i>{{ $event->start_date_thai }} - {{ $event->end_date_thai }} (หมดโปรโมชั่นแล้ว)</span>
+          @if(!starts_with($event->end_date, '0000'))
+            <span class="text-danger text-master"><i class="fa fa-circle m-r-10"></i>{{ $event->start_date_thai }} - {{ $event->end_date_thai }} (หมดโปรโมชั่นแล้ว)</span>
+          @else
+            <span class="text-danger text-master"><i class="fa fa-circle m-r-10"></i>{{ $event->start_date_thai }} - {{ $event->end_date_thai }}</span>
+          @endif
         </p>
         @endif
         <p>&nbsp;</p>

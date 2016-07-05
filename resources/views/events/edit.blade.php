@@ -54,7 +54,7 @@
                 <div class="col-md-6">
                   <div class="form-group form-group-default input-group col-sm-12">
                     <label>วันสิ้นสุด</label>
-                    <input type="text" name="end_date" value="{{ date('Y-m-d', strtotime($event->end_date)) }}" class="form-control" placeholder="Pick a date" id="datepicker-component2">
+                    <input type="text" name="end_date" value="{{ ($event->end_date > 0) ? date('Y-m-d', strtotime($event->end_date)) : '0000-00-00' }}" class="form-control" placeholder="Pick a date" id="datepicker-component2">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                   </div>
                 </div>

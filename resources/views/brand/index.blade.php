@@ -42,7 +42,7 @@
         </div>
 
         <div class="col-lg-5 col-xs-12 sm-p-l-0 hidden-md visible-xs visible-lg">
-          <p class="m-t-10 sm-p-t-10 sm-p-l-5 hint-text text-master">{{ $brand->description or 'No Description.' }}</p>
+          <p class="m-t-10 sm-p-t-10 sm-p-l-5 hint-text text-master">{{ $brand->detail or 'No Description.' }}</p>
         </div>
 
         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 sm-p-t-10 sm-p-l-0 brand-master-social">

@@ -24,13 +24,16 @@
             <div class="gallery-item" data-width="2" data-height="2">
               <div class="live-tile slide" data-speed="750" data-delay="4000" data-mode="carousel">
                 <div class="slide-front">
+                  <a href="http://goo.gl/EpwACY" target="_blank" title="ข้อเสนอสุดพิเศษจากบราเดอร์"><img src="{{ GlideImage::load('/images/partner_welovepro.jpg')->modify(['w'=> 640, 'fm'=>'jpg']) }}" class="img-responsive" /></a>
+                </div>
+                <!--<div class="slide-front">
                   <img src="{{ GlideImage::load('/images/events/2016-03-30/gallery/43/20160330-141855-Promotion-Reebok-Grand-Sale-2016-Sale-up-to-70-Off.png')->modify(['w'=> 640, 'fm'=>'jpg']) }}" class="img-responsive" />
                 </div>
                 <div class="slide-back">
                   <img src="{{ GlideImage::load('/images/events/2016-03-30/20160330-120609-Promotion-Crocs-End-Of-Season-Sale-up-to-50-Mar.2016.jpg')->modify(['w'=> 640, 'fm'=>'jpg']) }}" class="img-responsive" />
-                </div>
+                </div>-->
               </div>
-              <div class="overlayer bottom-left full-width">
+              <!--<div class="overlayer bottom-left full-width">
                 <div class="overlayer-wrapper item-info more-content">
                   <div class="gradient-grey p-l-20 p-r-20 p-t-50 p-b-5">
                     <div class="">
@@ -49,7 +52,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
           <!-- END ITEM -->

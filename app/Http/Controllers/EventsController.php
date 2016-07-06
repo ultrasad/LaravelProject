@@ -20,8 +20,9 @@ use App\Location;
 use App\SocialPost;
 use Facebook;
 use Session;
-
 //use GlideImage;
+
+use Queue;
 
 use Request as Response;
 
@@ -29,7 +30,7 @@ class EventsController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['index', 'search', 'show', 'desc_upload', 'locations', 'removefile', 'branch']]);
+    $this->middleware('auth', ['except' => ['index', 'search', 'show', 'desc_upload', 'locations', 'removefile', 'branch', 'reindex']]);
   }
 
   function string_friendly($string)
@@ -104,7 +105,9 @@ class EventsController extends Controller
     //ini_set('max_execution_time', 300); //300 seconds = 5 minutes
     set_time_limit(0);
     $event = new Event;
+    //$event->shouldIndex();
     $event->reIndex('App\Event --relations');
+    //Queue::push('Iverberk\Larasearch\Jobs\ReindexJob', $this->findAffectedModels($event));
     echo 'OK >>';
   }
 

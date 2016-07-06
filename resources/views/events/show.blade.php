@@ -96,12 +96,12 @@
         <p class="col-middle m-b-5">
           <span class="text-complete text-master"><i class="fa fa-circle m-r-10"></i>{{ $event->start_date_thai }} - {{ $event->end_date_thai }}</span>
         </p>
-        <p class="col-middle m-b-5">
+        <!--<p class="col-middle m-b-5">
           <span class="text-danger text-master"><i class="fa fa-circle m-r-10"></i>{{ $event->check_expire }}</span>
-        </p>
+        </p>-->
         @else
         <p class="col-middle m-b-5">
-          @if(!starts_with($event->end_date, '0000'))
+          @if(!starts_with($event->end_date, '-000'))
             <span class="text-danger text-master"><i class="fa fa-circle m-r-10"></i>{{ $event->start_date_thai }} - {{ $event->end_date_thai }} (หมดโปรโมชั่นแล้ว)</span>
           @else
             <span class="text-danger text-master"><i class="fa fa-circle m-r-10"></i>{{ $event->start_date_thai }} - {{ $event->end_date_thai }}</span>

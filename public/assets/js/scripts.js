@@ -2642,7 +2642,7 @@ function initialize() {
         if ($('.new_branch_panel').css('display') != 'none'){
           //markerBranch = [];
           //markerBranch.setVisible(false);
-          $('#branch_location').val('');
+          $('#branch_name, #branch_detail, #branch_location').val('');
           //markerBranch.setMap(null);
           infowindowBranch.close();
           markerBranch.setVisible(false);

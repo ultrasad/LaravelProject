@@ -35,6 +35,17 @@ class Branch extends Model
       'text_end' => ['name'],
     ];
 
+    /**
+    * @return bool
+    */
+    public function shouldIndex()
+    {
+        // Your custom logic to determine if a (re)index should be performed
+        //$this->shouldIndex();
+        //$this->deleted('Event');
+        return true;
+    }
+
     public function scopeBrandList($query, $brand)
     {
       return $this->whereHas('brands', function($query) use ($brand)

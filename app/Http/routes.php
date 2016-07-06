@@ -27,7 +27,10 @@
   //dd($path);
 //});
 
+Route::get('/reindex', 'EventsController@reindex');
+
 Route::group(['middleware' => 'web'], function () {
+
     Route::auth();
 
     Route::get('/', 'EventsController@index');
@@ -43,11 +46,11 @@ Route::group(['middleware' => 'web'], function () {
         // return what you want
     });
 
-    Route::get('/reindex', 'EventsController@reindex');
+    //Route::get('/reindex', 'EventsController@reindex');
 
-    //Route::get('/reindex', function() {
-      //$reIndex = Artisan::call('larasearch:reindex', ['--relations App\Event']);
-    //});
+    /*Route::get('/reindex', function() {
+      $reIndex = Artisan::call('larasearch:reindex');
+    });*/
 
     /*Route::get('/posttweet', function()
     {

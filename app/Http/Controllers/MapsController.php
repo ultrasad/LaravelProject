@@ -120,13 +120,25 @@ class MapsController extends Controller
 
     } else {
         $events = Event::noExpire()->active()->get();
+
+        //echo '<pre>';
+        //print_r($events);
+        //exit;
+
         foreach($events as $id => $event){
 
           $cate_name = isset($event->category->first()->name)?$event->category->first()->name:'ไม่ระบุ หมวดหมู่';
           //echo $event->title . ', end => ' . $event->end_date .  '<br />';
           //echo 'count => ' . $event->branch->count() . '<br />';
 
-          if($event->branch->count() > 0){
+          //echo '=>' . $event->id . '<br />';
+          //exit;
+          $event_end_date = $event->end_date;
+          if(starts_with($event_end_date, '-000')){
+              $event_end_date = date('Y-m-d', strtotime("+1 month", strtotime($event->start_date)));
+          }
+
+          if(($event->branch->count() > 0) && ($event_end_date > date('Y-m-d'))){
             $event_count = 0;
             foreach($event->branch->all() as $branch){
               //echo $branch->name . ', lat =>' .$branch->lat . '<br />';

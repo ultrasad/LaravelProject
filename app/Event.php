@@ -22,8 +22,8 @@ class Event extends Model
     protected $fillable = ['title', 'url_slug', 'start_date', 'end_date', 'image', 'brief', 'description', 'published_at', 'user_id', 'brand_id']; //Whitelist
     //protected $guarded = ['id'];// //Backlist
 
-    //protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object
-    protected $dates = ['start_date', 'published_at'];
+    protected $dates = ['start_date', 'end_date', 'published_at']; //register datetime to carbon object
+    //protected $dates = ['start_date', 'published_at'];
 
     //Larasearch
     /*public static $__es_config = [
@@ -77,7 +77,7 @@ class Event extends Model
 
     public function scopeNoExpire($query)
     {
-      $query->where('end_date', '>=', Carbon::today());
+        $query->where('end_date', '>=', Carbon::today())->orWhere('end_date', '=', '0000-00-00');
     }
 
     //category, edit list
@@ -132,7 +132,11 @@ class Event extends Model
              "12"=>"ธ.ค."
       );
 
-      if(!starts_with($timestamp, '0000')) {
+      //return $timestamp;
+      //exit;
+
+      //if(!starts_with($timestamp, '0000')) {
+      if(!starts_with($timestamp, '-000')) {
         $date = date('Y-m-d', strtotime($timestamp));
         return ((int) substr($date, 8)).' '.$m[substr($date, 5, -3)].' '.(substr($date, 2, -6)+43);
       } else {
@@ -143,7 +147,7 @@ class Event extends Model
     public function getCheckExpireAttribute()
     {
       $startdate = new Carbon($this->start_date);
-      $enddate = new Carbon($this->end_date->addHour(23)->addMinute(59)->addSeconds(59));
+      $enddate = new Carbon($this->end_date->addHour(23)->addMinute(59)->addSeconds(59)); //protected $dates
       $current = Carbon::now();
       $diff_start = $current->diffInDays($startdate, false);
       $diff_end = $current->diffInDays($enddate, false);
@@ -156,7 +160,7 @@ class Event extends Model
           $difference = 'เหลือเวลาอีก : ' . $diff_end . ' วัน';
         break;
         case ($diff_end < 1):
-          if(!starts_with($this->end_date, '0000')) {
+          if(!starts_with($this->end_date, '-000')) {
             $difference = 'หมดโปรโมชั่นแล้ว!!';
           }
         break;

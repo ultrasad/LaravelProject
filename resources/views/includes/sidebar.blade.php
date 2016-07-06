@@ -16,14 +16,14 @@
           <i class="fa fa-home" aria-hidden="true"></i>
         </span>
       </li>
-      <li class="">
+      <!--<li class="">
         <a href="{{ url('/map') }}" class="detailed" title="โปรโมชั่นรอบๆตัวคุณ">
           <span class="title">โปรโมชั่นรอบๆตัวคุณ</span>
         </a>
         <span class="icon-thumbnail icon-category {{ Request::is('map') ? 'bg-success' : '' }}">
           <i class="fa pg-map"></i>
         </span>
-      </li>
+      </li>-->
       <li class="m-t-0 m-b-5">
         <span class="title-header-category p-l-32">แบรนด์</span>
         <span class="icon-thumbnail">B</span>

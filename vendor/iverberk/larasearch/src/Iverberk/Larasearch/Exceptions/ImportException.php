@@ -9,7 +9,7 @@ class ImportException extends Exception {
     {
         // TODO: Handle the error items in a graceful way
       	// Just dump the errorItems for now
-      	//var_dump($errorItems);
+      	var_dump($errorItems);
 
         // make sure everything is assigned properly
         parent::__construct($message, $code);

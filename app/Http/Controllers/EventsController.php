@@ -22,8 +22,6 @@ use Facebook;
 use Session;
 //use GlideImage;
 
-use Queue;
-
 use Request as Response;
 
 class EventsController extends Controller
@@ -734,14 +732,14 @@ class EventsController extends Controller
 
   public function desc_upload()
   {
-      if(Request::ajax() && Request::hasFile('file_upload')){
-        $image_filename = Request::file('file_upload')->getClientOriginalName();
+      if(Response::ajax() && Response::hasFile('file_upload')){
+        $image_filename = Response::file('file_upload')->getClientOriginalName();
         $file_name = pathinfo($image_filename, PATHINFO_FILENAME); // name
         $extension = pathinfo($image_filename, PATHINFO_EXTENSION); // extension
         $image_name = date('Ymd-His-').str_slug($file_name) . '.' . $extension;
         $public_path = 'images/events/'. date('Y-m-d') .'/description/';
         $destination = base_path() . '/public/' . $public_path;
-        $upload_success = Request::file('file_upload')->move($destination, $image_name); //move file to destination
+        $upload_success = Response::file('file_upload')->move($destination, $image_name); //move file to destination
         if( $upload_success ) {
           return '/'. $public_path . $image_name;
         } else {

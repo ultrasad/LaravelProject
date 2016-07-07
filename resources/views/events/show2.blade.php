@@ -42,13 +42,6 @@
             <!-- START PANEL -->
             <div class="fotorama" data-allowfullscreen="true" data-maxwidth="800"  data-width="100%" data-click="false" data-arrows="always" click="false" data-nav="thumbs" data-loop="true">
               @forelse($event->gallery_list as $id => $image)
-                @if($id == 0)
-                  @if(is_file($event->image))
-                    <img src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
-                  @else
-                    <img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
-                  @endif
-                @endif
                 <img src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}"  data-thumb="{{ GlideImage::load($image)->modify(['w'=> 100, 'h' => 100, 'fit' => 'crop']) }}" class="fotoclick" class="img-responsive" />
               @empty
                 @if(is_file($event->image))
@@ -184,26 +177,10 @@
               @endif
               <div class="col-sm-12 visible-xs visible-sm p-t-20 p-l-0 p-r-0">
                 <div class="ads">
-                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                  <!-- welovepro-news-side -->
-                  <ins class="adsbygoogle"
-                     style="display:inline-block;width:300px;height:250px"
-                     data-ad-client="ca-pub-6376653037162976"
-                     data-ad-slot="3710220418"></ins>
-                  <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-                  </script>
+                  ads 3
                 </div>
                 <div class="ads">
-                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                  <!-- welovepro_SideLong_300x600 -->
-                  <ins class="adsbygoogle"
-                     style="display:inline-block;width:300px;height:600px"
-                     data-ad-client="ca-pub-6376653037162976"
-                     data-ad-slot="8590767793"></ins>
-                  <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-                  </script>
+                  ads 4
                 </div>
               </div>
               <div class="col-md-12 p-l-0 p-r-0">
@@ -246,29 +223,13 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-sm-12 hidden-xs hidden-sm">
+      <div class="col-md-4 col-sm-12 hidden-sm">
         <div class="panel-body p-l-0 p-r-0">
             <div class="ads">
-              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-              <!-- welovepro-news-side -->
-              <ins class="adsbygoogle"
-                 style="display:inline-block;width:300px;height:250px"
-                 data-ad-client="ca-pub-6376653037162976"
-                 data-ad-slot="3710220418"></ins>
-              <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
+              adfs 1
             </div>
             <div class="ads">
-              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-              <!-- welovepro_SideLong_300x600 -->
-              <ins class="adsbygoogle"
-                 style="display:inline-block;width:300px;height:600px"
-                 data-ad-client="ca-pub-6376653037162976"
-                 data-ad-slot="8590767793"></ins>
-              <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
+              ads 2
             </div>
         </div>
       </div>

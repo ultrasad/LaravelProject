@@ -67,12 +67,12 @@ class Event extends Model
     //Scope
     public function scopePublished($query)
     {
-      $query->where('published_at', '<=', Carbon::now());
+      $query->where('events.published_at', '<=', Carbon::now());
     }
 
     public function scopeUnpublished($query)
     {
-      $query->where('published_at', '>', Carbon::now());
+      $query->where('events.published_at', '>', Carbon::now());
     }
 
     public function scopeNoExpire($query)
@@ -216,7 +216,7 @@ class Event extends Model
     */
     public function scopeActive($query)
     {
-       return $query->where('active', 'Y');
+       return $query->where('events.active', 'Y');
     }
 
     public function scopeEventOther($query, $id)
@@ -237,13 +237,15 @@ class Event extends Model
           $relate_cate = $query->select('events.*')->leftJoin('brand', 'events.brand_id', '=', 'brand.id')
           ->leftJoin('brand_category', 'brand_category.brand_id', '=', 'brand.id')
           ->where('brand_category.cate_id', '=', $brand_cate_id)
-          ->where('events.id', '!=', $event_id)->orderBy('events.created_at', 'desc')->limit(6);
+          ->where('events.id', '!=', $event_id)
+          ->where('events.active', 'Y')->orderBy('events.created_at', 'desc')->limit(6);
 
         } else { //unknow category
           $relate_cate = $query->select('events.*')->leftJoin('brand', 'events.brand_id', '=', 'brand.id')
           ->leftJoin('brand_category', 'brand_category.brand_id', '=', 'brand.id')
           ->whereNull('brand_category.cate_id')
-          ->where('events.id', '!=', $event_id)->orderBy('events.created_at', 'desc')->limit(6);
+          ->where('events.id', '!=', $event_id)
+          ->where('events.active', 'Y')->orderBy('events.created_at', 'desc')->limit(6);
         }
 
         $relate_tag_count = 0;
@@ -252,7 +254,7 @@ class Event extends Model
           //exit;
           $relate_tag = $this->select('events.*')->whereHas('tags', function($query) use ($tags){
             $query->whereIn('tags.tag', $tags);
-          })->orderBy('events.created_at', 'desc')->union($relate_cate)->where('id', '!=', $event_id)->limit(6);
+          })->orderBy('events.created_at', 'desc')->union($relate_cate)->where('events.active', 'Y')->where('id', '!=', $event_id)->limit(6);
 
           $relate_tag_count = $relate_tag->get()->count();
         }
@@ -312,7 +314,7 @@ class Event extends Model
       return $this->whereHas('tags', function($query) use ($tag)
       {
           $query->where('tag', '=', $tag);
-      });
+      })->where('events.active', 'Y');
     }
 
     public function scopeCategoryList($query, $category)
@@ -337,9 +339,9 @@ class Event extends Model
             $query->whereHas('category', function ($query) use ($category){
               $query->where('category', '=', $category);
             });
-        });
+        })->where('events.active', 'Y');
       } else {
-        return  $this->leftJoin('brand', 'brand.id', '=', 'events.brand_id')->leftJoin('brand_category','brand_category.brand_id','=','brand.id')->leftJoin('categories','categories.id','=','brand_category.cate_id')->select('events.*', 'brand.name')->whereNull('categories.name');
+        return  $this->leftJoin('brand', 'brand.id', '=', 'events.brand_id')->leftJoin('brand_category','brand_category.brand_id','=','brand.id')->leftJoin('categories','categories.id','=','brand_category.cate_id')->select('events.*', 'brand.name')->where('events.active', 'Y')->whereNull('categories.name');
       }
     }
 

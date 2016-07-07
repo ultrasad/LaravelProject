@@ -28,7 +28,7 @@ class EventsController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['index', 'search', 'show', 'desc_upload', 'locations', 'removefile', 'branch', 'reindex']]);
+    $this->middleware('auth', ['except' => ['index', 'search', 'show', 'desc_upload', 'locations', 'removefile', 'branch', 'reindex', 'show2']]);
   }
 
   function string_friendly($string)
@@ -410,7 +410,74 @@ class EventsController extends Controller
   */
   public function show($slug)
   {
+      //echo 'slug => ' . rawurlencode($slug) . '<br />';
+      //exit;
+      $slug = rawurlencode($slug);
+      if(is_numeric($slug)) {
+          $event = Event::findOrFail($slug);
+          return redirect()->action('EventsController@show', ['slug' => $event->url_slug]);
+      }
 
+      $event = Cache::remember('_' . $slug, 1440, function() use ($slug) { //1440 Min(24 Hr.)
+        return Event::where('url_slug', $slug)->first();
+      });
+
+      if(!$event)
+        return redirect('/');
+
+      $branchs = array();
+      $tags = array();
+
+      foreach($event->branch->all() as $index => $branch){
+        $branchs[] = '<span><i class="pg-map hint-text-9" aria-hidden="true"></i></span>' . link_to('#' . $branch->name, $branch->name, array('title' => $branch->name, 'data-index' => $branch->lat.','.$branch->lon.','.$branch->name, 'class' => 'place'));
+      }
+
+      $tags_relate = array();
+      foreach($event->tags->all() as $index => $tag){
+        array_push($tags_relate, $tag->tag);
+        $tags[] = '<span><i class="fa fa-tag fa-flip-horizontal hint-text-8 m-t-10" aria-hidden="true"></i></span> ' . link_to('/tag/' . $tag->tag, $tag->name, array('title' => $tag->name, 'data-index' => $index, 'class' => 'tag'));
+      }
+
+      $event_id = $event->id;
+      $event_title = $event->title;
+      $cate_id = isset($event->category->first()->id)?$event->category->first()->id:'';
+      $brand_cate_id = isset($event->brand->category->first()->id)?$event->brand->category->first()->id:'';
+      $relates = array();
+
+      //echo '<pre>';
+      //print_r($tags_relate);
+      //echo '</pre>';
+      //echo 'cate id => ' . $brand_cate_id . '<br />';
+
+      if($event_id){
+        //$relates = Event::published()->active()->relateThis($event_id, $brand_cate_id, $tags_relate)->skip(0)->take(6)->get();
+        $relates = Cache::remember('_relate_' . $slug, 1440, function() use ($event_id, $cate_id, $brand_cate_id, $tags_relate) { //1440 Min(24 Hr.)
+          //echo $event_id . '=>' . $cate_id . '=>'. $brand_cate_id;
+          //print_r($tags_relate);
+          //exit;
+          return Event::relateThis($event_id, $cate_id, $brand_cate_id, $tags_relate)->published()->active()->skip(0)->take(6)->get();
+        });
+      }
+
+      //echo count($relates);
+      //exit;
+
+      //echo '<pre>';
+      //print_r($relates);
+      //echo '</pre>';
+      //exit;
+
+      return view('events.show', compact('event', 'branchs', 'locations', 'tags', 'relates', 'event_title'));
+  }
+
+  /**
+  * Display the speified resource.
+  *
+  *@param int $id
+  *@return Response
+  */
+  public function show2($slug)
+  {
       //echo 'slug => ' . rawurlencode($slug) . '<br />';
       //exit;
       $slug = rawurlencode($slug);
@@ -468,7 +535,7 @@ class EventsController extends Controller
       //echo '</pre>';
       //exit;
 
-      return view('events.show', compact('event', 'branchs', 'locations', 'tags', 'relates', 'event_title'));
+      return view('events.show2', compact('event', 'branchs', 'locations', 'tags', 'relates', 'event_title'));
   }
 
   /**

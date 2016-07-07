@@ -44,6 +44,12 @@ Route::group(['middleware' => 'web'], function () {
         $clearCache = Artisan::call('cache:clear');
         //$clearRoute = Artisan::call('route:cache');
         // return what you want
+        return 'OK';
+    });
+
+    Route::get('/config-cache', function() {
+        $clearConfig = Artisan::call('config:cache');
+        return 'OK';
     });
 
     //Route::get('/reindex', 'EventsController@reindex');
@@ -135,6 +141,7 @@ Route::group(['middleware' => 'web'], function () {
 
     //Route::get('events/search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));
     Route::get('events/search/{type}/{keywords}', 'EventsController@search');
+    Route::get('show2/{slug}', array('as' => 'slug', 'uses' => 'EventsController@show2'));
     Route::get('/{slug}', array('as' => 'slug', 'uses' => 'EventsController@show'));
 
     //Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers

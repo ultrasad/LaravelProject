@@ -150,6 +150,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         'Thujohn\Twitter\TwitterServiceProvider',
         Iverberk\Larasearch\LarasearchServiceProvider::class,
+        Roumen\Sitemap\SitemapServiceProvider::class,
          //Spatie\Glide\GlideServiceProvider::class,
         //'Spatie\Glide\GlideServiceProvider',
 

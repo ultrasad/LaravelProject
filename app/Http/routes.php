@@ -29,6 +29,49 @@
 
 Route::get('/reindex', 'EventsController@reindex');
 
+Route::get('sitemap', function(){
+     ini_set('memory_limit', '-1');
+
+    // create new sitemap object
+    $sitemap = App::make("sitemap");
+
+    // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
+    // by default cache is disabled
+    $sitemap->setCache('laravel.sitemap', 60);
+
+    // check if there is cached sitemap and build new only if is not
+    if (!$sitemap->isCached())
+    {
+         // add item to the sitemap (url, date, priority, freq)
+         $sitemap->add(URL::to('/'), date('Y-m-d H:i:s'), '1.0', 'daily');
+         //$sitemap->add(URL::to('brand'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
+
+         // get all posts from db, with image relations
+         $posts = DB::table('events')->orderBy('created_at', 'desc')->get();
+
+         // add every post to the sitemap
+         foreach($posts as $post)
+         {
+            $image = array();
+            $image[] = array(
+                'url' => URL::to('/' . $post->image),
+                'title' => htmlspecialchars($post->title, ENT_QUOTES|ENT_XML1, "UTF-8"),
+                'caption' => htmlspecialchars($post->title, ENT_QUOTES|ENT_XML1, "UTF-8")
+                //'caption' => htmlspecialchars($post->brief, ENT_QUOTES|ENT_XML1, "UTF-8")
+            );
+            $sitemap->add(URL::to('/' . $post->url_slug), $post->created_at, '0.9', 'monthly', $image);
+         }
+    }
+
+
+    // generate your sitemap (format, filename)
+    $sitemap->store('xml', 'welovesitemap');
+    // this will generate file mysitemap.xml to your public folder
+
+    // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
+    //return $sitemap->render('xml');
+});
+
 Route::group(['middleware' => 'web'], function () {
 
     Route::auth();
@@ -47,9 +90,22 @@ Route::group(['middleware' => 'web'], function () {
         return 'OK';
     });
 
-    Route::get('/config-cache', function() {
+    Route::get('/config-clear', function() {
+        //$clearConfig = Artisan::call('config:clear');
         $clearConfig = Artisan::call('config:cache');
-        return 'OK';
+        return 'OK => ' . $clearConfig;
+    });
+
+    Route::get('/config-sitemap', function() {
+        $configSitemap = Artisan::call('vendor:publish',
+        [
+            '--provider' => 'Roumen\Sitemap\SitemapServiceProvider',
+            //'--tag' => ['seeds'],
+            //'--force' => true
+        ]);
+
+        return ($configSitemap);
+        //return 'OK';
     });
 
     //Route::get('/reindex', 'EventsController@reindex');

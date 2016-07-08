@@ -29,29 +29,71 @@
 
 Route::get('/reindex', 'EventsController@reindex');
 
-Route::get('sitemap', function(){
-     ini_set('memory_limit', '-1');
+Route::group(['middleware' => 'web'], function () {
 
-    // create new sitemap object
-    $sitemap = App::make("sitemap");
+    Route::auth();
 
-    // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
-    // by default cache is disabled
-    $sitemap->setCache('laravel.sitemap', 60);
-
-    // check if there is cached sitemap and build new only if is not
-    if (!$sitemap->isCached())
+    Route::get('sitemap', function()
     {
-         // add item to the sitemap (url, date, priority, freq)
-         $sitemap->add(URL::to('/'), date('Y-m-d H:i:s'), '1.0', 'daily');
-         //$sitemap->add(URL::to('brand'), '2012-08-26T12:30:00+02:00', '0.9', 'monthly');
 
-         // get all posts from db, with image relations
-         $posts = DB::table('events')->orderBy('created_at', 'desc')->get();
+        // create sitemap index
+        $sitemap = App::make ("sitemap");
 
-         // add every post to the sitemap
-         foreach($posts as $post)
-         {
+        // create new sitemap object
+        $sitemap_category = App::make("sitemap");
+
+        // add every category to the sitemap
+        $category = DB::table('categories')->orderBy('id', 'asc')->get();
+        foreach($category as $cate)
+        {
+          $sitemap_category->add(URL::to('/category/' . $cate->category), date('Y-m-d H:i:s'), '0.9', 'monthly');
+        }
+        $sitemap_category->store('xml','sitemap-category');
+        // add sitemaps (loc, lastmod (optional))
+        $sitemap->addSitemap(url('sitemap-category.xml'), date('Y-m-d H:i:s'));
+
+        // create new sitemap object
+        $sitemap_brand = App::make("sitemap");
+
+        // add every brand to the sitemap
+        $brands = DB::table('brand')->orderBy('id', 'asc')->get();
+        foreach($brands as $brand)
+        {
+          $sitemap_brand->add(URL::to('/brand/' . $brand->url_slug), date('Y-m-d H:i:s'), '0.9', 'monthly');
+        }
+        $sitemap_brand->store('xml','sitemap-brand');
+        // add sitemaps (loc, lastmod (optional))
+        $sitemap->addSitemap(url('sitemap-brand.xml'), date('Y-m-d H:i:s'));
+
+        // get all products from db (or wherever you store them)
+        $posts = DB::table('events')->orderBy('created_at', 'desc')->get();
+
+        // counters
+        $counter = 0;
+        $sitemapCounter = 0;
+
+        // create new sitemap object
+        $sitemap_posts = App::make("sitemap");
+
+        // add every product to multiple sitemaps with one sitemapindex
+        foreach ($posts as $post)
+        {
+            if ($counter == 1000)
+            {
+                // generate new sitemap file
+                $sitemap_posts->store('xml','sitemap-'.$sitemapCounter);
+                // add the file to the sitemaps array
+                //$sitemap->addSitemap(secure_url('sitemap-'.$sitemapCounter.'.xml'));
+                $sitemap->addSitemap(url('sitemap-'.$sitemapCounter.'.xml'), date('Y-m-d H:i:s'));
+                // reset items array (clear memory)
+                $sitemap_posts->model->resetItems();
+                // reset the counter
+                $counter = 0;
+                // count generated sitemap
+                $sitemapCounter++;
+            }
+
+            // add product to items array
             $image = array();
             $image[] = array(
                 'url' => URL::to('/' . $post->image),
@@ -59,22 +101,36 @@ Route::get('sitemap', function(){
                 'caption' => htmlspecialchars($post->title, ENT_QUOTES|ENT_XML1, "UTF-8")
                 //'caption' => htmlspecialchars($post->brief, ENT_QUOTES|ENT_XML1, "UTF-8")
             );
-            $sitemap->add(URL::to('/' . $post->url_slug), $post->created_at, '0.9', 'monthly', $image);
-         }
-    }
+            $sitemap_posts->add(URL::to('/' . $post->url_slug), $post->created_at, '0.9', 'monthly', $image);
+
+            // count number of elements
+            $counter++;
+          }
+
+          // you need to check for unused items
+          if (!empty($sitemap_posts->model->getItems()))
+          {
+               // generate sitemap with last items
+               $sitemap_posts->store('xml','sitemap-'.$sitemapCounter);
+               // add sitemap to sitemaps array
+               //$sitemap->addSitemap(secure_url('sitemap-'.$sitemapCounter.'.xml'));
+               $sitemap->addSitemap(url('sitemap-'.$sitemapCounter.'.xml'), date('Y-m-d H:i:s'));
+               // reset items array
+               $sitemap_posts->model->resetItems();
+           }
 
 
-    // generate your sitemap (format, filename)
-    $sitemap->store('xml', 'welovesitemap');
-    // this will generate file mysitemap.xml to your public folder
+           // create sitemap index
+           //$sitemap = App::make ("sitemap");
 
-    // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
-    //return $sitemap->render('xml');
-});
+           //$sitemap->addSitemap(url('sitemap-category'), date('Y-m-d H:i:s'));
+           //$sitemap->addSitemap(url('sitemap-brand'), date('Y-m-d H:i:s'));
 
-Route::group(['middleware' => 'web'], function () {
+           // generate new sitemapindex that will contain all generated sitemaps above
+           $sitemap->store('sitemapindex','sitemap');
 
-    Route::auth();
+           return 'OK';
+    });
 
     Route::get('/', 'EventsController@index');
     Route::get('/register', function () {
@@ -90,7 +146,7 @@ Route::group(['middleware' => 'web'], function () {
         return 'OK';
     });
 
-    Route::get('/config-clear', function() {
+    Route::get('/clear-config', function() {
         //$clearConfig = Artisan::call('config:clear');
         $clearConfig = Artisan::call('config:cache');
         return 'OK => ' . $clearConfig;
@@ -184,12 +240,15 @@ Route::group(['middleware' => 'web'], function () {
       'roles' => ['Administrator', 'Manager']
     ]);
 
+    Route::get('utility/summary', 'UtilityController@summary');
+
     Route::post('/admin/events', 'AdminController@events');
     Route::get('/admin/events', 'AdminController@events');
 
     Route::resource('brand', 'BrandController'); //RESTful Resource Controllers
     Route::resource('contact', 'ContactController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers
+    Route::resource('utility', 'UtilityController'); //RESTful Resource Controllers
 
     //filter
     Route::get('/{filter}', array('as' => 'filter', 'uses' => 'FilterController@condition'))

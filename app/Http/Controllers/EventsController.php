@@ -98,7 +98,7 @@ class EventsController extends Controller
      //echo 'OK';
   }
 
-  function reindex()
+  public function reindex()
   {
     //ini_set('max_execution_time', 300); //300 seconds = 5 minutes
     set_time_limit(0);
@@ -196,7 +196,7 @@ class EventsController extends Controller
   public function index(Request $request)
   {
     $paginate = 10;
-    $events = Event::published()->active()->orderBy('events.updated_at', 'desc')->orderBy('events.created_at', 'desc')->paginate($paginate);
+    $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate($paginate);
 
     $more_page = $events->hasMorePages();
     $total_page = $events->total();

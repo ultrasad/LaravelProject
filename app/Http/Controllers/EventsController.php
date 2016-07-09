@@ -129,8 +129,19 @@ class EventsController extends Controller
     if($type == 'promotion'){
       $results = Event::search(trim($keywords), [
           'fields' => ['title', 'description', 'branch.name' => 'text_start', 'branch.location' => 'text_start'],
-          'select' => ['title', 'image', 'url_slug', 'brief', 'branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
+          'select' => ['title', 'image', 'url_slug', 'brief', 'active', 'branch.name', 'branch.location', 'branch.lat', 'branch.lon'],
           'highlight' => true,
+          //'suggest' => true,
+          //'sort' => [['created_at' => 'desc'],'_score'],
+          'sort' => [['published_at' => 'asc'], '_score'],
+          /*'filter' => ['active' => 'Y'],
+          'filter' => [
+              'bool' => [
+                  'should' => [
+                      'term' => ['active' => 'Y']
+                  ]
+              ]
+          ]*/
       ])->getResults();
     } else {
         $results = Brand::search(trim($keywords), [
@@ -139,9 +150,9 @@ class EventsController extends Controller
         ])->getResults();
     }
 
-    //echo '<pre>';
-    //print_r($results);
-    //exit;
+    echo '<pre>';
+    print_r($results);
+    exit;
 
     $arr_response = array();
     $arr_location = array();

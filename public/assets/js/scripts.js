@@ -441,11 +441,12 @@ var twit = {}; //twitter data
                                 $clone.find('span.result-title').html(value.title);
                                 //$clone.find('img.result-image').attr('src', '/' + value.image).attr('data-src', '/' + value.image).html(value.title);
                                 //$clone.find('div.search-img-thumb').css('background-image', 'url(/' + value.image + ')');
-                                if (value.image.match("^http")) {
+                                /*if (value.image.match("^http")) {
                                   $clone.find('div.search-img-thumb').css('background-image', 'url(' + value.image + ')');
                                 } else {
                                   $clone.find('div.search-img-thumb').css('background-image', 'url(/' + value.image + ')');
-                                }
+                                }*/
+                                $clone.find('div.search-img-thumb').css('background-image', 'url(/' + value.image + ')');
                                 $clone.find('span.result-brief').html(value.brief);
                                 $clone.find('a.result-url').attr('href', '/' + value.url_slug).attr('title', value.title);
                                 $clone.find('p.result-brand').html('via ' + value.brand);

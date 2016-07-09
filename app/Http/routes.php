@@ -164,10 +164,12 @@ Route::group(['middleware' => 'web'], function () {
         //return 'OK';
     });
 
-    //Route::get('/reindex', 'EventsController@reindex');
-
     /*Route::get('/reindex', function() {
-      $reIndex = Artisan::call('larasearch:reindex');
+      $reIndexSearch = Artisan::call('larasearch:reindex',
+      [
+        '--relations' => true,
+        '--dir' => 'App/Event'
+      ]);
     });*/
 
     /*Route::get('/posttweet', function()

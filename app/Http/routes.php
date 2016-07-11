@@ -149,9 +149,13 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('/clear-config', function() {
-        //$clearConfig = Artisan::call('config:clear');
-        $clearConfig = Artisan::call('config:cache');
+        $clearConfig = Artisan::call('config:clear');
         return 'OK => ' . $clearConfig;
+    });
+
+    Route::get('/cache-config', function() {
+        $cacheConfig = Artisan::call('config:cache');
+        return 'OK => ' . $cacheConfig;
     });
 
     Route::get('/config-sitemap', function() {

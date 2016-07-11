@@ -46,8 +46,8 @@ class EventsController extends Controller
 
   function post_social($event_id=0)
   {
+    $role_id = Auth::user()->role_id;
     $event = Event::find($event_id);
-    if($event->brand->social){
 
     $fb = new Facebook\Facebook([
       'app_id' => env('FACEBOK_APP_KEY'),
@@ -55,46 +55,79 @@ class EventsController extends Controller
       'default_graph_version' => 'v2.6',
     ]);
 
-    foreach($event->brand->social->all() as $page){
-        /*echo 'page id => ' . $page->social_id . '<br />';
-        echo 'page token => ' . $page->page_token . '<br />';
-        echo 'event title => ' . $event->title . '<br />';
-        echo 'event url slug => ' . $event->url_slug . '<br />';
-        echo 'event image => ' . $event->image . '<br />';
-        echo 'event brief => ' . $event->brief . '<br /><br /><br />';*/
+    $default_page_id = env('FACEBOOK_WLP_PAGE_ID');
 
-        $msg_body = array(
-          'message' => $event->title,
-          'name' => $event->title,
-          'link' => url($event->url_slug),
-          'caption' => $event->brief,
-          'description' => $event->brief,
-          'picture' => url($event->image),
-          'access_token' => $page->page_token
-        );
+    //echo '=> ' . env('FACEBOOK_WLP_LONGLIVE_TOKEN');
+    //exit;
 
-        //echo 'image => ' . $event->image . '<br />';
-        //echo 'id => ' . $page->social_id . '<br />';
-        //echo '<pre>';
-        //print_r($msg_body);
-        //exit;
+    if($role_id == 2) {
+      $msg_body = array(
+        'message' => $event->title,
+        'name' => $event->title,
+        'link' => url($event->url_slug),
+        'caption' => $event->brief,
+        'description' => $event->brief,
+        'picture' => url($event->image),
+        'access_token' => env('FACEBOOK_WLP_LONGLIVE_TOKEN')
+      );
 
-        try {
-             $postResult = $fb->post($page->social_id . '/feed', $msg_body);
-             $post_id = json_decode($postResult->getBody(), true)['id'];
-             //echo '<pre>';
-             //print_r($postResult->getBody());
-             echo 'post id => ' . $post_id . '<br />';
-             echo 'event id => ' . $event_id . '<br />';
-             echo 'page id => ' . $page->social_id . '<br />';
-             $social = SocialPost::firstOrCreate(array('social' => 'facebook','event_id' => $event_id, 'page_id' => $page->social_id, 'post_id' => $post_id, 'published_at' => date('Y-m-d')))->id;
+      try {
+           $postResult = $fb->post($default_page_id . '/feed', $msg_body);
+           $post_id = json_decode($postResult->getBody(), true)['id'];
+           //echo '<pre>';
+           //print_r($postResult->getBody());
+           //echo 'post id => ' . $post_id . '<br />';
+           //echo 'event id => ' . $event_id . '<br />';
+           //echo 'page id => ' . $default_page_id . '<br />';
+           $social = SocialPost::firstOrCreate(array('social' => 'facebook','event_id' => $event_id, 'page_id' => $default_page_id, 'post_id' => $post_id, 'published_at' => date('Y-m-d')))->id;
 
-         } catch (FacebookApiException $e) {
-             echo $e->getMessage();
-         }
-
+       } catch (FacebookApiException $e) {
+           echo $e->getMessage();
        }
-     }
+
+    } else {
+      if($event->brand->social){
+      foreach($event->brand->social->all() as $page){
+          /*echo 'page id => ' . $page->social_id . '<br />';
+          echo 'page token => ' . $page->page_token . '<br />';
+          echo 'event title => ' . $event->title . '<br />';
+          echo 'event url slug => ' . $event->url_slug . '<br />';
+          echo 'event image => ' . $event->image . '<br />';
+          echo 'event brief => ' . $event->brief . '<br /><br /><br />';*/
+
+          $msg_body = array(
+            'message' => $event->title,
+            'name' => $event->title,
+            'link' => url($event->url_slug),
+            'caption' => $event->brief,
+            'description' => $event->brief,
+            'picture' => url($event->image),
+            'access_token' => $page->page_token
+          );
+
+          //echo 'image => ' . $event->image . '<br />';
+          //echo 'id => ' . $page->social_id . '<br />';
+          //echo '<pre>';
+          //print_r($msg_body);
+          //exit;
+
+          try {
+               $postResult = $fb->post($page->social_id . '/feed', $msg_body);
+               $post_id = json_decode($postResult->getBody(), true)['id'];
+               //echo '<pre>';
+               //print_r($postResult->getBody());
+               //echo 'post id => ' . $post_id . '<br />';
+               //echo 'event id => ' . $event_id . '<br />';
+               //echo 'page id => ' . $page->social_id . '<br />';
+               $social = SocialPost::firstOrCreate(array('social' => 'facebook','event_id' => $event_id, 'page_id' => $page->social_id, 'post_id' => $post_id, 'published_at' => date('Y-m-d')))->id;
+
+           } catch (FacebookApiException $e) {
+               echo $e->getMessage();
+           }
+
+         }
+       } //end event brand
+     } //end user role
 
      return true;
      //echo 'OK';
@@ -113,10 +146,13 @@ class EventsController extends Controller
            ]
        ]);*/
 
-       $res = $client->get('https://api.github.com/user', ['auth' =>  ['ultrasad', 'hanajung115225']]);
-       //dd($res);
-       echo $res->getStatusCode(); // 200
-       echo $res->getBody(); // { "type": "User", ....
+       //echo env('FACEBOK_APP_KEY');
+       //$res = $client->get('https://api.github.com/user', ['auth' =>  ['user', 'password']]);
+       //echo $res->getStatusCode(); // 200
+       //echo $res->getBody(); // { "type": "User", ....
+
+       //echo '=> '. Auth::user()->role_id;
+       //exit;
   }
 
   public function reindex()
@@ -171,9 +207,9 @@ class EventsController extends Controller
         ])->getResults();
     }
 
-    echo '<pre>';
-    print_r($results);
-    exit;
+    //echo '<pre>';
+    //print_r($results);
+    //exit;
 
     $arr_response = array();
     $arr_location = array();

@@ -132,6 +132,8 @@ Route::group(['middleware' => 'web'], function () {
            return 'OK';
     });
 
+    Route::get('/client_request', 'EventsController@client_request');
+
     Route::get('/', 'EventsController@index');
     Route::get('/register', function () {
         return redirect('/');

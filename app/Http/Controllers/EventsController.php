@@ -22,6 +22,8 @@ use Facebook;
 use Session;
 //use GlideImage;
 
+use GuzzleHttp\Client;
+
 use Request as Response;
 
 class EventsController extends Controller
@@ -96,6 +98,25 @@ class EventsController extends Controller
 
      return true;
      //echo 'OK';
+  }
+
+  public function client_request()
+  {
+      //$client = new GuzzleHttp\Client(['base_uri' => 'http://httpbin.org']);
+      //dd($client);
+
+      $client = new Client();
+      /*$res = $client->request('POST', 'https://url_to_the_api', [
+           'form_params' => [
+               'client_id' => 'test_id',
+               'secret' => 'test_secret',
+           ]
+       ]);*/
+
+       $res = $client->get('https://api.github.com/user', ['auth' =>  ['ultrasad', 'hanajung115225']]);
+       //dd($res);
+       echo $res->getStatusCode(); // 200
+       echo $res->getBody(); // { "type": "User", ....
   }
 
   public function reindex()

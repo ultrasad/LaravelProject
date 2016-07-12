@@ -1545,7 +1545,28 @@ var twit = {}; //twitter data
             $(this).valid();
         });
 
+        function slug(title, separator) {
+        	if(typeof separator == 'undefined') separator = '-';
+
+        	// Convert all dashes/underscores into separator
+        	var flip = separator == '-' ? '_' : '-';
+        	title = title.replace(flip, separator);
+
+        	// Remove all characters that are not the separator, letters, numbers, or whitespace.
+        	title = title.toLowerCase().replace(new RegExp('[^a-z0-9' + separator + '\\s]', 'g'), '');
+
+        	// Replace all separator characters and whitespace by a single separator
+        	title = title.replace(new RegExp('[' + separator + '\\s]+', 'g'), separator);
+        	return title.replace(new RegExp('^[' + separator + '\\s]+|[' + separator + '\\s]+$', 'g'),'');
+        }
+
+        $('.events-form .url_slug, .events-form .title').on('change', function(e) {
+          var title_message = $('.events-form .title').val() + "\r\n" + base_url + '/' + slug($('.events-form .url_slug').val());
+          $('.events-form .fb_message, .events-form .tw_message').html(title_message);
+        });
+
         if($('.social_group').exists()){
+          $('.social_group').hide();
           //Switchery
           var changeCheckbox = document.querySelector('.js-check-change')
             , changeField = document.querySelector('.js-check-change-field');
@@ -1554,8 +1575,10 @@ var twit = {}; //twitter data
             changeField.value = changeCheckbox.checked;
             if(changeCheckbox.checked == true){
               $('.social_group').show();
+              $('.js-check-change-field').val('Y');
             } else {
               $('.social_group').hide();
+              $('.js-check-change-field').val('N');
             }
             //console.log('change => ' + changeCheckbox.checked);
           };

@@ -132,6 +132,7 @@ Route::group(['middleware' => 'web'], function () {
            return 'OK';
     });
 
+    Route::get('/check_env', 'EventsController@check_env');
     Route::get('/client_request', 'EventsController@client_request');
 
     Route::get('/', 'EventsController@index');

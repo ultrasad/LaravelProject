@@ -21,11 +21,11 @@
           <div class="panel-body sm-p-t-20">
               <div class="form-group form-group-default required">
                 <label>หัวข้อข่าว</label>
-                <input type="text" name="title" class="form-control" value="{{ $event->title }}" placeholder="โปรโมชั่น" required />
+                <input type="text" name="title" class="form-control title" value="{{ $event->title }}" placeholder="โปรโมชั่น" required />
               </div>
               <div class="form-group form-group-default required">
                 <label>URL SLUG (ภาษาอังกฤษเท่านั้น / สูงสุด 60 ตัวอักษร)</label>
-                <input type="text" name="url_slug" class="form-control" value="{{ $event->url_slug }}" placeholder="ex: promotion-my-brand-my-name-date-year" required />
+                <input type="text" name="url_slug" class="form-control url_slug" value="{{ $event->url_slug }}" placeholder="ex: promotion-my-brand-my-name-date-year" required />
               </div>
               {{--
               <div class="form-group form-group-default required">
@@ -119,8 +119,8 @@
               </div>
 
               <div class="form-group social-post-title">
-                <h5><i class="fa fa-share-square-o fa-lg"></i> Post ไปยัง Social Network <input type="checkbox" name="social_post_switchery" class="js-check-change" data-init-plugin="switchery" data-size="small" data-color="primary" checked="checked" /></h5>
-                <input name="social_post_status" class="js-check-change-field" type="hidden" value="true" />
+                <h5><i class="fa fa-share-square-o fa-lg"></i> Post ไปยัง Social Network <input type="checkbox" name="social_post_switchery" class="js-check-change" data-init-plugin="switchery" data-size="small" data-color="primary" /></h5>
+                <input name="social_post" class="js-check-change-field" type="hidden" value="true" />
               </div>
 
               <div class="social_group">
@@ -138,7 +138,7 @@
                       <label class="label-master" for="checkbox3">One</label>
                     </div>
                   </span>-->
-                  <textarea class="form-control" name="fb_message" rows="3"></textarea>
+                  <textarea class="form-control fb_message" name="facebook_title" rows="3"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -155,7 +155,7 @@
                       <label class="label-master" for="checkbox5">Sabaidee</label>
                     </div>
                   </span>-->
-                  <textarea class="form-control" name="tw_message" rows="3"></textarea>
+                  <textarea class="form-control tw_message" name="twitter_title" rows="3"></textarea>
                 </div>
               </div>
           </div>

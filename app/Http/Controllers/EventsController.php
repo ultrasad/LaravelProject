@@ -19,6 +19,7 @@ use App\Gallery;
 use App\Location;
 use App\SocialPost;
 use Facebook;
+use Twitter;
 use Session;
 //use GlideImage;
 
@@ -49,13 +50,40 @@ class EventsController extends Controller
     echo env('FACEBOOK_WLP_LONGLIVE_TOKEN');
   }
 
+  function get_googl($longUrl)
+  {
+    //This is the URL you want to shorten
+    $apiKey = 'AIzaSyA34vD_CyNz2VPnHVyeX8wc0MvQJJZBid8';
+    //Get API key from : http://code.google.com/apis/console/
+
+    $postData = array('longUrl' => $longUrl, 'key' => $apiKey);
+    $jsonData = json_encode($postData);
+
+    $curlObj = curl_init();
+
+    curl_setopt($curlObj, CURLOPT_URL, 'https://www.googleapis.com/urlshortener/v1/url?key='.$apiKey);
+    curl_setopt($curlObj, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curlObj, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($curlObj, CURLOPT_HEADER, 0);
+    curl_setopt($curlObj, CURLOPT_HTTPHEADER, array('Content-type:application/json'));
+    curl_setopt($curlObj, CURLOPT_POST, 1);
+    curl_setopt($curlObj, CURLOPT_POSTFIELDS, $jsonData);
+
+    $response = curl_exec($curlObj);
+
+    //change the response json string to object
+    $json = json_decode($response);
+    curl_close($curlObj);
+    return $json->id;
+  }
+
   public function post_social($event_id=0)
   {
     $role_id = Auth::user()->role_id;
     $event = Event::find($event_id);
 
     $fb = new Facebook\Facebook([
-      'app_id' => env('FACEBOK_APP_KEY'),
+      'app_id' => env('FACEBOOK_APP_KEY'),
       'app_secret' => env('FACEBOOK_APP_SECRET'),
       'default_graph_version' => 'v2.6',
     ]);
@@ -66,6 +94,7 @@ class EventsController extends Controller
       $msg_body = array(
         'message' => $event->facebook_title,
         'url' => url('/' . $event->image),
+        //'url' => 'http://welovepro.com/images/events/2016-07-13/20160713-113715-jubilee.jpg',
         'access_token' => env('FACEBOOK_WLP_LONGLIVE_TOKEN')
       );
 
@@ -77,6 +106,13 @@ class EventsController extends Controller
        } catch (FacebookApiException $e) {
            echo $e->getMessage();
        }
+
+       list($twitter_title, $full_url) = explode('http', $event->twitter_title);
+       $short_url = $this->get_googl($full_url); //short url
+
+       $uploaded_media = Twitter::uploadMedia(['media' => file_get_contents(url('/' . $event->image))]);
+       //$uploaded_media = Twitter::uploadMedia(['media' => file_get_contents('http://welovepro.com/images/events/2016-07-13/20160713-113715-jubilee.jpg')]);
+       Twitter::postTweet(['status' => "{$twitter_title} {$short_url}", 'media_ids' => $uploaded_media->media_id_string]);
 
     } else {
       if($event->brand->social){
@@ -118,7 +154,7 @@ class EventsController extends Controller
            ]
        ]);*/
 
-       //echo env('FACEBOK_APP_KEY');
+       //echo env('FACEBOOK_APP_KEY');
        //$res = $client->get('https://api.github.com/user', ['auth' =>  ['user', 'password']]);
        //echo $res->getStatusCode(); // 200
        //echo $res->getBody(); // { "type": "User", ....
@@ -264,6 +300,9 @@ class EventsController extends Controller
       }
 
       $brand_category = $brands->first()->category_list;
+
+      //dd($brand_category);
+      //exit;
 
       return view('events.create', compact('brands', 'branch', 'brand_category', 'role_id'));
   }

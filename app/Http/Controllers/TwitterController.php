@@ -102,6 +102,33 @@ class TwitterController extends Controller
         }
     }
 
+    function getgoogl($longUrl)
+    {
+      //This is the URL you want to shorten
+      $apiKey = 'AIzaSyA34vD_CyNz2VPnHVyeX8wc0MvQJJZBid8';
+      //Get API key from : http://code.google.com/apis/console/
+
+      $postData = array('longUrl' => $longUrl, 'key' => $apiKey);
+      $jsonData = json_encode($postData);
+
+      $curlObj = curl_init();
+
+      curl_setopt($curlObj, CURLOPT_URL, 'https://www.googleapis.com/urlshortener/v1/url?key='.$apiKey);
+      curl_setopt($curlObj, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($curlObj, CURLOPT_SSL_VERIFYPEER, 0);
+      curl_setopt($curlObj, CURLOPT_HEADER, 0);
+      curl_setopt($curlObj, CURLOPT_HTTPHEADER, array('Content-type:application/json'));
+      curl_setopt($curlObj, CURLOPT_POST, 1);
+      curl_setopt($curlObj, CURLOPT_POSTFIELDS, $jsonData);
+
+      $response = curl_exec($curlObj);
+
+      //change the response json string to object
+      $json = json_decode($response);
+      curl_close($curlObj);
+      return $json->id;
+    }
+
     public function tweet()
     {
         //Test Current User
@@ -112,10 +139,19 @@ class TwitterController extends Controller
         echo '<pre>';
         print_r($user);*/
 
-        return view('brand.twitter');
+        //return view('brand.twitter');
+        $short_url = $this->getgoogl('http://www.welovepro.com/promotion-dak-galbi-groupshot-50-off-add-on-menu-july-aug-2016');
 
-        //Twitter::postTweet(['status' => 'Laravel is beautiful, Make with Love.', 'format' => 'json']);
-        //echo 'tweet >>';
+        echo ("โปรโมชั่น รวมกันลดอยู่ แยกหมู่อดนะ จาก Dak Galbi ลด 50% เมนู ADD ONS แบบไม่จำกัด (ก.ค.-ส.ค.59) $short_url");
+        exit;
+
+        $uploaded_media = Twitter::uploadMedia(['media' => file_get_contents('http://welovepro.com/images/events/2016-07-13/20160713-163319-dakgalbi.jpg')]);
+        Twitter::postTweet(['status' => "โปรโมชั่น รวมกันลดอยู่ แยกหมู่อดนะ จาก Dak Galbi ลด 50% เมนู ADD ONS แบบไม่จำกัด (ก.ค.-ส.ค.59) $short_url", 'media_ids' => $uploaded_media->media_id_string]);
+        //$url = Twitter::linkify('http://www.welovepro.com/promotion-dak-galbi-groupshot-50-off-add-on-menu-july-aug-2016');
+        //$link = Twitter::linkTweet('http://www.welovepro.com/promotion-dak-galbi-groupshot-50-off-add-on-menu-july-aug-2016');
+        //echo $url . '<br />';
+        //echo $link . '<br />';
+        echo 'tweet >>';
     }
 
     public function error(){

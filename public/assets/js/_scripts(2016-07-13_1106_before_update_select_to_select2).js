@@ -886,10 +886,7 @@ var twit = {}; //twitter data
           });
 
           $.validator.addMethod("checkBrand", function(value) { //add custom method
-              //return ($("div.cs-select .cs-options").find("li.cs-selected").attr('data-value') > 0);
-              //return ($('.brand_id').val() > 0);
-              //alert($('.brand_id').val());
-              return true;
+              return ($("div.cs-select .cs-options").find("li.cs-selected").attr('data-value') > 0);
           });
         }
 
@@ -907,31 +904,12 @@ var twit = {}; //twitter data
                validClass:'success',
                errorElement:'span',
                highlight: function (element, errorClass, validClass) {
-                   //console.log('highlight => ' + element.name);
+                   //console.log(element.name);
                    $(element).parents("div[class='clearfix']").addClass(errorClass).removeClass(validClass);
-                    //var elem = $(element);
-                    //elem.addClass(errorClass);
                },
                unhighlight: function (element, errorClass, validClass) {
-                   //console.log('unhighlight => ' + element.name);
                    $(element).parents(".error").removeClass(errorClass).addClass(validClass);
-                   //var elem = $(element);
-                   //elem.removeClass(errorClass);
                },
-               /*highlight: function (element, errorClass, validClass) {
-                    var elem = $(element);
-                    if(elem.hasClass('s-select2')) {
-                        console.log('=> ' + elem.toSource());
-                        var isMulti = (!!elem.attr('multiple')) ? 's' : '';
-                        elem.siblings('.sl').find('.select2-choice'+isMulti+'').addClass(errorClass);
-                    } else {
-                        elem.addClass(errorClass);
-                    }
-                },
-                unhighlight: function (element, errorClass, validClass) {
-                    var elem = $(element);
-                    elem.removeClass(errorClass);
-                },*/
                /*
               //When there is an error normally you just add the class to the element.
               // But in the case of select2s you must add it to a UL to make it visible.
@@ -976,7 +954,7 @@ var twit = {}; //twitter data
                   },
                   brand: {
                     required: true,
-                    //"checkBrand": true
+                    "checkBrand": true
                   },
                   branch_name: {
                     required: true
@@ -1008,7 +986,7 @@ var twit = {}; //twitter data
                   },
                   brand: {
                     required: "This field is required.",
-                    //"checkBrand": "This field is required."
+                    "checkBrand": "This field is required."
                   },
                   branch_name: {
                     required: "This field is required.",
@@ -1583,20 +1561,8 @@ var twit = {}; //twitter data
         }
 
         $('.events-form .url_slug, .events-form .title').on('change', function(e) {
-          var base_message = $('.events-form .title').val();
-
-          console.log('title length => ' + base_message.length);
-
-          var title_message = base_message + "\r\n" + base_url + '/' + slug($('.events-form .url_slug').val());
-          //$('.events-form .fb_message, .events-form .tw_message').html(title_message);
-          if(base_message.length > 92){
-           $('.events-form .fb_message').html(title_message);
-           title_message = base_message.substring(0, 92) + "\r\n" + base_url + '/' + slug($('.events-form .url_slug').val());
-           $('.events-form .tw_message').html(title_message);
-         } else {
-           $('.events-form .fb_message, .events-form .tw_message').html(title_message);
-         }
-
+          var title_message = $('.events-form .title').val() + "\r\n" + base_url + '/' + slug($('.events-form .url_slug').val());
+          $('.events-form .fb_message, .events-form .tw_message').html(title_message);
         });
 
         if($('.social_group').exists()){
@@ -1619,82 +1585,9 @@ var twit = {}; //twitter data
         }
 
         //brand
-        if($('.events-form .cs-select2').exists()){
-
-          $(document).on('change', '.cs-select2', function(e){
-            //console.log('=> ' + $(this).val());
-            $(this).valid();
-
-            var brand_id = $(this).val();
-            window.fx_select_brand = brand_id;
-            var _branch = $('.branch_child .list');
-            var _category = $('.brand-category');
-            //var data = new FormData();
-            //data.append("id", brand_id);
-            //$('.new_branch_panel').hide(); //hide add panel
-            if ($('.new_branch_panel').css('display') != 'none'){
-              $('.add_new_branch').trigger('click');
-            }
-
-            _branch.html('');
-            $('.new_branch_btn').hide(); //hide new branch btn
-            $('.check-branch-all').hide(); //hide check all branch
-
-            if(brand_id > 0){
-              $.ajax({
-                url: "/events/brand/" + brand_id,
-                //data: data,
-                //cache: false,
-                contentType: false,
-                processData: false,
-                dataType: 'JSON',
-                type: 'GET',
-                success: function(data){
-                 if(Object.keys(data.branch).length > 0){
-                   _branch.html('');
-                   $.each(data.branch, function(id, value) {
-                       _branch.append(
-                         '<div class="checkbox check-warning">'
-                         + '<input type="checkbox" checked="checked" name="branch[]" class="branch" value="'+id+'" id="branch_'+id+'" />'
-                         + '<label for="branch_'+id+'">'+value+'</label>'
-                         + '</div>'
-                       );
-                   });
-                   _branch.append('<div class="clearfix"></div>');
-
-                   //checkbox blanch
-                   if($('.branch').is(':checked')){
-                     $('.branch_all').prop('checked', $('.branch_child').has(':checkbox:not(:checked)').length == 0);
-                   }
-
-                   $('.check-branch-all').show(); //show check all branch
-                 } else {
-                   $('.branch_child .list').append('<div class="checkbox"></div>');
-                 }
-
-                 //brand category
-                 if(Object.keys(data.category).length > 0){
-                   _category.html('');
-                   $.each(data.category, function(id, value) {
-                     console.log('id => ' + id + ' => '+ value);
-                       _category.append(
-                         '<input type="text" name="category[]" class="brand-category" value="'+id+'" id="category_'+id+'" />'
-                       );
-                   });
-                 }
-
-                 $('.new_branch_btn').show(); //show new branch btn
-
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                  console.log(textStatus+" "+errorThrown);
-                }
-             });
-           }
-          });
-          //var el = $('.cs-select.cs-select-brand').get(0);
-          //$(el).wrap('<div class="cs-wrapper" />');
-          /*
+        if($('.events-form .cs-select').exists()){
+          var el = $('.cs-select.cs-select-brand').get(0);
+          $(el).wrap('<div class="cs-wrapper" />');
           new SelectFx(el, {
               onChange: function(e) {
                    var brand_id = $(e).val();
@@ -1765,7 +1658,6 @@ var twit = {}; //twitter data
                 }
               }
           });
-          */
         }
 
         //add branch

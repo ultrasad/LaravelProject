@@ -689,6 +689,10 @@ h3.page-title, .windows h3.page-title {
   overflow: visible;
 }
 
+.form-group-cs-select2 {
+  padding: 0;
+}
+
 div.cs-skin-slide > span.error::after, div.cs-skin-slide.cs-active > span.error::after, .cs-select > span.error::after {
   content: none;
 }
@@ -885,6 +889,11 @@ div.cs-skin-slide.cs-active {
 
 .published_set_time .error {
   padding-left: 12px;
+}
+
+form .row [class*="col-"]:first-child {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .cs-brand .cs-wrapper {

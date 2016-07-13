@@ -148,6 +148,7 @@
 
           <div class="row">
               <div class="col-sm-12 cs-brand">
+                  <!--
                   <select name="brand" class="cs-select cs-skin-slide cs-select-brand validate">
                     @if($brands->count() > 1)
                     <option value="">กรุณาเลือกแบรนด์สินค้า</option>
@@ -158,6 +159,19 @@
                       @endforeach
                     @endif
                   </select>
+                -->
+                  <div class="form-group form-group-default form-group-normal form-group-cs-select2">
+                    <select class="full-width cs-select2 validate" name="brand" data-init-plugin="select2">
+                      @if($brands->count() > 1)
+                      <option value="">กรุณาเลือกแบรนด์สินค้า</option>
+                      @endif
+                      @if($brands)
+                        @foreach($brands as $id => $brand)
+                          <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                      @endif
+                    </select>
+                  </div>
               </div>
               <div class="brand-category" style="display: none">
                 @foreach($brand_category as $id => $category)

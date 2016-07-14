@@ -47,10 +47,10 @@ class EventsController extends Controller
 
   public function check_env()
   {
-    echo env('FACEBOOK_WLP_LONGLIVE_TOKEN');
+    echo env('TWITTER_ACCESS_TOKEN_SECRET');
   }
 
-  function get_googl($longUrl)
+  function get_google($longUrl)
   {
     //This is the URL you want to shorten
     $apiKey = 'AIzaSyA34vD_CyNz2VPnHVyeX8wc0MvQJJZBid8';
@@ -107,12 +107,32 @@ class EventsController extends Controller
            echo $e->getMessage();
        }
 
+      try {
+        list($twitter_title, $full_url) = explode('http', $event->twitter_title);
+        $short_url = $this->get_google($full_url); //short url
+        //$short_url = $this->get_google('http://www.welovepro.com/promotion-dak-galbi-groupshot-50-off-add-on-menu-july-aug-2016');
+
+        $uploaded_media = Twitter::uploadMedia(['media' => file_get_contents(url('/' . $event->image))]);
+        //$uploaded_media = Twitter::uploadMedia(['media' => file_get_contents('http://welovepro.com/images/events/2016-07-13/20160713-113715-jubilee.jpg')]);
+        $response = Twitter::postTweet(['status' => "{$twitter_title} {$short_url}", 'media_ids' => $uploaded_media->media_id_string]);
+        $social = SocialPost::firstOrCreate(array('social' => 'twitter','event_id' => $event_id, 'page_id' => 'welovepro', 'post_id' => $response->id, 'published_at' => date('Y-m-d')))->id;
+       } catch (Exception $e) {
+          dd(Twitter::logs());
+       }
+
+       //echo '<pre>';
+       //print_r($response);
+
+       //dd($response);
+
+       /*
        list($twitter_title, $full_url) = explode('http', $event->twitter_title);
        $short_url = $this->get_googl($full_url); //short url
 
        $uploaded_media = Twitter::uploadMedia(['media' => file_get_contents(url('/' . $event->image))]);
        //$uploaded_media = Twitter::uploadMedia(['media' => file_get_contents('http://welovepro.com/images/events/2016-07-13/20160713-113715-jubilee.jpg')]);
        Twitter::postTweet(['status' => "{$twitter_title} {$short_url}", 'media_ids' => $uploaded_media->media_id_string]);
+       */
 
     } else {
       if($event->brand->social){

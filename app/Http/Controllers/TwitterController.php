@@ -102,7 +102,7 @@ class TwitterController extends Controller
         }
     }
 
-    function getgoogl($longUrl)
+    function get_google($longUrl)
     {
       //This is the URL you want to shorten
       $apiKey = 'AIzaSyA34vD_CyNz2VPnHVyeX8wc0MvQJJZBid8';
@@ -140,7 +140,7 @@ class TwitterController extends Controller
         print_r($user);*/
 
         //return view('brand.twitter');
-        $short_url = $this->getgoogl('http://www.welovepro.com/promotion-dak-galbi-groupshot-50-off-add-on-menu-july-aug-2016');
+        $short_url = $this->get_google('http://www.welovepro.com/promotion-dak-galbi-groupshot-50-off-add-on-menu-july-aug-2016');
 
         echo ("โปรโมชั่น รวมกันลดอยู่ แยกหมู่อดนะ จาก Dak Galbi ลด 50% เมนู ADD ONS แบบไม่จำกัด (ก.ค.-ส.ค.59) $short_url");
         exit;

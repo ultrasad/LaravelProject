@@ -10,7 +10,7 @@
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-12">
-        <h3 class='page-title'>แก้ไขข่าวโปรโมชั่น</h3>
+        <h3 class='page-title p-l-10'>แก้ไขข่าวโปรโมชั่น</h3>
         <span class="error-reponse">
           @include('errors.list')
         </span>
@@ -185,21 +185,23 @@
                   </select>
               </div>
               -->
-              <div class="form-group form-group-default form-group-normal form-group-cs-select2">
-                <select class="full-width cs-select2 validate" name="brand" data-init-plugin="select2">
-                  @if($brands->count() > 1)
-                  <option value="">กรุณาเลือกแบรนด์สินค้า</option>
-                  @endif
-                  @if($brands)
-                    @foreach($brands as $id => $brand)
-                      @if($brand->id == $event->brand_id)
-                        <option selected="selected" value="{{ $brand->id }}">{{ $brand->name }}</option>
-                      @else
-                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                      @endif
-                    @endforeach
-                  @endif
-                </select>
+              <div class="col-sm-12 cs-brand">
+                <div class="form-group form-group-default form-group-normal form-group-cs-select2">
+                  <select class="full-width cs-select2 validate" name="brand" data-init-plugin="select2">
+                    @if($brands->count() > 1)
+                    <option value="">กรุณาเลือกแบรนด์สินค้า</option>
+                    @endif
+                    @if($brands)
+                      @foreach($brands as $id => $brand)
+                        @if($brand->id == $event->brand_id)
+                          <option selected="selected" value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @else
+                          <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endif
+                      @endforeach
+                    @endif
+                  </select>
+                </div>
               </div>
               <div class="brand-category" style="display: none">
                 @foreach($brand_category as $id => $category)
@@ -309,13 +311,13 @@
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
           </div>
+
+          <div class="panel-body">
+            <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
+            <button class="btn btn-danger"><i class="pg-close"></i> Clear</button>
+          </div>
         </div>
         <!-- END PANEL -->
-
-        <div class="row">
-          <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
-          <button class="btn btn-default"><i class="pg-close"></i> Clear</button>
-        </div>
       </div>
     </div>
   </div>

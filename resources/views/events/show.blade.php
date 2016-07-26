@@ -167,7 +167,7 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-12">
-              <div class="panel-body p-t-10 hint-text-9 p-l-0 p-r-0">
+              <div class="panel-body p-t-10 hint-text-9 p-l-0 p-r-0" id="content-description">
                 <h4 class="text-master m-b-30">รายละเอียดโปรโมชั่น</h4>
                 <p>{!! $event->description !!}</p>
                 <div class="desc-footer hint-text p-t-5 p-b-5 m-t-20 m-b-30">

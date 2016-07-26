@@ -42,6 +42,13 @@
             <!-- START PANEL -->
             <div class="fotorama" data-allowfullscreen="true" data-maxwidth="800"  data-width="100%" data-click="false" data-arrows="always" click="false" data-nav="thumbs" data-loop="true">
               @forelse($event->gallery_list as $id => $image)
+                @if($id == 0)
+                  @if(is_file($event->image))
+                    <img src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
+                  @else
+                    <img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
+                  @endif
+                @endif
                 <img src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}"  data-thumb="{{ GlideImage::load($image)->modify(['w'=> 100, 'h' => 100, 'fit' => 'crop']) }}" class="fotoclick" class="img-responsive" />
               @empty
                 @if(is_file($event->image))
@@ -160,11 +167,8 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-12">
-              <div class="panel-body p-t-10 hint-text-9 p-l-0 p-r-0" id="content-description">
-			  [fbPhoto id="10154460844594925"]
+              <div class="panel-body p-t-10 hint-text-9 p-l-0 p-r-0">
                 <h4 class="text-master m-b-30">รายละเอียดโปรโมชั่น</h4>
-				[fbPhotoAlbum id="1114741578569146"]
-				
                 <p>{!! $event->description !!}</p>
                 <div class="desc-footer hint-text p-t-5 p-b-5 m-t-20 m-b-30">
                     <div class="pull-left inline event-created b-grey b-r"><b>Date : </b>{{ date('Y-m-d', strtotime($event->created_at)) }}&nbsp;&nbsp;</div>
@@ -178,12 +182,28 @@
                 {!! implode(', ', $tags) !!}
               </div>
               @endif
-              <div class="col-sm-12 visible-sm p-t-20 p-l-0 p-r-0">
+              <div class="col-sm-12 visible-xs visible-sm p-t-20 p-l-0 p-r-0">
                 <div class="ads">
-                  ads 3
+                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <!-- welovepro-news-side -->
+                  <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-6376653037162976"
+                     data-ad-slot="3710220418"></ins>
+                  <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
                 </div>
                 <div class="ads">
-                  ads 4
+                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <!-- welovepro_SideLong_300x600 -->
+                  <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:600px"
+                     data-ad-client="ca-pub-6376653037162976"
+                     data-ad-slot="8590767793"></ins>
+                  <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
                 </div>
               </div>
               <div class="col-md-12 p-l-0 p-r-0">
@@ -226,13 +246,29 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-sm-12 hidden-sm">
+      <div class="col-md-4 col-sm-12 hidden-xs hidden-sm">
         <div class="panel-body p-l-0 p-r-0">
             <div class="ads">
-              adfs 1
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+              <!-- welovepro-news-side -->
+              <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px"
+                 data-ad-client="ca-pub-6376653037162976"
+                 data-ad-slot="3710220418"></ins>
+              <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
             </div>
             <div class="ads">
-              ads 2
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+              <!-- welovepro_SideLong_300x600 -->
+              <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:600px"
+                 data-ad-client="ca-pub-6376653037162976"
+                 data-ad-slot="8590767793"></ins>
+              <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
             </div>
         </div>
       </div>

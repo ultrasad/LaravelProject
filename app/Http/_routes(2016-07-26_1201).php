@@ -250,7 +250,6 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
     Route::get('utility/summary', 'UtilityController@summary');
-	Route::post('utility/fbphotocode', 'UtilityController@get_facebook_photos');
 
     Route::post('/admin/events', 'AdminController@events');
     Route::get('/admin/events', 'AdminController@events');

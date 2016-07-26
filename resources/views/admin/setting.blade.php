@@ -6,8 +6,8 @@
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   <div class="container-fluid container-fixed-lg">
     <div class="row">
-      <div class="col-md-12">
-        <h3 class='page-title'>ตั้งค่าทั่วไป</h3>
+      <div class="col-md-12 m-t-10">
+        <h3 class='page-title p-l-10'>ตั้งค่าทั่วไป</h3>
         <span class="error-reponse">
           @include('errors.list')
         </span>
@@ -50,11 +50,10 @@
               </div>
               <!-- END PANEL -->
           </div>
-        </div>
-        <div class="col-md-12">
-          <div class="row">
+
+          <div class="panel-body">
             <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
-            <button class="btn btn-default"><i class="pg-close"></i> Clear</button>
+            <button class="btn btn-danger" type="reset"><i class="pg-close"></i> Clear</button>
           </div>
         </div>
         <!-- END PANEL -->

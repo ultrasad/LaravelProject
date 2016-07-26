@@ -477,6 +477,16 @@ class BrandController extends Controller
 
     //echo 'brand id => ' . $brand->id;
 
+    $email = $request->input('email');
+    $password = $request->input('password');
+    if(!empty($email) || !empty($password)){
+      $user = User::find($brand->user->id);
+      $user->email = $email;
+      $user->password = bcrypt($password);
+      $user->save();
+      //$brand->user_id =  User::create(array('name' => $name,'username' => $username, 'password' => bcrypt($password), 'email' => !empty($email)?$email:NULL, 'role_id' => 4))->id;
+    }
+
     $brand->reIndex(); //reindex search
 
     if($brand->id > 0){

@@ -10,7 +10,7 @@
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-12">
-        <h3 class='page-title'>แก้ไขแบรนด์</h3>
+        <h3 class='page-title p-l-10'>แก้ไขแบรนด์</h3>
         <span class="error-reponse">
           @include('errors.list')
         </span>
@@ -74,7 +74,7 @@
                 <div class="form-group">
                   <button class="btn btn-complete btn-xs fb_login" type="button" id="FBLogin"><i class="fa fa-facebook"></i><strong>&nbsp;Login</strong></button>
                   <!--<label class="social-facebook-title">Facebook</label>-->
-                  <div class="row">
+                  <div class="form-group">
                     <label class="social-facebook-title">Facebook</label>
                     <div class="facebook_page_list inline">
                       @if($facebook)
@@ -94,7 +94,7 @@
                 <div class="form-group">
                   <button class="btn btn-success btn-xs tw_login" type="button" id="TWLogin"><i class="fa fa-twitter"></i><strong>&nbsp;Login</strong></button>
                   <!--<label class="social-twitter-title">Twitter</label>-->
-                  <div class="row">
+                  <div class="form-group">
                     <label class="social-twitter-title">Twitter</label>
                     <div class="twitter_page_list inline">
                       <!--<span class="checkbox-inline">
@@ -211,6 +211,20 @@
 
         <!-- START PANEL -->
         <div class="panel panel-default master-checkbox-all">
+          <div class="panel-body">
+            <div class="form-group form-group-default">
+              <label>Username</label>
+              <input type="text" name="username" class="form-control" id="brand_username" readonly value="{{ $brand->user->name }}" />
+            </div>
+            <div class="form-group form-group-default">
+              <label>E-mail</label>
+              <input type="text" name="email" class="form-control" id="brand_email" placeholder="E-mail" value="{{ $brand->user->email }}" />
+            </div>
+            <div class="form-group form-group-default">
+              <label>Password</label>
+              <input type="text" name="password" class="form-control ignore" id="brand_password" placeholder="Password" />
+            </div>
+          </div>
           <div class="panel-heading">
             <div class="panel-title">
               <div class="checkbox check-danger">
@@ -219,13 +233,13 @@
               </div>
             </div>
           </div>
+
+          <div class="panel-body">
+            <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
+            <button class="btn btn-danger" type="reset"><i class="pg-close"></i> Clear</button>
+          </div>
         </div>
         <!-- END PANEL -->
-
-        <div class="row">
-          <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
-          <button class="btn btn-default" type="reset"><i class="pg-close"></i> Clear</button>
-        </div>
       </div>
     </div>
   </div>

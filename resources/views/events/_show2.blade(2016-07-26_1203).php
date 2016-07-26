@@ -160,11 +160,8 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-12">
-              <div class="panel-body p-t-10 hint-text-9 p-l-0 p-r-0" id="content-description">
-			  [fbPhoto id="10154460844594925"]
+              <div class="panel-body p-t-10 hint-text-9 p-l-0 p-r-0">
                 <h4 class="text-master m-b-30">รายละเอียดโปรโมชั่น</h4>
-				[fbPhotoAlbum id="1114741578569146"]
-				
                 <p>{!! $event->description !!}</p>
                 <div class="desc-footer hint-text p-t-5 p-b-5 m-t-20 m-b-30">
                     <div class="pull-left inline event-created b-grey b-r"><b>Date : </b>{{ date('Y-m-d', strtotime($event->created_at)) }}&nbsp;&nbsp;</div>
@@ -178,7 +175,7 @@
                 {!! implode(', ', $tags) !!}
               </div>
               @endif
-              <div class="col-sm-12 visible-sm p-t-20 p-l-0 p-r-0">
+              <div class="col-sm-12 visible-xs visible-sm p-t-20 p-l-0 p-r-0">
                 <div class="ads">
                   ads 3
                 </div>

@@ -877,6 +877,10 @@ div.cs-skin-slide.cs-active {
   margin-top: 0px;
 }
 
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    color: rgba(98, 98, 98, 0.5);
+}
+
 .btn-file-image input[type=file] {
   top: 0;
   right: 0;
@@ -891,7 +895,7 @@ div.cs-skin-slide.cs-active {
   padding-left: 12px;
 }
 
-form .row [class*="col-"]:first-child {
+form .row [class*="cs-brand"]:first-child {
   padding-left: 0;
   padding-right: 0;
 }
@@ -1643,4 +1647,23 @@ div.cs-select-brand, div.cs-select-contact {
 .container-fluid {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+@media (max-width: 991px) {
+  .container-fluid {
+      padding-left: 0px;
+      padding-right: 0px;
+  }
+  .panel .panel-body {
+    padding: 10px;
+  }
+
+  form.dropzone, form.brand-form {
+    padding: 5px;
+  }
+
+  form .row [class*="cs-brand"]:first-child {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }

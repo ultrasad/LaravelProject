@@ -7,7 +7,7 @@
   <div class="container-fluid container-fixed-lg">
     <div class="row">
       <div class="col-md-12">
-        <h3 class='page-title'>เพิ่มข่าวโปรโมชั่น</h3>
+        <h3 class='page-title p-l-10'>เพิ่มข่าวโปรโมชั่น</h3>
         <span class="error-reponse">
           @include('errors.list')
         </span>
@@ -25,15 +25,15 @@
                 <input type="text" name="url_slug" class="form-control url_slug" placeholder="ex: promotion-my-brand-my-name-date-year" required />
               </div>
               <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group form-group-default input-group col-sm-12">
+                <div class="col-md-6 col-xs-12">
+                  <div class="form-group form-group-default input-group col-xs-12">
                     <label>วันที่เริ่ม</label>
                     <input type="text" name="start_date" class="form-control" placeholder="Pick a date" id="datepicker-component">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group form-group-default input-group col-sm-12">
+                <div class="col-md-6 col-xs-12">
+                  <div class="form-group form-group-default input-group col-xs-12">
                     <label>วันสิ้นสุด</label>
                     <input type="text" name="end_date" class="form-control" placeholder="Pick a date" id="datepicker-component2">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -265,13 +265,13 @@
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
             </div>
           </div>
+
+          <div class="panel-body">
+            <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
+            <button class="btn btn-danger"><i class="pg-close"></i> Clear</button>
+          </div>
         </div>
         <!-- END PANEL -->
-
-        <div class="row">
-          <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
-          <button class="btn btn-default"><i class="pg-close"></i> Clear</button>
-        </div>
       </div>
     </div>
   </div>

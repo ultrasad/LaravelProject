@@ -120,17 +120,101 @@ class BrandController extends Controller
     return view('brand.lists', compact('brands', 'role_id'));
   }
 
-  function facebook_token($brand_id='', $fbpage=array(), $update=false)
+  public function check_facebook()
+  {
+    $fb = new Facebook\Facebook([
+      'app_id' => env('FACEBOOK_APP_KEY'),
+      //'app_id' => '141016549272100',
+      'app_secret' => env('FACEBOOK_APP_SECRET'),
+      //'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
+      'default_graph_version' => 'v2.6',
+      'redirect' => 'http://localhost:8000/brand/check_facebook/',
+    ]);
+
+    $helper = $fb->getJavaScriptHelper();
+    //$helper = $fb->getRedirectLoginHelper();
+
+    //echo 'get helper >>';
+    //echo '<pre>';
+    //print_r($helper);
+
+    try {
+      $accessToken = $helper->getAccessToken();
+      echo 'get token >>';
+      echo '<pre>';
+      print_r($accessToken);
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      // There was an error communicating with Graph
+      // Or there was a problem validating the signed request
+      echo '=> ' . $e->getMessage();
+      exit;
+    }
+
+    if ($accessToken) {
+      echo 'token';
+    } else {
+      echo 'no token';
+    }
+
+    /*$helper = $fb->getCanvasHelper();
+
+    try {
+      $accessToken = $helper->getAccessToken();
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      // There was an error communicating with Graph
+      // Or there was a problem validating the signed request
+      echo $e->getMessage();
+      exit;
+    }
+
+    if ($accessToken) {
+      // Logged in.
+      $_SESSION['facebook_access_token'] = (string) $accessToken;
+      echo 'sess => ' . $_SESSION['facebook_access_token'];
+    } else {
+      echo 'not token >>';
+    }*/
+
+    /*$helper = $fb->getJavaScriptHelper();
+
+    try {
+      $accessToken = $helper->getAccessToken();
+    } catch(Facebook\Exceptions\FacebookResponseException $e) {
+      // When Graph returns an error
+      echo 'Graph returned an error: ' . $e->getMessage();
+    } catch(Facebook\Exceptions\FacebookSDKException $e) {
+      // When validation fails or other local issues
+      echo 'Facebook SDK returned an error: ' . $e->getMessage();
+    }
+
+    if (isset($accessToken)) {
+      // Logged in.
+      echo 'login >>';
+    } else {
+      echo 'not login >>';
+      $helper = $fb->getRedirectLoginHelper();
+
+      $permissions = ['email', 'public_profile', 'publish_pages', 'manage_pages']; // optional
+      $callback = 'http://localhost:8000/brand/check_facebook/';
+      $loginUrl = $helper->getLoginUrl($callback, $permissions);
+
+      echo '<a href="'.$loginUrl.'">Log in with Facebook!</a>';
+    }*/
+
+  }
+
+  function facebook_token($brand='', $fbpage=array(), $update=false)
   {
     $fa_master = array();
     if($update == true){
-      $brand = Brand::find($brand_id);
+      $brand = Brand::find($brand->id);
       $social = $brand->page_exists;
       //echo '<pre>';
       //print_r(array_values($social));
       //print_r($social);
 
       $fa_master = Social::pageExists($brand->id, $fbpage)->lists('id')->all();
+      //echo 'fa master >>';
       //echo '<pre>';
       //print_r($fa_master);
 
@@ -150,15 +234,78 @@ class BrandController extends Controller
         'app_secret' => env('FACEBOOK_APP_SECRET'),
         //'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
         'default_graph_version' => 'v2.6',
+        //'cookieSupport' => true,
       ]);
 
       //echo 'key => ' . env('FACEBOOK_APP_KEY') . '<br />';
       //echo 'key => ' . env('FACEBOOK_APP_SECRET') . '<br />';
+      //echo 'fb page more than 0 >>';
+
+      /*$helper = $fb->getRedirectLoginHelper();
+      try {
+        $accessToken = $helper->getAccessToken();
+      } catch(Facebook\Exceptions\FacebookSDKException $e) {
+        // There was an error communicating with Graph
+        echo $e->getMessage();
+        exit;
+      }
+
+      if (isset($accessToken)) {
+        // User authenticated your app!
+        // Save the access token to a session and redirect
+        $_SESSION['facebook_access_token'] = (string) $accessToken;
+        // Log them into your web framework here . . .
+        echo 'Successfully logged in!';
+        exit;
+      } elseif ($helper->getError()) {
+        // The user denied the request
+        // You could log this data . . .
+        var_dump($helper->getError());
+        var_dump($helper->getErrorCode());
+        var_dump($helper->getErrorReason());
+        var_dump($helper->getErrorDescription());
+        // You could display a message to the user
+        // being all like, "What? You don't like me?"
+        exit;
+      } else {
+        echo 'other >>';
+      }*/
+
+      // If they've gotten this far, they shouldn't be here
+      //http_response_code(400);
+      //exit;
+
+      /*$canvasHelper = $fb->getCanvasHelper();
+
+      try {
+        $accessToken = $canvasHelper->getAccessToken();
+      } catch(Facebook\Exceptions\FacebookResponseException $e) {
+        // When Graph returns an error
+        echo 'Graph returned an error: ' . $e->getMessage();
+      } catch(Facebook\Exceptions\FacebookSDKException $e) {
+        // When validation fails or other local issues
+        echo 'Facebook SDK returned an error: ' . $e->getMessage();
+      }
+
+      if (isset($accessToken)) {
+        // Logged in.
+        echo 'login >>';
+      } else {
+        echo 'not login >>';
+      }*/
 
       $helper = $fb->getJavaScriptHelper();
+      //$helper = $fb->getRedirectLoginHelper();
+
+      //echo 'get helper >>';
+      //echo '<pre>';
+      //print_r($helper);
 
       try {
         $accessToken = $helper->getAccessToken();
+        //echo 'get token >>';
+        //echo '<pre>';
+        //print_r($accessToken);
       } catch(Facebook\Exceptions\FacebookSDKException $e) {
         // There was an error communicating with Graph
         // Or there was a problem validating the signed request
@@ -173,6 +320,7 @@ class BrandController extends Controller
 
         # v5
         $client = $fb->getOAuth2Client();
+        //echo 'access token >> <br />';
 
         try {
           // Returns a long-lived access token
@@ -196,20 +344,32 @@ class BrandController extends Controller
         $response = $fb->get('/me/accounts', $longLivedAccessToken);
         $pageList = $response->getGraphEdge()->asArray();
         $pages = array();
+
+        //echo 'page list >>>>';
+        //echo '<pre>';
+        //print_r($pageList);
+        //echo '</pre>';
+
         foreach ($pageList as $page) {
           $pageID = $page['id'];
           if(in_array($pageID, $fbpage)){
             $pageName = $page['name'];
             $pageAccessToken = $page['access_token'];
+            $_SESSION['facebook_page_token'] = (string) $pageAccessToken;
             //echo 'id => ' . $pageID . ', name => ' . $pageName . ', token => ' . $pageAccessToken . '</p>';
+
+              //$arr_data = array('social' => 'facebook', 'social_id' => $pageID, 'name' => $pageName, 'token' => $accessToken, 'long_live_token' => $longLivedAccessToken, 'page_token' => $pageAccessToken);
+              //echo '<pre>';
+              //print_r($arr_data);
 
             //2016-07-27 1701 master ok
             //$pages[] = Social::firstOrCreate(array('social' => 'facebook', 'social_id' => $pageID, 'name' => $pageName, 'token' => $accessToken, 'long_live_token' => $longLivedAccessToken, 'page_token' => $pageAccessToken))->id;
             $user_id = Auth::user()->id;
             $exists_social = Social::where('user_id', $user_id)->where('social_id', $pageID)->first();
             if(is_null($exists_social)){
-              $fToken = json_encode(array('token' => $accessToken, 'long_live_token' => $longLivedAccessToken, 'page_token' => $pageAccessToken));
-              $pages[] = Social::firstOrCreate(array('social' => 'facebook', 'user_id' => $user_id, 'social_id' => $pageID, 'name' => $pageName, 'token' => $fToken, 'long_live_token' => null, 'page_token' => null))->id;
+              //echo 'new => ' . $pageID . '<br />';
+              $fToken = json_encode(array('fb_token' => $_SESSION['facebook_access_token'], 'fb_long_live_token' => $_SESSION['facebook_longlived_token'], 'fb_page_token' => $_SESSION['facebook_page_token']));
+              $pages[] = Social::firstOrCreate(array('social' => 'facebook', 'user_id' => $user_id, 'social_id' => $pageID, 'name' => $pageName, 'token' => $fToken, 'long_live_token' => $_SESSION['facebook_longlived_token'], 'page_token' => $_SESSION['facebook_page_token']))->id;
             }
 
             /*if($pageID == '192272534234138'){
@@ -228,14 +388,17 @@ class BrandController extends Controller
         }
 
         if($pages){
-          echo 'page >>>';
+          //echo 'page >>>';
           //echo '<pre>';
           //print_r($fa_master);
           //echo '</pre>';
-          echo '<pre>';
-          print_r($pages);
-          echo '</pre>';
+          //echo '<pre>';
+          //print_r($pages);
+          //echo '</pre>';
           $pages_all =  array_merge($fa_master, $pages);
+          //echo 'page all';
+          //echo '<pre>';
+          //print_r($pages_all);
           $brand->social()->sync($pages_all);
         }
 
@@ -253,11 +416,16 @@ class BrandController extends Controller
            echo $e->getMessage();
        }*/
 
-    }  else {//check count diff, update brand check
+    } else {//check count diff, update brand check
+      //echo 'page less than 1 >> <br />';
       if(count($fa_master) > 0){
         $brand->social()->sync($fa_master); //ease old page and not new
       }
     }
+
+    //echo 'check dd >>';
+    //exit;
+
     return true;
   }
 
@@ -352,7 +520,7 @@ class BrandController extends Controller
       $this->facebook_token($brand, $fbpage);
     }
 
-    //twitter
+    //twitter, ** use attach for add exists social id, sync clear facebook map
     $twuser = $request->input('twuser');
     if($twuser){
       $brand->social()->attach($twuser);
@@ -420,6 +588,10 @@ class BrandController extends Controller
     $brand = Brand::find($id);
     $input = $request->all(); /* Request all inputs */
     $brand_id = $request->input('brand_edit_id');
+
+    //echo '<pre>';
+    //print_r($input);
+    //echo '</pre>';
 
     //logo image
     if($request->hasFile('logo_image')){
@@ -493,13 +665,16 @@ class BrandController extends Controller
     //facebook
     $fbpage = $request->input('fbpage');
     if($fbpage){
-      $this->facebook_token($brand->id, $fbpage, $update=true);
+      //echo 'brand id => '. $brand_id . '<br />';
+      //echo '<pre>';
+      //print_r($fbpage);
+      $this->facebook_token($brand, $fbpage, $update=true);
     }
 
-    //twitter
+    //twitter, ** use attach for add exists social id, sync clear facebook map
     $twuser = $request->input('twuser');
     if($twuser){
-      $brand->social()->sync($twuser);
+      $brand->social()->attach($twuser);
     }
 
     $input['facebook'] = $request->input('facebook');

@@ -209,6 +209,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('tag/{name}', 'TagsController@index');
 
     Route::get('category/{name}', 'CategoryController@index');
+    Route::get('brand/check_facebook', 'BrandController@check_facebook');
     Route::get('brand/category/{name}', 'BrandController@category');
     Route::get('brand/locations/{slug}', 'BrandController@locations');
     Route::get('maps/locations', 'MapsController@locations');

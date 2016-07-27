@@ -267,8 +267,8 @@
           </div>
 
           <div class="panel-body">
-            <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
-            <button class="btn btn-danger"><i class="pg-close"></i> Clear</button>
+            <button class="btn btn-sm btn-success" type="submit" id="submit_event">Submit</button>
+            <button class="btn btn-sm btn-danger"><i class="pg-close"></i> Clear</button>
           </div>
         </div>
         <!-- END PANEL -->

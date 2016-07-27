@@ -97,6 +97,16 @@
                   <div class="form-group">
                     <label class="social-twitter-title">Twitter</label>
                     <div class="twitter_page_list inline">
+                      @if($twitter)
+                        @foreach($twitter as $id => $acc)
+                        <span class="checkbox-inline">
+                          <div class="checkbox check-warning">
+                            <input type="checkbox" checked="checked" value="{{ $acc->id }}" name="twuser[]" id="{{ $acc->social_id }}">
+                            <label class="label-master" for="{{ $acc->social_id }}">{{ $acc->name }}</label>
+                          </div>
+                        </span>
+                        @endforeach
+                      @endif
                       <!--<span class="checkbox-inline">
                         <div class="checkbox check-warning">
                           <input type="checkbox" checked="checked" value="1" name="tw1" id="checkbox4">
@@ -235,8 +245,8 @@
           </div>
 
           <div class="panel-body">
-            <button class="btn btn-success" type="submit" id="submit_event">Submit</button>
-            <button class="btn btn-danger" type="reset"><i class="pg-close"></i> Clear</button>
+            <button class="btn btn-sm btn-success" type="submit" id="submit_event">Submit</button>
+            <button class="btn btn-sm btn-danger" type="reset"><i class="pg-close"></i> Clear</button>
           </div>
         </div>
         <!-- END PANEL -->

@@ -80,7 +80,7 @@ class AdminController extends Controller
 
     foreach($events as $event){
       $nestedData=array();
-      $nestedData[] = "<a href='/events/{$event->id}/edit' id='show-modal' class='btn btn-danger btn-sm'><i class='fa fa-magic'></i> Edit</a>";
+      $nestedData[] = "<a href='/events/{$event->id}/edit' id='show-modal' class='btn btn-danger btn-xs'><i class='fa fa-magic'></i> Edit</a>";
       $nestedData[] = $event->title;
       $nestedData[] = $event->brand->name;
       $nestedData[] = $event->start_date_thai;

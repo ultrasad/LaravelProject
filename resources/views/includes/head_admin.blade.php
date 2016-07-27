@@ -61,6 +61,6 @@
 <!--<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script>-->
 <script type="text/javascript">
 var base_url = '{{ url('/') }}';
-var app_id = '{{ env("FACEBOK_APP_KEY") }}';
+var app_id = '{{ env("FACEBOOK_APP_KEY") }}';
 console.log(app_id);
 </script>

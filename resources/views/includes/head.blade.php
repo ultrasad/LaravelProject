@@ -36,6 +36,6 @@
 <![endif]-->
 <script type="text/javascript">
 var base_url = '{{ url('/') }}';
-var app_id = '{{ env("FACEBOK_APP_KEY") }}';
-console.log(app_id);
+var app_id = '{{ env("FACEBOOK_APP_KEY") }}';
+console.log('app id => ' + app_id);
 </script>

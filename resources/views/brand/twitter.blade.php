@@ -8,7 +8,9 @@
     var twit = {};
     window.twit.social_id = '{{ $twitter }}';
     window.twit.user_name = '{{ $user_name }}';
+    window.twit.new_user = '{{ $new_user }}';
     window.opener.setTwitterAuthData(window.twit);
     window.close();
+    close();
   </script>
 </body></html>

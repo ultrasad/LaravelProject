@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Social;
+use Auth;
 use Session;
 use Twitter;
 
@@ -87,15 +89,24 @@ class TwitterController extends Controller
                 $user = Twitter::get('account/verify_credentials');
                 $token['user_name'] = $user->name;
                 $tToken = json_encode($token);
-                //$twitter = array();
-                $twitter = Social::firstOrCreate(array('social' => 'twitter', 'social_id' => $user->id, 'name' => $user->name, 'token' => $tToken, 'long_live_token' => null, 'page_token' => null))->id;
+
+                //2016-07-27 1605, master ok
+                $twitter = 0;
+                $new_user = 'N';
+                $user_id = Auth::user()->id;
+                $exists_social = Social::where('user_id', $user_id)->where('social_id', $user->id)->first();
+                if(is_null($exists_social)){
+                  $twitter = Social::firstOrCreate(array('social' => 'twitter', 'user_id' => $user_id, 'social_id' => $user->id, 'name' => $user->name, 'token' => $tToken, 'long_live_token' => null, 'page_token' => null))->id;
+                  $new_user = 'Y';
+                }
+                //$twitter = json_encode($token);
                 //$brand->social()->sync($twitter);
 
                 //return Redirect::to('/')->with('flash_notice', 'Congrats! You\'ve successfully signed in!');
                 //return redirect('/twitter/tweet')->with('flash_notice', 'Congrats! You\'ve successfully signed in!'); //master ok, 2016-06-24 0004
                 $user_id = $token['user_id'];
                 $user_name = $token['user_name'];
-                return view('brand.twitter', compact('user_id', 'user_name', 'twitter'));
+                return view('brand.twitter', compact('user_id', 'user_name', 'twitter', 'new_user'));
             }
             //return Redirect::route('twitter.error')->with('flash_error', 'Crab! Something went wrong while signing you up!');
             return redirect()->route('twitter.error')->with('flash_error', 'Crab! Something went wrong while signing you up!');

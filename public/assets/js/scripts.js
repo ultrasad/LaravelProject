@@ -2002,15 +2002,19 @@ $(document).on('click', '#TWLogin', function(){
     });
 });
 
+/* 2016-07-27 1610 master ok*/
 var setTwitterAuthData = function(e)
 {
   window.twit = e;
+  console.log('source twit => ' + e.toSource());
   console.log('refresh js twitter login.' + window.twit.social_id + ' => ' + window.twit.user_name);
 
-  var $clone = '<div class="checkbox check-warning"><input type="checkbox" checked="checked" class="tw_child" value="'+window.twit.social_id+'" name="twuser[]" id="'+window.twit.user_name+'" />';
-      $clone += '<label class="label-master" for="'+window.twit.social_id+'">'+window.twit.user_name+'</label></div>';
-  var $div = $("<div class='tw_row_result'></div>").append($clone);
-  $div.appendTo('.social_group_link .twitter_page_list');
+  if(window.twit.new_user == 'Y'){
+    var $clone = '<div class="checkbox check-warning"><input type="checkbox" checked="checked" class="tw_child" value="'+window.twit.social_id+'" name="twuser[]" id="'+window.twit.user_name+'" />';
+        $clone += '<label class="label-master" for="'+window.twit.social_id+'">'+window.twit.user_name+'</label></div>';
+    var $div = $("<div class='tw_row_result'></div>").append($clone);
+    $div.appendTo('.social_group_link .twitter_page_list');
+  }
 }
 
 function sendFile(file,editor,welEditable)

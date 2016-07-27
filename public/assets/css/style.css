@@ -1649,6 +1649,10 @@ div.cs-select-brand, div.cs-select-contact {
     padding-right: 15px;
 }
 
+.table thead tr th[class*="sorting_"]:not([class="sorting_disabled"]) {
+    color: #7f8c90;
+}
+
 @media (max-width: 991px) {
   .container-fluid {
       padding-left: 0px;
@@ -1665,5 +1669,9 @@ div.cs-select-brand, div.cs-select-contact {
   form .row [class*="cs-brand"]:first-child {
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  .panel-list .panel-heading {
+    padding: 5px;
   }
 }

@@ -8,13 +8,13 @@ class Social extends Model
 {
     protected $table = 'social';
 
-    protected $fillable = ['social', 'social_id', 'name', 'token', 'long_live_token', 'page_token']; //Whitelist
+    protected $fillable = ['social', 'user_id', 'social_id', 'name', 'token', 'long_live_token', 'page_token']; //Whitelist
 
     public function brand()
     {
         return $this->belongsToMany('App\Brand');
     }
-    
+
     public function scopePageExists($query, $brand_id, $page_id=array())
     {
       //echo 'id => '. $brand_id;

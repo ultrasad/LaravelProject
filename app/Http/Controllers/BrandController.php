@@ -120,11 +120,11 @@ class BrandController extends Controller
     return view('brand.lists', compact('brands', 'role_id'));
   }
 
-  function facebook_token($brand='', $fbpage=array(), $update=false)
+  function facebook_token($brand_id='', $fbpage=array(), $update=false)
   {
     $fa_master = array();
     if($update == true){
-      $brand = Brand::find($brand->id);
+      $brand = Brand::find($brand_id);
       $social = $brand->page_exists;
       //echo '<pre>';
       //print_r(array_values($social));
@@ -145,12 +145,15 @@ class BrandController extends Controller
 
       //echo 'count more than 0 >> ' . $brand->id . '<br />';
       $fb = new Facebook\Facebook([
-        'app_id' => env('FACEBOK_APP_KEY'),
+        'app_id' => env('FACEBOOK_APP_KEY'),
         //'app_id' => '141016549272100',
         'app_secret' => env('FACEBOOK_APP_SECRET'),
         //'app_secret' => '302ab7af4dc97ec2179efad4e2131dc8',
         'default_graph_version' => 'v2.6',
       ]);
+
+      //echo 'key => ' . env('FACEBOOK_APP_KEY') . '<br />';
+      //echo 'key => ' . env('FACEBOOK_APP_SECRET') . '<br />';
 
       $helper = $fb->getJavaScriptHelper();
 
@@ -200,7 +203,14 @@ class BrandController extends Controller
             $pageAccessToken = $page['access_token'];
             //echo 'id => ' . $pageID . ', name => ' . $pageName . ', token => ' . $pageAccessToken . '</p>';
 
-            $pages[] = Social::firstOrCreate(array('social' => 'facebook', 'social_id' => $pageID, 'name' => $pageName, 'token' => $accessToken, 'long_live_token' => $longLivedAccessToken, 'page_token' => $pageAccessToken))->id;
+            //2016-07-27 1701 master ok
+            //$pages[] = Social::firstOrCreate(array('social' => 'facebook', 'social_id' => $pageID, 'name' => $pageName, 'token' => $accessToken, 'long_live_token' => $longLivedAccessToken, 'page_token' => $pageAccessToken))->id;
+            $user_id = Auth::user()->id;
+            $exists_social = Social::where('user_id', $user_id)->where('social_id', $pageID)->first();
+            if(is_null($exists_social)){
+              $fToken = json_encode(array('token' => $accessToken, 'long_live_token' => $longLivedAccessToken, 'page_token' => $pageAccessToken));
+              $pages[] = Social::firstOrCreate(array('social' => 'facebook', 'user_id' => $user_id, 'social_id' => $pageID, 'name' => $pageName, 'token' => $fToken, 'long_live_token' => null, 'page_token' => null))->id;
+            }
 
             /*if($pageID == '192272534234138'){
               $msg_body = array(
@@ -214,13 +224,19 @@ class BrandController extends Controller
                }
             } //check page post test
             */
-
           }
         }
 
         if($pages){
-          $pages =  array_merge($fa_master, $pages);
-          $brand->social()->sync($pages);
+          echo 'page >>>';
+          //echo '<pre>';
+          //print_r($fa_master);
+          //echo '</pre>';
+          echo '<pre>';
+          print_r($pages);
+          echo '</pre>';
+          $pages_all =  array_merge($fa_master, $pages);
+          $brand->social()->sync($pages_all);
         }
 
       } //end access token
@@ -253,6 +269,11 @@ class BrandController extends Controller
     //echo '</pre>';
     //exit;
 
+    //$twuser = $request->input('twuser');
+    //echo '<pre>';
+    //print_r($twuser);
+    //echo '</pre>';
+    //exit;
 
     //echo '<pre>';
     //print_r($fbpage);
@@ -322,6 +343,9 @@ class BrandController extends Controller
        $brand->branch()->sync($branchId);
     }
 
+    //echo '<pre>';
+    //print_r($branchId);
+
     //facebook
     $fbpage = $request->input('fbpage');
     if($fbpage){
@@ -335,6 +359,10 @@ class BrandController extends Controller
     }
 
     $brand->reIndex(); //reindex search
+
+    //echo '<pre>';
+    //print_r($twuser);
+    //exit;
 
     if($brand->id > 0){
       return Response::json('success', array(
@@ -367,7 +395,8 @@ class BrandController extends Controller
     $category = Category::select('name', 'id')->get();
     $brand_category = isset($brand->category_list)?array_keys($brand->category_list):'';
 
-    $facebook = $brand->social->all();
+    $facebook = $brand->social->where('social', 'facebook')->all();
+    $twitter = $brand->social->where('social', 'twitter')->all();
 
     $branchs = $brand->branch->all();
 
@@ -377,7 +406,7 @@ class BrandController extends Controller
 
     if(empty($brand))
       abort(404);
-    return  view('brand.edit', compact('brand', 'brand_category', 'facebook', 'branchs', 'brands', 'category', 'role_id'));
+    return  view('brand.edit', compact('brand', 'brand_category', 'facebook', 'twitter', 'branchs', 'brands', 'category', 'role_id'));
   }
 
   /**
@@ -464,7 +493,13 @@ class BrandController extends Controller
     //facebook
     $fbpage = $request->input('fbpage');
     if($fbpage){
-      $this->facebook_token($brand, $fbpage, $update=true);
+      $this->facebook_token($brand->id, $fbpage, $update=true);
+    }
+
+    //twitter
+    $twuser = $request->input('twuser');
+    if($twuser){
+      $brand->social()->sync($twuser);
     }
 
     $input['facebook'] = $request->input('facebook');
@@ -506,7 +541,7 @@ class BrandController extends Controller
 
     # /js-login.php
     $fb = new Facebook\Facebook([
-      'app_id' => env('FACEBOK_APP_KEY', '141016549272100'),
+      'app_id' => env('FACEBOOK_APP_KEY', '141016549272100'),
       'app_secret' => env('FACEBOOK_APP_SECRET', '302ab7af4dc97ec2179efad4e2131dc8'),
       'default_graph_version' => 'v2.6',
     ]);

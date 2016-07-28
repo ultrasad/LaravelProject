@@ -20,7 +20,8 @@
           <table class="table table-striped table-list-admin" id="table_event_list_admin">
             <thead>
               <tr>
-                <th data-class="expand">Action</th>
+                <th data-class="expand" data-show="phone,tablet"></th>
+                <th>Action</th>
                 <th>Title</th>
                 <th data-hide="phone">Brand</th>
                 <th data-hide="phone,tablet">Start Date</th>

@@ -79,8 +79,19 @@ class AdminController extends Controller
     $data = array();
 
     foreach($events as $event){
+      $btn_action = "
+        <div id='btn_confirm' style='display:'>
+          <a href='javascript:void(0);' onclick='deleteEvent({$event->id});' class='btn btn-delete-action btn-success btn-xs'><i class='fa fa-check hidden-xs'></i> Y</a>
+          <a href='javascript:void(0);' onclick='toggleDel(this);' class='btn btn-delete-action btn-danger btn-xs'><i class='fa fa-times hidden-xs'></i> N</a>
+        </div>
+        <div id='btn_action' style='display:none'>
+          <a href='/events/{$event->id}/edit' class='btn btn-edit-action btn-complete btn-xs'><i class='fa fa-magic hidden-xs'></i> Edit</a>
+          <a href='javascript:void(0);' onclick='toggleDel(this);' class='btn btn-delete-action btn-danger btn-xs'><i class='fa fa-exclamation hidden-xs'></i> Del</a>
+        </div>
+      ";
       $nestedData=array();
-      $nestedData[] = "<a href='/events/{$event->id}/edit' id='show-modal' class='btn btn-danger btn-xs'><i class='fa fa-magic'></i> Edit</a>";
+      $nestedData[] = '&nbsp;';
+      $nestedData[] = $btn_action;
       $nestedData[] = $event->title;
       $nestedData[] = $event->brand->name;
       $nestedData[] = $event->start_date_thai;

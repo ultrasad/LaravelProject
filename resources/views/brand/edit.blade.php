@@ -224,7 +224,7 @@
           <div class="panel-body">
             <div class="form-group form-group-default">
               <label>Username</label>
-              <input type="text" name="username" class="form-control" id="brand_username" readonly value="{{ $brand->user->name }}" />
+              <input type="text" name="username" class="form-control" id="brand_username" readonly value="{{ $brand->user->username }}" />
             </div>
             <div class="form-group form-group-default">
               <label>E-mail</label>

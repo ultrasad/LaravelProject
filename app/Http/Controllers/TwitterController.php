@@ -98,6 +98,8 @@ class TwitterController extends Controller
                 if(is_null($exists_social)){
                   $twitter = Social::firstOrCreate(array('social' => 'twitter', 'user_id' => $user_id, 'social_id' => $user->id, 'name' => $user->name, 'token' => $tToken, 'long_live_token' => null, 'page_token' => null))->id;
                   $new_user = 'Y';
+                } else {
+                  $twitter = $exists_social->id;
                 }
                 //$twitter = json_encode($token);
                 //$brand->social()->sync($twitter);

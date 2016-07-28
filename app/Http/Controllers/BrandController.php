@@ -203,7 +203,7 @@ class BrandController extends Controller
 
   }
 
-  function facebook_token($brand='', $fbpage=array(), $update=false)
+  function facebook_token($brand='', $fbpage=array(), $twuser=array(), $update=false)
   {
     $fa_master = array();
     if($update == true){
@@ -370,6 +370,8 @@ class BrandController extends Controller
               //echo 'new => ' . $pageID . '<br />';
               $fToken = json_encode(array('fb_token' => $_SESSION['facebook_access_token'], 'fb_long_live_token' => $_SESSION['facebook_longlived_token'], 'fb_page_token' => $_SESSION['facebook_page_token']));
               $pages[] = Social::firstOrCreate(array('social' => 'facebook', 'user_id' => $user_id, 'social_id' => $pageID, 'name' => $pageName, 'token' => $fToken, 'long_live_token' => $_SESSION['facebook_longlived_token'], 'page_token' => $_SESSION['facebook_page_token']))->id;
+            } else {
+              $pages[] = $exists_social->id;
             }
 
             /*if($pageID == '192272534234138'){
@@ -395,7 +397,7 @@ class BrandController extends Controller
           //echo '<pre>';
           //print_r($pages);
           //echo '</pre>';
-          $pages_all =  array_merge($fa_master, $pages);
+          $pages_all = array_merge($fa_master, $pages, $twuser);
           //echo 'page all';
           //echo '<pre>';
           //print_r($pages_all);
@@ -418,6 +420,7 @@ class BrandController extends Controller
 
     } else {//check count diff, update brand check
       //echo 'page less than 1 >> <br />';
+      $fa_master = array_merge($fa_master, $twuser);
       if(count($fa_master) > 0){
         $brand->social()->sync($fa_master); //ease old page and not new
       }
@@ -514,17 +517,20 @@ class BrandController extends Controller
     //echo '<pre>';
     //print_r($branchId);
 
+    //twitter
+    $twuser = array();
+    $twuser = $request->input('twuser');
     //facebook
     $fbpage = $request->input('fbpage');
     if($fbpage){
-      $this->facebook_token($brand, $fbpage);
+      $this->facebook_token($brand, $fbpage, $twuser);
     }
 
     //twitter, ** use attach for add exists social id, sync clear facebook map
-    $twuser = $request->input('twuser');
+    /*$twuser = $request->input('twuser');
     if($twuser){
       $brand->social()->attach($twuser);
-    }
+    }*/
 
     $brand->reIndex(); //reindex search
 
@@ -553,7 +559,15 @@ class BrandController extends Controller
 
     $brands = array();
     if($role_id == 4){ //brand
-      $brands = Brand::where('user_id', $user_id)->get();
+      $brands = Brand::select('id')->where('user_id', $user_id)->get();
+      $brand_master = array();
+      foreach($brands as $brand){
+        array_push($brand_master, $brand->id);
+      }
+
+      if(!in_array($id, $brand_master))
+        abort(404);
+
     } elseif($role_id < 4) { //manager, admin
       $brands = Brand::all();
     }
@@ -662,20 +676,24 @@ class BrandController extends Controller
        $brand->branch()->sync($branchId);
     }
 
+    //twitter
+    $twuser = array();
+    $twuser = $request->input('twuser');
+
     //facebook
     $fbpage = $request->input('fbpage');
     if($fbpage){
       //echo 'brand id => '. $brand_id . '<br />';
       //echo '<pre>';
       //print_r($fbpage);
-      $this->facebook_token($brand, $fbpage, $update=true);
+      $this->facebook_token($brand, $fbpage, $twuser, $update=true);
     }
 
     //twitter, ** use attach for add exists social id, sync clear facebook map
-    $twuser = $request->input('twuser');
+    /*$twuser = $request->input('twuser');
     if($twuser){
       $brand->social()->attach($twuser);
-    }
+    }*/
 
     $input['facebook'] = $request->input('facebook');
     $input['twitter'] = $request->input('twitter');

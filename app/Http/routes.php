@@ -204,6 +204,7 @@ Route::group(['middleware' => 'web'], function () {
     //Route::get('events/branch/{id}', 'EventsController@branch');
     Route::get('events/brand/{id}', 'EventsController@brand');
     Route::get('events/removefile/{id}/{image}', 'EventsController@removefile');
+    Route::get('twitter_reconfig', 'EventsController@twitter_reconfig');
 
     Route::get('tag/all_tags', 'TagsController@all_tags');
     Route::get('tag/{name}', 'TagsController@index');

@@ -2009,9 +2009,9 @@ var setTwitterAuthData = function(e)
   console.log('source twit => ' + e.toSource());
   console.log('refresh js twitter login.' + window.twit.social_id + ' => ' + window.twit.user_name);
 
-  if(window.twit.new_user == 'Y'){
-    var $clone = '<div class="checkbox check-warning"><input type="checkbox" checked="checked" class="tw_child" value="'+window.twit.social_id+'" name="twuser[]" id="'+window.twit.user_name+'" />';
-        $clone += '<label class="label-master" for="'+window.twit.social_id+'">'+window.twit.user_name+'</label></div>';
+  if(window.twit.new_user == 'Y' || !($('.tw_row_result .tw_'+window.twit.social_id).exists())){
+    var $clone = '<div class="checkbox check-warning checkbox-inline"><input type="checkbox" checked="checked" class="tw_child tw_'+window.twit.social_id+'" value="'+window.twit.social_id+'" name="twuser[]" id="tw_'+window.twit.social_id+'" />';
+        $clone += '<label class="label-master" for="tw_'+window.twit.social_id+'">'+window.twit.user_name+'</label></div>';
     var $div = $("<div class='tw_row_result'></div>").append($clone);
     $div.appendTo('.social_group_link .twitter_page_list');
   }

@@ -134,13 +134,14 @@ class EventsController extends Controller
        Twitter::postTweet(['status' => "{$twitter_title} {$short_url}", 'media_ids' => $uploaded_media->media_id_string]);
        */
 
-    } else {
+    } else { //brand post
       if($event->brand->social){
-      foreach($event->brand->social->all() as $page){
+        foreach($event->brand->social->where('social', 'facebook')->all() as $page){
 
           $msg_body = array(
             'message' => $event->facebook_title,
             'url' => url('/' . $event->image),
+            //'url' => 'http://welovepro.com/images/events/2016-07-13/20160713-113715-jubilee.jpg',
             'access_token' => $page->page_token
           );
 
@@ -154,11 +155,73 @@ class EventsController extends Controller
                echo $e->getMessage();
            }
 
-         }
-       } //end event brand
-     } //end user role
+        } //end facebook page brand
 
-     return true;
+        foreach($event->brand->social->where('social', 'twitter')->all() as $user){
+          $user_token = json_decode($user->token, true);
+          $oauth_request_token = $user_token['oauth_token'];
+          $oauth_request_token_secret = $user_token['oauth_token_secret'];
+          $request_token = array(
+              'token'  => $oauth_request_token,
+              'secret' => $oauth_request_token_secret,
+          );
+
+          Twitter::reconfig($request_token);
+
+          try {
+            list($twitter_title, $full_url) = explode('http', $event->twitter_title);
+            $short_url = $this->get_google($full_url); //short url
+            //$short_url = $this->get_google('http://www.promotiontoyou.com/2016/07/promotion-peak-warehouse-sale-up-to-80-off-july-2016');
+
+            $uploaded_media = Twitter::uploadMedia(['media' => file_get_contents(url('/' . $event->image))]);
+            //$uploaded_media = Twitter::uploadMedia(['media' => file_get_contents('http://www.promotiontoyou.com/wp-content/uploads/2016/07/Promotion-Peak-Warehouse-Sale-up-to-80-Off-July.2016.png')]);
+            $response = Twitter::postTweet(['status' => "{$twitter_title} {$short_url}", 'media_ids' => $uploaded_media->media_id_string]);
+            $social = SocialPost::firstOrCreate(array('social' => 'twitter','event_id' => $event_id, 'page_id' => $user->name, 'post_id' => $response->id, 'published_at' => date('Y-m-d')))->id;
+          } catch (Exception $e) {
+              dd(Twitter::logs());
+          }
+
+        } //end twitter user brand
+      } //end event brand
+    } //end user role
+    return true;
+  }
+
+  function twitter_reconfig()
+  {
+    $event = Event::find('8049');
+    $event_id = '8049';
+
+    foreach($event->brand->social->where('social', 'twitter')->all() as $user){
+      $user_token = json_decode($user->token, true);
+      echo 'auth => ' . $user_token['oauth_token'] . '<br />';
+      echo 'secret => ' . $user_token['oauth_token_secret'];
+
+      //dd(json_decode($user->token));
+      //exit;
+
+      $oauth_request_token = $user_token['oauth_token'];
+      $oauth_request_token_secret = $user_token['oauth_token_secret'];
+      $request_token = array(
+          'token'  => $oauth_request_token,
+          'secret' => $oauth_request_token_secret,
+      );
+
+      Twitter::reconfig($request_token);
+
+      try {
+        list($twitter_title, $full_url) = explode('http', $event->twitter_title);
+        //$short_url = $this->get_google($full_url); //short url
+        $short_url = $this->get_google('http://www.promotiontoyou.com/2016/07/promotion-peak-warehouse-sale-up-to-80-off-july-2016');
+
+        //$uploaded_media = Twitter::uploadMedia(['media' => file_get_contents(url('/' . $event->image))]);
+        $uploaded_media = Twitter::uploadMedia(['media' => file_get_contents('http://www.promotiontoyou.com/wp-content/uploads/2016/07/Promotion-Peak-Warehouse-Sale-up-to-80-Off-July.2016.png')]);
+        $response = Twitter::postTweet(['status' => "{$twitter_title} {$short_url}", 'media_ids' => $uploaded_media->media_id_string]);
+        $social = SocialPost::firstOrCreate(array('social' => 'twitter','event_id' => $event_id, 'page_id' => $user->name, 'post_id' => $response->id, 'published_at' => date('Y-m-d')))->id;
+       } catch (Exception $e) {
+          dd(Twitter::logs());
+       }
+    } //end twitter user brand
   }
 
   public function client_request()
@@ -656,7 +719,7 @@ class EventsController extends Controller
         array_push($arr_brand, $brand->id);
       }
 
-      $event = Event::whereIn('brand_id', $arr_brand)->where('id', $id)->get();
+      $event = Event::whereIn('brand_id', $arr_brand)->where('id', $id)->first();
       if($event->count() < 1){
         abort(401);
         exit;
@@ -671,7 +734,7 @@ class EventsController extends Controller
     if($brands->count() == 1){
       $branch = Branch::brandList($brands->first()->id)->get();
     }
-
+    //dd($event->first()->brand_id);
     $brand_active = Brand::find($event->brand_id);
     $branch = $brand_active->branch_list; //default null
 

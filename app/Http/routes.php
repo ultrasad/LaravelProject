@@ -252,7 +252,7 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
     Route::get('utility/summary', 'UtilityController@summary');
-	Route::post('utility/fbphotocode', 'UtilityController@get_facebook_photos');
+	  Route::post('utility/fbphotocode', 'UtilityController@get_facebook_photos');
 
     Route::post('/admin/events', 'AdminController@events');
     Route::get('/admin/events', 'AdminController@events');
@@ -269,7 +269,7 @@ Route::group(['middleware' => 'web'], function () {
     //Route::get('events/search/{keywords}', array('as' => 'keywords', 'uses' => 'EventsController@search'));
     Route::get('events/search/{type}/{keywords}', 'EventsController@search');
     Route::get('show2/{slug}', array('as' => 'slug', 'uses' => 'EventsController@show2'));
-    Route::get('/{slug}', array('as' => 'slug', 'uses' => 'EventsController@show'));
+    Route::get('/{slug}', array('as' => 'detail', 'uses' => 'EventsController@show'));
 
     //Route::resource('articles', 'ArticlesController'); //RESTful Resource Controllers
     //Route::resource('events', 'EventsController'); //RESTful Resource Controllers

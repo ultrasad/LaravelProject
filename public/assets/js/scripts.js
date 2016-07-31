@@ -563,6 +563,11 @@ var twit = {}; //twitter data
            ignoreOverlay: false
        });
 
+       $(document).on('click', '.btn-delete-action, .btn-cancel-action', function(){
+         console.log('toggle >>>');
+         $(this).closest('tr').find('#btn_confirm, #btn_action').toggle();
+       });
+
        //admin event list
        if($('.table-list-admin').exists()){
           var tableElement = $('#table_event_list_admin');
@@ -582,6 +587,16 @@ var twit = {}; //twitter data
   					lengthChange: false,
   					processing: true,
   					serverSide: true,
+            /*responsive: {
+                details: {
+                    type: 'column'
+                }
+            },
+            columnDefs: [ {
+              className: 'control',
+              orderable: false,
+              targets:   0
+            }],*/
   					ajax: {
               url: '/admin/events',
   						//url : base_url + 'admin/events', // json datasource
@@ -607,7 +622,7 @@ var twit = {}; //twitter data
   					},
   					dom: "<'row'<'col-sm-6 col-xs-12'l><'col-xs-6'f>r>"+"t"+"<'row'<'col-sm-6 col-xs-12'i><'col-sm-6 col-xs-12'p>>",
   					pageLength: 20,
-  					preDrawCallback:function(){
+  					/*preDrawCallback:function(){
   						// Initialize the responsive datatables helper once.
   						if (!responsiveHelper) {
   							responsiveHelper = new ResponsiveDatatablesHelper(tableElement, breakpointDefinition);
@@ -618,7 +633,7 @@ var twit = {}; //twitter data
   					},
   					drawCallback:function(oSettings){
   						responsiveHelper.respond();
-  					},
+  					},*/
   				});
 
           console.log('ajax table, admin event list');

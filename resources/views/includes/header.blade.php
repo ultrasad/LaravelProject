@@ -1,5 +1,5 @@
 <!-- START HEADER -->
-<div class="header">
+<header class="header">
   <!-- START MOBILE CONTROLS -->
   <div class="container-fluid relative">
     <!-- LEFT SIDE -->
@@ -111,5 +111,5 @@
       </ul>
     </div>
   </div>
-</div>
+</header>
 <!-- END HEADER -->

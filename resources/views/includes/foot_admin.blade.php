@@ -25,11 +25,15 @@
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-infinite-scroll/jquery.infinitescroll.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/media/js/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/datatables-responsive/js/dataTables.bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+
+<!--<script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/media/js/dataTables.bootstrap.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/datatables-responsive/js/datatables.responsive.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/datatables-responsive/js/lodash.min.js') }}"></script>
+-->
 
 <!--
 <div id="fb-root"></div>

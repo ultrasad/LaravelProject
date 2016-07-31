@@ -33,6 +33,7 @@
 <!-- START CONTAINER FLUID -->
 <!--<form role="form">-->
 
+<article id="event-{{ $event->id }}">
 <div class="container-fluid container-fixed-lg">
   <!-- BEGIN PlACE PAGE CONTENT HERE -->
   <div class="row">
@@ -40,16 +41,16 @@
       <div class="panel-body p-b-0 p-l-0 p-r-0">
         <div class="dialog__content">
             <!-- START PANEL -->
-            <div class="fotorama" data-allowfullscreen="true" data-maxwidth="800"  data-width="100%" data-click="false" data-arrows="always" click="false" data-nav="thumbs" data-loop="true">
+            <div class="fotorama" data-allowfullscreen="true" data-maxwidth="800"  data-width="100%" data-click="false" data-arrows="always" click="false" data-nav="thumbs" data-loop="true" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
               @forelse($event->gallery_list as $id => $image)
                 @if($id == 0)
                   @if(is_file($event->image))
-                    <img src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
+                    <img itemprop="url" content="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
                   @else
-                    <img src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
+                    <img itemprop="url" content="{{ $event->image }}" src="{{ $event->image }}" srcset="" data-src="" class="block center-margin relative img-responsive" alt="{{ $event->title }}" />
                   @endif
                 @endif
-                <img src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}"  data-thumb="{{ GlideImage::load($image)->modify(['w'=> 100, 'h' => 100, 'fit' => 'crop']) }}" class="fotoclick" class="img-responsive" />
+                <img itemprop="url" content="{{ GlideImage::load($image)->modify(['w'=> 640]) }}" src="{{ GlideImage::load($image)->modify(['w'=> 640]) }}"  data-thumb="{{ GlideImage::load($image)->modify(['w'=> 100, 'h' => 100, 'fit' => 'crop']) }}" class="fotoclick" class="img-responsive" />
               @empty
                 @if(is_file($event->image))
                   <a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}"><img src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" srcset="{{ GlideImage::load($event->image)->modify(['w'=> 298, 'filt'=>'']) }} 298w, {{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }} 640w" data-src="{{ GlideImage::load($event->image)->modify(['w'=> 640, 'filt'=>'']) }}" class="block center-margin relative img-responsive" alt="{{ $event->title }}" /></a>
@@ -62,10 +63,11 @@
         </div>
      </div>
     </div>
+	<header class="entry-header">
     <div class="col-md-4 body-brief">
       <div class="panel-body body-brief p-l-0 p-r-0">
         <div class="no-margin fs-15 hint-text-9 text-master">
-          <h4>
+          <h4 class="event-category">
             @if(!empty($event->brand->category->first()->name))
                 <a class="category-event-url" href="{{ URL::to('category', $event->brand->category->first()->category) }}" title="{{ $event->brand->category->first()->name }}">{{ $event->brand->category->first()->name }}</a>
             @else
@@ -74,7 +76,7 @@
           </h4>
         </div>
         <!-- START PANEL -->
-        <h2 class="text-master m-t-20">{{ $event->title }}</h2>
+        <h1 itemprop="name headline" class="text-master m-t-20 event-title">{{ $event->title }}</h1>
         <p>{{ $event->brief }}</p>
         <p>&nbsp;</p>
         <div class="item-header clearfix">
@@ -89,12 +91,12 @@
           </a>
           <div class="inline m-l-10">
             <p class="no-margin">
-              <strong class="text-master"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></strong>
+              <h2 class="text-master event-brand"><a class="brand-event-url" title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}</a></h2>
             </p>
             @if(!empty($event->brand->category->first()->name))
-                <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', $event->brand->category->first()->category) }}" title="{{ $event->brand->category->first()->name }}">{{ $event->brand->category->first()->name }}</a></p>
+                <h3 class="no-margin hint-text text-master event-brand"><a class="category-brand-url" href="{{ URL::to('/category', $event->brand->category->first()->category) }}" title="{{ $event->brand->category->first()->name }}">{{ $event->brand->category->first()->name }}</a></h3>
             @else
-                <p class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', 'unknow') }}" title="ไม่ระบุ หมวดหมู่">ไม่ระบุ หมวดหมู่</a></p>
+                <h3 class="no-margin hint-text text-master"><a class="category-brand-url" href="{{ URL::to('/category', 'unknow') }}" title="ไม่ระบุ หมวดหมู่">ไม่ระบุ หมวดหมู่</a></h3>
             @endif
           </div>
         </div>
@@ -126,6 +128,7 @@
         <!-- END PANEL -->
       </div>
     </div>
+	</header>
   </div>
 
   <div class="col-md-12"><hr /></div>
@@ -168,17 +171,18 @@
         <div class="row">
           <div class="col-md-12">
               <div class="panel-body p-t-10 hint-text-9 p-l-0 p-r-0" id="content-description">
-                <h4 class="text-master m-b-30">รายละเอียดโปรโมชั่น</h4>
-                <p>{!! $event->description !!}</p>
+                <h4 class="text-master m-b-30 text-big-title">รายละเอียดโปรโมชั่น</h4>
+                <p itemprop="articleBody">{!! $event->description !!}</p>
                 <div class="desc-footer hint-text p-t-5 p-b-5 m-t-20 m-b-30">
-                    <div class="pull-left inline event-created b-grey b-r"><b>Date : </b>{{ date('Y-m-d', strtotime($event->created_at)) }}&nbsp;&nbsp;</div>
-                    <div class="pull-left inline event-author b-grey b-r"><b>Author : </b><a title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}">{{ $event->brand->name }}&nbsp;&nbsp;</a></div>
-                    <div class="pull-left inline event-publisher"><b>Publisher : </b><a title="WelovePro" href="/">WelovePro</a></div>
+                    <div temprop="datePublished" content="{{ date('Y-m-d', strtotime($event->created_at)) }}" class="pull-left inline event-created b-grey b-r"><b>Date : </b>{{ date('j F Y', strtotime($event->created_at)) }}&nbsp;&nbsp;</div>
+					<meta itemprop="dateModified" content="{{ date('Y-m-d', strtotime($event->update_at)) }}"/>
+                    <div class="pull-left inline event-author b-grey b-r"><b>Author : </b><span itemprop="author" itemscope itemtype="http://schema.org/Person"><a title="{{ $event->brand->name }}" href="{{ URL::to('brand', $event->brand->url_slug) }}" itemprop="url"><span itemprop="name">{{ $event->brand->name }}</span>&nbsp;&nbsp;</a></span></div>
+                    <div class="pull-left inline event-publisher"><b>Publisher : </b><span itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><a href="https://plus.google.com/u/0/118252063966470784089" title="welovero" itemprop="url" rel="publisher"><span itemprop="name">welovepro</span></a></span></div>
                     <div class="clearfix">&nbsp;</div>
                 </div>
               </div>
               @if(!empty($tags))
-              <div class="col-md-12 text-master p-l-0 p-r-0">
+              <div itemprop="keywords" class="col-md-12 text-master p-l-0 p-r-0">
                 {!! implode(', ', $tags) !!}
               </div>
               @endif
@@ -209,7 +213,7 @@
               <div class="col-md-12 p-l-0 p-r-0">
                 @if($relates->count() > 0)
                   <p>&nbsp;</p>
-                  <h4 class="text-master m-b-20"><i class="fa fa-heartbeat" aria-hidden="true"></i>&nbsp;โปรโมชั่นที่คุณอาจสนใจ</h4>
+                  <h4 class="text-master m-b-30 text-big-title"><i class="fa fa-heartbeat" aria-hidden="true"></i>&nbsp;โปรโมชั่นที่คุณอาจสนใจ</h4>
                 @endif
                 <div class="row relate event-relate">
                   @forelse($relates as $relate)
@@ -220,7 +224,7 @@
                     </div>
                     <div class="col-md-12 brief p-l-10 p-r-10 card-relate-body">
                         <div class="padding-5 p-t-10 text-master block-ellipsis">
-                          <a title="{{ $relate->title }}" href="{{ rawurldecode($relate->url_slug) }}" class="card_title">{{ $relate->title }}</a>
+                          <h2 class="text-master events-title-boxed"><a title="{{ $relate->title }}" href="{{ rawurldecode($relate->url_slug) }}" class="card_title">{{ $relate->title }}</a></h2>
                         </div>
                     </div>
                     <div class="row col-md-12 padding-0 m-l-0 m-r-0 footer-relate">
@@ -241,6 +245,7 @@
                 </div>
               </div>
               <div class="fb-comment full-width p-l-0 p-r-0">
+				<h4 class="text-master m-b-30 text-big-title">ความคิดเห็น</h4>
                 <div class="fb-comments full-width" data-href="{{ URL::to(rawurldecode($event->url_slug)) }}" data-width="100%" data-numposts="10"></div>
               </div>
           </div>
@@ -280,4 +285,5 @@
 <input type="hidden" name="event_slug" id="event_slug" class="event_slug" value="{{ rawurldecode($event->url_slug) }}" />
 <!--</form>-->
 <!-- END CONTAINER FLUID -->
+</article>
 @stop

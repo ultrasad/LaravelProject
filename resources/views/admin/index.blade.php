@@ -17,15 +17,21 @@
           <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-          <table class="table table-striped table-list-admin" id="table_event_list_admin">
+          <table class="table table-striped table-list-admin display responsive nowrap" id="table_event_list_admin" width="100%">
             <thead>
               <tr>
-                <th data-class="expand" data-show="phone,tablet"></th>
-                <th>Action</th>
+                <th class="all" width="120">Action</th>
+                <th class="all">Title</th>
+                <th class="min-phone-l">Brand</th>
+                <th class="desktop">Start Date</th>
+                <th class="desktop">End Date</th>
+                <!--
+                <th width="120">Action</th>
                 <th>Title</th>
                 <th data-hide="phone">Brand</th>
                 <th data-hide="phone,tablet">Start Date</th>
                 <th data-hide="phone,tablet">End Date</th>
+                -->
               </tr>
             </thead>
             <tbody>

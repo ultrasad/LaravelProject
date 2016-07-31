@@ -80,17 +80,16 @@ class AdminController extends Controller
 
     foreach($events as $event){
       $btn_action = "
-        <div id='btn_confirm' style='display:'>
-          <a href='javascript:void(0);' onclick='deleteEvent({$event->id});' class='btn btn-delete-action btn-success btn-xs'><i class='fa fa-check hidden-xs'></i> Y</a>
-          <a href='javascript:void(0);' onclick='toggleDel(this);' class='btn btn-delete-action btn-danger btn-xs'><i class='fa fa-times hidden-xs'></i> N</a>
+        <div id='btn_confirm' style='display:none'>
+          <a href='javascript:void(0);' onclick='deleteEvent({$event->id});' class='btn btn-confirm-action btn-success btn-xs'><i class='fa fa-check'></i><span class='hidden-xs'> Yes</span></a>
+          <a href='javascript:void(0);' class='btn btn-cancel-action btn-danger btn-xs'><i class='fa fa-times'></i><span class='hidden-xs'> No</span></a>
         </div>
-        <div id='btn_action' style='display:none'>
-          <a href='/events/{$event->id}/edit' class='btn btn-edit-action btn-complete btn-xs'><i class='fa fa-magic hidden-xs'></i> Edit</a>
-          <a href='javascript:void(0);' onclick='toggleDel(this);' class='btn btn-delete-action btn-danger btn-xs'><i class='fa fa-exclamation hidden-xs'></i> Del</a>
+        <div id='btn_action' style='display:block'>
+          <a href='/events/{$event->id}/edit' class='btn btn-edit-action btn-complete btn-xs'><i class='fa fa-pencil-square-o'></i><span class='hidden-xs'> Edit</span></a>
+          <a href='javascript:void(0);' class='btn btn-delete-action btn-danger btn-xs'><i class='fa fa-trash'></i><span class='hidden-xs'> Del</span></a>
         </div>
       ";
       $nestedData=array();
-      $nestedData[] = '&nbsp;';
       $nestedData[] = $btn_action;
       $nestedData[] = $event->title;
       $nestedData[] = $event->brand->name;

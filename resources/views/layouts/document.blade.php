@@ -5,6 +5,14 @@
   </head>
   <!-- <body class="fixed-header dashboard"> -->
   <body class="fixed-header menu-behind">
+	<div itemscope itemtype="http://schema.org/NewsArticle" id="container" class="hfeed">	
+	<meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
+	<meta itemprop="url" content="@yield('og_url')" />
+	<meta itemprop="description" content="@yield('og_description')" />
+	<meta itemprop="articleSection" content="promotion" />
+	<meta itemprop="articleSection" content="sale" />
+	<meta itemprop="articleSection" content="โปรโมชั่น" />
+	<meta itemprop="articleSection" content="ลดราคา" />
     @include('includes.sidebar')
     <!-- START PAGE-CONTAINER -->
     <div class="page-container">
@@ -127,7 +135,7 @@
               </div>
               <div class="p-l-10 inline p-t-5 col-md-11 col-sm-10 col-xs-9 p-r-0">
                 <a class="result-url" href="#" title=""><h5 class="m-b-5"><span class="semi-bold result-title">โปรโมชั่น</span></h5></a>
-                <span class="result-brief">รายละเอีนดแบบย่อ</span>
+                <span class="result-brief">รายละเอียดแบบย่อ</span>
                 <!--<p class="result-brand hint-text">via promotion</p>-->
               </div>
             </div>
@@ -215,5 +223,6 @@
     <!-- End Modal -->
 
     @include('includes.foot')
+	</div>
  </body>
 </html>

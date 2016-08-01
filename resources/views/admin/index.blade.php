@@ -17,7 +17,7 @@
           <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-          <table class="table table-striped table-list-admin display responsive nowrap" id="table_event_list_admin" width="100%">
+          <table class="table table-striped dataTable no-footer table-list-admin" id="table_event_list_admin"  width="100%" cellspacing="0">
             <thead>
               <tr>
                 <th class="all" width="120">Action</th>

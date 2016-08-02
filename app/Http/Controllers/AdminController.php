@@ -76,7 +76,7 @@ class AdminController extends Controller
     } elseif($role_id < 4){ // manager, admin
       //$brands = Brand::all();
       //->where('title', 'LIKE', "%$title%")
-      $events = Event::where('name','LIKE',"%{$event_title}%")->published()->brandEvent($brand_id)->active()->orderBy('events.created_at', 'desc')->paginate($paginate);
+      $events = Event::published()->active()->eventLike($event_title)->brandEvent($brand_id)->orderBy('events.created_at', 'desc')->paginate($paginate);
     }
 
     $totaldata = $events->total();

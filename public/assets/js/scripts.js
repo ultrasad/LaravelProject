@@ -568,6 +568,56 @@ var twit = {}; //twitter data
          $(this).closest('tr').find('#btn_confirm, #btn_action').toggle();
        });
 
+       $(document).on('click', '.btn-search-event', function(){
+         console.log('search >>>' + $('#title').val() + ' => ' + $('#cs-select2').val());
+
+         var table = $('#table_event_list_admin').DataTable();
+         table.draw();
+       });
+
+       /*function reloadTable()
+    	 {
+    		  tableElement = $('#table_event_list_admin');
+    		  tableElement.dataTable().fnDraw();
+    	 }*/
+
+       $(document).on('click', '#table_event_list_admin .btn-confirm-action', function(e){
+          var $id = $(this).attr('id');
+          //console.log('ajax delete >>>' + $id);
+
+          var table = $('#table_event_list_admin').DataTable();
+          var data = table.row($(this).parents('tr')).data();
+          //table.row($(this).parents('tr')).remove();
+          //console.log('row => ' + data);
+
+          $.ajax({
+             url: '/admin/del_event/' + $id,
+             //headers: {'X-CSRF-TOKEN': _token},
+             //data: data,
+             type: 'GET',
+             datatype: 'JSON',
+             processData: false,
+             contentType: false,
+             success: function (resp){
+               var json = $.parseJSON(resp);
+               //console.log('response => ' + json);
+               if(json.status == 'success'){
+                 //console.log('del success => ' + json.id);
+                 //method with false as its first parameter. This will redraw the table keeping the current paging
+                 table.row($(this).parents('tr')).remove().draw(false);
+               }
+             },
+             error: function(jqXHR, textStatus, errorThrown)
+             {
+                 // Handle errors here
+                 console.log('ERRORS: ' + jqXHR + ' ,textStatus => ' + textStatus + ' ,errorThrown => ' + errorThrown);
+                 //var resJson = JSON.stringify(jqXHR);
+                 console.log(JSON.stringify(jqXHR.responseJSON));
+                 // STOP LOADING SPINNER
+             }
+          });
+       });
+
        //admin event list
        if($('.table-list-admin').exists()){
           var tableElement = $('#table_event_list_admin');
@@ -602,7 +652,9 @@ var twit = {}; //twitter data
   						//url : base_url + 'admin/events', // json datasource
   						type: "post",  // method  , by default get
   						data: function(d) {
-                      d.test = 'hanajung';
+                      //d.test = 'hanajung';
+                      d.event_title = $('#title').val();
+                      d.brand_id = $('#cs-select2').val();
                       var info = $('#table_event_list_admin').DataTable().page.info();
                       d.page = info.page+1;
                       //d.page = 1;

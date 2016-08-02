@@ -284,12 +284,13 @@ class Event extends Model
 
     public function scopeBrandEvent($query, $brand)
     {
-      return $this->whereHas('brand', function($query) use ($brand)
+      return $query->whereHas('brand', function($query) use ($brand)
       {
         if(is_array($brand)){
             $query->whereIn('id', $brand);
         } else{
-            $query->where('id', '=', $brand);
+            if($brand != '')
+              $query->where('id', '=', $brand);
         }
       });
     }
@@ -298,6 +299,13 @@ class Event extends Model
     {
       return $query->leftJoin('brand','events.brand_id','=','brand.id')->select('events.*', 'brand.id as brand_id', 'brand.name as brand_name');
     }*/
+
+    public function scopeEventLike($query, $title)
+    {
+      //if(trim($title) != '')
+      //echo '=> =>' . $title;
+      return $query->where('title', 'LIKE', "%$title%");
+    }
 
     public function scopeBrandId($query, $brand)
     {

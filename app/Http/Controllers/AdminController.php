@@ -63,15 +63,20 @@ class AdminController extends Controller
 
     $user_id = Auth::user()->id;
     $role_id = Auth::user()->role_id;
+
+    $event_title = $request->input('event_title');
+    $brand_id = $request->input('brand_id');
+
     $paginate = 20;
     if($role_id == 4){//brand
       $brands = Brand::where('user_id', $user_id)->get();
       $brands_list = $brands->lists('id')->toArray();
-      $events = Event::published()->active()->brandEvent($brands_list)->orderBy('events.created_at', 'desc')->paginate($paginate);
+      $events = Event::published()->active()->eventLike($event_title)->brandEvent($brands_list)->orderBy('events.created_at', 'desc')->paginate($paginate);
 
     } elseif($role_id < 4){ // manager, admin
       //$brands = Brand::all();
-      $events = Event::published()->active()->orderBy('events.created_at', 'desc')->paginate($paginate);
+      //->where('title', 'LIKE', "%$title%")
+      $events = Event::where('name','LIKE',"%{$event_title}%")->published()->brandEvent($brand_id)->active()->orderBy('events.created_at', 'desc')->paginate($paginate);
     }
 
     $totaldata = $events->total();
@@ -79,16 +84,21 @@ class AdminController extends Controller
     $data = array();
 
     foreach($events as $event){
-      $btn_action = "
-        <div id='btn_confirm' style='display:none'>
-          <a href='javascript:void(0);' onclick='deleteEvent({$event->id});' class='btn btn-confirm-action btn-success btn-xs'><i class='fa fa-check'></i><span class='hidden-xs'> Yes</span></a>
-          <a href='javascript:void(0);' class='btn btn-cancel-action btn-danger btn-xs'><i class='fa fa-times'></i><span class='hidden-xs'> No</span></a>
-        </div>
-        <div id='btn_action' style='display:block'>
-          <a href='/events/{$event->id}/edit' class='btn btn-edit-action btn-complete btn-xs'><i class='fa fa-pencil-square-o'></i><span class='hidden-xs'> Edit</span></a>
-          <a href='javascript:void(0);' class='btn btn-delete-action btn-danger btn-xs'><i class='fa fa-trash'></i><span class='hidden-xs'> Del</span></a>
-        </div>
-      ";
+      if($role_id < 4){ // manager, admin
+        $btn_action = "<div id='btn_confirm' style='display:none'>
+            <a href='javascript:void(0);' id='{$event->id}' class='btn btn-confirm-action btn-success btn-xs'><i class='fa fa-check'></i><span class='hidden-xs'> Yes</span></a>
+            <a href='javascript:void(0);' class='btn btn-cancel-action btn-danger btn-xs'><i class='fa fa-times'></i><span class='hidden-xs'> No</span></a>
+          </div>
+          <div id='btn_action' style='display:block'>
+            <a href='/events/{$event->id}/edit' class='btn btn-edit-action btn-complete btn-xs'><i class='fa fa-pencil-square-o'></i><span class='hidden-xs'> Edit</span></a>
+            <a href='javascript:void(0);' class='btn btn-delete-action btn-danger btn-xs'><i class='fa fa-trash'></i><span class='hidden-xs'> Del</span></a>
+          </div>";
+      } else {
+        $btn_action = "<div id='btn_action' style='display:block'>
+            <a href='/events/{$event->id}/edit' class='btn btn-edit-action btn-complete btn-xs'><i class='fa fa-pencil-square-o'></i><span class='hidden-xs'> Edit</span></a>
+          </div>";
+      }
+
       $nestedData=array();
       $nestedData[] = $btn_action;
       $nestedData[] = $event->title;
@@ -106,5 +116,17 @@ class AdminController extends Controller
 			"data"  => $data
 		);
 		echo json_encode($json_data);
+  }
+
+  public function delete_event($id=0){
+    $event = Event::find($id);
+    $event->active = 'N';
+    $event->deleted_at = date('Y-m-d H:i:s');
+    $id = $event->save();
+    if($id){
+      echo json_encode(array('status'=> 'success', 'id' => $id));
+    } else {
+      echo json_encode(array('status'=> 'failure', 'id' => 'false'));
+    }
   }
 }

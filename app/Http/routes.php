@@ -257,6 +257,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/admin/events', 'AdminController@events');
     Route::get('/admin/events', 'AdminController@events');
 
+    Route::get('/admin/del_event/{id}', array('as' => 'id', 'uses' => 'AdminController@delete_event'))
+    ->where('id', '[0-9]+');
+
     Route::resource('brand', 'BrandController'); //RESTful Resource Controllers
     Route::resource('contact', 'ContactController'); //RESTful Resource Controllers
     Route::resource('events', 'EventsController'); //RESTful Resource Controllers

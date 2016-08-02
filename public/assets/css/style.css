@@ -828,9 +828,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child::before, tabl
 }
 
 .dataTables_wrapper .dataTables_paginate ul > li.active > a {
-    color: #fff;
+    color: #626262;
     background-color: #f4f4f4;
-    border-color: #f3f3f3;
+    border-color: #ddd;
 }
 
 form.dropzone {
@@ -914,6 +914,20 @@ div.cs-skin-slide.cs-active {
 
 .form-group-area .form-control {
   height: auto;
+}
+
+.form-group-select label {
+  margin-top: 6px;
+  padding-left: 12px;
+}
+
+.form-group-select .select2-choice {
+  height: 29px;
+  padding: 0px 9px;
+}
+
+.form-group-select .select2-choice .select2-arrow b::before {
+  top: 0px;
 }
 
 .panel-default > .panel-heading {

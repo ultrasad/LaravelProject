@@ -10,7 +10,7 @@
         <div class="panel-heading padding-0">
           <div class="panel-title p-l-0 pull-left">Table Event Lists</div>
           <div class="pull-right">
-              <a href="/events/create" id="show-modal" class="btn btn-primary btn-xs pull-right"><i class="fa fa-plus"></i> Add Event</a>
+              <a href="/events/create" id="show-modal" class="btn btn-primary btn-xs pull-right"><i class="fa fa-plus"></i> สร้างโปรโมชั่นใหม่</a>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -44,7 +44,7 @@
         </div>
         <div class="clearfix"></div>
         <div class="pull-right">
-            <a href="javascript: void(0);" id="show-modal" class="btn btn-success btn-xs btn-search-event pull-right"><i class="fa fa-search"></i> Search Event</a>
+            <a href="javascript: void(0);" id="show-modal" class="btn btn-success btn-xs btn-search-event pull-right"><i class="fa fa-search"></i> ค้นหา โปรโมชั่น</a>
         </div>
       </div>
 

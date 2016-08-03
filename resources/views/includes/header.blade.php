@@ -72,7 +72,11 @@
           <div class="dropdown pull-right">
             <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="thumbnail-wrapper d32 circular inline m-t-5">
-                <img src="{{ URL::asset(Auth::user()->brand->first()->logo_image) }}" alt="" data-src="{{ URL::asset(Auth::user()->brand->first()->logo_image) }}" data-src-retina="{{ URL::asset(Auth::user()->brand->first()->logo_image) }}" width="32" height="32">
+                @if(!empty(Auth::user()->brand->first()->logo_image))
+                  <img src="{{ URL::asset(Auth::user()->brand->first()->logo_image) }}" alt="" data-src="{{ URL::asset(Auth::user()->brand->first()->logo_image) }}" data-src-retina="{{ URL::asset(Auth::user()->brand->first()->logo_image) }}" width="32" height="32">
+                @else
+                  <img src="{{ URL::asset('images/brand/logo_20160628-102206-logo.png') }}" alt="" data-src="{{ URL::asset('images/brand/logo_20160628-102206-logo.png') }}" data-src-retina="{{ URL::asset('images/brand/logo_20160628-102206-logo.png') }}" width="32" height="32">
+                @endif
               </span>
             </button>
             <ul class="dropdown-menu profile-dropdown" role="menu">

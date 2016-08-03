@@ -67,12 +67,12 @@
       <!-- START User Info-->
         <div class="visible-lg visible-md m-t-10">
           <div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
-            <span class="semi-bold">{{ Auth::user()->name}}</span>
+            <span class="semi-bold">{{ Auth::user()->name }}</span>
           </div>
           <div class="dropdown pull-right">
             <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="thumbnail-wrapper d32 circular inline m-t-5">
-                <img src="{{ URL::asset('assets/img/profiles/c.jpg') }}" alt="" data-src="{{ URL::asset('assets/img/profiles/c.jpg') }}" data-src-retina="{{ URL::asset('assets/img/profiles/c2x.jpg') }}" width="32" height="32">
+                <img src="{{ URL::asset(Auth::user()->brand->first()->logo_image) }}" alt="" data-src="{{ URL::asset(Auth::user()->brand->first()->logo_image) }}" data-src-retina="{{ URL::asset(Auth::user()->brand->first()->logo_image) }}" width="32" height="32">
               </span>
             </button>
             <ul class="dropdown-menu profile-dropdown" role="menu">

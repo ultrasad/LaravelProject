@@ -2,6 +2,226 @@
 <?xml-stylesheet href="http://localhost:8000/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
+    <loc>http://localhost:8000/promtoion-robinson-swap-swim-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-19T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/Robinson-Swap-Swim.png</image:loc>
+			<image:title>โปรโมชั่น Robinson Swap Swim ชุดว่ายน้ำเก่ามาแลกรับส่วนลดชุดว่ายน้ำตัวใหม่</image:title>
+			<image:caption>โปรโมชั่น Robinson Swap Swim ชุดว่ายน้ำเก่ามาแลกรับส่วนลดชุดว่ายน้ำตัวใหม่</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-grandhomemart-import-ties-shock-sale-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-19T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/GrandHomeMart-Import-Ties-Shock-Sale.png</image:loc>
+			<image:title>โปรโมชั่น GrandHomeMart Import Ties Shock Sale กระเบื้องนำเข้า ลดสูงสุด 80%</image:title>
+			<image:caption>โปรโมชั่น GrandHomeMart Import Ties Shock Sale กระเบื้องนำเข้า ลดสูงสุด 80%</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-pinnshop-trendy-hobby-fair-yarn-sale-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-19T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/PINNSHOP-Trendy-Hobby-Fair.png</image:loc>
+			<image:title>โปรโมชั่น PINNSHOP Trendy Hobby Fair ทำเวิร์ดช้อปตุ๊กตาไหมพรม พิเศษไหมพรมลด 20% (มี.ค.56)</image:title>
+			<image:caption>โปรโมชั่น PINNSHOP Trendy Hobby Fair ทำเวิร์ดช้อปตุ๊กตาไหมพรม พิเศษไหมพรมลด 20% (มี.ค.56)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-istudio-by-comseven-commart-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-19T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/iStudio-by-comseven-Commart.png</image:loc>
+			<image:title>โปรโมชั่น iStudio by comseven ในงาน Commart 2013</image:title>
+			<image:caption>โปรโมชั่น iStudio by comseven ในงาน Commart 2013</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-chokchai-steakhouse-salmon-festival</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-19T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/chokchai-steakhouse-salmon-festival2.png</image:loc>
+			<image:title>โปรโมชั่น โชคชัยสเต็คเฮ้าส์ เทศกาลปลาแซลมอน (มี.ค.-มิ.ย.56)</image:title>
+			<image:caption>โปรโมชั่น โชคชัยสเต็คเฮ้าส์ เทศกาลปลาแซลมอน (มี.ค.-มิ.ย.56)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-ais-jeffer-get-discount-jeffer-steak</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-19T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/AIS-Jeffer-Steak.png</image:loc>
+			<image:title>โปรโมชั่น ลูกค้า AIS รับส่วนลด 50 บาท เมื่อทานครบ 500 บาท ที่ร้าน Jeffer Steak</image:title>
+			<image:caption>โปรโมชั่น ลูกค้า AIS รับส่วนลด 50 บาท เมื่อทานครบ 500 บาท ที่ร้าน Jeffer Steak</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-central-toys-fair-sale-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/Central-Toys-Fair.jpg</image:loc>
+			<image:title>โปรโมชั่น Central Toys Fair ของเล่น ของสะสม ลดสูงสุด 60% (มี.ค.56)</image:title>
+			<image:caption>โปรโมชั่น Central Toys Fair ของเล่น ของสะสม ลดสูงสุด 60% (มี.ค.56)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-the-bedding-store-sale-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/The-bedding-store.jpg</image:loc>
+			<image:title>โปรโมชั่น The bedding store ที่นอน ชุดเครื่องนอน ลดสูงสุด 70% (มี.ค.56)</image:title>
+			<image:caption>โปรโมชั่น The bedding store ที่นอน ชุดเครื่องนอน ลดสูงสุด 70% (มี.ค.56)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-robinson-buy-500-permission-two-tones-bag-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/Two-Tones-Bag.jpg</image:loc>
+			<image:title>โปรโมชั่น Robinson ช้อปครบ 500.- รับสิทธิ์ช้อป Two Tones Bag ราคาพิเศษ (มี.ค.56)</image:title>
+			<image:caption>โปรโมชั่น Robinson ช้อปครบ 500.- รับสิทธิ์ช้อป Two Tones Bag ราคาพิเศษ (มี.ค.56)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-central-summer-kids-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/Central-Summer-Kids.jpg</image:loc>
+			<image:title>โปรโมชั่น Central Summer Kids สินค้าคอลเลคชั่นใหม่ล่าสุดในราคาสุดพิเศษ ลดสูงสุด 50%</image:title>
+			<image:caption>โปรโมชั่น Central Summer Kids สินค้าคอลเลคชั่นใหม่ล่าสุดในราคาสุดพิเศษ ลดสูงสุด 50%</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-topshop-students-sale-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/TOPSHOP-students.jpg</image:loc>
+			<image:title>โปรโมชั่น TOPSHOP นักเรียน นักศึกษา ลด 20% (มี.ค.56)</image:title>
+			<image:caption>โปรโมชั่น TOPSHOP นักเรียน นักศึกษา ลด 20% (มี.ค.56)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-the-1-card</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/The-1-Card-SF.jpg</image:loc>
+			<image:title>โปรโมชั่น The 1 Card คะแนนแลกบัตรชมภาพยนตร์ ที่ SF Cinema City</image:title>
+			<image:caption>โปรโมชั่น The 1 Card คะแนนแลกบัตรชมภาพยนตร์ ที่ SF Cinema City</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-airasia-top-flight-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/AirAsia-790.jpg</image:loc>
+			<image:title>โปรโมชั่น AirAsia บินคุ้ม แซบเว่อร์ ราคาเริ่มต้น 790.- (มี.ค.56)</image:title>
+			<image:caption>โปรโมชั่น AirAsia บินคุ้ม แซบเว่อร์ ราคาเริ่มต้น 790.- (มี.ค.56)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-reebonz-space-knockout-mega-sale-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/Reebonz-Space-Knockout-Mega-Sale.jpg</image:loc>
+			<image:title>โปรโมชั่น Reebonz Space Knockout Mega Sale กระเป๋าแบรนด์ดัง ลดพิเศษ 20-60% (มี.ค.56)</image:title>
+			<image:caption>โปรโมชั่น Reebonz Space Knockout Mega Sale กระเป๋าแบรนด์ดัง ลดพิเศษ 20-60% (มี.ค.56)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-krispy-kreme-celebrate-your-birthday-get-free-donut</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/KRISPY-KREME-CELEBRATE-YOUR-BIRTHDAY.jpg</image:loc>
+			<image:title>โปรโมชั่น KRISPY KREME CELEBRATE YOUR BIRTHDAY ฟรี!โดนัทหน้าพิเศษ 2 ชิ้น เมื่อซื้อโดนัท 1 โหล</image:title>
+			<image:caption>โปรโมชั่น KRISPY KREME CELEBRATE YOUR BIRTHDAY ฟรี!โดนัทหน้าพิเศษ 2 ชิ้น เมื่อซื้อโดนัท 1 โหล</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-saboten-discount-working-hours-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/Saboten-working-hours.jpg</image:loc>
+			<image:title>โปรโมชั่น Saboten สั่งเยอะ ลดเยอะ 10-15%</image:title>
+			<image:caption>โปรโมชั่น Saboten สั่งเยอะ ลดเยอะ 10-15%</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-ktc-forever-rewards-buffet-seoul-grill</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/KTC-Seoul-Grill.jpg</image:loc>
+			<image:title>โปรโมชั่น บัตรเครดิต KTC คะแนนสะสม Forever Rewards แลกรับบุฟเฟ่ต์ที่ Seoul Grill</image:title>
+			<image:caption>โปรโมชั่น บัตรเครดิต KTC คะแนนสะสม Forever Rewards แลกรับบุฟเฟ่ต์ที่ Seoul Grill</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-asiatique-street-fashion-sale-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/ASIATIQUE-Street-Fashion-Sale.jpg</image:loc>
+			<image:title>โปรโมชั่น ASIATIQUE Street Fashion Sale สินค้าแฟชั่น ในราคาพิเศษสุด (มี.ค.56)</image:title>
+			<image:caption>โปรโมชั่น ASIATIQUE Street Fashion Sale สินค้าแฟชั่น ในราคาพิเศษสุด (มี.ค.56)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-mens-accessories-sale-mar-2013</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/Men-Accessories-Sale.jpg</image:loc>
+			<image:title>โปรโมชั่น Men’s Accessories Sale สินค้าสำหรบคุณผู้ชาย ลดสูงสุด 30%</image:title>
+			<image:caption>โปรโมชั่น Men’s Accessories Sale สินค้าสำหรบคุณผู้ชาย ลดสูงสุด 30%</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-twin-lotus-herbaliste-active-charcoal-empty-box-barter-ticket-sf</loc>
+		<priority>0.9</priority>
+		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/03/Twin-Lotus-Herbaliste-Active-Charcoal.jpg</image:loc>
+			<image:title>โปรโมชั่น ยาสีฟัน Twin Lotus Herbaliste Active Charcoal กล่องเปล่า แลกตั๋วหนังฟรี!! SF</image:title>
+			<image:caption>โปรโมชั่น ยาสีฟัน Twin Lotus Herbaliste Active Charcoal กล่องเปล่า แลกตั๋วหนังฟรี!! SF</image:caption>
+		</image:image>
+  </url>
+  <url>
     <loc>http://localhost:8000/promtoion-dtac-happy-free-call-30-minutes</loc>
 		<priority>0.9</priority>
 		<lastmod>2013-03-18T00:00:00+07:00</lastmod>
@@ -8610,8 +8830,8 @@
 		<changefreq>monthly</changefreq>
 		<image:image>
 			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/Dtac.jpg</image:loc>
-			<image:title>โปรโมชั่น dtac online store ซื้อมือถือ หรือ แท็บเล็ต ผ่าน dtac online store วันนี้รับฟรี !! Starbucks Card มูลค่า 500 บาท</image:title>
-			<image:caption>โปรโมชั่น dtac online store ซื้อมือถือ หรือ แท็บเล็ต ผ่าน dtac online store วันนี้รับฟรี !! Starbucks Card มูลค่า 500 บาท</image:caption>
+			<image:title>โปรโมชั่น dtac online store ซื้อมือถือ หรือ แท็บเล็ต ผ่าน dtac online store วันนี้รับฟรี !! Starbucks Card มูลค่า 500 บา</image:title>
+			<image:caption>โปรโมชั่น dtac online store ซื้อมือถือ หรือ แท็บเล็ต ผ่าน dtac online store วันนี้รับฟรี !! Starbucks Card มูลค่า 500 บา</image:caption>
 		</image:image>
   </url>
   <url>
@@ -10779,226 +10999,6 @@
 			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/ghbank.jpg</image:loc>
 			<image:title>โปรโมชั่น ลูกค้าธนาคารอาคารสงเคราะห์ ดูหนังเพียง 60 บาท ทุกรอบ ทุกวัน</image:title>
 			<image:caption>โปรโมชั่น ลูกค้าธนาคารอาคารสงเคราะห์ ดูหนังเพียง 60 บาท ทุกรอบ ทุกวัน</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-siam-park-city-children-day-kids-cards-50</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-07T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/siam-pack-city.jpg</image:loc>
-			<image:title>โปรโมชั่น สยามพาร์คซิตี้ สวนสยาม วันเด็กแห่งชาติ บัตรเด็กลด 50%</image:title>
-			<image:caption>โปรโมชั่น สยามพาร์คซิตี้ สวนสยาม วันเด็กแห่งชาติ บัตรเด็กลด 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-haas-end-of-season-sale-50-70</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-07T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/haas-End-of-Season-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น haas End of Season Sale เสื้อผ้าแฟชั่น ลด 50-70%</image:title>
-			<image:caption>โปรโมชั่น haas End of Season Sale เสื้อผ้าแฟชั่น ลด 50-70%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-krungsri-first-choic-enstallment-camera-sony-0-12-month-big-camer</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-07T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/krungsri-big-camera.jpg</image:loc>
-			<image:title>โปรโมชั่นบัตร กรุงศรี เฟิร์สช้อยส์ ผ่อนกล้อง Sony 0% ได้ 12 เดือน พร้อมรับส่วนลดเพิ่มอีก 500 ที่ร้าน Big Camera</image:title>
-			<image:caption>โปรโมชั่นบัตร กรุงศรี เฟิร์สช้อยส์ ผ่อนกล้อง Sony 0% ได้ 12 เดือน พร้อมรับส่วนลดเพิ่มอีก 500 ที่ร้าน Big Camera</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-yuu-jung-children-day-kids-free</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-07T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/Yuu-Jung-12.jpg</image:loc>
-			<image:title>โปรโมชั่นร้าน Yuu Jung ฉลองวันเด็ก 12 ม.ค. เด็กทานฟรี!!</image:title>
-			<image:caption>โปรโมชั่นร้าน Yuu Jung ฉลองวันเด็ก 12 ม.ค. เด็กทานฟรี!!</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/kids-free-mrt-kid-day-2013</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-07T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/MRT-logo.jpg</image:loc>
-			<image:title>วันเด็กแห่งชาติ 2556 เด็กขึ้นรถไฟฟ้า MRT ฟรี</image:title>
-			<image:caption>วันเด็กแห่งชาติ 2556 เด็กขึ้นรถไฟฟ้า MRT ฟรี</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-the-mall-be-gift-discount-60</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/The-mall-Be-Gift.jpg</image:loc>
-			<image:title>โปรโมชั่น The mall กับงาน Be Gift ของขวัญหลากสไตล์ ลดสูงสุด 60%</image:title>
-			<image:caption>โปรโมชั่น The mall กับงาน Be Gift ของขวัญหลากสไตล์ ลดสูงสุด 60%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-bananait-norton-buy-1-get-1</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/BananaIT-Norton.jpg</image:loc>
-			<image:title>โปรโมชั่น BananaIT ซื้อสินค้า Norton ซื้อ 1 แถม 1</image:title>
-			<image:caption>โปรโมชั่น BananaIT ซื้อสินค้า Norton ซื้อ 1 แถม 1</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%82%e0%b8%a1%e0%b8%8a%e0%b8%b1%e0%b9%88%e0%b8%99-kin-shabu-buffet-%e0%b8%9a%e0%b8%b8%e0%b8%9f%e0%b9%80%e0%b8%9f%e0%b9%88%e0%b8%95%e0%b9%8c%e0%b8%8a%e0%b8%b2%e0%b8%9a</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/Kin-Shabu-Buffet-Gateway-Ekamai.jpg</image:loc>
-			<image:title>โปรโมชั่น Kin Shabu Buffet บุฟเฟ่ต์ชาบู มา 4 จ่าย 3 สาขา Gateway Ekamai</image:title>
-			<image:caption>โปรโมชั่น Kin Shabu Buffet บุฟเฟ่ต์ชาบู มา 4 จ่าย 3 สาขา Gateway Ekamai</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-nike-sale-up-to-50-mega-bangna</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/Nike-GO-sports.jpg</image:loc>
-			<image:title>โปรโมชั่น Nike Sale ลดสูงสุด 50% @ MEGA Bangna</image:title>
-			<image:caption>โปรโมชั่น Nike Sale ลดสูงสุด 50% @ MEGA Bangna</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-true-ochaya-buy-3-free-1</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/True-Ochaya.jpg</image:loc>
-			<image:title>โปรโมชั่น True กับ Ochaya ซื้อ 3 ฟรี 1 แก้ว หรือ ซื้อ 1 แก้ว ฟรี ไข่มุก</image:title>
-			<image:caption>โปรโมชั่น True กับ Ochaya ซื้อ 3 ฟรี 1 แก้ว หรือ ซื้อ 1 แก้ว ฟรี ไข่มุก</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-airasia-fabulous-fly-day-2</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/AirAsia-Fabulous-Fly-Day.jpg</image:loc>
-			<image:title>โปรโมชั่น AirAsia ทุกวันศุกร์เวลาดี Fabulous Fly-Day</image:title>
-			<image:caption>โปรโมชั่น AirAsia ทุกวันศุกร์เวลาดี Fabulous Fly-Day</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%82%e0%b8%a1%e0%b8%8a%e0%b8%b1%e0%b9%88%e0%b8%99%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%99-saboten-%e0%b8%aa%e0%b8%b1%e0%b9%89%e0%b8%87%e0%b8%ad%e0%b8%b2%e0%b8%ab%e0%b8%b2</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/Saboten.jpg</image:loc>
-			<image:title>โปรโมชั่นร้าน Saboten สั้งอาหาร 2 ชุด รับส่วนลด 40% สำหรับอาหารชุดที่ 2</image:title>
-			<image:caption>โปรโมชั่นร้าน Saboten สั้งอาหาร 2 ชุด รับส่วนลด 40% สำหรับอาหารชุดที่ 2</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-mrs-fields-member-save-10</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/Mrs.Fields-member.jpg</image:loc>
-			<image:title>โปรโมชั่น Mrs.Fields เปิดรับสมัครสมาชิกปี 2013 และรับส่วนลด 10%</image:title>
-			<image:caption>โปรโมชั่น Mrs.Fields เปิดรับสมัครสมาชิกปี 2013 และรับส่วนลด 10%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-robinson-end-season-sale-up-to-50</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/Robinson-End-Season-SALE.jpg</image:loc>
-			<image:title>โปรโมชั่น Robinson End Season SALE สินค้าแบรนด์ดังลดสูงสุดถึง 50%</image:title>
-			<image:caption>โปรโมชั่น Robinson End Season SALE สินค้าแบรนด์ดังลดสูงสุดถึง 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%82%e0%b8%a1%e0%b8%8a%e0%b8%b1%e0%b9%88%e0%b8%99-lego-%e0%b9%83%e0%b8%99%e0%b8%87%e0%b8%b2%e0%b8%99-lego-emporium-world-of-imagination-%e0%b8%9e%e0%b8%a3%e0%b9%89</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/LEGO-EMPORIUM-World-of-Imagination.jpg</image:loc>
-			<image:title>โปรโมชั่น LEGO ในงาน LEGO &amp;amp; EMPORIUM World of Imagination พร้อมรับส่วนลดสูงสุด 30%</image:title>
-			<image:caption>โปรโมชั่น LEGO ในงาน LEGO &amp;amp; EMPORIUM World of Imagination พร้อมรับส่วนลดสูงสุด 30%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-marugame-seimen-new-menu</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/Marugame-Seimen-Cheese.jpg</image:loc>
-			<image:title>โปรโมชั่น Marugame Seimen กับเมนูใหม่ ต้องลอง !! ราคาเริ่มต้นเพียง 119.-</image:title>
-			<image:caption>โปรโมชั่น Marugame Seimen กับเมนูใหม่ ต้องลอง !! ราคาเริ่มต้นเพียง 119.-</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/prmotion-future-park-super-kids-toy-sale-up-to-70</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/Future-Park-Super-Kids.jpg</image:loc>
-			<image:title>โปรโมชั่น Future Park Super Kids พบกับขบวนของเล่นแบรนด์ดัง ลดสูงสุดถึง 70%</image:title>
-			<image:caption>โปรโมชั่น Future Park Super Kids พบกับขบวนของเล่นแบรนด์ดัง ลดสูงสุดถึง 70%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-mcdonald-french-fries-50</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/McDonald-50.jpg</image:loc>
-			<image:title>โปรโมชั่น McDonald เฟรนช์ฟรายส์ ลด 50%</image:title>
-			<image:caption>โปรโมชั่น McDonald เฟรนช์ฟรายส์ ลด 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-ms-end-of-season-sale</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/MS-End-of-Season-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น M&amp;amp;S End of Season Sale ลดสูงสุด 70%</image:title>
-			<image:caption>โปรโมชั่น M&amp;amp;S End of Season Sale ลดสูงสุด 70%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-fuji-restaurant-happy-kiddy-set-150</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-01-04T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/01/fuji-kiddy.jpg</image:loc>
-			<image:title>โปรโมชั่น ร้านอาหาร Fuji สุขสันต์วันเด็กกับเมนู Happy Kiddy Set เพียง 150 บาท</image:title>
-			<image:caption>โปรโมชั่น ร้านอาหาร Fuji สุขสันต์วันเด็กกับเมนู Happy Kiddy Set เพียง 150 บาท</image:caption>
 		</image:image>
   </url>
 </urlset>

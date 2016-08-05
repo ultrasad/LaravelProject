@@ -78,6 +78,11 @@ Route::group(['middleware' => 'web'], function () {
         // add every product to multiple sitemaps with one sitemapindex
         foreach ($posts as $post)
         {
+            if($sitemapCounter == 0 && $counter == 0){
+              $sitemap_posts->add(URL::to('/'), date('Y-m-d H:i:s'), '1.0', 'daily');
+              $counter++;
+            }
+
             if ($counter == 1000)
             {
                 // generate new sitemap file

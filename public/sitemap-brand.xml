@@ -4,67 +4,121 @@
   <url>
     <loc>http://localhost:8000/brand/big-camera</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/world-camera</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/zoom-camera</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/super-sport</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/uniqlo</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/watsons</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/boots</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/kfc</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/nivea-men</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/no-name</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>http://localhost:8000/brand/no-name-1</loc>
 		<priority>0.9</priority>
-		<lastmod>2016-07-08T18:05:50+07:00</lastmod>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://localhost:8000/brand/test-fb</loc>
+		<priority>0.9</priority>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://localhost:8000/brand/test-brand-fb-tw</loc>
+		<priority>0.9</priority>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://localhost:8000/brand/test-bb</loc>
+		<priority>0.9</priority>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://localhost:8000/brand/test-brand-new</loc>
+		<priority>0.9</priority>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://localhost:8000/brand/new-brand-we</loc>
+		<priority>0.9</priority>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://localhost:8000/brand/new-brand-weve</loc>
+		<priority>0.9</priority>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://localhost:8000/brand/new-weove</loc>
+		<priority>0.9</priority>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://localhost:8000/brand/ck-cookie</loc>
+		<priority>0.9</priority>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://localhost:8000/brand/test-ree-t</loc>
+		<priority>0.9</priority>
+		<lastmod>2016-08-05T15:58:30+07:00</lastmod>
 		<changefreq>monthly</changefreq>
   </url>
 </urlset>

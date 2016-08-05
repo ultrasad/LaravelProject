@@ -2,6 +2,226 @@
 <?xml-stylesheet href="http://localhost:8000/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
+    <loc>http://localhost:8000/promotion-big-camera-festival-apr-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/BIG-Camera-Festival.jpg</image:loc>
+			<image:title>โปรโมชั่น BIG Camera Festival 2014 สินค้าราคาพิเศษ ลดสูงสุด 50% (เม.ย.57)</image:title>
+			<image:caption>โปรโมชั่น BIG Camera Festival 2014 สินค้าราคาพิเศษ ลดสูงสุด 50% (เม.ย.57)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%82%e0%b8%a1%e0%b8%8a%e0%b8%b1%e0%b9%88%e0%b8%99-lawson108-thank-1st-anniversary-%e0%b8%81%e0%b8%b1%e0%b8%9a%e0%b9%80%e0%b8%a1%e0%b8%99%e0%b8%b9%e0%b8%ad%e0%b8%a3</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/Lawson108-Thank-you-1st-Anniversary.jpg</image:loc>
+			<image:title>โปรโมชั่น Lawson108 Thank you 1st Anniversary กับเมนูอร่อย ราคาสุดคุ้ม!</image:title>
+			<image:caption>โปรโมชั่น Lawson108 Thank you 1st Anniversary กับเมนูอร่อย ราคาสุดคุ้ม!</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-dtac-reward-buy-ticket-movie-for-2-get-discount</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/DTAC-Reward-2014-sf.jpg</image:loc>
+			<image:title>โปรโมชั่น Dtac reward รับส่วนลด 50% สำหรับตํ่วหนังใบที่ 2 @SF</image:title>
+			<image:caption>โปรโมชั่น Dtac reward รับส่วนลด 50% สำหรับตํ่วหนังใบที่ 2 @SF</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-krispy-kreme-dount-royal-apr-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/KrispyKreme-Royal.jpg</image:loc>
+			<image:title>โปรโมชั่น KrispyKreme ต้อนรับเทศกาลสงกรานต์ กับโดนัทหน้าพระราชทาน</image:title>
+			<image:caption>โปรโมชั่น KrispyKreme ต้อนรับเทศกาลสงกรานต์ กับโดนัทหน้าพระราชทาน</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promoiton-the-1-card-privileges-at-robinson</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/The-1-card-Privileges.jpg</image:loc>
+			<image:title>โปรโมชั่น The 1 card Privileges ช้อปคะแนน The 1 Card @โรบินสัน</image:title>
+			<image:caption>โปรโมชั่น The 1 card Privileges ช้อปคะแนน The 1 Card @โรบินสัน</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-watsons-dermaskin-care-sale-apr-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/Watsons-DERMASKIN-CARE-SALE.jpg</image:loc>
+			<image:title>โปรโมชั่น ร้าน Watsons ผลิตภัณฑ์ DERMASKIN CARE SALE 10-30% (เม.ย.57)</image:title>
+			<image:caption>โปรโมชั่น ร้าน Watsons ผลิตภัณฑ์ DERMASKIN CARE SALE 10-30% (เม.ย.57)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-best-for-men-at-robinson-ayutthaya-park</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/Best-for-Men.jpg</image:loc>
+			<image:title>โปรโมชั่น Best for Men เกาะกระแสเทรนด์ฮิต กับแฟชั่นใหม่ ลดสูงสุด 40%</image:title>
+			<image:caption>โปรโมชั่น Best for Men เกาะกระแสเทรนด์ฮิต กับแฟชั่นใหม่ ลดสูงสุด 40%</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-daddy-dough-breakfast-special-price-apr-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/daddy-dough-breakfast.jpg</image:loc>
+			<image:title>โปรโมชั่น Daddy Dough ต้อนรับวันใหม่ ด้วยมื้อเช้าราคาพิเศษ (เม.ย.57)</image:title>
+			<image:caption>โปรโมชั่น Daddy Dough ต้อนรับวันใหม่ ด้วยมื้อเช้าราคาพิเศษ (เม.ย.57)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-gq-summer-collection-apr-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/GQ-Summer-Collection.jpg</image:loc>
+			<image:title>โปรโมชั่น GQ Summer Collection ลดสูงสุด 30% (เม.ย.57)</image:title>
+			<image:caption>โปรโมชั่น GQ Summer Collection ลดสูงสุด 30% (เม.ย.57)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-it-city-clearance-sale</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/IT-CITY-Clearance-Sale.jpg</image:loc>
+			<image:title>โปรโมชั่น IT CITY Clearance Sale ลดทะลุร้อน รับข้อเสนอสุดพิเศษ</image:title>
+			<image:caption>โปรโมชั่น IT CITY Clearance Sale ลดทะลุร้อน รับข้อเสนอสุดพิเศษ</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-thayapark-the-blooming-of-happiness-apr-jun-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/Thanyapark-The-Blooming-Of-Happiness.jpg</image:loc>
+			<image:title>โปรโมชั่น Thanyapark The Blooming Of Happiness ร้านค้าภายในศูนย์ ลดสูงสุด 80%</image:title>
+			<image:caption>โปรโมชั่น Thanyapark The Blooming Of Happiness ร้านค้าภายในศูนย์ ลดสูงสุด 80%</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-zen-donburi-festival-apr-may-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/ZEN-Donburi-Festival.jpg</image:loc>
+			<image:title>โปรโมชั่น ZEN Donburi Festival เทศกาลดงบุริ (เม.ย.-พ.ค.57)</image:title>
+			<image:caption>โปรโมชั่น ZEN Donburi Festival เทศกาลดงบุริ (เม.ย.-พ.ค.57)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-7-eleven-drink-reduced-7-baht</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/7-eleven-drink.jpg</image:loc>
+			<image:title>โปรโมชั่น 7-Eleven เครื่องดื่มคล้ายร้อน ลดเหลือ 7 บาท</image:title>
+			<image:caption>โปรโมชั่น 7-Eleven เครื่องดื่มคล้ายร้อน ลดเหลือ 7 บาท</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-true-coffee-get-doll-cookie-run</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/truecoffee-cookie-run.jpg</image:loc>
+			<image:title>โปรโมชั่น TrueCoffee สะสมตราประทับครบ แลกรับ ตุ๊กตาคุ้กกี้ รัน</image:title>
+			<image:caption>โปรโมชั่น TrueCoffee สะสมตราประทับครบ แลกรับ ตุ๊กตาคุ้กกี้ รัน</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/protmoion-central-all-for-men-apr-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/Central-All-For-Men.jpg</image:loc>
+			<image:title>โปรโมชั่น Central All For Men สินค้าคุณสุภาพบุรุษ ลดสูงสุด 30% (เม.ย.57)</image:title>
+			<image:caption>โปรโมชั่น Central All For Men สินค้าคุณสุภาพบุรุษ ลดสูงสุด 30% (เม.ย.57)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-bar-b-q-plaza-line-stickon-set-449-baht</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/bar-b-q-plaza-line-stickon.jpg</image:loc>
+			<image:title>โปรโมชั่น Bar B Q Plaza ชุดไลน์สติ๊กก้อน ชุดใหญ่จุใจในราคา 449.-</image:title>
+			<image:caption>โปรโมชั่น Bar B Q Plaza ชุดไลน์สติ๊กก้อน ชุดใหญ่จุใจในราคา 449.-</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-lancome-uv-expert-xl-shield-set-apr-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/LANCOME-UV-Expert-XL-Shield.jpg</image:loc>
+			<image:title>โปรโมชั่น  LANCOME ชุด UV Expert XL-Shield ราคาพิเศษ (เม.ย.57)</image:title>
+			<image:caption>โปรโมชั่น  LANCOME ชุด UV Expert XL-Shield ราคาพิเศษ (เม.ย.57)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-wutthisak-songkran-festival-save-apr-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/wutthisak-songkran-2014.jpg</image:loc>
+			<image:title>โปรโมชั่น วุฒิ-ศักดิ์ คลีนิค ให้คุณเป๊ะรับสงกรานต์ ลดสูงสุด 30% (เม.ย.57)</image:title>
+			<image:caption>โปรโมชั่น วุฒิ-ศักดิ์ คลีนิค ให้คุณเป๊ะรับสงกรานต์ ลดสูงสุด 30% (เม.ย.57)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-free-movice-summer-2014-taokaenoi</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/taokaenoi-summer-2014.jpg</image:loc>
+			<image:title>โปรโมชั่น ดูหนังฟรี ซัมเมอร์ 2014 อร่อยเป๊ะ กับ เถ้าแก่น้อย</image:title>
+			<image:caption>โปรโมชั่น ดูหนังฟรี ซัมเมอร์ 2014 อร่อยเป๊ะ กับ เถ้าแก่น้อย</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promtoion-the-mall-summer-goes-pop-brands-sale-apr-2014</loc>
+		<priority>0.9</priority>
+		<lastmod>2014-04-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/04/THE-MALL-SUMMER-GOES-POP.jpg</image:loc>
+			<image:title>โปรโมชั่น THE MALL SUMMER GOES POP แบรนด์ดัง ลดทั้งห้าง สูงสุด 70% (เม.ย.57)</image:title>
+			<image:caption>โปรโมชั่น THE MALL SUMMER GOES POP แบรนด์ดัง ลดทั้งห้าง สูงสุด 70% (เม.ย.57)</image:caption>
+		</image:image>
+  </url>
+  <url>
     <loc>http://localhost:8000/promtoion-cache-cache-pop-store-sale-apr-2014</loc>
 		<priority>0.9</priority>
 		<lastmod>2014-04-02T00:00:00+07:00</lastmod>
@@ -10779,226 +10999,6 @@
 			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Honmono-Sushi-Happy-new-year.jpg</image:loc>
 			<image:title>โปรโมชั่น Honmono Sushi Happy new year เมนูพิเศษ ลด 50%</image:title>
 			<image:caption>โปรโมชั่น Honmono Sushi Happy new year เมนูพิเศษ ลด 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-royal-ivy-regatta-end-of-season-sale-dec-2013</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Royal-Ivy-Regatta-End-of-Season-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น Royal Ivy Regatta End of Season Sale (ธ.ค. 56) ลดสูงสุด 50%</image:title>
-			<image:caption>โปรโมชั่น Royal Ivy Regatta End of Season Sale (ธ.ค. 56) ลดสูงสุด 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b9%82%e0%b8%a1%e0%b8%8a%e0%b8%b1%e0%b9%88%e0%b8%99-sushi-boy-%e0%b8%89%e0%b8%a5%e0%b8%ad%e0%b8%87%e0%b9%80%e0%b8%9b%e0%b8%b4%e0%b8%94%e0%b8%aa%e0%b8%b2%e0%b8%82%e0%b8%b2</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Sushi-Boy-Buy-2-Get-1-Free.jpg</image:loc>
-			<image:title>โปรโมชั่น Sushi Boy ฉลองเปิดสาขาใหม่ ทาน 2 จาน ฟรี 1 จาน @ MBK Center</image:title>
-			<image:caption>โปรโมชั่น Sushi Boy ฉลองเปิดสาขาใหม่ ทาน 2 จาน ฟรี 1 จาน @ MBK Center</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-thefaceshop-happy-new-year-sale</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/THEFACESHOP-Happy-New-Year.jpg</image:loc>
-			<image:title>โปรโมชั่น THEFACESHOP Happy New Year ลดสุงสุด 30%</image:title>
-			<image:caption>โปรโมชั่น THEFACESHOP Happy New Year ลดสุงสุด 30%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-body-glove-warehouse-sale</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Body-Glove-Warehouse-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น Body Glove Warehouse Sale ลดสูงสุด 70%</image:title>
-			<image:caption>โปรโมชั่น Body Glove Warehouse Sale ลดสูงสุด 70%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/protmoion-h-e-by-mango-end-of-season-sale-dec-2013</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/H.E.-by-Mango-End-of-Season-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น H.E. by Mango End of Season Sale ลดสูงสุด 50% (ธ.ค.56)</image:title>
-			<image:caption>โปรโมชั่น H.E. by Mango End of Season Sale ลดสูงสุด 50% (ธ.ค.56)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-dapper-magical-celebration-sale</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/DAPPER-Magical-Celebration.jpg</image:loc>
-			<image:title>โปรโมชั่น DAPPER Magical Celebration Sale ลดสุงสุด 30%</image:title>
-			<image:caption>โปรโมชั่น DAPPER Magical Celebration Sale ลดสุงสุด 30%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-13-14-art-sale-at-centralworld</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/13-to-14-THE-ART-OF-SALE.jpg</image:loc>
-			<image:title>โปรโมชั่น 13 to 14 THE ART OF SALE ลดสูงสุด 80% @CentralWorld</image:title>
-			<image:caption>โปรโมชั่น 13 to 14 THE ART OF SALE ลดสูงสุด 80% @CentralWorld</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-watch-jewelry-fair-at-robinson-rattanathibet</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Watch-Jewelry-Fair.jpg</image:loc>
-			<image:title>โปรโมชั่น Watch &amp;amp; Jewelry Fair นาฬิกา เครื่องประดับ ลด 10-50% @โรบินสัน รัตนาธิเบศร์</image:title>
-			<image:caption>โปรโมชั่น Watch &amp;amp; Jewelry Fair นาฬิกา เครื่องประดับ ลด 10-50% @โรบินสัน รัตนาธิเบศร์</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-sf-opening-celebrations-at-robinson-surin</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/sf-opening-celebrations.jpg</image:loc>
-			<image:title>โปรโมชั่น ฉลองเปิดสาขาใหม่ SF โรบินสัน สุรินทร์ มอบโชคสุดยิ่งใหญ่</image:title>
-			<image:caption>โปรโมชั่น ฉลองเปิดสาขาใหม่ SF โรบินสัน สุรินทร์ มอบโชคสุดยิ่งใหญ่</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-robinson-surin-grand-opening</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/grand-opening-robinson-surin.jpg</image:loc>
-			<image:title>โปรโมชั่น โรบินสัน สุรินทร์ Grand Opening ลดยิ่งใหญ่เพื่อคุณสูงสุด 50%</image:title>
-			<image:caption>โปรโมชั่น โรบินสัน สุรินทร์ Grand Opening ลดยิ่งใหญ่เพื่อคุณสูงสุด 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-bangkok-airways-happy-end-year</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Bangkok-Airways-happy-year-end.jpg</image:loc>
-			<image:title>โปรโมชั่น Bangkok Airways ส่ง..สุขท้ายปี บินเริ่มต้น 890.- (ธ.ค.56)</image:title>
-			<image:caption>โปรโมชั่น Bangkok Airways ส่ง..สุขท้ายปี บินเริ่มต้น 890.- (ธ.ค.56)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-my-wish-my-gift-2014-at-robinson</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/My-Wish-My-Gift-2014.jpg</image:loc>
-			<image:title>โปรโมชั่น My Wish My Gift 2014 สินค้าใหม่ลดสูงสุด 30% @Robinson</image:title>
-			<image:caption>โปรโมชั่น My Wish My Gift 2014 สินค้าใหม่ลดสูงสุด 30% @Robinson</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/protmoion-central-ladprao-shoe-show-2013</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Central-Ladprao-Shoe-Show-2013.jpg</image:loc>
-			<image:title>โปรโมชั่น Central Ladprao Shoe Show 2013 รองเท้าแบรนด์ชั้นนำ ลดสูงสุด 60%</image:title>
-			<image:caption>โปรโมชั่น Central Ladprao Shoe Show 2013 รองเท้าแบรนด์ชั้นนำ ลดสูงสุด 60%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-etude-house-super-sale-all-items-dec-2013</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Etude-House-Super-Sale-all-items.jpg</image:loc>
-			<image:title>โปรโมชั่น Etude House Super Sale all items ลดสูงสุด 50% (ธ.ค.56)</image:title>
-			<image:caption>โปรโมชั่น Etude House Super Sale all items ลดสูงสุด 50% (ธ.ค.56)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-greyhound-the-holiday-sale-dec-2013</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Greyhound-The-Holiday-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น Greyhound The Holiday Sale ลดสุงสุด 50%</image:title>
-			<image:caption>โปรโมชั่น Greyhound The Holiday Sale ลดสุงสุด 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-grand-his-her-exclusive-shopping-at-robinson</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Grand-His-Her-Exclusive-Shopping.jpg</image:loc>
-			<image:title>โปรโมชั่น Grand His &amp;amp; Her Exclusive Shopping ลดสูงสุด 30% @Robinson</image:title>
-			<image:caption>โปรโมชั่น Grand His &amp;amp; Her Exclusive Shopping ลดสูงสุด 30% @Robinson</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-paa-sale-all-item-dec-2013</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Paa-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น  Paa* Sale all item ลดสูงสุด 50% (ธ.ค.56)</image:title>
-			<image:caption>โปรโมชั่น  Paa* Sale all item ลดสูงสุด 50% (ธ.ค.56)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-watsons-3-day-special-20-22-dec-2013</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Watsons-3-Day-Special1.jpg</image:loc>
-			<image:title>โปรโมชั่น ร้าน Watsons 3 Day Special (20 ? 22 ธ.ค.56)</image:title>
-			<image:caption>โปรโมชั่น ร้าน Watsons 3 Day Special (20 ? 22 ธ.ค.56)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-super-sports-super-gift</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/SUPER-SPORTS-Super-Gift.jpg</image:loc>
-			<image:title>โปรโมชั่น SUPER SPORTS Super Gift ลดสูงสุด 20%</image:title>
-			<image:caption>โปรโมชั่น SUPER SPORTS Super Gift ลดสูงสุด 20%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-estee-lauder-open-new-concept-at-siam-center</loc>
-		<priority>0.9</priority>
-		<lastmod>2013-12-20T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2013/12/Estee-Lauder-Free-Standing-Store.jpg</image:loc>
-			<image:title>โปรโมชั่น Estee Lauder ฉลองเปิดเคาน์เตอร์ใหม่ @Siam Center</image:title>
-			<image:caption>โปรโมชั่น Estee Lauder ฉลองเปิดเคาน์เตอร์ใหม่ @Siam Center</image:caption>
 		</image:image>
   </url>
 </urlset>

@@ -2,6 +2,226 @@
 <?xml-stylesheet href="http://localhost:8000/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
+    <loc>http://localhost:8000/promotion-yeah-just-for-you-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-07T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/yeah.jpg</image:loc>
+			<image:title>โปรโมชั่น YEAH! JUST FOR YOU ลดสูงสุด 70% (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น YEAH! JUST FOR YOU ลดสูงสุด 70% (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-cc-double-o-end-of-season-sale-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-07T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/cc-double.jpg</image:loc>
+			<image:title>โปรโมชั่น CC DOUBLE O End of Season sale ลดสุดๆ 50%</image:title>
+			<image:caption>โปรโมชั่น CC DOUBLE O End of Season sale ลดสุดๆ 50%</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/stat-mizuno-sale-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-07T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/mizuno.jpg</image:loc>
+			<image:title>โปรโมชั่น รองเท้าสตั๊ด Mizuno ลดพิเศษ 60% (online only)</image:title>
+			<image:caption>โปรโมชั่น รองเท้าสตั๊ด Mizuno ลดพิเศษ 60% (online only)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-manchester-united-megastore-off-season-sale-nike-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-06T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/supernike.jpg</image:loc>
+			<image:title>โปรโมชั่น Manchester United Megastore Off Season Sale Nike (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น Manchester United Megastore Off Season Sale Nike (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-cmg-luxe-sale-july-2015</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-06T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/Luxe.jpg</image:loc>
+			<image:title>โปรโมชั่น CMG LUXE SALE UP  ลดพิเศษสูงสุด 90% (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น CMG LUXE SALE UP  ลดพิเศษสูงสุด 90% (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-aka-yakiniku-come-4-pay-3-july15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-06T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/aka.jpg</image:loc>
+			<image:title>โปรโมชั่น สมาชิกบุฟเฟต์ปิ้งย่าง AKA มา 4 จ่าย 3 (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น สมาชิกบุฟเฟต์ปิ้งย่าง AKA มา 4 จ่าย 3 (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-nikuya-more-come-more-discount-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-06T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/nikuya.jpg</image:loc>
+			<image:title>โปรโมชั่น  Nikuya  “ยิ่งมาเยอะ ยิ่งลดแยะ” (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น  Nikuya  “ยิ่งมาเยอะ ยิ่งลดแยะ” (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-daniel-hechter-end-of-season-sale-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/DanielHechter.jpg</image:loc>
+			<image:title>โปรโมชั่น  Daniel Hechter เสื้อผ้าสุภาพบุรุษ ลดสูงสุด 50% (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น  Daniel Hechter เสื้อผ้าสุภาพบุรุษ ลดสูงสุด 50% (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-bally-further-reduction-sale-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/bally.jpg</image:loc>
+			<image:title>โปรโมชั่น Bally Further Reduction Sale ลดสูงสุด 60% (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น Bally Further Reduction Sale ลดสูงสุด 60% (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-timberland-end-of-season-sale-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/TIMBERLAND.jpg</image:loc>
+			<image:title>โปรโมชั่น Timberland End of Season Sale ลดสูงสุด 50% (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น Timberland End of Season Sale ลดสูงสุด 50% (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-health-cuisinebeauty-festival-14</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/HCB.jpg</image:loc>
+			<image:title>โปรโมชั่นงาน HEALTH CUISINE&amp;amp;BEAUTY FESTIVAL ครั้งที่ 14 (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่นงาน HEALTH CUISINE&amp;amp;BEAUTY FESTIVAL ครั้งที่ 14 (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-cold-stone-free-ice-cream-day-2015</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-03T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/cold-stone.jpg</image:loc>
+			<image:title>โปรโมชั่น Cold Stone Free Ice Cream Day @17 July 2015 only</image:title>
+			<image:caption>โปรโมชั่น Cold Stone Free Ice Cream Day @17 July 2015 only</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-starbucks-thailand-17th-anniversary-buy-1-get-1-free-july15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/starbucks.jpg</image:loc>
+			<image:title>โปรโมชั่น Happy 17th Birthday Starbucks Thailand ซื้อ1แถม1 (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น Happy 17th Birthday Starbucks Thailand ซื้อ1แถม1 (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-gateaux-house-cake-fever-buy1-get1-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/cake-fever.jpg</image:loc>
+			<image:title>โปรโมชั่น Gateaux House จัดโปร Cake Fever ซื้อ 1 แถม 1  (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น Gateaux House จัดโปร Cake Fever ซื้อ 1 แถม 1  (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-cps-chaps-end-of-season-final-sale-july-2015</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/CPS-CHAPS.jpg</image:loc>
+			<image:title>โปรโมชั่น CPS CHAPS End of Season Final Sale (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น CPS CHAPS End of Season Final Sale (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-lyn-around-spring-summer-2015-end-of-season-sale-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/Lyn-Around.jpg</image:loc>
+			<image:title>โปรโมชั่น Lyn Around Spring-Summer 2015 End of Season Sale (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น Lyn Around Spring-Summer 2015 End of Season Sale (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-casualist-end-of-season-sale-up-to-50-off-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/casualist.jpg</image:loc>
+			<image:title>โปรโมชั่น CASUALIST END OF SEASON SALE UP TO 50% OFF (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น CASUALIST END OF SEASON SALE UP TO 50% OFF (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-topshop-and-topman-end-season-sale-july15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/topshop.jpg</image:loc>
+			<image:title>โปรโมชั่น Topshop and Topman End Season Sale (ก.ค.58)</image:title>
+			<image:caption>โปรโมชั่น Topshop and Topman End Season Sale (ก.ค.58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-4x4man-end-of-season-sale-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/4X4.jpg</image:loc>
+			<image:title>โปรโมชั่น 4x4MAN End Of Season Sale ลดสูงสุด 70% (ก.ค58)</image:title>
+			<image:caption>โปรโมชั่น 4x4MAN End Of Season Sale ลดสูงสุด 70% (ก.ค58)</image:caption>
+		</image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8000/promotion-french-kitty-end-of-season-sale-july-15</loc>
+		<priority>0.9</priority>
+		<lastmod>2015-07-02T00:00:00+07:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<image:image>
+			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/07/french-kitty.jpg</image:loc>
+			<image:title>โปรโมชั่น French Kitty End of Season SALE (ก.ค.58) ลดสูงสุด 70%</image:title>
+			<image:caption>โปรโมชั่น French Kitty End of Season SALE (ก.ค.58) ลดสูงสุด 70%</image:caption>
+		</image:image>
+  </url>
+  <url>
     <loc>http://localhost:8000/crocs-shoes-expo-sale-up-july-15</loc>
 		<priority>0.9</priority>
 		<lastmod>2015-07-01T00:00:00+07:00</lastmod>
@@ -250,8 +470,8 @@
 		<changefreq>monthly</changefreq>
 		<image:image>
 			<image:loc>http://localhost:8000/images/wp-content/uploads/2015/06/pp-group-end-of-season-sale-logo.jpg</image:loc>
-			<image:title>PP Group End of Season Sale (มิย.58) แบรนด์ Longchamp, Celine, Emilio Pucci, Givenchy, Loewe Tory Burch ลดราคาตั้งแต่ 30% ขึ้นไป</image:title>
-			<image:caption>PP Group End of Season Sale (มิย.58) แบรนด์ Longchamp, Celine, Emilio Pucci, Givenchy, Loewe Tory Burch ลดราคาตั้งแต่ 30% ขึ้นไป</image:caption>
+			<image:title>PP Group End of Season Sale (มิย.58) แบรนด์ Longchamp, Celine, Emilio Pucci, Givenchy, Loewe Tory Burch ลดราคาตั้งแต่ 30</image:title>
+			<image:caption>PP Group End of Season Sale (มิย.58) แบรนด์ Longchamp, Celine, Emilio Pucci, Givenchy, Loewe Tory Burch ลดราคาตั้งแต่ 30</image:caption>
 		</image:image>
   </url>
   <url>
@@ -10779,226 +10999,6 @@
 			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Exclusive-luxury-Sale-2014.jpg</image:loc>
 			<image:title>โปรโมชั่น Exclusive luxury Sale 2014 ลดสูงสุด 80% (ก.ค.57)</image:title>
 			<image:caption>โปรโมชั่น Exclusive luxury Sale 2014 ลดสูงสุด 80% (ก.ค.57)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-amarin-brand-sale-golf-sale-jul-aug-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Amarin-Brand-Sale-GOLF-SALE.jpg</image:loc>
-			<image:title>โปรโมชั่น Amarin Brand Sale : GOLF SALE อุปกรณ์กอล์ฟคุณภาพ ลดสูงสุด 60%</image:title>
-			<image:caption>โปรโมชั่น Amarin Brand Sale : GOLF SALE อุปกรณ์กอล์ฟคุณภาพ ลดสูงสุด 60%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promtoion-fragrance-cosmetic-warehouse-sale-jul-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Fragrance-Cosmetic-Warehouse-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น Fragrance &amp;amp; Cosmetic Warehouse Sale น้ำหอมและเครื่องสำอาง ลดสูงสุด 90% (ก.ค.57)</image:title>
-			<image:caption>โปรโมชั่น Fragrance &amp;amp; Cosmetic Warehouse Sale น้ำหอมและเครื่องสำอาง ลดสูงสุด 90% (ก.ค.57)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-rip-curl-mid-year-sale-jul-aug-2014-2</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Rip-Curl-Mid-Year-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น Rip Curl Mid Year Sale ลดสูงสุด 50% (กค.-สค.57)</image:title>
-			<image:caption>โปรโมชั่น Rip Curl Mid Year Sale ลดสูงสุด 50% (กค.-สค.57)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-nokair-birthday-surprise-fly-started-810-baht</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Nokair-Birthday-Surprise.jpg</image:loc>
-			<image:title>โปรโมชั่น NokAir Birthday Surprise บินเริ่มต้น 810 บาท</image:title>
-			<image:caption>โปรโมชั่น NokAir Birthday Surprise บินเริ่มต้น 810 บาท</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-scoozi-pizza-golden-hour-buy-1-free-1</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Scoozi-Pizza-golden-hours.jpg</image:loc>
-			<image:title>โปรโมชั่น Scoozi Pizza Golden Hour 3 ชั่วโมงทอง ซื้อ 1 แถม 1</image:title>
-			<image:caption>โปรโมชั่น Scoozi Pizza Golden Hour 3 ชั่วโมงทอง ซื้อ 1 แถม 1</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-power-mall-smart-cooking-sale-jul-aug-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/POWER-MALL-SMART-COOKING.jpg</image:loc>
-			<image:title>โปรโมชั่น POWER MALL SMART COOKING เครื่องใช้ไฟฟ้าในครัว ลดสูงสุด 50%</image:title>
-			<image:caption>โปรโมชั่น POWER MALL SMART COOKING เครื่องใช้ไฟฟ้าในครัว ลดสูงสุด 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-brics-sale-jul-aug-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/BRICS-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น BRIC’S Sale กระเป๋า สีสันดีไซน์สวย ลดสุงสุด 50%</image:title>
-			<image:caption>โปรโมชั่น BRIC’S Sale กระเป๋า สีสันดีไซน์สวย ลดสุงสุด 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-the-walk-be-full-joy-1-year-aug-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/THE-WALK-BE-FULL-JOY-1-YEAR.jpg</image:loc>
-			<image:title>โปรโมชั่น THE WALK BE FULL JOY 1 YEAR กับของรางวัลกว่า 1.4 ล้านบาท</image:title>
-			<image:caption>โปรโมชั่น THE WALK BE FULL JOY 1 YEAR กับของรางวัลกว่า 1.4 ล้านบาท</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-footwork-noir-end-of-season-sale-jul-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-23T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/FOOTWORKNOIR-End-of-Season-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น FOOTWORK NOIR End of Season Sale ลดสูงสุด 60%</image:title>
-			<image:caption>โปรโมชั่น FOOTWORK NOIR End of Season Sale ลดสูงสุด 60%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-cc-double-o-renovation-sale-jul-aug-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/CC-DOUBLE-O-RENOVATION-SALE.jpg</image:loc>
-			<image:title>โปรโมชั่น CC DOUBLE O RENOVATION SALE ลดสูงสุด 90%</image:title>
-			<image:caption>โปรโมชั่น CC DOUBLE O RENOVATION SALE ลดสูงสุด 90%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-kamu-tea-happy-hours-cool-drink-save-50</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/kamu-tea-happy-hours.jpg</image:loc>
-			<image:title>โปรโมชั่น Kamu Tea Happy Hours เครื่องดื่มลดครึ่งราคา</image:title>
-			<image:caption>โปรโมชั่น Kamu Tea Happy Hours เครื่องดื่มลดครึ่งราคา</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-beauty-hall-beauty-wishes-hi-beautiful</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Beauty-Hall-Beauty-Wishes-Hi-Beautiful.jpg</image:loc>
-			<image:title>โปรโมชั่น Beauty Hall Beauty Wishes Hi Beautiful ลด 10-15%</image:title>
-			<image:caption>โปรโมชั่น Beauty Hall Beauty Wishes Hi Beautiful ลด 10-15%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-expedia-lets-go-korea-package-start-14099</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/expedia-Lets-Go-Korea.jpg</image:loc>
-			<image:title>โปรโมชั่น Expedia Let?s Go Korea แพคเกจเที่ยวเกาหลี เริ่มที่ 14,099 บาท</image:title>
-			<image:caption>โปรโมชั่น Expedia Let?s Go Korea แพคเกจเที่ยวเกาหลี เริ่มที่ 14,099 บาท</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-quiksilver-roxy-dc-adidas-garage-sale-jul-aug-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/QUILKSILVER-ROXY-DC-adidas-GARAGE-SALE.jpg</image:loc>
-			<image:title>โปรโมชั่น QUIKSILVER ROXY DC adidas GARAGE SALE ลดสูงสุด 80% (ก.ค.-ส.ค.57)</image:title>
-			<image:caption>โปรโมชั่น QUIKSILVER ROXY DC adidas GARAGE SALE ลดสูงสุด 80% (ก.ค.-ส.ค.57)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-casualist-end-of-season-sale-jul-aug-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Casualist-End-of-Season-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น Casualist End of Season Sale ลดสูงสุด 70%</image:title>
-			<image:caption>โปรโมชั่น Casualist End of Season Sale ลดสูงสุด 70%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-doitung-mid-year-sale-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/doitung-Mid-Year-Sale-2014.jpg</image:loc>
-			<image:title>โปรโมชั่น DoiTung Mid Year Sale 2014  ลดราคาสูงสุด 80%</image:title>
-			<image:caption>โปรโมชั่น DoiTung Mid Year Sale 2014  ลดราคาสูงสุด 80%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-beauty-showcase-shiseido-sale</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Beauty-Showcase.jpg</image:loc>
-			<image:title>โปรโมชั่น Beauty Showcase สินค้าในเครือ  SHISEIDO ลดสูงสุด 40%</image:title>
-			<image:caption>โปรโมชั่น Beauty Showcase สินค้าในเครือ  SHISEIDO ลดสูงสุด 40%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-the-great-samsonite-sale-jul-aug-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/The-Great-Samsonite-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น The Great Samsonite Sale สินค้าเพื่อการเดินทาง ลดสูงสุด 50%</image:title>
-			<image:caption>โปรโมชั่น The Great Samsonite Sale สินค้าเพื่อการเดินทาง ลดสูงสุด 50%</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-sealy-mid-year-clearance-sale-jul-aug-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/Sealy-Clearance-Sale.jpg</image:loc>
-			<image:title>โปรโมชั่น Sealy Mid Year Clearance Sale ลดสูงสุด 75% (ก.ค.-ส.ค.57)</image:title>
-			<image:caption>โปรโมชั่น Sealy Mid Year Clearance Sale ลดสูงสุด 75% (ก.ค.-ส.ค.57)</image:caption>
-		</image:image>
-  </url>
-  <url>
-    <loc>http://localhost:8000/promotion-tiger-airways-fly-singapore-pay-return-free-july-2014</loc>
-		<priority>0.9</priority>
-		<lastmod>2014-07-22T00:00:00+07:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<image:image>
-			<image:loc>http://localhost:8000/images/wp-content/uploads/2014/07/tiger-airways-go-singapore.jpg</image:loc>
-			<image:title>โปรโมชั่น Tiger Airways บินสิงค์โปร์ ไป-กลับ ขากลับบินฟรี (ก.ค.57)</image:title>
-			<image:caption>โปรโมชั่น Tiger Airways บินสิงค์โปร์ ไป-กลับ ขากลับบินฟรี (ก.ค.57)</image:caption>
 		</image:image>
   </url>
 </urlset>

@@ -15,6 +15,12 @@
         <!-- <div class="content sm-gutter"> -->
         <div class="content">
           <!-- START ROW -->
+          <div class="col-sm-12 text-center full-height form-process-overlay hide">
+            <div class="progress-circle-indeterminate m-t-45" style="display: block;">
+            </div>
+            <br>
+            <p class="small hint-text">Submit Processing...</p>
+          </div>
           @yield('content')
           <!-- END ROW -->
         </div>

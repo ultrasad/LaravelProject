@@ -537,6 +537,18 @@ var twit = {}; //twitter data
     		$(document).bind("ajaxStart.mine", function(){
     			//$('#ajaxProgress').show();
     			$('.btn').attr('disabled', 'disabled');
+
+          //$(document).on('click.pg.portlet.data-api', '[data-toggle="refresh"]', function(e) {
+                //var $this = $(this);
+                var $target = $(this).closest('.content');
+                //if ($(this).is('a')) e.preventDefault();
+                $target.data('pg.portlet') && $target.portlet({
+                    refresh: true
+                });
+
+                //alert('xx');
+          //});
+
     		});
 
     		$(document).bind("ajaxStop.mine", function(){
@@ -1094,6 +1106,9 @@ var twit = {}; //twitter data
                    // do something only if/when form is valid
                    // like process the dropzone queue HERE instead
                    // then use .ajax() OR .submit()
+
+                   //add overlay, 2016-08-10
+                   $('.content .form-process-overlay').removeClass('hide').addClass('show');
                }
           });
 
@@ -1122,6 +1137,9 @@ var twit = {}; //twitter data
                 e.stopPropagation();
 
                  if($('#my-awesome-dropzone-form').valid()){
+
+                   //add overlay, 2016-08-10
+                   $('.content .form-process-overlay').removeClass('hide').addClass('show');
 
                   var description = $('textarea[name="description"]').html($('#summernote').code());
 
@@ -1374,6 +1392,9 @@ var twit = {}; //twitter data
                    // do something only if/when form is valid
                    // like process the dropzone queue HERE instead
                    // then use .ajax() OR .submit()
+
+                   //add overlay, 2016-08-10
+                   $('.content .form-process-overlay').removeClass('hide').addClass('show');
                }
           });
 
@@ -1414,6 +1435,9 @@ var twit = {}; //twitter data
                 e.stopPropagation();
 
                  if($('#my-awesome-dropzone-form-edit').valid()){
+
+                   //add overlay, 2016-08-10
+                   $('.content .form-process-overlay').removeClass('hide').addClass('show');
 
                   var description = $('textarea[name="description"]').html($('#summernote').code());
 

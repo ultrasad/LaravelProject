@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Event;
 use App\Category;
+use Request as Response;
 
 class CategoryController extends Controller
 {
@@ -23,7 +24,9 @@ class CategoryController extends Controller
         $category_icon= $cate->icon;
       } else {
         if($category != 'unknow'){
-          return redirect('/');
+          //return redirect('/');
+          $events = Event::published()->active()->orderBy('events.created_at', 'desc')->limit(10)->get();
+          return \Response::view('errors.404', array('url' => Response::url(), 'events' => $events, 'msg' => 'ไม่พบข้อมูลที่คุณต้องการ'), 404); //\Response is native response, Reponse is make from Request
         }
       }
 

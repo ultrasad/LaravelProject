@@ -990,6 +990,10 @@ div.cs-select-brand, div.cs-select-contact {
   margin: 0 auto;
 }
 
+.content .form-process-overlay {
+  position: absolute; z-index:999; background: rgba(255, 255, 255, 0.75) none repeat scroll 0 0;
+}
+
 .event-gallery .dialog__content {
   /*border: 1px solid #d4d4d5;*/
   background: #fff;

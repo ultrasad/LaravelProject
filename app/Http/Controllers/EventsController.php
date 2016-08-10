@@ -585,8 +585,13 @@ class EventsController extends Controller
         return Event::where('url_slug', $slug)->first();
       });
 
-      if(!$event)
-        return redirect('/');
+      if(!$event){
+        //return redirect('/');
+        //abort(404);
+        $events = Event::published()->active()->orderBy('events.created_at', 'desc')->limit(10)->get();
+        //dd($events);
+        return \Response::view('errors.404', array('url' => Response::url(), 'events' => $events, 'msg' => 'ไม่พบข้อมูลที่คุณต้องการ'), 404); //\Response is native response, Reponse is make from Request
+      }
 
       $branchs = array();
       $tags = array();

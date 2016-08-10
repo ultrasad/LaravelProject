@@ -104,18 +104,18 @@
                 <header><h2 class="text-master events-title-boxed"><a href="{{ URL::to('/', rawurldecode($event->url_slug)) }}" title="{{ $event->title }}" class="card_title">{{ $event->title }}</a></h2></header>
                 <p class="list-brief entry-content">{{ $event->brief }}</p>
               </div>
-			  <footer>
-				  <div class="p-t-10 p-l-15 p-r-15 p-b-5 card_footer">
-					<div class="pull-left text-master hint-text fs-12 color-body">ถึงวันที่ : {{ $event->end_date_thai }}</div>
-					<ul class="list-inline pull-right no-margin hint-text">
-					  <li><a class="text-info-link" href="#fb comment"><span>5,345</span> <i class="fs-12 pg-comment"></i></a>
-					  </li>
-					  <li><a class="text-info-link heart" href="#"><span>23K</span> <i class="fa fa-heart-o"></i></a>
-					  </li>
-					</ul>
-					<!--<div class="clearfix xx"></div>-->
-				  </div>
-			  </footer>
+      			  <footer>
+      				  <div class="p-t-10 p-l-15 p-r-15 p-b-5 card_footer">
+      					<div class="pull-left text-master hint-text fs-12 color-body">ถึงวันที่ : {{ $event->end_date_thai }}</div>
+      					<ul class="list-inline pull-right no-margin hint-text">
+      					  <li><a class="text-info-link" href="#fb comment"><span>5,345</span> <i class="fs-12 pg-comment"></i></a>
+      					  </li>
+      					  <li><a class="text-info-link heart" href="#"><span>23K</span> <i class="fa fa-heart-o"></i></a>
+      					  </li>
+      					</ul>
+      					<!--<div class="clearfix xx"></div>-->
+      				  </div>
+      			  </footer>
             </div>
           </article>
           <!-- END ITEM -->
